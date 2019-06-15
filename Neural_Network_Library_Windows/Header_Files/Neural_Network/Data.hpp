@@ -179,12 +179,12 @@ struct Optimizer_Function_Initializer
             AdaBound, AMSBound:
                 beta2=0.999, "Coefficients used for computing running averages of square gradient."
             Adam, AMSGrad, NosAdam:
-                epsilon=1.0e-8, "Term added to the denominator to improve numerical stability."
+                epsilon=1e-8, "Term added to the denominator to improve numerical stability."
             iRPROP+:
-                rprop_delta_min=1.0e-6
+                rprop_delta_min=1e-6
         [4]:
             AdaBound, AMSBound:
-                epsilon=1.0e-8, "Term added to the denominator to improve numerical stability."
+                epsilon=1e-8, "Term added to the denominator to improve numerical stability."
             Adam, AMSGrad, NosAdam:
                 bias_correction=true, "Moving average to estimate the first and second moments."
             iRPROP+:
@@ -217,7 +217,7 @@ struct Warm_Restarts_Initializer
     
     T_ warm_restarts_decay_learning_rate = 1_T;
     T_ warm_restarts_maximum_learning_rate = 1_T;
-    T_ warm_restarts_minimum_learning_rate = 1.0e-7_T;
+    T_ warm_restarts_minimum_learning_rate = 1e-7_T;
     T_ warm_restarts_initial_T_i = 1_T;
     T_ warm_restarts_multiplier = 2_T;
 };
@@ -308,7 +308,7 @@ struct Normalization_Initializer
     enum MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION *ptr_array_layers_using_normalization = nullptr;
 
     T_ normalization_momentum_average = 0.01_T; // 1 / number of mini-batch
-    T_ normalization_epsilon = 1.0e-5_T;
+    T_ normalization_epsilon = 1e-5_T;
 
     // Batch renormalization parameter.
     T_ batch_renormalization_r_correction_maximum = 1_T;
@@ -2933,20 +2933,20 @@ class Neural_Network
         T_ adam_beta1 = 0.9_T;
         T_ adam_beta2 = 0.999_T; // {0.99, 0.999}
         T_ adam_previous_beta2 = 0_T;
-        T_ adam_epsilon = 1.0e-8_T;
+        T_ adam_epsilon = 1e-8_T;
         T_ adam_gamma = 0.1_T; // {0.05, 0.1}
         T_ optimizer_time_step = 0_T;
         T_ epoch_time_step = 1_T;
         T_ warm_restarts_decay_learning_rate = 1_T;
         T_ warm_restarts_initial_maximum_learning_rate = 1_T;
         T_ warm_restarts_maximum_learning_rate = 1_T;
-        T_ warm_restarts_minimum_learning_rate = 1.0e-7_T;
+        T_ warm_restarts_minimum_learning_rate = 1e-7_T;
         T_ warm_restarts_initial_T_i = 1_T;
         T_ warm_restarts_T_i = 1_T;
         T_ warm_restarts_multiplier = 2_T;
         T_ clip_gradient = 1_T;
         T_ normalization_momentum_average = 0.999_T;
-        T_ normalization_epsilon = 1.0e-5_T;
+        T_ normalization_epsilon = 1e-5_T;
         T_ batch_renormalization_r_correction_maximum = 1_T;
         T_ batch_renormalization_d_correction_maximum = 0_T;
         T_ *ptr_array_basic_indice_units_values = nullptr; // size[B, T, H].
@@ -3221,7 +3221,7 @@ class Neural_Network
         /* Tells how much the stepsize should decrease during learning */
         T_ rprop_decrease_factor = 0.5_T;
         /* The minimum stepsize */
-        T_ rprop_delta_min = 1.0e-6_T;
+        T_ rprop_delta_min = 1e-6_T;
         /* The maximum stepsize */
         T_ rprop_delta_max = 50.0_T;
         /* The initial stepsize */

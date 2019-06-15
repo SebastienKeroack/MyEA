@@ -74,7 +74,7 @@ namespace MyEA
                 T Generate_Real(void);
 
             private:
-                T _minimum_range = 0;
+                T _minimum_range  = 0;
                 T _maximum_range = 1;
 
                 std::uniform_real_distribution<T> _uniform_real_distribution;

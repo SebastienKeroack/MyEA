@@ -1770,7 +1770,7 @@ bool Optimizer_Function_Initializer::Input_Initialize(void)
             PRINT_FORMAT("%s: Gamma." NEW_LINE, MyEA::String::Get__Time().c_str());
             PRINT_FORMAT("%s:\tRange[1e-7, inf]." NEW_LINE, MyEA::String::Get__Time().c_str());
             PRINT_FORMAT("%s:\tdefault=0.1." NEW_LINE, MyEA::String::Get__Time().c_str());
-            this->values[5u] = MyEA::String::Cin_Real_Number<T_>(1.0e-7_T, MyEA::String::Get__Time() + ": Gamma: ");
+            this->values[5u] = MyEA::String::Cin_Real_Number<T_>(1e-7_T, MyEA::String::Get__Time() + ": Gamma: ");
                 break;
         case MyEA::Common::ENUM_TYPE_OPTIMIZER_FUNCTIONS::TYPE_OPTIMIZER_ADABOUND:
         case MyEA::Common::ENUM_TYPE_OPTIMIZER_FUNCTIONS::TYPE_OPTIMIZER_AMSBOUND:
@@ -1966,7 +1966,7 @@ void Warm_Restarts_Initializer::Input_Initialize(void)
         PRINT_FORMAT("%s: Learning rate, decay:" NEW_LINE, MyEA::String::Get__Time().c_str());
         PRINT_FORMAT("%s:\tRange[1e-5, 1.0]." NEW_LINE, MyEA::String::Get__Time().c_str());
         PRINT_FORMAT("%s:\tdefault=0.95." NEW_LINE, MyEA::String::Get__Time().c_str());
-        this->warm_restarts_decay_learning_rate = MyEA::String::Cin_Real_Number<T_>(1.0e-5_T,
+        this->warm_restarts_decay_learning_rate = MyEA::String::Cin_Real_Number<T_>(1e-5_T,
                                                                                                                                 1_T,
                                                                                                                                 MyEA::String::Get__Time() + ": Learning rate, decay: ");
         
@@ -1987,7 +1987,7 @@ void Warm_Restarts_Initializer::Input_Initialize(void)
         this->warm_restarts_minimum_learning_rate = MyEA::String::Cin_Real_Number<T_>(0_T,
                                                                                                                                     this->warm_restarts_maximum_learning_rate,
                                                                                                                                     MyEA::String::Get__Time() + ": Minimum learning rate: ");
-        if(this->warm_restarts_minimum_learning_rate == 0_T) { this->warm_restarts_minimum_learning_rate = this->warm_restarts_maximum_learning_rate / 1.0e+7_T; }
+        if(this->warm_restarts_minimum_learning_rate == 0_T) { this->warm_restarts_minimum_learning_rate = this->warm_restarts_maximum_learning_rate / 1e+7_T; }
 
         PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
         PRINT_FORMAT("%s: Initial Ti:" NEW_LINE, MyEA::String::Get__Time().c_str());

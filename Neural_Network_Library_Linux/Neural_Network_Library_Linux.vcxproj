@@ -169,7 +169,7 @@
     <ClCompile>
       <AdditionalIncludeDirectories>/usr/local/boost_1_69_0;/home/sebastien/projects/$(ProjectName)/Header_Files/;/home/sebastien/projects/$(ProjectName)/Resource_Files/;/home/sebastien/projects/$(ProjectName)/Source_Files/;/home/sebastien/projects/$(ProjectName)/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CppLanguageStandard>c++17</CppLanguageStandard>
-      <PreprocessorDefinitions>COMPILE_DOUBLE;COMPILE_UINPUT;COMPILE_LINUX;COMPILE_x64;COMPILE_BREAK_CODE;COMPILE_COUT;COMPILE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>COMPILE_x64;COMPILE_DOUBLE;COMPILE_COUT;COMPILE_LINUX;COMPILE_UINPUT;COMPILE_BREAK_CODE;COMPILE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Verbose>true</Verbose>
       <ShowIncludes>true</ShowIncludes>
       <AdditionalOptions>-fopenmp %(AdditionalOptions)</AdditionalOptions>
@@ -186,7 +186,7 @@ echo "ProjectDir = $(ProjectDir)"</Command>
     <ClCompile>
       <AdditionalIncludeDirectories>/usr/local/boost_1_69_0;/home/sebastien/projects/$(ProjectName)/Header_Files/;/home/sebastien/projects/$(ProjectName)/Resource_Files/;/home/sebastien/projects/$(ProjectName)/Source_Files/;/home/sebastien/projects/$(ProjectName)/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CppLanguageStandard>c++17</CppLanguageStandard>
-      <PreprocessorDefinitions>COMPILE_FLOAT;COMPILE_UINPUT;COMPILE_LINUX;COMPILE_x64;COMPILE_BREAK_CODE;COMPILE_COUT;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>COMPILE_x64;COMPILE_FLOAT;COMPILE_COUT;COMPILE_LINUX;COMPILE_UINPUT;COMPILE_BREAK_CODE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>-fopenmp %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Lib />
@@ -195,7 +195,7 @@ echo "ProjectDir = $(ProjectDir)"</Command>
     <ClCompile>
       <AdditionalIncludeDirectories>/usr/local/boost_1_69_0;/home/sebastien/projects/$(ProjectName)/Header_Files/;/home/sebastien/projects/$(ProjectName)/Resource_Files/;/home/sebastien/projects/$(ProjectName)/Source_Files/;/home/sebastien/projects/$(ProjectName)/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CppLanguageStandard>c++17</CppLanguageStandard>
-      <PreprocessorDefinitions>COMPILE_DOUBLE;COMPILE_UINPUT;COMPILE_LINUX;COMPILE_x86;WIN32;COMPILE_BREAK_CODE;COMPILE_COUT;COMPILE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>COMPILE_x86;COMPILE_DOUBLE;COMPILE_COUT;COMPILE_LINUX;COMPILE_UINPUT;COMPILE_BREAK_CODE;COMPILE_DEBUG;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>-fopenmp %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
   </ItemDefinitionGroup>
@@ -203,7 +203,7 @@ echo "ProjectDir = $(ProjectDir)"</Command>
     <ClCompile>
       <AdditionalIncludeDirectories>/usr/local/boost_1_69_0;/home/sebastien/projects/$(ProjectName)/Header_Files/;/home/sebastien/projects/$(ProjectName)/Resource_Files/;/home/sebastien/projects/$(ProjectName)/Source_Files/;/home/sebastien/projects/$(ProjectName)/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CppLanguageStandard>c++17</CppLanguageStandard>
-      <PreprocessorDefinitions>COMPILE_FLOAT;COMPILE_UINPUT;COMPILE_LINUX;COMPILE_x86;WIN32;COMPILE_BREAK_CODE;COMPILE_COUT;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>COMPILE_x86;COMPILE_FLOAT;COMPILE_COUT;COMPILE_LINUX;COMPILE_UINPUT;COMPILE_BREAK_CODE;WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>-fopenmp %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
   </ItemDefinitionGroup>

@@ -130,7 +130,7 @@
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PreprocessorDefinitions>COMPILE_DOUBLE;COMPILE_UINPUT;COMPILE_LINUX;COMPILE_x64;COMPILE_BREAK_CODE;COMPILE_COUT;COMPILE_DEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>COMPILE_x64;COMPILE_DOUBLE;COMPILE_COUT;COMPILE_LINUX;COMPILE_UINPUT;COMPILE_BREAK_CODE;COMPILE_DEBUG</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>/home/sebastien/projects/$(ProjectName)/Header_Files/;/home/sebastien/projects/$(ProjectName)/Resource_Files/;/home/sebastien/projects/$(ProjectName)/Source_Files/;/home/sebastien/projects/$(ProjectName)/;%(AdditionalIncludeDirectories);$(CudaToolkitIncludeDir)</AdditionalIncludeDirectories>
       <CppLanguageStandard>c++17</CppLanguageStandard>
     </ClCompile>
@@ -146,7 +146,7 @@
     <ClCompile>
       <AdditionalIncludeDirectories>/home/sebastien/projects/$(ProjectName)/Header_Files/;/home/sebastien/projects/$(ProjectName)/Resource_Files/;/home/sebastien/projects/$(ProjectName)/Source_Files/;/home/sebastien/projects/$(ProjectName)/;%(AdditionalIncludeDirectories);$(CudaToolkitIncludeDir)</AdditionalIncludeDirectories>
       <CppLanguageStandard>c++17</CppLanguageStandard>
-      <PreprocessorDefinitions>COMPILE_FLOAT;COMPILE_UINPUT;COMPILE_LINUX;COMPILE_x64;COMPILE_BREAK_CODE;COMPILE_COUT;NDEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>COMPILE_x64;COMPILE_FLOAT;COMPILE_COUT;COMPILE_LINUX;COMPILE_UINPUT;COMPILE_BREAK_CODE;NDEBUG</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(RemoteRootDir)/Common_Library_Linux/bin/$(Platform)/$(Configuration)/;$(RemoteRootDir)/Neural_Network_Library_Linux/bin/$(Platform)/$(Configuration)/;/home/sebastien/projects/Common_Library_Linux/bin/$(Platform)/$(Configuration)/;/home/sebastien/projects/Neural_Network_Library_Linux/bin/$(Platform)/$(Configuration)/</AdditionalLibraryDirectories>
@@ -163,7 +163,7 @@
     <ClCompile>
       <CppLanguageStandard>c++17</CppLanguageStandard>
       <AdditionalIncludeDirectories>/home/sebastien/projects/$(ProjectName)/Header_Files/;/home/sebastien/projects/$(ProjectName)/Resource_Files/;/home/sebastien/projects/$(ProjectName)/Source_Files/;/home/sebastien/projects/$(ProjectName)/;%(AdditionalIncludeDirectories);$(CudaToolkitIncludeDir)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>COMPILE_DOUBLE;COMPILE_UINPUT;COMPILE_LINUX;COMPILE_x86;WIN32;COMPILE_BREAK_CODE;COMPILE_COUT;COMPILE_DEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>COMPILE_x86;COMPILE_DOUBLE;COMPILE_COUT;COMPILE_LINUX;COMPILE_UINPUT;COMPILE_BREAK_CODE;COMPILE_DEBUG;WIN32</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
@@ -175,7 +175,7 @@
     <ClCompile>
       <CppLanguageStandard>c++17</CppLanguageStandard>
       <AdditionalIncludeDirectories>/home/sebastien/projects/$(ProjectName)/Header_Files/;/home/sebastien/projects/$(ProjectName)/Resource_Files/;/home/sebastien/projects/$(ProjectName)/Source_Files/;/home/sebastien/projects/$(ProjectName)/;%(AdditionalIncludeDirectories);$(CudaToolkitIncludeDir)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>COMPILE_FLOAT;COMPILE_UINPUT;COMPILE_LINUX;COMPILE_x86;WIN32;COMPILE_BREAK_CODE;COMPILE_COUT;NDEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>COMPILE_x86;COMPILE_FLOAT;COMPILE_COUT;COMPILE_LINUX;COMPILE_UINPUT;COMPILE_BREAK_CODE;WIN32;NDEBUG</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

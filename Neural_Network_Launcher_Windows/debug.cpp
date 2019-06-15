@@ -36,66 +36,67 @@ void simple_debug(bool const nsight_received)
     
     bool tmp_use_OpenMP(false);
     bool const tmp_simulate_online_training(false),
-                    tmp_load_parameters(false),
-                    tmp_use_dropout(false),
-                    tmp_use_normalization(true),
-                    tmp_use_layer_normalization_before_activation(true),
-                    tmp_use_warm_restarts(false),
-                    tmp_use_bidirectional(false),
-                    tmp_use_residual(true),
-                    tmp_use_pooling(true && tmp_use_residual),
-                    tmp_use_bottleneck(false && tmp_use_residual),
-                    tmp_pooling_ceil_mode(false),
-                    tmp_clip_gradient(false),
-                    tmp_tied_parameter(false),
-                    tmp_save(false),
-                    tmp_copy(true),
-                    tmp_use_training(true),
-                    tmp_use_update_bn(true && tmp_use_normalization),
-                    tmp_use_validating(false),
-                    tmp_use_testing(true),
-                    tmp_use_adept(false),
-                    tmp_use_testing_print_input(false),
-                    tmp_use_testing_print_output(false),
-                    tmp_print_parameters(false);
+               tmp_load_parameters(false),
+               tmp_use_dropout(false),
+               tmp_use_normalization(true),
+               tmp_use_layer_normalization_before_activation(true),
+               tmp_use_warm_restarts(false),
+               tmp_use_bidirectional(false),
+               tmp_use_residual(true),
+               tmp_use_pooling(true && tmp_use_residual),
+               tmp_use_bottleneck(false && tmp_use_residual),
+               tmp_pooling_ceil_mode(false),
+               tmp_clip_gradient(false),
+               tmp_tied_parameter(false),
+               tmp_save(false),
+               tmp_copy(true),
+               tmp_use_training(true),
+               tmp_use_update_bn(true && tmp_use_normalization),
+               tmp_use_validating(false),
+               tmp_use_testing(true),
+               tmp_use_adept(false),
+               tmp_use_testing_print_input(false),
+               tmp_use_testing_print_output(false),
+               tmp_print_parameters(false);
 
     unsigned int const tmp_weights_seed(5413u);
 
     long long int tmp_widening_factor_alphas[2u] = {-9ll, 0ll};
     
     size_t const tmp_number_layers(12_zu),
-                       tmp_number_units[2u] = {32_zu, 1_zu},
-                       tmp_residual_block_width(3_zu),
-                       tmp_pooling_kernel_size(2_zu),
-                       tmp_pooling_stride(2_zu),
-                       tmp_pooling_padding(0_zu),
-                       tmp_pooling_dilation(0_zu),
-                       tmp_time_delays(27_zu),
-                       tmp_epochs(10_zu),
-                       tmp_sub_epochs(10_zu),
-                       tmp_length_run(nsight_received ? 1_zu : 1_zu),
-                       tmp_image_size(28_zu),
-                       tmp_memory_allocate(256_zu * KILOBYTE * KILOBYTE);
+                 tmp_number_units[2u] = {32_zu, 1_zu},
+                 tmp_residual_block_width(3_zu),
+                 tmp_pooling_kernel_size(2_zu),
+                 tmp_pooling_stride(2_zu),
+                 tmp_pooling_padding(0_zu),
+                 tmp_pooling_dilation(0_zu),
+                 tmp_time_delays(27_zu),
+                 tmp_epochs(10_zu),
+                 tmp_sub_epochs(10_zu),
+                 tmp_length_run(nsight_received ? 1_zu : 1_zu),
+                 tmp_image_size(28_zu),
+                 tmp_memory_allocate(256_zu * KILOBYTE * KILOBYTE);
 
     T_ const tmp_dropout_values[2u] = {0.5_T, 0.5_T},
-                 tmp_percentage_maximum_thread_usage(25_T),
-                 tmp_regularization_l1(0_T),
-                 tmp_regularization_l2(0_T),
-                 tmp_regularization_max_norm_constraints(8_T),
-                 tmp_regularization_weight_decay(0_T),
-                 tmp_accuracy_variance(0.49_T),
-                 tmp_activation_steepness(1_T),
-                 tmp_learning_rate(1e-3_T),
-                 tmp_learning_rate_final(1e-1_T),
-                 tmp_weights_minimum(-1_T),
-                 tmp_weights_maximum(1_T),
-                 tmp_clip_gradient_value(1_T),
-                 tmp_warm_restarts_minimum_learning_rate(1.0e-9_T),
-                 tmp_warm_restarts_maximum_learning_rate(0.01_T),
-                 tmp_warm_restarts_initial_ti(1_T),
-                 tmp_warm_restarts_multiplier(2_T),
-                 tmp_normalization_momentum_average(1_T),
-                 tmp_normalization_epsilon(1.0e-1_T);
+             tmp_regularization_l1(0_T),
+             tmp_regularization_l2(0_T),
+             tmp_regularization_max_norm_constraints(8_T),
+             tmp_regularization_weight_decay(0_T),
+             tmp_accuracy_variance(0.49_T),
+             tmp_activation_steepness(1_T),
+             tmp_learning_rate(1e-3_T),
+             tmp_learning_rate_final(1e-1_T),
+             tmp_weights_minimum(-1_T),
+             tmp_weights_maximum(1_T),
+             tmp_clip_gradient_value(1_T),
+             tmp_warm_restarts_minimum_learning_rate(1e-9_T),
+             tmp_warm_restarts_maximum_learning_rate(0.01_T),
+             tmp_warm_restarts_initial_ti(1_T),
+             tmp_warm_restarts_multiplier(2_T),
+             tmp_normalization_momentum_average(1_T),
+             tmp_normalization_epsilon(1e-1_T);
+    
+    double tmp_percentage_maximum_thread_usage(25.0);
 
     enum MyEA::Common::ENUM_TYPE_NETWORKS const type_neural_network(MyEA::Common::ENUM_TYPE_NETWORKS::TYPE_NETWORK_FEEDFORWARD);
     enum MyEA::Common::ENUM_TYPE_LAYER const tmp_type_fully_connected(MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_FULLY_CONNECTED_INDEPENDENTLY_RECURRENT);
@@ -115,41 +116,41 @@ void simple_debug(bool const nsight_received)
     if(tmp_widening_factor_alphas[0u] <= -static_cast<long long int>(tmp_number_units[0u]))
     {
         PRINT_FORMAT("%s: %s: ERROR: Widening factor, alpha[0] (%lld) can not be less or equal to -%zu. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
-                                 __FUNCTION__,
-                                 tmp_widening_factor_alphas[0u],
-                                 tmp_number_units[0u],
-                                 __LINE__);
+                     MyEA::String::Get__Time().c_str(),
+                     __FUNCTION__,
+                     tmp_widening_factor_alphas[0u],
+                     tmp_number_units[0u],
+                     __LINE__);
 
         return;
     }
     else if(tmp_widening_factor_alphas[1u] <= -static_cast<long long int>(tmp_number_units[1u]))
     {
         PRINT_FORMAT("%s: %s: ERROR: Widening factor, alpha[0] (%lld) can not be less or equal to -%zu. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
-                                 __FUNCTION__,
-                                 tmp_widening_factor_alphas[1u],
-                                 tmp_number_units[1u],
-                                 __LINE__);
+                     MyEA::String::Get__Time().c_str(),
+                     __FUNCTION__,
+                     tmp_widening_factor_alphas[1u],
+                     tmp_number_units[1u],
+                     __LINE__);
 
         return;
     }
     else if(tmp_residual_block_width < 2_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Residual block depth (%zu) can not be less than 2. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
-                                 __FUNCTION__,
-                                 tmp_residual_block_width,
-                                 __LINE__);
+                     MyEA::String::Get__Time().c_str(),
+                     __FUNCTION__,
+                     tmp_residual_block_width,
+                     __LINE__);
 
         return;
     }
     else if(tmp_use_bottleneck && tmp_residual_block_width == 2_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not use residual bottleneck with a block depth of 2. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
-                                 __FUNCTION__,
-                                 __LINE__);
+                     MyEA::String::Get__Time().c_str(),
+                     __FUNCTION__,
+                     __LINE__);
 
         return;
     }
@@ -161,11 +162,11 @@ void simple_debug(bool const nsight_received)
         case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_FULLY_CONNECTED_INDEPENDENTLY_RECURRENT: break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch. Need to be the fully connected layer or one of its variant. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
-                                     __FUNCTION__,
-                                     tmp_type_fully_connected,
-                                     MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_type_fully_connected].c_str(),
-                                     __LINE__);
+                         MyEA::String::Get__Time().c_str(),
+                         __FUNCTION__,
+                         tmp_type_fully_connected,
+                         MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_type_fully_connected].c_str(),
+                         __LINE__);
                 return;
     }
 
@@ -175,28 +176,28 @@ void simple_debug(bool const nsight_received)
         case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_MAX_POOLING: break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch. Need to be a pooling layer. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
-                                     __FUNCTION__,
-                                     tmp_type_pooling_layer,
-                                     MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_type_pooling_layer].c_str(),
-                                     __LINE__);
+                         MyEA::String::Get__Time().c_str(),
+                         __FUNCTION__,
+                         tmp_type_pooling_layer,
+                         MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_type_pooling_layer].c_str(),
+                         __LINE__);
             return;
     }
     // |END| Validate inputs. |END|
 
     PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
     PRINT_FORMAT("%s: Dataset name: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
-                            tmp_path_dataset_file.c_str());
+                 MyEA::String::Get__Time().c_str(),
+                 tmp_path_dataset_file.c_str());
 
 #if defined(COMPILE_CUDA)
     PRINT_FORMAT("%s: CUDA: Use CUDA: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
-                            tmp_use_CUDA ? "true" : "false");
+                 MyEA::String::Get__Time().c_str(),
+                 tmp_use_CUDA ? "true" : "false");
 
     PRINT_FORMAT("%s: CUDA: device: %d." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
-                            tmp_cuda_device_index);
+                 MyEA::String::Get__Time().c_str(),
+                 tmp_cuda_device_index);
 
     if(tmp_use_CUDA)
     {
@@ -219,60 +220,60 @@ void simple_debug(bool const nsight_received)
 #endif // COMPILE_CUDA
     
     PRINT_FORMAT("%s: OpenMP: Use OpenMP: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
-                            tmp_use_OpenMP ? "true" : "false");
+                 MyEA::String::Get__Time().c_str(),
+                 tmp_use_OpenMP ? "true" : "false");
     
     PRINT_FORMAT("%s: OpenMP: Maximum thread usage: %f%%." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
-                            Cast_T(tmp_percentage_maximum_thread_usage));
+                 MyEA::String::Get__Time().c_str(),
+                 tmp_percentage_maximum_thread_usage);
     
     PRINT_FORMAT("%s: Warm restarts: Use warm restarts: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
-                            tmp_use_warm_restarts ? "true" : "false");
+                 MyEA::String::Get__Time().c_str(),
+                 tmp_use_warm_restarts ? "true" : "false");
     
     PRINT_FORMAT("%s: Warm restarts: minimum learning rate: %f." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
-                            Cast_T(tmp_warm_restarts_minimum_learning_rate));
+                 MyEA::String::Get__Time().c_str(),
+                 Cast_T(tmp_warm_restarts_minimum_learning_rate));
 
     PRINT_FORMAT("%s: Warm restarts: maximum learning rate: %f." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
-                            Cast_T(tmp_warm_restarts_maximum_learning_rate));
+                 MyEA::String::Get__Time().c_str(),
+                 Cast_T(tmp_warm_restarts_maximum_learning_rate));
 
     PRINT_FORMAT("%s: Warm restarts: Initial Ti: %f." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
-                            Cast_T(tmp_warm_restarts_initial_ti));
+                 MyEA::String::Get__Time().c_str(),
+                 Cast_T(tmp_warm_restarts_initial_ti));
 
     PRINT_FORMAT("%s: Warm restarts: multiplier: %f." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
-                            Cast_T(tmp_warm_restarts_multiplier));
+                 MyEA::String::Get__Time().c_str(),
+                 Cast_T(tmp_warm_restarts_multiplier));
 
     PRINT_FORMAT("%s: Clip gradient: Use clip gradient: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
-                            tmp_clip_gradient ? "true" : "false");
+                 MyEA::String::Get__Time().c_str(),
+                 tmp_clip_gradient ? "true" : "false");
     
     PRINT_FORMAT("%s: Clip gradient: %f." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
-                            Cast_T(tmp_clip_gradient_value));
+                 MyEA::String::Get__Time().c_str(),
+                 Cast_T(tmp_clip_gradient_value));
     
     PRINT_FORMAT("%s: Tied parameter: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
-                            tmp_tied_parameter ? "true" : "false");
+                 MyEA::String::Get__Time().c_str(),
+                 tmp_tied_parameter ? "true" : "false");
     
     PRINT_FORMAT("%s: Use bidirectional: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
-                            tmp_use_bidirectional ? "true" : "false");
+                 MyEA::String::Get__Time().c_str(),
+                 tmp_use_bidirectional ? "true" : "false");
     
     PRINT_FORMAT("%s: Use residual: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
-                            tmp_use_residual ? "true" : "false");
+                 MyEA::String::Get__Time().c_str(),
+                 tmp_use_residual ? "true" : "false");
     
     PRINT_FORMAT("%s: Use pooling: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
-                            tmp_use_pooling ? "true" : "false");
+                 MyEA::String::Get__Time().c_str(),
+                 tmp_use_pooling ? "true" : "false");
     
     PRINT_FORMAT("%s: Use bottleneck: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
-                            tmp_use_bottleneck ? "true" : "false");
+                 MyEA::String::Get__Time().c_str(),
+                 tmp_use_bottleneck ? "true" : "false");
     
     PRINT_FORMAT("%s: Use simulate online training: %s." NEW_LINE,
                             MyEA::String::Get__Time().c_str(),
@@ -1694,7 +1695,7 @@ void simple_debug(bool const nsight_received)
                                     MyEA::String::Get__Time().c_str(),
                                     Cast_T(tmp_ptr_neural_network->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)));
 
-            tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1.0e9;
+            tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1e9;
 
             PRINT_FORMAT("%s: Adept: Time elapse: %s" NEW_LINE,
                                      MyEA::String::Get__Time().c_str(),
@@ -1730,7 +1731,7 @@ void simple_debug(bool const nsight_received)
                                     MyEA::String::Get__Time().c_str(),
                                     Cast_T(tmp_ptr_neural_network->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)));
 
-            tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1.0e9;
+            tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1e9;
 
             PRINT_FORMAT("%s: Time elapse: %s" NEW_LINE,
                                      MyEA::String::Get__Time().c_str(),
@@ -1826,7 +1827,7 @@ void simple_debug(bool const nsight_received)
                                     MyEA::String::Get__Time().c_str(),
                                     Cast_T(tmp_ptr_neural_network->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)));
 
-            tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1.0e9;
+            tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1e9;
 
             PRINT_FORMAT("%s: Time elapse: %s" NEW_LINE,
                                      MyEA::String::Get__Time().c_str(),
@@ -1923,7 +1924,7 @@ void simple_debug(bool const nsight_received)
                                      MyEA::String::Get__Time().c_str(),
                                      Cast_T(tmp_ptr_neural_network->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)));
             
-            tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1.0e9;
+            tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1e9;
 
             PRINT_FORMAT("%s: [%zu] Time elapse: %s" NEW_LINE,
                                      MyEA::String::Get__Time().c_str(),
@@ -1962,7 +1963,7 @@ void simple_debug(bool const nsight_received)
                                      MyEA::String::Get__Time().c_str(),
                                      Cast_T(std::get<1>(tmp_pair)));
 
-            tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1.0e9;
+            tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1e9;
 
             PRINT_FORMAT("%s: Time elapse: %s" NEW_LINE,
                                      MyEA::String::Get__Time().c_str(),
@@ -1991,7 +1992,7 @@ void simple_debug(bool const nsight_received)
                                      MyEA::String::Get__Time().c_str(),
                                      Cast_T(tmp_ptr_neural_network->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)));
 
-            tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1.0e9;
+            tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1e9;
 
             PRINT_FORMAT("%s: Time elapse: %s" NEW_LINE,
                                      MyEA::String::Get__Time().c_str(),
@@ -2087,7 +2088,7 @@ void simple_debug(bool const nsight_received)
                                      MyEA::String::Get__Time().c_str(),
                                      Cast_T(tmp_ptr_neural_network->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)));
 
-            tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1.0e9;
+            tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1e9;
 
             PRINT_FORMAT("%s: Time elapse: %s" NEW_LINE,
                                      MyEA::String::Get__Time().c_str(),
@@ -2145,7 +2146,7 @@ void simple_debug(bool const nsight_received)
                                          MyEA::String::Get__Time().c_str(),
                                          Cast_T(tmp_ptr_trained_neural_network->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)));
 
-                tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1.0e9;
+                tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1e9;
 
                 PRINT_FORMAT("%s: Time elapse: %s" NEW_LINE,
                                          MyEA::String::Get__Time().c_str(),
@@ -2177,7 +2178,7 @@ void simple_debug(bool const nsight_received)
                                          MyEA::String::Get__Time().c_str(),
                                          Cast_T(tmp_ptr_trained_neural_network->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)));
 
-                tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1.0e9;
+                tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1e9;
 
                 PRINT_FORMAT("%s: Time elapse: %s" NEW_LINE,
                                          MyEA::String::Get__Time().c_str(),

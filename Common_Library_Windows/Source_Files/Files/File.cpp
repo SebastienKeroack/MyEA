@@ -22,15 +22,10 @@ namespace MyEA
 {
     namespace File
     {
-        bool Path_Exist(const std::wstring& path_received)
-        {
-            struct stat tmp_buffer;
-            return(stat(std::string(path_received.begin(), path_received.end()).c_str(), &tmp_buffer) == 0);
-        }
-
         bool Path_Exist(std::string const &path_received)
         {
             struct stat tmp_buffer;
+
             return(stat(path_received.c_str(), &tmp_buffer) == 0);
         }
 

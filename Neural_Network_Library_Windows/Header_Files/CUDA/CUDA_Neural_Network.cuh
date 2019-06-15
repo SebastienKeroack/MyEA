@@ -1063,19 +1063,19 @@ class CUDA_Neural_Network
         T_ adam_beta1 = 0.9_T;
         T_ adam_beta2 = 0.999_T; // {0.99, 0.999}
         T_ adam_previous_beta2 = 0.999_T;
-        T_ adam_epsilon = 1.0e-8_T;
+        T_ adam_epsilon = 1e-8_T;
         T_ adam_gamma = 0.1_T; // {0.05, 0.1}
         T_ optimizer_time_step = 0_T;
         T_ epoch_time_step = 1_T;
         T_ warm_restarts_decay_learning_rate = 1_T;
         T_ warm_restarts_initial_maximum_learning_rate = 1_T;
         T_ warm_restarts_maximum_learning_rate = 1_T;
-        T_ warm_restarts_minimum_learning_rate = 1.0e-7_T;
+        T_ warm_restarts_minimum_learning_rate = 1e-7_T;
         T_ warm_restarts_initial_T_i = 1_T;
         T_ warm_restarts_T_i = 1_T;
         T_ warm_restarts_multiplier = 2_T;
         T_ normalization_momentum_average = 0.999_T;
-        T_ normalization_epsilon = 1.0e-5_T;
+        T_ normalization_epsilon = 1e-5_T;
         T_ batch_renormalization_r_correction_maximum = 1_T;
         T_ batch_renormalization_d_correction_maximum = 0_T;
 

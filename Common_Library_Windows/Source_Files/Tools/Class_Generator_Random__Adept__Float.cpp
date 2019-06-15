@@ -8,11 +8,11 @@ namespace MyEA
             public:
                 Class_Generator_Random_Real(void) : Class_Generator_Random() { this->_uniform_real_distribution.param(typename std::uniform_real_distribution<float>::param_type(this->_minimum_range, this->_maximum_range)); }
                 Class_Generator_Random_Real(unsigned int const seed_received,
-                                                                adept::afloat const minimum_range_received,
-                                                                adept::afloat const maximum_range_received) : Class_Generator_Random(seed_received)
+                                            adept::afloat const minimum_range_received,
+                                            adept::afloat const maximum_range_received) : Class_Generator_Random(seed_received)
                 {
-                    adept::afloat tmp_minimum_range(min(minimum_range_received, maximum_range_received)),
-                                        tmp_maximum_range(max(minimum_range_received, maximum_range_received));
+                    float const tmp_minimum_range(Cast_T(min(minimum_range_received, maximum_range_received))),
+                                tmp_maximum_range(Cast_T(max(minimum_range_received, maximum_range_received)));
 
                     this->_minimum_range = tmp_minimum_range;
                     this->_maximum_range = tmp_maximum_range;
@@ -38,8 +38,8 @@ namespace MyEA
                 }
                 void Range(adept::afloat const minimum_range_received, adept::afloat const maximum_range_received)
                 {
-                    adept::afloat tmp_minimum_range(min(minimum_range_received, maximum_range_received)),
-                                        tmp_maximum_range(max(minimum_range_received, maximum_range_received));
+                    float const tmp_minimum_range(Cast_T(min(minimum_range_received, maximum_range_received))),
+                                tmp_maximum_range(Cast_T(max(minimum_range_received, maximum_range_received)));
             
                     if(this->_minimum_range == tmp_minimum_range && this->_maximum_range == tmp_maximum_range) { return; }
 
@@ -64,8 +64,8 @@ namespace MyEA
                 adept::afloat Generate_Real(void) { return(this->_uniform_real_distribution(this->p_generator_mt19937)); }
 
             private:
-                float _minimum_range = 0;
-                float _maximum_range = 1;
+                float _minimum_range  = 0.0f;
+                float _maximum_range = 1.0f;
 
                 std::uniform_real_distribution<float> _uniform_real_distribution;
         };
@@ -76,11 +76,11 @@ namespace MyEA
             public:
                 Class_Generator_Random_Gaussian(void) : Class_Generator_Random() { this->_normal_distribution.param(typename std::normal_distribution<float>::param_type(this->_mean, this->_std)); }
                 Class_Generator_Random_Gaussian(unsigned int const seed_received,
-                                                                       adept::afloat const mean_received,
-                                                                       adept::afloat const std_received) : Class_Generator_Random(seed_received)
+                                                adept::afloat const mean_received,
+                                                adept::afloat const std_received) : Class_Generator_Random(seed_received)
                 {
-                    this->_mean = mean_received;
-                    this->_std = std_received;
+                    this->_mean = mean_received.value();
+                    this->_std = std_received.value();
                     
                     this->_normal_distribution.param(typename std::normal_distribution<float>::param_type(this->_mean, this->_std));
                 }
@@ -103,10 +103,13 @@ namespace MyEA
                 }
                 void Range(adept::afloat const mean_received, adept::afloat const std_received)
                 {
-                    if(this->_mean == mean_received && this->_std == std_received) { return; }
+                    float const tmp_mean(mean_received.value()),
+                                tmp_std(std_received.value());
+                    
+                    if(this->_mean == tmp_mean && this->_std == tmp_std) { return; }
 
-                    this->_mean = mean_received;
-                    this->_std = std_received;
+                    this->_mean = tmp_mean;
+                    this->_std = tmp_std;
                     
                     this->_normal_distribution.param(typename std::normal_distribution<float>::param_type(this->_mean, this->_std));
                 }
@@ -126,8 +129,8 @@ namespace MyEA
                 adept::afloat Generate_Gaussian(void) { return(this->_normal_distribution(this->p_generator_mt19937)); }
 
             private:
-                adept::afloat _mean = 0;
-                adept::afloat _std = 1;
+                float _mean = 0.0f;
+                float _std = 1.0f;
 
                 std::normal_distribution<float> _normal_distribution;
         };
@@ -158,10 +161,12 @@ namespace MyEA
                 
                 void Class_Generator_Random_Bernoulli<adept::afloat>::Probability(adept::afloat const probability_received)
                 {
-                    if(probability_received < 0.0f || probability_received > 1.0f) { return; }
-                    else if(this->_probability == probability_received) { return; }
+                    float const tmp_probability(probability_received.value());
+
+                    if(tmp_probability < 0.0f || tmp_probability > 1.0f) { return; }
+                    else if(this->_probability == tmp_probability) { return; }
                     
-                    std::bernoulli_distribution::param_type tmp_bernoulli_distribution_param_type(probability_received);
+                    std::bernoulli_distribution::param_type tmp_bernoulli_distribution_param_type(tmp_probability);
                     this->_bernoulli_distribution.param(tmp_bernoulli_distribution_param_type);
                 }
                 

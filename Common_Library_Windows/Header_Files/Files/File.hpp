@@ -25,7 +25,6 @@ namespace MyEA
         bool Retrieve_Tempory_File(std::string const &path_received);
         bool Write_Tempory_File(std::string const &path_received);
         bool Delete_Tempory_File(std::string const &path_received);
-        bool Path_Exist(const std::wstring& path_received);
         bool Path_Exist(std::string const &path_received);
         bool File_Create(std::string const &path_received);
         bool File_Remove(std::string const &path_received);

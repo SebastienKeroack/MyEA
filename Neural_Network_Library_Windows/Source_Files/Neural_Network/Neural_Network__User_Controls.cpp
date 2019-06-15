@@ -1016,7 +1016,7 @@ bool Neural_Network::User_Controls__Optimizer__NosAdam(void)
                 tmp_hyper_paramater = this->adam_gamma;
             #endif
 
-                this->adam_gamma = MyEA::String::Cin_Real_Number<T_>(1.0e-7_T, MyEA::String::Get__Time() + ": Gamma: ");
+                this->adam_gamma = MyEA::String::Cin_Real_Number<T_>(1e-7_T, MyEA::String::Get__Time() + ": Gamma: ");
 
             #if defined(COMPILE_CUDA)
                 if(tmp_hyper_paramater != this->adam_gamma) { tmp_parameters_has_change = true; }
@@ -1101,7 +1101,7 @@ bool Neural_Network::User_Controls__Warm_Restarts(void)
                 tmp_hyper_paramater = this->warm_restarts_decay_learning_rate;
             #endif
 
-                this->warm_restarts_decay_learning_rate = MyEA::String::Cin_Real_Number<T_>(1.0e-5_T,
+                this->warm_restarts_decay_learning_rate = MyEA::String::Cin_Real_Number<T_>(1e-5_T,
                                                                                                                                         1_T,
                                                                                                                                         MyEA::String::Get__Time() + ": Learning rate, decay: ");
                 
@@ -1142,7 +1142,7 @@ bool Neural_Network::User_Controls__Warm_Restarts(void)
                 this->warm_restarts_minimum_learning_rate = MyEA::String::Cin_Real_Number<T_>(0_T,
                                                                                                                                             this->warm_restarts_initial_maximum_learning_rate,
                                                                                                                                             MyEA::String::Get__Time() + ": Minimum learning rate: ");
-                if(this->warm_restarts_minimum_learning_rate == 0_T) { this->warm_restarts_minimum_learning_rate = this->warm_restarts_initial_maximum_learning_rate / 1.0e+7_T; }
+                if(this->warm_restarts_minimum_learning_rate == 0_T) { this->warm_restarts_minimum_learning_rate = this->warm_restarts_initial_maximum_learning_rate / 1e+7_T; }
                 
             #if defined(COMPILE_CUDA)
                 if(tmp_hyper_paramater != this->warm_restarts_minimum_learning_rate) { tmp_parameters_has_change = true; }
@@ -1589,7 +1589,9 @@ bool Neural_Network::User_Controls__Dropout(void)
                                                this->total_layers - 1_zu);
     size_t tmp_layer_index;
     
-    T_ tmp_hyper_parameters[3u] = {0};
+    T_ tmp_hyper_parameters[2u] = {0};
+
+    ST_ tmp_parameters[2u] = {0};
     
     enum MyEA::Common::ENUM_TYPE_LAYER_DROPOUT tmp_type_layer_dropout;
 
@@ -1934,14 +1936,14 @@ bool Neural_Network::User_Controls__Dropout(void)
                         }
                             break;
                     case MyEA::Common::ENUM_TYPE_LAYER_DROPOUT::TYPE_LAYER_DROPOUT_SHAKEDROP:
-                        tmp_hyper_parameters[1u] = 0_T;
-                        tmp_hyper_parameters[2u] = 0_T;
+                        tmp_parameters[0u] = 0_ST;
+                        tmp_parameters[1u] = 0_ST;
 
                         for(tmp_ptr_layer_it = this->ptr_array_layers; tmp_ptr_layer_it != this->ptr_last_layer - 1; ++tmp_ptr_layer_it)
                         {
                             if(tmp_ptr_layer_it->type_layer == MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_RESIDUAL)
                             {
-                                ++tmp_hyper_parameters[1u];
+                                ++tmp_parameters[0u];
                             }
                         }
 
@@ -1951,13 +1953,13 @@ bool Neural_Network::User_Controls__Dropout(void)
                             {
                                 if(this->Set__Dropout(tmp_ptr_layer_it,
                                                                tmp_type_layer_dropout,
-                                                               std::array<T_, 1_zu>{1_T - ( ((++tmp_hyper_parameters[2u]) / tmp_hyper_parameters[1u]) * (1_T - tmp_hyper_parameters[0u]) )}.data()) == false)
+                                                               std::array<T_, 1_zu>{1_T - ( ((++tmp_parameters[1u]) / tmp_parameters[0u]) * (1_T - tmp_hyper_parameters[0u]) )}.data()) == false)
                                 {
                                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Dropout(ptr, %u, %f)\" function. At line %d." NEW_LINE,
                                                              MyEA::String::Get__Time().c_str(),
                                                              __FUNCTION__,
                                                              tmp_type_layer_dropout,
-                                                             Cast_T(1_T - ( (tmp_hyper_parameters[2u] / tmp_hyper_parameters[1u]) * (1_T - tmp_hyper_parameters[0u]) )),
+                                                             Cast_T(1_T - ( (tmp_parameters[1u] / tmp_parameters[0u]) * (1_T - tmp_hyper_parameters[0u]) )),
                                                              __LINE__);
 
                                     return(false);

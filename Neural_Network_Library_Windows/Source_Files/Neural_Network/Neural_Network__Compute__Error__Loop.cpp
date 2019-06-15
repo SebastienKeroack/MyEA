@@ -21,7 +21,7 @@ void Neural_Network::Update_Error(struct AF_unit *const ptr_AF_received,
             tmp_error = error_received * error_received; // E=(X - Y)2, square the difference
                 break;
         case MyEA::Common::ENUM_TYPE_LOSS_FUNCTIONS::TYPE_LOSS_FUNCTION_MAPE:
-            tmp_error = observed_output_received != 0_T ? observed_output_received : MyEA::Math::Maximum<T_>(observed_output_received, 1.0e-6_T); // Numerical stability.
+            tmp_error = observed_output_received != 0_T ? observed_output_received : MyEA::Math::Maximum<T_>(observed_output_received, 1e-6_T); // Numerical stability.
 
             tmp_error = error_received / tmp_error;
 
@@ -33,7 +33,7 @@ void Neural_Network::Update_Error(struct AF_unit *const ptr_AF_received,
             tmp_error /= MyEA::Math::Absolute<T_>(desired_output_received) + MyEA::Math::Absolute<T_>(observed_output_received);
                 break;
         case MyEA::Common::ENUM_TYPE_LOSS_FUNCTIONS::TYPE_LOSS_FUNCTION_CROSS_ENTROPY:
-            tmp_error = observed_output_received != 0_T ? observed_output_received : MyEA::Math::Maximum<T_>(observed_output_received, 1.0e-6_T); // Numerical stability.
+            tmp_error = observed_output_received != 0_T ? observed_output_received : MyEA::Math::Maximum<T_>(observed_output_received, 1e-6_T); // Numerical stability.
             
             if(this->Use__Multi_Label() || this->number_outputs == 1_zu)
             {

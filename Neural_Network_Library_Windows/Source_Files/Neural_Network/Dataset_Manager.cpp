@@ -77,7 +77,7 @@ void Dataset_Manager<T>::Testing_On_Storage(class Neural_Network *const ptr_Neur
     
     PRINT_FORMAT("%s: %.1f example(s) per second." NEW_LINE,
                              MyEA::String::Get__Time().c_str(),
-                             std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count() == 0ll ? 0.0 : static_cast<double>(this->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)->Dataset<T>::Get__Number_Examples()) / (static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count())  / 1.0e+9));
+                             std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count() == 0ll ? 0.0 : static_cast<double>(this->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)->Dataset<T>::Get__Number_Examples()) / (static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count())  / 1e+9));
     PRINT_FORMAT("%s: Loss at training: %.9f" NEW_LINE,
                              MyEA::String::Get__Time().c_str(),
                              Cast_T(ptr_Neural_Network_received->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)));
@@ -111,7 +111,7 @@ void Dataset_Manager<T>::Testing_On_Storage(class Neural_Network *const ptr_Neur
     
         PRINT_FORMAT("%s: %.1f example(s) per second." NEW_LINE,
                                  MyEA::String::Get__Time().c_str(),
-                                 std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count() == 0ll ? 0.0 : static_cast<double>(this->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)->Dataset<T>::Get__Number_Examples()) / (static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count())  / 1.0e+9));
+                                 std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count() == 0ll ? 0.0 : static_cast<double>(this->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)->Dataset<T>::Get__Number_Examples()) / (static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count())  / 1e+9));
         PRINT_FORMAT("%s: Loss at validating: %.9f" NEW_LINE,
                                  MyEA::String::Get__Time().c_str(),
                                  Cast_T(ptr_Neural_Network_received->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)));
@@ -151,7 +151,7 @@ void Dataset_Manager<T>::Testing_On_Storage(class Neural_Network *const ptr_Neur
         
         PRINT_FORMAT("%s: %.1f example(s) per second." NEW_LINE,
                                  MyEA::String::Get__Time().c_str(),
-                                 std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count() == 0ll ? 0.0 : static_cast<double>(this->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)->Dataset<T>::Get__Number_Examples()) / (static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count())  / 1.0e+9));
+                                 std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count() == 0ll ? 0.0 : static_cast<double>(this->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)->Dataset<T>::Get__Number_Examples()) / (static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count())  / 1e+9));
         PRINT_FORMAT("%s: Loss at testing: %.9f" NEW_LINE,
                                 MyEA::String::Get__Time().c_str(),
                                 Cast_T(ptr_Neural_Network_received->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)));
@@ -1808,7 +1808,7 @@ void Dataset_Manager<T>::Optimization(struct MyEA::Common::While_Condition const
 
                 PRINT_FORMAT("%s: [TRAINER]: %.1f example(s) per second." NEW_LINE,
                                          MyEA::String::Get__Time().c_str(),
-                                         std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count() == 0ll ? 0.0 : static_cast<double>(this->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)->Dataset<T>::Get__Number_Examples()) / (static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count())  / 1.0e9));
+                                         std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count() == 0ll ? 0.0 : static_cast<double>(this->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)->Dataset<T>::Get__Number_Examples()) / (static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count())  / 1e9));
     
                 PRINT_FORMAT("%s: [TRAINER]: Validate on %zu example(s) from the validation set." NEW_LINE,
                                          MyEA::String::Get__Time().c_str(),
@@ -1827,7 +1827,7 @@ void Dataset_Manager<T>::Optimization(struct MyEA::Common::While_Condition const
 
                 PRINT_FORMAT("%s: [TRAINER]: %.1f example(s) per second." NEW_LINE,
                                          MyEA::String::Get__Time().c_str(),
-                                         std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count() == 0ll ? 0.0 : static_cast<double>(this->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)->Dataset<T>::Get__Number_Examples()) / (static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count())  / 1.0e9));
+                                         std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count() == 0ll ? 0.0 : static_cast<double>(this->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)->Dataset<T>::Get__Number_Examples()) / (static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count())  / 1e9));
             }
         #endif
 
@@ -2092,19 +2092,19 @@ void Dataset_Manager<T>::Optimization(struct MyEA::Common::While_Condition const
 
                 PRINT_FORMAT("%s: Total time performance: %s" NEW_LINE,
                                          MyEA::String::Get__Time().c_str(),
-                                         MyEA::String::Get__Time_Elapse(static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end_report - tmp_time_start_report).count()) / 1.0e+9).c_str());
+                                         MyEA::String::Get__Time_Elapse(static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end_report - tmp_time_start_report).count()) / 1e+9).c_str());
                 PRINT_FORMAT("%s:" NEW_LINE, MyEA::String::Get__Time().c_str());
                 
                 switch(ref_while_condition_received.type_while_condition)
                 {
                     case MyEA::Common::ENUM_TYPE_WHILE_CONDITION::TYPE_WHILE_CONDITION_EXPIRATION:
                         // X = ceil( Max(0, Min(D, Exp - Now)) / (Te - Ts) / to_secs / N) )
-                        tmp_number_epochs_between_report = static_cast<unsigned long long>(ceil(MyEA::Math::Maximum<double>(0.0, MyEA::Math::Minimum<double>(this->_desired_optimization_time_between_reports, static_cast<double>(std::chrono::system_clock::to_time_t(ref_while_condition_received.expiration) - std::chrono::system_clock::to_time_t(std::chrono::system_clock::now())))) / (static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end_report - tmp_time_start_report).count()) / 1.0e+9 / static_cast<double>(tmp_current_epoch))));
+                        tmp_number_epochs_between_report = static_cast<unsigned long long>(ceil(MyEA::Math::Maximum<double>(0.0, MyEA::Math::Minimum<double>(this->_desired_optimization_time_between_reports, static_cast<double>(std::chrono::system_clock::to_time_t(ref_while_condition_received.expiration) - std::chrono::system_clock::to_time_t(std::chrono::system_clock::now())))) / (static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end_report - tmp_time_start_report).count()) / 1e+9 / static_cast<double>(tmp_current_epoch))));
                         tmp_while = tmp_number_epochs_between_report != 0ull;
                             break;
                     default:
                         // X = Max(1, D / (Te - Ts) / to_secs / N)
-                        tmp_number_epochs_between_report = MyEA::Math::Maximum<unsigned long long>(1ull, static_cast<unsigned long long>(this->_desired_optimization_time_between_reports / (static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end_report - tmp_time_start_report).count()) / 1.0e+9 / static_cast<double>(tmp_current_epoch))));
+                        tmp_number_epochs_between_report = MyEA::Math::Maximum<unsigned long long>(1ull, static_cast<unsigned long long>(this->_desired_optimization_time_between_reports / (static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end_report - tmp_time_start_report).count()) / 1e+9 / static_cast<double>(tmp_current_epoch))));
                             break;
                 }
 
@@ -2382,7 +2382,7 @@ void Dataset_Manager<T>::Optimization__Testing(bool const report_received, class
 
         PRINT_FORMAT("%s: [TRAINER]: %.1f example(s) per second." NEW_LINE,
                                     MyEA::String::Get__Time().c_str(),
-                                    std::chrono::duration_cast<std::chrono::nanoseconds>(ref_time_end_received - ref_time_start_received).count() == 0ll ? 0.0 : static_cast<double>(this->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)->Dataset<T>::Get__Number_Examples()) / (static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(ref_time_end_received - ref_time_start_received).count())  / 1.0e9));
+                                    std::chrono::duration_cast<std::chrono::nanoseconds>(ref_time_end_received - ref_time_start_received).count() == 0ll ? 0.0 : static_cast<double>(this->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)->Dataset<T>::Get__Number_Examples()) / (static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(ref_time_end_received - ref_time_start_received).count())  / 1e9));
     }
 #endif
 }
@@ -4183,8 +4183,8 @@ bool Dataset_Manager<T>::Preparing_Dataset_Manager(struct Dataset_Manager_Parame
             {
             #if defined(COMPILE_COUT)
                 PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                tmp_percent_training_size = MyEA::String::Cin_Real_Number<double>(1.0e-4,
-                                                                                                                        100.0 - 1.0e-4,
+                tmp_percent_training_size = MyEA::String::Cin_Real_Number<double>(1e-4,
+                                                                                                                        100.0 - 1e-4,
                                                                                                                         MyEA::String::Get__Time() + ": Training size [1e-4%, 99.9999%]: ");
             #else
                 tmp_percent_training_size = 60.0;
@@ -4198,9 +4198,9 @@ bool Dataset_Manager<T>::Preparing_Dataset_Manager(struct Dataset_Manager_Parame
             {
             #if defined(COMPILE_COUT)
                 PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                tmp_percent_validation_size = MyEA::String::Cin_Real_Number<double>(1.0e-5,
-                                                                                                                           100.0 - 1.0e-5 - tmp_percent_training_size,
-                                                                                                                           MyEA::String::Get__Time() + ": Validation size [1e-5%, " + MyEA::String::To_string<double, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(100.0 - 1.0e-5 - tmp_percent_training_size) + "%]: ");
+                tmp_percent_validation_size = MyEA::String::Cin_Real_Number<double>(1e-5,
+                                                                                                                           100.0 - 1e-5 - tmp_percent_training_size,
+                                                                                                                           MyEA::String::Get__Time() + ": Validation size [1e-5%, " + MyEA::String::To_string<double, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(100.0 - 1e-5 - tmp_percent_training_size) + "%]: ");
             #else
                 tmp_percent_validation_size = 20.0;
             #endif

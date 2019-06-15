@@ -49,6 +49,10 @@
 
     constexpr T_ operator ""_T(long double variable_to_size_t_received) { return(static_cast<T_>(variable_to_size_t_received)); }
 #endif
+
+constexpr ST_ operator ""_ST(unsigned long long int variable_to_size_t_received) { return(static_cast<ST_>(variable_to_size_t_received)); }
+
+constexpr ST_ operator ""_ST(long double variable_to_size_t_received) { return(static_cast<ST_>(variable_to_size_t_received)); }
     
 #if defined(__linux__) || defined(COMPILE_LINUX)
     #include <cstddef>

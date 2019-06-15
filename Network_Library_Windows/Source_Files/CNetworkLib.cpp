@@ -4,8 +4,6 @@
 
 #include <DLL/stdafx.hpp>
 
-//#include "mysql_connection.h"
-
 // CommonLib
 #include <Tools/Message_Box.hpp>
 #include <Tools/Time.hpp>
@@ -19,9 +17,9 @@ namespace MyEA
     namespace Network
     {
         bool Network_Connect_HTTP(bool const use_ssl_received,
-                                                   unsigned int const try_count_received,
-                                                   unsigned int const try_wait_milliseconds_received,
-                                                   wchar_t const *const wc_ptr_url_received)
+                                  unsigned int const try_count_received,
+                                  unsigned int const try_wait_milliseconds_received,
+                                  wchar_t const *const wc_ptr_url_received)
         {
             bool tmp_boolean(true);
 
@@ -71,9 +69,9 @@ namespace MyEA
         }
 
         bool Network_Connect(unsigned short const port_received,
-                                          unsigned int const try_count_received,
-                                          unsigned int const try_wait_milliseconds_received,
-                                          wchar_t const* const wc_ptr_url_received)
+                             unsigned int const try_count_received,
+                             unsigned int const try_wait_milliseconds_received,
+                             wchar_t const* const wc_ptr_url_received)
         {
             bool tmp_boolean(true);
 

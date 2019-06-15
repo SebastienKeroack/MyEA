@@ -1853,7 +1853,7 @@ bool Gaussian_Search<T>::User_Controls__Push_Back(void)
         PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
         PRINT_FORMAT("%s: Variance." NEW_LINE, MyEA::String::Get__Time().c_str());
         PRINT_FORMAT("%s:\tRange[1e-7, 8]." NEW_LINE, MyEA::String::Get__Time().c_str());
-        tmp_variance = MyEA::String::Cin_Real_Number<T>(T(1.0e-7), MyEA::String::Get__Time() + ": Variance: ");
+        tmp_variance = MyEA::String::Cin_Real_Number<T>(T(1e-7), MyEA::String::Get__Time() + ": Variance: ");
 
         switch(tmp_option)
         {
@@ -1928,10 +1928,10 @@ bool Gaussian_Search<T>::User_Controls__Push_Back(void)
                 PRINT_FORMAT("%s: Minimum value." NEW_LINE, MyEA::String::Get__Time().c_str());
                 PRINT_FORMAT("%s:\tRange[0, %f]." NEW_LINE,
                                          MyEA::String::Get__Time().c_str(),
-                                         Cast_T(T(1) - T(1.0e-7)));
+                                         Cast_T(T(1) - T(1e-7)));
                 PRINT_FORMAT("%s:\tdefault=0." NEW_LINE, MyEA::String::Get__Time().c_str());
                 tmp_minimum_value = MyEA::String::Cin_Real_Number<T>(T(0),
-                                                                                                        T(1) - T(1.0e-7),
+                                                                                                        T(1) - T(1e-7),
                                                                                                         MyEA::String::Get__Time() + ": Minimum value: ");
                 
                 PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
@@ -1939,10 +1939,10 @@ bool Gaussian_Search<T>::User_Controls__Push_Back(void)
                 PRINT_FORMAT("%s:\tRange[%f, %f]." NEW_LINE,
                                          MyEA::String::Get__Time().c_str(),
                                          Cast_T(tmp_minimum_value),
-                                         Cast_T(T(1) - T(1.0e-7)));
+                                         Cast_T(T(1) - T(1e-7)));
                 PRINT_FORMAT("%s:\tdefault=0.999." NEW_LINE, MyEA::String::Get__Time().c_str());
                 tmp_maximum_value = MyEA::String::Cin_Real_Number<T>(tmp_minimum_value,
-                                                                                                         T(1) - T(1.0e-7),
+                                                                                                         T(1) - T(1e-7),
                                                                                                          MyEA::String::Get__Time() + ": Maximum value: ");
 
                 if(this->Push_Back(4,
@@ -2096,7 +2096,7 @@ bool Gaussian_Search<T>::User_Controls__Hyperparameter_Manager(void)
             PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
             PRINT_FORMAT("%s: Variance." NEW_LINE, MyEA::String::Get__Time().c_str());
             PRINT_FORMAT("%s:\tRange[1e-7, 8]." NEW_LINE, MyEA::String::Get__Time().c_str());
-            tmp_variance = MyEA::String::Cin_Real_Number<T>(T(1.0e-7), MyEA::String::Get__Time() + ": Variance: ");
+            tmp_variance = MyEA::String::Cin_Real_Number<T>(T(1e-7), MyEA::String::Get__Time() + ": Variance: ");
 
             switch(std::get<0>(this->_vector_hyperparameters[tmp_option]))
             {
@@ -2141,10 +2141,10 @@ bool Gaussian_Search<T>::User_Controls__Hyperparameter_Manager(void)
                     PRINT_FORMAT("%s: Minimum value." NEW_LINE, MyEA::String::Get__Time().c_str());
                     PRINT_FORMAT("%s:\tRange[0, %f]." NEW_LINE,
                                              MyEA::String::Get__Time().c_str(),
-                                             Cast_T(T(1) - T(1.0e-7)));
+                                             Cast_T(T(1) - T(1e-7)));
                     PRINT_FORMAT("%s:\tdefault=0." NEW_LINE, MyEA::String::Get__Time().c_str());
                     tmp_minimum_value = MyEA::String::Cin_Real_Number<T>(T(0),
-                                                                                                            T(1) - T(1.0e-7),
+                                                                                                            T(1) - T(1e-7),
                                                                                                             MyEA::String::Get__Time() + ": Minimum value: ");
                 
                     PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
@@ -2152,10 +2152,10 @@ bool Gaussian_Search<T>::User_Controls__Hyperparameter_Manager(void)
                     PRINT_FORMAT("%s:\tRange[%f, %f]." NEW_LINE,
                                              MyEA::String::Get__Time().c_str(),
                                              Cast_T(tmp_minimum_value),
-                                             Cast_T(T(1) - T(1.0e-7)));
+                                             Cast_T(T(1) - T(1e-7)));
                     PRINT_FORMAT("%s:\tdefault=0.999." NEW_LINE, MyEA::String::Get__Time().c_str());
                     tmp_maximum_value = MyEA::String::Cin_Real_Number<T>(tmp_minimum_value,
-                                                                                                             T(1) - T(1.0e-7),
+                                                                                                             T(1) - T(1e-7),
                                                                                                              MyEA::String::Get__Time() + ": Maximum value: ");
                         break;
                 case 5: // Dropout, alpha, dropout probability.
