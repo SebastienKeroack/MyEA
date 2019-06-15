@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header_Files">
+      <UniqueIdentifier>{0a7378a4-b26f-4843-9d2e-828fb8ac1a90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source_Files">
+      <UniqueIdentifier>{a66a46d1-53a5-4951-9893-60b8624dbd60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource_Files">
+      <UniqueIdentifier>{b11eb7a3-c7c6-4514-937d-c232a9221bd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header_Files\Enums">
+      <UniqueIdentifier>{786cc16f-8126-4410-baf3-e94aedb42784}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header_Files\Expert">
+      <UniqueIdentifier>{e9b1fa01-9c1d-47eb-b756-13401c1471c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header_Files\Arrays">
+      <UniqueIdentifier>{df0efc57-7b2c-4dce-84ee-640869d08db5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header_Files\Files">
+      <UniqueIdentifier>{4bfe0945-ccee-4e18-a142-4545f209ca64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header_Files\Trade">
+      <UniqueIdentifier>{3b06172c-69f3-4a83-8960-e0c74dbc48e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header_Files\Tools">
+      <UniqueIdentifier>{ed132981-f11b-4412-a6ec-2e316e7aefc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header_Files\Strings">
+      <UniqueIdentifier>{9102cdde-62ca-4d12-87ae-4df8f220def9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header_Files\Math">
+      <UniqueIdentifier>{43584b01-4e57-4b58-a890-446a3d67f2e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source_Files\Arrays">
+      <UniqueIdentifier>{73a072a3-4060-411a-9d92-0c72420cda8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source_Files\Expert">
+      <UniqueIdentifier>{c001c08a-a45d-43c5-9c0d-40a013ebcff6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source_Files\Files">
+      <UniqueIdentifier>{8e2c9664-457f-4095-b1fb-a769994af469}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source_Files\Math">
+      <UniqueIdentifier>{dcc1afda-88cb-4b53-9bca-5f40b68a3902}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source_Files\Strings">
+      <UniqueIdentifier>{08ef0421-55e9-41cf-ab62-77175cd352c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source_Files\Tools">
+      <UniqueIdentifier>{2ac63522-ffce-47ef-a8e7-cff9c1a9d997}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source_Files\Trade">
+      <UniqueIdentifier>{97741c7b-3a28-499f-aadb-32ead4f85140}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="O">
+      <UniqueIdentifier>{21e8bb4c-2b19-4a74-bdb5-0bc6f9be5399}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Common_Library_Windows\stdfax.cpp">
+      <Filter>O</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\CMyEA.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\CObject.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Trade\CAccountInfo.cpp">
+      <Filter>Source_Files\Trade</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Trade\CSymbolInfo.cpp">
+      <Filter>Source_Files\Trade</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Animation_Waiting.cpp">
+      <Filter>Source_Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Class_Generator_Random.cpp">
+      <Filter>Source_Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Configuration.cpp">
+      <Filter>Source_Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Configuration__Linux.cpp">
+      <Filter>Source_Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Configuration__Windows.cpp">
+      <Filter>Source_Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Key_Logger__Linux.cpp">
+      <Filter>Source_Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Key_Logger__Windows.cpp">
+      <Filter>Source_Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Message_Box.cpp">
+      <Filter>Source_Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\MODWT.cpp">
+      <Filter>Source_Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Reallocate_cpp.cpp">
+      <Filter>Source_Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Shutdwn_Block__Linux.cpp">
+      <Filter>Source_Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Shutdwn_Block__Windows.cpp">
+      <Filter>Source_Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Time.cpp">
+      <Filter>Source_Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Strings\String.cpp">
+      <Filter>Source_Files\Strings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Math\Mathematic_cpp.cpp">
+      <Filter>Source_Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Files\File.cpp">
+      <Filter>Source_Files\Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Expert\CBase.cpp">
+      <Filter>Source_Files\Expert</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Expert\CExpert.cpp">
+      <Filter>Source_Files\Expert</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Arrays\CArray.cpp">
+      <Filter>Source_Files\Arrays</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Arrays\CArrayObject.cpp">
+      <Filter>Source_Files\Arrays</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Class_Generator_Random__Adept__Double.cpp">
+      <Filter>Source_Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Class_Generator_Random__Adept__Float.cpp">
+      <Filter>Source_Files\Tools</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Account_Mode_Trade.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Event_Signal_Wait.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Init_Phase.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Time_Frames.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_Activation_Functions.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_Chart.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_Dataset.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_Dataset_File.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_Dataset_Manager_Storage.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_Dataset_Process.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_Device_Synchronized.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_File_Log.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_Indicator.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_Layer.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_Layer_Activation.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_Layer_Dropout.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_Layer_Normalization.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_Loss_Functions.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_Main_Panel.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_Networks.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_Neural_Network_Use.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_Optimizer_Functions.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_Order_Filling.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_Position.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_RichTextBox.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_Signal_Pattern.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_Signal_Quality.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_State_Propagation.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_TextBox.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_Weights_Initializers.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Enums\Enum_Type_While_Condition.hpp">
+      <Filter>Header_Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Arrays\CArray.hpp">
+      <Filter>Header_Files\Arrays</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Arrays\CArrayObject.hpp">
+      <Filter>Header_Files\Arrays</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Expert\CBase.hpp">
+      <Filter>Header_Files\Expert</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Expert\CExpert.hpp">
+      <Filter>Header_Files\Expert</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Files\File.hpp">
+      <Filter>Header_Files\Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Math\Mathematic.hpp">
+      <Filter>Header_Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Math\Mathematic_cpp.hpp">
+      <Filter>Header_Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Strings\String.hpp">
+      <Filter>Header_Files\Strings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Animation_Waiting.hpp">
+      <Filter>Header_Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Class_Generator_Random.hpp">
+      <Filter>Header_Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Configuration.hpp">
+      <Filter>Header_Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Key_Logger.hpp">
+      <Filter>Header_Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Key_Logger__Linux.hpp">
+      <Filter>Header_Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Key_Logger__Windows.hpp">
+      <Filter>Header_Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Message_Box.hpp">
+      <Filter>Header_Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\MODWT.hpp">
+      <Filter>Header_Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Reallocate.hpp">
+      <Filter>Header_Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Reallocate_cpp.hpp">
+      <Filter>Header_Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Shutdown_Block.hpp">
+      <Filter>Header_Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Shutdown_Block__Linux.hpp">
+      <Filter>Header_Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Shutdown_Block__Windows.hpp">
+      <Filter>Header_Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Time.hpp">
+      <Filter>Header_Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\While_Condition.hpp">
+      <Filter>Header_Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Trade\CAccountInfo.hpp">
+      <Filter>Header_Files\Trade</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Trade\CSymbolInfo.hpp">
+      <Filter>Header_Files\Trade</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\CMyEA.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\CObject.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\stdafx.hpp">
+      <Filter>O</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common_Library_Windows\targetver.hpp">
+      <Filter>O</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Common_Library_Windows\Header_Files\Math\CUDA_Mathematic.cuh">
+      <Filter>Header_Files\Math</Filter>
+    </None>
+    <None Include="..\Common_Library_Windows\Header_Files\Tools\CUDA_Configuration.cuh">
+      <Filter>Header_Files\Tools</Filter>
+    </None>
+    <None Include="..\Common_Library_Windows\Header_Files\Tools\CUDA_Fill_1D.cuh">
+      <Filter>Header_Files\Tools</Filter>
+    </None>
+    <None Include="..\Common_Library_Windows\Header_Files\Tools\CUDA_Fill_Pointers_1D.cuh">
+      <Filter>Header_Files\Tools</Filter>
+    </None>
+    <None Include="..\Common_Library_Windows\Header_Files\Tools\CUDA_Memory_Copy_1D.cuh">
+      <Filter>Header_Files\Tools</Filter>
+    </None>
+    <None Include="..\Common_Library_Windows\Header_Files\Tools\CUDA_Memory_Initialize_1D.cuh">
+      <Filter>Header_Files\Tools</Filter>
+    </None>
+    <None Include="..\Common_Library_Windows\Header_Files\Tools\CUDA_Reallocate.cuh">
+      <Filter>Header_Files\Tools</Filter>
+    </None>
+    <None Include="..\Common_Library_Windows\Header_Files\Tools\CUDA_Zero_1D.cuh">
+      <Filter>Header_Files\Tools</Filter>
+    </None>
+    <None Include="..\Common_Library_Windows\Source_Files\Tools\CUDA_Configuration.cu">
+      <Filter>Source_Files\Tools</Filter>
+    </None>
+    <None Include="..\Common_Library_Windows\Source_Files\Tools\CUDA_Fill_1D.cu">
+      <Filter>Source_Files\Tools</Filter>
+    </None>
+    <None Include="..\Common_Library_Windows\Source_Files\Tools\CUDA_Fill_Pointers_1D.cu">
+      <Filter>Source_Files\Tools</Filter>
+    </None>
+    <None Include="..\Common_Library_Windows\Source_Files\Tools\CUDA_Memory_Copy_1D.cu">
+      <Filter>Source_Files\Tools</Filter>
+    </None>
+    <None Include="..\Common_Library_Windows\Source_Files\Tools\CUDA_Memory_Initialize_1D.cu">
+      <Filter>Source_Files\Tools</Filter>
+    </None>
+    <None Include="..\Common_Library_Windows\Source_Files\Tools\CUDA_Reallocate.cu">
+      <Filter>Source_Files\Tools</Filter>
+    </None>
+    <None Include="..\Common_Library_Windows\Source_Files\Tools\CUDA_Zero_1D.cu">
+      <Filter>Source_Files\Tools</Filter>
+    </None>
+    <None Include="..\Common_Library_Windows\Source_Files\Math\CUDA_Mathematic.cu">
+      <Filter>Source_Files\Math</Filter>
+    </None>
+  </ItemGroup>
+</Project>

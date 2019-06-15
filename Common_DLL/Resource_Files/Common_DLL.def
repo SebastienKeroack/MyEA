@@ -1,0 +1,12 @@
+LIBRARY Common_DLL.dll
+
+EXPORTS
+    API__Common__Is_Loaded
+    API__Common__Shutdown_Block__Create
+    API__Common__Shutdown_Block__Remove
+    API__Common__Shutdown_Block__Peek_Message
+    API__Common__Shutdown_Block__Get__On_Shutdown
+    API__Common__Path_Exist
+    API__Common__Message_Box__OK
+    API__Common__Message_Box__YESNO
+    API__Common__Write_File

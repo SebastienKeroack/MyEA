@@ -1,0 +1,581 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{C1B4ED94-F7DE-485C-985C-A570A66501F9}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Neural_Network_Library_Windows</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Neural_Network_Library_Windows</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(ProjectDir)Output\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)Intermediate\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(ProjectDir)Output\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)Intermediate\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(ProjectDir)Output\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)Intermediate\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(ProjectDir)Output\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)Intermediate\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>COMPILE_DOUBLE;COMPILE_UI;COMPILE_UINPUT;COMPILE_WINDOWS;COMPILE_x86;WIN32;COMPILE_BREAK_CODE;COMPILE_COUT;COMPILE_DEBUG;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <OpenMPSupport>true</OpenMPSupport>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalIncludeDirectories>C:\Program Files\Eigen\eigen-eigen-323c052e1731\;..\Common_Library_Windows\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);..\Form_DLL\Header_Files\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <CudaCompile>
+      <AdditionalOptions>-fmad=false -Xcompiler "/openmp" --expt-relaxed-constexpr %(AdditionalOptions)</AdditionalOptions>
+    </CudaCompile>
+    <Lib>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>ADEPT_TRACK_NON_FINITE_GRADIENTS;ADEPT_RECORDING_PAUSABLE;COMPILE_ADEPT;COMPILE_DOUBLE;COMPILE_UINPUT;COMPILE_WINDOWS;COMPILE_x64;COMPILE_BREAK_CODE;COMPILE_COUT;COMPILE_DEBUG;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <OpenMPSupport>true</OpenMPSupport>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalIncludeDirectories>C:\Program Files\Eigen\eigen-eigen-323c052e1731\;C:\Program Files\Adept\adept-2.0.5\include\;..\Common_Library_Windows\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);..\Form_DLL\Header_Files\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <CudaCompile>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+      <CodeGeneration>compute_61,sm_61</CodeGeneration>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <AdditionalOptions>-fmad=false -Xcompiler "/openmp" --expt-relaxed-constexpr %(AdditionalOptions)</AdditionalOptions>
+      <MaxRegCount>64</MaxRegCount>
+    </CudaCompile>
+    <Lib>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>COMPILE_FLOAT;COMPILE_WINDOWS;COMPILE_x86;WIN32;COMPILE_BREAK_CODE;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Program Files\Eigen\eigen-eigen-323c052e1731\;..\Common_Library_Windows\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);..\Form_DLL\Header_Files\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <SDLCheck>true</SDLCheck>
+      <OpenMPSupport>true</OpenMPSupport>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <CudaCompile>
+      <AdditionalOptions>-Xcompiler "/openmp" --expt-relaxed-constexpr %(AdditionalOptions)</AdditionalOptions>
+    </CudaCompile>
+    <Lib>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>COMPILE_FLOAT;COMPILE_UI;COMPILE_UINPUT;COMPILE_WINDOWS;COMPILE_x64;COMPILE_BREAK_CODE;COMPILE_COUT;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Program Files\Eigen\eigen-eigen-323c052e1731\;..\Common_Library_Windows\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);..\Form_DLL\Header_Files\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <SDLCheck>true</SDLCheck>
+      <OpenMPSupport>true</OpenMPSupport>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <CudaCompile>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+      <CodeGeneration>compute_61,sm_61</CodeGeneration>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <AdditionalOptions>-Xcompiler "/openmp" --expt-relaxed-constexpr %(AdditionalOptions)</AdditionalOptions>
+      <MaxRegCount>32</MaxRegCount>
+    </CudaCompile>
+    <Lib>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Header_Files\CUDA\CUDA_Activation_Functions.cuh">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="Header_Files\CUDA\CUDA_Reduce.cuh">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="Header_Files\CUDA\CUDA_Shared_Memory.cuh">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="Header_Files\CUDA\CUDA_Transpose.cuh">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="Header_Files\CUDA\CUDA_Shuffle.cuh">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="Header_Files\CUDA\CUDA_Flag_1D.cuh">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="Header_Files\CUDA\CUDA_cuRAND.cuh">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="Header_Files\CUDA\CUDA_Accumulate_1D.cuh">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="Header_Files\CUDA\CUDA_Multiply_1D.cuh">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="Header_Files\CUDA\CUDA_Neural_Network.cuh">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="Header_Files\CUDA\CUDA_Dataset_Manager.cuh">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Neural_Network\Activation_Functions.hpp" />
+    <ClInclude Include="Header_Files\Neural_Network\Dataset_Manager.hpp" />
+    <ClInclude Include="Header_Files\Neural_Network\Grid_Search.hpp" />
+    <ClInclude Include="Header_Files\Neural_Network\Neural_Network.hpp" />
+    <ClInclude Include="Header_Files\Neural_Network\Data.hpp" />
+    <ClInclude Include="Header_Files\Neural_Network\Internal.hpp" />
+    <ClInclude Include="Header_Files\Neural_Network\Neural_Network_Manager.hpp" />
+    <ClInclude Include="Header_Files\Neural_Network\Train.hpp" />
+    <ClInclude Include="stdafx.hpp" />
+    <ClInclude Include="targetver.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source_Files\Neural_Network\Bayesian_Optimization.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Dataset.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Dataset_Manager.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Dataset__Cross_Validation.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Dataset__Cross_Validation__Hyper_Optimization.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Hyper_Optimization.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Dataset__Mini_Batch.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Grid_Search.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network_Manager.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Accuracy.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__AdaBound.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Adam.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Allocate.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__AMSGrad.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__AMSBound.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Assign_Inputs.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Backward_Pass__Loop.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Backward_Pass__OpenMP.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Batch_Normalization.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Batch_Renormalization.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Clip_Gradient.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Compute__Error__Loop.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Compute__Error__OpenMP.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Compute__Loss__Loop.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Compute__Loss__OpenMP.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Compute__R__Loop.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Compute__R__OpenMP.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Initialization__Identity.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Initialization__LSUV.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Plot__Gradient.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Regularization__Constraint_Recurrent_Weight.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Regularization__SRIP.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Tied__Parameter.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Tied__Normalization.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Transfer_Learning.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Dropout__Zoneout__Loop.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Dropout__Zoneout__OpenMP.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__K_Sparse.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Layer_Normalization.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Copy.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Compile.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Deallocate.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Dropout.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Dropout__Bernoulli__Loop.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Dropout__Bernoulli__OpenMP.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Forward_Pass__Loop.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Forward_Pass__OpenMP.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Gradient_Descent.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Gradient_Descent_Momentum.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Indexing.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Initialize_Connections.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__iRPROP_minus.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__iRPROP_plus.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Load.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Loss.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Merge.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Nesterov_Accelerated_Gradient.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__NosAdam.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__OpenMP.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Ordered.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Initialization__Orthogonal.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Prepare_Connections.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Initialization__Uniform.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Reallocate_Batch.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Reallocate_Parameters.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Reallocate_Threads.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Recurrent_Backward_Pass__Loop.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Recurrent_Backward_Pass__OpenMP.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Recurrent_Compute__Error__Loop.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Recurrent_Compute__Error__OpenMP.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Recurrent_Compute__Loss__Loop.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Recurrent_Compute__Loss__OpenMP.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Recurrent_Compute__R__Loop.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Recurrent_Compute__R__OpenMP.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Recurrent_Forward_Pass__Loop.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Recurrent_Forward_Pass__OpenMP.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Recurrent_Update_Derivative_Weight__Loop.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Recurrent_Update_Derivative_Weight__OpenMP.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Regularization__L1.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Regularization__L2.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Regularization__Max_Norm_Constraints.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Save.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Tied__Weight.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Update.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Update_Derivative_Weight__Loop.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Update_Derivative_Weight__OpenMP.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__User_Controls.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Regularization__Weight_Decay.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Initialization__Glorot.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Gaussian_Search.cpp" />
+    <ClCompile Include="Source_Files\Neural_Network\Train.cpp" />
+    <ClCompile Include="stdfax.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Device_Information.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Device_Information_Array.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Reduce.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Shuffle.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Storage_Dim3.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Transpose.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Flag_1D.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_cuRAND.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Accumulate_1D.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Multiply_1D.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Adam.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Allocate.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__AMSGrad.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Assign_Inputs.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Assign_Inputs_Batch.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Backward_Pass.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Backward_Pass__Dense_to_Dense.cu">
+      <MaxRegCount Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">64</MaxRegCount>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Backward_Pass__Dense_to_Dense__Batch_Renormalization.cu">
+      <MaxRegCount Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">64</MaxRegCount>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Backward_Pass__Dense_to_Dense__Batch_Renormalization_Dropout.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Backward_Pass__Dense_to_Dense__Dropout.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Compute_Error.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__FF__Compute_Error__Binary_Cross_Entropy.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__FF__Compute_Error__Bit_Fail.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__FF__Compute_Error__Standard.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Copy.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__cuRAND.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Deallocate.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__FF__Test__Binary_Cross_Entropy.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__FF__Test__Bit_Fail.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Forward_Pass__Dense_to_Dense.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Forward_Pass__Dense_to_Dense__Batch_Renormalization.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Forward_Pass__Dense_to_Dense__Batch_Renormalization_Dropout.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Forward_Pass__Dense_to_Dense__Dropout.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Dropout.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Forward_Pass.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Gradient_Descent.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Gradient_Descent_Momentum.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__iRPROP_plus.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Nesterov_Accelerated_Gradient_Descent.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Reallocate.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Regularization_L1.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Regularization_L2.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Regularization_Max_Norm_Constraints.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Test.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__FF__Test__Standard.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Update_Derivative_Weight.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Update_Derivative_Weight__Dense.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Neural_Network__Update_Derivative_Weight__Dense__Dropout.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\Train.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+    <CudaCompile Include="Source_Files\CUDA\CUDA_Dataset_Manager.cu">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CudaCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Form_DLL\Form_DLL.vcxproj">
+      <Project>{393beaff-03c1-4fbe-a7b1-d2237acbd157}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

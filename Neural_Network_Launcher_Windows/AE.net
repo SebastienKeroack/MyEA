@@ -1,0 +1,66 @@
+|===| DIMENSION |===|
+type_network 3
+number_layers 3
+number_recurrent_depth 1
+number_time_delays 0
+use_first_layer_as_input 1
+use_last_layer_as_output 1
+connection_rate 1
+total_neuron_units 8
+total_block_units 0
+total_cell_units 0
+total_parameters 7
+total_weights 7
+  Input layer:
+    type_layer 1
+    type_activation 0
+    type_dropout 0
+    dropout_value[0] 0
+    dropout_value[1] 0
+    dropout_value[2] 0
+    number_inputs 2
+  Hidden layer 1:
+    type_layer 1
+    type_activation 1
+    type_dropout 0
+    type_normalization 0
+    dropout_value[0] 0
+    dropout_value[1] 0
+    dropout_value[2] 0
+    use_tied_weight 1
+    k_sparsity 0
+    alpha_sparsity 1
+    number_neuron_units 1
+      Neuron[0]
+        activation_function 4
+        activation_steepness 1
+        number_connections 3
+          connected_to_neuron 0
+          weight[0] -1.8189344406127930e+00
+          connected_to_neuron 1
+          weight[1] -1.1580007076263428e+00
+          connected_to_bias
+          weight[2] 1.0090260505676270e+00
+    number_block_units 0
+    number_cell_units 0
+  Output layer:
+    type_layer 1
+    type_activation 1
+    number_outputs 2
+      Neuron[0]
+        activation_function 1
+        activation_steepness 1
+        number_connections 2
+          connected_to_neuron 3
+          weight[3] -1.8189344406127930e+00
+          connected_to_bias
+          weight[4] 1.2371779680252075e+00
+      Neuron[1]
+        activation_function 1
+        activation_steepness 1
+        number_connections 2
+          connected_to_neuron 3
+          weight[5] -1.1580007076263428e+00
+          connected_to_bias
+          weight[6] 9.6280801296234131e-01
+|END| DIMENSION |END|

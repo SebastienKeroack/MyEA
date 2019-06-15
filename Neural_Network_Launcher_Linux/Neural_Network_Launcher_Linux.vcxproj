@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x86">
+      <Configuration>Debug</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x86">
+      <Configuration>Release</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{c9eddb7f-d6c0-44b4-b5ca-c212f6c893e8}</ProjectGuid>
+    <Keyword>Linux</Keyword>
+    <RootNamespace>Neural_Network_Launcher_Linux</RootNamespace>
+    <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
+    <ApplicationType>Linux</ApplicationType>
+    <ApplicationTypeRevision>1.0</ApplicationTypeRevision>
+    <TargetLinuxPlatform>Generic</TargetLinuxPlatform>
+    <LinuxProjectType>{D51BCBC9-82E9-4017-911E-C93873C4EA2B}</LinuxProjectType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ProjectPublicIncludePath>$(SolutionDir)Common_Library_Windows\Header_Files\;/home/sebastien/projects/Common_Library_Linux/Header_Files/;$(SolutionDir)Neural_Network_Library_Windows\Header_Files\;/home/sebastien/projects/Neural_Network_Library_Linux/Header_Files/;$(SolutionDir)Neural_Network_Launcher_Windows\Header_Files\;$(SolutionDir)Neural_Network_Launcher_Windows\Resource_Files\;$(SolutionDir)Neural_Network_Launcher_Windows\Source_Files\;$(SolutionDir)Neural_Network_Launcher_Windows\;$(ProjectPublicIncludePath)</ProjectPublicIncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ProjectPublicIncludePath>$(SolutionDir)Common_Library_Windows\Header_Files\;/home/sebastien/projects/Common_Library_Linux/Header_Files/;$(SolutionDir)Neural_Network_Library_Windows\Header_Files\;/home/sebastien/projects/Neural_Network_Library_Linux/Header_Files/;$(SolutionDir)Neural_Network_Launcher_Windows\Header_Files\;$(SolutionDir)Neural_Network_Launcher_Windows\Resource_Files\;$(SolutionDir)Neural_Network_Launcher_Windows\Source_Files\;$(SolutionDir)Neural_Network_Launcher_Windows\;$(ProjectPublicIncludePath)</ProjectPublicIncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <ProjectPublicIncludePath>$(SolutionDir)Common_Library_Windows\Header_Files\;/home/sebastien/projects/Common_Library_Linux/Header_Files/;$(SolutionDir)Neural_Network_Library_Windows\Header_Files\;/home/sebastien/projects/Neural_Network_Library_Linux/Header_Files/;$(SolutionDir)Neural_Network_Launcher_Windows\Header_Files\;$(SolutionDir)Neural_Network_Launcher_Windows\Resource_Files\;$(SolutionDir)Neural_Network_Launcher_Windows\Source_Files\;$(SolutionDir)Neural_Network_Launcher_Windows\;$(ProjectPublicIncludePath)</ProjectPublicIncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <ProjectPublicIncludePath>$(SolutionDir)Common_Library_Windows\Header_Files\;/home/sebastien/projects/Common_Library_Linux/Header_Files/;$(SolutionDir)Neural_Network_Library_Windows\Header_Files\;/home/sebastien/projects/Neural_Network_Library_Linux/Header_Files/;$(SolutionDir)Neural_Network_Launcher_Windows\Header_Files\;$(SolutionDir)Neural_Network_Launcher_Windows\Resource_Files\;$(SolutionDir)Neural_Network_Launcher_Windows\Source_Files\;$(SolutionDir)Neural_Network_Launcher_Windows\;$(ProjectPublicIncludePath)</ProjectPublicIncludePath>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common_Library_Linux\Common_Library_Linux.vcxproj">
+      <Project>{a28d8e16-a4e2-456e-baae-fae523801def}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\Neural_Network_Library_Linux\Neural_Network_Library_Linux.vcxproj">
+      <Project>{5a333d45-3648-4d2e-9943-7fbaa8402d0d}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Neural_Network_Launcher_Windows\debug.cpp" />
+    <ClCompile Include="..\Neural_Network_Launcher_Windows\main.cpp" />
+    <ClCompile Include="..\Neural_Network_Launcher_Windows\Source_Files\Count_Identical_Outputs_Entries.cpp" />
+    <ClCompile Include="..\Neural_Network_Launcher_Windows\Source_Files\Dataset__Datapoint.cpp" />
+    <ClCompile Include="..\Neural_Network_Launcher_Windows\Source_Files\Framework.cpp" />
+    <ClCompile Include="..\Neural_Network_Launcher_Windows\Source_Files\Grid_Search_Optimizer.cpp" />
+    <ClCompile Include="..\Neural_Network_Launcher_Windows\Source_Files\MODWT_SAEs_LSTM.cpp" />
+    <ClCompile Include="..\Neural_Network_Launcher_Windows\Source_Files\Preprocessing__Autoencoder.cpp" />
+    <ClCompile Include="..\Neural_Network_Launcher_Windows\Source_Files\Preprocessing__Concat.cpp" />
+    <ClCompile Include="..\Neural_Network_Launcher_Windows\Source_Files\Preprocessing__Custom.cpp" />
+    <ClCompile Include="..\Neural_Network_Launcher_Windows\Source_Files\Preprocessing__Input_To_Output.cpp" />
+    <ClCompile Include="..\Neural_Network_Launcher_Windows\Source_Files\Preprocessing__Merge_Dataset.cpp" />
+    <ClCompile Include="..\Neural_Network_Launcher_Windows\Source_Files\Preprocessing__Minimum_Maximum.cpp" />
+    <ClCompile Include="..\Neural_Network_Launcher_Windows\Source_Files\Preprocessing__MODWT.cpp" />
+    <ClCompile Include="..\Neural_Network_Launcher_Windows\Source_Files\Preprocessing__Remove_Duplicate_Entries_Dataset.cpp" />
+    <ClCompile Include="..\Neural_Network_Launcher_Windows\Source_Files\Preprocessing__Replace_Entries.cpp" />
+    <ClCompile Include="..\Neural_Network_Launcher_Windows\Source_Files\Preprocessing__Sequential_Input.cpp" />
+    <ClCompile Include="..\Neural_Network_Launcher_Windows\Source_Files\Preprocessing__Shift_Entries.cpp" />
+    <ClCompile Include="..\Neural_Network_Launcher_Windows\Source_Files\Preprocessing__Spliting_Dataset.cpp" />
+    <ClCompile Include="..\Neural_Network_Launcher_Windows\Source_Files\Preprocessing__Time_Direction.cpp" />
+    <ClCompile Include="..\Neural_Network_Launcher_Windows\Source_Files\Pre_Training.cpp" />
+    <ClCompile Include="..\Neural_Network_Launcher_Windows\Source_Files\Simulate_Classification_Trading_Session.cpp" />
+    <ClCompile Include="..\Neural_Network_Launcher_Windows\Source_Files\Start_Neural_Network.cpp" />
+    <ClCompile Include="..\Neural_Network_Launcher_Windows\Source_Files\Transfer_Learning.cpp" />
+    <ClCompile Include="..\Neural_Network_Launcher_Windows\Source_Files\User_Controls__Preprocessing.cpp" />
+    <ClCompile Include="..\Neural_Network_Launcher_Windows\stdafx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\debug.hpp" />
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\Header_Files\Count_Identical_Outputs_Entries.hpp" />
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\Header_Files\Dataset__Datapoint.hpp" />
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\Header_Files\Framework.hpp" />
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\Header_Files\Grid_Search_Optimizer.hpp" />
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\Header_Files\MODWT_SAEs_LSTM.hpp" />
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\Header_Files\Preprocessing__Autoencoder.hpp" />
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\Header_Files\Preprocessing__Concat.hpp" />
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\Header_Files\Preprocessing__Custom.hpp" />
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\Header_Files\Preprocessing__Input_To_Output.hpp" />
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\Header_Files\Preprocessing__Merge_Dataset.hpp" />
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\Header_Files\Preprocessing__Minimum_Maximum.hpp" />
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\Header_Files\Preprocessing__MODWT.hpp" />
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\Header_Files\Preprocessing__Remove_Duplicate_Entries_Dataset.hpp" />
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\Header_Files\Preprocessing__Replace_Entries.hpp" />
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\Header_Files\Preprocessing__Sequential_Input.hpp" />
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\Header_Files\Preprocessing__Shift_Entries.hpp" />
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\Header_Files\Preprocessing__Spliting_Dataset.hpp" />
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\Header_Files\Preprocessing__Time_Direction.hpp" />
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\Header_Files\Pre_Training.hpp" />
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\Header_Files\Simulate_Classification_Trading_Session.hpp" />
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\Header_Files\Start_Neural_Network.hpp" />
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\Header_Files\Transfer_Learning.hpp" />
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\Header_Files\User_Controls__Preprocessing.hpp" />
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\main.hpp" />
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\stdafx.hpp" />
+    <ClInclude Include="..\Neural_Network_Launcher_Windows\targetver.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resource_Files\Neural_Network_Launcher_Linux.ico" />
+  </ItemGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>COMPILE_DOUBLE;COMPILE_UINPUT;COMPILE_LINUX;COMPILE_x64;COMPILE_BREAK_CODE;COMPILE_COUT;COMPILE_DEBUG</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>/home/sebastien/projects/$(ProjectName)/Header_Files/;/home/sebastien/projects/$(ProjectName)/Resource_Files/;/home/sebastien/projects/$(ProjectName)/Source_Files/;/home/sebastien/projects/$(ProjectName)/;%(AdditionalIncludeDirectories);$(CudaToolkitIncludeDir)</AdditionalIncludeDirectories>
+      <CppLanguageStandard>c++17</CppLanguageStandard>
+    </ClCompile>
+    <Link>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <LibraryDependencies>Neural_Network_Library_Linux;Common_Library_Linux;stdc++fs;systemd;%(LibraryDependencies)</LibraryDependencies>
+      <AdditionalLibraryDirectories>$(RemoteRootDir)/Common_Library_Linux/bin/$(Platform)/$(Configuration)/;$(RemoteRootDir)/Neural_Network_Library_Linux/bin/$(Platform)/$(Configuration)/;/home/sebastien/projects/Common_Library_Linux/bin/$(Platform)/$(Configuration)/;/home/sebastien/projects/Neural_Network_Library_Linux/bin/$(Platform)/$(Configuration)/</AdditionalLibraryDirectories>
+      <AdditionalOptions>-fopenmp %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>/home/sebastien/projects/$(ProjectName)/Header_Files/;/home/sebastien/projects/$(ProjectName)/Resource_Files/;/home/sebastien/projects/$(ProjectName)/Source_Files/;/home/sebastien/projects/$(ProjectName)/;%(AdditionalIncludeDirectories);$(CudaToolkitIncludeDir)</AdditionalIncludeDirectories>
+      <CppLanguageStandard>c++17</CppLanguageStandard>
+      <PreprocessorDefinitions>COMPILE_FLOAT;COMPILE_UINPUT;COMPILE_LINUX;COMPILE_x64;COMPILE_BREAK_CODE;COMPILE_COUT;NDEBUG</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(RemoteRootDir)/Common_Library_Linux/bin/$(Platform)/$(Configuration)/;$(RemoteRootDir)/Neural_Network_Library_Linux/bin/$(Platform)/$(Configuration)/;/home/sebastien/projects/Common_Library_Linux/bin/$(Platform)/$(Configuration)/;/home/sebastien/projects/Neural_Network_Library_Linux/bin/$(Platform)/$(Configuration)/</AdditionalLibraryDirectories>
+      <LibraryDependencies>Neural_Network_Library_Linux;Common_Library_Linux;stdc++fs;systemd;%(LibraryDependencies)</LibraryDependencies>
+      <AdditionalOptions>-fopenmp %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <Link>
+      <AdditionalLibraryDirectories>$(RemoteRootDir)/Common_Library_Linux/bin/$(Platform)/$(Configuration)/;$(RemoteRootDir)/Neural_Network_Library_Linux/bin/$(Platform)/$(Configuration)/;/home/sebastien/projects/Common_Library_Linux/bin/$(Platform)/$(Configuration)/;/home/sebastien/projects/Neural_Network_Library_Linux/bin/$(Platform)/$(Configuration)/</AdditionalLibraryDirectories>
+      <LibraryDependencies>Neural_Network_Library_Linux;Common_Library_Linux;stdc++fs;systemd;%(LibraryDependencies)</LibraryDependencies>
+      <AdditionalOptions>-fopenmp %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <ClCompile>
+      <CppLanguageStandard>c++17</CppLanguageStandard>
+      <AdditionalIncludeDirectories>/home/sebastien/projects/$(ProjectName)/Header_Files/;/home/sebastien/projects/$(ProjectName)/Resource_Files/;/home/sebastien/projects/$(ProjectName)/Source_Files/;/home/sebastien/projects/$(ProjectName)/;%(AdditionalIncludeDirectories);$(CudaToolkitIncludeDir)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>COMPILE_DOUBLE;COMPILE_UINPUT;COMPILE_LINUX;COMPILE_x86;WIN32;COMPILE_BREAK_CODE;COMPILE_COUT;COMPILE_DEBUG</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <Link>
+      <AdditionalLibraryDirectories>$(RemoteRootDir)/Common_Library_Linux/bin/$(Platform)/$(Configuration)/;$(RemoteRootDir)/Neural_Network_Library_Linux/bin/$(Platform)/$(Configuration)/;/home/sebastien/projects/Common_Library_Linux/bin/$(Platform)/$(Configuration)/;/home/sebastien/projects/Neural_Network_Library_Linux/bin/$(Platform)/$(Configuration)/</AdditionalLibraryDirectories>
+      <LibraryDependencies>Neural_Network_Library_Linux;Common_Library_Linux;stdc++fs;systemd;%(LibraryDependencies)</LibraryDependencies>
+      <AdditionalOptions>-fopenmp %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <ClCompile>
+      <CppLanguageStandard>c++17</CppLanguageStandard>
+      <AdditionalIncludeDirectories>/home/sebastien/projects/$(ProjectName)/Header_Files/;/home/sebastien/projects/$(ProjectName)/Resource_Files/;/home/sebastien/projects/$(ProjectName)/Source_Files/;/home/sebastien/projects/$(ProjectName)/;%(AdditionalIncludeDirectories);$(CudaToolkitIncludeDir)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>COMPILE_FLOAT;COMPILE_UINPUT;COMPILE_LINUX;COMPILE_x86;WIN32;COMPILE_BREAK_CODE;COMPILE_COUT;NDEBUG</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

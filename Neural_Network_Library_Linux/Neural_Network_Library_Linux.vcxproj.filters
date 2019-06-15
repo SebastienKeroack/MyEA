@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header_Files">
+      <UniqueIdentifier>{0a7378a4-b26f-4843-9d2e-828fb8ac1a9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source_Files">
+      <UniqueIdentifier>{a66a46d1-53a5-4951-9893-60b8624dbd62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource_Files">
+      <UniqueIdentifier>{b11eb7a3-c7c6-4514-937d-c232a9221bda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LIB">
+      <UniqueIdentifier>{4b8615b8-c9ca-4327-a79a-c518275f5566}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source_Files\CUDA">
+      <UniqueIdentifier>{6f5db104-1dba-4952-9f52-ad9751118990}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source_Files\Neural_Network">
+      <UniqueIdentifier>{dcfe6abf-b547-4b7a-9f52-16981948be43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header_Files\CUDA">
+      <UniqueIdentifier>{87b49a54-bba1-4f7e-8841-a2c12190b88f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header_Files\Neural_Network">
+      <UniqueIdentifier>{1acfae7f-653d-4e7a-b801-83d3d1cdcbeb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Neural_Network_Library_Windows\stdfax.cpp">
+      <Filter>LIB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Bayesian_Optimization.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Dataset.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Dataset__Cross_Validation.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Dataset__Cross_Validation__Hyper_Optimization.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Dataset__Mini_Batch.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Dataset_Manager.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Gaussian_Search.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Grid_Search.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Hyper_Optimization.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Accuracy.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Adam.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Allocate.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__AMSGrad.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Assign_Inputs.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Backward_Pass__Loop.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Backward_Pass__OpenMP.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Batch_Normalization.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Batch_Renormalization.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Clip_Gradient.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Compile.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Compute__Error__Loop.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Compute__Error__OpenMP.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Compute__Loss__Loop.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Compute__Loss__OpenMP.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Compute__R__Loop.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Compute__R__OpenMP.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Copy.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Deallocate.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Dropout.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Dropout__Bernoulli__Loop.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Dropout__Bernoulli__OpenMP.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Dropout__Zoneout__Loop.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Dropout__Zoneout__OpenMP.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Forward_Pass__Loop.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Forward_Pass__OpenMP.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Gradient_Descent.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Gradient_Descent_Momentum.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Indexing.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Initialize_Connections.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__iRPROP_minus.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__iRPROP_plus.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__K_Sparse.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Layer_Normalization.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Load.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Loss.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Merge.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Nesterov_Accelerated_Gradient.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__NosAdam.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__OpenMP.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Ordered.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Prepare_Connections.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Reallocate_Batch.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Reallocate_Parameters.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Reallocate_Threads.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Recurrent_Backward_Pass__Loop.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Recurrent_Backward_Pass__OpenMP.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Recurrent_Compute__Error__Loop.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Recurrent_Compute__Error__OpenMP.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Recurrent_Compute__Loss__Loop.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Recurrent_Compute__Loss__OpenMP.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Recurrent_Compute__R__Loop.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Recurrent_Compute__R__OpenMP.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Recurrent_Forward_Pass__Loop.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Recurrent_Forward_Pass__OpenMP.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Recurrent_Update_Derivative_Weight__Loop.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Recurrent_Update_Derivative_Weight__OpenMP.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Regularization__Constraint_Recurrent_Weight.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Regularization__L1.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Regularization__L2.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Regularization__Max_Norm_Constraints.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Regularization__Weight_Decay.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Save.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Update.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Update_Derivative_Weight__Loop.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Update_Derivative_Weight__OpenMP.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__User_Controls.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network_Manager.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Train.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Transfer_Learning.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__AMSBound.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__AdaBound.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Tied__Normalization.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Tied__Parameter.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Tied__Weight.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Initialization__Glorot.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Initialization__Uniform.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Neural_Network_Library_Windows\Source_Files\Neural_Network\Neural_Network__Initialization__Orthogonal.cpp">
+      <Filter>Source_Files\Neural_Network</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Neural_Network_Library_Windows\stdafx.hpp">
+      <Filter>LIB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Neural_Network_Library_Windows\targetver.hpp">
+      <Filter>LIB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Neural_Network_Library_Windows\Header_Files\Neural_Network\Activation_Functions.hpp">
+      <Filter>Header_Files\Neural_Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Neural_Network_Library_Windows\Header_Files\Neural_Network\Data.hpp">
+      <Filter>Header_Files\Neural_Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Neural_Network_Library_Windows\Header_Files\Neural_Network\Dataset_Manager.hpp">
+      <Filter>Header_Files\Neural_Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Neural_Network_Library_Windows\Header_Files\Neural_Network\Grid_Search.hpp">
+      <Filter>Header_Files\Neural_Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Neural_Network_Library_Windows\Header_Files\Neural_Network\Internal.hpp">
+      <Filter>Header_Files\Neural_Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Neural_Network_Library_Windows\Header_Files\Neural_Network\Neural_Network.hpp">
+      <Filter>Header_Files\Neural_Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Neural_Network_Library_Windows\Header_Files\Neural_Network\Neural_Network_Manager.hpp">
+      <Filter>Header_Files\Neural_Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Neural_Network_Library_Windows\Header_Files\Neural_Network\Train.hpp">
+      <Filter>Header_Files\Neural_Network</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource_Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header_Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source_Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source_Files\Form">
+      <UniqueIdentifier>{1a4af62e-ee5b-4047-be35-55f3126ec518}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header_Files\Form">
+      <UniqueIdentifier>{3589396a-4f49-4b2a-9cf2-b0d0b2c4b1df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource_Files\Texture">
+      <UniqueIdentifier>{e685da41-22d2-4c44-a7b2-24c014a998f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource_Files\Texture\Textures">
+      <UniqueIdentifier>{73ce6176-4ed1-4839-99eb-d43f744b255f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource_Files\Texture\Originals">
+      <UniqueIdentifier>{24804f17-a28d-4f02-9b48-b094f32c7d36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource_Files\Texture\Textures\Windows">
+      <UniqueIdentifier>{547e3a3d-78c9-4fd8-b291-946ce584fa9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DLL">
+      <UniqueIdentifier>{f764d92d-6017-4560-9498-98603a3ba0a1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Header_Files\Form\CFormAbout.resx">
+      <Filter>Resource_Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Header_Files\Form\CFormMain.resx">
+      <Filter>Resource_Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource_Files\Resource.resx">
+      <Filter>Resource_Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Header_Files\Form\CFormLogin.resx">
+      <Filter>Resource_Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Header_Files\Form\CFormNN.resx">
+      <Filter>Resource_Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Header_Files\Form\Form__Neural_Network.resx">
+      <Filter>Resource_Files</Filter>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source_Files\Form\CFormMain.cpp">
+      <Filter>Source_Files\Form</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Form\CFormAbout.cpp">
+      <Filter>Source_Files\Form</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Form\CFormNN.cpp">
+      <Filter>Source_Files\Form</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Form\CFormLogin.cpp">
+      <Filter>Source_Files\Form</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>DLL</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>DLL</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Form.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Header_Files\Form\Form__Neural_Network.cpp">
+      <Filter>Source_Files\Form</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Header_Files\Form\CFormMain.h">
+      <Filter>Header_Files\Form</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource_Files\resource.h">
+      <Filter>Resource_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Form\CFormAbout.h">
+      <Filter>Header_Files\Form</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Form\CFormLogin.h">
+      <Filter>Header_Files\Form</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Form\CFormNN.h">
+      <Filter>Header_Files\Form</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Form\Form__Neural_Network.h">
+      <Filter>Header_Files\Form</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Form.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.hpp">
+      <Filter>DLL</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.hpp">
+      <Filter>DLL</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource_Files\FormWin.rc">
+      <Filter>Resource_Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resource_Files\Texture\Textures\COMPANY_favicon_64_ICO.ico">
+      <Filter>Resource_Files\Texture\Textures</Filter>
+    </Image>
+    <Image Include="Resource_Files\Texture\Textures\COMPANY_favicon_64_PNG.png">
+      <Filter>Resource_Files\Texture\Textures</Filter>
+    </Image>
+    <Image Include="Resource_Files\Texture\Textures\Windows\Windows_App_Close_64_PNG.png">
+      <Filter>Resource_Files\Texture\Textures\Windows</Filter>
+    </Image>
+    <Image Include="Resource_Files\Texture\Textures\Windows\Windows_App_Maximize_64_PNG.png">
+      <Filter>Resource_Files\Texture\Textures\Windows</Filter>
+    </Image>
+    <Image Include="Resource_Files\Texture\Textures\Windows\Windows_App_Minimize_64_PNG.png">
+      <Filter>Resource_Files\Texture\Textures\Windows</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource_Files\Form_DLL.def">
+      <Filter>Resource_Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

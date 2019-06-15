@@ -1,0 +1,19 @@
+LIBRARY Form_DLL.dll
+
+EXPORTS
+    API__Form__Is_Loaded
+    API__Form__Neural_Network__Allocate
+    API__Form__Neural_Network__Chart_Use_Datapoint_Training
+    API__Form__Neural_Network__Chart_Initialize
+    API__Form__Neural_Network__Chart_Total_Means
+    API__Form__Neural_Network__Chart_Reset
+    API__Form__Neural_Network__Chart_Rescale
+    API__Form__Neural_Network__Chart_Add_Point
+    API__Form__Neural_Network__Chart_Grid_Search_Add_Column
+    API__Form__Neural_Network__Chart_Grid_Search_Add_Row
+    API__Form__Neural_Network__Chart_Loss_Diff
+    API__Form__Neural_Network__Chart_Scale
+    API__Form__Neural_Network__Get_Signal_Training_Stop
+    API__Form__Neural_Network__Get_Signal_Training_Menu
+    API__Form__Neural_Network__Reset_Signal_Training_Menu
+    API__Form__Neural_Network__Deallocate

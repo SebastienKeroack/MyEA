@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header_Files">
+      <UniqueIdentifier>{7e853c0e-b6bc-4019-9fa9-d701f55d9c37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source_Files">
+      <UniqueIdentifier>{48d0056b-5d8f-424a-8352-bfd39060044d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource_Files">
+      <UniqueIdentifier>{bedd7b41-a7b8-469c-bcd9-b13ae10b6f84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DLL">
+      <UniqueIdentifier>{5d761bb9-4c0b-4e45-afb9-6848e2f4da0b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>DLL</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>DLL</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Neural_Network_API.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Model_Manager_Client.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Neural_Network_APIv2.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Resource_Files\resource.h">
+      <Filter>Resource_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Neural_Network_API.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.hpp">
+      <Filter>DLL</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.hpp">
+      <Filter>DLL</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Model_Manager_Client.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Neural_Network_APIv2.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource_Files\Neural_Network_DLL.rc">
+      <Filter>Resource_Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource_Files\Neural_Network_DLL.def">
+      <Filter>Resource_Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>EXE</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>EXE</Filter>
+    </ClCompile>
+    <ClCompile Include="debug.cpp">
+      <Filter>EXE</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Start_Neural_Network.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Simulate_Classification_Trading_Session.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Count_Identical_Outputs_Entries.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Grid_Search_Optimizer.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Pre_Training.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Transfer_Learning.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Framework.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\User_Controls__Preprocessing.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Preprocessing__Minimum_Maximum.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Preprocessing__MODWT.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Preprocessing__Input_To_Output.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Preprocessing__Remove_Duplicate_Entries_Dataset.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Preprocessing__Spliting_Dataset.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Preprocessing__Autoencoder.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Preprocessing__Replace_Entries.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Preprocessing__Shift_Entries.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Preprocessing__Time_Direction.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Preprocessing__Concat.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Preprocessing__Sequential_Input.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Dataset__Datapoint.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\MODWT_SAEs_LSTM.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Preprocessing__Custom.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Preprocessing__Merge_Dataset.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Preprocessing__Zero_Centered.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Preprocessing__Unrecurrent.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Preprocessing__Remove_IO.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Resource_Files\resource.h">
+      <Filter>Resource_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="debug.hpp">
+      <Filter>EXE</Filter>
+    </ClInclude>
+    <ClInclude Include="main.hpp">
+      <Filter>EXE</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.hpp">
+      <Filter>EXE</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.hpp">
+      <Filter>EXE</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Count_Identical_Outputs_Entries.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Dataset__Datapoint.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Framework.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Grid_Search_Optimizer.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\MODWT_SAEs_LSTM.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Pre_Training.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Preprocessing__Autoencoder.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Preprocessing__Concat.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Preprocessing__Custom.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Preprocessing__Input_To_Output.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Preprocessing__Merge_Dataset.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Preprocessing__Minimum_Maximum.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Preprocessing__MODWT.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Preprocessing__Remove_Duplicate_Entries_Dataset.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Preprocessing__Replace_Entries.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Preprocessing__Sequential_Input.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Preprocessing__Shift_Entries.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Preprocessing__Spliting_Dataset.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Preprocessing__Time_Direction.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Simulate_Classification_Trading_Session.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Start_Neural_Network.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Transfer_Learning.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\User_Controls__Preprocessing.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Preprocessing__Zero_Centered.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Preprocessing__Unrecurrent.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Preprocessing__Remove_IO.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source_Files">
+      <UniqueIdentifier>{ab01b06c-c7f3-4aec-b8a5-b86dc970d911}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource_Files">
+      <UniqueIdentifier>{f933af21-fc58-4176-a797-118f1c67ed9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header_Files">
+      <UniqueIdentifier>{fdc82ef2-0423-4ba8-91c6-9fe7db67c327}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EXE">
+      <UniqueIdentifier>{39f7d5f1-41bb-4293-85c0-4650454f07c1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resource_Files\Neural_Network_Launcher_Windows.ico">
+      <Filter>Resource_Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource_Files\Neural_Network_Launcher_Windows.rc">
+      <Filter>Resource_Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
