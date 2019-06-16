@@ -52,12 +52,12 @@
 
 #if defined(COMPILE_WINDOWS)
 bool Search_Option(unsigned int const number_arguments_received,
-                             _TCHAR const *const ptr_array_arguments_received[],
-                             std::string const search_option_received)
+                   _TCHAR const *const ptr_array_arguments_received[],
+                   std::string const search_option_received)
 #elif defined(COMPILE_LINUX)
 bool Search_Option(unsigned int const number_arguments_received,
-                             char const *const ptr_array_arguments_received[],
-                             std::string const search_option_received)
+                   char const *const ptr_array_arguments_received[],
+                   std::string const search_option_received)
 #endif
 {
     std::string tmp_search_option("-" + search_option_received);
@@ -91,8 +91,8 @@ int main(int const number_arguments_received, char const *const ptr_array_argume
     PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
 
     PRINT_FORMAT("%s: Current path: %s" NEW_LINE,
-                             MyEA::String::Get__Time().c_str(),
-                             ptr_array_arguments_received[0u]);
+                 MyEA::String::Get__Time().c_str(),
+                 ptr_array_arguments_received[0u]);
     
     PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
 
@@ -106,15 +106,15 @@ int main(int const number_arguments_received, char const *const ptr_array_argume
 
 #if defined(_DEBUG) || defined(COMPILE_DEBUG)
     bool const tmp_option_debug(Search_Option(static_cast<unsigned int>(number_arguments_received),
-                                                                      ptr_array_arguments_received,
-                                                                      "debug"));
+                                              ptr_array_arguments_received,
+                                              "debug"));
     bool const tmp_option_nsight(Search_Option(static_cast<unsigned int>(number_arguments_received),
-                                                                      ptr_array_arguments_received,
-                                                                      "nsight"));
+                                               ptr_array_arguments_received,
+                                               "nsight"));
     
     if(tmp_option_debug
-      ||
-      MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Are you debuging from NVIDIA visual profiler?"))
+       ||
+       MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Are you debuging from NVIDIA visual profiler?"))
     {
         simple_debug(tmp_option_nsight);
 
@@ -149,9 +149,9 @@ int main(int const number_arguments_received, char const *const ptr_array_argume
                 if(Start_Neural_Network(tmp_Shutdown_Block) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Start_Neural_Network(ref)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
-                                             __FUNCTION__,
-                                             __LINE__);
+                                 MyEA::String::Get__Time().c_str(),
+                                 __FUNCTION__,
+                                 __LINE__);
                 }
                     break;
             case 1u:
@@ -159,9 +159,9 @@ int main(int const number_arguments_received, char const *const ptr_array_argume
                 if(Pre_Training(tmp_Shutdown_Block) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Pre_Training(ref)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
-                                             __FUNCTION__,
-                                             __LINE__);
+                                 MyEA::String::Get__Time().c_str(),
+                                 __FUNCTION__,
+                                 __LINE__);
                 }
                     break;
             case 2u:
@@ -169,9 +169,9 @@ int main(int const number_arguments_received, char const *const ptr_array_argume
                 if(Transfer_Learning() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Transfer_Learning()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
-                                             __FUNCTION__,
-                                             __LINE__);
+                                 MyEA::String::Get__Time().c_str(),
+                                 __FUNCTION__,
+                                 __LINE__);
                 }
                     break;
             case 3u:
@@ -179,9 +179,9 @@ int main(int const number_arguments_received, char const *const ptr_array_argume
                 if(Framework(tmp_Shutdown_Block) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Framework(ref)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
-                                             __FUNCTION__,
-                                             __LINE__);
+                                 MyEA::String::Get__Time().c_str(),
+                                 __FUNCTION__,
+                                 __LINE__);
                 }
                     break;
             case 4u:
@@ -189,9 +189,9 @@ int main(int const number_arguments_received, char const *const ptr_array_argume
                 if(Grid_Search_Optimizer(tmp_Shutdown_Block) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Grid_Search_Optimizer(ref)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
-                                             __FUNCTION__,
-                                             __LINE__);
+                                 MyEA::String::Get__Time().c_str(),
+                                 __FUNCTION__,
+                                 __LINE__);
                 }
                     break;
             case 5u:
@@ -202,9 +202,9 @@ int main(int const number_arguments_received, char const *const ptr_array_argume
                 if(Count_Identical_Outputs_Entries() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Count_Identical_Outputs_Entries()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
-                                             __FUNCTION__,
-                                             __LINE__);
+                                 MyEA::String::Get__Time().c_str(),
+                                 __FUNCTION__,
+                                 __LINE__);
                 }
                     break;
             case 7u:
@@ -212,9 +212,9 @@ int main(int const number_arguments_received, char const *const ptr_array_argume
                 if(Simulate_Classification_Trading_Session() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Simulate_Classification_Trading_Session()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
-                                             __FUNCTION__,
-                                             __LINE__);
+                                 MyEA::String::Get__Time().c_str(),
+                                 __FUNCTION__,
+                                 __LINE__);
                 }
                     break;
             case 8u:
@@ -222,9 +222,9 @@ int main(int const number_arguments_received, char const *const ptr_array_argume
                 if(User_Controls__Preprocessing() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls__Preprocessing()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
-                                             __FUNCTION__,
-                                             __LINE__);
+                                 MyEA::String::Get__Time().c_str(),
+                                 __FUNCTION__,
+                                 __LINE__);
                 }
                     break;
             case 9u:
@@ -232,9 +232,9 @@ int main(int const number_arguments_received, char const *const ptr_array_argume
                 if(Dataset__Datapoint() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Dataset__Datapoint()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
-                                             __FUNCTION__,
-                                             __LINE__);
+                                 MyEA::String::Get__Time().c_str(),
+                                 __FUNCTION__,
+                                 __LINE__);
                 }
                     break;
             case 10u: tmp_Shutdown_Block.Query_Shutdown(); break;
