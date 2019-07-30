@@ -2,7 +2,7 @@
 
 #include <Tools/Class_Generator_Random.hpp>
 
-#include <Math/Mathematic.hpp>
+#include <Math/Math.hpp>
 
 #include <Strings/String.hpp>
 

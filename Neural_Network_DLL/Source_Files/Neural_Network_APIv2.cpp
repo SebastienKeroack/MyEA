@@ -10,8 +10,8 @@ namespace MyEA::Neural_Network
 {
     enum QUERY_CODE : unsigned char
     {
-        QUERY_MODEL_HISTORY = '0',
-        QUERY_PREDICT = '1'
+        QUERY_PREDICT = '0',
+        QUERY_MODEL_HISTORY = '1'
     };
 
     Client::Client(void) { }
@@ -90,18 +90,18 @@ namespace MyEA::Neural_Network
         boost::system::error_code tmp_error_code;
             
         size_t const tmp_bytes(boost::asio::read(*this->_ptr_socket,
-                                                    boost::asio::dynamic_buffer(tmp_buffer),
-                                                    [&tmp_buffer](auto ec, auto n) -> std::size_t
-                                                    {
+                                                 boost::asio::dynamic_buffer(tmp_buffer),
+                                                 [&tmp_buffer](auto ec, auto n) -> std::size_t
+                                                 {
                                                     if(ec
-                                                        ||
-                                                        (
-                                                            tmp_buffer.size() >= 1
-                                                            &&
-                                                            tmp_buffer.compare(tmp_buffer.size() - 1,
-                                                                                1,
-                                                                                "$") == 0
-                                                        )) { return(0); }
+                                                       ||
+                                                       (
+                                                           tmp_buffer.size() >= 1
+                                                           &&
+                                                           tmp_buffer.compare(tmp_buffer.size() - 1,
+                                                                              1,
+                                                                              "$") == 0
+                                                       )) { return(0); }
 
                                                     return(1);
                                                 },
@@ -147,18 +147,18 @@ namespace MyEA::Neural_Network
         boost::system::error_code tmp_error_code;
 
         size_t const tmp_bytes(boost::asio::read(*this->_ptr_socket,
-                                                    boost::asio::dynamic_buffer(tmp_buffer),
-                                                    [&tmp_buffer](auto ec, auto n) -> std::size_t
-                                                    {
+                                                 boost::asio::dynamic_buffer(tmp_buffer),
+                                                 [&tmp_buffer](auto ec, auto n) -> std::size_t
+                                                 {
                                                     if(ec
-                                                        ||
-                                                        (
-                                                            tmp_buffer.size() >= 1
-                                                            &&
-                                                            tmp_buffer.compare(tmp_buffer.size() - 1,
-                                                                                1,
-                                                                                "$") == 0
-                                                        )) { return(0); }
+                                                       ||
+                                                       (
+                                                        tmp_buffer.size() >= 1
+                                                        &&
+                                                        tmp_buffer.compare(tmp_buffer.size() - 1,
+                                                                           1,
+                                                                           "$") == 0
+                                                       )) { return(0); }
                                                                             
                                                     return(1);
                                                 },
@@ -187,9 +187,7 @@ namespace MyEA::Neural_Network
         return(true);
     }
 
-    DLL_EXTERNAL bool DLL_API API__Neural_Network__Initialize(bool const is_type_position_long_received,
-                                                              unsigned int const type_indicator_received,
-                                                              unsigned int const time_frames_received)
+    DLL_EXTERNAL bool DLL_API API__Neural_Network__Initialize(void)
     {
         // Client object need to be disconnected.
         if(g_Client->Connected()) { return(false); }
@@ -206,7 +204,7 @@ namespace MyEA::Neural_Network
         return(true);
     }
 
-    DLL_EXTERNAL bool DLL_API API__Neural_Network__Deinitialize(bool const is_type_position_long_received, unsigned int const type_indicator_received)
+    DLL_EXTERNAL bool DLL_API API__Neural_Network__Deinitialize(void)
     {
         // Client object need to not be null.
         if(g_Client == nullptr) { return(false); }
@@ -218,16 +216,13 @@ namespace MyEA::Neural_Network
         return(true);
     }
         
-    DLL_EXTERNAL float DLL_API API__Neural_Network__Get__Loss(bool const is_type_position_long_received,
-                                                              unsigned int const type_indicator_received,
-                                                              unsigned int const type_neural_network_use_received,
-                                                              unsigned int const type_loss_received)
+    DLL_EXTERNAL float DLL_API API__Neural_Network__Get__Loss(unsigned int const type_neural_network_use_received, unsigned int const type_loss_received)
     {
         // Client object need to not be null.
         if(g_Client == nullptr) { return(false); }
 
         // Query model history [2, 0, 1]
-        g_Client->Send(QUERY_CODE::QUERY_MODEL_HISTORY + " <2, 0, 1/>");
+        g_Client->Send(QUERY_CODE::QUERY_MODEL_HISTORY + " <" + std::to_string(type_loss_received - 1) + ", 0, " + std::to_string(type_neural_network_use_received - 1) + "/>");
         if(g_Client->Done() == false) { return(false); }
             
         // Receive results.
@@ -237,31 +232,8 @@ namespace MyEA::Neural_Network
         // Return results.
         return(std::stof(tmp_buffer));
     }
-        
-    DLL_EXTERNAL float DLL_API API__Neural_Network__Get__Accuracy(bool const is_type_position_long_received,
-                                                                  unsigned int const type_indicator_received,
-                                                                  unsigned int const type_neural_network_use_received,
-                                                                  unsigned int const type_accuracy_received)
-    {
-        // Client object need to not be null.
-        if(g_Client == nullptr) { return(false); }
-
-        // Query model history [2, 1, 1]
-        g_Client->Send(QUERY_CODE::QUERY_MODEL_HISTORY + " <2, 1, 1/>");
-        if(g_Client->Done() == false) { return(false); }
-            
-        // Receive results.
-        std::string const tmp_buffer(g_Client->Receive());
-        if(g_Client->Done() == false) { return(false); }
-            
-        // Return results.
-        return(std::stof(tmp_buffer));
-    }
-        
-    DLL_EXTERNAL T_ DLL_API API__Neural_Network__Forward_Pass(bool const is_type_position_long_received,
-                                                              unsigned int const type_indicator_received,
-                                                              unsigned int const type_neural_network_use_received,
-                                                              T_ *const ptr_array_inputs_received)
+    
+    DLL_EXTERNAL T_ DLL_API API__Neural_Network__Forward_Pass(T_ *const ptr_array_inputs_received)
     {
         // Client object need to not be null.
         if(g_Client == nullptr) { return(false); }

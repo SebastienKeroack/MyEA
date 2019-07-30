@@ -103,7 +103,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ModuleDefinitionFile>.\Resource_Files\Neural_Network_DLL.def</ModuleDefinitionFile>
-      <AdditionalDependencies>..\Form_DLL\Output\$(Platform)\$(Configuration)\Form_DLL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\Form_DLL\Output\$(Platform)\$(Configuration)\Form_DLL.lib</AdditionalDependencies>
     </Link>
     <CudaCompile>
       <PtxAsOptionV>true</PtxAsOptionV>
@@ -137,10 +137,9 @@ copy "..\Network_DLL\Output\$(Platform)\$(Configuration)\Network_DLL.dll" "$(Out
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalDependencies>..\Form_DLL\Output\$(Platform)\$(Configuration)\Form_DLL.lib;cudart.lib;cudadevrt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\Form_DLL\Output\$(Platform)\$(Configuration)\Form_DLL.lib</AdditionalDependencies>
     </Link>
     <CudaCompile>
       <TargetMachinePlatform>64</TargetMachinePlatform>
@@ -181,7 +180,7 @@ copy "..\Network_DLL\Output\$(Platform)\$(Configuration)\Network_DLL.dll" "$(Out
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <ModuleDefinitionFile>.\Resource_Files\Neural_Network_DLL.def</ModuleDefinitionFile>
-      <AdditionalDependencies>..\Form_DLL\Output\$(Platform)\$(Configuration)\Form_DLL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\Form_DLL\Output\$(Platform)\$(Configuration)\Form_DLL.lib</AdditionalDependencies>
     </Link>
     <CudaCompile>
       <AdditionalOptions>-Xcompiler "/openmp" %(AdditionalOptions)</AdditionalOptions>
@@ -217,10 +216,9 @@ copy "..\Network_DLL\Output\$(Platform)\$(Configuration)\Network_DLL.dll" "$(Out
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(CudaToolkitLibDir)</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalDependencies>..\Form_DLL\Output\$(Platform)\$(Configuration)\Form_DLL.lib;cudart.lib;cudadevrt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\Form_DLL\Output\$(Platform)\$(Configuration)\Form_DLL.lib</AdditionalDependencies>
     </Link>
     <CudaCompile>
       <TargetMachinePlatform>64</TargetMachinePlatform>
@@ -286,9 +284,6 @@ copy "..\Network_DLL\Output\$(Platform)\$(Configuration)\Network_DLL.dll" "$(Out
     </ProjectReference>
     <ProjectReference Include="..\Form_DLL\Form_DLL.vcxproj">
       <Project>{393beaff-03c1-4fbe-a7b1-d2237acbd157}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Network_DLL\Network_DLL.vcxproj">
-      <Project>{dfe4c2a4-c850-49fc-9662-3564be884909}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Neural_Network_Library_Windows\Neural_Network_Library_Windows.vcxproj">
       <Project>{c1b4ed94-f7de-485c-985c-a570a66501f9}</Project>

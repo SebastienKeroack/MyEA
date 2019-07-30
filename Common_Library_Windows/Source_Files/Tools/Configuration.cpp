@@ -2,7 +2,7 @@
 
 #include <Tools/Configuration.hpp>
 #include <Strings/String.hpp>
-#include <Math/Mathematic.hpp>
+#include <Math/Math.hpp>
 
 size_t Get__Remaining_Available_System_Memory(long double const reserved_bytes_percent_received, size_t const maximum_reserved_bytes_received)
 {

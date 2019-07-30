@@ -78,7 +78,7 @@
     <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Animation_Waiting.cpp">
       <Filter>Source_Files\Tools</Filter>
     </ClCompile>
-    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Class_Generator_Random.cpp">
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Class_Random_Base.cpp">
       <Filter>Source_Files\Tools</Filter>
     </ClCompile>
     <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Configuration.cpp">
@@ -135,10 +135,10 @@
     <ClCompile Include="..\Common_Library_Windows\Source_Files\Arrays\CArrayObject.cpp">
       <Filter>Source_Files\Arrays</Filter>
     </ClCompile>
-    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Class_Generator_Random__Adept__Double.cpp">
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Class_Random_Base__Adept__Double.cpp">
       <Filter>Source_Files\Tools</Filter>
     </ClCompile>
-    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Class_Generator_Random__Adept__Float.cpp">
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Class_Random_Base__Adept__Float.cpp">
       <Filter>Source_Files\Tools</Filter>
     </ClCompile>
   </ItemGroup>
@@ -263,7 +263,7 @@
     <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Animation_Waiting.hpp">
       <Filter>Header_Files\Tools</Filter>
     </ClInclude>
-    <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Class_Generator_Random.hpp">
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Class_Random_Base.hpp">
       <Filter>Header_Files\Tools</Filter>
     </ClInclude>
     <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Configuration.hpp">

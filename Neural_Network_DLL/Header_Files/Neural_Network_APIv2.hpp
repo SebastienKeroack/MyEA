@@ -44,24 +44,11 @@ namespace MyEA::Neural_Network
         
     DLL_EXTERNAL bool DLL_API API__Neural_Network__Allocate(void);
 
-    DLL_EXTERNAL bool DLL_API API__Neural_Network__Initialize(bool const is_type_position_long_received,
-                                                              unsigned int const type_indicator_received,
-                                                              unsigned int const time_frames_received);
+    DLL_EXTERNAL bool DLL_API API__Neural_Network__Initialize(void);
         
-    DLL_EXTERNAL bool DLL_API API__Neural_Network__Deinitialize(bool const is_type_position_long_received, unsigned int const type_indicator_received);
-        
-    DLL_EXTERNAL float DLL_API API__Neural_Network__Get__Loss(bool const is_type_position_long_received,
-                                                              unsigned int const type_indicator_received,
-                                                              unsigned int const type_neural_network_use_received,
-                                                              unsigned int const type_loss_received);
-        
-    DLL_EXTERNAL float DLL_API API__Neural_Network__Get__Accuracy(bool const is_type_position_long_received,
-                                                                  unsigned int const type_indicator_received,
-                                                                  unsigned int const type_neural_network_use_received,
-                                                                  unsigned int const type_accuracy_received);
-        
-    DLL_EXTERNAL T_ DLL_API API__Neural_Network__Forward_Pass(bool const is_type_position_long_received,
-                                                              unsigned int const type_indicator_received,
-                                                              unsigned int const type_neural_network_use_received,
-                                                              T_ *const ptr_array_inputs_received);
+    DLL_EXTERNAL bool DLL_API API__Neural_Network__Deinitialize(void);
+    
+    DLL_EXTERNAL float DLL_API API__Neural_Network__Get__Loss(unsigned int const type_neural_network_use_received, unsigned int const type_loss_received);
+    
+    DLL_EXTERNAL T_ DLL_API API__Neural_Network__Forward_Pass(T_ *const ptr_array_inputs_received);
 }

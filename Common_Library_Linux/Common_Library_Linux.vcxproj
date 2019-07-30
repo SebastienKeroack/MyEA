@@ -29,14 +29,14 @@
     <ClCompile Include="..\Common_Library_Windows\Source_Files\Math\Mathematic_cpp.cpp" />
     <ClCompile Include="..\Common_Library_Windows\Source_Files\Strings\String.cpp" />
     <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Animation_Waiting.cpp" />
-    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Class_Generator_Random.cpp" />
-    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Class_Generator_Random__Adept__Double.cpp">
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Class_Random_Base.cpp" />
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Class_Random_Base__Adept__Double.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x86'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Class_Generator_Random__Adept__Float.cpp">
+    <ClCompile Include="..\Common_Library_Windows\Source_Files\Tools\Class_Random_Base__Adept__Float.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x86'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -120,7 +120,7 @@
     <ClInclude Include="..\Common_Library_Windows\Header_Files\Math\Mathematic_cpp.hpp" />
     <ClInclude Include="..\Common_Library_Windows\Header_Files\Strings\String.hpp" />
     <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Animation_Waiting.hpp" />
-    <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Class_Generator_Random.hpp" />
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Class_Random_Base.hpp" />
     <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Configuration.hpp" />
     <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Key_Logger.hpp" />
     <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Key_Logger__Linux.hpp" />

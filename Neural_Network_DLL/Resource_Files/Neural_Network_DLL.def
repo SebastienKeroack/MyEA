@@ -2,27 +2,8 @@ LIBRARY Neural_Network_DLL.dll
 
 EXPORTS
     API__Neural_Network__Is_Loaded
+    API__Neural_Network__Allocate
     API__Neural_Network__Initialize
-    API__Neural_Network__Initialize_Dataset_Manager
     API__Neural_Network__Deinitialize
     API__Neural_Network__Forward_Pass
-    API__Neural_Network__Set__Output_Mode
-    API__Neural_Network__Set__Number_Inputs
-    API__Neural_Network__Set__Number_Outputs
-    API__Neural_Network__Set__Number_Time_Predictions
-    API__Neural_Network__Get__Path_Neural_Network_Exist
-    API__Neural_Network__Get__Is_Output_Symmetric
-    API__Neural_Network__Get__Number_Inputs
-    API__Neural_Network__Get__Number_Outputs
-    API__Neural_Network__Get__Number_Time_Predictions
     API__Neural_Network__Get__Loss
-    API__Neural_Network__Get__Accuracy
-    API__Neural_Network__Get__Output
-    API__Neural_Network__Append_To_Dataset_File
-    API__Neural_Network__Append_To_Dataset
-    API__Neural_Network__Optimization
-    API__Neural_Network__Write_File
-    API__Neural_Network__Load_Neural_Network
-    API__Neural_Network__Save_Neural_Network
-    API__Neural_Network__Join
-    API__Neural_Network__Allocate

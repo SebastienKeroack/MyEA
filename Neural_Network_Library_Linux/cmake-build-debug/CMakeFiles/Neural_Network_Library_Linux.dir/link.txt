@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -g  -shared -Wl,-soname,libNeural_Network_Library_Linux.so -o libNeural_Network_Library_Linux.so CMakeFiles/Neural_Network_Library_Linux.dir/src/stdafx.cpp.o 
