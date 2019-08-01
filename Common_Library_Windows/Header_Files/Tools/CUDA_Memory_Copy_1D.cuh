@@ -1,10 +1,10 @@
 #pragma once
 
-#include <Tools/Configuration.hpp>
+#include <Configuration/Configuration.hpp>
 
 #include <device_launch_parameters.h>
 
-namespace Memory
+namespace MyEA::Memory
 {
     template<typename T>
     __global__ void kernel__Memory_Copy_1D( T *const ptr_array_destination_received, T const *const ptr_array_source_received);

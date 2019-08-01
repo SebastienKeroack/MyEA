@@ -13,22 +13,33 @@ namespace MyEA
     namespace File
     {
         std::vector<std::pair<std::string, std::string>> Get__List_Drives(void);
+
         std::string Get__Full_Path(std::string const &ref_path_received);
+
         std::string Read_File_Info(const std::function<void(void)>& function_received);
 
-        bool Write_Print_File(std::string const &path_received,
-                                       std::string const &text_received,
-                                       int const mode_received);
-        bool Write_File(std::string const &path_received,
-                               std::string const &text_received,
-                               int const mode_received);
-        bool Retrieve_Tempory_File(std::string const &path_received);
-        bool Write_Tempory_File(std::string const &path_received);
-        bool Delete_Tempory_File(std::string const &path_received);
-        bool Path_Exist(std::string const &path_received);
-        bool File_Create(std::string const &path_received);
-        bool File_Remove(std::string const &path_received);
-        bool Directory_Create(std::string const &path_received);
-        bool Directory_Remove(std::string const &path_received);
+        bool Write_Print_File(std::string const &ref_path_received,
+                              std::string const &ref_text_received,
+                              int const mode_received);
+
+        bool Write_File(std::string const &ref_path_received,
+                        std::string const &ref_text_received,
+                        int const mode_received);
+
+        bool Retrieve_Temporary_File(std::string const &ref_path_received);
+
+        bool Write_Temporary_File(std::string const &ref_path_received);
+
+        bool Delete_Temporary_File(std::string const &ref_path_received);
+
+        bool Path_Exist(std::string const &ref_path_received);
+
+        bool File_Create(std::string const &ref_path_received);
+
+        bool File_Remove(std::string const &ref_path_received);
+
+        bool Directory_Create(std::string const &ref_path_received);
+
+        bool Directory_Remove(std::string const &ref_path_received);
     }
 }

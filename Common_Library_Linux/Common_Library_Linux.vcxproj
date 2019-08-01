@@ -132,7 +132,7 @@
     <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\MODWT.hpp" />
     <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Reallocate.hpp" />
     <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Reallocate_cpp.hpp" />
-    <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Shutdown_Block.hpp" />
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Shutdown_Capturing.hpp" />
     <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Shutdown_Block__Linux.hpp" />
     <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Shutdown_Block__Windows.hpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>

@@ -4,21 +4,19 @@
 
 #include <chrono>
 
-namespace MyEA
+namespace MyEA::Common
 {
-    namespace Common
+    struct While_Condition
     {
-        struct While_Condition
+        While_Condition(void) { }
+
+        enum MyEA::Common::ENUM_TYPE_WHILE_CONDITION type_while_condition = MyEA::Common::ENUM_TYPE_WHILE_CONDITION::TYPE_WHILE_CONDITION_ITERATION;
+
+        union
         {
-            While_Condition(void) { }
+            unsigned long long maximum_iterations = 1ull;
 
-            enum MyEA::Common::ENUM_TYPE_WHILE_CONDITION type_while_condition = MyEA::Common::ENUM_TYPE_WHILE_CONDITION::TYPE_WHILE_CONDITION_ITERATION;
-
-            union
-            {
-                unsigned long long maximum_iterations = 1ull;
-                std::chrono::system_clock::time_point expiration;
-            };
+            std::chrono::system_clock::time_point expiration;
         };
-    }
+    };
 }

@@ -290,7 +290,7 @@
     <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Reallocate_cpp.hpp">
       <Filter>Header_Files\Tools</Filter>
     </ClInclude>
-    <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Shutdown_Block.hpp">
+    <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Shutdown_Capturing.hpp">
       <Filter>Header_Files\Tools</Filter>
     </ClInclude>
     <ClInclude Include="..\Common_Library_Windows\Header_Files\Tools\Shutdown_Block__Linux.hpp">

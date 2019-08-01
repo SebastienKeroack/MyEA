@@ -1,10 +1,10 @@
 #pragma once
 
-#include <Tools/Configuration.hpp>
+#include <Configuration/Configuration.hpp>
 
 #include <device_launch_parameters.h>
 
-namespace Memory
+namespace MyEA::Memory
 {
     template<typename T>
     __device__ void Memory_Initialize_Index(size_t const size_received,

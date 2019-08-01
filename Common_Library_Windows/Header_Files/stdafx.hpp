@@ -14,4 +14,4 @@
 #endif
 
 // TODO: reference additional headers your program requires here
-#include <Tools/Configuration.hpp>
+#include <Configuration/Configuration.hpp>

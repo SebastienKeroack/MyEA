@@ -1,13 +1,13 @@
-#include <Tools/CUDA_Configuration.cuh>
+#include <Configuration/CUDA/Configuration.cuh>
 
 #define LAUNCH_KERNEL_POINTER_1D(kernel_name_received, \
-                                                              ptr_grid_received, \
-                                                              ptr_block_received, \
-                                                              size_t_shared_memory_received, \
-                                                              size_received, ...) \
-            if(ptr_grid_received->x * ptr_block_received->x < size_received) { PREPROCESSED_CONCAT(kernel_while__, kernel_name_received) <<< *ptr_grid_received, *ptr_block_received, size_t_shared_memory_received >>> (size_received, __VA_ARGS__); } \
-            else if(ptr_grid_received->x * ptr_block_received->x > size_received) { PREPROCESSED_CONCAT(kernel__, kernel_name_received) <<< *ptr_grid_received, *ptr_block_received, size_t_shared_memory_received >>> (size_received, __VA_ARGS__); } \
-            else { PREPROCESSED_CONCAT(kernel__, kernel_name_received) <<< *ptr_grid_received, *ptr_block_received, size_t_shared_memory_received >>> (__VA_ARGS__); }
+                                 ptr_grid_received, \
+                                 ptr_block_received, \
+                                 size_t_shared_memory_received, \
+                                 size_received, ...) \
+    if(ptr_grid_received->x * ptr_block_received->x < size_received) { PREPROCESSED_CONCAT(kernel_while__, kernel_name_received) <<< *ptr_grid_received, *ptr_block_received, size_t_shared_memory_received >>> (size_received, __VA_ARGS__); } \
+    else if(ptr_grid_received->x * ptr_block_received->x > size_received) { PREPROCESSED_CONCAT(kernel__, kernel_name_received) <<< *ptr_grid_received, *ptr_block_received, size_t_shared_memory_received >>> (size_received, __VA_ARGS__); } \
+    else { PREPROCESSED_CONCAT(kernel__, kernel_name_received) <<< *ptr_grid_received, *ptr_block_received, size_t_shared_memory_received >>> (__VA_ARGS__); }
 
 template<typename T>
 __global__ void kernel__Fill_Pointers_1D(T *const ptr_array_outputs_received)

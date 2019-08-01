@@ -123,6 +123,2598 @@ Neural_Network_Library_Linux/fast:
 	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/build
 .PHONY : Neural_Network_Library_Linux/fast
 
+src/Neural_Network/Bayesian_Optimization.o: src/Neural_Network/Bayesian_Optimization.cpp.o
+
+.PHONY : src/Neural_Network/Bayesian_Optimization.o
+
+# target to build an object file
+src/Neural_Network/Bayesian_Optimization.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Bayesian_Optimization.cpp.o
+.PHONY : src/Neural_Network/Bayesian_Optimization.cpp.o
+
+src/Neural_Network/Bayesian_Optimization.i: src/Neural_Network/Bayesian_Optimization.cpp.i
+
+.PHONY : src/Neural_Network/Bayesian_Optimization.i
+
+# target to preprocess a source file
+src/Neural_Network/Bayesian_Optimization.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Bayesian_Optimization.cpp.i
+.PHONY : src/Neural_Network/Bayesian_Optimization.cpp.i
+
+src/Neural_Network/Bayesian_Optimization.s: src/Neural_Network/Bayesian_Optimization.cpp.s
+
+.PHONY : src/Neural_Network/Bayesian_Optimization.s
+
+# target to generate assembly for a file
+src/Neural_Network/Bayesian_Optimization.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Bayesian_Optimization.cpp.s
+.PHONY : src/Neural_Network/Bayesian_Optimization.cpp.s
+
+src/Neural_Network/Dataset.o: src/Neural_Network/Dataset.cpp.o
+
+.PHONY : src/Neural_Network/Dataset.o
+
+# target to build an object file
+src/Neural_Network/Dataset.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Dataset.cpp.o
+.PHONY : src/Neural_Network/Dataset.cpp.o
+
+src/Neural_Network/Dataset.i: src/Neural_Network/Dataset.cpp.i
+
+.PHONY : src/Neural_Network/Dataset.i
+
+# target to preprocess a source file
+src/Neural_Network/Dataset.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Dataset.cpp.i
+.PHONY : src/Neural_Network/Dataset.cpp.i
+
+src/Neural_Network/Dataset.s: src/Neural_Network/Dataset.cpp.s
+
+.PHONY : src/Neural_Network/Dataset.s
+
+# target to generate assembly for a file
+src/Neural_Network/Dataset.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Dataset.cpp.s
+.PHONY : src/Neural_Network/Dataset.cpp.s
+
+src/Neural_Network/Dataset_Manager.o: src/Neural_Network/Dataset_Manager.cpp.o
+
+.PHONY : src/Neural_Network/Dataset_Manager.o
+
+# target to build an object file
+src/Neural_Network/Dataset_Manager.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Dataset_Manager.cpp.o
+.PHONY : src/Neural_Network/Dataset_Manager.cpp.o
+
+src/Neural_Network/Dataset_Manager.i: src/Neural_Network/Dataset_Manager.cpp.i
+
+.PHONY : src/Neural_Network/Dataset_Manager.i
+
+# target to preprocess a source file
+src/Neural_Network/Dataset_Manager.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Dataset_Manager.cpp.i
+.PHONY : src/Neural_Network/Dataset_Manager.cpp.i
+
+src/Neural_Network/Dataset_Manager.s: src/Neural_Network/Dataset_Manager.cpp.s
+
+.PHONY : src/Neural_Network/Dataset_Manager.s
+
+# target to generate assembly for a file
+src/Neural_Network/Dataset_Manager.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Dataset_Manager.cpp.s
+.PHONY : src/Neural_Network/Dataset_Manager.cpp.s
+
+src/Neural_Network/Dataset__Cross_Validation.o: src/Neural_Network/Dataset__Cross_Validation.cpp.o
+
+.PHONY : src/Neural_Network/Dataset__Cross_Validation.o
+
+# target to build an object file
+src/Neural_Network/Dataset__Cross_Validation.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Dataset__Cross_Validation.cpp.o
+.PHONY : src/Neural_Network/Dataset__Cross_Validation.cpp.o
+
+src/Neural_Network/Dataset__Cross_Validation.i: src/Neural_Network/Dataset__Cross_Validation.cpp.i
+
+.PHONY : src/Neural_Network/Dataset__Cross_Validation.i
+
+# target to preprocess a source file
+src/Neural_Network/Dataset__Cross_Validation.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Dataset__Cross_Validation.cpp.i
+.PHONY : src/Neural_Network/Dataset__Cross_Validation.cpp.i
+
+src/Neural_Network/Dataset__Cross_Validation.s: src/Neural_Network/Dataset__Cross_Validation.cpp.s
+
+.PHONY : src/Neural_Network/Dataset__Cross_Validation.s
+
+# target to generate assembly for a file
+src/Neural_Network/Dataset__Cross_Validation.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Dataset__Cross_Validation.cpp.s
+.PHONY : src/Neural_Network/Dataset__Cross_Validation.cpp.s
+
+src/Neural_Network/Dataset__Cross_Validation__Hyper_Optimization.o: src/Neural_Network/Dataset__Cross_Validation__Hyper_Optimization.cpp.o
+
+.PHONY : src/Neural_Network/Dataset__Cross_Validation__Hyper_Optimization.o
+
+# target to build an object file
+src/Neural_Network/Dataset__Cross_Validation__Hyper_Optimization.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Dataset__Cross_Validation__Hyper_Optimization.cpp.o
+.PHONY : src/Neural_Network/Dataset__Cross_Validation__Hyper_Optimization.cpp.o
+
+src/Neural_Network/Dataset__Cross_Validation__Hyper_Optimization.i: src/Neural_Network/Dataset__Cross_Validation__Hyper_Optimization.cpp.i
+
+.PHONY : src/Neural_Network/Dataset__Cross_Validation__Hyper_Optimization.i
+
+# target to preprocess a source file
+src/Neural_Network/Dataset__Cross_Validation__Hyper_Optimization.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Dataset__Cross_Validation__Hyper_Optimization.cpp.i
+.PHONY : src/Neural_Network/Dataset__Cross_Validation__Hyper_Optimization.cpp.i
+
+src/Neural_Network/Dataset__Cross_Validation__Hyper_Optimization.s: src/Neural_Network/Dataset__Cross_Validation__Hyper_Optimization.cpp.s
+
+.PHONY : src/Neural_Network/Dataset__Cross_Validation__Hyper_Optimization.s
+
+# target to generate assembly for a file
+src/Neural_Network/Dataset__Cross_Validation__Hyper_Optimization.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Dataset__Cross_Validation__Hyper_Optimization.cpp.s
+.PHONY : src/Neural_Network/Dataset__Cross_Validation__Hyper_Optimization.cpp.s
+
+src/Neural_Network/Dataset__Mini_Batch.o: src/Neural_Network/Dataset__Mini_Batch.cpp.o
+
+.PHONY : src/Neural_Network/Dataset__Mini_Batch.o
+
+# target to build an object file
+src/Neural_Network/Dataset__Mini_Batch.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Dataset__Mini_Batch.cpp.o
+.PHONY : src/Neural_Network/Dataset__Mini_Batch.cpp.o
+
+src/Neural_Network/Dataset__Mini_Batch.i: src/Neural_Network/Dataset__Mini_Batch.cpp.i
+
+.PHONY : src/Neural_Network/Dataset__Mini_Batch.i
+
+# target to preprocess a source file
+src/Neural_Network/Dataset__Mini_Batch.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Dataset__Mini_Batch.cpp.i
+.PHONY : src/Neural_Network/Dataset__Mini_Batch.cpp.i
+
+src/Neural_Network/Dataset__Mini_Batch.s: src/Neural_Network/Dataset__Mini_Batch.cpp.s
+
+.PHONY : src/Neural_Network/Dataset__Mini_Batch.s
+
+# target to generate assembly for a file
+src/Neural_Network/Dataset__Mini_Batch.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Dataset__Mini_Batch.cpp.s
+.PHONY : src/Neural_Network/Dataset__Mini_Batch.cpp.s
+
+src/Neural_Network/Gaussian_Search.o: src/Neural_Network/Gaussian_Search.cpp.o
+
+.PHONY : src/Neural_Network/Gaussian_Search.o
+
+# target to build an object file
+src/Neural_Network/Gaussian_Search.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Gaussian_Search.cpp.o
+.PHONY : src/Neural_Network/Gaussian_Search.cpp.o
+
+src/Neural_Network/Gaussian_Search.i: src/Neural_Network/Gaussian_Search.cpp.i
+
+.PHONY : src/Neural_Network/Gaussian_Search.i
+
+# target to preprocess a source file
+src/Neural_Network/Gaussian_Search.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Gaussian_Search.cpp.i
+.PHONY : src/Neural_Network/Gaussian_Search.cpp.i
+
+src/Neural_Network/Gaussian_Search.s: src/Neural_Network/Gaussian_Search.cpp.s
+
+.PHONY : src/Neural_Network/Gaussian_Search.s
+
+# target to generate assembly for a file
+src/Neural_Network/Gaussian_Search.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Gaussian_Search.cpp.s
+.PHONY : src/Neural_Network/Gaussian_Search.cpp.s
+
+src/Neural_Network/Grid_Search.o: src/Neural_Network/Grid_Search.cpp.o
+
+.PHONY : src/Neural_Network/Grid_Search.o
+
+# target to build an object file
+src/Neural_Network/Grid_Search.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Grid_Search.cpp.o
+.PHONY : src/Neural_Network/Grid_Search.cpp.o
+
+src/Neural_Network/Grid_Search.i: src/Neural_Network/Grid_Search.cpp.i
+
+.PHONY : src/Neural_Network/Grid_Search.i
+
+# target to preprocess a source file
+src/Neural_Network/Grid_Search.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Grid_Search.cpp.i
+.PHONY : src/Neural_Network/Grid_Search.cpp.i
+
+src/Neural_Network/Grid_Search.s: src/Neural_Network/Grid_Search.cpp.s
+
+.PHONY : src/Neural_Network/Grid_Search.s
+
+# target to generate assembly for a file
+src/Neural_Network/Grid_Search.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Grid_Search.cpp.s
+.PHONY : src/Neural_Network/Grid_Search.cpp.s
+
+src/Neural_Network/Hyper_Optimization.o: src/Neural_Network/Hyper_Optimization.cpp.o
+
+.PHONY : src/Neural_Network/Hyper_Optimization.o
+
+# target to build an object file
+src/Neural_Network/Hyper_Optimization.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Hyper_Optimization.cpp.o
+.PHONY : src/Neural_Network/Hyper_Optimization.cpp.o
+
+src/Neural_Network/Hyper_Optimization.i: src/Neural_Network/Hyper_Optimization.cpp.i
+
+.PHONY : src/Neural_Network/Hyper_Optimization.i
+
+# target to preprocess a source file
+src/Neural_Network/Hyper_Optimization.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Hyper_Optimization.cpp.i
+.PHONY : src/Neural_Network/Hyper_Optimization.cpp.i
+
+src/Neural_Network/Hyper_Optimization.s: src/Neural_Network/Hyper_Optimization.cpp.s
+
+.PHONY : src/Neural_Network/Hyper_Optimization.s
+
+# target to generate assembly for a file
+src/Neural_Network/Hyper_Optimization.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Hyper_Optimization.cpp.s
+.PHONY : src/Neural_Network/Hyper_Optimization.cpp.s
+
+src/Neural_Network/Neural_Network.o: src/Neural_Network/Neural_Network.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network.cpp.o
+.PHONY : src/Neural_Network/Neural_Network.cpp.o
+
+src/Neural_Network/Neural_Network.i: src/Neural_Network/Neural_Network.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network.cpp.i
+.PHONY : src/Neural_Network/Neural_Network.cpp.i
+
+src/Neural_Network/Neural_Network.s: src/Neural_Network/Neural_Network.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network.cpp.s
+.PHONY : src/Neural_Network/Neural_Network.cpp.s
+
+src/Neural_Network/Neural_Network_Manager.o: src/Neural_Network/Neural_Network_Manager.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network_Manager.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network_Manager.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network_Manager.cpp.o
+.PHONY : src/Neural_Network/Neural_Network_Manager.cpp.o
+
+src/Neural_Network/Neural_Network_Manager.i: src/Neural_Network/Neural_Network_Manager.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network_Manager.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network_Manager.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network_Manager.cpp.i
+.PHONY : src/Neural_Network/Neural_Network_Manager.cpp.i
+
+src/Neural_Network/Neural_Network_Manager.s: src/Neural_Network/Neural_Network_Manager.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network_Manager.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network_Manager.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network_Manager.cpp.s
+.PHONY : src/Neural_Network/Neural_Network_Manager.cpp.s
+
+src/Neural_Network/Neural_Network__AMSBound.o: src/Neural_Network/Neural_Network__AMSBound.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__AMSBound.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__AMSBound.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__AMSBound.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__AMSBound.cpp.o
+
+src/Neural_Network/Neural_Network__AMSBound.i: src/Neural_Network/Neural_Network__AMSBound.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__AMSBound.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__AMSBound.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__AMSBound.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__AMSBound.cpp.i
+
+src/Neural_Network/Neural_Network__AMSBound.s: src/Neural_Network/Neural_Network__AMSBound.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__AMSBound.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__AMSBound.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__AMSBound.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__AMSBound.cpp.s
+
+src/Neural_Network/Neural_Network__AMSGrad.o: src/Neural_Network/Neural_Network__AMSGrad.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__AMSGrad.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__AMSGrad.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__AMSGrad.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__AMSGrad.cpp.o
+
+src/Neural_Network/Neural_Network__AMSGrad.i: src/Neural_Network/Neural_Network__AMSGrad.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__AMSGrad.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__AMSGrad.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__AMSGrad.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__AMSGrad.cpp.i
+
+src/Neural_Network/Neural_Network__AMSGrad.s: src/Neural_Network/Neural_Network__AMSGrad.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__AMSGrad.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__AMSGrad.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__AMSGrad.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__AMSGrad.cpp.s
+
+src/Neural_Network/Neural_Network__Accuracy.o: src/Neural_Network/Neural_Network__Accuracy.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Accuracy.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Accuracy.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Accuracy.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Accuracy.cpp.o
+
+src/Neural_Network/Neural_Network__Accuracy.i: src/Neural_Network/Neural_Network__Accuracy.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Accuracy.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Accuracy.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Accuracy.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Accuracy.cpp.i
+
+src/Neural_Network/Neural_Network__Accuracy.s: src/Neural_Network/Neural_Network__Accuracy.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Accuracy.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Accuracy.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Accuracy.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Accuracy.cpp.s
+
+src/Neural_Network/Neural_Network__AdaBound.o: src/Neural_Network/Neural_Network__AdaBound.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__AdaBound.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__AdaBound.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__AdaBound.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__AdaBound.cpp.o
+
+src/Neural_Network/Neural_Network__AdaBound.i: src/Neural_Network/Neural_Network__AdaBound.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__AdaBound.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__AdaBound.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__AdaBound.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__AdaBound.cpp.i
+
+src/Neural_Network/Neural_Network__AdaBound.s: src/Neural_Network/Neural_Network__AdaBound.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__AdaBound.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__AdaBound.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__AdaBound.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__AdaBound.cpp.s
+
+src/Neural_Network/Neural_Network__Adam.o: src/Neural_Network/Neural_Network__Adam.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Adam.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Adam.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Adam.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Adam.cpp.o
+
+src/Neural_Network/Neural_Network__Adam.i: src/Neural_Network/Neural_Network__Adam.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Adam.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Adam.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Adam.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Adam.cpp.i
+
+src/Neural_Network/Neural_Network__Adam.s: src/Neural_Network/Neural_Network__Adam.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Adam.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Adam.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Adam.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Adam.cpp.s
+
+src/Neural_Network/Neural_Network__Allocate.o: src/Neural_Network/Neural_Network__Allocate.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Allocate.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Allocate.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Allocate.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Allocate.cpp.o
+
+src/Neural_Network/Neural_Network__Allocate.i: src/Neural_Network/Neural_Network__Allocate.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Allocate.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Allocate.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Allocate.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Allocate.cpp.i
+
+src/Neural_Network/Neural_Network__Allocate.s: src/Neural_Network/Neural_Network__Allocate.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Allocate.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Allocate.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Allocate.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Allocate.cpp.s
+
+src/Neural_Network/Neural_Network__Assign_Inputs.o: src/Neural_Network/Neural_Network__Assign_Inputs.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Assign_Inputs.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Assign_Inputs.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Assign_Inputs.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Assign_Inputs.cpp.o
+
+src/Neural_Network/Neural_Network__Assign_Inputs.i: src/Neural_Network/Neural_Network__Assign_Inputs.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Assign_Inputs.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Assign_Inputs.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Assign_Inputs.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Assign_Inputs.cpp.i
+
+src/Neural_Network/Neural_Network__Assign_Inputs.s: src/Neural_Network/Neural_Network__Assign_Inputs.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Assign_Inputs.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Assign_Inputs.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Assign_Inputs.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Assign_Inputs.cpp.s
+
+src/Neural_Network/Neural_Network__Backward_Pass__Loop.o: src/Neural_Network/Neural_Network__Backward_Pass__Loop.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Backward_Pass__Loop.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Backward_Pass__Loop.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Backward_Pass__Loop.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Backward_Pass__Loop.cpp.o
+
+src/Neural_Network/Neural_Network__Backward_Pass__Loop.i: src/Neural_Network/Neural_Network__Backward_Pass__Loop.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Backward_Pass__Loop.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Backward_Pass__Loop.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Backward_Pass__Loop.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Backward_Pass__Loop.cpp.i
+
+src/Neural_Network/Neural_Network__Backward_Pass__Loop.s: src/Neural_Network/Neural_Network__Backward_Pass__Loop.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Backward_Pass__Loop.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Backward_Pass__Loop.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Backward_Pass__Loop.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Backward_Pass__Loop.cpp.s
+
+src/Neural_Network/Neural_Network__Backward_Pass__OpenMP.o: src/Neural_Network/Neural_Network__Backward_Pass__OpenMP.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Backward_Pass__OpenMP.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Backward_Pass__OpenMP.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Backward_Pass__OpenMP.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Backward_Pass__OpenMP.cpp.o
+
+src/Neural_Network/Neural_Network__Backward_Pass__OpenMP.i: src/Neural_Network/Neural_Network__Backward_Pass__OpenMP.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Backward_Pass__OpenMP.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Backward_Pass__OpenMP.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Backward_Pass__OpenMP.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Backward_Pass__OpenMP.cpp.i
+
+src/Neural_Network/Neural_Network__Backward_Pass__OpenMP.s: src/Neural_Network/Neural_Network__Backward_Pass__OpenMP.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Backward_Pass__OpenMP.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Backward_Pass__OpenMP.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Backward_Pass__OpenMP.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Backward_Pass__OpenMP.cpp.s
+
+src/Neural_Network/Neural_Network__Batch_Normalization.o: src/Neural_Network/Neural_Network__Batch_Normalization.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Batch_Normalization.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Batch_Normalization.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Batch_Normalization.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Batch_Normalization.cpp.o
+
+src/Neural_Network/Neural_Network__Batch_Normalization.i: src/Neural_Network/Neural_Network__Batch_Normalization.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Batch_Normalization.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Batch_Normalization.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Batch_Normalization.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Batch_Normalization.cpp.i
+
+src/Neural_Network/Neural_Network__Batch_Normalization.s: src/Neural_Network/Neural_Network__Batch_Normalization.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Batch_Normalization.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Batch_Normalization.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Batch_Normalization.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Batch_Normalization.cpp.s
+
+src/Neural_Network/Neural_Network__Batch_Renormalization.o: src/Neural_Network/Neural_Network__Batch_Renormalization.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Batch_Renormalization.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Batch_Renormalization.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Batch_Renormalization.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Batch_Renormalization.cpp.o
+
+src/Neural_Network/Neural_Network__Batch_Renormalization.i: src/Neural_Network/Neural_Network__Batch_Renormalization.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Batch_Renormalization.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Batch_Renormalization.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Batch_Renormalization.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Batch_Renormalization.cpp.i
+
+src/Neural_Network/Neural_Network__Batch_Renormalization.s: src/Neural_Network/Neural_Network__Batch_Renormalization.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Batch_Renormalization.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Batch_Renormalization.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Batch_Renormalization.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Batch_Renormalization.cpp.s
+
+src/Neural_Network/Neural_Network__Clip_Gradient.o: src/Neural_Network/Neural_Network__Clip_Gradient.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Clip_Gradient.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Clip_Gradient.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Clip_Gradient.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Clip_Gradient.cpp.o
+
+src/Neural_Network/Neural_Network__Clip_Gradient.i: src/Neural_Network/Neural_Network__Clip_Gradient.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Clip_Gradient.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Clip_Gradient.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Clip_Gradient.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Clip_Gradient.cpp.i
+
+src/Neural_Network/Neural_Network__Clip_Gradient.s: src/Neural_Network/Neural_Network__Clip_Gradient.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Clip_Gradient.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Clip_Gradient.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Clip_Gradient.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Clip_Gradient.cpp.s
+
+src/Neural_Network/Neural_Network__Compile.o: src/Neural_Network/Neural_Network__Compile.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Compile.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Compile.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Compile.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Compile.cpp.o
+
+src/Neural_Network/Neural_Network__Compile.i: src/Neural_Network/Neural_Network__Compile.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Compile.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Compile.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Compile.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Compile.cpp.i
+
+src/Neural_Network/Neural_Network__Compile.s: src/Neural_Network/Neural_Network__Compile.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Compile.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Compile.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Compile.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Compile.cpp.s
+
+src/Neural_Network/Neural_Network__Compute__Error__Loop.o: src/Neural_Network/Neural_Network__Compute__Error__Loop.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Compute__Error__Loop.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Compute__Error__Loop.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Compute__Error__Loop.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Compute__Error__Loop.cpp.o
+
+src/Neural_Network/Neural_Network__Compute__Error__Loop.i: src/Neural_Network/Neural_Network__Compute__Error__Loop.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Compute__Error__Loop.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Compute__Error__Loop.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Compute__Error__Loop.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Compute__Error__Loop.cpp.i
+
+src/Neural_Network/Neural_Network__Compute__Error__Loop.s: src/Neural_Network/Neural_Network__Compute__Error__Loop.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Compute__Error__Loop.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Compute__Error__Loop.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Compute__Error__Loop.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Compute__Error__Loop.cpp.s
+
+src/Neural_Network/Neural_Network__Compute__Error__OpenMP.o: src/Neural_Network/Neural_Network__Compute__Error__OpenMP.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Compute__Error__OpenMP.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Compute__Error__OpenMP.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Compute__Error__OpenMP.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Compute__Error__OpenMP.cpp.o
+
+src/Neural_Network/Neural_Network__Compute__Error__OpenMP.i: src/Neural_Network/Neural_Network__Compute__Error__OpenMP.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Compute__Error__OpenMP.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Compute__Error__OpenMP.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Compute__Error__OpenMP.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Compute__Error__OpenMP.cpp.i
+
+src/Neural_Network/Neural_Network__Compute__Error__OpenMP.s: src/Neural_Network/Neural_Network__Compute__Error__OpenMP.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Compute__Error__OpenMP.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Compute__Error__OpenMP.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Compute__Error__OpenMP.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Compute__Error__OpenMP.cpp.s
+
+src/Neural_Network/Neural_Network__Compute__Loss__Loop.o: src/Neural_Network/Neural_Network__Compute__Loss__Loop.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Compute__Loss__Loop.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Compute__Loss__Loop.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Compute__Loss__Loop.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Compute__Loss__Loop.cpp.o
+
+src/Neural_Network/Neural_Network__Compute__Loss__Loop.i: src/Neural_Network/Neural_Network__Compute__Loss__Loop.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Compute__Loss__Loop.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Compute__Loss__Loop.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Compute__Loss__Loop.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Compute__Loss__Loop.cpp.i
+
+src/Neural_Network/Neural_Network__Compute__Loss__Loop.s: src/Neural_Network/Neural_Network__Compute__Loss__Loop.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Compute__Loss__Loop.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Compute__Loss__Loop.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Compute__Loss__Loop.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Compute__Loss__Loop.cpp.s
+
+src/Neural_Network/Neural_Network__Compute__Loss__OpenMP.o: src/Neural_Network/Neural_Network__Compute__Loss__OpenMP.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Compute__Loss__OpenMP.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Compute__Loss__OpenMP.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Compute__Loss__OpenMP.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Compute__Loss__OpenMP.cpp.o
+
+src/Neural_Network/Neural_Network__Compute__Loss__OpenMP.i: src/Neural_Network/Neural_Network__Compute__Loss__OpenMP.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Compute__Loss__OpenMP.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Compute__Loss__OpenMP.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Compute__Loss__OpenMP.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Compute__Loss__OpenMP.cpp.i
+
+src/Neural_Network/Neural_Network__Compute__Loss__OpenMP.s: src/Neural_Network/Neural_Network__Compute__Loss__OpenMP.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Compute__Loss__OpenMP.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Compute__Loss__OpenMP.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Compute__Loss__OpenMP.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Compute__Loss__OpenMP.cpp.s
+
+src/Neural_Network/Neural_Network__Compute__R__Loop.o: src/Neural_Network/Neural_Network__Compute__R__Loop.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Compute__R__Loop.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Compute__R__Loop.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Compute__R__Loop.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Compute__R__Loop.cpp.o
+
+src/Neural_Network/Neural_Network__Compute__R__Loop.i: src/Neural_Network/Neural_Network__Compute__R__Loop.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Compute__R__Loop.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Compute__R__Loop.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Compute__R__Loop.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Compute__R__Loop.cpp.i
+
+src/Neural_Network/Neural_Network__Compute__R__Loop.s: src/Neural_Network/Neural_Network__Compute__R__Loop.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Compute__R__Loop.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Compute__R__Loop.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Compute__R__Loop.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Compute__R__Loop.cpp.s
+
+src/Neural_Network/Neural_Network__Compute__R__OpenMP.o: src/Neural_Network/Neural_Network__Compute__R__OpenMP.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Compute__R__OpenMP.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Compute__R__OpenMP.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Compute__R__OpenMP.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Compute__R__OpenMP.cpp.o
+
+src/Neural_Network/Neural_Network__Compute__R__OpenMP.i: src/Neural_Network/Neural_Network__Compute__R__OpenMP.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Compute__R__OpenMP.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Compute__R__OpenMP.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Compute__R__OpenMP.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Compute__R__OpenMP.cpp.i
+
+src/Neural_Network/Neural_Network__Compute__R__OpenMP.s: src/Neural_Network/Neural_Network__Compute__R__OpenMP.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Compute__R__OpenMP.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Compute__R__OpenMP.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Compute__R__OpenMP.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Compute__R__OpenMP.cpp.s
+
+src/Neural_Network/Neural_Network__Copy.o: src/Neural_Network/Neural_Network__Copy.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Copy.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Copy.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Copy.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Copy.cpp.o
+
+src/Neural_Network/Neural_Network__Copy.i: src/Neural_Network/Neural_Network__Copy.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Copy.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Copy.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Copy.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Copy.cpp.i
+
+src/Neural_Network/Neural_Network__Copy.s: src/Neural_Network/Neural_Network__Copy.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Copy.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Copy.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Copy.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Copy.cpp.s
+
+src/Neural_Network/Neural_Network__Deallocate.o: src/Neural_Network/Neural_Network__Deallocate.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Deallocate.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Deallocate.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Deallocate.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Deallocate.cpp.o
+
+src/Neural_Network/Neural_Network__Deallocate.i: src/Neural_Network/Neural_Network__Deallocate.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Deallocate.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Deallocate.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Deallocate.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Deallocate.cpp.i
+
+src/Neural_Network/Neural_Network__Deallocate.s: src/Neural_Network/Neural_Network__Deallocate.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Deallocate.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Deallocate.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Deallocate.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Deallocate.cpp.s
+
+src/Neural_Network/Neural_Network__Dropout.o: src/Neural_Network/Neural_Network__Dropout.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Dropout.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Dropout.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Dropout.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Dropout.cpp.o
+
+src/Neural_Network/Neural_Network__Dropout.i: src/Neural_Network/Neural_Network__Dropout.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Dropout.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Dropout.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Dropout.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Dropout.cpp.i
+
+src/Neural_Network/Neural_Network__Dropout.s: src/Neural_Network/Neural_Network__Dropout.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Dropout.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Dropout.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Dropout.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Dropout.cpp.s
+
+src/Neural_Network/Neural_Network__Dropout__Bernoulli__Loop.o: src/Neural_Network/Neural_Network__Dropout__Bernoulli__Loop.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Dropout__Bernoulli__Loop.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Dropout__Bernoulli__Loop.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Dropout__Bernoulli__Loop.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Dropout__Bernoulli__Loop.cpp.o
+
+src/Neural_Network/Neural_Network__Dropout__Bernoulli__Loop.i: src/Neural_Network/Neural_Network__Dropout__Bernoulli__Loop.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Dropout__Bernoulli__Loop.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Dropout__Bernoulli__Loop.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Dropout__Bernoulli__Loop.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Dropout__Bernoulli__Loop.cpp.i
+
+src/Neural_Network/Neural_Network__Dropout__Bernoulli__Loop.s: src/Neural_Network/Neural_Network__Dropout__Bernoulli__Loop.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Dropout__Bernoulli__Loop.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Dropout__Bernoulli__Loop.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Dropout__Bernoulli__Loop.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Dropout__Bernoulli__Loop.cpp.s
+
+src/Neural_Network/Neural_Network__Dropout__Bernoulli__OpenMP.o: src/Neural_Network/Neural_Network__Dropout__Bernoulli__OpenMP.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Dropout__Bernoulli__OpenMP.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Dropout__Bernoulli__OpenMP.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Dropout__Bernoulli__OpenMP.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Dropout__Bernoulli__OpenMP.cpp.o
+
+src/Neural_Network/Neural_Network__Dropout__Bernoulli__OpenMP.i: src/Neural_Network/Neural_Network__Dropout__Bernoulli__OpenMP.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Dropout__Bernoulli__OpenMP.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Dropout__Bernoulli__OpenMP.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Dropout__Bernoulli__OpenMP.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Dropout__Bernoulli__OpenMP.cpp.i
+
+src/Neural_Network/Neural_Network__Dropout__Bernoulli__OpenMP.s: src/Neural_Network/Neural_Network__Dropout__Bernoulli__OpenMP.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Dropout__Bernoulli__OpenMP.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Dropout__Bernoulli__OpenMP.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Dropout__Bernoulli__OpenMP.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Dropout__Bernoulli__OpenMP.cpp.s
+
+src/Neural_Network/Neural_Network__Dropout__Zoneout__Loop.o: src/Neural_Network/Neural_Network__Dropout__Zoneout__Loop.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Dropout__Zoneout__Loop.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Dropout__Zoneout__Loop.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Dropout__Zoneout__Loop.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Dropout__Zoneout__Loop.cpp.o
+
+src/Neural_Network/Neural_Network__Dropout__Zoneout__Loop.i: src/Neural_Network/Neural_Network__Dropout__Zoneout__Loop.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Dropout__Zoneout__Loop.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Dropout__Zoneout__Loop.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Dropout__Zoneout__Loop.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Dropout__Zoneout__Loop.cpp.i
+
+src/Neural_Network/Neural_Network__Dropout__Zoneout__Loop.s: src/Neural_Network/Neural_Network__Dropout__Zoneout__Loop.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Dropout__Zoneout__Loop.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Dropout__Zoneout__Loop.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Dropout__Zoneout__Loop.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Dropout__Zoneout__Loop.cpp.s
+
+src/Neural_Network/Neural_Network__Dropout__Zoneout__OpenMP.o: src/Neural_Network/Neural_Network__Dropout__Zoneout__OpenMP.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Dropout__Zoneout__OpenMP.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Dropout__Zoneout__OpenMP.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Dropout__Zoneout__OpenMP.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Dropout__Zoneout__OpenMP.cpp.o
+
+src/Neural_Network/Neural_Network__Dropout__Zoneout__OpenMP.i: src/Neural_Network/Neural_Network__Dropout__Zoneout__OpenMP.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Dropout__Zoneout__OpenMP.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Dropout__Zoneout__OpenMP.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Dropout__Zoneout__OpenMP.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Dropout__Zoneout__OpenMP.cpp.i
+
+src/Neural_Network/Neural_Network__Dropout__Zoneout__OpenMP.s: src/Neural_Network/Neural_Network__Dropout__Zoneout__OpenMP.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Dropout__Zoneout__OpenMP.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Dropout__Zoneout__OpenMP.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Dropout__Zoneout__OpenMP.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Dropout__Zoneout__OpenMP.cpp.s
+
+src/Neural_Network/Neural_Network__Forward_Pass__Loop.o: src/Neural_Network/Neural_Network__Forward_Pass__Loop.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Forward_Pass__Loop.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Forward_Pass__Loop.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Forward_Pass__Loop.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Forward_Pass__Loop.cpp.o
+
+src/Neural_Network/Neural_Network__Forward_Pass__Loop.i: src/Neural_Network/Neural_Network__Forward_Pass__Loop.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Forward_Pass__Loop.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Forward_Pass__Loop.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Forward_Pass__Loop.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Forward_Pass__Loop.cpp.i
+
+src/Neural_Network/Neural_Network__Forward_Pass__Loop.s: src/Neural_Network/Neural_Network__Forward_Pass__Loop.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Forward_Pass__Loop.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Forward_Pass__Loop.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Forward_Pass__Loop.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Forward_Pass__Loop.cpp.s
+
+src/Neural_Network/Neural_Network__Forward_Pass__OpenMP.o: src/Neural_Network/Neural_Network__Forward_Pass__OpenMP.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Forward_Pass__OpenMP.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Forward_Pass__OpenMP.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Forward_Pass__OpenMP.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Forward_Pass__OpenMP.cpp.o
+
+src/Neural_Network/Neural_Network__Forward_Pass__OpenMP.i: src/Neural_Network/Neural_Network__Forward_Pass__OpenMP.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Forward_Pass__OpenMP.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Forward_Pass__OpenMP.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Forward_Pass__OpenMP.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Forward_Pass__OpenMP.cpp.i
+
+src/Neural_Network/Neural_Network__Forward_Pass__OpenMP.s: src/Neural_Network/Neural_Network__Forward_Pass__OpenMP.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Forward_Pass__OpenMP.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Forward_Pass__OpenMP.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Forward_Pass__OpenMP.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Forward_Pass__OpenMP.cpp.s
+
+src/Neural_Network/Neural_Network__Gradient_Descent.o: src/Neural_Network/Neural_Network__Gradient_Descent.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Gradient_Descent.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Gradient_Descent.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Gradient_Descent.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Gradient_Descent.cpp.o
+
+src/Neural_Network/Neural_Network__Gradient_Descent.i: src/Neural_Network/Neural_Network__Gradient_Descent.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Gradient_Descent.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Gradient_Descent.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Gradient_Descent.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Gradient_Descent.cpp.i
+
+src/Neural_Network/Neural_Network__Gradient_Descent.s: src/Neural_Network/Neural_Network__Gradient_Descent.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Gradient_Descent.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Gradient_Descent.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Gradient_Descent.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Gradient_Descent.cpp.s
+
+src/Neural_Network/Neural_Network__Gradient_Descent_Momentum.o: src/Neural_Network/Neural_Network__Gradient_Descent_Momentum.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Gradient_Descent_Momentum.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Gradient_Descent_Momentum.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Gradient_Descent_Momentum.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Gradient_Descent_Momentum.cpp.o
+
+src/Neural_Network/Neural_Network__Gradient_Descent_Momentum.i: src/Neural_Network/Neural_Network__Gradient_Descent_Momentum.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Gradient_Descent_Momentum.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Gradient_Descent_Momentum.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Gradient_Descent_Momentum.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Gradient_Descent_Momentum.cpp.i
+
+src/Neural_Network/Neural_Network__Gradient_Descent_Momentum.s: src/Neural_Network/Neural_Network__Gradient_Descent_Momentum.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Gradient_Descent_Momentum.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Gradient_Descent_Momentum.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Gradient_Descent_Momentum.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Gradient_Descent_Momentum.cpp.s
+
+src/Neural_Network/Neural_Network__Indexing.o: src/Neural_Network/Neural_Network__Indexing.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Indexing.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Indexing.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Indexing.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Indexing.cpp.o
+
+src/Neural_Network/Neural_Network__Indexing.i: src/Neural_Network/Neural_Network__Indexing.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Indexing.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Indexing.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Indexing.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Indexing.cpp.i
+
+src/Neural_Network/Neural_Network__Indexing.s: src/Neural_Network/Neural_Network__Indexing.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Indexing.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Indexing.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Indexing.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Indexing.cpp.s
+
+src/Neural_Network/Neural_Network__Initialization__Glorot.o: src/Neural_Network/Neural_Network__Initialization__Glorot.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Initialization__Glorot.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Initialization__Glorot.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Initialization__Glorot.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Initialization__Glorot.cpp.o
+
+src/Neural_Network/Neural_Network__Initialization__Glorot.i: src/Neural_Network/Neural_Network__Initialization__Glorot.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Initialization__Glorot.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Initialization__Glorot.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Initialization__Glorot.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Initialization__Glorot.cpp.i
+
+src/Neural_Network/Neural_Network__Initialization__Glorot.s: src/Neural_Network/Neural_Network__Initialization__Glorot.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Initialization__Glorot.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Initialization__Glorot.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Initialization__Glorot.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Initialization__Glorot.cpp.s
+
+src/Neural_Network/Neural_Network__Initialization__Identity.o: src/Neural_Network/Neural_Network__Initialization__Identity.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Initialization__Identity.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Initialization__Identity.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Initialization__Identity.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Initialization__Identity.cpp.o
+
+src/Neural_Network/Neural_Network__Initialization__Identity.i: src/Neural_Network/Neural_Network__Initialization__Identity.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Initialization__Identity.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Initialization__Identity.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Initialization__Identity.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Initialization__Identity.cpp.i
+
+src/Neural_Network/Neural_Network__Initialization__Identity.s: src/Neural_Network/Neural_Network__Initialization__Identity.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Initialization__Identity.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Initialization__Identity.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Initialization__Identity.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Initialization__Identity.cpp.s
+
+src/Neural_Network/Neural_Network__Initialization__LSUV.o: src/Neural_Network/Neural_Network__Initialization__LSUV.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Initialization__LSUV.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Initialization__LSUV.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Initialization__LSUV.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Initialization__LSUV.cpp.o
+
+src/Neural_Network/Neural_Network__Initialization__LSUV.i: src/Neural_Network/Neural_Network__Initialization__LSUV.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Initialization__LSUV.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Initialization__LSUV.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Initialization__LSUV.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Initialization__LSUV.cpp.i
+
+src/Neural_Network/Neural_Network__Initialization__LSUV.s: src/Neural_Network/Neural_Network__Initialization__LSUV.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Initialization__LSUV.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Initialization__LSUV.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Initialization__LSUV.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Initialization__LSUV.cpp.s
+
+src/Neural_Network/Neural_Network__Initialization__Orthogonal.o: src/Neural_Network/Neural_Network__Initialization__Orthogonal.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Initialization__Orthogonal.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Initialization__Orthogonal.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Initialization__Orthogonal.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Initialization__Orthogonal.cpp.o
+
+src/Neural_Network/Neural_Network__Initialization__Orthogonal.i: src/Neural_Network/Neural_Network__Initialization__Orthogonal.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Initialization__Orthogonal.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Initialization__Orthogonal.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Initialization__Orthogonal.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Initialization__Orthogonal.cpp.i
+
+src/Neural_Network/Neural_Network__Initialization__Orthogonal.s: src/Neural_Network/Neural_Network__Initialization__Orthogonal.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Initialization__Orthogonal.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Initialization__Orthogonal.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Initialization__Orthogonal.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Initialization__Orthogonal.cpp.s
+
+src/Neural_Network/Neural_Network__Initialization__Uniform.o: src/Neural_Network/Neural_Network__Initialization__Uniform.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Initialization__Uniform.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Initialization__Uniform.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Initialization__Uniform.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Initialization__Uniform.cpp.o
+
+src/Neural_Network/Neural_Network__Initialization__Uniform.i: src/Neural_Network/Neural_Network__Initialization__Uniform.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Initialization__Uniform.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Initialization__Uniform.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Initialization__Uniform.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Initialization__Uniform.cpp.i
+
+src/Neural_Network/Neural_Network__Initialization__Uniform.s: src/Neural_Network/Neural_Network__Initialization__Uniform.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Initialization__Uniform.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Initialization__Uniform.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Initialization__Uniform.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Initialization__Uniform.cpp.s
+
+src/Neural_Network/Neural_Network__K_Sparse.o: src/Neural_Network/Neural_Network__K_Sparse.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__K_Sparse.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__K_Sparse.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__K_Sparse.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__K_Sparse.cpp.o
+
+src/Neural_Network/Neural_Network__K_Sparse.i: src/Neural_Network/Neural_Network__K_Sparse.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__K_Sparse.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__K_Sparse.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__K_Sparse.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__K_Sparse.cpp.i
+
+src/Neural_Network/Neural_Network__K_Sparse.s: src/Neural_Network/Neural_Network__K_Sparse.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__K_Sparse.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__K_Sparse.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__K_Sparse.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__K_Sparse.cpp.s
+
+src/Neural_Network/Neural_Network__Layer_Normalization.o: src/Neural_Network/Neural_Network__Layer_Normalization.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Layer_Normalization.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Layer_Normalization.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Layer_Normalization.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Layer_Normalization.cpp.o
+
+src/Neural_Network/Neural_Network__Layer_Normalization.i: src/Neural_Network/Neural_Network__Layer_Normalization.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Layer_Normalization.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Layer_Normalization.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Layer_Normalization.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Layer_Normalization.cpp.i
+
+src/Neural_Network/Neural_Network__Layer_Normalization.s: src/Neural_Network/Neural_Network__Layer_Normalization.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Layer_Normalization.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Layer_Normalization.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Layer_Normalization.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Layer_Normalization.cpp.s
+
+src/Neural_Network/Neural_Network__Load.o: src/Neural_Network/Neural_Network__Load.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Load.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Load.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Load.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Load.cpp.o
+
+src/Neural_Network/Neural_Network__Load.i: src/Neural_Network/Neural_Network__Load.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Load.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Load.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Load.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Load.cpp.i
+
+src/Neural_Network/Neural_Network__Load.s: src/Neural_Network/Neural_Network__Load.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Load.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Load.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Load.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Load.cpp.s
+
+src/Neural_Network/Neural_Network__Loss.o: src/Neural_Network/Neural_Network__Loss.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Loss.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Loss.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Loss.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Loss.cpp.o
+
+src/Neural_Network/Neural_Network__Loss.i: src/Neural_Network/Neural_Network__Loss.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Loss.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Loss.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Loss.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Loss.cpp.i
+
+src/Neural_Network/Neural_Network__Loss.s: src/Neural_Network/Neural_Network__Loss.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Loss.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Loss.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Loss.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Loss.cpp.s
+
+src/Neural_Network/Neural_Network__Merge.o: src/Neural_Network/Neural_Network__Merge.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Merge.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Merge.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Merge.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Merge.cpp.o
+
+src/Neural_Network/Neural_Network__Merge.i: src/Neural_Network/Neural_Network__Merge.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Merge.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Merge.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Merge.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Merge.cpp.i
+
+src/Neural_Network/Neural_Network__Merge.s: src/Neural_Network/Neural_Network__Merge.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Merge.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Merge.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Merge.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Merge.cpp.s
+
+src/Neural_Network/Neural_Network__Nesterov_Accelerated_Gradient.o: src/Neural_Network/Neural_Network__Nesterov_Accelerated_Gradient.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Nesterov_Accelerated_Gradient.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Nesterov_Accelerated_Gradient.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Nesterov_Accelerated_Gradient.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Nesterov_Accelerated_Gradient.cpp.o
+
+src/Neural_Network/Neural_Network__Nesterov_Accelerated_Gradient.i: src/Neural_Network/Neural_Network__Nesterov_Accelerated_Gradient.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Nesterov_Accelerated_Gradient.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Nesterov_Accelerated_Gradient.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Nesterov_Accelerated_Gradient.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Nesterov_Accelerated_Gradient.cpp.i
+
+src/Neural_Network/Neural_Network__Nesterov_Accelerated_Gradient.s: src/Neural_Network/Neural_Network__Nesterov_Accelerated_Gradient.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Nesterov_Accelerated_Gradient.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Nesterov_Accelerated_Gradient.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Nesterov_Accelerated_Gradient.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Nesterov_Accelerated_Gradient.cpp.s
+
+src/Neural_Network/Neural_Network__NosAdam.o: src/Neural_Network/Neural_Network__NosAdam.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__NosAdam.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__NosAdam.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__NosAdam.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__NosAdam.cpp.o
+
+src/Neural_Network/Neural_Network__NosAdam.i: src/Neural_Network/Neural_Network__NosAdam.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__NosAdam.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__NosAdam.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__NosAdam.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__NosAdam.cpp.i
+
+src/Neural_Network/Neural_Network__NosAdam.s: src/Neural_Network/Neural_Network__NosAdam.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__NosAdam.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__NosAdam.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__NosAdam.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__NosAdam.cpp.s
+
+src/Neural_Network/Neural_Network__OpenMP.o: src/Neural_Network/Neural_Network__OpenMP.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__OpenMP.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__OpenMP.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__OpenMP.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__OpenMP.cpp.o
+
+src/Neural_Network/Neural_Network__OpenMP.i: src/Neural_Network/Neural_Network__OpenMP.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__OpenMP.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__OpenMP.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__OpenMP.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__OpenMP.cpp.i
+
+src/Neural_Network/Neural_Network__OpenMP.s: src/Neural_Network/Neural_Network__OpenMP.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__OpenMP.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__OpenMP.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__OpenMP.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__OpenMP.cpp.s
+
+src/Neural_Network/Neural_Network__Ordered.o: src/Neural_Network/Neural_Network__Ordered.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Ordered.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Ordered.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Ordered.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Ordered.cpp.o
+
+src/Neural_Network/Neural_Network__Ordered.i: src/Neural_Network/Neural_Network__Ordered.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Ordered.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Ordered.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Ordered.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Ordered.cpp.i
+
+src/Neural_Network/Neural_Network__Ordered.s: src/Neural_Network/Neural_Network__Ordered.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Ordered.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Ordered.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Ordered.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Ordered.cpp.s
+
+src/Neural_Network/Neural_Network__Orthogonal.o: src/Neural_Network/Neural_Network__Orthogonal.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Orthogonal.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Orthogonal.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Orthogonal.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Orthogonal.cpp.o
+
+src/Neural_Network/Neural_Network__Orthogonal.i: src/Neural_Network/Neural_Network__Orthogonal.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Orthogonal.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Orthogonal.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Orthogonal.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Orthogonal.cpp.i
+
+src/Neural_Network/Neural_Network__Orthogonal.s: src/Neural_Network/Neural_Network__Orthogonal.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Orthogonal.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Orthogonal.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Orthogonal.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Orthogonal.cpp.s
+
+src/Neural_Network/Neural_Network__Plot__Gradient.o: src/Neural_Network/Neural_Network__Plot__Gradient.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Plot__Gradient.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Plot__Gradient.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Plot__Gradient.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Plot__Gradient.cpp.o
+
+src/Neural_Network/Neural_Network__Plot__Gradient.i: src/Neural_Network/Neural_Network__Plot__Gradient.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Plot__Gradient.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Plot__Gradient.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Plot__Gradient.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Plot__Gradient.cpp.i
+
+src/Neural_Network/Neural_Network__Plot__Gradient.s: src/Neural_Network/Neural_Network__Plot__Gradient.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Plot__Gradient.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Plot__Gradient.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Plot__Gradient.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Plot__Gradient.cpp.s
+
+src/Neural_Network/Neural_Network__Prepare_Connections.o: src/Neural_Network/Neural_Network__Prepare_Connections.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Prepare_Connections.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Prepare_Connections.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Prepare_Connections.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Prepare_Connections.cpp.o
+
+src/Neural_Network/Neural_Network__Prepare_Connections.i: src/Neural_Network/Neural_Network__Prepare_Connections.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Prepare_Connections.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Prepare_Connections.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Prepare_Connections.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Prepare_Connections.cpp.i
+
+src/Neural_Network/Neural_Network__Prepare_Connections.s: src/Neural_Network/Neural_Network__Prepare_Connections.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Prepare_Connections.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Prepare_Connections.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Prepare_Connections.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Prepare_Connections.cpp.s
+
+src/Neural_Network/Neural_Network__Randomize.o: src/Neural_Network/Neural_Network__Randomize.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Randomize.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Randomize.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Randomize.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Randomize.cpp.o
+
+src/Neural_Network/Neural_Network__Randomize.i: src/Neural_Network/Neural_Network__Randomize.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Randomize.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Randomize.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Randomize.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Randomize.cpp.i
+
+src/Neural_Network/Neural_Network__Randomize.s: src/Neural_Network/Neural_Network__Randomize.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Randomize.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Randomize.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Randomize.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Randomize.cpp.s
+
+src/Neural_Network/Neural_Network__Reallocate_Batch.o: src/Neural_Network/Neural_Network__Reallocate_Batch.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Reallocate_Batch.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Reallocate_Batch.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Reallocate_Batch.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Reallocate_Batch.cpp.o
+
+src/Neural_Network/Neural_Network__Reallocate_Batch.i: src/Neural_Network/Neural_Network__Reallocate_Batch.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Reallocate_Batch.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Reallocate_Batch.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Reallocate_Batch.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Reallocate_Batch.cpp.i
+
+src/Neural_Network/Neural_Network__Reallocate_Batch.s: src/Neural_Network/Neural_Network__Reallocate_Batch.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Reallocate_Batch.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Reallocate_Batch.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Reallocate_Batch.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Reallocate_Batch.cpp.s
+
+src/Neural_Network/Neural_Network__Reallocate_Parameters.o: src/Neural_Network/Neural_Network__Reallocate_Parameters.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Reallocate_Parameters.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Reallocate_Parameters.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Reallocate_Parameters.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Reallocate_Parameters.cpp.o
+
+src/Neural_Network/Neural_Network__Reallocate_Parameters.i: src/Neural_Network/Neural_Network__Reallocate_Parameters.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Reallocate_Parameters.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Reallocate_Parameters.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Reallocate_Parameters.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Reallocate_Parameters.cpp.i
+
+src/Neural_Network/Neural_Network__Reallocate_Parameters.s: src/Neural_Network/Neural_Network__Reallocate_Parameters.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Reallocate_Parameters.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Reallocate_Parameters.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Reallocate_Parameters.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Reallocate_Parameters.cpp.s
+
+src/Neural_Network/Neural_Network__Reallocate_Threads.o: src/Neural_Network/Neural_Network__Reallocate_Threads.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Reallocate_Threads.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Reallocate_Threads.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Reallocate_Threads.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Reallocate_Threads.cpp.o
+
+src/Neural_Network/Neural_Network__Reallocate_Threads.i: src/Neural_Network/Neural_Network__Reallocate_Threads.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Reallocate_Threads.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Reallocate_Threads.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Reallocate_Threads.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Reallocate_Threads.cpp.i
+
+src/Neural_Network/Neural_Network__Reallocate_Threads.s: src/Neural_Network/Neural_Network__Reallocate_Threads.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Reallocate_Threads.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Reallocate_Threads.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Reallocate_Threads.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Reallocate_Threads.cpp.s
+
+src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__Loop.o: src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__Loop.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__Loop.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__Loop.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__Loop.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__Loop.cpp.o
+
+src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__Loop.i: src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__Loop.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__Loop.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__Loop.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__Loop.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__Loop.cpp.i
+
+src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__Loop.s: src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__Loop.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__Loop.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__Loop.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__Loop.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__Loop.cpp.s
+
+src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__OpenMP.o: src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__OpenMP.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__OpenMP.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__OpenMP.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__OpenMP.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__OpenMP.cpp.o
+
+src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__OpenMP.i: src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__OpenMP.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__OpenMP.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__OpenMP.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__OpenMP.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__OpenMP.cpp.i
+
+src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__OpenMP.s: src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__OpenMP.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__OpenMP.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__OpenMP.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__OpenMP.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__OpenMP.cpp.s
+
+src/Neural_Network/Neural_Network__Recurrent_Compute__Error__Loop.o: src/Neural_Network/Neural_Network__Recurrent_Compute__Error__Loop.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__Error__Loop.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Recurrent_Compute__Error__Loop.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Compute__Error__Loop.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__Error__Loop.cpp.o
+
+src/Neural_Network/Neural_Network__Recurrent_Compute__Error__Loop.i: src/Neural_Network/Neural_Network__Recurrent_Compute__Error__Loop.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__Error__Loop.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Recurrent_Compute__Error__Loop.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Compute__Error__Loop.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__Error__Loop.cpp.i
+
+src/Neural_Network/Neural_Network__Recurrent_Compute__Error__Loop.s: src/Neural_Network/Neural_Network__Recurrent_Compute__Error__Loop.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__Error__Loop.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Recurrent_Compute__Error__Loop.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Compute__Error__Loop.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__Error__Loop.cpp.s
+
+src/Neural_Network/Neural_Network__Recurrent_Compute__Error__OpenMP.o: src/Neural_Network/Neural_Network__Recurrent_Compute__Error__OpenMP.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__Error__OpenMP.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Recurrent_Compute__Error__OpenMP.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Compute__Error__OpenMP.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__Error__OpenMP.cpp.o
+
+src/Neural_Network/Neural_Network__Recurrent_Compute__Error__OpenMP.i: src/Neural_Network/Neural_Network__Recurrent_Compute__Error__OpenMP.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__Error__OpenMP.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Recurrent_Compute__Error__OpenMP.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Compute__Error__OpenMP.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__Error__OpenMP.cpp.i
+
+src/Neural_Network/Neural_Network__Recurrent_Compute__Error__OpenMP.s: src/Neural_Network/Neural_Network__Recurrent_Compute__Error__OpenMP.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__Error__OpenMP.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Recurrent_Compute__Error__OpenMP.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Compute__Error__OpenMP.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__Error__OpenMP.cpp.s
+
+src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__Loop.o: src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__Loop.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__Loop.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__Loop.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__Loop.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__Loop.cpp.o
+
+src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__Loop.i: src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__Loop.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__Loop.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__Loop.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__Loop.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__Loop.cpp.i
+
+src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__Loop.s: src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__Loop.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__Loop.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__Loop.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__Loop.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__Loop.cpp.s
+
+src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__OpenMP.o: src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__OpenMP.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__OpenMP.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__OpenMP.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__OpenMP.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__OpenMP.cpp.o
+
+src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__OpenMP.i: src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__OpenMP.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__OpenMP.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__OpenMP.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__OpenMP.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__OpenMP.cpp.i
+
+src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__OpenMP.s: src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__OpenMP.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__OpenMP.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__OpenMP.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__OpenMP.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__OpenMP.cpp.s
+
+src/Neural_Network/Neural_Network__Recurrent_Compute__R__Loop.o: src/Neural_Network/Neural_Network__Recurrent_Compute__R__Loop.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__R__Loop.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Recurrent_Compute__R__Loop.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Compute__R__Loop.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__R__Loop.cpp.o
+
+src/Neural_Network/Neural_Network__Recurrent_Compute__R__Loop.i: src/Neural_Network/Neural_Network__Recurrent_Compute__R__Loop.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__R__Loop.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Recurrent_Compute__R__Loop.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Compute__R__Loop.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__R__Loop.cpp.i
+
+src/Neural_Network/Neural_Network__Recurrent_Compute__R__Loop.s: src/Neural_Network/Neural_Network__Recurrent_Compute__R__Loop.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__R__Loop.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Recurrent_Compute__R__Loop.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Compute__R__Loop.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__R__Loop.cpp.s
+
+src/Neural_Network/Neural_Network__Recurrent_Compute__R__OpenMP.o: src/Neural_Network/Neural_Network__Recurrent_Compute__R__OpenMP.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__R__OpenMP.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Recurrent_Compute__R__OpenMP.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Compute__R__OpenMP.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__R__OpenMP.cpp.o
+
+src/Neural_Network/Neural_Network__Recurrent_Compute__R__OpenMP.i: src/Neural_Network/Neural_Network__Recurrent_Compute__R__OpenMP.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__R__OpenMP.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Recurrent_Compute__R__OpenMP.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Compute__R__OpenMP.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__R__OpenMP.cpp.i
+
+src/Neural_Network/Neural_Network__Recurrent_Compute__R__OpenMP.s: src/Neural_Network/Neural_Network__Recurrent_Compute__R__OpenMP.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__R__OpenMP.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Recurrent_Compute__R__OpenMP.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Compute__R__OpenMP.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Compute__R__OpenMP.cpp.s
+
+src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__Loop.o: src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__Loop.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__Loop.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__Loop.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__Loop.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__Loop.cpp.o
+
+src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__Loop.i: src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__Loop.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__Loop.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__Loop.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__Loop.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__Loop.cpp.i
+
+src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__Loop.s: src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__Loop.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__Loop.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__Loop.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__Loop.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__Loop.cpp.s
+
+src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__OpenMP.o: src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__OpenMP.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__OpenMP.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__OpenMP.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__OpenMP.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__OpenMP.cpp.o
+
+src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__OpenMP.i: src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__OpenMP.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__OpenMP.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__OpenMP.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__OpenMP.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__OpenMP.cpp.i
+
+src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__OpenMP.s: src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__OpenMP.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__OpenMP.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__OpenMP.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__OpenMP.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__OpenMP.cpp.s
+
+src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__Loop.o: src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__Loop.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__Loop.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__Loop.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__Loop.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__Loop.cpp.o
+
+src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__Loop.i: src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__Loop.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__Loop.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__Loop.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__Loop.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__Loop.cpp.i
+
+src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__Loop.s: src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__Loop.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__Loop.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__Loop.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__Loop.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__Loop.cpp.s
+
+src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__OpenMP.o: src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__OpenMP.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__OpenMP.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__OpenMP.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__OpenMP.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__OpenMP.cpp.o
+
+src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__OpenMP.i: src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__OpenMP.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__OpenMP.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__OpenMP.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__OpenMP.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__OpenMP.cpp.i
+
+src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__OpenMP.s: src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__OpenMP.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__OpenMP.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__OpenMP.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__OpenMP.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__OpenMP.cpp.s
+
+src/Neural_Network/Neural_Network__Regularization__Constraint_Recurrent_Weight.o: src/Neural_Network/Neural_Network__Regularization__Constraint_Recurrent_Weight.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Regularization__Constraint_Recurrent_Weight.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Regularization__Constraint_Recurrent_Weight.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Regularization__Constraint_Recurrent_Weight.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Regularization__Constraint_Recurrent_Weight.cpp.o
+
+src/Neural_Network/Neural_Network__Regularization__Constraint_Recurrent_Weight.i: src/Neural_Network/Neural_Network__Regularization__Constraint_Recurrent_Weight.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Regularization__Constraint_Recurrent_Weight.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Regularization__Constraint_Recurrent_Weight.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Regularization__Constraint_Recurrent_Weight.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Regularization__Constraint_Recurrent_Weight.cpp.i
+
+src/Neural_Network/Neural_Network__Regularization__Constraint_Recurrent_Weight.s: src/Neural_Network/Neural_Network__Regularization__Constraint_Recurrent_Weight.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Regularization__Constraint_Recurrent_Weight.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Regularization__Constraint_Recurrent_Weight.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Regularization__Constraint_Recurrent_Weight.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Regularization__Constraint_Recurrent_Weight.cpp.s
+
+src/Neural_Network/Neural_Network__Regularization__L1.o: src/Neural_Network/Neural_Network__Regularization__L1.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Regularization__L1.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Regularization__L1.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Regularization__L1.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Regularization__L1.cpp.o
+
+src/Neural_Network/Neural_Network__Regularization__L1.i: src/Neural_Network/Neural_Network__Regularization__L1.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Regularization__L1.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Regularization__L1.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Regularization__L1.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Regularization__L1.cpp.i
+
+src/Neural_Network/Neural_Network__Regularization__L1.s: src/Neural_Network/Neural_Network__Regularization__L1.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Regularization__L1.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Regularization__L1.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Regularization__L1.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Regularization__L1.cpp.s
+
+src/Neural_Network/Neural_Network__Regularization__L2.o: src/Neural_Network/Neural_Network__Regularization__L2.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Regularization__L2.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Regularization__L2.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Regularization__L2.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Regularization__L2.cpp.o
+
+src/Neural_Network/Neural_Network__Regularization__L2.i: src/Neural_Network/Neural_Network__Regularization__L2.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Regularization__L2.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Regularization__L2.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Regularization__L2.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Regularization__L2.cpp.i
+
+src/Neural_Network/Neural_Network__Regularization__L2.s: src/Neural_Network/Neural_Network__Regularization__L2.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Regularization__L2.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Regularization__L2.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Regularization__L2.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Regularization__L2.cpp.s
+
+src/Neural_Network/Neural_Network__Regularization__Max_Norm_Constraints.o: src/Neural_Network/Neural_Network__Regularization__Max_Norm_Constraints.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Regularization__Max_Norm_Constraints.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Regularization__Max_Norm_Constraints.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Regularization__Max_Norm_Constraints.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Regularization__Max_Norm_Constraints.cpp.o
+
+src/Neural_Network/Neural_Network__Regularization__Max_Norm_Constraints.i: src/Neural_Network/Neural_Network__Regularization__Max_Norm_Constraints.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Regularization__Max_Norm_Constraints.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Regularization__Max_Norm_Constraints.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Regularization__Max_Norm_Constraints.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Regularization__Max_Norm_Constraints.cpp.i
+
+src/Neural_Network/Neural_Network__Regularization__Max_Norm_Constraints.s: src/Neural_Network/Neural_Network__Regularization__Max_Norm_Constraints.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Regularization__Max_Norm_Constraints.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Regularization__Max_Norm_Constraints.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Regularization__Max_Norm_Constraints.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Regularization__Max_Norm_Constraints.cpp.s
+
+src/Neural_Network/Neural_Network__Regularization__SRIP.o: src/Neural_Network/Neural_Network__Regularization__SRIP.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Regularization__SRIP.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Regularization__SRIP.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Regularization__SRIP.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Regularization__SRIP.cpp.o
+
+src/Neural_Network/Neural_Network__Regularization__SRIP.i: src/Neural_Network/Neural_Network__Regularization__SRIP.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Regularization__SRIP.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Regularization__SRIP.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Regularization__SRIP.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Regularization__SRIP.cpp.i
+
+src/Neural_Network/Neural_Network__Regularization__SRIP.s: src/Neural_Network/Neural_Network__Regularization__SRIP.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Regularization__SRIP.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Regularization__SRIP.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Regularization__SRIP.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Regularization__SRIP.cpp.s
+
+src/Neural_Network/Neural_Network__Regularization__Weight_Decay.o: src/Neural_Network/Neural_Network__Regularization__Weight_Decay.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Regularization__Weight_Decay.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Regularization__Weight_Decay.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Regularization__Weight_Decay.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Regularization__Weight_Decay.cpp.o
+
+src/Neural_Network/Neural_Network__Regularization__Weight_Decay.i: src/Neural_Network/Neural_Network__Regularization__Weight_Decay.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Regularization__Weight_Decay.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Regularization__Weight_Decay.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Regularization__Weight_Decay.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Regularization__Weight_Decay.cpp.i
+
+src/Neural_Network/Neural_Network__Regularization__Weight_Decay.s: src/Neural_Network/Neural_Network__Regularization__Weight_Decay.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Regularization__Weight_Decay.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Regularization__Weight_Decay.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Regularization__Weight_Decay.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Regularization__Weight_Decay.cpp.s
+
+src/Neural_Network/Neural_Network__Save.o: src/Neural_Network/Neural_Network__Save.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Save.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Save.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Save.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Save.cpp.o
+
+src/Neural_Network/Neural_Network__Save.i: src/Neural_Network/Neural_Network__Save.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Save.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Save.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Save.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Save.cpp.i
+
+src/Neural_Network/Neural_Network__Save.s: src/Neural_Network/Neural_Network__Save.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Save.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Save.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Save.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Save.cpp.s
+
+src/Neural_Network/Neural_Network__Tied_Parameter.o: src/Neural_Network/Neural_Network__Tied_Parameter.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Tied_Parameter.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Tied_Parameter.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Tied_Parameter.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Tied_Parameter.cpp.o
+
+src/Neural_Network/Neural_Network__Tied_Parameter.i: src/Neural_Network/Neural_Network__Tied_Parameter.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Tied_Parameter.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Tied_Parameter.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Tied_Parameter.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Tied_Parameter.cpp.i
+
+src/Neural_Network/Neural_Network__Tied_Parameter.s: src/Neural_Network/Neural_Network__Tied_Parameter.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Tied_Parameter.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Tied_Parameter.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Tied_Parameter.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Tied_Parameter.cpp.s
+
+src/Neural_Network/Neural_Network__Tied_Weight.o: src/Neural_Network/Neural_Network__Tied_Weight.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Tied_Weight.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Tied_Weight.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Tied_Weight.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Tied_Weight.cpp.o
+
+src/Neural_Network/Neural_Network__Tied_Weight.i: src/Neural_Network/Neural_Network__Tied_Weight.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Tied_Weight.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Tied_Weight.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Tied_Weight.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Tied_Weight.cpp.i
+
+src/Neural_Network/Neural_Network__Tied_Weight.s: src/Neural_Network/Neural_Network__Tied_Weight.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Tied_Weight.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Tied_Weight.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Tied_Weight.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Tied_Weight.cpp.s
+
+src/Neural_Network/Neural_Network__Tied__Normalization.o: src/Neural_Network/Neural_Network__Tied__Normalization.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Tied__Normalization.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Tied__Normalization.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Tied__Normalization.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Tied__Normalization.cpp.o
+
+src/Neural_Network/Neural_Network__Tied__Normalization.i: src/Neural_Network/Neural_Network__Tied__Normalization.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Tied__Normalization.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Tied__Normalization.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Tied__Normalization.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Tied__Normalization.cpp.i
+
+src/Neural_Network/Neural_Network__Tied__Normalization.s: src/Neural_Network/Neural_Network__Tied__Normalization.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Tied__Normalization.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Tied__Normalization.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Tied__Normalization.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Tied__Normalization.cpp.s
+
+src/Neural_Network/Neural_Network__Tied__Parameter.o: src/Neural_Network/Neural_Network__Tied__Parameter.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Tied__Parameter.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Tied__Parameter.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Tied__Parameter.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Tied__Parameter.cpp.o
+
+src/Neural_Network/Neural_Network__Tied__Parameter.i: src/Neural_Network/Neural_Network__Tied__Parameter.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Tied__Parameter.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Tied__Parameter.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Tied__Parameter.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Tied__Parameter.cpp.i
+
+src/Neural_Network/Neural_Network__Tied__Parameter.s: src/Neural_Network/Neural_Network__Tied__Parameter.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Tied__Parameter.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Tied__Parameter.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Tied__Parameter.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Tied__Parameter.cpp.s
+
+src/Neural_Network/Neural_Network__Tied__Weight.o: src/Neural_Network/Neural_Network__Tied__Weight.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Tied__Weight.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Tied__Weight.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Tied__Weight.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Tied__Weight.cpp.o
+
+src/Neural_Network/Neural_Network__Tied__Weight.i: src/Neural_Network/Neural_Network__Tied__Weight.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Tied__Weight.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Tied__Weight.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Tied__Weight.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Tied__Weight.cpp.i
+
+src/Neural_Network/Neural_Network__Tied__Weight.s: src/Neural_Network/Neural_Network__Tied__Weight.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Tied__Weight.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Tied__Weight.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Tied__Weight.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Tied__Weight.cpp.s
+
+src/Neural_Network/Neural_Network__Transfer_Learning.o: src/Neural_Network/Neural_Network__Transfer_Learning.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Transfer_Learning.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Transfer_Learning.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Transfer_Learning.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Transfer_Learning.cpp.o
+
+src/Neural_Network/Neural_Network__Transfer_Learning.i: src/Neural_Network/Neural_Network__Transfer_Learning.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Transfer_Learning.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Transfer_Learning.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Transfer_Learning.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Transfer_Learning.cpp.i
+
+src/Neural_Network/Neural_Network__Transfer_Learning.s: src/Neural_Network/Neural_Network__Transfer_Learning.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Transfer_Learning.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Transfer_Learning.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Transfer_Learning.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Transfer_Learning.cpp.s
+
+src/Neural_Network/Neural_Network__Update.o: src/Neural_Network/Neural_Network__Update.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Update.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Update.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Update.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Update.cpp.o
+
+src/Neural_Network/Neural_Network__Update.i: src/Neural_Network/Neural_Network__Update.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Update.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Update.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Update.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Update.cpp.i
+
+src/Neural_Network/Neural_Network__Update.s: src/Neural_Network/Neural_Network__Update.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Update.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Update.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Update.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Update.cpp.s
+
+src/Neural_Network/Neural_Network__Update_Derivative_Weight__Loop.o: src/Neural_Network/Neural_Network__Update_Derivative_Weight__Loop.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Update_Derivative_Weight__Loop.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Update_Derivative_Weight__Loop.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Update_Derivative_Weight__Loop.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Update_Derivative_Weight__Loop.cpp.o
+
+src/Neural_Network/Neural_Network__Update_Derivative_Weight__Loop.i: src/Neural_Network/Neural_Network__Update_Derivative_Weight__Loop.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Update_Derivative_Weight__Loop.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Update_Derivative_Weight__Loop.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Update_Derivative_Weight__Loop.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Update_Derivative_Weight__Loop.cpp.i
+
+src/Neural_Network/Neural_Network__Update_Derivative_Weight__Loop.s: src/Neural_Network/Neural_Network__Update_Derivative_Weight__Loop.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Update_Derivative_Weight__Loop.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Update_Derivative_Weight__Loop.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Update_Derivative_Weight__Loop.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Update_Derivative_Weight__Loop.cpp.s
+
+src/Neural_Network/Neural_Network__Update_Derivative_Weight__OpenMP.o: src/Neural_Network/Neural_Network__Update_Derivative_Weight__OpenMP.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Update_Derivative_Weight__OpenMP.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Update_Derivative_Weight__OpenMP.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Update_Derivative_Weight__OpenMP.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Update_Derivative_Weight__OpenMP.cpp.o
+
+src/Neural_Network/Neural_Network__Update_Derivative_Weight__OpenMP.i: src/Neural_Network/Neural_Network__Update_Derivative_Weight__OpenMP.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Update_Derivative_Weight__OpenMP.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Update_Derivative_Weight__OpenMP.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Update_Derivative_Weight__OpenMP.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Update_Derivative_Weight__OpenMP.cpp.i
+
+src/Neural_Network/Neural_Network__Update_Derivative_Weight__OpenMP.s: src/Neural_Network/Neural_Network__Update_Derivative_Weight__OpenMP.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Update_Derivative_Weight__OpenMP.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Update_Derivative_Weight__OpenMP.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Update_Derivative_Weight__OpenMP.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Update_Derivative_Weight__OpenMP.cpp.s
+
+src/Neural_Network/Neural_Network__User_Controls.o: src/Neural_Network/Neural_Network__User_Controls.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__User_Controls.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__User_Controls.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__User_Controls.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__User_Controls.cpp.o
+
+src/Neural_Network/Neural_Network__User_Controls.i: src/Neural_Network/Neural_Network__User_Controls.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__User_Controls.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__User_Controls.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__User_Controls.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__User_Controls.cpp.i
+
+src/Neural_Network/Neural_Network__User_Controls.s: src/Neural_Network/Neural_Network__User_Controls.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__User_Controls.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__User_Controls.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__User_Controls.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__User_Controls.cpp.s
+
+src/Neural_Network/Neural_Network__Xavier.o: src/Neural_Network/Neural_Network__Xavier.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__Xavier.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__Xavier.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Xavier.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__Xavier.cpp.o
+
+src/Neural_Network/Neural_Network__Xavier.i: src/Neural_Network/Neural_Network__Xavier.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__Xavier.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__Xavier.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Xavier.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__Xavier.cpp.i
+
+src/Neural_Network/Neural_Network__Xavier.s: src/Neural_Network/Neural_Network__Xavier.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__Xavier.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__Xavier.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__Xavier.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__Xavier.cpp.s
+
+src/Neural_Network/Neural_Network__iRPROP_minus.o: src/Neural_Network/Neural_Network__iRPROP_minus.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__iRPROP_minus.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__iRPROP_minus.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__iRPROP_minus.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__iRPROP_minus.cpp.o
+
+src/Neural_Network/Neural_Network__iRPROP_minus.i: src/Neural_Network/Neural_Network__iRPROP_minus.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__iRPROP_minus.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__iRPROP_minus.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__iRPROP_minus.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__iRPROP_minus.cpp.i
+
+src/Neural_Network/Neural_Network__iRPROP_minus.s: src/Neural_Network/Neural_Network__iRPROP_minus.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__iRPROP_minus.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__iRPROP_minus.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__iRPROP_minus.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__iRPROP_minus.cpp.s
+
+src/Neural_Network/Neural_Network__iRPROP_plus.o: src/Neural_Network/Neural_Network__iRPROP_plus.cpp.o
+
+.PHONY : src/Neural_Network/Neural_Network__iRPROP_plus.o
+
+# target to build an object file
+src/Neural_Network/Neural_Network__iRPROP_plus.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__iRPROP_plus.cpp.o
+.PHONY : src/Neural_Network/Neural_Network__iRPROP_plus.cpp.o
+
+src/Neural_Network/Neural_Network__iRPROP_plus.i: src/Neural_Network/Neural_Network__iRPROP_plus.cpp.i
+
+.PHONY : src/Neural_Network/Neural_Network__iRPROP_plus.i
+
+# target to preprocess a source file
+src/Neural_Network/Neural_Network__iRPROP_plus.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__iRPROP_plus.cpp.i
+.PHONY : src/Neural_Network/Neural_Network__iRPROP_plus.cpp.i
+
+src/Neural_Network/Neural_Network__iRPROP_plus.s: src/Neural_Network/Neural_Network__iRPROP_plus.cpp.s
+
+.PHONY : src/Neural_Network/Neural_Network__iRPROP_plus.s
+
+# target to generate assembly for a file
+src/Neural_Network/Neural_Network__iRPROP_plus.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Neural_Network__iRPROP_plus.cpp.s
+.PHONY : src/Neural_Network/Neural_Network__iRPROP_plus.cpp.s
+
+src/Neural_Network/Train.o: src/Neural_Network/Train.cpp.o
+
+.PHONY : src/Neural_Network/Train.o
+
+# target to build an object file
+src/Neural_Network/Train.cpp.o:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Train.cpp.o
+.PHONY : src/Neural_Network/Train.cpp.o
+
+src/Neural_Network/Train.i: src/Neural_Network/Train.cpp.i
+
+.PHONY : src/Neural_Network/Train.i
+
+# target to preprocess a source file
+src/Neural_Network/Train.cpp.i:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Train.cpp.i
+.PHONY : src/Neural_Network/Train.cpp.i
+
+src/Neural_Network/Train.s: src/Neural_Network/Train.cpp.s
+
+.PHONY : src/Neural_Network/Train.s
+
+# target to generate assembly for a file
+src/Neural_Network/Train.cpp.s:
+	$(MAKE) -f CMakeFiles/Neural_Network_Library_Linux.dir/build.make CMakeFiles/Neural_Network_Library_Linux.dir/src/Neural_Network/Train.cpp.s
+.PHONY : src/Neural_Network/Train.cpp.s
+
 src/stdafx.o: src/stdafx.cpp.o
 
 .PHONY : src/stdafx.o
@@ -159,6 +2751,294 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Neural_Network_Library_Linux"
 	@echo "... edit_cache"
+	@echo "... src/Neural_Network/Bayesian_Optimization.o"
+	@echo "... src/Neural_Network/Bayesian_Optimization.i"
+	@echo "... src/Neural_Network/Bayesian_Optimization.s"
+	@echo "... src/Neural_Network/Dataset.o"
+	@echo "... src/Neural_Network/Dataset.i"
+	@echo "... src/Neural_Network/Dataset.s"
+	@echo "... src/Neural_Network/Dataset_Manager.o"
+	@echo "... src/Neural_Network/Dataset_Manager.i"
+	@echo "... src/Neural_Network/Dataset_Manager.s"
+	@echo "... src/Neural_Network/Dataset__Cross_Validation.o"
+	@echo "... src/Neural_Network/Dataset__Cross_Validation.i"
+	@echo "... src/Neural_Network/Dataset__Cross_Validation.s"
+	@echo "... src/Neural_Network/Dataset__Cross_Validation__Hyper_Optimization.o"
+	@echo "... src/Neural_Network/Dataset__Cross_Validation__Hyper_Optimization.i"
+	@echo "... src/Neural_Network/Dataset__Cross_Validation__Hyper_Optimization.s"
+	@echo "... src/Neural_Network/Dataset__Mini_Batch.o"
+	@echo "... src/Neural_Network/Dataset__Mini_Batch.i"
+	@echo "... src/Neural_Network/Dataset__Mini_Batch.s"
+	@echo "... src/Neural_Network/Gaussian_Search.o"
+	@echo "... src/Neural_Network/Gaussian_Search.i"
+	@echo "... src/Neural_Network/Gaussian_Search.s"
+	@echo "... src/Neural_Network/Grid_Search.o"
+	@echo "... src/Neural_Network/Grid_Search.i"
+	@echo "... src/Neural_Network/Grid_Search.s"
+	@echo "... src/Neural_Network/Hyper_Optimization.o"
+	@echo "... src/Neural_Network/Hyper_Optimization.i"
+	@echo "... src/Neural_Network/Hyper_Optimization.s"
+	@echo "... src/Neural_Network/Neural_Network.o"
+	@echo "... src/Neural_Network/Neural_Network.i"
+	@echo "... src/Neural_Network/Neural_Network.s"
+	@echo "... src/Neural_Network/Neural_Network_Manager.o"
+	@echo "... src/Neural_Network/Neural_Network_Manager.i"
+	@echo "... src/Neural_Network/Neural_Network_Manager.s"
+	@echo "... src/Neural_Network/Neural_Network__AMSBound.o"
+	@echo "... src/Neural_Network/Neural_Network__AMSBound.i"
+	@echo "... src/Neural_Network/Neural_Network__AMSBound.s"
+	@echo "... src/Neural_Network/Neural_Network__AMSGrad.o"
+	@echo "... src/Neural_Network/Neural_Network__AMSGrad.i"
+	@echo "... src/Neural_Network/Neural_Network__AMSGrad.s"
+	@echo "... src/Neural_Network/Neural_Network__Accuracy.o"
+	@echo "... src/Neural_Network/Neural_Network__Accuracy.i"
+	@echo "... src/Neural_Network/Neural_Network__Accuracy.s"
+	@echo "... src/Neural_Network/Neural_Network__AdaBound.o"
+	@echo "... src/Neural_Network/Neural_Network__AdaBound.i"
+	@echo "... src/Neural_Network/Neural_Network__AdaBound.s"
+	@echo "... src/Neural_Network/Neural_Network__Adam.o"
+	@echo "... src/Neural_Network/Neural_Network__Adam.i"
+	@echo "... src/Neural_Network/Neural_Network__Adam.s"
+	@echo "... src/Neural_Network/Neural_Network__Allocate.o"
+	@echo "... src/Neural_Network/Neural_Network__Allocate.i"
+	@echo "... src/Neural_Network/Neural_Network__Allocate.s"
+	@echo "... src/Neural_Network/Neural_Network__Assign_Inputs.o"
+	@echo "... src/Neural_Network/Neural_Network__Assign_Inputs.i"
+	@echo "... src/Neural_Network/Neural_Network__Assign_Inputs.s"
+	@echo "... src/Neural_Network/Neural_Network__Backward_Pass__Loop.o"
+	@echo "... src/Neural_Network/Neural_Network__Backward_Pass__Loop.i"
+	@echo "... src/Neural_Network/Neural_Network__Backward_Pass__Loop.s"
+	@echo "... src/Neural_Network/Neural_Network__Backward_Pass__OpenMP.o"
+	@echo "... src/Neural_Network/Neural_Network__Backward_Pass__OpenMP.i"
+	@echo "... src/Neural_Network/Neural_Network__Backward_Pass__OpenMP.s"
+	@echo "... src/Neural_Network/Neural_Network__Batch_Normalization.o"
+	@echo "... src/Neural_Network/Neural_Network__Batch_Normalization.i"
+	@echo "... src/Neural_Network/Neural_Network__Batch_Normalization.s"
+	@echo "... src/Neural_Network/Neural_Network__Batch_Renormalization.o"
+	@echo "... src/Neural_Network/Neural_Network__Batch_Renormalization.i"
+	@echo "... src/Neural_Network/Neural_Network__Batch_Renormalization.s"
+	@echo "... src/Neural_Network/Neural_Network__Clip_Gradient.o"
+	@echo "... src/Neural_Network/Neural_Network__Clip_Gradient.i"
+	@echo "... src/Neural_Network/Neural_Network__Clip_Gradient.s"
+	@echo "... src/Neural_Network/Neural_Network__Compile.o"
+	@echo "... src/Neural_Network/Neural_Network__Compile.i"
+	@echo "... src/Neural_Network/Neural_Network__Compile.s"
+	@echo "... src/Neural_Network/Neural_Network__Compute__Error__Loop.o"
+	@echo "... src/Neural_Network/Neural_Network__Compute__Error__Loop.i"
+	@echo "... src/Neural_Network/Neural_Network__Compute__Error__Loop.s"
+	@echo "... src/Neural_Network/Neural_Network__Compute__Error__OpenMP.o"
+	@echo "... src/Neural_Network/Neural_Network__Compute__Error__OpenMP.i"
+	@echo "... src/Neural_Network/Neural_Network__Compute__Error__OpenMP.s"
+	@echo "... src/Neural_Network/Neural_Network__Compute__Loss__Loop.o"
+	@echo "... src/Neural_Network/Neural_Network__Compute__Loss__Loop.i"
+	@echo "... src/Neural_Network/Neural_Network__Compute__Loss__Loop.s"
+	@echo "... src/Neural_Network/Neural_Network__Compute__Loss__OpenMP.o"
+	@echo "... src/Neural_Network/Neural_Network__Compute__Loss__OpenMP.i"
+	@echo "... src/Neural_Network/Neural_Network__Compute__Loss__OpenMP.s"
+	@echo "... src/Neural_Network/Neural_Network__Compute__R__Loop.o"
+	@echo "... src/Neural_Network/Neural_Network__Compute__R__Loop.i"
+	@echo "... src/Neural_Network/Neural_Network__Compute__R__Loop.s"
+	@echo "... src/Neural_Network/Neural_Network__Compute__R__OpenMP.o"
+	@echo "... src/Neural_Network/Neural_Network__Compute__R__OpenMP.i"
+	@echo "... src/Neural_Network/Neural_Network__Compute__R__OpenMP.s"
+	@echo "... src/Neural_Network/Neural_Network__Copy.o"
+	@echo "... src/Neural_Network/Neural_Network__Copy.i"
+	@echo "... src/Neural_Network/Neural_Network__Copy.s"
+	@echo "... src/Neural_Network/Neural_Network__Deallocate.o"
+	@echo "... src/Neural_Network/Neural_Network__Deallocate.i"
+	@echo "... src/Neural_Network/Neural_Network__Deallocate.s"
+	@echo "... src/Neural_Network/Neural_Network__Dropout.o"
+	@echo "... src/Neural_Network/Neural_Network__Dropout.i"
+	@echo "... src/Neural_Network/Neural_Network__Dropout.s"
+	@echo "... src/Neural_Network/Neural_Network__Dropout__Bernoulli__Loop.o"
+	@echo "... src/Neural_Network/Neural_Network__Dropout__Bernoulli__Loop.i"
+	@echo "... src/Neural_Network/Neural_Network__Dropout__Bernoulli__Loop.s"
+	@echo "... src/Neural_Network/Neural_Network__Dropout__Bernoulli__OpenMP.o"
+	@echo "... src/Neural_Network/Neural_Network__Dropout__Bernoulli__OpenMP.i"
+	@echo "... src/Neural_Network/Neural_Network__Dropout__Bernoulli__OpenMP.s"
+	@echo "... src/Neural_Network/Neural_Network__Dropout__Zoneout__Loop.o"
+	@echo "... src/Neural_Network/Neural_Network__Dropout__Zoneout__Loop.i"
+	@echo "... src/Neural_Network/Neural_Network__Dropout__Zoneout__Loop.s"
+	@echo "... src/Neural_Network/Neural_Network__Dropout__Zoneout__OpenMP.o"
+	@echo "... src/Neural_Network/Neural_Network__Dropout__Zoneout__OpenMP.i"
+	@echo "... src/Neural_Network/Neural_Network__Dropout__Zoneout__OpenMP.s"
+	@echo "... src/Neural_Network/Neural_Network__Forward_Pass__Loop.o"
+	@echo "... src/Neural_Network/Neural_Network__Forward_Pass__Loop.i"
+	@echo "... src/Neural_Network/Neural_Network__Forward_Pass__Loop.s"
+	@echo "... src/Neural_Network/Neural_Network__Forward_Pass__OpenMP.o"
+	@echo "... src/Neural_Network/Neural_Network__Forward_Pass__OpenMP.i"
+	@echo "... src/Neural_Network/Neural_Network__Forward_Pass__OpenMP.s"
+	@echo "... src/Neural_Network/Neural_Network__Gradient_Descent.o"
+	@echo "... src/Neural_Network/Neural_Network__Gradient_Descent.i"
+	@echo "... src/Neural_Network/Neural_Network__Gradient_Descent.s"
+	@echo "... src/Neural_Network/Neural_Network__Gradient_Descent_Momentum.o"
+	@echo "... src/Neural_Network/Neural_Network__Gradient_Descent_Momentum.i"
+	@echo "... src/Neural_Network/Neural_Network__Gradient_Descent_Momentum.s"
+	@echo "... src/Neural_Network/Neural_Network__Indexing.o"
+	@echo "... src/Neural_Network/Neural_Network__Indexing.i"
+	@echo "... src/Neural_Network/Neural_Network__Indexing.s"
+	@echo "... src/Neural_Network/Neural_Network__Initialization__Glorot.o"
+	@echo "... src/Neural_Network/Neural_Network__Initialization__Glorot.i"
+	@echo "... src/Neural_Network/Neural_Network__Initialization__Glorot.s"
+	@echo "... src/Neural_Network/Neural_Network__Initialization__Identity.o"
+	@echo "... src/Neural_Network/Neural_Network__Initialization__Identity.i"
+	@echo "... src/Neural_Network/Neural_Network__Initialization__Identity.s"
+	@echo "... src/Neural_Network/Neural_Network__Initialization__LSUV.o"
+	@echo "... src/Neural_Network/Neural_Network__Initialization__LSUV.i"
+	@echo "... src/Neural_Network/Neural_Network__Initialization__LSUV.s"
+	@echo "... src/Neural_Network/Neural_Network__Initialization__Orthogonal.o"
+	@echo "... src/Neural_Network/Neural_Network__Initialization__Orthogonal.i"
+	@echo "... src/Neural_Network/Neural_Network__Initialization__Orthogonal.s"
+	@echo "... src/Neural_Network/Neural_Network__Initialization__Uniform.o"
+	@echo "... src/Neural_Network/Neural_Network__Initialization__Uniform.i"
+	@echo "... src/Neural_Network/Neural_Network__Initialization__Uniform.s"
+	@echo "... src/Neural_Network/Neural_Network__K_Sparse.o"
+	@echo "... src/Neural_Network/Neural_Network__K_Sparse.i"
+	@echo "... src/Neural_Network/Neural_Network__K_Sparse.s"
+	@echo "... src/Neural_Network/Neural_Network__Layer_Normalization.o"
+	@echo "... src/Neural_Network/Neural_Network__Layer_Normalization.i"
+	@echo "... src/Neural_Network/Neural_Network__Layer_Normalization.s"
+	@echo "... src/Neural_Network/Neural_Network__Load.o"
+	@echo "... src/Neural_Network/Neural_Network__Load.i"
+	@echo "... src/Neural_Network/Neural_Network__Load.s"
+	@echo "... src/Neural_Network/Neural_Network__Loss.o"
+	@echo "... src/Neural_Network/Neural_Network__Loss.i"
+	@echo "... src/Neural_Network/Neural_Network__Loss.s"
+	@echo "... src/Neural_Network/Neural_Network__Merge.o"
+	@echo "... src/Neural_Network/Neural_Network__Merge.i"
+	@echo "... src/Neural_Network/Neural_Network__Merge.s"
+	@echo "... src/Neural_Network/Neural_Network__Nesterov_Accelerated_Gradient.o"
+	@echo "... src/Neural_Network/Neural_Network__Nesterov_Accelerated_Gradient.i"
+	@echo "... src/Neural_Network/Neural_Network__Nesterov_Accelerated_Gradient.s"
+	@echo "... src/Neural_Network/Neural_Network__NosAdam.o"
+	@echo "... src/Neural_Network/Neural_Network__NosAdam.i"
+	@echo "... src/Neural_Network/Neural_Network__NosAdam.s"
+	@echo "... src/Neural_Network/Neural_Network__OpenMP.o"
+	@echo "... src/Neural_Network/Neural_Network__OpenMP.i"
+	@echo "... src/Neural_Network/Neural_Network__OpenMP.s"
+	@echo "... src/Neural_Network/Neural_Network__Ordered.o"
+	@echo "... src/Neural_Network/Neural_Network__Ordered.i"
+	@echo "... src/Neural_Network/Neural_Network__Ordered.s"
+	@echo "... src/Neural_Network/Neural_Network__Orthogonal.o"
+	@echo "... src/Neural_Network/Neural_Network__Orthogonal.i"
+	@echo "... src/Neural_Network/Neural_Network__Orthogonal.s"
+	@echo "... src/Neural_Network/Neural_Network__Plot__Gradient.o"
+	@echo "... src/Neural_Network/Neural_Network__Plot__Gradient.i"
+	@echo "... src/Neural_Network/Neural_Network__Plot__Gradient.s"
+	@echo "... src/Neural_Network/Neural_Network__Prepare_Connections.o"
+	@echo "... src/Neural_Network/Neural_Network__Prepare_Connections.i"
+	@echo "... src/Neural_Network/Neural_Network__Prepare_Connections.s"
+	@echo "... src/Neural_Network/Neural_Network__Randomize.o"
+	@echo "... src/Neural_Network/Neural_Network__Randomize.i"
+	@echo "... src/Neural_Network/Neural_Network__Randomize.s"
+	@echo "... src/Neural_Network/Neural_Network__Reallocate_Batch.o"
+	@echo "... src/Neural_Network/Neural_Network__Reallocate_Batch.i"
+	@echo "... src/Neural_Network/Neural_Network__Reallocate_Batch.s"
+	@echo "... src/Neural_Network/Neural_Network__Reallocate_Parameters.o"
+	@echo "... src/Neural_Network/Neural_Network__Reallocate_Parameters.i"
+	@echo "... src/Neural_Network/Neural_Network__Reallocate_Parameters.s"
+	@echo "... src/Neural_Network/Neural_Network__Reallocate_Threads.o"
+	@echo "... src/Neural_Network/Neural_Network__Reallocate_Threads.i"
+	@echo "... src/Neural_Network/Neural_Network__Reallocate_Threads.s"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__Loop.o"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__Loop.i"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__Loop.s"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__OpenMP.o"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__OpenMP.i"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Backward_Pass__OpenMP.s"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Compute__Error__Loop.o"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Compute__Error__Loop.i"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Compute__Error__Loop.s"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Compute__Error__OpenMP.o"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Compute__Error__OpenMP.i"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Compute__Error__OpenMP.s"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__Loop.o"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__Loop.i"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__Loop.s"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__OpenMP.o"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__OpenMP.i"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Compute__Loss__OpenMP.s"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Compute__R__Loop.o"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Compute__R__Loop.i"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Compute__R__Loop.s"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Compute__R__OpenMP.o"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Compute__R__OpenMP.i"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Compute__R__OpenMP.s"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__Loop.o"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__Loop.i"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__Loop.s"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__OpenMP.o"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__OpenMP.i"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Forward_Pass__OpenMP.s"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__Loop.o"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__Loop.i"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__Loop.s"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__OpenMP.o"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__OpenMP.i"
+	@echo "... src/Neural_Network/Neural_Network__Recurrent_Update_Derivative_Weight__OpenMP.s"
+	@echo "... src/Neural_Network/Neural_Network__Regularization__Constraint_Recurrent_Weight.o"
+	@echo "... src/Neural_Network/Neural_Network__Regularization__Constraint_Recurrent_Weight.i"
+	@echo "... src/Neural_Network/Neural_Network__Regularization__Constraint_Recurrent_Weight.s"
+	@echo "... src/Neural_Network/Neural_Network__Regularization__L1.o"
+	@echo "... src/Neural_Network/Neural_Network__Regularization__L1.i"
+	@echo "... src/Neural_Network/Neural_Network__Regularization__L1.s"
+	@echo "... src/Neural_Network/Neural_Network__Regularization__L2.o"
+	@echo "... src/Neural_Network/Neural_Network__Regularization__L2.i"
+	@echo "... src/Neural_Network/Neural_Network__Regularization__L2.s"
+	@echo "... src/Neural_Network/Neural_Network__Regularization__Max_Norm_Constraints.o"
+	@echo "... src/Neural_Network/Neural_Network__Regularization__Max_Norm_Constraints.i"
+	@echo "... src/Neural_Network/Neural_Network__Regularization__Max_Norm_Constraints.s"
+	@echo "... src/Neural_Network/Neural_Network__Regularization__SRIP.o"
+	@echo "... src/Neural_Network/Neural_Network__Regularization__SRIP.i"
+	@echo "... src/Neural_Network/Neural_Network__Regularization__SRIP.s"
+	@echo "... src/Neural_Network/Neural_Network__Regularization__Weight_Decay.o"
+	@echo "... src/Neural_Network/Neural_Network__Regularization__Weight_Decay.i"
+	@echo "... src/Neural_Network/Neural_Network__Regularization__Weight_Decay.s"
+	@echo "... src/Neural_Network/Neural_Network__Save.o"
+	@echo "... src/Neural_Network/Neural_Network__Save.i"
+	@echo "... src/Neural_Network/Neural_Network__Save.s"
+	@echo "... src/Neural_Network/Neural_Network__Tied_Parameter.o"
+	@echo "... src/Neural_Network/Neural_Network__Tied_Parameter.i"
+	@echo "... src/Neural_Network/Neural_Network__Tied_Parameter.s"
+	@echo "... src/Neural_Network/Neural_Network__Tied_Weight.o"
+	@echo "... src/Neural_Network/Neural_Network__Tied_Weight.i"
+	@echo "... src/Neural_Network/Neural_Network__Tied_Weight.s"
+	@echo "... src/Neural_Network/Neural_Network__Tied__Normalization.o"
+	@echo "... src/Neural_Network/Neural_Network__Tied__Normalization.i"
+	@echo "... src/Neural_Network/Neural_Network__Tied__Normalization.s"
+	@echo "... src/Neural_Network/Neural_Network__Tied__Parameter.o"
+	@echo "... src/Neural_Network/Neural_Network__Tied__Parameter.i"
+	@echo "... src/Neural_Network/Neural_Network__Tied__Parameter.s"
+	@echo "... src/Neural_Network/Neural_Network__Tied__Weight.o"
+	@echo "... src/Neural_Network/Neural_Network__Tied__Weight.i"
+	@echo "... src/Neural_Network/Neural_Network__Tied__Weight.s"
+	@echo "... src/Neural_Network/Neural_Network__Transfer_Learning.o"
+	@echo "... src/Neural_Network/Neural_Network__Transfer_Learning.i"
+	@echo "... src/Neural_Network/Neural_Network__Transfer_Learning.s"
+	@echo "... src/Neural_Network/Neural_Network__Update.o"
+	@echo "... src/Neural_Network/Neural_Network__Update.i"
+	@echo "... src/Neural_Network/Neural_Network__Update.s"
+	@echo "... src/Neural_Network/Neural_Network__Update_Derivative_Weight__Loop.o"
+	@echo "... src/Neural_Network/Neural_Network__Update_Derivative_Weight__Loop.i"
+	@echo "... src/Neural_Network/Neural_Network__Update_Derivative_Weight__Loop.s"
+	@echo "... src/Neural_Network/Neural_Network__Update_Derivative_Weight__OpenMP.o"
+	@echo "... src/Neural_Network/Neural_Network__Update_Derivative_Weight__OpenMP.i"
+	@echo "... src/Neural_Network/Neural_Network__Update_Derivative_Weight__OpenMP.s"
+	@echo "... src/Neural_Network/Neural_Network__User_Controls.o"
+	@echo "... src/Neural_Network/Neural_Network__User_Controls.i"
+	@echo "... src/Neural_Network/Neural_Network__User_Controls.s"
+	@echo "... src/Neural_Network/Neural_Network__Xavier.o"
+	@echo "... src/Neural_Network/Neural_Network__Xavier.i"
+	@echo "... src/Neural_Network/Neural_Network__Xavier.s"
+	@echo "... src/Neural_Network/Neural_Network__iRPROP_minus.o"
+	@echo "... src/Neural_Network/Neural_Network__iRPROP_minus.i"
+	@echo "... src/Neural_Network/Neural_Network__iRPROP_minus.s"
+	@echo "... src/Neural_Network/Neural_Network__iRPROP_plus.o"
+	@echo "... src/Neural_Network/Neural_Network__iRPROP_plus.i"
+	@echo "... src/Neural_Network/Neural_Network__iRPROP_plus.s"
+	@echo "... src/Neural_Network/Train.o"
+	@echo "... src/Neural_Network/Train.i"
+	@echo "... src/Neural_Network/Train.s"
 	@echo "... src/stdafx.o"
 	@echo "... src/stdafx.i"
 	@echo "... src/stdafx.s"
