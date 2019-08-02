@@ -67,15 +67,7 @@ namespace MyEA::File
 
         std::string tmp_path;
 
-        if(tmp_uDriveMask == 0)
-        {
-            PRINT_FORMAT("%s: %s: ERROR: GetLogicalDrives() failed with failure code: %d. At line %d." NEW_LINE,
-                         MyEA::String::Get__Time().c_str(),
-                         __FUNCTION__,
-                         GetLastError(),
-                         __LINE__);
-        }
-        else
+        if(tmp_uDriveMask != 0)
         {
             while(tmp_uDriveMask)
             {
@@ -96,15 +88,13 @@ namespace MyEA::File
                 tmp_uDriveMask >>= 1;
             }
         }
+        else { MyEA::String::Error("An error has been triggered from the `GetLogicalDrives() -> %d` function.", GetLastError()); }
     #elif defined(COMPILE_LINUX)
         FILE *tmp_ptr_file_command(popen("cat /proc/mounts | grep /dev/sd", "r"));
 
         if(tmp_ptr_file_command == NULL)
         {
-            PRINT_FORMAT("%s: %s: ERROR: The command \"cat /proc/mounts | grep /dev/sd\" could not be execute. At line %d." NEW_LINE,
-                         MyEA::String::Get__Time().c_str(),
-                         __FUNCTION__,
-                         __LINE__);
+            MyEA::String::Error("The command `cat /proc/mounts | grep /dev/sd` could not be execute.");
 
             return(tmp_drives);
         }
@@ -206,22 +196,15 @@ namespace MyEA::File
                                                             ref_path_received,
                                                             std::experimental::filesystem::v1::copy_options::overwrite_existing) == false)
             {
-                PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"copy_file(%s, %s)\" function. At line %d." NEW_LINE,
-                             MyEA::String::Get__Time().c_str(),
-                             __FUNCTION__,
-                             tmp_path_temporary.c_str(),
-                             ref_path_received.c_str(),
-                             __LINE__);
+                MyEA::String::Error("An error has been triggered from the `copy_file(%s, %s)` function.",
+                                    tmp_path_temporary.c_str(),
+                                    ref_path_received.c_str());
 
                 return(false);
             }
             else if(MyEA::File::File_Remove(tmp_path_temporary) == false)
             {
-                PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"File_Remove(%s)\" function. At line %d." NEW_LINE,
-                             MyEA::String::Get__Time().c_str(),
-                             __FUNCTION__,
-                             tmp_path_temporary.c_str(),
-                             __LINE__);
+                MyEA::String::Error("An error has been triggered from the `File_Remove(%s)` function.", tmp_path_temporary.c_str());
 
                 return(false);
             }
@@ -232,22 +215,15 @@ namespace MyEA::File
                                           ref_path_received,
                                           std::filesystem::copy_options::overwrite_existing) == false)
             {
-                PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"copy_file(%s, %s)\" function. At line %d." NEW_LINE,
-                             MyEA::String::Get__Time().c_str(),
-                             __FUNCTION__,
-                             tmp_path_temporary.c_str(),
-                             ref_path_received.c_str(),
-                             __LINE__);
+                MyEA::String::Error("An error has been triggered from the `copy_file(%s, %s)` function.",
+                                    tmp_path_temporary.c_str(),
+                                    ref_path_received.c_str());
 
                 return(false);
             }
             else if(MyEA::File::File_Remove(tmp_path_temporary) == false)
             {
-                PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"File_Remove(%s)\" function. At line %d." NEW_LINE,
-                             MyEA::String::Get__Time().c_str(),
-                             __FUNCTION__,
-                             tmp_path_temporary.c_str(),
-                             __LINE__);
+                MyEA::String::Error("An error has been triggered from the `File_Remove(%s)` function.", tmp_path_temporary.c_str());
 
                 return(false);
             }
