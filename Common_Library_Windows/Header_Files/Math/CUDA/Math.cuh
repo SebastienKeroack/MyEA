@@ -21,13 +21,13 @@ namespace MyEA::Math
     template<typename T> __host__ __device__
     T Reverse_Integer(T const integer_received)
     {
-        if(std::is_same<T, int>::value
-           ||
-           std::is_same<T, long>::value
-           ||
-           std::is_same<T, unsigned int>::value
-           ||
-           std::is_same<T, unsigned long>::value)
+        if constexpr (std::is_same<T, int          >::value
+                      ||
+                      std::is_same<T, long         >::value
+                      ||
+                      std::is_same<T, unsigned int >::value
+                      ||
+                      std::is_same<T, unsigned long>::value)
         {
             T const c1( integer_received        & 255),
                     c2((integer_received >>  8) & 255),
@@ -39,7 +39,7 @@ namespace MyEA::Math
                    (c3 <<  8) +
                     c4);
         }
-        else if(std::is_same<T, long long>::value
+        else if(std::is_same<T, long long         >::value
                 ||
                 std::is_same<T, unsigned long long>::value)
         {

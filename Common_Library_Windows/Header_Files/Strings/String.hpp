@@ -39,10 +39,9 @@ namespace MyEA::String
         TYPE_MANIPULATOR_STRING_DEFAULTFLOAT = 3
     };
 
-    void Print(char const *fmt, ...);
+    void Print(char const *ptr_fmt_received, ...);
 
-    inline
-    void Error(char const *fmt, ...);
+    void Print_With_Prefix(std::string const &ref_prefix_received, char const *ptr_fmt_received, ...);
 
     void Find_And_Replace(std::string       &ref_source,
                           std::string const &ref_find,
@@ -53,11 +52,6 @@ namespace MyEA::String
                       char *const ptr_last_character,
                       T &ref_output);
 
-    template <typename T>
-    bool Parse_Real_Number(char *&ptr_array_characters,
-                           char *const ptr_last_character,
-                           T &ref_output);
-
     bool Read_Stream_Block(size_t &ref_block_size_received,
                            size_t const desired_block_size_received,
                            size_t const step_block_size_received,
@@ -65,16 +59,6 @@ namespace MyEA::String
                            std::ifstream &ref_ifstream_received,
                            char const until_reach_received = 0x00);
 
-    template <typename T>
-    bool Read_Stream_Block_And_Parse_Real_Number(char *&ptr_array_characters_received,
-                                                 char *&ptr_last_character_received,
-                                                 size_t &ref_block_size_received,
-                                                 size_t const desired_block_size_received,
-                                                 size_t const step_block_size_received,
-                                                 T &ref_output_received,
-                                                 std::vector<char> &ref_vector_buffers_received,
-                                                 std::ifstream &ref_ifstream_received,
-                                                 char const until_reach_received = 0x00);
     template <typename T>
     bool Read_Stream_Block_And_Parse_Number(char *&ptr_array_characters_received,
                                             char *&ptr_last_character_received,
@@ -87,20 +71,20 @@ namespace MyEA::String
                                             char const until_reach_received = 0x00);
 
     template <typename T>
-    T Cin_Number(T const minimum_number_received, std::string const &ref_prefix_received = "Number: ");
-
-    template <typename T>
     T Cin_Number(T const minimum_number_received,
                  T const maximum_number_received,
                  std::string const &ref_prefix_received = "Number: ");
 
     template <typename T>
-    T Cin_Real_Number(T const minimum_real_number_received, std::string const &ref_prefix_received = "Number: ");
+    T Cin_Number(T const minimum_number_received, std::string const &ref_prefix_received = "Number: ");
 
     template <typename T>
     T Cin_Real_Number(T const minimum_real_number_received,
                       T const maximum_real_number_received,
                       std::string const &ref_prefix_received = "Number: ");
+
+    template <typename T>
+    T Cin_Real_Number(T const minimum_real_number_received, std::string const &ref_prefix_received = "Number: ");
 
     bool NoOrYes(std::string const &ref_prefix_received);
 
@@ -140,4 +124,7 @@ namespace MyEA::String
 
         return(tmp_value_return.str());
     }
+
+    #define Error(fmt, ...) Print_With_Prefix(std::string(__FILE__) + ":" + std::to_string(__LINE__) + ", ERROR: ", fmt, ##__VA_ARGS__)
 }
+
