@@ -1,4 +1,5 @@
 .vs
+.idea
 Common_DLL/Intermediate
 Common_DLL/Output
 Common_Library_Linux/bin
