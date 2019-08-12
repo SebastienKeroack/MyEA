@@ -108,8 +108,8 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>COMPILE_x64;COMPILE_DOUBLE;COMPILE_COUT;COMPILE_WINDOWS;COMPILE_UINPUT;COMPILE_ADEPT;ADEPT_TRACK_NON_FINITE_GRADIENTS;ADEPT_RECORDING_PAUSABLE;COMPILE_BREAK_CODE;COMPILE_DEBUG;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Program Files\Adept\adept-2.0.5\include\;C:\Program Files\Boost\boost_1_69_0\;$(ProjectDir)include\;$(ProjectDir)src\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>COMPILE_x64;COMPILE_DOUBLE;COMPILE_COUT;COMPILE_WINDOWS;COMPILE_UINPUT;COMPILE_BREAK_CODE;COMPILE_DEBUG;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Program Files\Boost\boost_1_69_0\;$(ProjectDir)include\;$(ProjectDir)src\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
@@ -210,9 +210,9 @@
     <ClInclude Include="include\Random\Random.hpp" />
     <ClInclude Include="include\Reallocate\CPU\Reallocate.hpp" />
     <ClInclude Include="include\Reallocate\Reallocate.hpp" />
-    <ClInclude Include="include\Shutdown_Capturing\Linux\Shutdown_Capturing.hpp" />
-    <ClInclude Include="include\Shutdown_Capturing\Shutdown_Capturing.hpp" />
-    <ClInclude Include="include\Shutdown_Capturing\Windows\Shutdown_Capturing.hpp" />
+    <ClInclude Include="include\Shutdown\Linux\Shutdown.hpp" />
+    <ClInclude Include="include\Shutdown\Shutdown.hpp" />
+    <ClInclude Include="include\Shutdown\Windows\Shutdown.hpp" />
     <ClInclude Include="include\stdafx.hpp" />
     <ClInclude Include="include\Strings\Animation_Waiting.hpp" />
     <ClInclude Include="include\Strings\String.hpp" />
@@ -240,27 +240,15 @@
     <ClCompile Include="src\Keyboard_Capturing\Windows\Keyboard_Capturing.cpp" />
     <ClCompile Include="src\Math\CPU\Math.cpp" />
     <ClCompile Include="src\Math\MODWT.cpp" />
-    <ClCompile Include="src\Random\Adept\Adept__Random__Double.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="src\Random\Adept\Adept__Random__Float.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="src\Random\Random.cpp" />
     <ClCompile Include="src\Reallocate\CPU\Reallocate.cpp" />
-    <ClCompile Include="src\Shutdown_Capturing\Linux\Shutdown_Capturing.cpp">
+    <ClCompile Include="src\Shutdown\Linux\Shutdown.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="src\Shutdown_Capturing\Windows\Shutdown_Capturing.cpp" />
+    <ClCompile Include="src\Shutdown\Windows\Shutdown.cpp" />
     <ClCompile Include="src\stdafx.cpp" />
     <ClCompile Include="src\Strings\Animation_Waiting.cpp" />
     <ClCompile Include="src\Strings\String.cpp" />

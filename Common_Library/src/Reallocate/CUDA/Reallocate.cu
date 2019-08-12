@@ -1,10 +1,12 @@
+// Standard.
+#include <iterator>
+
+// This.
 #include <Configuration/CUDA/Configuration.cuh>
-#include <Tools/CUDA_Memory_Copy_1D.cuh>
-#include <Tools/CUDA_Zero_1D.cuh>
 #include <Tools/CUDA_Fill_1D.cuh>
 #include <Tools/CUDA_Fill_Pointers_1D.cuh>
-
-#include <iterator> 
+#include <Tools/CUDA_Memory_Copy_1D.cuh>
+#include <Tools/CUDA_Zero_1D.cuh>
 
 namespace MyEA::Memory
 {

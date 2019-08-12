@@ -76,8 +76,8 @@
     <ClInclude Include="include\Keyboard_Capturing\Keyboard_Capturing.hpp">
       <Filter>include\Keyboard_Capturing</Filter>
     </ClInclude>
-    <ClInclude Include="include\Shutdown_Capturing\Windows\Shutdown_Capturing.hpp">
-      <Filter>include\Shutdown_Capturing</Filter>
+    <ClInclude Include="include\Shutdown\Windows\Shutdown.hpp">
+      <Filter>include\Shutdown</Filter>
     </ClInclude>
     <ClInclude Include="include\Reallocate\Reallocate.hpp">
       <Filter>include\Reallocate</Filter>
@@ -112,11 +112,11 @@
     <ClInclude Include="include\Reallocate\CPU\Reallocate.hpp">
       <Filter>include\Reallocate\CPU</Filter>
     </ClInclude>
-    <ClInclude Include="include\Shutdown_Capturing\Shutdown_Capturing.hpp">
-      <Filter>include\Shutdown_Capturing\Windows</Filter>
+    <ClInclude Include="include\Shutdown\Shutdown.hpp">
+      <Filter>include\Shutdown\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="include\Shutdown_Capturing\Linux\Shutdown_Capturing.hpp">
-      <Filter>include\Shutdown_Capturing\Linux</Filter>
+    <ClInclude Include="include\Shutdown\Linux\Shutdown.hpp">
+      <Filter>include\Shutdown\Linux</Filter>
     </ClInclude>
     <ClInclude Include="include\Math\Math.hpp">
       <Filter>include\Math</Filter>
@@ -134,12 +134,6 @@
   <ItemGroup>
     <ClCompile Include="src\stdafx.cpp">
       <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Random\Adept\Adept__Random__Double.cpp">
-      <Filter>src\Random\Adept</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Random\Adept\Adept__Random__Float.cpp">
-      <Filter>src\Random\Adept</Filter>
     </ClCompile>
     <ClCompile Include="src\Reallocate\CPU\Reallocate.cpp">
       <Filter>src\Reallocate\CPU</Filter>
@@ -183,11 +177,11 @@
     <ClCompile Include="src\Keyboard_Capturing\Windows\Keyboard_Capturing.cpp">
       <Filter>src\Keyboard_Capturing\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\Shutdown_Capturing\Windows\Shutdown_Capturing.cpp">
-      <Filter>src\Shutdown_Capturing\Windows</Filter>
+    <ClCompile Include="src\Shutdown\Windows\Shutdown.cpp">
+      <Filter>src\Shutdown\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\Shutdown_Capturing\Linux\Shutdown_Capturing.cpp">
-      <Filter>src\Shutdown_Capturing\Linux</Filter>
+    <ClCompile Include="src\Shutdown\Linux\Shutdown.cpp">
+      <Filter>src\Shutdown\Linux</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -215,7 +209,7 @@
     <Filter Include="src\Reallocate">
       <UniqueIdentifier>{1dd4d1cc-ef23-44d8-9d3a-aac085404dc5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Shutdown_Capturing">
+    <Filter Include="src\Shutdown">
       <UniqueIdentifier>{252353eb-d462-43b7-8bc9-174de9e4603e}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Strings">
@@ -251,17 +245,14 @@
     <Filter Include="src\Strings\Windows">
       <UniqueIdentifier>{2634bbd7-3a42-4ecb-a064-0abe4c315ae9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Shutdown_Capturing\Linux">
+    <Filter Include="src\Shutdown\Linux">
       <UniqueIdentifier>{83dbce75-be0b-4e05-b31c-393d5286e3a7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Shutdown_Capturing\Windows">
+    <Filter Include="src\Shutdown\Windows">
       <UniqueIdentifier>{b81b7344-7079-44eb-b862-214db89259c2}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Reallocate\CPU">
       <UniqueIdentifier>{a049e5ad-f379-44fd-8379-b5d64fceb275}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Random\Adept">
-      <UniqueIdentifier>{eb74ad0e-ff84-4b59-b1c8-b919eeb504bf}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Math\CPU">
       <UniqueIdentifier>{58c374c1-e394-4150-9418-4a9e4eecbf0f}</UniqueIdentifier>
@@ -311,7 +302,7 @@
     <Filter Include="include\Reallocate">
       <UniqueIdentifier>{731b903a-0741-4fa7-91f0-d31f49fd338a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\Shutdown_Capturing">
+    <Filter Include="include\Shutdown">
       <UniqueIdentifier>{d8ce4c7a-ce2c-405d-91ac-b8e9c769bad4}</UniqueIdentifier>
     </Filter>
     <Filter Include="include\Strings">
@@ -347,10 +338,10 @@
     <Filter Include="include\Reallocate\CUDA">
       <UniqueIdentifier>{b603d197-ea9b-4100-b45a-af5e5453bb21}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\Shutdown_Capturing\Linux">
+    <Filter Include="include\Shutdown\Linux">
       <UniqueIdentifier>{045c41cc-4bb9-47ba-82d7-3faddcb88eef}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\Shutdown_Capturing\Windows">
+    <Filter Include="include\Shutdown\Windows">
       <UniqueIdentifier>{7ceb5b8e-2388-4c89-b6e8-86a475a1f318}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

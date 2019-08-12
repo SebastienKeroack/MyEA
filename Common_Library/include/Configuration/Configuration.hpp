@@ -1,13 +1,14 @@
 #pragma once
 
-#include <assert.h>
+// Boost.
+#include <boost/assert.hpp>
 
 #if defined(COMPILE_FLOAT)
     typedef float ST_;
     
-    #if defined(COMPILE_ADEPT)
+    #if defined(COMPILE_AUTODIFF)
         #include <adept.h>
-        
+
         typedef adept::afloat T_;
 
         inline float Cast_T(T_ T_received) { return(T_received.value()); }
@@ -16,13 +17,13 @@
 
         inline float Cast_T(T_ T_received) { return(T_received); }
     #endif
-    
+
     typedef int I_;
     #define EPSILON 1.192092896e-07f
 #elif defined(COMPILE_DOUBLE)
     typedef double ST_;
     
-    #if defined(COMPILE_ADEPT)
+    #if defined(COMPILE_AUTODIFF)
         #include <adept.h>
         
         typedef adept::adouble T_;
@@ -41,32 +42,18 @@
     typedef long long I_;
     #define EPSILON 2.2204460492503131e-016L
 #endif
-    
-#if defined(COMPILE_ADEPT)
-    static
-    T_ operator ""_T(unsigned long long int variable_to_size_t_received)
-    {
-        return(static_cast<T_>(variable_to_size_t_received));
-    }
 
-    static
-    T_ operator ""_T(long double variable_to_size_t_received)
-    {
-        return(static_cast<T_>(variable_to_size_t_received));
-    }
-#else
-    constexpr
-    T_ operator ""_T(unsigned long long int variable_to_size_t_received)
-    {
-        return(static_cast<T_>(variable_to_size_t_received));
-    }
+constexpr
+T_ operator ""_T(unsigned long long int variable_to_size_t_received)
+{
+    return(static_cast<T_>(variable_to_size_t_received));
+}
 
-    constexpr
-    T_ operator ""_T(long double variable_to_size_t_received)
-    {
-        return(static_cast<T_>(variable_to_size_t_received));
-    }
-#endif
+constexpr
+T_ operator ""_T(long double variable_to_size_t_received)
+{
+    return(static_cast<T_>(variable_to_size_t_received));
+}
 
 constexpr
 ST_ operator ""_ST(unsigned long long int variable_to_size_t_received)
@@ -79,7 +66,7 @@ ST_ operator ""_ST(long double variable_to_size_t_received)
 {
     return(static_cast<ST_>(variable_to_size_t_received));
 }
-    
+
 #if defined(__linux__) || defined(COMPILE_LINUX)
     #include <cstddef>
 #endif
@@ -98,7 +85,7 @@ size_t KILOBYTE(1024_zu);
     #define TYPE_OS_COMPILE "LINUX"
     
     #include <cstring>
-    #include <math.h>
+    #include <cmath>
     
     #if defined(COMPILE_COUT)
         #define PRINT_FORMAT printf

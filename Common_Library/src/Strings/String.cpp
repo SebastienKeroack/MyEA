@@ -1,23 +1,17 @@
 ﻿#include "stdafx.hpp"
 
-#if defined(COMPILE_LINUX)
-    #include <cstring>
-    #include <ctime>
-#endif // COMPILE_LINUX
-
-// This.
-#include <Strings/String.hpp>
-#include <Time/Time.hpp>
-
+// Boost.
 #include <boost/spirit/home/x3.hpp>
 
-#include <string>
-#include <sstream>
-#include <iomanip>
+// Standard.
 #include <iostream>
 #include <fstream>
 #include <regex>
 #include <stdarg.h>
+
+// This.
+#include <Strings/String.hpp>
+#include <Time/Time.hpp>
 
 namespace MyEA::String
 {
@@ -327,90 +321,6 @@ namespace MyEA::String
     template double      Cin_Real_Number<double     >(double      const, double      const, std::string const &);
     template double long Cin_Real_Number<double long>(double long const, double long const, std::string const &);
 
-#if defined(COMPILE_ADEPT)
-    #if defined(COMPILE_FLOAT)
-        template <>
-        adept::afloat Cin_Real_Number(adept::afloat const minimum_real_number_received,
-                                      adept::afloat const maximum_real_number_received,
-                                      std::string const &ref_prefix_received)
-        {
-            float tmp_return(0.0f);
-
-            std::string tmp_string_digit;
-
-            std::smatch tmp_smatch;
-
-            std::regex tmp_regex("^([-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?)$");
-
-            do
-            {
-                PRINT(ref_prefix_received);
-
-                getline(std::cin, tmp_string_digit);
-
-                if(tmp_string_digit.empty()) { continue; }
-
-                if(std::regex_match(tmp_string_digit,
-                                    tmp_smatch,
-                                    tmp_regex,
-                                    std::regex_constants::match_default))
-                {
-                    try
-                    {
-                        tmp_return = std::stof(tmp_smatch[1u]);
-
-                        if(     tmp_return < minimum_real_number_received) { continue; }
-                        else if(tmp_return > maximum_real_number_received) { continue; }
-
-                        return(tmp_return);
-                    }
-                    catch(...) { continue; }
-                }
-            } while(true);
-        }
-    #elif defined(COMPILE_DOUBLE)
-        template <>
-        adept::adouble Cin_Real_Number(adept::adouble const minimum_real_number_received,
-                                       adept::adouble const maximum_real_number_received,
-                                       std::string const &ref_prefix_received)
-        {
-            double tmp_return(0.0);
-
-            std::string tmp_string_digit;
-
-            std::smatch tmp_smatch;
-
-            std::regex tmp_regex("^([-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?)$");
-
-            do
-            {
-                PRINT(ref_prefix_received);
-
-                getline(std::cin, tmp_string_digit);
-
-                if(tmp_string_digit.empty()) { continue; }
-
-                if(std::regex_match(tmp_string_digit,
-                                    tmp_smatch,
-                                    tmp_regex,
-                                    std::regex_constants::match_default))
-                {
-                    try
-                    {
-                        tmp_return = std::stod(tmp_smatch[1u]);
-
-                        if(     tmp_return < minimum_real_number_received) { continue; }
-                        else if(tmp_return > maximum_real_number_received) { continue; }
-
-                        return(tmp_return);
-                    }
-                    catch(...) { continue; }
-                }
-            } while(true);
-        }
-    #endif // COMPILE_FLOAT || COMPILE_DOUBLE
-#endif // COMPILE_ADEPT
-
     template <typename T>
     T Cin_Real_Number(T const minimum_real_number_received, std::string const &ref_prefix_received)
     {
@@ -423,15 +333,7 @@ namespace MyEA::String
     template double      Cin_Real_Number<double     >(double      const, std::string const &);
     template double long Cin_Real_Number<double long>(double long const, std::string const &);
 
-#if defined(COMPILE_ADEPT)
-    #if defined(COMPILE_FLOAT)
-        template adept::afloat Cin_Real_Number<adept::afloat>(adept::afloat const, std::string const &);
-    #elif defined(COMPILE_DOUBLE)
-        template adept::adouble Cin_Real_Number<adept::adouble>(adept::adouble const, std::string const &);
-    #endif // COMPILE_FLOAT || COMPILE_DOUBLE
-#endif // COMPILE_ADEPT
-
-    bool NoOrYes(std::string const &ref_prefix_received)
+    bool Accept(std::string const &ref_prefix_received)
     {
         std::string tmp_string_option;
 
@@ -490,80 +392,21 @@ namespace MyEA::String
         }
     }
 
-    std::string Get__Time(std::string format_received, bool const use_local_time_received)
-    {
-        std::ostringstream tmp_ostringstream;
-
-        if(format_received.empty())
-        {
-            if(use_local_time_received) { format_received = "[L:%d/%m/%Y %Hh:%Mm:%Ss]" ; }
-            else                        { format_received = "[GM:%d/%m/%Y %Hh:%Mm:%Ss]"; }
-        }
-
-        time_t tmp_time_t(std::time(nullptr));
-
-    #if defined(COMPILE_WINDOWS)
-        struct tm tmp_tm;
-
-        if(use_local_time_received) { localtime_s(&tmp_tm, &tmp_time_t); }
-        else                        { gmtime_s(&tmp_tm, &tmp_time_t)   ; }
-
-        tmp_ostringstream << std::put_time(&tmp_tm, format_received.c_str());
-    #elif defined(COMPILE_LINUX)
-        struct tm *tmp_ptr_tm;
-
-        if(use_local_time_received) { tmp_ptr_tm = localtime(&tmp_time_t); }
-        else                        { tmp_ptr_tm = gmtime(&tmp_time_t)   ; }
-
-        tmp_ostringstream << std::put_time(tmp_ptr_tm, format_received.c_str());
-    #endif // COMPILE_WINDOWS || COMPILE_LINUX
-
-        return(tmp_ostringstream.str());
-    }
-
-    std::string Get__Time_Elapse(double const time_elapse_received)
-    {
-        std::string tmp_string;
-
-        if(     time_elapse_received <= 0.000'000'999) { tmp_string = std::to_string(time_elapse_received * 1e+9) + "ns"; } // nanoseconds
-        else if(time_elapse_received <= 0.000'999    ) { tmp_string = To_string<double, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_FIXED>(time_elapse_received * 1e+6, 3u) + "us"; } // microseconds μs
-        else if(time_elapse_received <= 0.999        ) { tmp_string = To_string<double, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_FIXED>(time_elapse_received * 1e+3, 3u) + "ms"; } // milliseconds
-        else if(time_elapse_received <= 59.0         ) { tmp_string = To_string<double, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_FIXED>(time_elapse_received, 3u) + "s"; } // seconds
-        else if(time_elapse_received <= 3599.0       )
-        {
-            tmp_string =  std::to_string(static_cast<unsigned int>(floor(time_elapse_received / 60.0))) + "m:"; // minute
-            tmp_string += std::to_string(static_cast<unsigned int>(time_elapse_received) % 60u) + "s:"; // seconde
-            tmp_string += To_string<double, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_FIXED>(time_elapse_received - floor(time_elapse_received), 3u) + "ms"; // milliseconds
-        }
-        else if(time_elapse_received <= 86'399.0)
-        {
-            double const tmp_minutes(static_cast<double>(static_cast<unsigned int>(time_elapse_received) % 3600u) / 60.0);
-
-            tmp_string =  std::to_string(static_cast<unsigned int>(floor(time_elapse_received / 3600.0))) + "h:"; // hour
-            tmp_string += std::to_string(static_cast<unsigned int>(floor(tmp_minutes))) + "m:"; // minute
-            tmp_string += std::to_string(static_cast<unsigned int>(tmp_minutes) % 60u) + "s:"; // seconde
-            tmp_string += To_string<double, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_FIXED>(time_elapse_received - floor(time_elapse_received), 3u) + "ms"; // milliseconds
-        }
-        else { tmp_string = To_string<double, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_FIXED>(time_elapse_received, 3u) + "s"; } // seconde
-
-        return(tmp_string);
-    }
-
-    std::string To_Upper(std::string string_to_uppercase_received)
+    std::string To_Upper(std::string string_received)
     {
         std::locale tmp_locale;
 
-        for(std::string::size_type i(0); i != string_to_uppercase_received.length(); ++i)
+        for(std::string::size_type i(0); i != string_received.length(); ++i)
         {
-            string_to_uppercase_received[i] = std::toupper(string_to_uppercase_received[i], tmp_locale);
+            string_received[i] = std::toupper(string_received[i], tmp_locale);
         }
 
-        return(string_to_uppercase_received);
+        return(string_received);
     }
 
     void Print(char const *ptr_fmt_received, ...)
     {
-        std::cout << MyEA::Time::Get__DateTimeFull() << ": ";
+        std::cout << MyEA::Time::Date_Time_Acc_Now() << ": ";
 
         va_list args; va_start(args, ptr_fmt_received);
 
@@ -576,7 +419,7 @@ namespace MyEA::String
 
     void Print_With_Prefix(std::string const &ref_prefix_received, char const *ptr_fmt_received, ...)
     {
-        std::cout << MyEA::Time::Get__DateTimeFull() << ": " << ref_prefix_received;
+        std::cout << MyEA::Time::Date_Time_Acc_Now() << ": " << ref_prefix_received;
 
         va_list args; va_start(args, ptr_fmt_received);
 
@@ -585,116 +428,5 @@ namespace MyEA::String
         va_end(args);
 
         std::cout << std::endl;
-    }
-
-    void Find_And_Replace(std::string       &ref_source,
-                          std::string const &ref_find,
-                          std::string const &ref_replace)
-    {
-        for(std::string::size_type i(0); (i = ref_source.find(ref_find, i)) != std::string::npos;)
-        {
-            ref_source.replace(i,
-                               ref_find.length(),
-                               ref_replace);
-
-            i += ref_replace.length();
-        }
-    }
-
-    bool Regex_Read_Input(int &ref_result_received,
-                          std::string const &ref_line_received,
-                          std::regex const &ref_regex_received)
-    {
-        std::smatch tmp_smatch;
-
-        if(std::regex_match(ref_line_received,
-                            tmp_smatch,
-                            ref_regex_received,
-                            std::regex_constants::match_default) == false)
-        {
-            MyEA::String::Error("Can not read this line correctly: %s.", ref_line_received.c_str());
-
-            return(false);
-        }
-        else if(tmp_smatch.size() > 2_zu)
-        {
-            MyEA::String::Error("More than one result find at line: %s.", ref_line_received.c_str());
-
-            return(false);
-        }
-        else { ref_result_received = std::stoi(tmp_smatch[1u]); }
-
-        return(true);
-    }
-
-    bool Regex_Read_Input(float &ref_result_received,
-                          std::string const &ref_line_received,
-                          std::regex const &ref_regex_received)
-    {
-        std::smatch tmp_smatch;
-
-        if(std::regex_match(ref_line_received,
-                            tmp_smatch,
-                            ref_regex_received,
-                            std::regex_constants::match_default) == false)
-        {
-            MyEA::String::Error("Can not read this line correctly: %s.", ref_line_received.c_str());
-
-            return(false);
-        }
-        else if(tmp_smatch.size() > 2_zu)
-        {
-            MyEA::String::Error("More than one result find at line: %s.", ref_line_received.c_str());
-
-            return(false);
-        }
-        else { ref_result_received = std::stof(tmp_smatch[1u]); }
-
-        return(true);
-    }
-
-    std::string Execute_Command(char const *const tmp_ptr_command_received)
-    {
-    #if defined(COMPILE_WINDOWS)
-        FILE *tmp_ptr_file_command(_popen(tmp_ptr_command_received, "r"));
-    #elif defined(COMPILE_LINUX)
-        FILE *tmp_ptr_file_command(popen(tmp_ptr_command_received, "r"));
-    #endif // COMPILE_WINDOWS || COMPILE_LINUX
-
-        if(tmp_ptr_file_command == NULL)
-        {
-            MyEA::String::Error("An error has been triggered from the `popen(%s)` function.", tmp_ptr_command_received);
-
-            return("");
-        }
-
-        char tmp_buffer[1024u];
-
-        std::string tmp_output("");
-
-        while(fgets(tmp_buffer, sizeof(tmp_buffer), tmp_ptr_file_command) != NULL) { tmp_output += tmp_buffer; }
-
-        if(ferror(tmp_ptr_file_command) != 0)
-        {
-            MyEA::String::Error("An error has been triggered from the `fgets(%s, %zu, %s)` function.",
-                                tmp_buffer,
-                                sizeof(tmp_buffer),
-                                tmp_ptr_command_received);
-
-            return(tmp_output);
-        }
-
-    #if defined(COMPILE_WINDOWS)
-        if(_pclose(tmp_ptr_file_command) == -1)
-    #elif defined(COMPILE_LINUX)
-        if(pclose(tmp_ptr_file_command) == -1)
-    #endif // COMPILE_WINDOWS || COMPILE_LINUX
-        {
-            MyEA::String::Error("An error has been triggered from the `pclose(%s)` function.", tmp_ptr_command_received);
-
-            return(tmp_output);
-        }
-
-        return(tmp_output);
     }
 }

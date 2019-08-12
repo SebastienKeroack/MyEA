@@ -1,5 +1,6 @@
 #pragma once
 
+// Standard.
 #include <string>
 #include <map>
 
@@ -15,7 +16,7 @@ namespace MyEA
         };
 
         static std::map<enum ENUM_TYPE_DEVICE_SYNCHRONIZED, std::string> ENUM_TYPE_DEVICE_SYNCHRONIZED_NAMES = {{TYPE_DEVICE_SYNCHRONIZED_NONE, "TYPE_DEVICE_SYNCHRONIZED_NONE"},
-                                                                                                                                                                                                       {TYPE_DEVICE_SYNCHRONIZED_THREAD, "TYPE_DEVICE_SYNCHRONIZED_THREAD"},
-                                                                                                                                                                                                       {TYPE_DEVICE_SYNCHRONIZED_THREADBLOCK, "TYPE_DEVICE_SYNCHRONIZED_THREADBLOCK"}};
+                                                                                                                {TYPE_DEVICE_SYNCHRONIZED_THREAD, "TYPE_DEVICE_SYNCHRONIZED_THREAD"},
+                                                                                                                {TYPE_DEVICE_SYNCHRONIZED_THREADBLOCK, "TYPE_DEVICE_SYNCHRONIZED_THREADBLOCK"}};
     }
 }

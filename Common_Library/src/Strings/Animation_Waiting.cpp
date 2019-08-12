@@ -1,9 +1,10 @@
 #include "stdafx.hpp"
 
-#include <string>
-#include <iostream>
-
+// This.
 #include <Strings/Animation_Waiting.hpp>
+
+// Standard.
+#include <iostream>
 
 namespace MyEA::String
 {

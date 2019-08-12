@@ -1,8 +1,10 @@
 #include "stdafx.hpp"
 
-#include <Configuration/Configuration.hpp>
-
+// Standard.
 #include <iostream>
+
+// This.
+#include <Configuration/Configuration.hpp>
 
 void string_cat(char *destination_received,
                 size_t const sizeof_received,

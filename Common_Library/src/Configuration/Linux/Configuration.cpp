@@ -1,11 +1,13 @@
 #include "stdafx.hpp"
 
-#include <Configuration/Configuration.hpp>
-#include <Strings/String.hpp>
-    
+// Standard.
 #include <unistd.h>
 #include <iostream>
-    
+
+// This.
+#include <Configuration/Configuration.hpp>
+#include <Strings/String.hpp>
+
 void string_cat(char *destination_received,
                 size_t const sizeof_received,
                 char const *const source_received)

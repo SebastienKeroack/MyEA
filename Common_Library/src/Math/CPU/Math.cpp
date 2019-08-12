@@ -1,8 +1,10 @@
 #include "stdafx.hpp"
 
+// Standard.
 #include <cmath>
 #include <stdexcept>
 
+// This.
 #include <Math/CPU/Math.hpp>
 
 namespace MyEA::Math
@@ -74,26 +76,10 @@ namespace MyEA::Math
     template<typename T>
     bool Is_NaN(T const value_received)
     {
-        return(isnan(value_received) || isinf(value_received));
+        return(std::isnan(value_received) || std::isinf(value_received));
     }
 
     template bool Is_NaN<float      >(float       const);
     template bool Is_NaN<double     >(double      const);
     template bool Is_NaN<long double>(long double const);
-
-#if defined(COMPILE_ADEPT)
-    #if defined(COMPILE_FLOAT)
-        template<>
-        bool Is_NaN<adept::afloat>(adept::afloat const value_received)
-        {
-            return(isnan(value_received.value()) || isinf(value_received.value()));
-        }
-    #elif defined(COMPILE_DOUBLE)
-        template<>
-        bool Is_NaN<adept::adouble>(adept::adouble const value_received)
-        {
-            return(isnan(value_received.value()) || isinf(value_received.value()));
-        }
-    #endif
-#endif
 }

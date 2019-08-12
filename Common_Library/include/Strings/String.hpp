@@ -1,10 +1,13 @@
 #pragma once
 
-#include <Configuration/Configuration.hpp>
-
-#include <regex>
+// Standard.
 #include <sstream>
 #include <iomanip>
+#include <vector>
+
+// This.
+#include <Configuration/Configuration.hpp>
+#include <Enums/Enum_Type_String_Format.hpp>
 
 #define STD_NEW_LINE std::cout << std::endl;
 #define NEW_LINE "\r\n"
@@ -31,21 +34,11 @@ std::streamsize operator ""_ss(unsigned long long int variable_to_size_t_receive
 
 namespace MyEA::String
 {
-    enum ENUM_TYPE_MANIPULATOR_STRING : int
-    {
-        TYPE_MANIPULATOR_STRING_FIXED        = 0,
-        TYPE_MANIPULATOR_STRING_SCIENTIFIC   = 1,
-        TYPE_MANIPULATOR_STRING_HEXFLOAT     = 2,
-        TYPE_MANIPULATOR_STRING_DEFAULTFLOAT = 3
-    };
-
     void Print(char const *ptr_fmt_received, ...);
 
     void Print_With_Prefix(std::string const &ref_prefix_received, char const *ptr_fmt_received, ...);
 
-    void Find_And_Replace(std::string       &ref_source,
-                          std::string const &ref_find,
-                          std::string const &ref_replace);
+    #define Error(fmt, ...) Print_With_Prefix(std::string(__FILE__) + ":" + std::to_string(__LINE__) + ", ERROR: ", fmt, ##__VA_ARGS__)
 
     template <typename T>
     bool Parse_Number(char *&ptr_array_characters,
@@ -86,45 +79,29 @@ namespace MyEA::String
     template <typename T>
     T Cin_Real_Number(T const minimum_real_number_received, std::string const &ref_prefix_received = "Number: ");
 
-    bool NoOrYes(std::string const &ref_prefix_received);
+    bool Accept(std::string const &ref_prefix_received);
 
-    bool Regex_Read_Input(int &ref_result_received,
-                          std::string const &ref_line_received,
-                          std::regex const &ref_regex_received);
+    std::string System_Command(char const *const tmp_ptr_command_received);
 
-    bool Regex_Read_Input(float &ref_result_received,
-                          std::string const &ref_line_received,
-                          std::regex const &ref_regex_received);
+    std::string To_Upper(std::string string_received);
 
-    std::string Execute_Command(char const *const tmp_ptr_command_received);
-
-#if defined(_DEBUG) || defined(COMPILE_DEBUG)
-    std::string Get__Time(std::string format_received = "", bool const use_local_time_received = true);
-#else // COMPILE_DEBUG
-    std::string Get__Time(std::string format_received = "", bool const use_local_time_received = false);
-#endif // COMPILE_DEBUG
-
-    std::string Get__Time_Elapse(double const time_elapse_received);
-
-    std::string To_Upper(std::string string_to_uppercase_received);
-
-    template<class T, enum MyEA::String::ENUM_TYPE_MANIPULATOR_STRING TYPE>
+    template<class T, enum ENUM_TYPE_STRING_FORMAT TYPE = ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>
     std::string To_string(T const value_received, unsigned int const number_precision_received = 16u)
     {
         std::ostringstream tmp_value_return;
 
         switch(TYPE)
         {
-            case MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_FIXED:        tmp_value_return << std::fixed        << std::setprecision(number_precision_received) << value_received; break;
-            case MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_SCIENTIFIC:   tmp_value_return << std::scientific   << std::setprecision(number_precision_received) << value_received; break;
-            case MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_HEXFLOAT:     tmp_value_return << std::hexfloat     << std::setprecision(number_precision_received) << value_received; break;
-            case MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT: tmp_value_return << std::defaultfloat << std::setprecision(number_precision_received) << value_received; break;
-            default: tmp_value_return << std::setprecision(number_precision_received) << value_received; break;
+            case ENUM_TYPE_STRING_FORMAT::FIXED:        tmp_value_return << std::fixed        << std::setprecision(number_precision_received) << value_received; break;
+            case ENUM_TYPE_STRING_FORMAT::SCIENTIFIC:   tmp_value_return << std::scientific   << std::setprecision(number_precision_received) << value_received; break;
+            case ENUM_TYPE_STRING_FORMAT::HEXFLOAT:     tmp_value_return << std::hexfloat     << std::setprecision(number_precision_received) << value_received; break;
+            case ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT: tmp_value_return << std::defaultfloat << std::setprecision(number_precision_received) << value_received; break;
+            default:
+                Error("The `%s` dialog box type is not supported in the switch.", ENUM_TYPE_STRING_FORMAT_NAMES[TYPE].c_str());
+                    return("");
         }
 
         return(tmp_value_return.str());
     }
-
-    #define Error(fmt, ...) Print_With_Prefix(std::string(__FILE__) + ":" + std::to_string(__LINE__) + ", ERROR: ", fmt, ##__VA_ARGS__)
 }
 

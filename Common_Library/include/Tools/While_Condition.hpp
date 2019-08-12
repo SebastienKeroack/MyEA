@@ -1,8 +1,10 @@
 #pragma once
 
-#include <Enums/Enum_Type_While_Condition.hpp>
-
+// Standard.
 #include <chrono>
+
+// This.
+#include <Enums/Enum_Type_While_Condition.hpp>
 
 namespace MyEA::Common
 {

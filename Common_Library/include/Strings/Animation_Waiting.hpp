@@ -1,8 +1,10 @@
 #pragma once
 
+// Standard.
 #include <thread>
 #include <atomic>
 
+/// This.
 #include <Configuration/Configuration.hpp>
 
 namespace MyEA::String

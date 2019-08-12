@@ -1,4 +1,4 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 3.9)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.14.5)
 
 PROJECT(Common_Library_Linux VERSION 1.0.0 DESCRIPTION "No description.")
 
@@ -17,18 +17,26 @@ INCLUDE_DIRECTORIES(include)
 
 SET(SOURCE_FILES
     src/stdafx.cpp
+    src/Capturing/Keyboard/Linux/Keyboard.cpp
+    src/Capturing/Shutdown/Linux/Shutdown.cpp
     src/Configuration/Configuration.cpp
-    src/Configuration/Linux/Linux__Configuration.cpp
+    src/Configuration/Linux/Configuration.cpp
     src/Files/File.cpp
-    src/Keyboard_Capturing/Linux/Linux__Keyboard_Capturing.cpp
-    src/Math/CPU/Math.cpp
+    src/Files/Linux/File.cpp
     src/Math/MODWT.cpp
-    src/Random/Random.cpp
-    src/Shutdown_Capturing/Linux/Linux__Shutdown_Capturing.cpp
+    src/Math/CPU/Math.cpp
+    src/Random/Base.cpp
+    src/Random/Bernoulli.cpp
+    src/Random/Floating.cpp
+    src/Random/Gaussian.cpp
+    src/Random/Integer.cpp
     src/Strings/Animation_Waiting.cpp
     src/Strings/String.cpp
+    src/Strings/Linux/String.cpp
     src/Time/Time.cpp
-    src/UI/Message_Box.cpp)
+    src/Time/Linux/Time.cpp
+    src/UI/Dialog_Box.cpp
+    src/UI/Linux/Dialog_Box.cpp)
 
 ADD_LIBRARY(Common_Library_Linux SHARED ${SOURCE_FILES})
 # |END| Library. |END|

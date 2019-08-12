@@ -1,13 +1,11 @@
 #include "stdafx.hpp"
 
-#if defined(COMPILE_WINDOWS)
-    #include <windows.h>
-#endif
-
-#include <Time/Time.hpp>
-
-#include <chrono>
+// Standard.
 #include <thread>
+
+// This.
+#include <Strings/String.hpp>
+#include <Time/Time.hpp>
 
 namespace MyEA::Time
 {
@@ -16,88 +14,41 @@ namespace MyEA::Time
         std::this_thread::sleep_for(std::chrono::milliseconds(milliseconds_received));
     }
 
-    std::string Get__DateTimeFull(void)
+    std::string Date_Time_Now(bool const use_local_time_received)
     {
-    #if defined(COMPILE_WINDOWS)
-        SYSTEMTIME tmp_system_time;
-
-        GetSystemTime(&tmp_system_time);
-
-        return("[" + std::to_string(tmp_system_time.wYear) +
-               "-" + std::to_string(tmp_system_time.wMonth) +
-               "-" + std::to_string(tmp_system_time.wDay) +
-               " " + std::to_string(tmp_system_time.wHour) +
-               ":" + std::to_string(tmp_system_time.wMinute) +
-               ":" + std::to_string(tmp_system_time.wSecond) +
-               "." + std::to_string(tmp_system_time.wMilliseconds) + "]");
-    #elif defined(COMPILE_LINUX)
-        // Get actual system time.
-        std::chrono::time_point const tmp_now(std::chrono::system_clock::now());
-
-        // Get seconds since 1970/1/1 00:00:00 UTC.
-        std::time_t const tmp_now_utc(std::chrono::system_clock::to_time_t(tmp_now));
-
-        // Get time_point from `tmp_now_utc` (note: no milliseconds).
-        std::chrono::time_point const tmp_now_rounded(std::chrono::system_clock::from_time_t(tmp_now_utc));
-
-        // Get milliseconds (difference between `tmp_now` and `tmp_now_rounded`).
-        int const tmp_milliseconds(std::chrono::duration<double, std::milli>(tmp_now - tmp_now_rounded).count());
-
-        // Initialize datetime buffer.
-        char tmp_datetime[20];
-
-        // Get datetime formatted to "Y-MW-D H:M:S".
-        std::strftime(tmp_datetime, 20, "%F %T", std::localtime(&tmp_now_utc));
-
-        // Return ("[Y-MW-D H:M:S.xxx]").
-        return("[" + std::string(tmp_datetime) + std::string('.' + std::to_string(tmp_milliseconds)) + "]");
-    #endif
+        return("[" + Now_Format("%d/%m/%Y %T", use_local_time_received) + "]");
     }
 
-    std::string Get__DateTimeStandard(void)
+    std::string Date_Now(bool const use_local_time_received)
     {
-    #if defined(COMPILE_WINDOWS)
-        SYSTEMTIME tmp_system_time;
-
-        GetSystemTime(&tmp_system_time);
-
-        return("[" + std::to_string(tmp_system_time.wYear) +
-               "-" + std::to_string(tmp_system_time.wMonth) +
-               "-" + std::to_string(tmp_system_time.wDay) +
-               " " + std::to_string(tmp_system_time.wHour) +
-               ":" + std::to_string(tmp_system_time.wMinute) +
-               ":" + std::to_string(tmp_system_time.wSecond) + "]");
-    #elif defined(COMPILE_LINUX)
-        std::time_t tmp_time(std::chrono::system_clock::to_time_t(std::chrono::system_clock::now()));
-        struct std::tm *tmp_ptr_tm(localtime(&tmp_time));
-
-        return("[" + std::to_string(tmp_ptr_tm->tm_year + 1900) +
-               "-" + std::to_string(tmp_ptr_tm->tm_mon + 1) +
-               "-" + std::to_string(tmp_ptr_tm->tm_mday) +
-               " " + std::to_string(tmp_ptr_tm->tm_hour) +
-               ":" + std::to_string(tmp_ptr_tm->tm_min) +
-               ":" + std::to_string(tmp_ptr_tm->tm_sec) + "]");
-    #endif
+        return("[" + Now_Format("%d/%m/%Y", use_local_time_received) + "]");
     }
 
-    std::string Get__DateTimeMinimal(void)
+    std::string Time_Elapsed_Format(double const time_elapse_received)
     {
-    #if defined(COMPILE_WINDOWS)
-        SYSTEMTIME tmp_system_time;
+        std::string tmp_string;
 
-        GetSystemTime(&tmp_system_time);
+        if(     time_elapse_received <= 0.000'000'999) { tmp_string = std::to_string(time_elapse_received * 1e+9) + "ns"; } // nanoseconds
+        else if(time_elapse_received <= 0.000'999    ) { tmp_string = MyEA::String::To_string<double, MyEA::String::ENUM_TYPE_STRING_FORMAT::FIXED>(time_elapse_received * 1e+6, 3u) + "us"; } // microseconds μs
+        else if(time_elapse_received <= 0.999        ) { tmp_string = MyEA::String::To_string<double, MyEA::String::ENUM_TYPE_STRING_FORMAT::FIXED>(time_elapse_received * 1e+3, 3u) + "ms"; } // milliseconds
+        else if(time_elapse_received <= 59.0         ) { tmp_string = MyEA::String::To_string<double, MyEA::String::ENUM_TYPE_STRING_FORMAT::FIXED>(time_elapse_received, 3u) + "s"; } // seconds
+        else if(time_elapse_received <= 3599.0       )
+        {
+            tmp_string =  std::to_string(static_cast<unsigned int>(floor(time_elapse_received / 60.0))) + "m:"; // minute
+            tmp_string += std::to_string(static_cast<unsigned int>(time_elapse_received) % 60u) + "s:"; // second
+            tmp_string += MyEA::String::To_string<double, MyEA::String::ENUM_TYPE_STRING_FORMAT::FIXED>(time_elapse_received - floor(time_elapse_received), 3u) + "ms"; // milliseconds
+        }
+        else if(time_elapse_received <= 86'399.0)
+        {
+            double const tmp_minutes(static_cast<double>(static_cast<unsigned int>(time_elapse_received) % 3600u) / 60.0);
 
-        return("[" + std::to_string(tmp_system_time.wYear) +
-               "-" + std::to_string(tmp_system_time.wMonth) +
-               "-" + std::to_string(tmp_system_time.wDay) + "]");
-    #elif defined(COMPILE_LINUX)
-        std::time_t tmp_time(std::chrono::system_clock::to_time_t(std::chrono::system_clock::now()));
+            tmp_string =  std::to_string(static_cast<unsigned int>(floor(time_elapse_received / 3600.0))) + "h:"; // hour
+            tmp_string += std::to_string(static_cast<unsigned int>(floor(tmp_minutes))) + "m:"; // minute
+            tmp_string += std::to_string(static_cast<unsigned int>(tmp_minutes) % 60u) + "s:"; // second
+            tmp_string += MyEA::String::To_string<double, MyEA::String::ENUM_TYPE_STRING_FORMAT::FIXED>(time_elapse_received - floor(time_elapse_received), 3u) + "ms"; // milliseconds
+        }
+        else { tmp_string = MyEA::String::To_string<double, MyEA::String::ENUM_TYPE_STRING_FORMAT::FIXED>(time_elapse_received, 3u) + "s"; } // second
 
-        struct std::tm *tmp_ptr_tm(localtime(&tmp_time));
-
-        return("[" + std::to_string(tmp_ptr_tm->tm_year + 1900) +
-               "-" + std::to_string(tmp_ptr_tm->tm_mon + 1) +
-               "-" + std::to_string(tmp_ptr_tm->tm_mday) + "]");
-    #endif
+        return(tmp_string);
     }
 }
