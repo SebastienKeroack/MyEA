@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\stdafx.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\targetver.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Enums\Enum_Type_Activation_Functions.hpp">
+      <Filter>include\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Enums\Enum_Type_Dataset.hpp">
+      <Filter>include\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Enums\Enum_Type_Dataset_File.hpp">
+      <Filter>include\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Enums\Enum_Type_Dataset_Manager_Storage.hpp">
+      <Filter>include\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Enums\Enum_Type_Dataset_Process.hpp">
+      <Filter>include\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Enums\Enum_Type_Device_Synchronized.hpp">
+      <Filter>include\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Enums\Enum_Type_File_Log.hpp">
+      <Filter>include\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Enums\Enum_Type_Layer.hpp">
+      <Filter>include\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Enums\Enum_Type_Layer_Activation.hpp">
+      <Filter>include\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Enums\Enum_Type_Layer_Dropout.hpp">
+      <Filter>include\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Enums\Enum_Type_Layer_Normalization.hpp">
+      <Filter>include\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Enums\Enum_Type_Loss_Functions.hpp">
+      <Filter>include\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Enums\Enum_Type_Main_Panel.hpp">
+      <Filter>include\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Enums\Enum_Type_Networks.hpp">
+      <Filter>include\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Enums\Enum_Type_Neural_Network_Use.hpp">
+      <Filter>include\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Enums\Enum_Type_Optimizer_Functions.hpp">
+      <Filter>include\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Enums\Enum_Type_RichTextBox.hpp">
+      <Filter>include\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Enums\Enum_Type_State_Propagation.hpp">
+      <Filter>include\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Enums\Enum_Type_TextBox.hpp">
+      <Filter>include\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Enums\Enum_Type_Weights_Initializers.hpp">
+      <Filter>include\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Enums\Enum_Type_While_Condition.hpp">
+      <Filter>include\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Keyboard_Capturing\Keyboard_Capturing.hpp">
+      <Filter>include\Keyboard_Capturing</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Shutdown_Capturing\Windows\Shutdown_Capturing.hpp">
+      <Filter>include\Shutdown_Capturing</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Reallocate\Reallocate.hpp">
+      <Filter>include\Reallocate</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Math\MODWT.hpp">
+      <Filter>include\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Strings\String.hpp">
+      <Filter>include\Strings</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Time\Time.hpp">
+      <Filter>include\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UI\Message_Box.hpp">
+      <Filter>include\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Random\Random.hpp">
+      <Filter>include\Random</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Files\File.hpp">
+      <Filter>include\Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Configuration\Configuration.hpp">
+      <Filter>include\Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Tools\While_Condition.hpp">
+      <Filter>include\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Strings\Animation_Waiting.hpp">
+      <Filter>include\Strings</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Reallocate\CPU\Reallocate.hpp">
+      <Filter>include\Reallocate\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Shutdown_Capturing\Shutdown_Capturing.hpp">
+      <Filter>include\Shutdown_Capturing\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Shutdown_Capturing\Linux\Shutdown_Capturing.hpp">
+      <Filter>include\Shutdown_Capturing\Linux</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Math\Math.hpp">
+      <Filter>include\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Math\CPU\Math.hpp">
+      <Filter>include\Math\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Keyboard_Capturing\Windows\Keyboard_Capturing.hpp">
+      <Filter>include\Keyboard_Capturing\Linux</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Keyboard_Capturing\Linux\Keyboard_Capturing.hpp">
+      <Filter>include\Keyboard_Capturing\Windows</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\stdafx.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Random\Adept\Adept__Random__Double.cpp">
+      <Filter>src\Random\Adept</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Random\Adept\Adept__Random__Float.cpp">
+      <Filter>src\Random\Adept</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Reallocate\CPU\Reallocate.cpp">
+      <Filter>src\Reallocate\CPU</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Strings\Animation_Waiting.cpp">
+      <Filter>src\Strings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Strings\String.cpp">
+      <Filter>src\Strings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Time\Time.cpp">
+      <Filter>src\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Random\Random.cpp">
+      <Filter>src\Random</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\CPU\Math.cpp">
+      <Filter>src\Math\CPU</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Files\File.cpp">
+      <Filter>src\Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Configuration\Configuration.cpp">
+      <Filter>src\Configuration</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\MODWT.cpp">
+      <Filter>src\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UI\Message_Box.cpp">
+      <Filter>src\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Configuration\Windows\Configuration.cpp">
+      <Filter>src\Configuration\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Configuration\Linux\Configuration.cpp">
+      <Filter>src\Configuration\Linux</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Keyboard_Capturing\Linux\Keyboard_Capturing.cpp">
+      <Filter>src\Keyboard_Capturing\Linux</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Keyboard_Capturing\Windows\Keyboard_Capturing.cpp">
+      <Filter>src\Keyboard_Capturing\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shutdown_Capturing\Windows\Shutdown_Capturing.cpp">
+      <Filter>src\Shutdown_Capturing\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shutdown_Capturing\Linux\Shutdown_Capturing.cpp">
+      <Filter>src\Shutdown_Capturing\Linux</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{6fa1a869-fd0f-4a2e-a0c9-2bec602bf38d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{964600db-876c-459f-923e-bb85c34d49a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Configuration">
+      <UniqueIdentifier>{8551e3a8-c44d-427a-a666-230f99d0e0a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Files">
+      <UniqueIdentifier>{a0246569-1ae7-4b71-bb93-25ee61133d89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Keyboard_Capturing">
+      <UniqueIdentifier>{d505c221-702b-4eca-a1d6-0eef3d048bef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Math">
+      <UniqueIdentifier>{8e0b3257-1a94-477c-b0f1-0d8b22e5f685}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Random">
+      <UniqueIdentifier>{370b12b1-4511-4c48-a956-4da5b4048389}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Reallocate">
+      <UniqueIdentifier>{1dd4d1cc-ef23-44d8-9d3a-aac085404dc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Shutdown_Capturing">
+      <UniqueIdentifier>{252353eb-d462-43b7-8bc9-174de9e4603e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Strings">
+      <UniqueIdentifier>{a2f2c5cf-31b5-44d4-8229-fbfda74c96aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Time">
+      <UniqueIdentifier>{842e73e9-d59e-42e5-8979-1327ab607fb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Tools">
+      <UniqueIdentifier>{488bad1c-bb6a-4fc2-891d-6e7979fa9d3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\UI">
+      <UniqueIdentifier>{446956ee-dac5-4903-9baf-1e5fcc8a8002}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\UI\Linux">
+      <UniqueIdentifier>{b36e4ecf-e3fd-4e7d-ac2b-175fe9ee9934}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\UI\Windows">
+      <UniqueIdentifier>{8f3b62ee-04c2-4682-85e4-eef00ae60a7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Reallocate\CUDA">
+      <UniqueIdentifier>{b52c1ab1-8b4e-4c8c-9973-032f37e7d53a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Time\Linux">
+      <UniqueIdentifier>{c48d946f-87ea-47da-92a2-90a046858ea1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Time\Windows">
+      <UniqueIdentifier>{32743541-8793-4f24-86bf-914e153e8898}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Strings\Linux">
+      <UniqueIdentifier>{fbfca174-f942-470e-b6df-29e678a447a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Strings\Windows">
+      <UniqueIdentifier>{2634bbd7-3a42-4ecb-a064-0abe4c315ae9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Shutdown_Capturing\Linux">
+      <UniqueIdentifier>{83dbce75-be0b-4e05-b31c-393d5286e3a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Shutdown_Capturing\Windows">
+      <UniqueIdentifier>{b81b7344-7079-44eb-b862-214db89259c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Reallocate\CPU">
+      <UniqueIdentifier>{a049e5ad-f379-44fd-8379-b5d64fceb275}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Random\Adept">
+      <UniqueIdentifier>{eb74ad0e-ff84-4b59-b1c8-b919eeb504bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Math\CPU">
+      <UniqueIdentifier>{58c374c1-e394-4150-9418-4a9e4eecbf0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Math\CUDA">
+      <UniqueIdentifier>{e911bf84-8c00-46d4-af6d-e8e774f25da6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Keyboard_Capturing\Linux">
+      <UniqueIdentifier>{b41beab0-b405-4336-9d37-0f47eca910f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Keyboard_Capturing\Windows">
+      <UniqueIdentifier>{a70116fc-ba03-431e-be91-8a38ec203642}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Files\Linux">
+      <UniqueIdentifier>{b46a9047-79d5-4cf3-a420-8b216e9faef4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Files\Windows">
+      <UniqueIdentifier>{f94ad38f-766c-4e8f-a512-746ed915c46a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Configuration\CUDA">
+      <UniqueIdentifier>{d1d61aac-a293-494d-8072-e095688ba29a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Configuration\Linux">
+      <UniqueIdentifier>{f27fafdb-f260-4823-90d8-1a2b10d2dd6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Configuration\Windows">
+      <UniqueIdentifier>{8a3636ca-6a39-4095-b3c5-20f20c26eae6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Enums">
+      <UniqueIdentifier>{30dc3afe-182b-4dcc-9926-4af9a0df7b09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Configuration">
+      <UniqueIdentifier>{7ed9f699-7ecc-444a-bb8a-b09a789fca4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Files">
+      <UniqueIdentifier>{8ed1aa3a-a62c-4b38-9e06-0048a7c08d52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Keyboard_Capturing">
+      <UniqueIdentifier>{ea233e79-df70-466e-9fdf-9df4c62e6f29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Math">
+      <UniqueIdentifier>{4e817d0c-f81e-4fb9-8fb6-9e1528b045b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Random">
+      <UniqueIdentifier>{88bced7b-bc8c-4731-a706-a0b09485db8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Reallocate">
+      <UniqueIdentifier>{731b903a-0741-4fa7-91f0-d31f49fd338a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Shutdown_Capturing">
+      <UniqueIdentifier>{d8ce4c7a-ce2c-405d-91ac-b8e9c769bad4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Strings">
+      <UniqueIdentifier>{51dd3288-8cc1-4a81-a307-3928ac8e2ffa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Time">
+      <UniqueIdentifier>{69b1d0b9-a331-452c-a371-2093bbf92401}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Tools">
+      <UniqueIdentifier>{0b3c652d-89ac-49c0-985f-1b1cd5b9a0d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\UI">
+      <UniqueIdentifier>{86198f82-4668-4163-8178-899fd24f7aba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Configuration\CUDA">
+      <UniqueIdentifier>{67d62df3-0663-48aa-abd4-98948431de5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Keyboard_Capturing\Linux">
+      <UniqueIdentifier>{eeb89e47-8fe6-412f-9e7b-11c179915856}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Keyboard_Capturing\Windows">
+      <UniqueIdentifier>{b4743358-4f0d-4652-9e98-43c5e5f1d455}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Math\CPU">
+      <UniqueIdentifier>{6d283d3f-5851-423f-834e-937906f54f06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Math\CUDA">
+      <UniqueIdentifier>{a7cefd40-8062-4389-bf09-5f0fd2f8963a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Reallocate\CPU">
+      <UniqueIdentifier>{931a72c8-51e7-42b4-9f4a-cd6267f55fc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Reallocate\CUDA">
+      <UniqueIdentifier>{b603d197-ea9b-4100-b45a-af5e5453bb21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Shutdown_Capturing\Linux">
+      <UniqueIdentifier>{045c41cc-4bb9-47ba-82d7-3faddcb88eef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Shutdown_Capturing\Windows">
+      <UniqueIdentifier>{7ceb5b8e-2388-4c89-b6e8-86a475a1f318}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Reallocate\CUDA\Reallocate.cu">
+      <Filter>src\Reallocate\CUDA</Filter>
+    </None>
+    <None Include="src\Math\CUDA\Math.cu">
+      <Filter>src\Math\CUDA</Filter>
+    </None>
+    <None Include="src\Configuration\CUDA\Configuration.cu">
+      <Filter>src\Configuration\CUDA</Filter>
+    </None>
+    <None Include="include\Tools\CUDA_Fill_1D.cuh">
+      <Filter>include\Tools</Filter>
+    </None>
+    <None Include="include\Tools\CUDA_Fill_Pointers_1D.cuh">
+      <Filter>include\Tools</Filter>
+    </None>
+    <None Include="include\Tools\CUDA_Memory_Copy_1D.cuh">
+      <Filter>include\Tools</Filter>
+    </None>
+    <None Include="include\Tools\CUDA_Memory_Initialize_1D.cuh">
+      <Filter>include\Tools</Filter>
+    </None>
+    <None Include="include\Tools\CUDA_Zero_1D.cuh">
+      <Filter>include\Tools</Filter>
+    </None>
+    <None Include="include\Configuration\CUDA\Configuration.cuh">
+      <Filter>include\Configuration\CUDA</Filter>
+    </None>
+    <None Include="include\Math\CUDA\Math.cuh">
+      <Filter>include\Math\CUDA</Filter>
+    </None>
+    <None Include="include\Reallocate\CUDA\Reallocate.cuh">
+      <Filter>include\Reallocate\CUDA</Filter>
+    </None>
+    <None Include="src\Tools\CUDA_Memory_Copy_1D.cu">
+      <Filter>src\Tools</Filter>
+    </None>
+    <None Include="src\Tools\CUDA_Memory_Initialize_1D.cu">
+      <Filter>src\Tools</Filter>
+    </None>
+    <None Include="src\Tools\CUDA_Zero_1D.cu">
+      <Filter>src\Tools</Filter>
+    </None>
+    <None Include="src\Tools\CUDA_Fill_1D.cu">
+      <Filter>src\Tools</Filter>
+    </None>
+    <None Include="src\Tools\CUDA_Fill_Pointers_1D.cu">
+      <Filter>src\Tools</Filter>
+    </None>
+  </ItemGroup>
+</Project>

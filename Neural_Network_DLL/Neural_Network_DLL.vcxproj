@@ -93,7 +93,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>COMPILE_x86;COMPILE_DOUBLE;COMPILE_DLL_EXPORTS;COMPILE_WINDOWS;COMPILE_BREAK_CODE;COMPILE_DEBUG;BOOST_DATE_TIME_NO_LIB;BOOST_REGEX_NO_LIB;WIN32;_DEBUG;_USRDLL;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Program Files\Boost\boost_1_69_0\;..\Common_Library_Windows\Header_Files\;..\Neural_Network_Library_Windows\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\Boost\boost_1_69_0\;..\Common_Library\Header_Files\;..\Neural_Network_Library_Windows\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OpenMPSupport>true</OpenMPSupport>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
@@ -128,7 +128,7 @@ copy "..\Network_DLL\Output\$(Platform)\$(Configuration)\Network_DLL.dll" "$(Out
       </SDLCheck>
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Program Files\Boost\boost_1_69_0\;..\Common_Library_Windows\Header_Files\;..\Neural_Network_Library_Windows\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\Boost\boost_1_69_0\;..\Common_Library\Header_Files\;..\Neural_Network_Library_Windows\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OpenMPSupport>true</OpenMPSupport>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
@@ -169,7 +169,7 @@ copy "..\Network_DLL\Output\$(Platform)\$(Configuration)\Network_DLL.dll" "$(Out
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>COMPILE_x86;COMPILE_FLOAT;COMPILE_DLL_EXPORTS;COMPILE_WINDOWS;COMPILE_BREAK_CODE;BOOST_DATE_TIME_NO_LIB;BOOST_REGEX_NO_LIB;WIN32;NDEBUG;_USRDLL;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>false</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Program Files\Boost\boost_1_69_0\;..\Common_Library_Windows\Header_Files\;..\Neural_Network_Library_Windows\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\Boost\boost_1_69_0\;..\Common_Library\Header_Files\;..\Neural_Network_Library_Windows\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OpenMPSupport>true</OpenMPSupport>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
@@ -206,7 +206,7 @@ copy "..\Network_DLL\Output\$(Platform)\$(Configuration)\Network_DLL.dll" "$(Out
       </SDLCheck>
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Program Files\Boost\boost_1_69_0\;..\Common_Library_Windows\Header_Files\;..\Neural_Network_Library_Windows\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\Boost\boost_1_69_0\;..\Common_Library\Header_Files\;..\Neural_Network_Library_Windows\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OpenMPSupport>true</OpenMPSupport>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
@@ -279,9 +279,6 @@ copy "..\Network_DLL\Output\$(Platform)\$(Configuration)\Network_DLL.dll" "$(Out
     <ResourceCompile Include="Resource_Files\Neural_Network_DLL.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common_Library_Windows\Common_Library_Windows.vcxproj">
-      <Project>{83554f24-7b67-4908-82fa-cc1ce433f291}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\Form_DLL\Form_DLL.vcxproj">
       <Project>{393beaff-03c1-4fbe-a7b1-d2237acbd157}</Project>
     </ProjectReference>

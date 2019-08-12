@@ -96,7 +96,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Program Files\Eigen\eigen-eigen-323c052e1731\;..\Common_Library_Windows\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);..\Form_DLL\Header_Files\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\Eigen\eigen-eigen-323c052e1731\;..\Common_Library\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);..\Form_DLL\Header_Files\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -119,7 +119,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Program Files\Eigen\eigen-eigen-323c052e1731\;C:\Program Files\Adept\adept-2.0.5\include\;..\Common_Library_Windows\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);..\Form_DLL\Header_Files\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\Eigen\eigen-eigen-323c052e1731\;C:\Program Files\Adept\adept-2.0.5\include\;..\Common_Library\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);..\Form_DLL\Header_Files\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -143,7 +143,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>COMPILE_x86;COMPILE_FLOAT;COMPILE_WINDOWS;COMPILE_BREAK_CODE;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Program Files\Eigen\eigen-eigen-323c052e1731\;..\Common_Library_Windows\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);..\Form_DLL\Header_Files\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\Eigen\eigen-eigen-323c052e1731\;..\Common_Library\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);..\Form_DLL\Header_Files\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <SDLCheck>true</SDLCheck>
       <OpenMPSupport>true</OpenMPSupport>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -170,7 +170,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>COMPILE_x64;COMPILE_FLOAT;COMPILE_COUT;COMPILE_WINDOWS;COMPILE_UINPUT;COMPILE_UI;COMPILE_BREAK_CODE;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Program Files\Eigen\eigen-eigen-323c052e1731\;..\Common_Library_Windows\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);..\Form_DLL\Header_Files\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\Eigen\eigen-eigen-323c052e1731\;..\Common_Library\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);..\Form_DLL\Header_Files\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <SDLCheck>true</SDLCheck>
       <OpenMPSupport>true</OpenMPSupport>
       <PrecompiledHeader>Use</PrecompiledHeader>

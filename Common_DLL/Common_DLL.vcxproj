@@ -95,7 +95,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>COMPILE_x86;COMPILE_DOUBLE;COMPILE_DLL_EXPORTS;COMPILE_WINDOWS;COMPILE_DEBUG;WIN32;_DEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\Common_Library_Windows\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..Common_Library\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
@@ -113,7 +113,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>COMPILE_x64;COMPILE_DOUBLE;COMPILE_DLL_EXPORTS;COMPILE_WINDOWS;COMPILE_DEBUG;_DEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\Common_Library_Windows\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..Common_Library\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
@@ -132,7 +132,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>COMPILE_x86;COMPILE_FLOAT;COMPILE_DLL_EXPORTS;COMPILE_WINDOWS;WIN32;NDEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\Common_Library_Windows\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..Common_Library\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
@@ -153,7 +153,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>COMPILE_x64;COMPILE_FLOAT;COMPILE_DLL_EXPORTS;COMPILE_WINDOWS;NDEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\Common_Library_Windows\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..Common_Library\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
@@ -183,7 +183,7 @@
     <ResourceCompile Include="Resource_Files\Common.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common_Library_Windows\Common_Library_Windows.vcxproj">
+    <ProjectReference Include="..Common_Library\Common_Library_Windows.vcxproj">
       <Project>{83554f24-7b67-4908-82fa-cc1ce433f291}</Project>
     </ProjectReference>
   </ItemGroup>

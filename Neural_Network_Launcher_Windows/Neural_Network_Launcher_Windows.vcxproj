@@ -94,7 +94,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>COMPILE_x86;COMPILE_DOUBLE;COMPILE_DLL_IMPORT;COMPILE_COUT;COMPILE_WINDOWS;COMPILE_UINPUT;COMPILE_UI;COMPILE_BREAK_CODE;COMPILE_DEBUG;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Common_Library_Windows\Header_Files\;..\Neural_Network_Library_Windows\Header_Files\;..\Neural_Network_Launcher_Windows\Header_Files;..\Neural_Network_Launcher_Windows\Resource_Files;..\Neural_Network_Launcher_Windows;..\Form_DLL\Header_Files\;%(AdditionalIncludeDirectories);$(CudaToolkitIncludeDir)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Common_Library\Header_Files\;..\Neural_Network_Library_Windows\Header_Files\;..\Neural_Network_Launcher_Windows\Header_Files;..\Neural_Network_Launcher_Windows\Resource_Files;..\Neural_Network_Launcher_Windows;..\Form_DLL\Header_Files\;%(AdditionalIncludeDirectories);$(CudaToolkitIncludeDir)</AdditionalIncludeDirectories>
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
@@ -118,7 +118,7 @@ copy "..\Form_DLL\Output\$(Platform)\$(Configuration)\Form_DLL.dll" "$(OutDir)"<
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>COMPILE_x64;COMPILE_DOUBLE;COMPILE_DLL_IMPORT;COMPILE_COUT;COMPILE_WINDOWS;COMPILE_UINPUT;COMPILE_BREAK_CODE;COMPILE_DEBUG;COMPILE_ADEPT;ADEPT_TRACK_NON_FINITE_GRADIENTS;ADEPT_RECORDING_PAUSABLE;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Program Files\Adept\adept-2.0.5\include\;..\Common_Library_Windows\Header_Files\;..\Neural_Network_Library_Windows\Header_Files\;..\Neural_Network_Launcher_Windows\Header_Files;..\Neural_Network_Launcher_Windows\Resource_Files;..\Neural_Network_Launcher_Windows;..\Form_DLL\Header_Files\;%(AdditionalIncludeDirectories);$(CudaToolkitIncludeDir)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\Adept\adept-2.0.5\include\;..\Common_Library\Header_Files\;..\Neural_Network_Library_Windows\Header_Files\;..\Neural_Network_Launcher_Windows\Header_Files;..\Neural_Network_Launcher_Windows\Resource_Files;..\Neural_Network_Launcher_Windows;..\Form_DLL\Header_Files\;%(AdditionalIncludeDirectories);$(CudaToolkitIncludeDir)</AdditionalIncludeDirectories>
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
@@ -149,7 +149,7 @@ copy "..\Form_DLL\Output\$(Platform)\$(Configuration)\Form_DLL.dll" "$(OutDir)"<
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>COMPILE_x86;COMPILE_FLOAT;COMPILE_DLL_IMPORT;COMPILE_WINDOWS;COMPILE_BREAK_CODE;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Common_Library_Windows\Header_Files\;..\Neural_Network_Library_Windows\Header_Files\;..\Neural_Network_Launcher_Windows\Header_Files;..\Neural_Network_Launcher_Windows\Resource_Files;..\Neural_Network_Launcher_Windows;..\Form_DLL\Header_Files\;%(AdditionalIncludeDirectories);$(CudaToolkitIncludeDir)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Common_Library\Header_Files\;..\Neural_Network_Library_Windows\Header_Files\;..\Neural_Network_Launcher_Windows\Header_Files;..\Neural_Network_Launcher_Windows\Resource_Files;..\Neural_Network_Launcher_Windows;..\Form_DLL\Header_Files\;%(AdditionalIncludeDirectories);$(CudaToolkitIncludeDir)</AdditionalIncludeDirectories>
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
@@ -175,7 +175,7 @@ copy "..\Form_DLL\Output\$(Platform)\$(Configuration)\Form_DLL.dll" "$(OutDir)"<
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>COMPILE_x64;COMPILE_FLOAT;COMPILE_DLL_IMPORT;COMPILE_COUT;COMPILE_WINDOWS;COMPILE_UINPUT;COMPILE_UI;COMPILE_BREAK_CODE;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Common_Library_Windows\Header_Files\;..\Neural_Network_Library_Windows\Header_Files\;..\Neural_Network_Launcher_Windows\Header_Files;..\Neural_Network_Launcher_Windows\Resource_Files;..\Neural_Network_Launcher_Windows;..\Form_DLL\Header_Files\;%(AdditionalIncludeDirectories);$(CudaToolkitIncludeDir)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Common_Library\Header_Files\;..\Neural_Network_Library_Windows\Header_Files\;..\Neural_Network_Launcher_Windows\Header_Files;..\Neural_Network_Launcher_Windows\Resource_Files;..\Neural_Network_Launcher_Windows;..\Form_DLL\Header_Files\;%(AdditionalIncludeDirectories);$(CudaToolkitIncludeDir)</AdditionalIncludeDirectories>
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
@@ -275,7 +275,7 @@ copy "..\Form_DLL\Output\$(Platform)\$(Configuration)\Form_DLL.dll" "$(OutDir)"<
     <ResourceCompile Include="Resource_Files\Neural_Network_Launcher_Windows.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common_Library_Windows\Common_Library_Windows.vcxproj">
+    <ProjectReference Include="..\Common_Library\Common_Library_Windows.vcxproj">
       <Project>{83554f24-7b67-4908-82fa-cc1ce433f291}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Form_DLL\Form_DLL.vcxproj">

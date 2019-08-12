@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x86">
+      <Configuration>Debug</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x86">
+      <Configuration>Release</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A28D8E16-A4E2-456E-BAAE-FAE523801DEF}</ProjectGuid>
+    <Keyword>Linux</Keyword>
+    <RootNamespace>Common_Library_Linux</RootNamespace>
+    <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
+    <ApplicationType>Linux</ApplicationType>
+    <ApplicationTypeRevision>1.0</ApplicationTypeRevision>
+    <TargetLinuxPlatform>Generic</TargetLinuxPlatform>
+    <LinuxProjectType>{D51BCBC9-82E9-4017-911E-C93873C4EA2C}</LinuxProjectType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ProjectPublicIncludePath>$(SolutionDir)Common_Library\Header_Files\;$(SolutionDir)Common_Library\Resource_Files\;$(SolutionDir)Common_Library\Source_Files\;$(SolutionDir)Common_Library\;$(ProjectPublicIncludePath)</ProjectPublicIncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ProjectPublicIncludePath>$(SolutionDir)Common_Library\Header_Files\;$(SolutionDir)Common_Library\Resource_Files\;$(SolutionDir)Common_Library\Source_Files\;$(SolutionDir)Common_Library\;$(ProjectPublicIncludePath)</ProjectPublicIncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <ProjectPublicIncludePath>$(SolutionDir)Common_Library\Header_Files\;$(SolutionDir)Common_Library\Resource_Files\;$(SolutionDir)Common_Library\Source_Files\;$(SolutionDir)Common_Library\;$(ProjectPublicIncludePath)</ProjectPublicIncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <ProjectPublicIncludePath>$(SolutionDir)Common_Library\Header_Files\;$(SolutionDir)Common_Library\Resource_Files\;$(SolutionDir)Common_Library\Source_Files\;$(SolutionDir)Common_Library\;$(ProjectPublicIncludePath)</ProjectPublicIncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>/usr/local/boost_1_69_0;/home/sebastien/projects/$(ProjectName)/Header_Files/;/home/sebastien/projects/$(ProjectName)/Resource_Files/;/home/sebastien/projects/$(ProjectName)/Source_Files/;/home/sebastien/projects/$(ProjectName)/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CppLanguageStandard>c++17</CppLanguageStandard>
+      <PreprocessorDefinitions>COMPILE_x64;COMPILE_DOUBLE;COMPILE_COUT;COMPILE_LINUX;COMPILE_UINPUT;COMPILE_BREAK_CODE;COMPILE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Lib />
+    <Lib />
+    <Lib />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>/usr/local/boost_1_69_0;/home/sebastien/projects/$(ProjectName)/Header_Files/;/home/sebastien/projects/$(ProjectName)/Resource_Files/;/home/sebastien/projects/$(ProjectName)/Source_Files/;/home/sebastien/projects/$(ProjectName)/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CppLanguageStandard>c++17</CppLanguageStandard>
+      <PreprocessorDefinitions>COMPILE_x64;COMPILE_FLOAT;COMPILE_COUT;COMPILE_LINUX;COMPILE_UINPUT;COMPILE_BREAK_CODE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Lib />
+    <Lib />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>/usr/local/boost_1_69_0;/home/sebastien/projects/$(ProjectName)/Header_Files/;/home/sebastien/projects/$(ProjectName)/Resource_Files/;/home/sebastien/projects/$(ProjectName)/Source_Files/;/home/sebastien/projects/$(ProjectName)/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CppLanguageStandard>c++17</CppLanguageStandard>
+      <PreprocessorDefinitions>COMPILE_x86;COMPILE_DOUBLE;COMPILE_COUT;COMPILE_LINUX;COMPILE_UINPUT;COMPILE_BREAK_CODE;COMPILE_DEBUG;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Lib />
+    <Lib />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>/usr/local/boost_1_69_0;/home/sebastien/projects/$(ProjectName)/Header_Files/;/home/sebastien/projects/$(ProjectName)/Resource_Files/;/home/sebastien/projects/$(ProjectName)/Source_Files/;/home/sebastien/projects/$(ProjectName)/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CppLanguageStandard>c++17</CppLanguageStandard>
+      <PreprocessorDefinitions>COMPILE_x86;COMPILE_FLOAT;COMPILE_COUT;COMPILE_LINUX;COMPILE_UINPUT;COMPILE_BREAK_CODE;WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Lib />
+    <Lib />
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>
