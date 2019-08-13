@@ -387,9 +387,9 @@ namespace MyEA::Capturing
         }
         else
         {
-            this->_ptr_array_ptr_shutdown_boolean = MyEA::Memory::Reallocate_PtOfPt<std::atomic<bool>*, true, false>(this->_ptr_array_ptr_shutdown_boolean,
-                                                                                                                     this->_number_boolean + 1_zu,
-                                                                                                                     this->_number_boolean);
+            this->_ptr_array_ptr_shutdown_boolean = MyEA::Memory::Cpp::Reallocate_PtOfPt<std::atomic<bool>*, true, false>(this->_ptr_array_ptr_shutdown_boolean,
+                                                                                                                          this->_number_boolean + 1_zu,
+                                                                                                                          this->_number_boolean);
 
             if(this->_ptr_array_ptr_shutdown_boolean == nullptr)
             {

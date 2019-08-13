@@ -10,8 +10,62 @@
     <ClInclude Include="include\targetver.hpp">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\Enums\Enum_Type_Activation_Functions.hpp">
-      <Filter>include\Enums</Filter>
+    <ClInclude Include="include\Reallocate\Reallocate.hpp">
+      <Filter>include\Reallocate</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Math\MODWT.hpp">
+      <Filter>include\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Strings\String.hpp">
+      <Filter>include\Strings</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Time\Time.hpp">
+      <Filter>include\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Files\File.hpp">
+      <Filter>include\Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Configuration\Configuration.hpp">
+      <Filter>include\Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Tools\While_Condition.hpp">
+      <Filter>include\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Strings\Animation_Waiting.hpp">
+      <Filter>include\Strings</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Reallocate\CPU\Reallocate.hpp">
+      <Filter>include\Reallocate\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Math\Math.hpp">
+      <Filter>include\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Math\CPU\Math.hpp">
+      <Filter>include\Math\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UI\Dialog_Box.hpp">
+      <Filter>include\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Reallocate\CPU\Reallocate_C.hpp">
+      <Filter>include\Reallocate\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Reallocate\CPU\Reallocate_Cpp.hpp">
+      <Filter>include\Reallocate\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Random\Gaussian.hpp">
+      <Filter>include\Random</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Random\Integer.hpp">
+      <Filter>include\Random</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Random\Base.hpp">
+      <Filter>include\Random</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Random\Bernoulli.hpp">
+      <Filter>include\Random</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Random\Floating.hpp">
+      <Filter>include\Random</Filter>
     </ClInclude>
     <ClInclude Include="include\Enums\Enum_Type_Dataset.hpp">
       <Filter>include\Enums</Filter>
@@ -26,6 +80,9 @@
       <Filter>include\Enums</Filter>
     </ClInclude>
     <ClInclude Include="include\Enums\Enum_Type_Device_Synchronized.hpp">
+      <Filter>include\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Enums\Enum_Type_Dialog_Box.hpp">
       <Filter>include\Enums</Filter>
     </ClInclude>
     <ClInclude Include="include\Enums\Enum_Type_File_Log.hpp">
@@ -64,6 +121,9 @@
     <ClInclude Include="include\Enums\Enum_Type_State_Propagation.hpp">
       <Filter>include\Enums</Filter>
     </ClInclude>
+    <ClInclude Include="include\Enums\Enum_Type_String_Format.hpp">
+      <Filter>include\Enums</Filter>
+    </ClInclude>
     <ClInclude Include="include\Enums\Enum_Type_TextBox.hpp">
       <Filter>include\Enums</Filter>
     </ClInclude>
@@ -73,62 +133,26 @@
     <ClInclude Include="include\Enums\Enum_Type_While_Condition.hpp">
       <Filter>include\Enums</Filter>
     </ClInclude>
-    <ClInclude Include="include\Keyboard_Capturing\Keyboard_Capturing.hpp">
-      <Filter>include\Keyboard_Capturing</Filter>
+    <ClInclude Include="include\Enums\Enum_Type_Activation_Functions.hpp">
+      <Filter>include\Enums</Filter>
     </ClInclude>
-    <ClInclude Include="include\Shutdown\Windows\Shutdown.hpp">
-      <Filter>include\Shutdown</Filter>
+    <ClInclude Include="include\Capturing\Shutdown\Shutdown.hpp">
+      <Filter>include\Capturing\Shutdown</Filter>
     </ClInclude>
-    <ClInclude Include="include\Reallocate\Reallocate.hpp">
-      <Filter>include\Reallocate</Filter>
+    <ClInclude Include="include\Capturing\Shutdown\Windows\Shutdown.hpp">
+      <Filter>include\Capturing\Shutdown\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="include\Math\MODWT.hpp">
-      <Filter>include\Math</Filter>
+    <ClInclude Include="include\Capturing\Shutdown\Linux\Shutdown.hpp">
+      <Filter>include\Capturing\Shutdown\Linux</Filter>
     </ClInclude>
-    <ClInclude Include="include\Strings\String.hpp">
-      <Filter>include\Strings</Filter>
+    <ClInclude Include="include\Capturing\Keyboard\Keyboard.hpp">
+      <Filter>include\Capturing\Keyboard</Filter>
     </ClInclude>
-    <ClInclude Include="include\Time\Time.hpp">
-      <Filter>include\Time</Filter>
+    <ClInclude Include="include\Capturing\Keyboard\Linux\Keyboard.hpp">
+      <Filter>include\Capturing\Keyboard\Linux</Filter>
     </ClInclude>
-    <ClInclude Include="include\UI\Message_Box.hpp">
-      <Filter>include\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Random\Random.hpp">
-      <Filter>include\Random</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Files\File.hpp">
-      <Filter>include\Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Configuration\Configuration.hpp">
-      <Filter>include\Configuration</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Tools\While_Condition.hpp">
-      <Filter>include\Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Strings\Animation_Waiting.hpp">
-      <Filter>include\Strings</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Reallocate\CPU\Reallocate.hpp">
-      <Filter>include\Reallocate\CPU</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Shutdown\Shutdown.hpp">
-      <Filter>include\Shutdown\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Shutdown\Linux\Shutdown.hpp">
-      <Filter>include\Shutdown\Linux</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Math\Math.hpp">
-      <Filter>include\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Math\CPU\Math.hpp">
-      <Filter>include\Math\CPU</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Keyboard_Capturing\Windows\Keyboard_Capturing.hpp">
-      <Filter>include\Keyboard_Capturing\Linux</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Keyboard_Capturing\Linux\Keyboard_Capturing.hpp">
-      <Filter>include\Keyboard_Capturing\Windows</Filter>
+    <ClInclude Include="include\Capturing\Keyboard\Windows\Keyboard.hpp">
+      <Filter>include\Capturing\Keyboard\Shutdown</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -147,9 +171,6 @@
     <ClCompile Include="src\Time\Time.cpp">
       <Filter>src\Time</Filter>
     </ClCompile>
-    <ClCompile Include="src\Random\Random.cpp">
-      <Filter>src\Random</Filter>
-    </ClCompile>
     <ClCompile Include="src\Math\CPU\Math.cpp">
       <Filter>src\Math\CPU</Filter>
     </ClCompile>
@@ -162,26 +183,71 @@
     <ClCompile Include="src\Math\MODWT.cpp">
       <Filter>src\Math</Filter>
     </ClCompile>
-    <ClCompile Include="src\UI\Message_Box.cpp">
-      <Filter>src\UI</Filter>
-    </ClCompile>
     <ClCompile Include="src\Configuration\Windows\Configuration.cpp">
       <Filter>src\Configuration\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Configuration\Linux\Configuration.cpp">
       <Filter>src\Configuration\Linux</Filter>
     </ClCompile>
-    <ClCompile Include="src\Keyboard_Capturing\Linux\Keyboard_Capturing.cpp">
-      <Filter>src\Keyboard_Capturing\Linux</Filter>
+    <ClCompile Include="src\UI\Dialog_Box.cpp">
+      <Filter>src\UI</Filter>
     </ClCompile>
-    <ClCompile Include="src\Keyboard_Capturing\Windows\Keyboard_Capturing.cpp">
-      <Filter>src\Keyboard_Capturing\Windows</Filter>
+    <ClCompile Include="src\UI\Windows\Dialog_Box.cpp">
+      <Filter>src\UI\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\Shutdown\Windows\Shutdown.cpp">
-      <Filter>src\Shutdown\Windows</Filter>
+    <ClCompile Include="src\UI\Linux\Dialog_Box.cpp">
+      <Filter>src\UI\Linux</Filter>
     </ClCompile>
-    <ClCompile Include="src\Shutdown\Linux\Shutdown.cpp">
-      <Filter>src\Shutdown\Linux</Filter>
+    <ClCompile Include="src\Time\Windows\Time.cpp">
+      <Filter>src\Time\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Time\Linux\Time.cpp">
+      <Filter>src\Time\Linux</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Strings\Windows\String.cpp">
+      <Filter>src\Strings\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Strings\Linux\String.cpp">
+      <Filter>src\Strings\Linux</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Files\Windows\File.cpp">
+      <Filter>src\Files\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Files\Linux\File.cpp">
+      <Filter>src\Files\Linux</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Reallocate\CPU\Reallocate_C.cpp">
+      <Filter>src\Reallocate\CPU</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Reallocate\CPU\Reallocate_Cpp.cpp">
+      <Filter>src\Reallocate\CPU</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Random\Base.cpp">
+      <Filter>src\Random</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Random\Bernoulli.cpp">
+      <Filter>src\Random</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Random\Floating.cpp">
+      <Filter>src\Random</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Random\Gaussian.cpp">
+      <Filter>src\Random</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Random\Integer.cpp">
+      <Filter>src\Random</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Capturing\Shutdown\Windows\Shutdown.cpp">
+      <Filter>src\Capturing\Shutdown\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Capturing\Shutdown\Linux\Shutdown.cpp">
+      <Filter>src\Capturing\Shutdown\Linux</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Capturing\Keyboard\Windows\Keyboard.cpp">
+      <Filter>src\Capturing\Keyboard\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Capturing\Keyboard\Linux\Keyboard.cpp">
+      <Filter>src\Capturing\Keyboard\Linux</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -197,9 +263,6 @@
     <Filter Include="src\Files">
       <UniqueIdentifier>{a0246569-1ae7-4b71-bb93-25ee61133d89}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Keyboard_Capturing">
-      <UniqueIdentifier>{d505c221-702b-4eca-a1d6-0eef3d048bef}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Math">
       <UniqueIdentifier>{8e0b3257-1a94-477c-b0f1-0d8b22e5f685}</UniqueIdentifier>
     </Filter>
@@ -208,9 +271,6 @@
     </Filter>
     <Filter Include="src\Reallocate">
       <UniqueIdentifier>{1dd4d1cc-ef23-44d8-9d3a-aac085404dc5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Shutdown">
-      <UniqueIdentifier>{252353eb-d462-43b7-8bc9-174de9e4603e}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Strings">
       <UniqueIdentifier>{a2f2c5cf-31b5-44d4-8229-fbfda74c96aa}</UniqueIdentifier>
@@ -245,12 +305,6 @@
     <Filter Include="src\Strings\Windows">
       <UniqueIdentifier>{2634bbd7-3a42-4ecb-a064-0abe4c315ae9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Shutdown\Linux">
-      <UniqueIdentifier>{83dbce75-be0b-4e05-b31c-393d5286e3a7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Shutdown\Windows">
-      <UniqueIdentifier>{b81b7344-7079-44eb-b862-214db89259c2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Reallocate\CPU">
       <UniqueIdentifier>{a049e5ad-f379-44fd-8379-b5d64fceb275}</UniqueIdentifier>
     </Filter>
@@ -259,12 +313,6 @@
     </Filter>
     <Filter Include="src\Math\CUDA">
       <UniqueIdentifier>{e911bf84-8c00-46d4-af6d-e8e774f25da6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Keyboard_Capturing\Linux">
-      <UniqueIdentifier>{b41beab0-b405-4336-9d37-0f47eca910f1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Keyboard_Capturing\Windows">
-      <UniqueIdentifier>{a70116fc-ba03-431e-be91-8a38ec203642}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Files\Linux">
       <UniqueIdentifier>{b46a9047-79d5-4cf3-a420-8b216e9faef4}</UniqueIdentifier>
@@ -290,9 +338,6 @@
     <Filter Include="include\Files">
       <UniqueIdentifier>{8ed1aa3a-a62c-4b38-9e06-0048a7c08d52}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\Keyboard_Capturing">
-      <UniqueIdentifier>{ea233e79-df70-466e-9fdf-9df4c62e6f29}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\Math">
       <UniqueIdentifier>{4e817d0c-f81e-4fb9-8fb6-9e1528b045b9}</UniqueIdentifier>
     </Filter>
@@ -301,9 +346,6 @@
     </Filter>
     <Filter Include="include\Reallocate">
       <UniqueIdentifier>{731b903a-0741-4fa7-91f0-d31f49fd338a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\Shutdown">
-      <UniqueIdentifier>{d8ce4c7a-ce2c-405d-91ac-b8e9c769bad4}</UniqueIdentifier>
     </Filter>
     <Filter Include="include\Strings">
       <UniqueIdentifier>{51dd3288-8cc1-4a81-a307-3928ac8e2ffa}</UniqueIdentifier>
@@ -320,12 +362,6 @@
     <Filter Include="include\Configuration\CUDA">
       <UniqueIdentifier>{67d62df3-0663-48aa-abd4-98948431de5a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\Keyboard_Capturing\Linux">
-      <UniqueIdentifier>{eeb89e47-8fe6-412f-9e7b-11c179915856}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\Keyboard_Capturing\Windows">
-      <UniqueIdentifier>{b4743358-4f0d-4652-9e98-43c5e5f1d455}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\Math\CPU">
       <UniqueIdentifier>{6d283d3f-5851-423f-834e-937906f54f06}</UniqueIdentifier>
     </Filter>
@@ -338,11 +374,47 @@
     <Filter Include="include\Reallocate\CUDA">
       <UniqueIdentifier>{b603d197-ea9b-4100-b45a-af5e5453bb21}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\Shutdown\Linux">
-      <UniqueIdentifier>{045c41cc-4bb9-47ba-82d7-3faddcb88eef}</UniqueIdentifier>
+    <Filter Include="src\Capturing">
+      <UniqueIdentifier>{cbb9fc99-47e0-47d0-95ae-f5dc0d9c3d92}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\Shutdown\Windows">
-      <UniqueIdentifier>{7ceb5b8e-2388-4c89-b6e8-86a475a1f318}</UniqueIdentifier>
+    <Filter Include="src\Capturing\Shutdown">
+      <UniqueIdentifier>{bf173ea1-aa8b-47a9-8d35-554ad6ef92ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Capturing\Keyboard">
+      <UniqueIdentifier>{2adbeb49-3893-42ac-b2c8-f283fbcc3ab1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Capturing\Shutdown\Linux">
+      <UniqueIdentifier>{5e6e6ab0-4a5f-4ebe-b46e-95deb302f0cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Capturing\Keyboard\Linux">
+      <UniqueIdentifier>{36fa65db-6bc1-4ed3-ac04-641f78d246b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Capturing\Keyboard\Windows">
+      <UniqueIdentifier>{398adaa6-8fda-4655-93da-fba752ca80a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Capturing\Shutdown\Windows">
+      <UniqueIdentifier>{c53aed76-9910-46bf-9e2e-28dac1fe7f0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Capturing">
+      <UniqueIdentifier>{0bfb815d-7438-4fdf-86a9-3e913abad655}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Capturing\Keyboard">
+      <UniqueIdentifier>{3f1f4fe5-2ea7-440a-b65c-59e481197558}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Capturing\Shutdown">
+      <UniqueIdentifier>{76debaa7-f6c7-49d0-9aae-2907c7a9b1de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Capturing\Shutdown\Linux">
+      <UniqueIdentifier>{1ca66ace-afd2-4391-be60-8d09bc60dd2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Capturing\Shutdown\Windows">
+      <UniqueIdentifier>{7e9c4ffa-4089-48ac-86d6-79ed0382c568}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Capturing\Keyboard\Linux">
+      <UniqueIdentifier>{d85bd79d-e6f9-4694-b9cd-67b4346fc4f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Capturing\Keyboard\Shutdown">
+      <UniqueIdentifier>{d11bcdea-3af6-4ead-813d-97b08a54f97a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -393,6 +465,18 @@
     </None>
     <None Include="src\Tools\CUDA_Fill_Pointers_1D.cu">
       <Filter>src\Tools</Filter>
+    </None>
+    <None Include="src\Reallocate\CUDA\Reallocate_C.cu">
+      <Filter>src\Reallocate\CUDA</Filter>
+    </None>
+    <None Include="src\Reallocate\CUDA\Reallocate_Cpp.cu">
+      <Filter>src\Reallocate\CUDA</Filter>
+    </None>
+    <None Include="include\Reallocate\CUDA\Reallocate_Cpp.cuh">
+      <Filter>include\Reallocate\CUDA</Filter>
+    </None>
+    <None Include="include\Reallocate\CUDA\Reallocate_C.cuh">
+      <Filter>include\Reallocate\CUDA</Filter>
     </None>
   </ItemGroup>
 </Project>

@@ -21,7 +21,7 @@ namespace MyEA::Time
         std::chrono::time_point const tmp_now_rounded(std::chrono::system_clock::from_time_t(tmp_now_utc));
 
         // Get milliseconds (difference between `tmp_now` and `tmp_now_rounded`).
-        int const tmp_milliseconds(std::chrono::duration<double, std::milli>(tmp_now - tmp_now_rounded).count());
+        int const tmp_milliseconds(static_cast<int>(std::chrono::duration<double, std::milli>(tmp_now - tmp_now_rounded).count()));
 
         std::ostringstream tmp_ostringstream;
 
