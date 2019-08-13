@@ -24,13 +24,25 @@ namespace MyEA::Time
         int const tmp_milliseconds(static_cast<int>(std::chrono::duration<double, std::milli>(tmp_now - tmp_now_rounded).count()));
 
         std::ostringstream tmp_ostringstream;
+        
+        std::string tmp_time_format;
 
         struct tm *tmp_ptr_tm;
+        
+        if(use_local_time_received)
+        {
+            tmp_time_format = "LC:%Y/%m/%d %T";
 
-        if(use_local_time_received) { tmp_ptr_tm = localtime(&tmp_now_utc); }
-        else                        { tmp_ptr_tm = gmtime   (&tmp_now_utc); }
+            tmp_ptr_tm = localtime(&tmp_now_utc);
+        }
+        else
+        {
+            tmp_time_format = "GM:%Y/%m/%d %T";
 
-        tmp_ostringstream << std::put_time(tmp_ptr_tm, "%Y/%m/%d %T");
+            tmp_ptr_tm = gmtime   (&tmp_now_utc);
+        }
+
+        tmp_ostringstream << std::put_time(tmp_ptr_tm, tmp_time_format.c_str());
 
         // Return ("[Y/MW/D H:M:S.xxx]").
         return("[" + tmp_ostringstream.str() + std::string('.' + std::to_string(tmp_milliseconds)) + "]");
@@ -42,14 +54,24 @@ namespace MyEA::Time
 
         std::ostringstream tmp_ostringstream;
 
-        std::string const tmp_time_format((use_local_time_received ? "LC:" : "GM:") + format_received);
+        std::string tmp_time_format;
 
         time_t tmp_time_t(std::time(nullptr));
 
         struct tm *tmp_ptr_tm;
+        
+        if(use_local_time_received)
+        {
+            tmp_time_format = "LC:" + format_received;
 
-        if(use_local_time_received) { tmp_ptr_tm = localtime(&tmp_time_t); }
-        else                        { tmp_ptr_tm = gmtime   (&tmp_time_t); }
+            tmp_ptr_tm = localtime(&tmp_time_t);
+        }
+        else
+        {
+            tmp_time_format = "GM:" + format_received;
+
+            tmp_ptr_tm = gmtime   (&tmp_time_t);
+        }
 
         tmp_ostringstream << std::put_time(tmp_ptr_tm, tmp_time_format.c_str());
 
