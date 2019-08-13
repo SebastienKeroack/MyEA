@@ -57,14 +57,13 @@ bool MODWT(size_t const size_array_received,
     {
         if(ref_size_matrix_received != size_array_received * (J_level_received + 1_zu))
         {
-            ptr_array_outputs_received = MyEA::Memory::reallocate_cpp<T>(ptr_array_outputs_received,
-                                                                         size_array_received * (J_level_received + 1_zu),
-                                                                         ref_size_matrix_received,
-                                                                         false);
+            ptr_array_outputs_received = MyEA::Memory::Cpp::Reallocate<T, false, false>(ptr_array_outputs_received,
+                                                                                        size_array_received * (J_level_received + 1_zu),
+                                                                                        ref_size_matrix_received);
 
             if(ptr_array_outputs_received == nullptr)
             {
-                MyEA::String::Error("An error has been triggered from the `reallocate_cpp<%zu>(ptr, %zu, %zu, false)` function.",
+                MyEA::String::Error("An error has been triggered from the `Reallocate<%zu, false, false>(ptr, %zu, %zu)` function.",
                                     sizeof(T),
                                     size_array_received * (J_level_received + 1_zu),
                                     ref_size_matrix_received);
@@ -215,14 +214,13 @@ bool MODWT_Inverse(size_t const size_matrix_received,
     // |STR| Output. |STR|
     if(ptr_array_outputs_received != nullptr)
     {
-        ptr_array_outputs_received = MyEA::Memory::reallocate_cpp<T>(ptr_array_outputs_received,
-                                                                     size_array_received,
-                                                                     0_zu,
-                                                                     false);
+        ptr_array_outputs_received = MyEA::Memory::Cpp::Reallocate<T, false, false>(ptr_array_outputs_received,
+                                                                                    size_array_received,
+                                                                                    0_zu);
 
         if(ptr_array_outputs_received == nullptr)
         {
-            MyEA::String::Error("An error has been triggered from the `reallocate_cpp<%zu>(ptr, %zu, %zu, false)` function.",
+            MyEA::String::Error("An error has been triggered from the `Reallocate<%zu, false, false>(ptr, %zu, %zu)` function.",
                                 sizeof(T),
                                 size_array_received,
                                 0_zu);

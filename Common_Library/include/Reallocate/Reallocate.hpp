@@ -2,8 +2,12 @@
 
 #if defined(COMPILE_CUDA)
     #include <Reallocate/CUDA/Reallocate.cuh>
+    #include <Reallocate/CUDA/Reallocate_C.cuh>
+    #include <Reallocate/CUDA/Reallocate_Cpp.cuh>
 #else
     #include <Reallocate/CPU/Reallocate.hpp>
+    #include <Reallocate/CPU/Reallocate_C.hpp>
+    #include <Reallocate/CPU/Reallocate_Cpp.hpp>
 #endif
 
 #if defined(COMPILE_ADEPT)

@@ -387,14 +387,16 @@ namespace MyEA::Capturing
         }
         else
         {
-            this->_ptr_array_ptr_shutdown_boolean = MyEA::Memory::reallocate_pointers_array_cpp<std::atomic<bool>*>(this->_ptr_array_ptr_shutdown_boolean,
-                                                                                                                    this->_number_boolean + 1_zu,
-                                                                                                                    this->_number_boolean,
-                                                                                                                    true);
+            this->_ptr_array_ptr_shutdown_boolean = MyEA::Memory::Reallocate_PtOfPt<std::atomic<bool>*, true, false>(this->_ptr_array_ptr_shutdown_boolean,
+                                                                                                                     this->_number_boolean + 1_zu,
+                                                                                                                     this->_number_boolean);
 
             if(this->_ptr_array_ptr_shutdown_boolean == nullptr)
             {
-                MyEA::String::Error("Cannot allocate %zu bytes.", (this->_number_boolean + 1_zu) * sizeof(std::atomic<bool>*));
+                MyEA::String::Error("An error has been triggered from the `Reallocate_PtOfPt<%zu, true, false>(ptr, %zu, %zu)` function.",
+                                    sizeof(std::atomic<bool>*),
+                                    this->_number_boolean + 1_zu,
+                                    this->_number_boolean);
 
                 return(false);
             }
