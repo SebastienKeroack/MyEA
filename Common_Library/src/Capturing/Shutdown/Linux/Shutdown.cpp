@@ -1,4 +1,4 @@
-#include "stdafx.hpp"
+#include "pch.hpp"
 
 // This.
 #include <Capturing/Shutdown/Linux/Shutdown.hpp>

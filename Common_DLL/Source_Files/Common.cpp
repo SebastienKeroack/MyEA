@@ -9,9 +9,9 @@ namespace MyEA
 {
     namespace Common
     {
-        DLL_EXTERNAL bool DLL_API API__Common__Is_Loaded(void) { return(true); }
+        DLL_API bool DLL_API API__Common__Is_Loaded(void) { return(true); }
         
-        DLL_EXTERNAL bool DLL_API API__Common__Shutdown_Block__Create(bool const use_ctrl_handler_received,
+        DLL_API bool DLL_API API__Common__Shutdown_Block__Create(bool const use_ctrl_handler_received,
                                                                                                                      wchar_t const *const ptr_window_name_received,
                                                                                                                      wchar_t const *const ptr_class_name_received)
         {
@@ -37,7 +37,7 @@ namespace MyEA
             else { return(false); }
         }
         
-        DLL_EXTERNAL bool DLL_API API__Common__Shutdown_Block__Remove(void)
+        DLL_API bool DLL_API API__Common__Shutdown_Block__Remove(void)
         {
             if(ptr_global_Shutdown_Block != nullptr)
             {
@@ -48,7 +48,7 @@ namespace MyEA
             else { return(false); }
         }
         
-        DLL_EXTERNAL bool DLL_API API__Common__Shutdown_Block__Peek_Message(void)
+        DLL_API bool DLL_API API__Common__Shutdown_Block__Peek_Message(void)
         {
             if(ptr_global_Shutdown_Block != nullptr)
             {
@@ -66,7 +66,7 @@ namespace MyEA
             else { return(false); }
         }
 
-        DLL_EXTERNAL int DLL_API API__Common__Shutdown_Block__Get__On_Shutdown(void)
+        DLL_API int DLL_API API__Common__Shutdown_Block__Get__On_Shutdown(void)
         {
             if(ptr_global_Shutdown_Block != nullptr)
             { return(ptr_global_Shutdown_Block->Get__On_Shutdown() ? 1 : 0); }
@@ -74,14 +74,14 @@ namespace MyEA
             { return(0); }
         }
 
-        DLL_EXTERNAL bool DLL_API API__Common__Path_Exist(wchar_t const *const ptr_path_received)
+        DLL_API bool DLL_API API__Common__Path_Exist(wchar_t const *const ptr_path_received)
         {
             std::wstring const tmp_wstring(ptr_path_received);
 
             return(MyEA::File::Path_Exist(std::string(tmp_wstring.begin(), tmp_wstring.end())));
         }
 
-        DLL_EXTERNAL bool DLL_API API__Common__Message_Box__OK(wchar_t const *const ptr_ws_text_received, wchar_t const *const ptr_ws_title_received)
+        DLL_API bool DLL_API API__Common__Message_Box__OK(wchar_t const *const ptr_ws_text_received, wchar_t const *const ptr_ws_title_received)
         {
             std::wstring const tmp_ws_text_received(ptr_ws_text_received),
                                        tmp_ws_title_received(ptr_ws_title_received);
@@ -89,7 +89,7 @@ namespace MyEA
             return(MyEA::Common::Message_Box__OK(std::string(tmp_ws_text_received.begin(), tmp_ws_text_received.end()), std::string(tmp_ws_title_received.begin(), tmp_ws_title_received.end())));
         }
 
-        DLL_EXTERNAL bool DLL_API API__Common__Message_Box__YESNO(wchar_t const *const ptr_ws_text_received, wchar_t const *const ptr_ws_title_received)
+        DLL_API bool DLL_API API__Common__Message_Box__YESNO(wchar_t const *const ptr_ws_text_received, wchar_t const *const ptr_ws_title_received)
         {
             std::wstring const tmp_ws_text_received(ptr_ws_text_received),
                                        tmp_ws_title_received(ptr_ws_title_received);
@@ -97,7 +97,7 @@ namespace MyEA
             return(MyEA::Common::Message_Box__YESNO(std::string(tmp_ws_text_received.begin(), tmp_ws_text_received.end()), std::string(tmp_ws_title_received.begin(), tmp_ws_title_received.end())));
         }
 
-        DLL_EXTERNAL bool DLL_API API__Common__Write_File(wchar_t const *const path_received,
+        DLL_API bool DLL_API API__Common__Write_File(wchar_t const *const path_received,
                                                                                               wchar_t const *const log_received,
                                                                                               int const mode_received)
         {

@@ -1,4 +1,4 @@
-#include "stdafx.hpp"
+#include "pch.hpp"
 
 // This.
 #include <Files/File.hpp>
@@ -81,6 +81,51 @@ namespace MyEA::File
         }
 
         return(false);
+    }
+
+    bool Write_Temporary_File(std::string const &ref_path_received)
+    {
+        std::string tmp_path_temporary(ref_path_received + ".tmp");
+
+        if(MyEA::File::Path_Exist(ref_path_received))
+        {
+            if(MyEA::File::Path_Exist(tmp_path_temporary) && std::filesystem::equivalent(ref_path_received, tmp_path_temporary)) { return(true); }
+
+            return(std::filesystem::copy_file(ref_path_received,
+                                              tmp_path_temporary,
+                                              std::filesystem::copy_options::overwrite_existing));
+        }
+
+        return(true);
+    }
+    
+    bool Retrieve_Temporary_File(std::string const &ref_path_received)
+    {
+        std::string tmp_path_temporary(ref_path_received + ".tmp");
+
+        if(MyEA::File::Path_Exist(tmp_path_temporary))
+        {
+            if(std::filesystem::equivalent(ref_path_received, tmp_path_temporary) == false
+               &&
+               std::filesystem::copy_file(tmp_path_temporary,
+                                          ref_path_received,
+                                          std::filesystem::copy_options::overwrite_existing) == false)
+            {
+                MyEA::String::Error("An error has been triggered from the `copy_file(%s, %s)` function.",
+                                    tmp_path_temporary.c_str(),
+                                    ref_path_received.c_str());
+
+                return(false);
+            }
+            else if(MyEA::File::File_Remove(tmp_path_temporary) == false)
+            {
+                MyEA::String::Error("An error has been triggered from the `File_Remove(%s)` function.", tmp_path_temporary.c_str());
+
+                return(false);
+            }
+        }
+
+        return(true);
     }
 
     bool Delete_Temporary_File(std::string const &ref_path_received)

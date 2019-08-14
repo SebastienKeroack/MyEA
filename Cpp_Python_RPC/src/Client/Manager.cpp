@@ -2,20 +2,23 @@
 #include <iostream>
 
 // THIS
-#include <Client/Manager.hpp>
+#include <Client/Client.hpp>
 
-Manager::Manager(void)
+namespace MyEA::RPC
 {
-    this->_ptr_client = new rpc::client("127.0.0.1", 9000);
-
-    this->_ptr_client->call("foo");
-}
-
-Manager::~Manager(void)
-{
-    if(this->_ptr_client != nullptr)
+    Client::Client(void)
     {
-        delete(this->_ptr_client);
-        this->_ptr_client = nullptr;
+        this->_ptr_client = new rpc::client("127.0.0.1", 9000);
+
+        this->_ptr_client->call("foo");
+    }
+
+    Client::~Client(void)
+    {
+        if(this->_ptr_client != nullptr)
+        {
+            delete(this->_ptr_client);
+            this->_ptr_client = nullptr;
+        }
     }
 }

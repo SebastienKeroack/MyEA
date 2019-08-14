@@ -104,9 +104,9 @@ namespace MyEA
 
         struct struct_Thread_Form<Form_Neural_Network> *global_ptr_Form_Neural_Network = nullptr;
 
-        DLL_EXTERNAL bool DLL_API API__Form__Is_Loaded(void) { return(true); }
+        DLL_API bool DLL_API API__Form__Is_Loaded(void) { return(true); }
 
-        DLL_EXTERNAL void DLL_API API__Form__Neural_Network__Allocate(void)
+        DLL_API void DLL_API API__Form__Neural_Network__Allocate(void)
         {
             if(global_ptr_Form_Neural_Network == nullptr)
             {
@@ -121,37 +121,37 @@ namespace MyEA
             }
         }
         
-        DLL_EXTERNAL void DLL_API API__Form__Neural_Network__Chart_Use_Datapoint_Training(bool const use_datapoint_training_received)
+        DLL_API void DLL_API API__Form__Neural_Network__Chart_Use_Datapoint_Training(bool const use_datapoint_training_received)
         {
             if(global_ptr_Form_Neural_Network != nullptr)
             { global_ptr_Form_Neural_Network->ptr_GC_Form->Chart_Use_Datapoint_Training(use_datapoint_training_received); }
         }
         
-        DLL_EXTERNAL void DLL_API API__Form__Neural_Network__Chart_Initialize(unsigned int const type_chart_received, unsigned int const number_series_received)
+        DLL_API void DLL_API API__Form__Neural_Network__Chart_Initialize(unsigned int const type_chart_received, unsigned int const number_series_received)
         {
             if(global_ptr_Form_Neural_Network != nullptr)
             { global_ptr_Form_Neural_Network->ptr_GC_Form->Chart_Initialize(type_chart_received, number_series_received); }
         }
         
-        DLL_EXTERNAL void DLL_API API__Form__Neural_Network__Chart_Total_Means(unsigned int const total_means_received)
+        DLL_API void DLL_API API__Form__Neural_Network__Chart_Total_Means(unsigned int const total_means_received)
         {
             if(global_ptr_Form_Neural_Network != nullptr)
             { global_ptr_Form_Neural_Network->ptr_GC_Form->Chart_Total_Means(total_means_received); }
         }
         
-        DLL_EXTERNAL void DLL_API API__Form__Neural_Network__Chart_Reset(unsigned int const type_chart_received)
+        DLL_API void DLL_API API__Form__Neural_Network__Chart_Reset(unsigned int const type_chart_received)
         {
             if(global_ptr_Form_Neural_Network != nullptr)
             { global_ptr_Form_Neural_Network->ptr_GC_Form->Chart_Reset(type_chart_received); }
         }
         
-        DLL_EXTERNAL void DLL_API API__Form__Neural_Network__Chart_Rescale(unsigned int const type_chart_received)
+        DLL_API void DLL_API API__Form__Neural_Network__Chart_Rescale(unsigned int const type_chart_received)
         {
             if(global_ptr_Form_Neural_Network != nullptr)
             { global_ptr_Form_Neural_Network->ptr_GC_Form->Chart_Rescale(type_chart_received); }
         }
         
-        DLL_EXTERNAL void DLL_API API__Form__Neural_Network__Chart_Add_Point(unsigned int const type_chart_received,
+        DLL_API void DLL_API API__Form__Neural_Network__Chart_Add_Point(unsigned int const type_chart_received,
                                                                                                                             unsigned int const index_series_received,
                                                                                                                             unsigned int const type_loss_received,
                                                                                                                             double const x_received,
@@ -167,7 +167,7 @@ namespace MyEA
             }
         }
         
-        DLL_EXTERNAL void DLL_API API__Form__Neural_Network__Chart_Grid_Search_Add_Column(std::string const &ref_value_received)
+        DLL_API void DLL_API API__Form__Neural_Network__Chart_Grid_Search_Add_Column(std::string const &ref_value_received)
         {
             if(global_ptr_Form_Neural_Network != nullptr)
             {
@@ -175,7 +175,7 @@ namespace MyEA
             }
         }
         
-        DLL_EXTERNAL void DLL_API API__Form__Neural_Network__Chart_Grid_Search_Add_Row(unsigned int const cell_index_received, std::string const &ref_value_received)
+        DLL_API void DLL_API API__Form__Neural_Network__Chart_Grid_Search_Add_Row(unsigned int const cell_index_received, std::string const &ref_value_received)
         {
             if(global_ptr_Form_Neural_Network != nullptr)
             {
@@ -183,7 +183,7 @@ namespace MyEA
             }
         }
         
-        DLL_EXTERNAL void DLL_API API__Form__Neural_Network__Chart_Loss_Diff(unsigned int const index_series_received,
+        DLL_API void DLL_API API__Form__Neural_Network__Chart_Loss_Diff(unsigned int const index_series_received,
                                                                                                                            unsigned int const type_received,
                                                                                                                            double const x_received)
         {
@@ -195,7 +195,7 @@ namespace MyEA
             }
         }
         
-        DLL_EXTERNAL void DLL_API API__Form__Neural_Network__Chart_Scale(unsigned int const type_chart_received,
+        DLL_API void DLL_API API__Form__Neural_Network__Chart_Scale(unsigned int const type_chart_received,
                                                                                                                       unsigned int const index_series_received,
                                                                                                                       unsigned int const type_loss_received,
                                                                                                                       bool const scale_y_axis_received,
@@ -214,7 +214,7 @@ namespace MyEA
             */
         }
         
-        DLL_EXTERNAL void DLL_API API__Form__Neural_Network__Deallocate(void)
+        DLL_API void DLL_API API__Form__Neural_Network__Deallocate(void)
         {
             if(global_ptr_Form_Neural_Network != nullptr)
             {
@@ -224,21 +224,21 @@ namespace MyEA
             }
         }
         
-        DLL_EXTERNAL bool DLL_API API__Form__Neural_Network__Get_Signal_Training_Stop(void)
+        DLL_API bool DLL_API API__Form__Neural_Network__Get_Signal_Training_Stop(void)
         {
             if(global_ptr_Form_Neural_Network != nullptr) { return(global_ptr_Form_Neural_Network->ptr_GC_Form->Get__Signal_Training_Stop()); }
 
             return(false);
         }
         
-        DLL_EXTERNAL bool DLL_API API__Form__Neural_Network__Get_Signal_Training_Menu(void)
+        DLL_API bool DLL_API API__Form__Neural_Network__Get_Signal_Training_Menu(void)
         {
             if(global_ptr_Form_Neural_Network != nullptr) { return(global_ptr_Form_Neural_Network->ptr_GC_Form->Get__Signal_Training_Menu()); }
 
             return(false);
         }
         
-        DLL_EXTERNAL bool DLL_API API__Form__Neural_Network__Reset_Signal_Training_Menu(void)
+        DLL_API bool DLL_API API__Form__Neural_Network__Reset_Signal_Training_Menu(void)
         {
             if(global_ptr_Form_Neural_Network != nullptr)
             {

@@ -4,12 +4,6 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\stdafx.hpp">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\targetver.hpp">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="include\Reallocate\Reallocate.hpp">
       <Filter>include\Reallocate</Filter>
     </ClInclude>
@@ -154,11 +148,14 @@
     <ClInclude Include="include\Capturing\Keyboard\Windows\Keyboard.hpp">
       <Filter>include\Capturing\Keyboard\Shutdown</Filter>
     </ClInclude>
+    <ClInclude Include="include\pch.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\framework.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\stdafx.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\Reallocate\CPU\Reallocate.cpp">
       <Filter>src\Reallocate\CPU</Filter>
     </ClCompile>
@@ -248,6 +245,9 @@
     </ClCompile>
     <ClCompile Include="src\Capturing\Keyboard\Linux\Keyboard.cpp">
       <Filter>src\Capturing\Keyboard\Linux</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pch.cpp">
+      <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

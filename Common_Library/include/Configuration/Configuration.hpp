@@ -126,7 +126,7 @@ size_t KILOBYTE(1024_zu);
     #if defined(_DEBUG) || defined(COMPILE_DEBUG)
         // https://msdn.microsoft.com/fr-ca/library/x98tx3cf.aspx
         
-         // _CRTDBG_MAP_ALLOC
+         // _CRTDBG_MAP_ALLOC.
         #if defined(__CUDA_ARCH__) == false
             #define CRTDBG_NEW new(_NORMAL_BLOCK, __FILE__, __LINE__)
             #define new CRTDBG_NEW
@@ -135,7 +135,6 @@ size_t KILOBYTE(1024_zu);
             #include <cstdlib>
             #include <crtdbg.h>
         #endif // __CUDA_ARCH__
-        // |END| _CRTDBG_MAP_ALLOC |END|
         
         //#include <fenv.h>
         //int _feenableexcept_status = feenableexcept(FE_INVALID|FE_DIVBYZERO|FE_OVERFLOW);
@@ -228,15 +227,11 @@ size_t KILOBYTE(1024_zu);
     #define TYPE_COMPILER_COMPILE "UNKNOW"
 #endif
 
-// DLL
 #if defined(COMPILE_DLL_EXPORTS)
-    #define DLL_EXTERNAL extern "C" __declspec(dllexport)
+    #define DLL_API __declspec(dllexport)
 #else
-    #define DLL_EXTERNAL extern "C" __declspec(dllimport)
+    #define DLL_API __declspec(dllimport)
 #endif // COMPILE_DLL_EXPORTS
-
-#define DLL_API __stdcall
-// |END| DLL |END|
 
 #if defined(NULL) == false
     #define NULL 0
@@ -292,7 +287,7 @@ size_t Get__Remaining_Available_System_Memory(long double const reserved_bytes_p
 void PAUSE_TERMINAL(void);
 
 #define PREPROCESSED_CONCAT_(x, y) x##y
-#define PREPROCESSED_CONCAT (x, y) PREPROCESSED_CONCAT_(x, y)
+#define PREPROCESSED_CONCAT(x, y) PREPROCESSED_CONCAT_(x, y)
     
 #define PREPROCESSED_CONCAT_3_(x, y, z) x##y##z
-#define PREPROCESSED_CONCAT_3 (x, y, z) PREPROCESSED_CONCAT_3_(x, y, z)
+#define PREPROCESSED_CONCAT_3(x, y, z) PREPROCESSED_CONCAT_3_(x, y, z)

@@ -173,9 +173,9 @@ namespace MyEA::Neural_Network
 
     std::string g_outputs = "";
 
-    DLL_EXTERNAL bool DLL_API API__Neural_Network__Is_Loaded(void) { return(true); }
+    DLL_API bool DLL_API API__Neural_Network__Is_Loaded(void) { return(true); }
     
-    DLL_EXTERNAL bool DLL_API API__Neural_Network__Allocate(void)
+    DLL_API bool DLL_API API__Neural_Network__Allocate(void)
     {
         // Client object need to be null.
         if(g_Client != nullptr) { return(false); }
@@ -187,7 +187,7 @@ namespace MyEA::Neural_Network
         return(true);
     }
 
-    DLL_EXTERNAL bool DLL_API API__Neural_Network__Initialize(void)
+    DLL_API bool DLL_API API__Neural_Network__Initialize(void)
     {
         // Client object need to be disconnected.
         if(g_Client->Connected()) { return(false); }
@@ -204,7 +204,7 @@ namespace MyEA::Neural_Network
         return(true);
     }
 
-    DLL_EXTERNAL bool DLL_API API__Neural_Network__Deinitialize(void)
+    DLL_API bool DLL_API API__Neural_Network__Deinitialize(void)
     {
         // Client object need to not be null.
         if(g_Client == nullptr) { return(false); }
@@ -216,7 +216,7 @@ namespace MyEA::Neural_Network
         return(true);
     }
         
-    DLL_EXTERNAL float DLL_API API__Neural_Network__Get__Loss(unsigned int const type_neural_network_use_received, unsigned int const type_loss_received)
+    DLL_API float DLL_API API__Neural_Network__Get__Loss(unsigned int const type_neural_network_use_received, unsigned int const type_loss_received)
     {
         // Client object need to not be null.
         if(g_Client == nullptr) { return(false); }
@@ -233,7 +233,7 @@ namespace MyEA::Neural_Network
         return(std::stof(tmp_buffer));
     }
     
-    DLL_EXTERNAL T_ DLL_API API__Neural_Network__Forward_Pass(T_ *const ptr_array_inputs_received)
+    DLL_API T_ DLL_API API__Neural_Network__Forward_Pass(T_ *const ptr_array_inputs_received)
     {
         // Client object need to not be null.
         if(g_Client == nullptr) { return(false); }
