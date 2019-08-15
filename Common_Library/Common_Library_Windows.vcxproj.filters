@@ -154,6 +154,9 @@
     <ClInclude Include="include\framework.hpp">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="include\Configuration\Exports.hpp">
+      <Filter>include\Configuration</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Reallocate\CPU\Reallocate.cpp">

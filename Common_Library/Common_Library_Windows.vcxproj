@@ -199,6 +199,7 @@
     <ClInclude Include="include\Capturing\Shutdown\Shutdown.hpp" />
     <ClInclude Include="include\Capturing\Shutdown\Windows\Shutdown.hpp" />
     <ClInclude Include="include\Configuration\Configuration.hpp" />
+    <ClInclude Include="include\Configuration\Exports.hpp" />
     <ClInclude Include="include\Enums\Enum_Type_Activation_Functions.hpp" />
     <ClInclude Include="include\Enums\Enum_Type_Dataset.hpp" />
     <ClInclude Include="include\Enums\Enum_Type_Dataset_File.hpp" />

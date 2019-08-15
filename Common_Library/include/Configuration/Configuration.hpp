@@ -227,11 +227,7 @@ size_t KILOBYTE(1024_zu);
     #define TYPE_COMPILER_COMPILE "UNKNOW"
 #endif
 
-#if defined(COMPILE_DLL_EXPORTS)
-    #define DLL_API __declspec(dllexport)
-#else
-    #define DLL_API __declspec(dllimport)
-#endif // COMPILE_DLL_EXPORTS
+#include <Configuration/Exports.hpp>
 
 #if defined(NULL) == false
     #define NULL 0

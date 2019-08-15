@@ -15,6 +15,9 @@
     <Filter Include="src\Client">
       <UniqueIdentifier>{6af3beca-f865-4f56-9858-b3beff666347}</UniqueIdentifier>
     </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{4fd1e567-c064-4fee-9753-44fc735b1be2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\framework.hpp">
@@ -25,6 +28,9 @@
     </ClInclude>
     <ClInclude Include="include\Client\Client.hpp">
       <Filter>include\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="include\API.hpp">
+      <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -37,5 +43,13 @@
     <ClCompile Include="src\Client\Client.cpp">
       <Filter>src\Client</Filter>
     </ClCompile>
+    <ClCompile Include="src\API.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resource\definition.def">
+      <Filter>resource</Filter>
+    </None>
   </ItemGroup>
 </Project>
