@@ -1,4 +1,4 @@
 LIBRARY Cpp_Python_RPC.dll
 
 EXPORTS
-    API__Cpp_Python_RPC__Allocate
+    API__Cpp_Python_RPC__Initialize
