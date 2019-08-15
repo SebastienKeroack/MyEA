@@ -257,7 +257,7 @@ namespace MyEA::Capturing
         {
             std::atomic<bool> **tmp_ptr_array_ptr_shutdown_boolean;
 
-            if((tmp_ptr_array_ptr_shutdown_boolean = new std::atomic<bool>*[1u]) == nullptr)
+            if((tmp_ptr_array_ptr_shutdown_boolean = new struct std::atomic<bool>*[1u]) == nullptr)
             {
                 MyEA::String::Error("Cannot allocate %zu bytes.", sizeof(std::atomic<bool>*));
 

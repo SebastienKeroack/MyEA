@@ -9,6 +9,10 @@ namespace MyEA::RPC
             
             ~Client(void);
 
-            void foo(void);
+            bool Initialized(void) const;
+
+            bool Initialize(void);
+
+            void Call(void);
     };
 }

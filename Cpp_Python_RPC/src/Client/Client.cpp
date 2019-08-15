@@ -9,6 +9,7 @@ namespace py = boost::python;
 #include <Client/Client.hpp>
 
 // Common_Library.
+#include <Strings/String.hpp>
 #include <UI/Dialog_Box.hpp>
 
 namespace MyEA::RPC
@@ -17,7 +18,26 @@ namespace MyEA::RPC
     {
     }
     
-    void Client::foo(void)
+    bool Client::Initialized(void) const
+    {
+        return(Py_IsInitialized());
+    }
+
+    bool Client::Initialize(void)
+    {
+        if(this->Initialized())
+        {
+            MyEA::String::Error("Initialization can only be call once.");
+            
+            return(false);
+        }
+
+        Py_Initialize();
+
+        return(true);
+    }
+
+    void Client::Call(void)
     {
         static int aaa = 0;
 
@@ -25,9 +45,10 @@ namespace MyEA::RPC
 
         py::object main_module = py::import("__main__");
         py::object main_namespace = main_module.attr("__dict__");
-        
+
         std::string const tmp_command("result = 5 ** " + std::to_string(aaa));
         py::object ignored = exec(tmp_command.c_str(), main_namespace);
+        main_module.attr("result") = 512;
         int five_squared = py::extract<int>(main_namespace["result"]);
         
         DEBUG_BOX("five_squared=" + std::to_string(five_squared))

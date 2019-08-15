@@ -4,13 +4,20 @@
 #include <API.hpp>
 #include <Client/Client.hpp>
 
-class MyEA::RPC::Client *g_Manager = nullptr;
+// Common_Library.
+#include <Strings/String.hpp>
 
-DLL_API void API__Cpp_Python_RPC__Dialog_Box(void)
+class MyEA::RPC::Client g_Client;
+
+DLL_API bool API__Cpp_Python_RPC__Initialize(void)
 {
-    g_Manager = new MyEA::RPC::Client;
-
-    g_Manager->foo();
-
-    delete(g_Manager);
+    if(g_Client.Initialize() == false)
+    {
+        MyEA::String::Error("Initialization can only be call once per load." NEW_LINE
+                            "Unload the `.dll` and retry.");
+        
+        return(false);
+    }
+    
+    return(true);
 }
