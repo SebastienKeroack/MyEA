@@ -29,6 +29,9 @@
 		# 	b2 -j: Number of threads to use.
 		#???sudo b2 install -j8
 
+		# To use custom module make a symbolic link to the `sites-packages` of the main python.
+		ln -s /path/to/module /usr/lib/python3.7/site-packages
+
 		# Test:
 			# Go to project directory.
 			cd /path/to/project
@@ -99,6 +102,10 @@
 		ln -s stage\\lib "C:\\Program Files\\lib\\boost"
 		ln -s $(PYTHON_DIRECTORY)\\Python37\\libs "C:\\Program Files\\lib\\python_x64"
 		ln -s $(PYTHON_DIRECTORY)\\Python37-32\\libs "C:\\Program Files\\lib\\python_x86"
+
+		# To use custom module make a symbolic link to the `sites-packages` of the main python.
+		ln -s \\path\\to\\module $(PYTHON_DIRECTORY)\\Python37\\Lib\\site-packages
+		ln -s \\path\\to\\module $(PYTHON_DIRECTORY)\\Python37-32\\Lib\\site-packages
 
 # RPCLib:
 	# Download rpclib at https://github.com/rpclib/rpclib

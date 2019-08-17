@@ -32,6 +32,9 @@
     <ClInclude Include="include\API.hpp">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="include\Python.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\dllmain.cpp">
@@ -44,6 +47,9 @@
       <Filter>src\Client</Filter>
     </ClCompile>
     <ClCompile Include="src\API.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Python.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>

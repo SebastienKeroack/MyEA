@@ -1,9 +1,7 @@
 #include "pch.hpp"
 
 // Boost.
-#include <boost/python.hpp>
-
-namespace py = boost::python;
+#include <boost/algorithm/string/replace.hpp>
 
 // This.
 #include <Client/Client.hpp>
@@ -23,7 +21,7 @@ namespace MyEA::RPC
         return(Py_IsInitialized());
     }
 
-    bool Client::Initialize(void)
+    bool Client::Initialize(std::string const &ref_script_path_received)
     {
         if(this->Initialized())
         {
@@ -31,41 +29,44 @@ namespace MyEA::RPC
             
             return(false);
         }
-
+        
         Py_Initialize();
+        
+        // |STR| Initialize main. |STR|
+        this->_main   =       py::import("__main__");
+        this->_global = this->_main.attr("__dict__");
+        // |END| Initialize main. |END|
+        
+        // |STR| Prepare arguments. |STR|
+        wchar_t **tmp_args = static_cast<wchar_t **>(PyMem_Malloc(3 * sizeof(wchar_t *)));
+            
+        tmp_args[0] = Py_DecodeLocale(boost::replace_all_copy(ref_script_path_received, "\\", "\\\\").c_str(), NULL);
+        tmp_args[1] = Py_DecodeLocale("--hosts", NULL);
+        tmp_args[2] = Py_DecodeLocale("127.0.0.1=9000", NULL);
+            
+        PySys_SetArgv(3, tmp_args);
+        // |END| Prepare arguments. |END|
+
+        // Execute file.
+        py::exec_file(ref_script_path_received.c_str(),
+                      this->_global,
+                      this->_global);
+        
+        // Extract client object.
+        this->_client = this->_main.attr("client");
 
         return(true);
     }
 
     void Client::Call(void)
     {
-        static int aaa = 0;
+        DEBUG_BOX("Hello world!");
 
-        DEBUG_BOX("Hello world! #" + std::to_string(aaa++))
+        bool const success(py::extract<bool>(this->_client.attr("open")()));
 
-        py::object main_module = py::import("__main__");
-        py::object main_namespace = main_module.attr("__dict__");
+        DEBUG_BOX("Success=" + std::to_string(success))
 
-        std::string const tmp_command("result = 5 ** " + std::to_string(aaa));
-        py::object ignored = exec(tmp_command.c_str(), main_namespace);
-        main_module.attr("result") = 512;
-        int five_squared = py::extract<int>(main_namespace["result"]);
-        
-        DEBUG_BOX("five_squared=" + std::to_string(five_squared))
-
-        /*
-        DEBUG_BOX("Result=" + std::to_string(five_squared));
-
-        py::object ignored = py::exec("hello = file('hello.txt', 'w')\n"
-                                      "hello.write('Hello world!')\n"
-                                      "hello.close()",
-                                      main_namespace);
-
-        py::object main_module = py::import("__main__");
-        py::object main_namespace = main_module.attr("__dict__");
-        py::object ignored = exec("result = 5 ** 2", main_namespace);
-        int five_squared = py::extract<int>(main_namespace["result"]);
-        */
+        DEBUG_BOX("Bye world!");
     }
 
     Client::~Client(void)
