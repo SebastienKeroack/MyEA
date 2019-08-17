@@ -9,8 +9,6 @@ namespace MyEA
 {
     namespace Common
     {
-        DLL_API bool DLL_API API__Common__Is_Loaded(void) { return(true); }
-        
         DLL_API bool DLL_API API__Common__Shutdown_Block__Create(bool const use_ctrl_handler_received,
                                                                                                                      wchar_t const *const ptr_window_name_received,
                                                                                                                      wchar_t const *const ptr_class_name_received)

@@ -1,7 +1,13 @@
 #pragma once
 
-#include <Python.hpp>
+// Common_Library.
+#include <Configuration/dtypes.hpp>
+
+// Standard.
 #include <string>
+
+// This.
+#include <Python.hpp>
 
 namespace MyEA::RPC
 {
@@ -11,12 +17,16 @@ namespace MyEA::RPC
             Client(void);
             
             ~Client(void);
+            
+            void Close(void);
 
             bool Initialized(void) const;
 
             bool Initialize(std::string const &ref_script_path_received);
 
-            void Call(void);
+            bool Open(void);
+            
+            T_ Predict(void) const;
 
         private:
             py::object _main  ;

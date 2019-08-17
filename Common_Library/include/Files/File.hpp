@@ -23,7 +23,11 @@ namespace MyEA::File
     bool Write_File(std::string const &ref_path_received,
                     std::string const &ref_text_received,
                     int const mode_received);
-
+    
+    #define fError(text) Write_File("ERROR.log", \
+                                    std::string(__FILE__) + ":" + std::to_string(__LINE__) + ", ERROR: " + text, \
+                                    42)
+    
     bool Retrieve_Temporary_File(std::string const &ref_path_received);
 
     bool Write_Temporary_File(std::string const &ref_path_received);

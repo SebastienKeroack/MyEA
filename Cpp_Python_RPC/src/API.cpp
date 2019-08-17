@@ -5,6 +5,7 @@
 #include <Client/Client.hpp>
 
 // Common_Library.
+#include <Files/File.hpp>
 #include <Strings/String.hpp>
 
 class MyEA::RPC::Client g_Client;
@@ -26,7 +27,7 @@ auto Py_Try(Fn&& fn_received, Args&& ... args)
         {
             tmp_success = false;
         
-            MyEA::String::Error(PyErr_Parse().c_str());
+            MyEA::File::fError(PyErr_Parse().c_str());
         }
     
         return(tmp_success);
@@ -45,7 +46,7 @@ auto Py_Try(Fn&& fn_received, Args&& ... args)
         {
             tmp_success = false;
             
-            MyEA::String::Error(PyErr_Parse().c_str());
+            MyEA::File::fError(PyErr_Parse().c_str());
         }
     
         return(std::tuple(tmp_success, tmp_fn_result));
@@ -56,8 +57,8 @@ DLL_API bool API__Cpp_Python_RPC__Initialize(void)
 {
     if(g_Client.Initialized())
     {
-        MyEA::String::Error("Initialization can only be call once per load." NEW_LINE
-                            "Unload the `.dll` and retry.");
+        MyEA::File::fError("Initialization can only be call once per load." NEW_LINE
+                           "Unload the `.dll` and retry.");
         
         return(false);
     }
@@ -65,18 +66,9 @@ DLL_API bool API__Cpp_Python_RPC__Initialize(void)
     auto const tmp_results(Py_Try(&MyEA::RPC::Client::Initialize, std::ref(g_Client),
                                   "C:\\Users\\sebas\\Documents\\MEGAsync\\MyEA\\Python\\run_client.py"));
     
-    // Try success.
-    if(std::get<0>(tmp_results) == false)
+    if(std::get<0>(tmp_results) == false || std::get<1>(tmp_results) == false)
     {
-        MyEA::String::Error("An error has been triggered from the `Initialize()` function.");
-        
-        return(false);
-    }
-    // Called fn success.
-    else if(std::get<1>(tmp_results))
-    {
-        MyEA::String::Error("Initialization can only be call once per load." NEW_LINE
-                            "Unload the `.dll` and retry.");
+        MyEA::File::fError("An error has been triggered from the `Initialize()` function.");
         
         return(false);
     }
@@ -84,20 +76,62 @@ DLL_API bool API__Cpp_Python_RPC__Initialize(void)
     return(true);
 }
 
-DLL_API bool API__Cpp_Python_RPC__Call(void)
+DLL_API bool API__Cpp_Python_RPC__Open(void)
 {
     if(g_Client.Initialized() == false)
     {
-        MyEA::String::Error("Client is not initialized.");
+        MyEA::File::fError("Client is not initialized.");
         
         return(false);
     }
-    else if(Py_Try(&MyEA::RPC::Client::Call, std::ref(g_Client)) == false)
-    {
-        MyEA::String::Error("An error has been triggered from the `Call()` function.");
-        
-        return(false);
-    }
+
+    auto const tmp_results(Py_Try(&MyEA::RPC::Client::Open, std::ref(g_Client)));
     
+    if(std::get<0>(tmp_results) == false || std::get<1>(tmp_results) == false)
+    {
+        MyEA::File::fError("An error has been triggered from the `Open()` function.");
+        
+        return(false);
+    }
+
     return(true);
+}
+
+DLL_API bool API__Cpp_Python_RPC__Close(void)
+{
+    if(g_Client.Initialized() == false)
+    {
+        MyEA::File::fError("Client is not initialized.");
+        
+        return(false);
+    }
+    else if(Py_Try(&MyEA::RPC::Client::Close, std::ref(g_Client)) == false)
+    {
+        MyEA::File::fError("An error has been triggered from the `Close()` function.");
+        
+        return(false);
+    }
+
+    return(true);
+}
+
+DLL_API T_ API__Cpp_Python_RPC__Predict(void)
+{
+    if(g_Client.Initialized() == false)
+    {
+        MyEA::File::fError("Client is not initialized.");
+        
+        return(T_EMPTY());
+    }
+
+    auto const tmp_results(Py_Try(&MyEA::RPC::Client::Predict, std::ref(g_Client)));
+    
+    if(std::get<0>(tmp_results) == false)
+    {
+        MyEA::File::fError("An error has been triggered from the `Predict()` function.");
+        
+        return(T_EMPTY());
+    }
+
+    return(std::get<1>(tmp_results));
 }

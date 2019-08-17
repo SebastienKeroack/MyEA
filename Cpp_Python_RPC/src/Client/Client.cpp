@@ -16,6 +16,14 @@ namespace MyEA::RPC
     {
     }
     
+    void Client::Close(void)
+    {
+        if(py::extract<bool>(this->_client.attr("is_connected")()))
+        {
+            this->_client.attr("close")();
+        }
+    }
+    
     bool Client::Initialized(void) const
     {
         return(Py_IsInitialized());
@@ -39,11 +47,11 @@ namespace MyEA::RPC
         
         // |STR| Prepare arguments. |STR|
         wchar_t **tmp_args = static_cast<wchar_t **>(PyMem_Malloc(3 * sizeof(wchar_t *)));
-            
+        
         tmp_args[0] = Py_DecodeLocale(boost::replace_all_copy(ref_script_path_received, "\\", "\\\\").c_str(), NULL);
         tmp_args[1] = Py_DecodeLocale("--hosts", NULL);
         tmp_args[2] = Py_DecodeLocale("127.0.0.1=9000", NULL);
-            
+        
         PySys_SetArgv(3, tmp_args);
         // |END| Prepare arguments. |END|
 
@@ -57,16 +65,24 @@ namespace MyEA::RPC
 
         return(true);
     }
-
-    void Client::Call(void)
+    
+    bool Client::Open(void)
     {
-        DEBUG_BOX("Hello world!");
+        if(py::extract<bool>(this->_client.attr("open")()))
+        {
+            MyEA::String::Error("An error has been triggered from the `open()` function.");
+            
+            return(false);
+        }
 
-        bool const success(py::extract<bool>(this->_client.attr("open")()));
+        return(true);
+    }
 
-        DEBUG_BOX("Success=" + std::to_string(success))
+    T_ Client::Predict(void) const
+    {
+        this->_client.attr("predict")();
 
-        DEBUG_BOX("Bye world!");
+        return(0);
     }
 
     Client::~Client(void)

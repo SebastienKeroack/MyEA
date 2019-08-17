@@ -2,4 +2,6 @@ LIBRARY Cpp_Python_RPC.dll
 
 EXPORTS
     API__Cpp_Python_RPC__Initialize
-    API__Cpp_Python_RPC__Call
+    API__Cpp_Python_RPC__Open
+    API__Cpp_Python_RPC__Predict
+    API__Cpp_Python_RPC__Close

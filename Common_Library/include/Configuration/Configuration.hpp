@@ -3,69 +3,7 @@
 // Boost.
 #include <boost/assert.hpp>
 
-#if defined(COMPILE_FLOAT)
-    typedef float ST_;
-    
-    #if defined(COMPILE_AUTODIFF)
-        #include <adept.h>
-
-        typedef adept::afloat T_;
-
-        inline float Cast_T(T_ T_received) { return(T_received.value()); }
-    #else
-        typedef float T_;
-
-        inline float Cast_T(T_ T_received) { return(T_received); }
-    #endif
-
-    typedef int I_;
-    #define EPSILON 1.192092896e-07f
-#elif defined(COMPILE_DOUBLE)
-    typedef double ST_;
-    
-    #if defined(COMPILE_AUTODIFF)
-        #include <adept.h>
-        
-        typedef adept::adouble T_;
-
-        inline double Cast_T(T_ T_received) { return(T_received.value()); }
-    #else
-        typedef double T_;
-
-        inline double Cast_T(T_ T_received) { return(T_received); }
-    #endif
-
-    typedef long long I_;
-    #define EPSILON 2.2204460492503131e-016
-#elif defined(COMPILE_LONG_DOUBLE)
-    typedef long double T_;
-    typedef long long I_;
-    #define EPSILON 2.2204460492503131e-016L
-#endif
-
-constexpr
-T_ operator ""_T(unsigned long long int variable_to_size_t_received)
-{
-    return(static_cast<T_>(variable_to_size_t_received));
-}
-
-constexpr
-T_ operator ""_T(long double variable_to_size_t_received)
-{
-    return(static_cast<T_>(variable_to_size_t_received));
-}
-
-constexpr
-ST_ operator ""_ST(unsigned long long int variable_to_size_t_received)
-{
-    return(static_cast<ST_>(variable_to_size_t_received));
-}
-
-constexpr
-ST_ operator ""_ST(long double variable_to_size_t_received)
-{
-    return(static_cast<ST_>(variable_to_size_t_received));
-}
+#include <Configuration/DTypes.hpp>
 
 #if defined(__linux__) || defined(COMPILE_LINUX)
     #include <cstddef>
