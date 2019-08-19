@@ -26,7 +26,9 @@ namespace MyEA::RPC
 
             bool Open(void);
             
-            T_ Predict(void) const;
+            np::ndarray Predict(np::ndarray const &ref_inputs_received);
+            
+            np::ndarray Model_Metrics(void);
 
         private:
             py::object _main  ;

@@ -77,12 +77,34 @@ namespace MyEA::RPC
 
         return(true);
     }
-
-    T_ Client::Predict(void) const
+    
+    np::ndarray Client::Predict(np::ndarray const &ref_inputs_received)
     {
-        this->_client.attr("predict")();
+        auto tmp_result(Py_Call<np::ndarray>("Predict", this->_client,
+                                             ref_inputs_received));
+        
+        if(std::get<0>(tmp_result))
+        {
+            MyEA::String::Error("An error has been triggered from the `Predict()` function.");
+            
+            return(np::from_object(py::object()));
+        }
+        
+        return(std::get<1>(tmp_result));
+    }
 
-        return(0);
+    np::ndarray Client::Model_Metrics(void)
+    {
+        auto tmp_result(Py_Call<np::ndarray>("Model_Metrics", this->_client));
+
+        if(std::get<0>(tmp_result))
+        {
+            MyEA::String::Error("An error has been triggered from the `Model_Metrics()` function.");
+            
+            return(np::from_object(py::object()));
+        }
+        
+        return(std::get<1>(tmp_result));
     }
 
     Client::~Client(void)

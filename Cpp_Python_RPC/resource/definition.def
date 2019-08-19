@@ -3,5 +3,8 @@ LIBRARY Cpp_Python_RPC.dll
 EXPORTS
     API__Cpp_Python_RPC__Initialize
     API__Cpp_Python_RPC__Open
-    API__Cpp_Python_RPC__Predict
     API__Cpp_Python_RPC__Close
+    API__Cpp_Python_RPC__Sizeof_T
+    API__Cpp_Python_RPC__Predict
+    API__Cpp_Python_RPC__Metric_Loss
+    API__Cpp_Python_RPC__Metric_Accuracy

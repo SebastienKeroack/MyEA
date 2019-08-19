@@ -10,49 +10,6 @@
 
 class MyEA::RPC::Client g_Client;
 
-template<class Fn, class ... Args>
-auto Py_Try(Fn&& fn_received, Args&& ... args)
-{
-    bool tmp_success(true);
-
-    if constexpr (std::is_same_v<std::invoke_result_t<Fn, Args...>, void>)
-    {
-        try
-        {
-            //  invoke: Call a function or a member function from args[0].
-            // forward: forward rvalue.
-            std::invoke(std::forward<Fn>(fn_received), std::forward<Args>(args)...);
-        }
-        catch(py::error_already_set &)
-        {
-            tmp_success = false;
-        
-            MyEA::File::fError(PyErr_Parse().c_str());
-        }
-    
-        return(tmp_success);
-    }
-    else
-    {
-        std::invoke_result_t<Fn, Args...> tmp_fn_result;
-
-        try
-        {
-            //  invoke: Call a function or a member function from args[0].
-            // forward: forward rvalue.
-            tmp_fn_result = std::invoke(std::forward<Fn>(fn_received), std::forward<Args>(args)...);
-        }
-        catch(py::error_already_set &)
-        {
-            tmp_success = false;
-            
-            MyEA::File::fError(PyErr_Parse().c_str());
-        }
-    
-        return(std::tuple(tmp_success, tmp_fn_result));
-    }
-}
-
 DLL_API bool API__Cpp_Python_RPC__Initialize(void)
 {
     if(g_Client.Initialized())
@@ -66,8 +23,12 @@ DLL_API bool API__Cpp_Python_RPC__Initialize(void)
     auto const tmp_results(Py_Try(&MyEA::RPC::Client::Initialize, std::ref(g_Client),
                                   "C:\\Users\\sebas\\Documents\\MEGAsync\\MyEA\\Python\\run_client.py"));
     
-    if(std::get<0>(tmp_results) == false || std::get<1>(tmp_results) == false)
+    bool const &tmp_exception(!std::get<0>(tmp_results));
+
+    if(tmp_exception || std::get<1>(tmp_results) == false)
     {
+        if(tmp_exception) { MyEA::File::fError(PyErr_Parse().c_str()); }
+
         MyEA::File::fError("An error has been triggered from the `Initialize()` function.");
         
         return(false);
@@ -87,8 +48,12 @@ DLL_API bool API__Cpp_Python_RPC__Open(void)
 
     auto const tmp_results(Py_Try(&MyEA::RPC::Client::Open, std::ref(g_Client)));
     
-    if(std::get<0>(tmp_results) == false || std::get<1>(tmp_results) == false)
+    bool const &tmp_exception(!std::get<0>(tmp_results));
+
+    if(tmp_exception || std::get<1>(tmp_results) == false)
     {
+        if(tmp_exception) { MyEA::File::fError(PyErr_Parse().c_str()); }
+
         MyEA::File::fError("An error has been triggered from the `Open()` function.");
         
         return(false);
@@ -115,7 +80,41 @@ DLL_API bool API__Cpp_Python_RPC__Close(void)
     return(true);
 }
 
-DLL_API T_ API__Cpp_Python_RPC__Predict(void)
+DLL_API size_t API__Cpp_Python_RPC__Sizeof_T(void)
+{
+    return(sizeof(T_));
+}
+
+DLL_API T_ API__Cpp_Python_RPC__Predict(T_ *const ptr_inputs_received)
+{
+    /*
+    if(g_Client.Initialized() == false)
+    {
+        MyEA::File::fError("Client is not initialized.");
+        
+        return(T_EMPTY());
+    }
+
+    auto const tmp_results(Py_Try(&MyEA::RPC::Client::Predict, std::ref(g_Client),
+                                  ptr_inputs_received));
+    
+    bool const &tmp_exception(!std::get<0>(tmp_results));
+
+    if(tmp_exception)
+    {
+        if(tmp_exception) { MyEA::File::fError(PyErr_Parse().c_str()); }
+
+        MyEA::File::fError("An error has been triggered from the `Predict()` function.");
+        
+        return(T_EMPTY());
+    }
+
+    return(std::get<1>(tmp_results));
+    */
+    return(0);
+}
+
+DLL_API T_ API__Cpp_Python_RPC__Metric_Loss(enum MyEA::Common::ENUM_TYPE_DATASET const type_dataset_received)
 {
     if(g_Client.Initialized() == false)
     {
@@ -124,14 +123,61 @@ DLL_API T_ API__Cpp_Python_RPC__Predict(void)
         return(T_EMPTY());
     }
 
-    auto const tmp_results(Py_Try(&MyEA::RPC::Client::Predict, std::ref(g_Client)));
+    auto const tmp_results(Py_Try(&MyEA::RPC::Client::Model_Metrics, std::ref(g_Client)));
     
-    if(std::get<0>(tmp_results) == false)
+    bool const &tmp_exception(!std::get<0>(tmp_results));
+
+    if(tmp_exception)
     {
-        MyEA::File::fError("An error has been triggered from the `Predict()` function.");
+        MyEA::File::fError(PyErr_Parse().c_str());
+
+        MyEA::File::fError("An error has been triggered from the `Model_Metrics()` function.");
         
         return(T_EMPTY());
     }
 
-    return(std::get<1>(tmp_results));
+    np::ndarray const &tmp_ref_model_metrics(std::get<1>(tmp_results));
+
+    if(tmp_ref_model_metrics.get_nd() == 0)
+    {
+        MyEA::File::fError("Number array `tmp_ref_model_metrics` is empty.");
+        
+        return(T_EMPTY());
+    }
+
+    return(py::extract<T_>(tmp_ref_model_metrics[type_dataset_received][0][1]));
+}
+
+DLL_API T_ API__Cpp_Python_RPC__Metric_Accuracy(enum MyEA::Common::ENUM_TYPE_DATASET const type_dataset_received)
+{
+    if(g_Client.Initialized() == false)
+    {
+        MyEA::File::fError("Client is not initialized.");
+        
+        return(T_EMPTY());
+    }
+    
+    auto const tmp_results(Py_Try(&MyEA::RPC::Client::Model_Metrics, std::ref(g_Client)));
+
+    bool const &tmp_exception(!std::get<0>(tmp_results));
+
+    if(tmp_exception)
+    {
+        MyEA::File::fError(PyErr_Parse().c_str());
+
+        MyEA::File::fError("An error has been triggered from the `Model_Metrics()` function.");
+        
+        return(T_EMPTY());
+    }
+
+    np::ndarray const &tmp_ref_model_metrics(std::get<1>(tmp_results));
+    
+    if(tmp_ref_model_metrics.get_nd() == 0)
+    {
+        MyEA::File::fError("Number array `tmp_ref_model_metrics` is empty.");
+        
+        return(T_EMPTY());
+    }
+
+    return(py::extract<T_>(tmp_ref_model_metrics[type_dataset_received][1][1]));
 }
