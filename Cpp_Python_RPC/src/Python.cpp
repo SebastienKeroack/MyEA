@@ -14,25 +14,13 @@ std::string PyErr_Parse()
                 &ptr_traceback);
     
     if(ptr_extype == NULL) { return(""); }
-
-    py::object const extype   (py::handle<>(py::borrowed(ptr_extype   ))),
-                     value    (py::handle<>(py::borrowed(ptr_value    ))),
-                     traceback(py::handle<>(py::borrowed(ptr_traceback))),
-                     import_traceback(py::import("traceback")),
-                     lines(import_traceback.attr("format_exception")(extype,
-                                                                     value,
-                                                                     traceback));
     
-    std::string outputs("");
+    py::object const tmp_traceback(py::handle<>(py::borrowed(ptr_traceback)));
+    
+    long const at_line = py::extract<long>(tmp_traceback.attr("tb_lineno"));
 
-    for(int i(0); i != py::len(lines); ++i)
-    {
-        outputs += py::extract<std::string>(lines[i])();
-    }
-
-    // PyErr_Fetch clears the error state, uncomment
-    // the following line to restore the error state:
-    // PyErr_Restore(extype, value, traceback);
-
-    return(outputs);
+    std::string const at_filename = py::extract<std::string>(tmp_traceback.attr("tb_frame").attr("f_code").attr("co_filename")),
+                      cause = py::extract<std::string>(ptr_value);
+    
+    return(at_filename + ":" + std::to_string(at_line) + ", " + cause);
 }

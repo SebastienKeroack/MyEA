@@ -7,6 +7,7 @@
 // Common_Library.
 #include <Files/File.hpp>
 #include <Strings/String.hpp>
+#include <UI/Dialog_Box.hpp> // WARNING
 
 class MyEA::RPC::Client g_Client;
 
@@ -85,7 +86,7 @@ DLL_API size_t API__Cpp_Python_RPC__Sizeof_T(void)
     return(sizeof(T_));
 }
 
-DLL_API T_ API__Cpp_Python_RPC__Predict(T_ *const inputs)
+DLL_API T_ API__Cpp_Python_RPC__Predict(T_ const *const inputs)
 {
     if(g_Client.Initialized() == false)
     {
@@ -94,33 +95,38 @@ DLL_API T_ API__Cpp_Python_RPC__Predict(T_ *const inputs)
         return(T_EMPTY());
     }
     
-    /*
+    py::tuple const shape(py::make_tuple(12));
+
+    np::dtype const dtype(np::dtype::get_builtin<T_>());
+
+    np::ndarray py_inputs(np::empty(shape, dtype));
+
+    for(int i(0); i != 12; ++i) { py_inputs[i] = inputs[i]; }
+
     auto const results(Py_Try(&MyEA::RPC::Client::Predict, std::ref(g_Client),
-                       inputs));
+                              py_inputs));
     
     bool const &exception(!std::get<0>(results));
-
+    
     if(exception)
     {
-        MyEA::File::fError(PyErr_Parse().c_str()); }
+        MyEA::File::fError(PyErr_Parse().c_str());
 
         MyEA::File::fError("An error has been triggered from the `Predict()` function.");
         
         return(T_EMPTY());
     }
 
-    np::ndarray const &model_metrics(std::get<1>(results));
+    np::ndarray const &outputs(std::get<1>(results));
     
-    if(model_metrics.get_nd() == 0)
+    if(outputs.get_nd() == 0)
     {
-        MyEA::File::fError("Number array `model_metrics` is empty.");
+        MyEA::File::fError("Numpy array `outputs` is empty.");
         
         return(T_EMPTY());
     }
 
-    return(py::extract<T_>(model_metrics[0]));
-    */
-    return(0);
+    return(py::extract<T_>(outputs[0]));
 }
 
 DLL_API T_ API__Cpp_Python_RPC__Metric_Loss(enum MyEA::Common::ENUM_TYPE_DATASET const type_dataset)
@@ -149,7 +155,7 @@ DLL_API T_ API__Cpp_Python_RPC__Metric_Loss(enum MyEA::Common::ENUM_TYPE_DATASET
 
     if(model_metrics.get_nd() == 0)
     {
-        MyEA::File::fError("Number array `model_metrics` is empty.");
+        MyEA::File::fError("Numpy array `model_metrics` is empty.");
         
         return(T_EMPTY());
     }
@@ -183,7 +189,7 @@ DLL_API T_ API__Cpp_Python_RPC__Metric_Accuracy(enum MyEA::Common::ENUM_TYPE_DAT
     
     if(model_metrics.get_nd() == 0)
     {
-        MyEA::File::fError("Number array `model_metrics` is empty.");
+        MyEA::File::fError("Numpy array `model_metrics` is empty.");
         
         return(T_EMPTY());
     }

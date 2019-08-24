@@ -9,6 +9,8 @@ namespace np = boost::python::numpy;
 
 std::string PyErr_Parse();
 
+#include <UI/Dialog_Box.hpp> // WARNING
+
 template<class Fn, class ... Args>
 auto Py_Try(Fn&& fn_received, Args&& ... args)
 {
@@ -24,8 +26,10 @@ auto Py_Try(Fn&& fn_received, Args&& ... args)
             // forward: forward rvalue.
             std::invoke(std::forward<Fn>(fn_received), std::forward<Args>(args)...);
         }
-        catch(...)
+        catch(py::error_already_set const &)
         {
+            DEBUG_BOX(PyErr_Parse().c_str());
+
             tmp_success = false;
         }
     
@@ -37,8 +41,10 @@ auto Py_Try(Fn&& fn_received, Args&& ... args)
         {
             return(std::tuple(true, std::invoke(std::forward<Fn>(fn_received), std::forward<Args>(args)...)));
         }
-        catch(...)
+        catch(py::error_already_set const &)
         {
+            DEBUG_BOX(PyErr_Parse().c_str());
+
             return(std::tuple(false, np::from_object(py::object())));
         }
     }
@@ -48,8 +54,10 @@ auto Py_Try(Fn&& fn_received, Args&& ... args)
         {
             return(std::tuple(true, std::invoke(std::forward<Fn>(fn_received), std::forward<Args>(args)...)));
         }
-        catch(...)
+        catch(py::error_already_set const &)
         {
+            DEBUG_BOX(PyErr_Parse().c_str());
+
             return(std::tuple(false, result_t()));
         }
     }

@@ -39,6 +39,8 @@ namespace MyEA::RPC
         }
         
         Py_Initialize();
+
+        np::initialize();
         
         // |STR| Initialize main. |STR|
         this->_main   =       py::import("__main__");

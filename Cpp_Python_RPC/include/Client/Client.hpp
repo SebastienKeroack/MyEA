@@ -26,7 +26,7 @@ namespace MyEA::RPC
 
             bool Open(void);
             
-            np::ndarray Predict(np::ndarray const &ref_inputs_received);
+            np::ndarray Predict(np::ndarray const &inputs);
             
             np::ndarray Model_Metrics(void);
 
