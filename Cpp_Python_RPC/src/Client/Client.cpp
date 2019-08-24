@@ -70,7 +70,7 @@ namespace MyEA::RPC
     
     bool Client::Open(void)
     {
-        if(py::extract<bool>(this->_client.attr("open")()))
+        if(py::extract<bool>(this->_client.attr("open")()) == false)
         {
             MyEA::String::Error("An error has been triggered from the `open()` function.");
             
