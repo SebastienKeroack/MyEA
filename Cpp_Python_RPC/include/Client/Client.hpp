@@ -22,7 +22,7 @@ namespace MyEA::RPC
 
             bool Initialized(void) const;
 
-            bool Initialize(std::string const &ref_script_path_received);
+            bool Initialize(std::string const &script);
 
             bool Open(void);
             

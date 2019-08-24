@@ -29,7 +29,7 @@ namespace MyEA::RPC
         return(Py_IsInitialized());
     }
 
-    bool Client::Initialize(std::string const &ref_script_path_received)
+    bool Client::Initialize(std::string const &script)
     {
         if(this->Initialized())
         {
@@ -46,17 +46,17 @@ namespace MyEA::RPC
         // |END| Initialize main. |END|
         
         // |STR| Prepare arguments. |STR|
-        wchar_t **tmp_args = static_cast<wchar_t **>(PyMem_Malloc(3 * sizeof(wchar_t *)));
+        wchar_t **args = static_cast<wchar_t **>(PyMem_Malloc(3 * sizeof(wchar_t *)));
         
-        tmp_args[0] = Py_DecodeLocale(boost::replace_all_copy(ref_script_path_received, "\\", "\\\\").c_str(), NULL);
-        tmp_args[1] = Py_DecodeLocale("--hosts", NULL);
-        tmp_args[2] = Py_DecodeLocale("127.0.0.1=9000", NULL);
+        args[0] = Py_DecodeLocale(boost::replace_all_copy(script, "\\", "\\\\").c_str(), NULL);
+        args[1] = Py_DecodeLocale("--hosts", NULL);
+        args[2] = Py_DecodeLocale("127.0.0.1=9000", NULL);
         
-        PySys_SetArgv(3, tmp_args);
+        PySys_SetArgv(3, args);
         // |END| Prepare arguments. |END|
 
         // Execute file.
-        py::exec_file(ref_script_path_received.c_str(),
+        py::exec_file(script.c_str(),
                       this->_global,
                       this->_global);
         
@@ -78,33 +78,37 @@ namespace MyEA::RPC
         return(true);
     }
     
-    np::ndarray Client::Predict(np::ndarray const &ref_inputs_received)
+    np::ndarray Client::Predict(np::ndarray const &inputs)
     {
-        auto tmp_result(Py_Call<np::ndarray>("Predict", this->_client,
-                                             ref_inputs_received));
+        auto result(Py_Call<np::ndarray>("Predict", this->_client,
+                                         inputs));
         
-        if(std::get<0>(tmp_result))
+        bool const &result_is_none(std::get<0>(result));
+        
+        if(result_is_none)
         {
             MyEA::String::Error("An error has been triggered from the `Predict()` function.");
             
             return(np::from_object(py::object()));
         }
         
-        return(std::get<1>(tmp_result));
+        return(std::get<1>(result));
     }
 
     np::ndarray Client::Model_Metrics(void)
     {
-        auto tmp_result(Py_Call<np::ndarray>("Model_Metrics", this->_client));
-
-        if(std::get<0>(tmp_result))
+        auto result(Py_Call<np::ndarray>("Model_Metrics", this->_client));
+        
+        bool const &result_is_none(std::get<0>(result));
+        
+        if(result_is_none)
         {
             MyEA::String::Error("An error has been triggered from the `Model_Metrics()` function.");
             
             return(np::from_object(py::object()));
         }
         
-        return(std::get<1>(tmp_result));
+        return(std::get<1>(result));
     }
 
     Client::~Client(void)

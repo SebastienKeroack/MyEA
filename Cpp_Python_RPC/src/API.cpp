@@ -20,14 +20,14 @@ DLL_API bool API__Cpp_Python_RPC__Initialize(void)
         return(false);
     }
 
-    auto const tmp_results(Py_Try(&MyEA::RPC::Client::Initialize, std::ref(g_Client),
-                                  "C:\\Users\\sebas\\Documents\\MEGAsync\\MyEA\\Python\\run_client.py"));
+    auto const results(Py_Try(&MyEA::RPC::Client::Initialize, std::ref(g_Client),
+                              "C:\\Users\\sebas\\Documents\\MEGAsync\\MyEA\\Python\\run_client.py"));
     
-    bool const &tmp_exception(!std::get<0>(tmp_results));
+    bool const &exception(!std::get<0>(results));
 
-    if(tmp_exception || std::get<1>(tmp_results) == false)
+    if(exception || std::get<1>(results) == false)
     {
-        if(tmp_exception) { MyEA::File::fError(PyErr_Parse().c_str()); }
+        if(exception) { MyEA::File::fError(PyErr_Parse().c_str()); }
 
         MyEA::File::fError("An error has been triggered from the `Initialize()` function.");
         
@@ -46,13 +46,13 @@ DLL_API bool API__Cpp_Python_RPC__Open(void)
         return(false);
     }
 
-    auto const tmp_results(Py_Try(&MyEA::RPC::Client::Open, std::ref(g_Client)));
+    auto const results(Py_Try(&MyEA::RPC::Client::Open, std::ref(g_Client)));
     
-    bool const &tmp_exception(!std::get<0>(tmp_results));
+    bool const &exception(!std::get<0>(results));
 
-    if(tmp_exception || std::get<1>(tmp_results) == false)
+    if(exception || std::get<1>(results) == false)
     {
-        if(tmp_exception) { MyEA::File::fError(PyErr_Parse().c_str()); }
+        if(exception) { MyEA::File::fError(PyErr_Parse().c_str()); }
 
         MyEA::File::fError("An error has been triggered from the `Open()` function.");
         
@@ -85,36 +85,45 @@ DLL_API size_t API__Cpp_Python_RPC__Sizeof_T(void)
     return(sizeof(T_));
 }
 
-DLL_API T_ API__Cpp_Python_RPC__Predict(T_ *const ptr_inputs_received)
+DLL_API T_ API__Cpp_Python_RPC__Predict(T_ *const inputs)
 {
-    /*
     if(g_Client.Initialized() == false)
     {
         MyEA::File::fError("Client is not initialized.");
         
         return(T_EMPTY());
     }
-
-    auto const tmp_results(Py_Try(&MyEA::RPC::Client::Predict, std::ref(g_Client),
-                                  ptr_inputs_received));
     
-    bool const &tmp_exception(!std::get<0>(tmp_results));
+    /*
+    auto const results(Py_Try(&MyEA::RPC::Client::Predict, std::ref(g_Client),
+                       inputs));
+    
+    bool const &exception(!std::get<0>(results));
 
-    if(tmp_exception)
+    if(exception)
     {
-        if(tmp_exception) { MyEA::File::fError(PyErr_Parse().c_str()); }
+        MyEA::File::fError(PyErr_Parse().c_str()); }
 
         MyEA::File::fError("An error has been triggered from the `Predict()` function.");
         
         return(T_EMPTY());
     }
 
-    return(std::get<1>(tmp_results));
+    np::ndarray const &model_metrics(std::get<1>(results));
+    
+    if(model_metrics.get_nd() == 0)
+    {
+        MyEA::File::fError("Number array `model_metrics` is empty.");
+        
+        return(T_EMPTY());
+    }
+
+    return(py::extract<T_>(model_metrics[0]));
     */
     return(0);
 }
 
-DLL_API T_ API__Cpp_Python_RPC__Metric_Loss(enum MyEA::Common::ENUM_TYPE_DATASET const type_dataset_received)
+DLL_API T_ API__Cpp_Python_RPC__Metric_Loss(enum MyEA::Common::ENUM_TYPE_DATASET const type_dataset)
 {
     if(g_Client.Initialized() == false)
     {
@@ -123,11 +132,11 @@ DLL_API T_ API__Cpp_Python_RPC__Metric_Loss(enum MyEA::Common::ENUM_TYPE_DATASET
         return(T_EMPTY());
     }
 
-    auto const tmp_results(Py_Try(&MyEA::RPC::Client::Model_Metrics, std::ref(g_Client)));
+    auto const results(Py_Try(&MyEA::RPC::Client::Model_Metrics, std::ref(g_Client)));
     
-    bool const &tmp_exception(!std::get<0>(tmp_results));
+    bool const &exception(!std::get<0>(results));
 
-    if(tmp_exception)
+    if(exception)
     {
         MyEA::File::fError(PyErr_Parse().c_str());
 
@@ -136,19 +145,19 @@ DLL_API T_ API__Cpp_Python_RPC__Metric_Loss(enum MyEA::Common::ENUM_TYPE_DATASET
         return(T_EMPTY());
     }
 
-    np::ndarray const &tmp_ref_model_metrics(std::get<1>(tmp_results));
+    np::ndarray const &model_metrics(std::get<1>(results));
 
-    if(tmp_ref_model_metrics.get_nd() == 0)
+    if(model_metrics.get_nd() == 0)
     {
-        MyEA::File::fError("Number array `tmp_ref_model_metrics` is empty.");
+        MyEA::File::fError("Number array `model_metrics` is empty.");
         
         return(T_EMPTY());
     }
 
-    return(py::extract<T_>(tmp_ref_model_metrics[type_dataset_received][0][1]));
+    return(py::extract<T_>(model_metrics[type_dataset][0][1]));
 }
 
-DLL_API T_ API__Cpp_Python_RPC__Metric_Accuracy(enum MyEA::Common::ENUM_TYPE_DATASET const type_dataset_received)
+DLL_API T_ API__Cpp_Python_RPC__Metric_Accuracy(enum MyEA::Common::ENUM_TYPE_DATASET const type_dataset)
 {
     if(g_Client.Initialized() == false)
     {
@@ -157,11 +166,11 @@ DLL_API T_ API__Cpp_Python_RPC__Metric_Accuracy(enum MyEA::Common::ENUM_TYPE_DAT
         return(T_EMPTY());
     }
     
-    auto const tmp_results(Py_Try(&MyEA::RPC::Client::Model_Metrics, std::ref(g_Client)));
+    auto const results(Py_Try(&MyEA::RPC::Client::Model_Metrics, std::ref(g_Client)));
 
-    bool const &tmp_exception(!std::get<0>(tmp_results));
+    bool const &exception(!std::get<0>(results));
 
-    if(tmp_exception)
+    if(exception)
     {
         MyEA::File::fError(PyErr_Parse().c_str());
 
@@ -170,14 +179,14 @@ DLL_API T_ API__Cpp_Python_RPC__Metric_Accuracy(enum MyEA::Common::ENUM_TYPE_DAT
         return(T_EMPTY());
     }
 
-    np::ndarray const &tmp_ref_model_metrics(std::get<1>(tmp_results));
+    np::ndarray const &model_metrics(std::get<1>(results));
     
-    if(tmp_ref_model_metrics.get_nd() == 0)
+    if(model_metrics.get_nd() == 0)
     {
-        MyEA::File::fError("Number array `tmp_ref_model_metrics` is empty.");
+        MyEA::File::fError("Number array `model_metrics` is empty.");
         
         return(T_EMPTY());
     }
 
-    return(py::extract<T_>(tmp_ref_model_metrics[type_dataset_received][1][1]));
+    return(py::extract<T_>(model_metrics[type_dataset][1][1]));
 }

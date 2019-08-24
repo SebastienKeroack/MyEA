@@ -5,34 +5,34 @@
 
 std::string PyErr_Parse()
 {
-    PyObject *tmp_ptr_extype,
-             *tmp_ptr_value,
-             *tmp_ptr_traceback;
+    PyObject *ptr_extype,
+             *ptr_value,
+             *ptr_traceback;
     
-    PyErr_Fetch(&tmp_ptr_extype,
-                &tmp_ptr_value,
-                &tmp_ptr_traceback);
+    PyErr_Fetch(&ptr_extype,
+                &ptr_value,
+                &ptr_traceback);
     
-    if(tmp_ptr_extype == NULL) { return(""); }
+    if(ptr_extype == NULL) { return(""); }
 
-    py::object const tmp_extype   (py::handle<>(py::borrowed(tmp_ptr_extype   ))),
-                     tmp_value    (py::handle<>(py::borrowed(tmp_ptr_value    ))),
-                     tmp_traceback(py::handle<>(py::borrowed(tmp_ptr_traceback))),
-                     tmp_import_traceback(py::import("traceback")),
-                     tmp_lines(tmp_import_traceback.attr("format_exception")(tmp_extype,
-                                                                             tmp_value,
-                                                                             tmp_traceback));
+    py::object const extype   (py::handle<>(py::borrowed(ptr_extype   ))),
+                     value    (py::handle<>(py::borrowed(ptr_value    ))),
+                     traceback(py::handle<>(py::borrowed(ptr_traceback))),
+                     import_traceback(py::import("traceback")),
+                     lines(import_traceback.attr("format_exception")(extype,
+                                                                     value,
+                                                                     traceback));
     
-    std::string tmp_output("");
+    std::string outputs("");
 
-    for(int i(0); i != py::len(tmp_lines); ++i)
+    for(int i(0); i != py::len(lines); ++i)
     {
-        tmp_output += py::extract<std::string>(tmp_lines[i])();
+        outputs += py::extract<std::string>(lines[i])();
     }
 
     // PyErr_Fetch clears the error state, uncomment
     // the following line to restore the error state:
     // PyErr_Restore(extype, value, traceback);
 
-    return(tmp_output);
+    return(outputs);
 }
