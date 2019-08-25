@@ -189,7 +189,7 @@ DLL_API T_ API__Cpp_Python_RPC__Predict(T_ const *const inputs, size_t const len
             return(T_EMPTY());
         }
         
-        return(py::extract<T_>(outputs[0]));
+        return(py::extract<T_>(outputs[0][0]));
     });
     
     np::ndarray const &py_inputs(Concatenate_X(inputs, length));
