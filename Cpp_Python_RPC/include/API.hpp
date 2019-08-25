@@ -11,7 +11,7 @@ DLL_API bool API__Cpp_Python_RPC__Open(void);
 
 DLL_API bool API__Cpp_Python_RPC__Close(void);
 
-DLL_API bool API__Cpp_Python_RPC__Merge_Y(T_ const *const inputs, size_t const length);
+DLL_API bool API__Cpp_Python_RPC__Concatenate_Y(T_ const *const inputs, size_t const length);
 
 DLL_API size_t API__Cpp_Python_RPC__Sizeof_T(void);
 

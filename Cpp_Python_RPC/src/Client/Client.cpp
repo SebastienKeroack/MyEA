@@ -80,16 +80,16 @@ namespace MyEA::RPC
         return(true);
     }
     
-    np::ndarray Client::Merge_X(np::ndarray const &inputs)
+    np::ndarray Client::Concatenate_X(np::ndarray const &inputs)
     {
-        auto result(Py_Call<np::ndarray>("Merge_X", this->_client,
+        auto result(Py_Call<np::ndarray>("Concatenate_X", this->_client,
                                          inputs));
         
         bool const &result_is_none(std::get<0>(result));
         
         if(result_is_none)
         {
-            MyEA::String::Error("An error has been triggered from the `Merge_X()` function.");
+            MyEA::String::Error("An error has been triggered from the `Concatenate_X()` function.");
             
             return(np::from_object(py::object()));
         }
@@ -97,16 +97,16 @@ namespace MyEA::RPC
         return(std::get<1>(result));
     }
     
-    np::ndarray Client::Merge_Y(np::ndarray const &inputs)
+    np::ndarray Client::Concatenate_Y(np::ndarray const &inputs)
     {
-        auto result(Py_Call<np::ndarray>("Merge_Y", this->_client,
+        auto result(Py_Call<np::ndarray>("Concatenate_Y", this->_client,
                                          inputs));
         
         bool const &result_is_none(std::get<0>(result));
         
         if(result_is_none)
         {
-            MyEA::String::Error("An error has been triggered from the `Merge_Y()` function.");
+            MyEA::String::Error("An error has been triggered from the `Concatenate_Y()` function.");
             
             return(np::from_object(py::object()));
         }

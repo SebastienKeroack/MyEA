@@ -26,9 +26,9 @@ namespace MyEA::RPC
 
             bool Open(void);
             
-            np::ndarray Merge_X(np::ndarray const &inputs);
+            np::ndarray Concatenate_X(np::ndarray const &inputs);
 
-            np::ndarray Merge_Y(np::ndarray const &inputs);
+            np::ndarray Concatenate_Y(np::ndarray const &inputs);
 
             np::ndarray Predict(np::ndarray const &inputs);
             

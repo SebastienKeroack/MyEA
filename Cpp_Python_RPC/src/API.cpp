@@ -80,7 +80,7 @@ DLL_API bool API__Cpp_Python_RPC__Close(void)
     return(true);
 }
 
-DLL_API bool API__Cpp_Python_RPC__Merge_Y(T_ const *const inputs, size_t const length)
+DLL_API bool API__Cpp_Python_RPC__Concatenate_Y(T_ const *const inputs, size_t const length)
 {
     if(g_Client.Initialized() == false)
     {
@@ -97,7 +97,7 @@ DLL_API bool API__Cpp_Python_RPC__Merge_Y(T_ const *const inputs, size_t const l
 
     for(int i(0); i != length; ++i) { py_inputs[i] = inputs[i]; }
 
-    auto const results(Py_Try(&MyEA::RPC::Client::Merge_Y, std::ref(g_Client),
+    auto const results(Py_Try(&MyEA::RPC::Client::Concatenate_Y, std::ref(g_Client),
                               py_inputs));
     
     bool const &exception(!std::get<0>(results));
@@ -106,7 +106,7 @@ DLL_API bool API__Cpp_Python_RPC__Merge_Y(T_ const *const inputs, size_t const l
     {
         MyEA::File::fError(PyErr_Parse().c_str());
 
-        MyEA::File::fError("An error has been triggered from the `Merge_Y()` function.");
+        MyEA::File::fError("An error has been triggered from the `Concatenate_Y()` function.");
         
         return(false);
     }
@@ -137,7 +137,7 @@ DLL_API T_ API__Cpp_Python_RPC__Predict(T_ const *const inputs, size_t const len
         return(T_EMPTY());
     }
 
-    auto Merge_X([](T_ const *const inputs, size_t const length) -> np::ndarray
+    auto Concatenate_X([](T_ const *const inputs, size_t const length) -> np::ndarray
     {
         py::tuple const shape(py::make_tuple(length));
 
@@ -147,7 +147,7 @@ DLL_API T_ API__Cpp_Python_RPC__Predict(T_ const *const inputs, size_t const len
 
         for(int i(0); i != length; ++i) { py_inputs[i] = inputs[i]; }
         
-        auto const results(Py_Try(&MyEA::RPC::Client::Merge_X, std::ref(g_Client),
+        auto const results(Py_Try(&MyEA::RPC::Client::Concatenate_X, std::ref(g_Client),
                                   py_inputs));
         
         bool const &exception(!std::get<0>(results));
@@ -156,7 +156,7 @@ DLL_API T_ API__Cpp_Python_RPC__Predict(T_ const *const inputs, size_t const len
         {
             MyEA::File::fError(PyErr_Parse().c_str());
 
-            MyEA::File::fError("An error has been triggered from the `Merge_X()` function.");
+            MyEA::File::fError("An error has been triggered from the `Concatenate_X()` function.");
             
             return(np::from_object(py::object()));
         }
@@ -192,7 +192,7 @@ DLL_API T_ API__Cpp_Python_RPC__Predict(T_ const *const inputs, size_t const len
         return(py::extract<T_>(outputs[0]));
     });
     
-    np::ndarray const &py_inputs(Merge_X(inputs, length));
+    np::ndarray const &py_inputs(Concatenate_X(inputs, length));
     
     if(py_inputs.get_nd() == 0)
     {
