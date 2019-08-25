@@ -80,6 +80,40 @@ namespace MyEA::RPC
         return(true);
     }
     
+    np::ndarray Client::Merge_X(np::ndarray const &inputs)
+    {
+        auto result(Py_Call<np::ndarray>("Merge_X", this->_client,
+                                         inputs));
+        
+        bool const &result_is_none(std::get<0>(result));
+        
+        if(result_is_none)
+        {
+            MyEA::String::Error("An error has been triggered from the `Merge_X()` function.");
+            
+            return(np::from_object(py::object()));
+        }
+        
+        return(std::get<1>(result));
+    }
+    
+    np::ndarray Client::Merge_Y(np::ndarray const &inputs)
+    {
+        auto result(Py_Call<np::ndarray>("Merge_Y", this->_client,
+                                         inputs));
+        
+        bool const &result_is_none(std::get<0>(result));
+        
+        if(result_is_none)
+        {
+            MyEA::String::Error("An error has been triggered from the `Merge_Y()` function.");
+            
+            return(np::from_object(py::object()));
+        }
+        
+        return(std::get<1>(result));
+    }
+
     np::ndarray Client::Predict(np::ndarray const &inputs)
     {
         auto result(Py_Call<np::ndarray>("Predict", this->_client,
