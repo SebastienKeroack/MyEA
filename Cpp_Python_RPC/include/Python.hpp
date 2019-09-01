@@ -12,11 +12,11 @@ std::string PyErr_Parse();
 #include <UI/Dialog_Box.hpp> // WARNING
 
 template<class Fn, class ... Args>
-auto Py_Try(Fn&& fn_received, Args&& ... args)
+auto Py_Try(Fn&& fn, Args&& ... args)
 {
     typedef std::invoke_result_t<Fn, Args...> result_t;
     
-    bool tmp_success(true);
+    bool success(true);
 
     if constexpr (std::is_same_v<result_t, void>)
     {
@@ -24,22 +24,22 @@ auto Py_Try(Fn&& fn_received, Args&& ... args)
         {
             //  invoke: Call a function or a member function from args[0].
             // forward: forward rvalue.
-            std::invoke(std::forward<Fn>(fn_received), std::forward<Args>(args)...);
+            std::invoke(std::forward<Fn>(fn), std::forward<Args>(args)...);
         }
         catch(py::error_already_set const &)
         {
             DEBUG_BOX(PyErr_Parse().c_str());
 
-            tmp_success = false;
+            success = false;
         }
     
-        return(tmp_success);
+        return(success);
     }
     else if constexpr (std::is_same_v<result_t, np::ndarray>)
     {
         try
         {
-            return(std::tuple(true, std::invoke(std::forward<Fn>(fn_received), std::forward<Args>(args)...)));
+            return(std::tuple(true, std::invoke(std::forward<Fn>(fn), std::forward<Args>(args)...)));
         }
         catch(py::error_already_set const &)
         {
@@ -52,7 +52,7 @@ auto Py_Try(Fn&& fn_received, Args&& ... args)
     {
         try
         {
-            return(std::tuple(true, std::invoke(std::forward<Fn>(fn_received), std::forward<Args>(args)...)));
+            return(std::tuple(true, std::invoke(std::forward<Fn>(fn), std::forward<Args>(args)...)));
         }
         catch(py::error_already_set const &)
         {
@@ -64,20 +64,20 @@ auto Py_Try(Fn&& fn_received, Args&& ... args)
 }
 
 template<typename T, class ... Args>
-std::tuple<bool, T> Py_Call(char const *fn_name_received,
-                            py::object &ref_caller_received,
+std::tuple<bool, T> Py_Call(char const *fn_name,
+                            py::object &invoker,
                             Args&& ... args)
 {
-    py::object tmp_result_as_object(ref_caller_received.attr(fn_name_received)(args...));
-        
-    bool const tmp_is_none(tmp_result_as_object.is_none());
-
+    py::object result_as_object(invoker.attr(fn_name)(args...));
+    
+    bool const is_none(result_as_object.is_none());
+    
     if constexpr (std::is_same_v<T, np::ndarray>)
     {
-        return(std::tuple<bool, np::ndarray>(tmp_is_none, np::from_object(tmp_result_as_object)));
+        return(std::tuple<bool, np::ndarray>(is_none, np::from_object(result_as_object)));
     }
     else
     {
-        return(std::tuple<bool, T>(tmp_is_none, py::extract<T>(tmp_result_as_object)));
+        return(std::tuple<bool, T>(is_none, py::extract<T>(result_as_object)));
     }
 }

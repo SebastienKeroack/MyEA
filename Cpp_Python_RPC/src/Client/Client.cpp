@@ -62,7 +62,7 @@ namespace MyEA::RPC
         auto Construct_Client([this, &args, &script](int const port)
         {
             // |STR| Prepare arguments. |STR|
-            args[2] = Py_DecodeLocale(std::string("192.168.1.100=" + std::to_string(port)).c_str(), NULL);
+            args[2] = Py_DecodeLocale(std::string("127.0.0.1=" + std::to_string(port)).c_str(), NULL);
             
             PySys_SetArgv(3, args);
             // |END| Prepare arguments. |END|
@@ -94,7 +94,7 @@ namespace MyEA::RPC
             }
         }
         
-        if(py::extract<bool>(this->_client_opt.attr("is_connected")()) == false)
+        if(py::extract<bool>(this->_client_inf.attr("is_connected")()) == false)
         {
             if(py::extract<bool>(this->_client_inf.attr("open")()) == false)
             {
@@ -103,42 +103,32 @@ namespace MyEA::RPC
                 return(false);
             }
         }
-
+        
         return(true);
     }
     
     bool Client::Concatenate_X(np::ndarray const &inputs)
     {
-        auto result(Py_Call<bool>("Concatenate_X", this->_client_opt,
-                                  inputs));
-        
-        bool const &result_is_none(std::get<0>(result));
-        
-        if(result_is_none)
+        if(Py_Try([this, &inputs]() -> void { this->_client_opt.attr("Concatenate_X")(inputs); }) == false)
         {
-            MyEA::String::Error("An error has been triggered from the `Concatenate_X()` function.");
+            MyEA::String::Error("An exception has been triggered from the `Concatenate_X()` function.");
             
-            return(np::from_object(py::object()));
+            return(false);
         }
         
-        return(std::get<1>(result));
+        return(true);
     }
     
     bool Client::Concatenate_Y(np::ndarray const &inputs)
     {
-        auto result(Py_Call<bool>("Concatenate_Y", this->_client_opt,
-                                  inputs));
-        
-        bool const &result_is_none(std::get<0>(result));
-        
-        if(result_is_none)
+        if(Py_Try([this, &inputs]() -> void { this->_client_opt.attr("Concatenate_Y")(inputs); }) == false)
         {
-            MyEA::String::Error("An error has been triggered from the `Concatenate_Y()` function.");
+            MyEA::String::Error("An exception has been triggered from the `Concatenate_Y()` function.");
             
-            return(np::from_object(py::object()));
+            return(false);
         }
-        
-        return(std::get<1>(result));
+
+        return(true);
     }
     
     np::ndarray Client::Normalize_X(np::ndarray const &inputs)
@@ -161,8 +151,8 @@ namespace MyEA::RPC
     np::ndarray Client::Predict(py::list const &inputs)
     {
         auto result(Py_Call<np::ndarray>("Predict", this->_client_inf,
-                                         inputs));
-
+                                         inputs, 1));
+        
         bool const &result_is_none(std::get<0>(result));
         
         if(result_is_none)
@@ -193,5 +183,6 @@ namespace MyEA::RPC
 
     Client::~Client(void)
     {
+        this->Close();
     }
 }

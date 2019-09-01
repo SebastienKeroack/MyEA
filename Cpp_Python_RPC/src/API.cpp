@@ -80,7 +80,7 @@ DLL_API bool API__Cpp_Python_RPC__Close(void)
     }
     else if(Py_Try(&MyEA::RPC::Client::Close, std::ref(g_Client)) == false)
     {
-        MyEA::File::fError("An error has been triggered from the `Close()` function.");
+        MyEA::File::fError("An exception has been triggered from the `Close()` function.");
         
         return(false);
     }
