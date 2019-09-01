@@ -84,27 +84,33 @@ namespace MyEA::RPC
     
     bool Client::Open(void)
     {
-        if(py::extract<bool>(this->_client_opt.attr("open")()) == false)
+        if(py::extract<bool>(this->_client_opt.attr("is_connected")()) == false)
         {
-            MyEA::String::Error("An error has been triggered from the `open()` function.");
-            
-            return(false);
+            if(py::extract<bool>(this->_client_opt.attr("open")()) == false)
+            {
+                MyEA::String::Error("An error has been triggered from the `open()` function.");
+                
+                return(false);
+            }
         }
         
-        if(py::extract<bool>(this->_client_inf.attr("open")()) == false)
+        if(py::extract<bool>(this->_client_opt.attr("is_connected")()) == false)
         {
-            MyEA::String::Error("An error has been triggered from the `open()` function.");
-            
-            return(false);
+            if(py::extract<bool>(this->_client_inf.attr("open")()) == false)
+            {
+                MyEA::String::Error("An error has been triggered from the `open()` function.");
+                
+                return(false);
+            }
         }
 
         return(true);
     }
     
-    np::ndarray Client::Concatenate_X(np::ndarray const &inputs)
+    bool Client::Concatenate_X(np::ndarray const &inputs)
     {
-        auto result(Py_Call<np::ndarray>("Concatenate_X", this->_client_opt,
-                                         inputs));
+        auto result(Py_Call<bool>("Concatenate_X", this->_client_opt,
+                                  inputs));
         
         bool const &result_is_none(std::get<0>(result));
         
@@ -118,10 +124,10 @@ namespace MyEA::RPC
         return(std::get<1>(result));
     }
     
-    np::ndarray Client::Concatenate_Y(np::ndarray const &inputs)
+    bool Client::Concatenate_Y(np::ndarray const &inputs)
     {
-        auto result(Py_Call<np::ndarray>("Concatenate_Y", this->_client_opt,
-                                         inputs));
+        auto result(Py_Call<bool>("Concatenate_Y", this->_client_opt,
+                                  inputs));
         
         bool const &result_is_none(std::get<0>(result));
         
@@ -134,7 +140,24 @@ namespace MyEA::RPC
         
         return(std::get<1>(result));
     }
-
+    
+    np::ndarray Client::Normalize_X(np::ndarray const &inputs)
+    {
+        auto result(Py_Call<np::ndarray>("Normalize_X", this->_client_opt,
+                                         inputs));
+        
+        bool const &result_is_none(std::get<0>(result));
+        
+        if(result_is_none)
+        {
+            MyEA::String::Error("An error has been triggered from the `Normalize_X()` function.");
+            
+            return(np::from_object(py::object()));
+        }
+        
+        return(std::get<1>(result));
+    }
+    
     np::ndarray Client::Predict(py::list const &inputs)
     {
         auto result(Py_Call<np::ndarray>("Predict", this->_client_inf,

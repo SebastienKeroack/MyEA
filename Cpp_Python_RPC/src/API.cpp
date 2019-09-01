@@ -12,23 +12,24 @@ class MyEA::RPC::Client g_Client;
 
 DLL_API bool API__Cpp_Python_RPC__Initialize(void)
 {
-    if(g_Client.Initialized())
-    {
-        MyEA::File::fError("Initialization can only be call once per load." NEW_LINE
-                           "Unload the `.dll` and retry.");
-        
-        return(false);
-    }
+    if(g_Client.Initialized()) { return(true); }
 
     auto const results(Py_Try(&MyEA::RPC::Client::Initialize, std::ref(g_Client),
                               "C:\\Users\\sebas\\Documents\\MEGAsync\\MyEA\\Python\\run_client.py"));
     
-    bool const &exception(!std::get<0>(results));
-
-    if(exception || std::get<1>(results) == false)
+    bool const &exception(!std::get<0>(results)),
+               &error    (!std::get<1>(results));
+    
+    if(exception)
     {
-        if(exception) { MyEA::File::fError(PyErr_Parse().c_str()); }
+        MyEA::File::fError(PyErr_Parse().c_str());
 
+        MyEA::File::fError("An exception has been triggered from the `Initialize()` function.");
+        
+        return(false);
+    }
+    else if(error)
+    {
         MyEA::File::fError("An error has been triggered from the `Initialize()` function.");
         
         return(false);
@@ -48,12 +49,19 @@ DLL_API bool API__Cpp_Python_RPC__Open(void)
 
     auto const results(Py_Try(&MyEA::RPC::Client::Open, std::ref(g_Client)));
     
-    bool const &exception(!std::get<0>(results));
-
-    if(exception || std::get<1>(results) == false)
+    bool const &exception(!std::get<0>(results)),
+               &error    (!std::get<1>(results));
+    
+    if(exception)
     {
-        if(exception) { MyEA::File::fError(PyErr_Parse().c_str()); }
+        MyEA::File::fError(PyErr_Parse().c_str());
 
+        MyEA::File::fError("An exception has been triggered from the `Open()` function.");
+        
+        return(false);
+    }
+    else if(error)
+    {
         MyEA::File::fError("An error has been triggered from the `Open()` function.");
         
         return(false);
@@ -73,6 +81,47 @@ DLL_API bool API__Cpp_Python_RPC__Close(void)
     else if(Py_Try(&MyEA::RPC::Client::Close, std::ref(g_Client)) == false)
     {
         MyEA::File::fError("An error has been triggered from the `Close()` function.");
+        
+        return(false);
+    }
+
+    return(true);
+}
+
+DLL_API bool API__Cpp_Python_RPC__Concatenate_X(T_ const *const inputs, size_t const length)
+{
+    if(g_Client.Initialized() == false)
+    {
+        MyEA::File::fError("Client is not initialized.");
+        
+        return(false);
+    }
+    
+    py::tuple const shape(py::make_tuple(length));
+
+    np::dtype const dtype(np::dtype::get_builtin<T_>());
+
+    np::ndarray py_inputs(np::empty(shape, dtype));
+
+    for(int i(0); i != length; ++i) { py_inputs[i] = inputs[i]; }
+
+    auto const results(Py_Try(&MyEA::RPC::Client::Concatenate_X, std::ref(g_Client),
+                              py_inputs));
+    
+    bool const &exception(!std::get<0>(results)),
+               &error    (!std::get<1>(results));
+    
+    if(exception)
+    {
+        MyEA::File::fError(PyErr_Parse().c_str());
+
+        MyEA::File::fError("An exception has been triggered from the `Concatenate_X()` function.");
+        
+        return(false);
+    }
+    else if(error)
+    {
+        MyEA::File::fError("An error has been triggered from the `Concatenate_X()` function.");
         
         return(false);
     }
@@ -100,22 +149,20 @@ DLL_API bool API__Cpp_Python_RPC__Concatenate_Y(T_ const *const inputs, size_t c
     auto const results(Py_Try(&MyEA::RPC::Client::Concatenate_Y, std::ref(g_Client),
                               py_inputs));
     
-    bool const &exception(!std::get<0>(results));
+    bool const &exception(!std::get<0>(results)),
+               &error    (!std::get<1>(results));
     
     if(exception)
     {
         MyEA::File::fError(PyErr_Parse().c_str());
 
-        MyEA::File::fError("An error has been triggered from the `Concatenate_Y()` function.");
+        MyEA::File::fError("An exception has been triggered from the `Concatenate_Y()` function.");
         
         return(false);
     }
-
-    np::ndarray const &outputs(std::get<1>(results));
-    
-    if(outputs.get_nd() == 0)
+    else if(error)
     {
-        MyEA::File::fError("NumPy array `outputs` is empty.");
+        MyEA::File::fError("An error has been triggered from the `Concatenate_Y()` function.");
         
         return(false);
     }
@@ -141,7 +188,7 @@ DLL_API T_ API__Cpp_Python_RPC__Predict(unsigned int const past_action,
     
     np::dtype const dtype(np::dtype::get_builtin<T_>());
 
-    auto Concatenate_X([&dtype](T_ const *const inputs, size_t const length) -> np::ndarray
+    auto Normalize_X([&dtype](T_ const *const inputs, size_t const length) -> np::ndarray
     {
         py::tuple const shape(py::make_tuple(length));
 
@@ -149,7 +196,7 @@ DLL_API T_ API__Cpp_Python_RPC__Predict(unsigned int const past_action,
 
         for(int i(0); i != length; ++i) { py_inputs[i] = inputs[i]; }
         
-        auto const results(Py_Try(&MyEA::RPC::Client::Concatenate_X, std::ref(g_Client),
+        auto const results(Py_Try(&MyEA::RPC::Client::Normalize_X, std::ref(g_Client),
                                   py_inputs));
         
         bool const &exception(!std::get<0>(results));
@@ -158,7 +205,7 @@ DLL_API T_ API__Cpp_Python_RPC__Predict(unsigned int const past_action,
         {
             MyEA::File::fError(PyErr_Parse().c_str());
 
-            MyEA::File::fError("An error has been triggered from the `Concatenate_X()` function.");
+            MyEA::File::fError("An exception has been triggered from the `Normalize_X()` function.");
             
             return(np::from_object(py::object()));
         }
@@ -177,7 +224,7 @@ DLL_API T_ API__Cpp_Python_RPC__Predict(unsigned int const past_action,
         {
             MyEA::File::fError(PyErr_Parse().c_str());
 
-            MyEA::File::fError("An error has been triggered from the `Predict()` function.");
+            MyEA::File::fError("An exception has been triggered from the `Predict()` function.");
             
             return(T_EMPTY());
         }
@@ -195,8 +242,10 @@ DLL_API T_ API__Cpp_Python_RPC__Predict(unsigned int const past_action,
         else                      { return(py::extract<T_>(outputs[0][0])); }
     });
     
+    py::list list_of_inputs;
+
     // |STR| Financial features. |STR|
-    np::ndarray const &X(Concatenate_X(inputs, length));
+    np::ndarray const &X(Normalize_X(inputs, length));
     
     if(X.get_nd() == 0)
     {
@@ -205,8 +254,6 @@ DLL_API T_ API__Cpp_Python_RPC__Predict(unsigned int const past_action,
         return(T_EMPTY());
     }
     
-    py::list list_of_inputs;
-
     list_of_inputs.append(X);
     // |END| Financial features. |END|
     
@@ -240,7 +287,7 @@ DLL_API T_ API__Cpp_Python_RPC__Metric_Loss(enum MyEA::Common::ENUM_TYPE_DATASET
     {
         MyEA::File::fError(PyErr_Parse().c_str());
 
-        MyEA::File::fError("An error has been triggered from the `Model_Metrics()` function.");
+        MyEA::File::fError("An exception has been triggered from the `Model_Metrics()` function.");
         
         return(T_EMPTY());
     }
@@ -274,7 +321,7 @@ DLL_API T_ API__Cpp_Python_RPC__Metric_Accuracy(enum MyEA::Common::ENUM_TYPE_DAT
     {
         MyEA::File::fError(PyErr_Parse().c_str());
 
-        MyEA::File::fError("An error has been triggered from the `Model_Metrics()` function.");
+        MyEA::File::fError("An exception has been triggered from the `Model_Metrics()` function.");
         
         return(T_EMPTY());
     }

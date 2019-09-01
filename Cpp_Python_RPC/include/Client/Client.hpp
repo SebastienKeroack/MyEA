@@ -26,9 +26,11 @@ namespace MyEA::RPC
 
             bool Open(void);
             
-            np::ndarray Concatenate_X(np::ndarray const &inputs);
+            bool Concatenate_X(np::ndarray const &inputs);
 
-            np::ndarray Concatenate_Y(np::ndarray const &inputs);
+            bool Concatenate_Y(np::ndarray const &inputs);
+
+            np::ndarray Normalize_X(np::ndarray const &inputs);
 
             np::ndarray Predict(py::list const &inputs);
             
