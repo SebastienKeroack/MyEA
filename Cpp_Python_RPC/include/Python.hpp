@@ -74,10 +74,10 @@ std::tuple<bool, T> Py_Call(char const *fn_name_received,
 
     if constexpr (std::is_same_v<T, np::ndarray>)
     {
-        return(std::tuple(tmp_is_none, np::from_object(tmp_result_as_object)));
+        return(std::tuple<bool, np::ndarray>(tmp_is_none, np::from_object(tmp_result_as_object)));
     }
     else
     {
-        return(std::tuple(tmp_is_none, py::extract<T>(tmp_result_as_object)));
+        return(std::tuple<bool, T>(tmp_is_none, py::extract<T>(tmp_result_as_object)));
     }
 }
