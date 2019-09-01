@@ -18,9 +18,14 @@ namespace MyEA::RPC
     
     void Client::Close(void)
     {
-        if(py::extract<bool>(this->_client.attr("is_connected")()))
+        if(py::extract<bool>(this->_client_opt.attr("is_connected")()))
         {
-            this->_client.attr("close")();
+            this->_client_opt.attr("close")();
+        }
+
+        if(py::extract<bool>(this->_client_inf.attr("is_connected")()))
+        {
+            this->_client_inf.attr("close")();
         }
     }
     
@@ -52,25 +57,41 @@ namespace MyEA::RPC
         
         args[0] = Py_DecodeLocale(boost::replace_all_copy(script, "\\", "\\\\").c_str(), NULL);
         args[1] = Py_DecodeLocale("--hosts", NULL);
-        args[2] = Py_DecodeLocale("127.0.0.1=9000", NULL);
-        
-        PySys_SetArgv(3, args);
         // |END| Prepare arguments. |END|
-
-        // Execute file.
-        py::exec_file(script.c_str(),
-                      this->_global,
-                      this->_global);
         
-        // Extract client object.
-        this->_client = this->_main.attr("client");
+        auto Construct_Client([this, &args, &script](int const port)
+        {
+            // |STR| Prepare arguments. |STR|
+            args[2] = Py_DecodeLocale(std::string("192.168.1.100=" + std::to_string(port)).c_str(), NULL);
+            
+            PySys_SetArgv(3, args);
+            // |END| Prepare arguments. |END|
+            
+            // Execute file.
+            py::exec_file(script.c_str(),
+                          this->_global,
+                          this->_global);
+            
+            // Extract client object.
+            return(this->_main.attr("client"));
+        });
+
+        this->_client_opt = Construct_Client(9000);
+        this->_client_inf = Construct_Client(9001);
 
         return(true);
     }
     
     bool Client::Open(void)
     {
-        if(py::extract<bool>(this->_client.attr("open")()) == false)
+        if(py::extract<bool>(this->_client_opt.attr("open")()) == false)
+        {
+            MyEA::String::Error("An error has been triggered from the `open()` function.");
+            
+            return(false);
+        }
+        
+        if(py::extract<bool>(this->_client_inf.attr("open")()) == false)
         {
             MyEA::String::Error("An error has been triggered from the `open()` function.");
             
@@ -82,7 +103,7 @@ namespace MyEA::RPC
     
     np::ndarray Client::Concatenate_X(np::ndarray const &inputs)
     {
-        auto result(Py_Call<np::ndarray>("Concatenate_X", this->_client,
+        auto result(Py_Call<np::ndarray>("Concatenate_X", this->_client_opt,
                                          inputs));
         
         bool const &result_is_none(std::get<0>(result));
@@ -99,7 +120,7 @@ namespace MyEA::RPC
     
     np::ndarray Client::Concatenate_Y(np::ndarray const &inputs)
     {
-        auto result(Py_Call<np::ndarray>("Concatenate_Y", this->_client,
+        auto result(Py_Call<np::ndarray>("Concatenate_Y", this->_client_opt,
                                          inputs));
         
         bool const &result_is_none(std::get<0>(result));
@@ -114,11 +135,11 @@ namespace MyEA::RPC
         return(std::get<1>(result));
     }
 
-    np::ndarray Client::Predict(np::ndarray const &inputs)
+    np::ndarray Client::Predict(py::list const &inputs)
     {
-        auto result(Py_Call<np::ndarray>("Predict", this->_client,
+        auto result(Py_Call<np::ndarray>("Predict", this->_client_inf,
                                          inputs));
-        
+
         bool const &result_is_none(std::get<0>(result));
         
         if(result_is_none)
@@ -133,7 +154,7 @@ namespace MyEA::RPC
 
     np::ndarray Client::Model_Metrics(void)
     {
-        auto result(Py_Call<np::ndarray>("Model_Metrics", this->_client));
+        auto result(Py_Call<np::ndarray>("Model_Metrics", this->_client_opt));
         
         bool const &result_is_none(std::get<0>(result));
         

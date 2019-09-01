@@ -30,13 +30,14 @@ namespace MyEA::RPC
 
             np::ndarray Concatenate_Y(np::ndarray const &inputs);
 
-            np::ndarray Predict(np::ndarray const &inputs);
+            np::ndarray Predict(py::list const &inputs);
             
             np::ndarray Model_Metrics(void);
 
         private:
             py::object _main  ;
             py::object _global;
-            py::object _client;
+            py::object _client_opt;
+            py::object _client_inf;
     };
 }

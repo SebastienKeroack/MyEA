@@ -115,7 +115,7 @@ DLL_API bool API__Cpp_Python_RPC__Concatenate_Y(T_ const *const inputs, size_t c
     
     if(outputs.get_nd() == 0)
     {
-        MyEA::File::fError("Numpy array `outputs` is empty.");
+        MyEA::File::fError("NumPy array `outputs` is empty.");
         
         return(false);
     }
@@ -128,7 +128,9 @@ DLL_API size_t API__Cpp_Python_RPC__Sizeof_T(void)
     return(sizeof(T_));
 }
 
-DLL_API T_ API__Cpp_Python_RPC__Predict(T_ const *const inputs, size_t const length)
+DLL_API T_ API__Cpp_Python_RPC__Predict(unsigned int const past_action,
+                                        T_ const *const inputs,
+                                        size_t const length)
 {
     if(g_Client.Initialized() == false)
     {
@@ -136,12 +138,12 @@ DLL_API T_ API__Cpp_Python_RPC__Predict(T_ const *const inputs, size_t const len
         
         return(T_EMPTY());
     }
+    
+    np::dtype const dtype(np::dtype::get_builtin<T_>());
 
-    auto Concatenate_X([](T_ const *const inputs, size_t const length) -> np::ndarray
+    auto Concatenate_X([&dtype](T_ const *const inputs, size_t const length) -> np::ndarray
     {
         py::tuple const shape(py::make_tuple(length));
-
-        np::dtype const dtype(np::dtype::get_builtin<T_>());
 
         np::ndarray py_inputs(np::empty(shape, dtype));
 
@@ -164,7 +166,7 @@ DLL_API T_ API__Cpp_Python_RPC__Predict(T_ const *const inputs, size_t const len
         return(std::get<1>(results));
     });
     
-    auto Predict([](np::ndarray const &inputs) -> T_
+    auto Predict([](py::list const &inputs) -> T_
     {
         auto const results(Py_Try(&MyEA::RPC::Client::Predict, std::ref(g_Client),
                                   inputs));
@@ -184,24 +186,41 @@ DLL_API T_ API__Cpp_Python_RPC__Predict(T_ const *const inputs, size_t const len
         
         if(outputs.get_nd() == 0)
         {
-            MyEA::File::fError("Numpy array `outputs` is empty.");
+            MyEA::File::fError("NumPy array `outputs` is empty.");
             
             return(T_EMPTY());
         }
         
-        return(py::extract<T_>(outputs[0][0]));
+        if(outputs.get_nd() == 1) { return(py::extract<T_>(outputs[0]   )); }
+        else                      { return(py::extract<T_>(outputs[0][0])); }
     });
     
-    np::ndarray const &py_inputs(Concatenate_X(inputs, length));
+    // |STR| Financial features. |STR|
+    np::ndarray const &X(Concatenate_X(inputs, length));
     
-    if(py_inputs.get_nd() == 0)
+    if(X.get_nd() == 0)
     {
-        MyEA::File::fError("Numpy array `py_inputs` is empty.");
+        MyEA::File::fError("NumPy array `X` is empty.");
         
         return(T_EMPTY());
     }
     
-    return(Predict(py_inputs));
+    py::list list_of_inputs;
+
+    list_of_inputs.append(X);
+    // |END| Financial features. |END|
+    
+    // |STR| Past actions. |STR|
+    py::tuple const shape(py::make_tuple(1, 3));
+
+    np::ndarray pA(np::zeros(shape, dtype));
+
+    pA[0][past_action] = 1.0_T;
+
+    list_of_inputs.append(pA);
+    // |END| Past actions. |END|
+
+    return(Predict(list_of_inputs));
 }
 
 DLL_API T_ API__Cpp_Python_RPC__Metric_Loss(enum MyEA::Common::ENUM_TYPE_DATASET const type_dataset)
@@ -230,7 +249,7 @@ DLL_API T_ API__Cpp_Python_RPC__Metric_Loss(enum MyEA::Common::ENUM_TYPE_DATASET
 
     if(model_metrics.get_nd() == 0)
     {
-        MyEA::File::fError("Numpy array `model_metrics` is empty.");
+        MyEA::File::fError("NumPy array `model_metrics` is empty.");
         
         return(T_EMPTY());
     }
@@ -264,7 +283,7 @@ DLL_API T_ API__Cpp_Python_RPC__Metric_Accuracy(enum MyEA::Common::ENUM_TYPE_DAT
     
     if(model_metrics.get_nd() == 0)
     {
-        MyEA::File::fError("Numpy array `model_metrics` is empty.");
+        MyEA::File::fError("NumPy array `model_metrics` is empty.");
         
         return(T_EMPTY());
     }
