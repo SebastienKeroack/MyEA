@@ -59,10 +59,10 @@ namespace MyEA::RPC
         args[1] = Py_DecodeLocale("--hosts", NULL);
         // |END| Prepare arguments. |END|
         
-        auto Construct_Client([this, &args, &script](int const port)
+        auto Construct_Client([this, &args, &script](std::string const host, int const port)
         {
             // |STR| Prepare arguments. |STR|
-            args[2] = Py_DecodeLocale(std::string("127.0.0.1=" + std::to_string(port)).c_str(), NULL);
+            args[2] = Py_DecodeLocale(std::string(host + "=" + std::to_string(port)).c_str(), NULL);
             
             PySys_SetArgv(3, args);
             // |END| Prepare arguments. |END|
@@ -76,8 +76,8 @@ namespace MyEA::RPC
             return(this->_main.attr("client"));
         });
 
-        this->_client_opt = Construct_Client(9000);
-        this->_client_inf = Construct_Client(9001);
+        this->_client_opt = Construct_Client("10.0.2.2", 9000);
+        this->_client_inf = Construct_Client("10.0.2.2", 9999);
 
         return(true);
     }
