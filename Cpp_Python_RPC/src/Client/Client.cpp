@@ -34,7 +34,7 @@ namespace MyEA::RPC
         return(Py_IsInitialized());
     }
 
-    bool Client::Initialize(std::string const &script)
+    bool Client::Initialize(std::string const &host, std::string const &script)
     {
         if(this->Initialized())
         {
@@ -59,7 +59,7 @@ namespace MyEA::RPC
         args[1] = Py_DecodeLocale("--hosts", NULL);
         // |END| Prepare arguments. |END|
         
-        auto Construct_Client([this, &args, &script](std::string const host, int const port)
+        auto Construct_Client([this, &args, &host, &script](int const port)
         {
             // |STR| Prepare arguments. |STR|
             args[2] = Py_DecodeLocale(std::string(host + "=" + std::to_string(port)).c_str(), NULL);
@@ -76,8 +76,8 @@ namespace MyEA::RPC
             return(this->_main.attr("client"));
         });
 
-        this->_client_opt = Construct_Client("10.0.2.2", 9000);
-        this->_client_inf = Construct_Client("10.0.2.2", 9999);
+        this->_client_opt = Construct_Client(9000);
+        this->_client_inf = Construct_Client(9999);
 
         return(true);
     }
@@ -109,7 +109,7 @@ namespace MyEA::RPC
     
     bool Client::Concatenate_X(np::ndarray const &inputs)
     {
-        if(Py_Try([this, &inputs]() -> void { this->_client_opt.attr("Concatenate_X")(inputs); }) == false)
+        if(Py_Try([this, &inputs]() -> void { this->_client_opt.attr("Concatenate_X")(inputs, VERBOSE); }) == false)
         {
             MyEA::String::Error("An exception has been triggered from the `Concatenate_X()` function.");
             
@@ -131,11 +131,12 @@ namespace MyEA::RPC
         return(true);
     }
     
-    np::ndarray Client::Normalize_X(np::ndarray const &inputs)
+    np::ndarray Client::Normalize_X(np::ndarray const &inputs, bool const fixed)
     {
         auto result(Py_Call<np::ndarray>("Normalize_X", this->_client_opt,
-                                         inputs));
-        
+                                         inputs, 0    , fixed, VERBOSE));
+        //                               (X    , index, fixed, verbose)
+
         bool const &result_is_none(std::get<0>(result));
         
         if(result_is_none)
@@ -151,7 +152,7 @@ namespace MyEA::RPC
     np::ndarray Client::Predict(py::list const &inputs)
     {
         auto result(Py_Call<np::ndarray>("Predict", this->_client_inf,
-                                         inputs, 1));
+                                         inputs, VERBOSE));
         
         bool const &result_is_none(std::get<0>(result));
         

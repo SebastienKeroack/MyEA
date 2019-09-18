@@ -9,6 +9,8 @@ namespace np = boost::python::numpy;
 
 std::string PyErr_Parse();
 
+#define VERBOSE 1
+
 #include <UI/Dialog_Box.hpp> // WARNING
 
 template<class Fn, class ... Args>

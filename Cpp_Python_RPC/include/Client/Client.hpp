@@ -22,7 +22,7 @@ namespace MyEA::RPC
 
             bool Initialized(void) const;
 
-            bool Initialize(std::string const &script);
+            bool Initialize(std::string const &host, std::string const &script);
 
             bool Open(void);
             
@@ -30,7 +30,7 @@ namespace MyEA::RPC
 
             bool Concatenate_Y(np::ndarray const &inputs);
 
-            np::ndarray Normalize_X(np::ndarray const &inputs);
+            np::ndarray Normalize_X(np::ndarray const &inputs, bool const fixed = false);
 
             np::ndarray Predict(py::list const &inputs);
             

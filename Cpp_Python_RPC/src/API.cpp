@@ -10,12 +10,19 @@
 
 class MyEA::RPC::Client g_Client;
 
-DLL_API bool API__Cpp_Python_RPC__Initialize(void)
+std::string wchar2string(wchar_t const *src){    std::string dst;
+    while(*src) { dst += (char)*src++; }
+    return(dst);}
+
+DLL_API bool API__Cpp_Python_RPC__Initialize(wchar_t const *const host, wchar_t const *const script)
 {
     if(g_Client.Initialized()) { return(true); }
-
+    
+    std::string const s_host  (wchar2string(host  )),
+                      s_script(wchar2string(script));
+    
     auto const results(Py_Try(&MyEA::RPC::Client::Initialize, std::ref(g_Client),
-                              "C:\\Users\\sebas\\Documents\\MEGAsync\\MyEA\\Python\\run_client.py"));
+                              s_host, s_script));
     
     bool const &exception(!std::get<0>(results)),
                &error    (!std::get<1>(results));
@@ -24,13 +31,13 @@ DLL_API bool API__Cpp_Python_RPC__Initialize(void)
     {
         MyEA::File::fError(PyErr_Parse().c_str());
 
-        MyEA::File::fError("An exception has been triggered from the `Initialize()` function.");
+        MyEA::File::fError("An exception has been triggered from the `Initialize(" + s_host + ", " + s_script + ")` function.");
         
         return(false);
     }
     else if(error)
     {
-        MyEA::File::fError("An error has been triggered from the `Initialize()` function.");
+        MyEA::File::fError("An error has been triggered from the `Initialize(" + s_host + ", " + s_script + ")` function.");
         
         return(false);
     }
@@ -177,7 +184,8 @@ DLL_API size_t API__Cpp_Python_RPC__Sizeof_T(void)
 
 DLL_API T_ API__Cpp_Python_RPC__Predict(unsigned int const past_action,
                                         T_ const *const inputs,
-                                        size_t const length)
+                                        size_t const length,
+                                        size_t const seq_w)
 {
     if(g_Client.Initialized() == false)
     {
@@ -188,29 +196,69 @@ DLL_API T_ API__Cpp_Python_RPC__Predict(unsigned int const past_action,
     
     np::dtype const dtype(np::dtype::get_builtin<T_>());
 
-    auto Normalize_X([&dtype](T_ const *const inputs, size_t const length) -> np::ndarray
+    auto Normalize_X([&dtype, &seq_w](T_ const *const inputs, size_t const length) -> np::ndarray
     {
-        py::tuple const shape(py::make_tuple(length));
-
-        np::ndarray py_inputs(np::empty(shape, dtype));
-
-        for(int i(0); i != length; ++i) { py_inputs[i] = inputs[i]; }
-        
-        auto const results(Py_Try(&MyEA::RPC::Client::Normalize_X, std::ref(g_Client),
-                                  py_inputs));
-        
-        bool const &exception(!std::get<0>(results));
-        
-        if(exception)
+        if(seq_w > 1)
         {
-            MyEA::File::fError(PyErr_Parse().c_str());
+            size_t const num_inputs(length / seq_w);
 
-            MyEA::File::fError("An exception has been triggered from the `Normalize_X()` function.");
+            py::tuple const shape_t(py::make_tuple(          num_inputs)),
+                            shape_T(py::make_tuple(1, seq_w, num_inputs));
             
-            return(np::from_object(py::object()));
+            np::ndarray py_inputs_t(np::empty(shape_t, dtype)),
+                        py_inputs_T(np::empty(shape_T, dtype));
+            
+            for(int t(0); t != seq_w; ++t)
+            {
+                for(int i(0); i != num_inputs; ++i) { py_inputs_t[i] = inputs[t * num_inputs + i]; }
+                
+                auto const results(Py_Try(&MyEA::RPC::Client::Normalize_X, std::ref(g_Client),
+                                          py_inputs_t, true ));
+                //                       (inputs     , fixed)
+
+                bool const &exception(!std::get<0>(results));
+                
+                if(exception)
+                {
+                    MyEA::File::fError(PyErr_Parse().c_str());
+
+                    MyEA::File::fError("An exception has been triggered from the `Normalize_X()` function.");
+                    
+                    return(np::from_object(py::object()));
+                }
+                
+                np::ndarray const &py_results(std::get<1>(results));
+
+                for(int i(0); i != num_inputs; ++i) { py_inputs_T[0][t][i] = py_results[i]; }
+            }
+
+            return(py_inputs_T);
         }
-        
-        return(std::get<1>(results));
+        else
+        {
+            py::tuple const shape(py::make_tuple(length));
+
+            np::ndarray py_inputs(np::empty(shape, dtype));
+
+            for(int i(0); i != length; ++i) { py_inputs[i] = inputs[i]; }
+            
+            auto const results(Py_Try(&MyEA::RPC::Client::Normalize_X, std::ref(g_Client),
+                                      py_inputs, false));
+            //                       (inputs   , fixed)
+
+            bool const &exception(!std::get<0>(results));
+            
+            if(exception)
+            {
+                MyEA::File::fError(PyErr_Parse().c_str());
+
+                MyEA::File::fError("An exception has been triggered from the `Normalize_X()` function.");
+                
+                return(np::from_object(py::object()));
+            }
+            
+            return(std::get<1>(results));
+        }
     });
     
     auto Predict([](py::list const &inputs) -> T_
