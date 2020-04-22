@@ -24,6 +24,7 @@ namespace np = boost::python::numpy;
 #else
     #define DLL_API __declspec(dllimport)
 #endif // COMPILE_DLL_EXPORTS
+
 #include <fstream>
 
 #endif //PCH_H

@@ -16,7 +16,7 @@
 		cd $BOOST_DIRECTORY
 		
 		# Specify the tools and libraries available to the build system.
-		"using python : 3.7 : /usr/bin/python3 : /usr/include/python3.7m : /usr/lib ;" >> $BOOST_DIRECTORY/libs/beast/tools/user-config.jam
+		"using python : 3.8 : /usr/bin/python3 : /usr/include/python3.7m : /usr/lib ;" >> $BOOST_DIRECTORY/libs/beast/tools/user-config.jam
 		
 		# Boost's bootstrap setup.
 		bash $BOOST_DIRECTORY/bootstrap.sh --prefix=/usr/local/ --with-python-version=3.7
@@ -46,12 +46,12 @@
 			# 	gcc -Wl,xxx: Option for gcc passes a comma-separated list of tokens as a space-separated list of arguments to the linker.
 			# 	gcc -soname: Specifies the required soname.
 			# 	gcc      -l: Links with a library file.
-			g++ -shared -Wl,-soname,hello_ext.so -o hello_ext.so  hello_ext.o -lpython3.7m -lboost_python37
+			g++ -shared -Wl,-soname,hello_ext.so -o hello_ext.so  hello_ext.o -lpython3.7m -lboost_python38
 
 	# Windows:
 		# Open "PowerShell":
-            $BOOST_DIRECTORY  = "D:\\Boost"
-            $PYTHON_DIRECTORY = "C:\\Users\\sebas\\AppData\\Local\\Programs\\Python"
+            $BOOST_DIRECTORY  = "D:\\Boost\\boost_1_72_0"
+            $PYTHON_DIRECTORY = "C:\\Users\\Sebastien\\AppData\\Local\\Programs\\Python"
 
             # Extract file to $BOOST_DIRECTORY
             Expand-Archive -LiteralPath C:\Archives\Invoices.zip -DestinationPath $BOOST_DIRECTORY
@@ -64,117 +64,49 @@
 			bootstrap.bat vc142
 
 		# Open "PowerShell" or use a text editor:
-			# Append to the file for building x64...
-			Add-Content project-config.jam "# x64 `
-			using python : 3.7 `
-						 : $PYTHON_DIRECTORY\\Python37\\python.exe `
-						 : $PYTHON_DIRECTORY\\Python37\\include `
-						 : $PYTHON_DIRECTORY\\Python37\\libs `
-						 : <address-model>64 `
-						 ;"
-
 			# Append to the file for building x86...
-			Add-Content project-config.jam "# x86 `
-			using python : 3.7 `
-						 : $PYTHON_DIRECTORY\\Python37-32\\python.exe `
-						 : $PYTHON_DIRECTORY\\Python37-32\\include `
-						 : $PYTHON_DIRECTORY\\Python37-32\\libs `
-						 : <address-model>32 `
-						 ;"
+			$ Add-Content project-config.jam "
+# x86
+using python : 3.8
+			 : $PYTHON_DIRECTORY\\Python38-32\\python.exe
+			 : $PYTHON_DIRECTORY\\Python38-32\\include
+			 : $PYTHON_DIRECTORY\\Python38-32\\libs
+			 : <address-model>32
+			 ;
+"
+
+			# Append to the file for building x64...
+			$ Add-Content project-config.jam "
+# x64
+using python : 3.8
+			 : $PYTHON_DIRECTORY\\Python38\\python.exe
+			 : $PYTHON_DIRECTORY\\Python38\\include
+			 : $PYTHON_DIRECTORY\\Python38\\libs
+			 : <address-model>64
+			 ;
+"
 		
 		# Open "Developer Command Prompt for VS 2019".
-			# Build.
-			b2 --with-locale --with-python --address-model=32,64 -j8 --build-type=complete
+			# Build (Don't forget to install `numpy` before building).
+			$ b2 --with-locale --with-python --address-model=32 -j8 --build-type=complete
+			$ b2 --with-locale --with-python --address-model=32,64 -j8 --build-type=complete
 		
 		# Open "PowerShell":
             # Create a symbolic link to the include path.
             New-Item -ItemType Junction -Target "boost" -Path "D:\\include\\boost"
-            New-Item -ItemType Junction -Target "$PYTHON_DIRECTORY\\Python37\\include" -Path "D:\\include\\python_x64"
-            New-Item -ItemType Junction -Target "$PYTHON_DIRECTORY\\Python37-32\\include" -Path "D:\\include\\python_x86"
+            New-Item -ItemType Junction -Target "$PYTHON_DIRECTORY\\Python38\\include" -Path "D:\\include\\python_x64"
+            New-Item -ItemType Junction -Target "$PYTHON_DIRECTORY\\Python38-32\\include" -Path "D:\\include\\python_x86"
             
             # Create a symbolic link to the lib search path.
             New-Item -ItemType Junction -Target "stage\\lib" -Path "D:\\lib\\boost"
-            New-Item -ItemType Junction -Target "$PYTHON_DIRECTORY\\Python37\\libs" -Path "D:\\lib\\python_x64"
-            New-Item -ItemType Junction -Target "$PYTHON_DIRECTORY\\Python37-32\\libs" -Path "D:\\lib\\python_x86"
+            New-Item -ItemType Junction -Target "$PYTHON_DIRECTORY\\Python38\\libs" -Path "D:\\lib\\python_x64"
+            New-Item -ItemType Junction -Target "$PYTHON_DIRECTORY\\Python38-32\\libs" -Path "D:\\lib\\python_x86"
 
             # To use custom module make a symbolic link to the `sites-packages` of the main python.
-            New-Item -ItemType Junction -Target "\\path\\to\\module" -Path "$PYTHON_DIRECTORY\\Python37\\Lib\\site-packages"
-            New-Item -ItemType Junction -Target "\\path\\to\\module" -Path "$PYTHON_DIRECTORY\\Python37-32\\Lib\\site-packages"
+            New-Item -ItemType Junction -Target "\\path\\to\\module" -Path "$PYTHON_DIRECTORY\\Python38\\Lib\\site-packages"
+            New-Item -ItemType Junction -Target "\\path\\to\\module" -Path "$PYTHON_DIRECTORY\\Python38-32\\Lib\\site-packages"
 
 # Install "pip".
 Download "https://bootstrap.pypa.io/get-pip.py"
 python get-pip.py
 pip install --upgrade numpy mprpc
-
-# RPCLib:
-	# Download rpclib at https://github.com/rpclib/rpclib
-	git clone https://github.com/rpclib/rpclib.git
-	
-	# Linux:
-		RPCLIB_DIRECTORY = /usr/local/rpclib
-		
-		# Move downloaded directory.
-		mv rpclib $(RPCLIB_DIRECTORY)
-		
-		# Go to $(RPCLIB_DIRECTORY)
-		cd $(RPCLIB_DIRECTORY)
-		
-		# Create `build` directory and go to.
-		mkdir build && cd build
-		
-		# Pre build.
-		cmake ..
-		
-		# Build debug.
-		cmake --build .
-		
-		# Build.
-		cmake --build . --config Release
-		
-		# Create a symbolic link to the lib path.
-		ln -s Debug ..\\lib\\rpc\\Debug
-		
-		# Create a symbolic link to the lib path.
-		ln -s Release ..\\lib\\rpc\\Release
-		
-		# Create a symbolic link to the include path.
-		# ln -s: make symbolic links instead of hard links.
-		ln -s include/rpc /usr/local/include/rpc
-		
-		# Create a symbolic link to the lib search path.
-		# ln -s: make symbolic links instead of hard links.
-		ln -s lib/rpc /usr/local/lib/rpc
-		
-	# Windows:
-		RPCLIB_DIRECTORY = "C:\\Program Files\\rpclib"
-		
-		# Open "Developer Command Prompt for VS 2019".
-			# Move downloaded directory.
-			mv rpclib $(RPCLIB_DIRECTORY)
-			
-			# Go to $(RPCLIB_DIRECTORY)
-			cd $(RPCLIB_DIRECTORY)
-			
-			# Create `build` directory and go to.
-			mkdir build && cd build
-			
-			# Pre build.
-			cmake ..
-			
-			# Build debug.
-			cmake --build .
-			
-			# Build release.
-			cmake --build . --config Release
-			
-			# Create a symbolic link to the lib path.
-			ln -s Debug ..\\lib\\rpc\\Debug
-			
-			# Create a symbolic link to the lib path.
-			ln -s Release ..\\lib\\rpc\\Release
-			
-			# Create a symbolic link to the include path.
-			ln -s include\\rpc "C:\\Program Files\\include\\rpc"
-			
-			# Create a symbolic link to the lib search path.
-			ln -s lib\\rpc "C:\\Program Files\\lib\\rpc"
