@@ -19,7 +19,7 @@ void Neural_Network::Tied__Transpose__Weight(struct Layer *const ptr_layer_recei
             case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_FULLY_CONNECTED_INDEPENDENTLY_RECURRENT: this->Tied__Transpose__Weight__FC_Ind_RNN(ptr_layer_received, tmp_ptr_mirror_layer_it); break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          ptr_layer_received->type_layer,
                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[ptr_layer_received->type_layer].c_str());
@@ -42,7 +42,7 @@ void Neural_Network::Tied__Transpose__Weight(struct Layer *const ptr_layer_recei
                     case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_FULLY_CONNECTED_RECURRENT: this->Tied__Transpose__Weight__FC(ptr_layer_received, tmp_ptr_next_layer_it); break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_ptr_next_layer_it->type_layer,
                                                  MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_next_layer_it->type_layer].c_str());
@@ -51,7 +51,7 @@ void Neural_Network::Tied__Transpose__Weight(struct Layer *const ptr_layer_recei
             }
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ptr_layer_received->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[ptr_layer_received->type_layer].c_str());

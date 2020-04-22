@@ -6,6 +6,7 @@
     typedef float ST_;
     
     #if defined(COMPILE_AUTODIFF)
+        // TODO: Replace Adept by Autodiff (https://github.com/autodiff/autodiff)
         #include <adept.h>
 
         typedef adept::afloat T_;
@@ -25,6 +26,7 @@
     typedef double ST_;
     
     #if defined(COMPILE_AUTODIFF)
+        // TODO: Replace Adept by Autodiff (https://github.com/autodiff/autodiff)
         #include <adept.h>
         
         typedef adept::adouble T_;

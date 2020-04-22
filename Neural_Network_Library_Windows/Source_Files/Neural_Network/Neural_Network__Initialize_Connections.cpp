@@ -25,7 +25,7 @@ template<typename U> void Neural_Network::Initialize_Connections__FC(struct Laye
         for(tmp_connection_index = 0_zu; tmp_connection_index != tmp_number_connections; ++tmp_connection_index)
         {
             tmp_ptr_array_ptr_connections[tmp_connection_index] = ptr_previous_layer_array_units_received + tmp_connection_index;
-            tmp_ptr_array_parameters[tmp_connection_index] = this->Class_Generator_Real.Generate_Real();
+            tmp_ptr_array_parameters[tmp_connection_index] = this->Class_Generator_Real();
         }
     }
 }
@@ -70,7 +70,7 @@ template<typename U> void Neural_Network::Initialize_Connections__LSTM(struct La
 
             for(tmp_connection_index = 0_zu; tmp_connection_index != tmp_number_inputs_connections; ++tmp_connection_index)
             {
-                tmp_ptr_array_cell_input_parameters[tmp_connection_index] = this->Class_Generator_Real.Generate_Real();
+                tmp_ptr_array_cell_input_parameters[tmp_connection_index] = this->Class_Generator_Real();
                 tmp_ptr_array_ptr_cell_input_connections[tmp_connection_index] = ptr_previous_layer_array_units_received + tmp_connection_index;
             }
             //    [1] |END| Input, cell input. |END|
@@ -82,7 +82,7 @@ template<typename U> void Neural_Network::Initialize_Connections__LSTM(struct La
 
             for(tmp_connection_index = 0_zu; tmp_connection_index != tmp_number_recurrents_connection; ++tmp_connection_index)
             {
-                tmp_ptr_array_cell_input_parameters[tmp_connection_index] = this->Class_Generator_Real.Generate_Real();
+                tmp_ptr_array_cell_input_parameters[tmp_connection_index] = this->Class_Generator_Real();
                 tmp_ptr_array_ptr_cell_input_connections[tmp_connection_index] = tmp_ptr_layer_ptr_first_cell_unit + tmp_connection_index;
             }
             //    [1] |END| Recurrent, input. |END|
@@ -100,9 +100,9 @@ template<typename U> void Neural_Network::Initialize_Connections__LSTM(struct La
 
         for(tmp_connection_index = 0_zu; tmp_connection_index != tmp_number_inputs_connections; ++tmp_connection_index)
         {
-            tmp_ptr_array_input_gate_parameters[tmp_connection_index] = this->Class_Generator_Real.Generate_Real();
-            tmp_ptr_array_forget_gate_parameters[tmp_connection_index] = this->Class_Generator_Real.Generate_Real();
-            tmp_ptr_array_output_gate_parameters[tmp_connection_index] = this->Class_Generator_Real.Generate_Real();
+            tmp_ptr_array_input_gate_parameters[tmp_connection_index] = this->Class_Generator_Real();
+            tmp_ptr_array_forget_gate_parameters[tmp_connection_index] = this->Class_Generator_Real();
+            tmp_ptr_array_output_gate_parameters[tmp_connection_index] = this->Class_Generator_Real();
 
             tmp_ptr_array_ptr_input_gate_connections[tmp_connection_index] = ptr_previous_layer_array_units_received + tmp_connection_index;
             tmp_ptr_array_ptr_forget_gate_connections[tmp_connection_index] = ptr_previous_layer_array_units_received + tmp_connection_index;
@@ -121,9 +121,9 @@ template<typename U> void Neural_Network::Initialize_Connections__LSTM(struct La
 
         for(tmp_connection_index = 0_zu; tmp_connection_index != tmp_number_recurrents_connection; ++tmp_connection_index)
         {
-            tmp_ptr_array_input_gate_parameters[tmp_connection_index] = this->Class_Generator_Real.Generate_Real();
-            tmp_ptr_array_forget_gate_parameters[tmp_connection_index] = this->Class_Generator_Real.Generate_Real();
-            tmp_ptr_array_output_gate_parameters[tmp_connection_index] = this->Class_Generator_Real.Generate_Real();
+            tmp_ptr_array_input_gate_parameters[tmp_connection_index] = this->Class_Generator_Real();
+            tmp_ptr_array_forget_gate_parameters[tmp_connection_index] = this->Class_Generator_Real();
+            tmp_ptr_array_output_gate_parameters[tmp_connection_index] = this->Class_Generator_Real();
 
             tmp_ptr_array_ptr_input_gate_connections[tmp_connection_index] = tmp_ptr_layer_ptr_first_cell_unit + tmp_connection_index;
             tmp_ptr_array_ptr_forget_gate_connections[tmp_connection_index] = tmp_ptr_layer_ptr_first_cell_unit + tmp_connection_index;
@@ -143,9 +143,9 @@ template<typename U> void Neural_Network::Initialize_Connections__LSTM(struct La
 
         for(tmp_connection_index = 0_zu; tmp_connection_index != tmp_number_peephole_connections; ++tmp_connection_index)
         {
-            tmp_ptr_array_input_gate_parameters[tmp_connection_index] = this->Class_Generator_Real.Generate_Real();
-            tmp_ptr_array_forget_gate_parameters[tmp_connection_index] = this->Class_Generator_Real.Generate_Real();
-            tmp_ptr_array_output_gate_parameters[tmp_connection_index] = this->Class_Generator_Real.Generate_Real();
+            tmp_ptr_array_input_gate_parameters[tmp_connection_index] = this->Class_Generator_Real();
+            tmp_ptr_array_forget_gate_parameters[tmp_connection_index] = this->Class_Generator_Real();
+            tmp_ptr_array_output_gate_parameters[tmp_connection_index] = this->Class_Generator_Real();
 
             tmp_ptr_array_ptr_input_gate_connections[tmp_connection_index] = tmp_ptr_block_ptr_first_cell_unit + tmp_connection_index;
             tmp_ptr_array_ptr_forget_gate_connections[tmp_connection_index] = tmp_ptr_block_ptr_first_cell_unit + tmp_connection_index;
@@ -164,7 +164,7 @@ void Neural_Network::Initialize_Connections__AF_Ind_Recurrent(struct Layer *cons
     for(; tmp_ptr_AF_Ind_recurrent_unit_it != tmp_ptr_layer_ptr_last_AF_Ind_recurrent_unit; ++tmp_ptr_AF_Ind_recurrent_unit_it)
     {
         this->ptr_array_ptr_connections[*tmp_ptr_AF_Ind_recurrent_unit_it->ptr_recurrent_connection_index] = tmp_ptr_AF_Ind_recurrent_unit_it;
-        this->ptr_array_parameters[*tmp_ptr_AF_Ind_recurrent_unit_it->ptr_recurrent_connection_index] = this->Class_Generator_Real.Generate_Real();
+        this->ptr_array_parameters[*tmp_ptr_AF_Ind_recurrent_unit_it->ptr_recurrent_connection_index] = this->Class_Generator_Real();
     }
 }
 
@@ -175,7 +175,7 @@ void Neural_Network::Initialize_Connections__Bias(struct Layer *const ptr_layer_
     if(tmp_number_connections != 0_zu)
     {
         void **tmp_ptr_array_ptr_connections(this->ptr_array_ptr_connections + ptr_layer_it_received->first_bias_connection_index);
-        Memory::Fill_Nullptr(tmp_ptr_array_ptr_connections, tmp_ptr_array_ptr_connections + tmp_number_connections);
+        MyEA::Memory::Cpp::Fill_Nullptr(tmp_ptr_array_ptr_connections, tmp_ptr_array_ptr_connections + tmp_number_connections);
 
         T_ *tmp_ptr_array_parameters(this->ptr_array_parameters + ptr_layer_it_received->first_bias_connection_index);
         MEMSET(tmp_ptr_array_parameters,
@@ -191,7 +191,7 @@ void Neural_Network::Initialize_Connections__LSTM__Bias(struct Layer *const ptr_
     if(tmp_number_connections != 0_zu)
     {
         void **tmp_ptr_array_ptr_connections(this->ptr_array_ptr_connections + ptr_layer_it_received->first_bias_connection_index);
-        Memory::Fill_Nullptr(tmp_ptr_array_ptr_connections, tmp_ptr_array_ptr_connections + tmp_number_connections);
+        MyEA::Memory::Cpp::Fill_Nullptr(tmp_ptr_array_ptr_connections, tmp_ptr_array_ptr_connections + tmp_number_connections);
 
         // Bias.
         size_t const tmp_number_cell_units(static_cast<size_t>(ptr_layer_it_received->ptr_last_cell_unit - ptr_layer_it_received->ptr_array_cell_units)),

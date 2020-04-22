@@ -6,7 +6,7 @@
 #include <fstream>
 #include <iostream>
 
-#if defined(COMPILE_ADEPT)
+#if defined(COMPILE_AUTODIFF)
 bool Neural_Network::Load_Parameters(std::string const &ref_path_received) { return(true); }
 
 bool Neural_Network::Load(std::string const &ref_path_dimension_received,
@@ -69,17 +69,17 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
     if(MyEA::File::Path_Exist(ref_path_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: Could not find the following path \"%s\". At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
 
         return(false);
     }
-    else if(MyEA::File::Retrieve_Tempory_File(ref_path_received) == false)
+    else if(MyEA::File::Retrieve_Temporary_File(ref_path_received) == false)
     {
-        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Retrieve_Tempory_File(%s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Retrieve_Temporary_File(%s)\" function. At line %d." NEW_LINE,
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -94,7 +94,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if(tmp_ifstream.eof())
         {
             PRINT_FORMAT("%s: %s: ERROR: File \"%s\" is empty. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ref_path_received.c_str(),
                                      __LINE__);
@@ -113,7 +113,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("learning_rate") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"learning_rate\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -123,7 +123,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -137,7 +137,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -149,7 +149,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("learning_rate_final") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"learning_rate_final\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -159,7 +159,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -173,7 +173,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -185,7 +185,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("learning_momentum") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"learning_momentum\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -195,7 +195,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -209,7 +209,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -221,7 +221,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("learning_gamma") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"learning_gamma\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -231,7 +231,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -245,7 +245,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -257,7 +257,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("use_Nesterov") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"use_Nesterov\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -267,7 +267,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -281,7 +281,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -298,7 +298,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("quickprop_decay") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"quickprop_decay\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -308,7 +308,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -322,7 +322,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -334,7 +334,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("quickprop_mu") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"quickprop_mu\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -344,7 +344,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -358,7 +358,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -375,7 +375,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("rprop_increase_factor") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"rprop_increase_factor\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -385,7 +385,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -399,7 +399,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -411,7 +411,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("rprop_decrease_factor") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"rprop_decrease_factor\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -421,7 +421,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -435,7 +435,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -447,7 +447,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("rprop_delta_min") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"rprop_delta_min\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -457,7 +457,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -471,7 +471,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -483,7 +483,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("rprop_delta_max") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"rprop_delta_max\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -493,7 +493,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -507,7 +507,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -519,7 +519,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("rprop_delta_zero") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"rprop_delta_zero\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -529,7 +529,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -543,7 +543,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -560,7 +560,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("sarprop_weight_decay_shift") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"sarprop_weight_decay_shift\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -570,7 +570,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -584,7 +584,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -596,7 +596,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("sarprop_step_error_threshold_factor") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"sarprop_step_error_threshold_factor\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -606,7 +606,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -620,7 +620,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -632,7 +632,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("sarprop_step_error_shift") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"sarprop_step_error_shift\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -642,7 +642,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -656,7 +656,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -668,7 +668,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("sarprop_temperature") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"sarprop_temperature\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -678,7 +678,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -692,7 +692,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -704,7 +704,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("sarprop_epoch") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"sarprop_epoch\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -714,7 +714,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -728,7 +728,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -745,7 +745,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("adam_learning_rate") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"adam_learning_rate\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -755,7 +755,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -769,7 +769,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -781,7 +781,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("adam_beta1") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"adam_beta1\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -791,7 +791,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -805,7 +805,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -817,7 +817,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("adam_beta2") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"adam_beta2\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -827,7 +827,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -841,7 +841,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -853,7 +853,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("adam_epsilon") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"adam_epsilon\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -863,7 +863,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -877,7 +877,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -889,7 +889,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("adam_bias_correction") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"adam_bias_correction\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -899,7 +899,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -913,7 +913,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -925,7 +925,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("adam_gamma") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"adam_gamma\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -935,7 +935,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -949,7 +949,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -966,7 +966,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("use_Warm_Restarts") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"use_Warm_Restarts\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -976,7 +976,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -990,7 +990,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -1002,7 +1002,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("warm_restarts_decay_learning_rate") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"warm_restarts_decay_learning_rate\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1012,7 +1012,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1026,7 +1026,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -1038,7 +1038,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("warm_restarts_maximum_learning_rate") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"warm_restarts_maximum_learning_rate\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1048,7 +1048,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1062,7 +1062,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -1074,7 +1074,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("warm_restarts_minimum_learning_rate") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"warm_restarts_minimum_learning_rate\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1084,7 +1084,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1098,7 +1098,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -1110,7 +1110,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("warm_restarts_initial_T_i") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"warm_restarts_initial_T_i\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1120,7 +1120,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1134,7 +1134,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -1146,7 +1146,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("warm_restarts_multiplier") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"warm_restarts_multiplier\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1156,7 +1156,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1170,7 +1170,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -1187,7 +1187,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("type_optimizer_function") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"type_optimizer_function\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1197,7 +1197,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1211,7 +1211,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -1222,7 +1222,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_input_integer >= static_cast<size_t>(MyEA::Common::ENUM_TYPE_OPTIMIZER_FUNCTIONS::TYPE_OPTIMIZER_LENGTH))
             {
                 PRINT_FORMAT("%s: %s: ERROR: Undefined optimization type %zu. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_input_integer,
                                          __LINE__);
@@ -1236,7 +1236,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("type_loss_function") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"type_loss_function\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1246,7 +1246,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1260,7 +1260,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -1271,7 +1271,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_input_integer >= static_cast<size_t>(MyEA::Common::ENUM_TYPE_LOSS_FUNCTIONS::TYPE_LOSS_FUNCTION_LENGTH))
             {
                 PRINT_FORMAT("%s: %s: ERROR: Undefined loss function type %zu. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_input_integer,
                                          __LINE__);
@@ -1285,7 +1285,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("type_accuracy_function") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"type_accuracy_function\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1295,7 +1295,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1309,7 +1309,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -1320,7 +1320,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_input_integer >= static_cast<size_t>(MyEA::Common::ENUM_TYPE_ACCURACY_FUNCTIONS::TYPE_ACCURACY_FUNCTION_LENGTH))
             {
                 PRINT_FORMAT("%s: %s: ERROR: Undefined loss function type %zu. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_input_integer,
                                          __LINE__);
@@ -1334,7 +1334,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("bit_fail_limit") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"bit_fail_limit\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1344,7 +1344,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1358,7 +1358,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -1372,7 +1372,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("pre_training_level") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"pre_training_level\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1382,7 +1382,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1396,7 +1396,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -1408,7 +1408,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("use_clip_gradient") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"use_clip_gradient\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1418,7 +1418,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1432,7 +1432,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -1444,7 +1444,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("clip_gradient") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"clip_gradient\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1454,7 +1454,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1468,7 +1468,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -1485,7 +1485,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("regularization__max_norm_constraints") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"regularization__max_norm_constraints\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1495,7 +1495,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1509,7 +1509,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -1523,7 +1523,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("regularization__l1") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"regularization__l1\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1533,7 +1533,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1547,7 +1547,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -1561,7 +1561,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("regularization__l2") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"regularization__l2\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1571,7 +1571,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1585,7 +1585,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -1599,7 +1599,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("regularization__srip") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"regularization__srip\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1609,7 +1609,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1623,7 +1623,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -1637,7 +1637,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("regularization__weight_decay") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"regularization__weight_decay\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1647,7 +1647,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1661,7 +1661,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -1675,7 +1675,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("use_normalized_weight_decay") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"use_normalized_weight_decay\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1685,7 +1685,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1699,7 +1699,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -1716,7 +1716,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("normalization_momentum_average") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"normalization_momentum_average\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1726,7 +1726,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1740,7 +1740,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -1754,7 +1754,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("normalization_epsilon") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"normalization_epsilon\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1764,7 +1764,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1778,7 +1778,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -1792,7 +1792,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("batch_renormalization_r_correction_maximum") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"batch_renormalization_r_correction_maximum\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1802,7 +1802,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1816,7 +1816,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -1830,7 +1830,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("batch_renormalization_d_correction_maximum") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"batch_renormalization_d_correction_maximum\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1840,7 +1840,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1854,7 +1854,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -1873,7 +1873,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("loss_training") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"loss_training\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1883,7 +1883,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1907,7 +1907,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("loss_validating") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"loss_validating\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1917,7 +1917,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1941,7 +1941,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("loss_testing") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"loss_testing\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1951,7 +1951,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1980,7 +1980,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("accuracy_variance") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"accuracy_variance\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -1990,7 +1990,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2004,7 +2004,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -2018,7 +2018,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("accuracy_training") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"accuracy_training\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2028,7 +2028,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2042,7 +2042,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -2054,7 +2054,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("accuracy_validating") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"accuracy_validating\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2064,7 +2064,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2078,7 +2078,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -2090,7 +2090,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("accuracy_testing") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"accuracy_testing\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2100,7 +2100,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2114,7 +2114,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -2132,7 +2132,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("use_CUDA") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"use_CUDA\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2142,7 +2142,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2156,7 +2156,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -2171,7 +2171,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("use_OpenMP") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"use_OpenMP\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2181,7 +2181,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2195,7 +2195,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -2207,7 +2207,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("percentage_maximum_thread_usage") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"percentage_maximum_thread_usage\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2217,7 +2217,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2231,7 +2231,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -2243,7 +2243,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if((tmp_ifstream >> tmp_line) && tmp_line.find("maximum_batch_size") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"maximum_batch_size\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2253,7 +2253,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2267,7 +2267,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -2281,7 +2281,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
         if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Logical error on i/o operation \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ref_path_received.c_str(),
                                      __LINE__);
@@ -2294,7 +2294,7 @@ bool Neural_Network::Load_Parameters(std::string const &ref_path_received)
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: The file %s can not be opened. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -2312,7 +2312,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
     if(MyEA::File::Path_Exist(ref_path_parameters_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: Could not find the following path \"%s\". At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_parameters_received.c_str(),
                                  __LINE__);
@@ -2322,17 +2322,17 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
     else if(MyEA::File::Path_Exist(ref_path_dimension_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: Could not find the following path \"%s\". At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_dimension_received.c_str(),
                                  __LINE__);
 
         return(false);
     }
-    else if(MyEA::File::Retrieve_Tempory_File(ref_path_dimension_received) == false)
+    else if(MyEA::File::Retrieve_Temporary_File(ref_path_dimension_received) == false)
     {
-        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Retrieve_Tempory_File(%s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Retrieve_Temporary_File(%s)\" function. At line %d." NEW_LINE,
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_dimension_received.c_str(),
                                  __LINE__);
@@ -2347,7 +2347,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if(tmp_ifstream.eof())
         {
             PRINT_FORMAT("%s: %s: ERROR: File \"%s\" is empty. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ref_path_dimension_received.c_str(),
                                      __LINE__);
@@ -2381,7 +2381,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if((tmp_ifstream >> tmp_line) && tmp_line.find("type_dropout") == std::string::npos)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not find \"type_dropout\" inside \"%s\". At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             tmp_line.c_str(),
                                             __LINE__);
@@ -2391,7 +2391,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             else if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             tmp_line.c_str(),
                                             __LINE__);
@@ -2405,7 +2405,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                 if(tmp_ifstream.fail())
                 {
                     PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                MyEA::String::Get__Time().c_str(),
+                                                MyEA::Time::Date_Time_Now().c_str(),
                                                 __FUNCTION__,
                                                 tmp_line.c_str(),
                                                 __LINE__);
@@ -2416,7 +2416,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                 if(tmp_input_integer >= static_cast<size_t>(MyEA::Common::ENUM_TYPE_LAYER_DROPOUT::TYPE_LAYER_DROPOUT_LENGTH))
                 {
                     PRINT_FORMAT("%s: %s: ERROR: Undefined layer dropout type %zu. At line %d." NEW_LINE,
-                                                MyEA::String::Get__Time().c_str(),
+                                                MyEA::Time::Date_Time_Now().c_str(),
                                                 __FUNCTION__,
                                                 tmp_input_integer,
                                                 __LINE__);
@@ -2432,7 +2432,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                 if((tmp_ifstream >> tmp_line) && tmp_line.find("use_coded_dropout") == std::string::npos)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: Can not find \"use_coded_dropout\" inside \"%s\". At line %d." NEW_LINE,
-                                                MyEA::String::Get__Time().c_str(),
+                                                MyEA::Time::Date_Time_Now().c_str(),
                                                 __FUNCTION__,
                                                 tmp_line.c_str(),
                                                 __LINE__);
@@ -2442,7 +2442,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                 else if(tmp_ifstream.fail())
                 {
                     PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                MyEA::String::Get__Time().c_str(),
+                                                MyEA::Time::Date_Time_Now().c_str(),
                                                 __FUNCTION__,
                                                 tmp_line.c_str(),
                                                 __LINE__);
@@ -2456,7 +2456,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                    MyEA::String::Get__Time().c_str(),
+                                                    MyEA::Time::Date_Time_Now().c_str(),
                                                     __FUNCTION__,
                                                     tmp_line.c_str(),
                                                     __LINE__);
@@ -2469,7 +2469,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if((tmp_ifstream >> tmp_line) && tmp_line.find("dropout_values[0]") == std::string::npos)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not find \"dropout_values[0]\" inside \"%s\". At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             tmp_line.c_str(),
                                             __LINE__);
@@ -2479,7 +2479,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             else if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             tmp_line.c_str(),
                                             __LINE__);
@@ -2493,7 +2493,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                 if(tmp_ifstream.fail())
                 {
                     PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                MyEA::String::Get__Time().c_str(),
+                                                MyEA::Time::Date_Time_Now().c_str(),
                                                 __FUNCTION__,
                                                 tmp_line.c_str(),
                                                 __LINE__);
@@ -2505,7 +2505,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if((tmp_ifstream >> tmp_line) && tmp_line.find("dropout_values[1]") == std::string::npos)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not find \"dropout_values[1]\" inside \"%s\". At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             tmp_line.c_str(),
                                             __LINE__);
@@ -2515,7 +2515,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             else if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             tmp_line.c_str(),
                                             __LINE__);
@@ -2529,7 +2529,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                 if(tmp_ifstream.fail())
                 {
                     PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                MyEA::String::Get__Time().c_str(),
+                                                MyEA::Time::Date_Time_Now().c_str(),
                                                 __FUNCTION__,
                                                 tmp_line.c_str(),
                                                 __LINE__);
@@ -2541,7 +2541,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if((tmp_ifstream >> tmp_line) && tmp_line.find("dropout_values[2]") == std::string::npos)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not find \"dropout_values[2]\" inside \"%s\". At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             tmp_line.c_str(),
                                             __LINE__);
@@ -2551,7 +2551,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             else if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             tmp_line.c_str(),
                                             __LINE__);
@@ -2565,7 +2565,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                 if(tmp_ifstream.fail())
                 {
                     PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                MyEA::String::Get__Time().c_str(),
+                                                MyEA::Time::Date_Time_Now().c_str(),
                                                 __FUNCTION__,
                                                 tmp_line.c_str(),
                                                 __LINE__);
@@ -2587,7 +2587,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                            false) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Dropout(ptr, %u, %f, %f)\" function. At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             tmp_type_layer_dropout,
                                             tmp_dropout_values[0u],
@@ -2610,9 +2610,9 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             return(true);
         });
 
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         PRINT_FORMAT("%s: Load dimension %s." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  ref_path_dimension_received.c_str());
 
         getline(tmp_ifstream, tmp_line); // "|===| DIMENSION |===|"
@@ -2620,7 +2620,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if((tmp_ifstream >> tmp_line) && tmp_line.find("type_network") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"type_network\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2630,7 +2630,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2644,7 +2644,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -2655,7 +2655,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_input_integer >= static_cast<size_t>(MyEA::Common::ENUM_TYPE_NETWORKS::TYPE_NETWORK_LENGTH))
             {
                 PRINT_FORMAT("%s: %s: ERROR: Undefined network type %zu. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_input_integer,
                                          __LINE__);
@@ -2669,7 +2669,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if((tmp_ifstream >> tmp_line) && tmp_line.find("number_layers") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"number_layers\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2679,7 +2679,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2693,7 +2693,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -2703,7 +2703,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             else if(tmp_input_integer < 2)
             {
                 PRINT_FORMAT("%s: %s: ERROR: The number of layers is set too small. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -2713,12 +2713,12 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         
         // Allocate structure.
         PRINT_FORMAT("%s: Allocate %zu layer(s)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  tmp_input_integer);
         if(this->Allocate__Structure(tmp_input_integer, maximum_allowable_memory_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Structure(%zu, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_input_integer,
                                      maximum_allowable_memory_received,
@@ -2730,7 +2730,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if((tmp_ifstream >> tmp_line) && tmp_line.find("number_recurrent_depth") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"number_recurrent_depth\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2740,7 +2740,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2754,7 +2754,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -2766,7 +2766,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if((tmp_ifstream >> tmp_line) && tmp_line.find("number_time_delays") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"number_time_delays\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2776,7 +2776,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2790,7 +2790,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -2802,7 +2802,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if((tmp_ifstream >> tmp_line) && tmp_line.find("use_first_layer_as_input") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"use_first_layer_as_input\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2812,7 +2812,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2826,7 +2826,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -2837,7 +2837,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(this->Set__Input_Mode(tmp_input_boolean) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Input_Mode(%s)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_input_boolean ? "true" : "false",
                                          __LINE__);
@@ -2849,7 +2849,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if((tmp_ifstream >> tmp_line) && tmp_line.find("use_last_layer_as_output") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"use_last_layer_as_output\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2859,7 +2859,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2873,7 +2873,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -2884,7 +2884,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(this->Set__Output_Mode(tmp_input_boolean) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Output_Mode(%s)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_input_boolean ? "true" : "false",
                                          __LINE__);
@@ -2904,7 +2904,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if((tmp_ifstream >> tmp_line) && tmp_line.find("total_basic_units") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"total_basic_units\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2914,7 +2914,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2928,7 +2928,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -2941,12 +2941,12 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         tmp_ptr_layer_it->ptr_last_basic_unit = tmp_ptr_layer_it->ptr_array_basic_units + this->total_basic_units;
         
         PRINT_FORMAT("%s: Allocate %zu basic unit(s)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->total_basic_units);
         if(this->Allocate__Basic_Units() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Basic_Units()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -2958,7 +2958,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if((tmp_ifstream >> tmp_line) && tmp_line.find("total_basic_indice_units") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"total_basic_indice_units\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2968,7 +2968,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -2982,7 +2982,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -2995,12 +2995,12 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         tmp_ptr_layer_it->ptr_last_basic_indice_unit = tmp_ptr_layer_it->ptr_array_basic_indice_units + this->total_basic_indice_units;
         
         PRINT_FORMAT("%s: Allocate %zu basic indice unit(s)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->total_basic_indice_units);
         if(this->Allocate__Basic_Indice_Units() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Basic_Indice_Units()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -3012,7 +3012,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if((tmp_ifstream >> tmp_line) && tmp_line.find("total_neuron_units") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"total_neuron_units\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -3022,7 +3022,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -3036,7 +3036,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -3049,12 +3049,12 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         tmp_ptr_layer_it->ptr_last_neuron_unit = tmp_ptr_layer_it->ptr_array_neuron_units + this->total_neuron_units;
         
         PRINT_FORMAT("%s: Allocate %zu neuron unit(s)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->total_neuron_units);
         if(this->Allocate__Neuron_Units() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Neuron_Units()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -3066,7 +3066,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if((tmp_ifstream >> tmp_line) && tmp_line.find("total_AF_units") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"total_AF_units\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -3076,7 +3076,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -3090,7 +3090,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -3103,12 +3103,12 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         tmp_ptr_layer_it->ptr_last_AF_unit = tmp_ptr_layer_it->ptr_array_AF_units + this->total_AF_units;
         
         PRINT_FORMAT("%s: Allocate %zu AF unit(s)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->total_AF_units);
         if(this->Allocate__AF_Units() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__AF_Units()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -3120,7 +3120,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if((tmp_ifstream >> tmp_line) && tmp_line.find("total_AF_Ind_recurrent_units") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"total_AF_Ind_recurrent_units\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -3130,7 +3130,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -3144,7 +3144,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -3157,12 +3157,12 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         tmp_ptr_layer_it->ptr_last_AF_Ind_recurrent_unit = tmp_ptr_layer_it->ptr_array_AF_Ind_recurrent_units + this->total_AF_Ind_recurrent_units;
         
         PRINT_FORMAT("%s: Allocate %zu AF Ind recurrent unit(s)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->total_AF_Ind_recurrent_units);
         if(this->Allocate__AF_Ind_Recurrent_Units() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__AF_Ind_Recurrent_Units()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -3174,7 +3174,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if((tmp_ifstream >> tmp_line) && tmp_line.find("total_block_units") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"total_block_units\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -3184,7 +3184,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -3198,7 +3198,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -3213,7 +3213,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if((tmp_ifstream >> tmp_line) && tmp_line.find("total_cell_units") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"total_cell_units\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -3223,7 +3223,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -3237,7 +3237,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -3252,15 +3252,15 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if(this->total_block_units != 0_zu && this->total_cell_units != 0_zu)
         {
             PRINT_FORMAT("%s: Allocate %zu block unit(s)." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      this->total_block_units);
             PRINT_FORMAT("%s: Allocate %zu cell unit(s)." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      this->total_cell_units);
             if(this->Allocate__LSTM_Layers() == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__LSTM_Layers()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -3273,7 +3273,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if((tmp_ifstream >> tmp_line) && tmp_line.find("total_normalized_units") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"total_normalized_units\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -3283,7 +3283,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -3297,7 +3297,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -3307,12 +3307,12 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         }
         
         PRINT_FORMAT("%s: Allocate %zu normalized unit(s)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->total_normalized_units);
         if(this->Allocate__Normalized_Unit(false) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Normalized_Unit(false)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -3324,7 +3324,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if((tmp_ifstream >> tmp_line) && tmp_line.find("total_parameters") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"total_parameters\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -3334,7 +3334,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -3348,7 +3348,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -3360,7 +3360,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if((tmp_ifstream >> tmp_line) && tmp_line.find("total_weights") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"total_weights\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -3370,7 +3370,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -3384,7 +3384,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -3396,7 +3396,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if((tmp_ifstream >> tmp_line) && tmp_line.find("total_bias") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"total_bias\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -3406,7 +3406,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -3420,7 +3420,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -3430,12 +3430,12 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         }
         
         PRINT_FORMAT("%s: Allocate %zu parameter(s)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->total_parameters);
         if(this->Allocate__Parameter() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Parameter()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -3466,13 +3466,13 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
 
         // Input layer.
         //  Type layer.
-        PRINT_FORMAT("%s: Load input layer." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s: Load input layer." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         getline(tmp_ifstream, tmp_line); // "Input layer:"
         
         if((tmp_ifstream >> tmp_line) && tmp_line.find("type_layer") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"type_layer\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -3482,7 +3482,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -3496,7 +3496,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -3507,7 +3507,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_input_integer >= static_cast<size_t>(MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_LENGTH))
             {
                 PRINT_FORMAT("%s: %s: ERROR: Undefined layer type %zu. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_input_integer,
                                          __LINE__);
@@ -3523,7 +3523,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if((tmp_ifstream >> tmp_line) && tmp_line.find("type_activation") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"type_activation\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -3533,7 +3533,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -3547,7 +3547,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -3558,7 +3558,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_input_integer >= static_cast<size_t>(MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION::TYPE_ACTIVATION_LENGTH))
             {
                 PRINT_FORMAT("%s: %s: ERROR: Undefined layer activation type %zu. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_input_integer,
                                          __LINE__);
@@ -3574,7 +3574,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if(tmp_Load__Dropout__Parameters(tmp_ptr_layer_it, false) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"tmp_Load__Dropout__Parameters(false)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -3586,7 +3586,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if((tmp_ifstream >> tmp_line) && tmp_line.find("number_inputs") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"number_inputs\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -3596,7 +3596,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -3610,7 +3610,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -3673,7 +3673,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if((tmp_ifstream >> tmp_line) && tmp_line.find("type_layer") == std::string::npos)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not find \"type_layer\" inside \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -3683,7 +3683,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             else if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -3697,7 +3697,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                 if(tmp_ifstream.fail())
                 {
                     PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_line.c_str(),
                                              __LINE__);
@@ -3708,7 +3708,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                 if(tmp_input_integer >= static_cast<size_t>(MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_LENGTH))
                 {
                     PRINT_FORMAT("%s: %s: ERROR: Undefined layer type %zu. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_input_integer,
                                              __LINE__);
@@ -3720,7 +3720,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             }
             
             PRINT_FORMAT("%s: Load hidden layer %zu (%s | %u)." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     static_cast<size_t>(tmp_ptr_layer_it - tmp_ptr_first_layer),
                                     MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str(),
                                     tmp_ptr_layer_it->type_layer);
@@ -3736,7 +3736,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if((tmp_ifstream >> tmp_line) && tmp_line.find("use_bidirectional") == std::string::npos)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not find \"use_bidirectional\" inside \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -3746,7 +3746,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             else if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -3760,7 +3760,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                 if(tmp_ifstream.fail())
                 {
                     PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_line.c_str(),
                                              __LINE__);
@@ -3777,7 +3777,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("kernel_size") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"kernel_size\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -3787,7 +3787,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -3801,7 +3801,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -3813,7 +3813,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("stride") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"stride\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -3823,7 +3823,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -3837,7 +3837,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -3849,7 +3849,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("padding") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"padding\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -3859,7 +3859,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -3873,7 +3873,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -3885,7 +3885,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("dilation") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"dilation\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -3895,7 +3895,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -3909,7 +3909,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -3928,7 +3928,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("number_basic_units") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"number_basic_units\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -3938,7 +3938,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -3952,7 +3952,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -4002,7 +4002,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("type_activation") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"type_activation\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4012,7 +4012,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4026,7 +4026,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -4037,7 +4037,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_input_integer >= static_cast<size_t>(MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION::TYPE_ACTIVATION_LENGTH))
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Undefined layer activation type %zu. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_integer,
                                                      __LINE__);
@@ -4053,7 +4053,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if(tmp_Load__Dropout__Parameters(tmp_ptr_layer_it) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"tmp_Load__Dropout__Parameters()\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
 
@@ -4065,7 +4065,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("type_normalization") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"type_normalization\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4075,7 +4075,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4089,7 +4089,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -4100,7 +4100,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_input_integer >= static_cast<size_t>(MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION::TYPE_LAYER_NORMALIZATION_LENGTH))
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Undefined layer normalization type %zu. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_integer,
                                                      __LINE__);
@@ -4116,7 +4116,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                                          false) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Layer_Normalization(%zu)\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_integer,
                                                      __LINE__);
@@ -4128,7 +4128,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("use_layer_normalization_before_activation") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"use_layer_normalization_before_activation\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4138,7 +4138,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4152,7 +4152,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -4164,7 +4164,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("number_normalized_units") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"number_normalized_units\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4174,7 +4174,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4188,7 +4188,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -4205,7 +4205,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(this->Load_Dimension__Normalization(tmp_ptr_layer_it, tmp_ifstream) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__Normalization()\" function. At line %d." NEW_LINE,
-                                                        MyEA::String::Get__Time().c_str(),
+                                                        MyEA::Time::Date_Time_Now().c_str(),
                                                         __FUNCTION__,
                                                         __LINE__);
 
@@ -4217,7 +4217,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("use_tied_parameter") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"use_tied_parameter\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4227,7 +4227,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4241,7 +4241,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -4254,7 +4254,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                               false) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Tied_Parameter(ptr, %s, false)\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_boolean ? "true" : "false",
                                                      __LINE__);
@@ -4267,7 +4267,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("k_sparsity") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"k_sparsity\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4277,7 +4277,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4291,7 +4291,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -4302,7 +4302,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(this->Set__K_Sparsity(tmp_ptr_layer_it, tmp_input_integer) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__K_Sparsity(ptr, %zu)\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_integer,
                                                      __LINE__);
@@ -4314,7 +4314,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("alpha_sparsity") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"alpha_sparsity\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4324,7 +4324,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4338,7 +4338,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -4349,7 +4349,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(this->Set__Alpha_Sparsity(tmp_ptr_layer_it, tmp_input_T[0u]) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Alpha_Sparsity(ptr, %f)\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_T[0u],
                                                      __LINE__);
@@ -4363,7 +4363,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("constraint_recurrent_weight_lower_bound") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"constraint_recurrent_weight_lower_bound\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4373,7 +4373,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4387,7 +4387,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -4399,7 +4399,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("constraint_recurrent_weight_upper_bound") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"constraint_recurrent_weight_upper_bound\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4409,7 +4409,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4423,7 +4423,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -4436,7 +4436,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                                                        tmp_input_T[1u]) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Regularization__Constraint_Recurrent_Weight(ptr, %f, %f)\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_T[0u],
                                                      tmp_input_T[1u],
@@ -4461,7 +4461,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("number_neuron_units") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"number_neuron_units\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4471,7 +4471,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4485,7 +4485,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -4508,7 +4508,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                                                                                                                                                                                             tmp_ifstream) == false)
                                 {
                                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__FC()\" function. At line %d." NEW_LINE,
-                                                             MyEA::String::Get__Time().c_str(),
+                                                             MyEA::Time::Date_Time_Now().c_str(),
                                                              __FUNCTION__,
                                                              __LINE__);
                                     
@@ -4525,7 +4525,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                                                                                                                                                                                               tmp_ifstream) == false)
                                 {
                                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__FC()\" function. At line %d." NEW_LINE,
-                                                             MyEA::String::Get__Time().c_str(),
+                                                             MyEA::Time::Date_Time_Now().c_str(),
                                                              __FUNCTION__,
                                                              __LINE__);
                                     
@@ -4540,7 +4540,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                                                                                                                                                                   tmp_ifstream) == false)
                                 {
                                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__FC()\" function. At line %d." NEW_LINE,
-                                                             MyEA::String::Get__Time().c_str(),
+                                                             MyEA::Time::Date_Time_Now().c_str(),
                                                              __FUNCTION__,
                                                              __LINE__);
                                     
@@ -4555,7 +4555,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                                                                                                                                                                                               tmp_ifstream) == false)
                                 {
                                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__FC()\" function. At line %d." NEW_LINE,
-                                                             MyEA::String::Get__Time().c_str(),
+                                                             MyEA::Time::Date_Time_Now().c_str(),
                                                              __FUNCTION__,
                                                              __LINE__);
                                     
@@ -4566,7 +4566,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                     break;
                             default:
                                 PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          __FUNCTION__,
                                                          tmp_ptr_previous_layer->type_layer,
                                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_previous_layer->type_layer].c_str());
@@ -4579,7 +4579,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("number_AF_units") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"number_AF_units\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4589,7 +4589,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4603,7 +4603,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -4620,7 +4620,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(this->Load_Dimension__AF(tmp_ptr_layer_it, tmp_ifstream) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__AF()\" function. At line %d." NEW_LINE,
-                                                        MyEA::String::Get__Time().c_str(),
+                                                        MyEA::Time::Date_Time_Now().c_str(),
                                                         __FUNCTION__,
                                                         __LINE__);
 
@@ -4646,7 +4646,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if(this->Load_Dimension__Bias(tmp_ptr_layer_it, tmp_ifstream) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__Bias()\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
 
@@ -4659,7 +4659,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("type_activation") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"type_activation\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4669,7 +4669,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4683,7 +4683,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -4694,7 +4694,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_input_integer >= static_cast<size_t>(MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION::TYPE_ACTIVATION_LENGTH))
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Undefined layer activation type %zu. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_integer,
                                                      __LINE__);
@@ -4710,7 +4710,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if(tmp_Load__Dropout__Parameters(tmp_ptr_layer_it) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"tmp_Load__Dropout__Parameters()\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
 
@@ -4722,7 +4722,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("type_normalization") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"type_normalization\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4732,7 +4732,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4746,7 +4746,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -4757,7 +4757,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_input_integer >= static_cast<size_t>(MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION::TYPE_LAYER_NORMALIZATION_LENGTH))
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Undefined layer normalization type %zu. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_integer,
                                                      __LINE__);
@@ -4771,7 +4771,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                                           false) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Layer_Normalization(%zu)\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_integer,
                                                      __LINE__);
@@ -4783,7 +4783,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("use_layer_normalization_before_activation") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"use_layer_normalization_before_activation\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4793,7 +4793,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4807,7 +4807,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -4819,7 +4819,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("number_normalized_units") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"number_normalized_units\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4829,7 +4829,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4843,7 +4843,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -4860,7 +4860,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(this->Load_Dimension__Normalization(tmp_ptr_layer_it, tmp_ifstream) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__Normalization()\" function. At line %d." NEW_LINE,
-                                                        MyEA::String::Get__Time().c_str(),
+                                                        MyEA::Time::Date_Time_Now().c_str(),
                                                         __FUNCTION__,
                                                         __LINE__);
 
@@ -4872,7 +4872,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("use_tied_parameter") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"use_tied_parameter\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4882,7 +4882,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4896,7 +4896,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -4909,7 +4909,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                               false) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Tied_Parameter(ptr, %s, false)\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_boolean ? "true" : "false",
                                                      __LINE__);
@@ -4922,7 +4922,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("k_sparsity") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"k_sparsity\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4932,7 +4932,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4946,7 +4946,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -4957,7 +4957,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(this->Set__K_Sparsity(tmp_ptr_layer_it, tmp_input_integer) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__K_Sparsity(ptr, %zu)\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_integer,
                                                      __LINE__);
@@ -4969,7 +4969,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("alpha_sparsity") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"alpha_sparsity\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4979,7 +4979,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -4993,7 +4993,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -5004,7 +5004,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(this->Set__Alpha_Sparsity(tmp_ptr_layer_it, tmp_input_T[0u]) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Alpha_Sparsity(ptr, %f)\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_T[0u],
                                                      __LINE__);
@@ -5018,7 +5018,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("constraint_recurrent_weight_lower_bound") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"constraint_recurrent_weight_lower_bound\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5028,7 +5028,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5042,7 +5042,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -5054,7 +5054,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("constraint_recurrent_weight_upper_bound") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"constraint_recurrent_weight_upper_bound\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5064,7 +5064,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5078,7 +5078,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -5091,7 +5091,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                                                        tmp_input_T[1u]) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Regularization__Constraint_Recurrent_Weight(ptr, %f, %f)\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_T[0u],
                                                      tmp_input_T[1u],
@@ -5116,7 +5116,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("number_neuron_units") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"number_neuron_units\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5126,7 +5126,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5140,7 +5140,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -5163,7 +5163,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                                                                                                                                                                                              tmp_ifstream) == false)
                                 {
                                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__FC()\" function. At line %d." NEW_LINE,
-                                                             MyEA::String::Get__Time().c_str(),
+                                                             MyEA::Time::Date_Time_Now().c_str(),
                                                              __FUNCTION__,
                                                              __LINE__);
                                     
@@ -5180,7 +5180,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                                                                                                                                                                                               tmp_ifstream) == false)
                                 {
                                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__FC()\" function. At line %d." NEW_LINE,
-                                                             MyEA::String::Get__Time().c_str(),
+                                                             MyEA::Time::Date_Time_Now().c_str(),
                                                              __FUNCTION__,
                                                              __LINE__);
                                     
@@ -5195,7 +5195,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                                                                                                                                                                   tmp_ifstream) == false)
                                 {
                                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__FC()\" function. At line %d." NEW_LINE,
-                                                             MyEA::String::Get__Time().c_str(),
+                                                             MyEA::Time::Date_Time_Now().c_str(),
                                                              __FUNCTION__,
                                                              __LINE__);
                                     
@@ -5210,7 +5210,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                                                                                                                                                                                               tmp_ifstream) == false)
                                 {
                                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__FC()\" function. At line %d." NEW_LINE,
-                                                             MyEA::String::Get__Time().c_str(),
+                                                             MyEA::Time::Date_Time_Now().c_str(),
                                                              __FUNCTION__,
                                                              __LINE__);
                                     
@@ -5221,7 +5221,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                     break;
                             default:
                                 PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          __FUNCTION__,
                                                          tmp_ptr_previous_layer->type_layer,
                                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_previous_layer->type_layer].c_str());
@@ -5239,7 +5239,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("number_AF_Ind_recurrent_units") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"number_AF_Ind_recurrent_units\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5249,7 +5249,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5263,7 +5263,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -5280,7 +5280,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(this->Load_Dimension__AF_Ind_Recurrent(tmp_ptr_layer_it, tmp_ifstream) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__AF_Ind_Recurrent()\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      __LINE__);
 
@@ -5301,7 +5301,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if(this->Load_Dimension__Bias(tmp_ptr_layer_it, tmp_ifstream) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__Bias()\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
 
@@ -5314,7 +5314,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("type_activation") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"type_activation\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5324,7 +5324,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5338,7 +5338,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -5349,7 +5349,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_input_integer >= static_cast<size_t>(MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION::TYPE_ACTIVATION_LENGTH))
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Undefined layer activation type %zu. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_integer,
                                                      __LINE__);
@@ -5365,7 +5365,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if(tmp_Load__Dropout__Parameters(tmp_ptr_layer_it) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"tmp_Load__Dropout__Parameters()\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
 
@@ -5377,7 +5377,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("type_normalization") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"type_normalization\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5387,7 +5387,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5401,7 +5401,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -5412,7 +5412,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_input_integer >= static_cast<size_t>(MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION::TYPE_LAYER_NORMALIZATION_LENGTH))
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Undefined layer normalization type %zu. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_integer,
                                                      __LINE__);
@@ -5426,7 +5426,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                                           false) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Layer_Normalization(%zu)\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_integer,
                                                      __LINE__);
@@ -5438,7 +5438,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("use_layer_normalization_before_activation") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"use_layer_normalization_before_activation\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5448,7 +5448,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5462,7 +5462,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -5474,7 +5474,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("number_normalized_units") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"number_normalized_units\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5484,7 +5484,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5498,7 +5498,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -5515,7 +5515,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(this->Load_Dimension__Normalization(tmp_ptr_layer_it, tmp_ifstream) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__Normalization()\" function. At line %d." NEW_LINE,
-                                                        MyEA::String::Get__Time().c_str(),
+                                                        MyEA::Time::Date_Time_Now().c_str(),
                                                         __FUNCTION__,
                                                         __LINE__);
 
@@ -5527,7 +5527,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("use_tied_parameter") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"use_tied_parameter\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5537,7 +5537,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5551,7 +5551,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -5564,7 +5564,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                               false) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Tied_Parameter(ptr, %s, false)\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_boolean ? "true" : "false",
                                                      __LINE__);
@@ -5577,7 +5577,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("k_sparsity") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"k_sparsity\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5587,7 +5587,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5601,7 +5601,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -5612,7 +5612,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(this->Set__K_Sparsity(tmp_ptr_layer_it, tmp_input_integer) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__K_Sparsity(ptr, %zu)\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_integer,
                                                      __LINE__);
@@ -5624,7 +5624,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("alpha_sparsity") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"alpha_sparsity\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5634,7 +5634,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5648,7 +5648,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -5659,7 +5659,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(this->Set__Alpha_Sparsity(tmp_ptr_layer_it, tmp_input_T[0u]) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Alpha_Sparsity(ptr, %f)\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_T[0u],
                                                      __LINE__);
@@ -5673,7 +5673,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("constraint_recurrent_weight_lower_bound") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"constraint_recurrent_weight_lower_bound\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5683,7 +5683,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5697,7 +5697,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -5709,7 +5709,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("constraint_recurrent_weight_upper_bound") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"constraint_recurrent_weight_upper_bound\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5719,7 +5719,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5733,7 +5733,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -5746,7 +5746,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                                                        tmp_input_T[1u]) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Regularization__Constraint_Recurrent_Weight(ptr, %f, %f)\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_T[0u],
                                                      tmp_input_T[1u],
@@ -5786,7 +5786,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("number_block_units") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"number_block_units\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5796,7 +5796,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5810,7 +5810,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -5827,7 +5827,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                                                 tmp_ifstream) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__Cell_Units()\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      __LINE__);
 
@@ -5847,7 +5847,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                                                                                                                                                                                                  tmp_ifstream) == false)
                                 {
                                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__LSTM()\" function. At line %d." NEW_LINE,
-                                                             MyEA::String::Get__Time().c_str(),
+                                                             MyEA::Time::Date_Time_Now().c_str(),
                                                              __FUNCTION__,
                                                              __LINE__);
                                     
@@ -5864,7 +5864,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                                                                                                                                                                                                   tmp_ifstream) == false)
                                 {
                                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__LSTM()\" function. At line %d." NEW_LINE,
-                                                             MyEA::String::Get__Time().c_str(),
+                                                             MyEA::Time::Date_Time_Now().c_str(),
                                                              __FUNCTION__,
                                                              __LINE__);
                                     
@@ -5879,7 +5879,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                                                                                                                                                                        tmp_ifstream) == false)
                                 {
                                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__LSTM()\" function. At line %d." NEW_LINE,
-                                                             MyEA::String::Get__Time().c_str(),
+                                                             MyEA::Time::Date_Time_Now().c_str(),
                                                              __FUNCTION__,
                                                              __LINE__);
                                     
@@ -5894,7 +5894,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                                                                                                                                                                                                   tmp_ifstream) == false)
                                 {
                                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__LSTM()\" function. At line %d." NEW_LINE,
-                                                             MyEA::String::Get__Time().c_str(),
+                                                             MyEA::Time::Date_Time_Now().c_str(),
                                                              __FUNCTION__,
                                                              __LINE__);
                                         
@@ -5905,7 +5905,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                     break;
                             default:
                                 PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          __FUNCTION__,
                                                          tmp_ptr_previous_layer->type_layer,
                                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_previous_layer->type_layer].c_str());
@@ -5918,7 +5918,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if(this->Load_Dimension__Bias(tmp_ptr_layer_it, tmp_ifstream) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__Bias()\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
 
@@ -5931,7 +5931,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("kernel_size") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"kernel_size\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5941,7 +5941,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5955,7 +5955,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -5967,7 +5967,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("stride") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"stride\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5977,7 +5977,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -5991,7 +5991,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -6003,7 +6003,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("padding") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"padding\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -6013,7 +6013,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -6027,7 +6027,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -6039,7 +6039,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("dilation") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"dilation\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -6049,7 +6049,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -6063,7 +6063,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -6087,7 +6087,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("number_basic_indice_units") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"number_basic_indice_units\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -6097,7 +6097,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -6111,7 +6111,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -6155,7 +6155,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("block_depth") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"block_depth\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -6165,7 +6165,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -6179,7 +6179,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -6193,7 +6193,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("padding") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"padding\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -6203,7 +6203,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -6217,7 +6217,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -6231,7 +6231,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if(tmp_Load__Dropout__Parameters(tmp_ptr_layer_it) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"tmp_Load__Dropout__Parameters()\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
 
@@ -6243,7 +6243,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("type_normalization") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"type_normalization\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -6253,7 +6253,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -6267,7 +6267,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -6278,7 +6278,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_input_integer >= static_cast<size_t>(MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION::TYPE_LAYER_NORMALIZATION_LENGTH))
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Undefined layer normalization type %zu. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_integer,
                                                      __LINE__);
@@ -6292,7 +6292,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                                           false) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Layer_Normalization(%zu)\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_integer,
                                                      __LINE__);
@@ -6304,7 +6304,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("number_normalized_units") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"number_normalized_units\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -6314,7 +6314,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -6328,7 +6328,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -6345,7 +6345,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(this->Load_Dimension__Normalization(tmp_ptr_layer_it, tmp_ifstream) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__Normalization()\" function. At line %d." NEW_LINE,
-                                                        MyEA::String::Get__Time().c_str(),
+                                                        MyEA::Time::Date_Time_Now().c_str(),
                                                         __FUNCTION__,
                                                         __LINE__);
 
@@ -6358,7 +6358,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     if((tmp_ifstream >> tmp_line) && tmp_line.find("number_basic_units") == std::string::npos)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not find \"number_basic_units\" inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -6368,7 +6368,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                     else if(tmp_ifstream.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -6382,7 +6382,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         if(tmp_ifstream.fail())
                         {
                             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_line.c_str(),
                                                      __LINE__);
@@ -6428,7 +6428,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_ptr_layer_it->type_layer,
                                              MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str());
@@ -6441,7 +6441,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if(this->Allocate__Bidirectional__Layers() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Bidirectional__Layers()\" function. At line %d." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         __LINE__);
 
@@ -6453,13 +6453,13 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
 
         // Output layer.
         //  Type layer.
-        PRINT_FORMAT("%s: Load output layer." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s: Load output layer." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         getline(tmp_ifstream, tmp_line); // "Output layer:"
         
         if((tmp_ifstream >> tmp_line) && tmp_line.find("type_layer") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"type_layer\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -6471,7 +6471,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -6487,7 +6487,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -6500,7 +6500,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_input_integer >= static_cast<size_t>(MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_LENGTH))
             {
                 PRINT_FORMAT("%s: %s: ERROR: Undefined layer type %zu. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_input_integer,
                                          __LINE__);
@@ -6524,7 +6524,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if((tmp_ifstream >> tmp_line) && tmp_line.find("type_activation") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"type_activation\" inside \"%s\". At line %d." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         tmp_line.c_str(),
                                         __LINE__);
@@ -6536,7 +6536,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         tmp_line.c_str(),
                                         __LINE__);
@@ -6552,7 +6552,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             tmp_line.c_str(),
                                             __LINE__);
@@ -6565,7 +6565,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_input_integer >= static_cast<size_t>(MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION::TYPE_ACTIVATION_LENGTH))
             {
                 PRINT_FORMAT("%s: %s: ERROR: Undefined layer activation type %zu. At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             tmp_input_integer,
                                             __LINE__);
@@ -6583,7 +6583,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if((tmp_ifstream >> tmp_line) && tmp_line.find("number_outputs") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"number_outputs\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -6595,7 +6595,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -6611,7 +6611,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -6638,7 +6638,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                                                                                                                                                                                  tmp_ifstream) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__FC()\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
                                     
@@ -6655,7 +6655,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                                                                                                                                                                                   tmp_ifstream) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__FC()\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
                         
@@ -6670,7 +6670,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                                                                                                                                                       tmp_ifstream) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__FC()\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
                         
@@ -6685,7 +6685,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                                                                                                                                                                                                                   tmp_ifstream) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__FC()\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
                                         
@@ -6696,7 +6696,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_ptr_previous_layer->type_layer,
                                              MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_previous_layer->type_layer].c_str());
@@ -6710,7 +6710,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if((tmp_ifstream >> tmp_line) && tmp_line.find("number_AF_units") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"number_AF_units\" inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -6720,7 +6720,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         else if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -6734,7 +6734,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(tmp_ifstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_line.c_str(),
                                          __LINE__);
@@ -6751,7 +6751,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
             if(this->Load_Dimension__AF(tmp_ptr_layer_it, tmp_ifstream) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__AF()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -6787,7 +6787,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if(this->Load_Dimension__Bias(tmp_ptr_layer_it, tmp_ifstream) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__Bias()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -6799,7 +6799,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Logical error on i/o operation \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ref_path_dimension_received.c_str(),
                                      __LINE__);
@@ -6814,7 +6814,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if(this->total_weights != this->total_weights_allocated)
         {
             PRINT_FORMAT("%s: %s: ERROR: Total weights prepared (%zu) differ from the total weights allocated (%zu). At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_weights,
                                      this->total_weights_allocated,
@@ -6825,7 +6825,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         else if(this->total_bias != this->total_bias_allocated)
         {
             PRINT_FORMAT("%s: %s: ERROR: Total bias prepared (%zu) differ from the total bias allocated (%zu). At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_bias,
                                      this->total_bias_allocated,
@@ -6844,7 +6844,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
         if(this->Load_Parameters(ref_path_parameters_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Parameters(%s)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ref_path_parameters_received.c_str(),
                                      __LINE__);
@@ -6855,7 +6855,7 @@ bool Neural_Network::Load(std::string const &ref_path_dimension_received,
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: The file %s can not be opened. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_dimension_received.c_str(),
                                  __LINE__);
@@ -6876,7 +6876,7 @@ bool Neural_Network::Load_Dimension__Neuron(struct Neuron_unit *const ptr_neuron
     if((ref_ifstream_received >> tmp_line) && tmp_line.find("number_connections") == std::string::npos)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not find \"number_connections\" inside \"%s\". At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_line.c_str(),
                                  __LINE__);
@@ -6886,7 +6886,7 @@ bool Neural_Network::Load_Dimension__Neuron(struct Neuron_unit *const ptr_neuron
     else if(ref_ifstream_received.fail())
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_line.c_str(),
                                  __LINE__);
@@ -6900,7 +6900,7 @@ bool Neural_Network::Load_Dimension__Neuron(struct Neuron_unit *const ptr_neuron
         if(ref_ifstream_received.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -6929,7 +6929,7 @@ bool Neural_Network::Load_Dimension__AF(struct AF_unit *const ptr_AF_received, s
     if((ref_ifstream_received >> tmp_line) && tmp_line.find("activation_steepness") == std::string::npos)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not find \"activation_steepness\" inside \"%s\". At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_line.c_str(),
                                  __LINE__);
@@ -6939,7 +6939,7 @@ bool Neural_Network::Load_Dimension__AF(struct AF_unit *const ptr_AF_received, s
     else if(ref_ifstream_received.fail())
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_line.c_str(),
                                  __LINE__);
@@ -6953,7 +6953,7 @@ bool Neural_Network::Load_Dimension__AF(struct AF_unit *const ptr_AF_received, s
         if(ref_ifstream_received.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -6967,7 +6967,7 @@ bool Neural_Network::Load_Dimension__AF(struct AF_unit *const ptr_AF_received, s
     if((ref_ifstream_received >> tmp_line) && tmp_line.find("activation_function") == std::string::npos)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not find \"activation_function\" inside \"%s\". At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_line.c_str(),
                                  __LINE__);
@@ -6977,7 +6977,7 @@ bool Neural_Network::Load_Dimension__AF(struct AF_unit *const ptr_AF_received, s
     else if(ref_ifstream_received.fail())
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_line.c_str(),
                                  __LINE__);
@@ -6991,7 +6991,7 @@ bool Neural_Network::Load_Dimension__AF(struct AF_unit *const ptr_AF_received, s
         if(ref_ifstream_received.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -7002,7 +7002,7 @@ bool Neural_Network::Load_Dimension__AF(struct AF_unit *const ptr_AF_received, s
         if(tmp_input_integer >= static_cast<size_t>(MyEA::Common::ENUM_TYPE_ACTIVATION_FUNCTION::TYPE_NN_A_F_LENGTH))
         {
             PRINT_FORMAT("%s: %s: ERROR: Undefined activation function type %zu. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_input_integer,
                                      __LINE__);
@@ -7029,7 +7029,7 @@ bool Neural_Network::Load_Dimension__AF_Ind_Recurrent(struct AF_Ind_recurrent_un
     if((ref_ifstream_received >> tmp_line) && tmp_line.find("activation_steepness") == std::string::npos)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not find \"activation_steepness\" inside \"%s\". At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_line.c_str(),
                                  __LINE__);
@@ -7039,7 +7039,7 @@ bool Neural_Network::Load_Dimension__AF_Ind_Recurrent(struct AF_Ind_recurrent_un
     else if(ref_ifstream_received.fail())
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_line.c_str(),
                                  __LINE__);
@@ -7053,7 +7053,7 @@ bool Neural_Network::Load_Dimension__AF_Ind_Recurrent(struct AF_Ind_recurrent_un
         if(ref_ifstream_received.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -7067,7 +7067,7 @@ bool Neural_Network::Load_Dimension__AF_Ind_Recurrent(struct AF_Ind_recurrent_un
     if((ref_ifstream_received >> tmp_line) && tmp_line.find("activation_function") == std::string::npos)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not find \"activation_function\" inside \"%s\". At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_line.c_str(),
                                  __LINE__);
@@ -7077,7 +7077,7 @@ bool Neural_Network::Load_Dimension__AF_Ind_Recurrent(struct AF_Ind_recurrent_un
     else if(ref_ifstream_received.fail())
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_line.c_str(),
                                  __LINE__);
@@ -7091,7 +7091,7 @@ bool Neural_Network::Load_Dimension__AF_Ind_Recurrent(struct AF_Ind_recurrent_un
         if(ref_ifstream_received.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -7102,7 +7102,7 @@ bool Neural_Network::Load_Dimension__AF_Ind_Recurrent(struct AF_Ind_recurrent_un
         if(tmp_input_integer >= static_cast<size_t>(MyEA::Common::ENUM_TYPE_ACTIVATION_FUNCTION::TYPE_NN_A_F_LENGTH))
         {
             PRINT_FORMAT("%s: %s: ERROR: Undefined activation function type %zu. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_input_integer,
                                      __LINE__);
@@ -7125,7 +7125,7 @@ bool Neural_Network::Load_Dimension__AF_Ind_Recurrent(struct AF_Ind_recurrent_un
                                                                                                                                                                                                                                                                 ref_ifstream_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__Connection(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  *ptr_AF_Ind_received->ptr_recurrent_connection_index,
                                  __LINE__);
@@ -7157,7 +7157,7 @@ bool Neural_Network::Load_Dimension__Normalized_Unit(size_t const number_units_r
             if((ref_ifstream_received >> tmp_line) && tmp_line.find("scale") == std::string::npos)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not find \"scale\" inside \"%s\". At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             tmp_line.c_str(),
                                             __LINE__);
@@ -7167,7 +7167,7 @@ bool Neural_Network::Load_Dimension__Normalized_Unit(size_t const number_units_r
             else if(ref_ifstream_received.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             tmp_line.c_str(),
                                             __LINE__);
@@ -7181,7 +7181,7 @@ bool Neural_Network::Load_Dimension__Normalized_Unit(size_t const number_units_r
                 if(ref_ifstream_received.fail())
                 {
                     PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                MyEA::String::Get__Time().c_str(),
+                                                MyEA::Time::Date_Time_Now().c_str(),
                                                 __FUNCTION__,
                                                 tmp_line.c_str(),
                                                 __LINE__);
@@ -7195,7 +7195,7 @@ bool Neural_Network::Load_Dimension__Normalized_Unit(size_t const number_units_r
             if((ref_ifstream_received >> tmp_line) && tmp_line.find("shift") == std::string::npos)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not find \"scale\" inside \"%s\". At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             tmp_line.c_str(),
                                             __LINE__);
@@ -7205,7 +7205,7 @@ bool Neural_Network::Load_Dimension__Normalized_Unit(size_t const number_units_r
             else if(ref_ifstream_received.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             tmp_line.c_str(),
                                             __LINE__);
@@ -7219,7 +7219,7 @@ bool Neural_Network::Load_Dimension__Normalized_Unit(size_t const number_units_r
                 if(ref_ifstream_received.fail())
                 {
                     PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                MyEA::String::Get__Time().c_str(),
+                                                MyEA::Time::Date_Time_Now().c_str(),
                                                 __FUNCTION__,
                                                 tmp_line.c_str(),
                                                 __LINE__);
@@ -7237,7 +7237,7 @@ bool Neural_Network::Load_Dimension__Normalized_Unit(size_t const number_units_r
                 if((ref_ifstream_received >> tmp_line) && tmp_line.find("mean_average[" + std::to_string(tmp_time_step_index) + "]") == std::string::npos)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: Can not find \"mean_average[%zu]\" inside \"%s\". At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_time_step_index,
                                              tmp_line.c_str(),
@@ -7248,7 +7248,7 @@ bool Neural_Network::Load_Dimension__Normalized_Unit(size_t const number_units_r
                 else if(ref_ifstream_received.fail())
                 {
                     PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_line.c_str(),
                                              __LINE__);
@@ -7262,7 +7262,7 @@ bool Neural_Network::Load_Dimension__Normalized_Unit(size_t const number_units_r
                     if(ref_ifstream_received.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -7276,7 +7276,7 @@ bool Neural_Network::Load_Dimension__Normalized_Unit(size_t const number_units_r
                 if((ref_ifstream_received >> tmp_line) && tmp_line.find("variance_average[" + std::to_string(tmp_time_step_index) + "]") == std::string::npos)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: Can not find \"variance_average[%zu]\" inside \"%s\". At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_time_step_index,
                                              tmp_line.c_str(),
@@ -7287,7 +7287,7 @@ bool Neural_Network::Load_Dimension__Normalized_Unit(size_t const number_units_r
                 else if(ref_ifstream_received.fail())
                 {
                     PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_line.c_str(),
                                              __LINE__);
@@ -7301,7 +7301,7 @@ bool Neural_Network::Load_Dimension__Normalized_Unit(size_t const number_units_r
                     if(ref_ifstream_received.fail())
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_line.c_str(),
                                                  __LINE__);
@@ -7314,7 +7314,7 @@ bool Neural_Network::Load_Dimension__Normalized_Unit(size_t const number_units_r
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer normalization type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      type_normalization_received,
                                      MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[type_normalization_received].c_str());
@@ -7333,7 +7333,7 @@ bool Neural_Network::Load_Dimension__Bias(struct Layer *const ptr_layer_it_recei
     if((ref_ifstream_received >> tmp_line) && tmp_line.find("number_bias_parameters") == std::string::npos)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not find \"number_bias_parameters\" inside \"%s\". At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_line.c_str(),
                                  __LINE__);
@@ -7343,7 +7343,7 @@ bool Neural_Network::Load_Dimension__Bias(struct Layer *const ptr_layer_it_recei
     else if(ref_ifstream_received.fail())
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_line.c_str(),
                                  __LINE__);
@@ -7357,7 +7357,7 @@ bool Neural_Network::Load_Dimension__Bias(struct Layer *const ptr_layer_it_recei
         if(ref_ifstream_received.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -7375,7 +7375,7 @@ bool Neural_Network::Load_Dimension__Bias(struct Layer *const ptr_layer_it_recei
         if((ref_ifstream_received >> tmp_line) && tmp_line.find("weight") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"weight\" inside \"%s\". At line %d." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         tmp_line.c_str(),
                                         __LINE__);
@@ -7385,7 +7385,7 @@ bool Neural_Network::Load_Dimension__Bias(struct Layer *const ptr_layer_it_recei
         else if(ref_ifstream_received.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         tmp_line.c_str(),
                                         __LINE__);
@@ -7399,7 +7399,7 @@ bool Neural_Network::Load_Dimension__Bias(struct Layer *const ptr_layer_it_recei
             if(ref_ifstream_received.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             tmp_line.c_str(),
                                             __LINE__);
@@ -7437,7 +7437,7 @@ bool Neural_Network::Load_Dimension__Block(size_t const layer_number_block_units
     if((ref_ifstream_received >> tmp_line) && tmp_line.find("activation_function") == std::string::npos)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not find \"activation_function\" inside \"%s\". At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_line.c_str(),
                                  __LINE__);
@@ -7447,7 +7447,7 @@ bool Neural_Network::Load_Dimension__Block(size_t const layer_number_block_units
     else if(ref_ifstream_received.fail())
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_line.c_str(),
                                  __LINE__);
@@ -7461,7 +7461,7 @@ bool Neural_Network::Load_Dimension__Block(size_t const layer_number_block_units
         if(ref_ifstream_received.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -7472,7 +7472,7 @@ bool Neural_Network::Load_Dimension__Block(size_t const layer_number_block_units
         if(tmp_input_integer >= static_cast<size_t>(MyEA::Common::ENUM_TYPE_ACTIVATION_FUNCTION::TYPE_NN_A_F_LENGTH))
         {
             PRINT_FORMAT("%s: %s: ERROR: Undefined activation function type %zu. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_input_integer,
                                      __LINE__);
@@ -7488,7 +7488,7 @@ bool Neural_Network::Load_Dimension__Block(size_t const layer_number_block_units
     if((ref_ifstream_received >> tmp_line) && tmp_line.find("activation_steepness") == std::string::npos)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not find \"activation_steepness\" inside \"%s\". At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_line.c_str(),
                                  __LINE__);
@@ -7498,7 +7498,7 @@ bool Neural_Network::Load_Dimension__Block(size_t const layer_number_block_units
     else if(ref_ifstream_received.fail())
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_line.c_str(),
                                  __LINE__);
@@ -7513,7 +7513,7 @@ bool Neural_Network::Load_Dimension__Block(size_t const layer_number_block_units
         if(ref_ifstream_received.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -7527,7 +7527,7 @@ bool Neural_Network::Load_Dimension__Block(size_t const layer_number_block_units
     if((ref_ifstream_received >> tmp_line) && tmp_line.find("number_connections") == std::string::npos)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not find \"number_connections\" inside \"%s\". At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_line.c_str(),
                                  __LINE__);
@@ -7537,7 +7537,7 @@ bool Neural_Network::Load_Dimension__Block(size_t const layer_number_block_units
     else if(ref_ifstream_received.fail())
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_line.c_str(),
                                  __LINE__);
@@ -7551,7 +7551,7 @@ bool Neural_Network::Load_Dimension__Block(size_t const layer_number_block_units
         if(ref_ifstream_received.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_line.c_str(),
                                      __LINE__);
@@ -7675,7 +7675,7 @@ bool Neural_Network::Load_Dimension__Cell_Units(struct Layer *const ptr_layer_it
     if((ref_ifstream_received >> tmp_line) && tmp_line.find("number_cell_units") == std::string::npos)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not find \"number_cell_units\" inside \"%s\". At line %d." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     __FUNCTION__,
                                     tmp_line.c_str(),
                                     __LINE__);
@@ -7685,7 +7685,7 @@ bool Neural_Network::Load_Dimension__Cell_Units(struct Layer *const ptr_layer_it
     else if(ref_ifstream_received.fail())
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     __FUNCTION__,
                                     tmp_line.c_str(),
                                     __LINE__);
@@ -7699,7 +7699,7 @@ bool Neural_Network::Load_Dimension__Cell_Units(struct Layer *const ptr_layer_it
         if(ref_ifstream_received.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         tmp_line.c_str(),
                                         __LINE__);
@@ -7741,7 +7741,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> inline bool Neu
     if(ref_ifstream_received.fail())
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     __FUNCTION__,
                                     tmp_line.c_str(),
                                     __LINE__);
@@ -7756,7 +7756,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> inline bool Neu
         if(ref_ifstream_received.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         tmp_line.c_str(),
                                         __LINE__);
@@ -7769,7 +7769,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> inline bool Neu
         if((ref_ifstream_received >> tmp_line) && tmp_line.find("weight") == std::string::npos)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not find \"weight\" inside \"%s\". At line %d." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         tmp_line.c_str(),
                                         __LINE__);
@@ -7779,7 +7779,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> inline bool Neu
         else if(ref_ifstream_received.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read properly inside \"%s\". At line %d." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         tmp_line.c_str(),
                                         __LINE__);
@@ -7793,7 +7793,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> inline bool Neu
             if(ref_ifstream_received.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not read input of \"%s\". At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             tmp_line.c_str(),
                                             __LINE__);
@@ -7805,7 +7805,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> inline bool Neu
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not find \"connected_to_neuron\" inside \"%s\". At line %d." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     __FUNCTION__,
                                     tmp_line.c_str(),
                                     __LINE__);
@@ -7836,7 +7836,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> bool Neural_Net
                                                                           ref_ifstream_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__Connection(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_connection_index,
                                      __LINE__);
@@ -7885,7 +7885,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> bool Neural_Net
                                                                               ref_ifstream_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__Connection(%zu)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_connection_index,
                                          __LINE__);
@@ -7909,7 +7909,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> bool Neural_Net
                                                                                                                                                                                              ref_ifstream_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__Connection(%zu)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_connection_index,
                                          __LINE__);
@@ -7936,7 +7936,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> bool Neural_Net
                                                                           ref_ifstream_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__Connection(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_connection_index,
                                      __LINE__);
@@ -7960,7 +7960,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> bool Neural_Net
                                                                           ref_ifstream_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__Connection(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_connection_index,
                                      __LINE__);
@@ -7984,7 +7984,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> bool Neural_Net
                                                                           ref_ifstream_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__Connection(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_connection_index,
                                      __LINE__);
@@ -8010,7 +8010,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> bool Neural_Net
                                                                                                                                                                                          ref_ifstream_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__Connection(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_connection_index,
                                      __LINE__);
@@ -8034,7 +8034,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> bool Neural_Net
                                                                                                                                                                                          ref_ifstream_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__Connection(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_connection_index,
                                      __LINE__);
@@ -8058,7 +8058,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> bool Neural_Net
                                                                                                                                                                                          ref_ifstream_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__Connection(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_connection_index,
                                      __LINE__);
@@ -8081,7 +8081,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> bool Neural_Net
                                                                                                                                                                                          ref_ifstream_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__Connection(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_ptr_block_ptr_cell_unit_it->index_peephole_input_gate,
                                      __LINE__);
@@ -8100,7 +8100,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> bool Neural_Net
                                                                                                                                                                                          ref_ifstream_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__Connection(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_ptr_block_ptr_cell_unit_it->index_peephole_forget_gate,
                                      __LINE__);
@@ -8119,7 +8119,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> bool Neural_Net
                                                                                                                                                                                          ref_ifstream_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__Connection(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_ptr_block_ptr_cell_unit_it->index_peephole_output_gate,
                                      __LINE__);
@@ -8148,7 +8148,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> bool Neural_Net
         if(this->Load_Dimension__Neuron(tmp_ptr_neuron_unit_it, ref_ifstream_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__Neuron()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -8159,7 +8159,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> bool Neural_Net
                                                                                                               ref_ifstream_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__Neuron__Forward__Connection()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -8182,7 +8182,7 @@ bool Neural_Network::Load_Dimension__AF(struct Layer *const ptr_layer_it_receive
         if(this->Load_Dimension__AF(tmp_ptr_AF_unit_it, ref_ifstream_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__AF_Unit(\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -8203,7 +8203,7 @@ bool Neural_Network::Load_Dimension__AF_Ind_Recurrent(struct Layer *const ptr_la
         if(this->Load_Dimension__AF_Ind_Recurrent(tmp_ptr_AF_Ind_recurrent_unit_it, ref_ifstream_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__AF_Ind_Recurrent(\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -8237,7 +8237,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> bool Neural_Net
                                                         ref_ifstream_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__Block(%zu, %zu, %u, ptr, ref)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_layer_number_block_units,
                                      tmp_layer_number_cell_units >> static_cast<size_t>(ptr_layer_it_received->Use__Bidirectional()),
@@ -8251,7 +8251,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> bool Neural_Net
                                                                                              ref_ifstream_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__LSTM__Connection()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -8281,7 +8281,7 @@ bool Neural_Network::Load_Dimension__Normalization(struct Layer *const ptr_layer
                                                                        ref_ifstream_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Dimension__Normalized_Unit(%zu, %u)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_number_normalized_units,
                                      tmp_type_layer_normalization,

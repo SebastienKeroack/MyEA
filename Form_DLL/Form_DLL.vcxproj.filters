@@ -56,9 +56,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source_Files\Form\CFormMain.cpp">
-      <Filter>Source_Files\Form</Filter>
-    </ClCompile>
     <ClCompile Include="Source_Files\Form\CFormAbout.cpp">
       <Filter>Source_Files\Form</Filter>
     </ClCompile>
@@ -68,23 +65,20 @@
     <ClCompile Include="Source_Files\Form\CFormLogin.cpp">
       <Filter>Source_Files\Form</Filter>
     </ClCompile>
-    <ClCompile Include="dllmain.cpp">
-      <Filter>DLL</Filter>
-    </ClCompile>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>DLL</Filter>
-    </ClCompile>
     <ClCompile Include="Source_Files\Form.cpp">
       <Filter>Source_Files</Filter>
     </ClCompile>
     <ClCompile Include="Header_Files\Form\Form__Neural_Network.cpp">
       <Filter>Source_Files\Form</Filter>
     </ClCompile>
+    <ClCompile Include="Source_Files\dllmain.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\stdafx.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Header_Files\Form\CFormMain.h">
-      <Filter>Header_Files\Form</Filter>
-    </ClInclude>
     <ClInclude Include="Resource_Files\resource.h">
       <Filter>Resource_Files</Filter>
     </ClInclude>
@@ -103,11 +97,11 @@
     <ClInclude Include="Header_Files\Form.hpp">
       <Filter>Header_Files</Filter>
     </ClInclude>
-    <ClInclude Include="stdafx.hpp">
-      <Filter>DLL</Filter>
+    <ClInclude Include="Header_Files\stdafx.hpp">
+      <Filter>Header_Files</Filter>
     </ClInclude>
-    <ClInclude Include="targetver.hpp">
-      <Filter>DLL</Filter>
+    <ClInclude Include="Header_Files\targetver.hpp">
+      <Filter>Header_Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -12,7 +12,7 @@ bool Neural_Network::Assign__Layers(struct Layer_Parameters const *const ptr_arr
         if(this->Assign__Layer(tmp_ptr_layer_it, ptr_array_layers_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Assign__Layer()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -83,7 +83,7 @@ bool Neural_Network::Assign__Layer(struct Layer *&ptr_layer_it_received, struct 
             if(this->Assign__Residual_Block(ptr_layer_it_received, ptr_array_layers_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Assign__Residual_Block()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -92,7 +92,7 @@ bool Neural_Network::Assign__Layer(struct Layer *&ptr_layer_it_received, struct 
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ptr_layer_it_received->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[ptr_layer_it_received->type_layer].c_str());
@@ -107,7 +107,7 @@ bool Neural_Network::Assign__Residual_Block(struct Layer *&ptr_layer_it_received
     if(ptr_layer_it_received->type_layer != MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_RESIDUAL)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is not a residual unit. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -121,7 +121,7 @@ bool Neural_Network::Assign__Residual_Block(struct Layer *&ptr_layer_it_received
         if(this->Assign__Residual_Layer(ptr_layer_it_received, ptr_array_layers_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Assign__Residual_Layer()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -185,7 +185,7 @@ bool Neural_Network::Assign__Residual_Layer(struct Layer *&ptr_layer_it_received
             if(this->Assign__Residual_Block(ptr_layer_it_received, ptr_array_layers_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Assign__Residual_Block()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -194,7 +194,7 @@ bool Neural_Network::Assign__Residual_Layer(struct Layer *&ptr_layer_it_received
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ptr_layer_it_received->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[ptr_layer_it_received->type_layer].c_str());
@@ -214,7 +214,7 @@ bool Neural_Network::Assign__Post__Layers(void)
         if(this->Assign__Post__Layer(tmp_ptr_layer_it) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Assign__Post__Layer()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -268,7 +268,7 @@ bool Neural_Network::Assign__Post__Layer(struct Layer *&ptr_layer_it_received)
             if(this->Assign__Post__Residual_Block(ptr_layer_it_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Assign__Post__Residual_Block()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -286,7 +286,7 @@ bool Neural_Network::Assign__Post__Residual_Block(struct Layer *&ptr_layer_it_re
     if(ptr_layer_it_received->type_layer != MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_RESIDUAL)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is not a residual unit. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -299,7 +299,7 @@ bool Neural_Network::Assign__Post__Residual_Block(struct Layer *&ptr_layer_it_re
     if(this->Assign__Post__Residual_Layer(true, ++ptr_layer_it_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Assign__Post__Residual_Layer(true)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -313,7 +313,7 @@ bool Neural_Network::Assign__Post__Residual_Block(struct Layer *&ptr_layer_it_re
         if(this->Assign__Post__Residual_Layer(false, ptr_layer_it_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Assign__Post__Residual_Layer(false)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -389,7 +389,7 @@ bool Neural_Network::Assign__Post__Residual_Layer(bool const is_block_input_laye
             if(this->Assign__Post__Residual_Block(ptr_layer_it_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Assign__Post__Residual_Block()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -398,7 +398,7 @@ bool Neural_Network::Assign__Post__Residual_Layer(bool const is_block_input_laye
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ptr_layer_it_received->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[ptr_layer_it_received->type_layer].c_str());
@@ -417,7 +417,7 @@ bool Neural_Network::Compile(size_t const number_layers_received,
     if(number_recurrent_depth_received == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Recurrent depth can not be zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -428,7 +428,7 @@ bool Neural_Network::Compile(size_t const number_layers_received,
     if(this->Allocate__Structure(number_layers_received, maximum_allowable_memory_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Structure(%zu, %zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  number_layers_received,
                                  maximum_allowable_memory_received,
@@ -447,7 +447,7 @@ bool Neural_Network::Compile(size_t const number_layers_received,
     if(this->Assign__Layers(ptr_array_layers_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Assign__Layers()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -460,7 +460,7 @@ bool Neural_Network::Compile(size_t const number_layers_received,
     if(this->Assign__Post__Layers() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Assign__Post__Layers()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -473,7 +473,7 @@ bool Neural_Network::Compile(size_t const number_layers_received,
     if(this->Allocate__Basic_Units() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Basic_Units()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -482,7 +482,7 @@ bool Neural_Network::Compile(size_t const number_layers_received,
     else if(this->Allocate__Basic_Indice_Units() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Basic_Indice_Units()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -491,7 +491,7 @@ bool Neural_Network::Compile(size_t const number_layers_received,
     else if(this->Allocate__Neuron_Units() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Neuron_Units()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -500,7 +500,7 @@ bool Neural_Network::Compile(size_t const number_layers_received,
     else if(this->Allocate__AF_Units() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__AF_Units()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -509,7 +509,7 @@ bool Neural_Network::Compile(size_t const number_layers_received,
     else if(this->Allocate__AF_Ind_Recurrent_Units() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__AF_Ind_Recurrent_Units()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -518,7 +518,7 @@ bool Neural_Network::Compile(size_t const number_layers_received,
     else if(this->Allocate__LSTM_Layers() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__LSTM_Layers()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -527,7 +527,7 @@ bool Neural_Network::Compile(size_t const number_layers_received,
     else if(this->Allocate__Bidirectional__Layers() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Bidirectional__Layers()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -557,7 +557,7 @@ bool Neural_Network::Compile(size_t const number_layers_received,
                 if(this->Set__Layer_Activation_Function(tmp_ptr_layer_it, MyEA::Common::ENUM_TYPE_ACTIVATION_FUNCTION::TYPE_NN_A_F_SIGMOID) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Layer_Activation_Function(%u)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              MyEA::Common::ENUM_TYPE_ACTIVATION_FUNCTION::TYPE_NN_A_F_SIGMOID,
                                              __LINE__);
@@ -568,7 +568,7 @@ bool Neural_Network::Compile(size_t const number_layers_received,
                 if(this->Set__Layer_Activation_Steepness(tmp_ptr_layer_it, 1_T) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Layer_Activation_Function(1)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
                     
@@ -581,7 +581,7 @@ bool Neural_Network::Compile(size_t const number_layers_received,
                 if(this->Set__Layer_Activation_Function(tmp_ptr_layer_it, MyEA::Common::ENUM_TYPE_ACTIVATION_FUNCTION::TYPE_NN_A_F_RELU) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Layer_Activation_Function(%u)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              MyEA::Common::ENUM_TYPE_ACTIVATION_FUNCTION::TYPE_NN_A_F_RELU,
                                              __LINE__);
@@ -592,7 +592,7 @@ bool Neural_Network::Compile(size_t const number_layers_received,
                 if(this->Set__Layer_Activation_Steepness(tmp_ptr_layer_it, 1_T) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Layer_Activation_Function(1)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
                     
@@ -603,7 +603,7 @@ bool Neural_Network::Compile(size_t const number_layers_received,
                 if(this->Set__Regularization__Constraint_Recurrent_Weight__Default(tmp_ptr_layer_it) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Regularization__Constraint_Recurrent_Weight__Default(ptr)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
                     
@@ -613,7 +613,7 @@ bool Neural_Network::Compile(size_t const number_layers_received,
             case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_LSTM: this->total_weights += this->Prepare__Connections__LSTM(tmp_fan_in, tmp_ptr_layer_it); break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_ptr_layer_it->type_layer,
                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str());
@@ -639,7 +639,7 @@ bool Neural_Network::Compile(size_t const number_layers_received,
             case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_LSTM: this->total_bias += this->Prepare__Bias__LSTM(this->total_weights, tmp_ptr_layer_it); break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_ptr_layer_it->type_layer,
                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str());
@@ -652,7 +652,7 @@ bool Neural_Network::Compile(size_t const number_layers_received,
     if(this->Allocate__Parameter() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Parameter()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -682,7 +682,7 @@ bool Neural_Network::Compile(size_t const number_layers_received,
                     case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_LSTM: this->Initialize_Connections__Basic_unit_to_LSTM(tmp_ptr_layer_it, tmp_ptr_previous_layer_connected); break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_ptr_layer_it->type_layer,
                                                  MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str(),
@@ -700,7 +700,7 @@ bool Neural_Network::Compile(size_t const number_layers_received,
                     case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_LSTM: this->Initialize_Connections__FC_to_LSTM(tmp_ptr_layer_it, tmp_ptr_previous_layer_connected); break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_ptr_layer_it->type_layer,
                                                  MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str(),
@@ -716,7 +716,7 @@ bool Neural_Network::Compile(size_t const number_layers_received,
                     case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_LSTM: this->Initialize_Connections__LSTM_to_LSTM(tmp_ptr_layer_it, tmp_ptr_previous_layer_connected); break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_ptr_layer_it->type_layer,
                                                  MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str(),
@@ -732,7 +732,7 @@ bool Neural_Network::Compile(size_t const number_layers_received,
                     case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_LSTM: this->Initialize_Connections__Basic_indice_unit_to_LSTM(tmp_ptr_layer_it, tmp_ptr_previous_layer_connected); break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_ptr_layer_it->type_layer,
                                                  MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str(),
@@ -742,7 +742,7 @@ bool Neural_Network::Compile(size_t const number_layers_received,
                     break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_ptr_previous_layer_connected->type_layer,
                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_previous_layer_connected->type_layer].c_str(),
@@ -758,7 +758,7 @@ bool Neural_Network::Compile(size_t const number_layers_received,
             case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_LSTM: this->Initialize_Connections__LSTM__Bias(tmp_ptr_layer_it); break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             tmp_ptr_layer_it->type_layer,
                                             MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str(),

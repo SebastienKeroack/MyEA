@@ -8,7 +8,7 @@ bool Neural_Network::Set__Accurancy_Variance(T_ const accurancy_variance_receive
     else if(accurancy_variance_received < 0_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: Accuracy variance (%f) less than zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(accurancy_variance_received),
                                  __LINE__);
@@ -18,7 +18,7 @@ bool Neural_Network::Set__Accurancy_Variance(T_ const accurancy_variance_receive
     else if(accurancy_variance_received > 1_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: Accuracy variance (%f) bigger than one. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(accurancy_variance_received),
                                  __LINE__);
@@ -42,7 +42,7 @@ bool Neural_Network::Set__Number_Time_Delays(size_t const time_delays_received)
     else if(time_delays_received > this->number_recurrent_depth)
     {
         PRINT_FORMAT("%s: %s: ERROR: Time delays (%zu) bigger than recurrent depth (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  time_delays_received,
                                  this->number_recurrent_depth,
@@ -70,7 +70,7 @@ void Neural_Network::Set__Accuracy(enum MyEA::Common::ENUM_TYPE_DATASET const ty
         case MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING: this->accuracy_testing = accurancy_received; break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Accuracy type (%u) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      type_dataset_received);
                 break;
@@ -95,7 +95,7 @@ T_ Neural_Network::Get__Accuracy(enum MyEA::Common::ENUM_TYPE_DATASET const type
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Accuracy type (%u) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      type_dataset_received);
 

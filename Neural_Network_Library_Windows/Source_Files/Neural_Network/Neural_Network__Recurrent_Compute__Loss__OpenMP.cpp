@@ -118,7 +118,7 @@ void Neural_Network::RNN__Compute__Loss__OpenMP(size_t const batch_size_received
                             break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Accuracy type (%u) is not managed in the switch." NEW_LINE,
-                                                    MyEA::String::Get__Time().c_str(),
+                                                    MyEA::Time::Date_Time_Now().c_str(),
                                                     __FUNCTION__,
                                                     this->type_accuracy_function);
                             break;

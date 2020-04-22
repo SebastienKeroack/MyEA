@@ -1,3 +1,3 @@
 #pragma once
 
-bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received);
+bool MODWT_SAEs_LSTM(class MyEA::Capturing::Shutdown &shutdown_module);

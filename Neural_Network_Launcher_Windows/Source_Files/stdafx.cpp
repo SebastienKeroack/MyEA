@@ -7,7 +7,7 @@
 // TODO: reference any additional headers you need in STDAFX.H
 // and not in this file
 
-#if defined(COMPILE_ADEPT)
+#if defined(COMPILE_AUTODIFF)
 /* Need to update the sources files of Adept, to contain the following functions in the specified file and class:
     UnaryOperation.h:
         struct UnaryOperation:

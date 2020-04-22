@@ -24,7 +24,7 @@
     <RootNamespace>Form_DLL</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>Form_DLL</ProjectName>
-    <TargetFrameworkVersion>4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>4.8</TargetFrameworkVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -102,7 +102,7 @@
       <PreprocessorDefinitions>COMPILE_x86;COMPILE_DOUBLE;COMPILE_DLL_EXPORTS;COMPILE_COUT;COMPILE_WINDOWS;COMPILE_BREAK_CODE;COMPILE_DEBUG;WIN32;_DEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <BrowseInformation>true</BrowseInformation>
-      <AdditionalIncludeDirectories>..\Common_Library\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\include\;..\Common_Library\include\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -124,7 +124,7 @@
       <PreprocessorDefinitions>COMPILE_x64;COMPILE_DOUBLE;COMPILE_DLL_EXPORTS;COMPILE_COUT;COMPILE_WINDOWS;COMPILE_BREAK_CODE;COMPILE_DEBUG;_DEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <BrowseInformation>true</BrowseInformation>
-      <AdditionalIncludeDirectories>..\Common_Library\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\include\;..\Common_Library\include\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -146,7 +146,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>COMPILE_x86;COMPILE_FLOAT;COMPILE_DLL_EXPORTS;COMPILE_COUT;COMPILE_WINDOWS;COMPILE_BREAK_CODE;WIN32;NDEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\Common_Library\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\include\;..\Common_Library\include\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -167,7 +167,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>COMPILE_x64;COMPILE_FLOAT;COMPILE_DLL_EXPORTS;COMPILE_COUT;COMPILE_WINDOWS;COMPILE_BREAK_CODE;NDEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\Common_Library\Header_Files\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\include\;..\Common_Library\include\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -187,14 +187,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="Source_Files\dllmain.cpp" />
     <ClCompile Include="Header_Files\Form\Form__Neural_Network.cpp" />
     <ClCompile Include="Source_Files\Form.cpp" />
     <ClCompile Include="Source_Files\Form\CFormAbout.cpp" />
     <ClCompile Include="Source_Files\Form\CFormLogin.cpp" />
-    <ClCompile Include="Source_Files\Form\CFormMain.cpp" />
     <ClCompile Include="Source_Files\Form\CFormNN.cpp" />
-    <ClCompile Include="stdafx.cpp">
+    <ClCompile Include="Source_Files\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -209,9 +208,6 @@
     <ClInclude Include="Header_Files\Form\CFormLogin.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Header_Files\Form\CFormMain.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="Header_Files\Form\CFormNN.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -219,8 +215,8 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Resource_Files\resource.h" />
-    <ClInclude Include="stdafx.hpp" />
-    <ClInclude Include="targetver.hpp" />
+    <ClInclude Include="Header_Files\stdafx.hpp" />
+    <ClInclude Include="Header_Files\targetver.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource_Files\FormWin.rc" />
@@ -232,10 +228,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Header_Files\Form\CFormLogin.resx">
       <DependentUpon>Header_Files\Form\CFormLogin.h</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Header_Files\Form\CFormMain.resx">
-      <DependentUpon>Header_Files\Form\CFormMain.h</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Header_Files\Form\CFormNN.resx">

@@ -14,13 +14,13 @@ bool Neural_Network::Check__Use__Regularization__Constraint_Recurrent_Weight__De
     T_ const tmp_constraint_recurrent_weight_lower_bound(tmp_pair_constraint_bound.first),
                  tmp_constraint_recurrent_weight_upper_bound(tmp_pair_constraint_bound.second);
     
-    return(ptr_layer_received->constraint_recurrent_weight_lower_bound <= tmp_constraint_recurrent_weight_lower_bound + EPSILON
+    return(ptr_layer_received->constraint_recurrent_weight_lower_bound <= tmp_constraint_recurrent_weight_lower_bound + 1e-8
              &&
-             ptr_layer_received->constraint_recurrent_weight_lower_bound >= tmp_constraint_recurrent_weight_lower_bound - EPSILON
+             ptr_layer_received->constraint_recurrent_weight_lower_bound >= tmp_constraint_recurrent_weight_lower_bound - 1e-8
              &&
-             ptr_layer_received->constraint_recurrent_weight_upper_bound <= tmp_constraint_recurrent_weight_upper_bound + EPSILON
+             ptr_layer_received->constraint_recurrent_weight_upper_bound <= tmp_constraint_recurrent_weight_upper_bound + 1e-8
              &&
-             ptr_layer_received->constraint_recurrent_weight_upper_bound >= tmp_constraint_recurrent_weight_upper_bound - EPSILON);
+             ptr_layer_received->constraint_recurrent_weight_upper_bound >= tmp_constraint_recurrent_weight_upper_bound - 1e-8);
 }
 
 std::pair<T_, T_> Neural_Network::Compute__Regularization__Constraint_Recurrent_Weight__Default(size_t const index_layer_received) const { return(this->Compute__Regularization__Constraint_Recurrent_Weight__Default(this->ptr_array_layers + index_layer_received)); }
@@ -50,7 +50,7 @@ std::pair<T_, T_> Neural_Network::Compute__Regularization__Constraint_Recurrent_
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer activation type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ptr_layer_received->type_activation,
                                      MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION_NAME[ptr_layer_received->type_activation].c_str(),
@@ -75,7 +75,7 @@ bool Neural_Network::Set__Regularization__Constraint_Recurrent_Weight__Default(s
     else if(this->ptr_array_layers == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_array_layers\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -90,7 +90,7 @@ bool Neural_Network::Set__Regularization__Constraint_Recurrent_Weight__Default(s
     if(ptr_layer_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_layer_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -99,7 +99,7 @@ bool Neural_Network::Set__Regularization__Constraint_Recurrent_Weight__Default(s
     else if(ptr_layer_received == this->ptr_array_layers)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is the input layer. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -108,7 +108,7 @@ bool Neural_Network::Set__Regularization__Constraint_Recurrent_Weight__Default(s
     else if(ptr_layer_received == this->ptr_last_layer - 1)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is the output layer. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -122,7 +122,7 @@ bool Neural_Network::Set__Regularization__Constraint_Recurrent_Weight__Default(s
         case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_LSTM: break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Can not constraining the recurrent weight in the layer %zu with (%u | %s) as the type layer. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      static_cast<size_t>(ptr_layer_received - this->ptr_array_layers),
                                      ptr_layer_received->type_layer,
@@ -156,7 +156,7 @@ bool Neural_Network::Set__Regularization__Constraint_Recurrent_Weight(size_t con
     else if(this->ptr_array_layers == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_array_layers\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -175,7 +175,7 @@ bool Neural_Network::Set__Regularization__Constraint_Recurrent_Weight(struct Lay
     if(ptr_layer_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_layer_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -184,7 +184,7 @@ bool Neural_Network::Set__Regularization__Constraint_Recurrent_Weight(struct Lay
     else if(ptr_layer_received == this->ptr_array_layers)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is the input layer. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -193,7 +193,7 @@ bool Neural_Network::Set__Regularization__Constraint_Recurrent_Weight(struct Lay
     else if(ptr_layer_received == this->ptr_last_layer - 1)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is the output layer. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -202,7 +202,7 @@ bool Neural_Network::Set__Regularization__Constraint_Recurrent_Weight(struct Lay
     else if(constraint_recurrent_weight_lower_bound_received > constraint_recurrent_weight_upper_bound_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Lower bound (%f) can not be greater than upper bound (%f). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(constraint_recurrent_weight_lower_bound_received),
                                  Cast_T(constraint_recurrent_weight_upper_bound_received),
@@ -221,7 +221,7 @@ bool Neural_Network::Set__Regularization__Constraint_Recurrent_Weight(struct Lay
         case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_LSTM: break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Can not constraining the recurrent weight in the layer %zu with (%u | %s) as the type layer. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      static_cast<size_t>(ptr_layer_received - this->ptr_array_layers),
                                      ptr_layer_received->type_layer,
@@ -258,7 +258,7 @@ bool Neural_Network::Set__Regularization__Constraint_Recurrent_Weight(struct Lay
                                                                                           constraint_recurrent_weight_upper_bound_received))
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Regularization__Constraint_Recurrent_Weight(ptr, %f, %f)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(constraint_recurrent_weight_lower_bound_received),
                                  Cast_T(constraint_recurrent_weight_upper_bound_received),
@@ -288,7 +288,7 @@ void Neural_Network::Update_Weight_Regularization__Constraint_Recurrent_Weight(s
                 case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_FULLY_CONNECTED_INDEPENDENTLY_RECURRENT: this->Update_Weight_Regularization__Constraint_Recurrent_Weight__FC_Ind_RNN(tmp_ptr_layer_it); break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Type layer (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_ptr_layer_it->type_layer,
                                              MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str(),

@@ -2,12 +2,12 @@
 
 #include <Enums/Enum_Type_Chart.hpp>
 #include <Form/Form__Neural_Network.h>
-#include <Math/Mathematic.hpp>
+#include <Math/Math.hpp>
 
 #include <iostream> // printf
 #include <msclr\marshal_cppstd.h> // System::String^ to std::string
 
-#include <Tools/Message_Box.hpp>
+#include <UI/Dialog_Box.hpp>
 
 namespace MyEA
 {

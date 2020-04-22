@@ -1,6 +1,6 @@
 #include "stdafx.hpp"
 
-#include <Math/Mathematic.hpp>
+#include <Math/Math.hpp>
 
 #include <Neural_Network/Neural_Network.hpp>
 
@@ -10,7 +10,7 @@ void Neural_Network::RNN__Backward_Pass_Batch__Loop(size_t const batch_size_rece
     
     T_ *tmp_ptr_array_layer_gradients;
     
-#if defined(COMPILE_ADEPT)
+#if defined(COMPILE_AUTODIFF)
     struct Layer const *const tmp_ptr_second_layer(this->ptr_array_layers);
 #else
     struct Layer const *const tmp_ptr_second_layer(this->ptr_array_layers + 1);
@@ -25,7 +25,7 @@ void Neural_Network::RNN__Backward_Pass_Batch__Loop(size_t const batch_size_rece
     if(this->type_state_propagation != MyEA::Common::ENUM_TYPE_STATE_PROPAGATION::TYPE_STATE_PROPAGATION_TRAINING)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not back propagate gradient in inference mode. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -104,7 +104,7 @@ void Neural_Network::RNN__Backward_Pass_Batch__Loop(size_t const batch_size_rece
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_ptr_next_layer_it->type_layer,
                                              MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_next_layer_it->type_layer].c_str());
@@ -151,7 +151,7 @@ void Neural_Network::RNN__Backward_Pass_Batch__Loop(size_t const batch_size_rece
                     break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_ptr_layer_it->type_layer,
                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str());
@@ -174,7 +174,7 @@ void Neural_Network::RNN__Backward_Pass_Batch__Pre_Training__Loop(size_t const b
     if(this->type_state_propagation != MyEA::Common::ENUM_TYPE_STATE_PROPAGATION::TYPE_STATE_PROPAGATION_TRAINING)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not back propagate gradient in inference mode. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -227,7 +227,7 @@ void Neural_Network::RNN__Backward_Pass_Batch__Pre_Training__Loop(size_t const b
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_ptr_decoded_layer->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_decoded_layer->type_layer].c_str());
@@ -266,7 +266,7 @@ void Neural_Network::RNN__Backward_Pass_Batch__Pre_Training__Loop(size_t const b
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_ptr_coded_layer->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_coded_layer->type_layer].c_str());
@@ -876,7 +876,7 @@ void Neural_Network::Recurrent__Backward_Pass__Gradient__Residual__Layer__Loop(b
     if(ptr_layer_it_received->next_connected_layers.size() > 1_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: In a residual block the layers can not have more than one forward connection. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
     }
@@ -918,7 +918,7 @@ void Neural_Network::Recurrent__Backward_Pass__Gradient__Residual__Layer__Loop(b
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_ptr_next_layer_it->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_next_layer_it->type_layer].c_str());
@@ -963,7 +963,7 @@ void Neural_Network::Recurrent__Backward_Pass__Gradient__Residual__Layer__Loop(b
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ptr_layer_it_received->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[ptr_layer_it_received->type_layer].c_str());

@@ -1,10 +1,10 @@
 #pragma once
 
-#include <Tools/Configuration.hpp>
+#include <Configuration/Configuration.hpp>
 
 #include <string>
 
-#include <Tools/Reallocate.hpp>
+#include <Reallocate/Reallocate.hpp>
 
 #if defined(COMPILE_CUDA)
     #include <Tools/CUDA_Configuration.cuh>

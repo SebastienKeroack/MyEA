@@ -2,7 +2,7 @@
 
 #include <Enums/Enum_Time_Frames.hpp>
 
-#include <Tools/Message_Box.hpp>
+#include <UI/Dialog_Box.hpp>
 
 #include <Neural_Network_API.hpp>
 
@@ -49,7 +49,7 @@ namespace MyEA
                                                                                                                         ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      __LINE__);
 
@@ -63,7 +63,7 @@ namespace MyEA
                                                                                                                         ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      __LINE__);
 
@@ -89,7 +89,7 @@ namespace MyEA
                                                                                                                         ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      __LINE__);
 
@@ -103,7 +103,7 @@ namespace MyEA
                                                                                                                         ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      __LINE__);
 
@@ -129,7 +129,7 @@ namespace MyEA
                                                                                                                         ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      __LINE__);
 
@@ -143,7 +143,7 @@ namespace MyEA
                                                                                                                         ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      __LINE__);
 
@@ -172,7 +172,7 @@ namespace MyEA
                                                                                                                                 ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum()\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      __LINE__);
 
@@ -189,7 +189,7 @@ namespace MyEA
                                                                                                                                 ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum()\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      __LINE__);
 
@@ -218,7 +218,7 @@ namespace MyEA
                                                                                                                                 ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum()\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      __LINE__);
 
@@ -235,7 +235,7 @@ namespace MyEA
                                                                                                                                 ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum()\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      __LINE__);
 
@@ -261,7 +261,7 @@ namespace MyEA
                                                                                                                         ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      __LINE__);
 
@@ -275,7 +275,7 @@ namespace MyEA
                                                                                                                         ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      __LINE__);
 
@@ -301,7 +301,7 @@ namespace MyEA
                                                                                                                         ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      __LINE__);
 
@@ -315,7 +315,7 @@ namespace MyEA
                                                                                                                         ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      __LINE__);
 
@@ -341,7 +341,7 @@ namespace MyEA
                                                                                                                         ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      __LINE__);
 
@@ -355,7 +355,7 @@ namespace MyEA
                                                                                                                         ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      __LINE__);
 
@@ -384,7 +384,7 @@ namespace MyEA
                                                                                                                             ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                             {
                                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          __FUNCTION__,
                                                          __LINE__);
 
@@ -398,7 +398,7 @@ namespace MyEA
                                                                                                                             ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
                             {
                                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          __FUNCTION__,
                                                          __LINE__);
 
@@ -424,7 +424,7 @@ namespace MyEA
                                                                                                                             ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                             {
                                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          __FUNCTION__,
                                                          __LINE__);
 
@@ -438,7 +438,7 @@ namespace MyEA
                                                                                                                             ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
                             {
                                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          __FUNCTION__,
                                                          __LINE__);
 
@@ -464,7 +464,7 @@ namespace MyEA
                                                                                                                             ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                             {
                                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          __FUNCTION__,
                                                          __LINE__);
 
@@ -478,7 +478,7 @@ namespace MyEA
                                                                                                                             ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
                             {
                                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          __FUNCTION__,
                                                          __LINE__);
 
@@ -504,7 +504,7 @@ namespace MyEA
                                                                                                                             ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                             {
                                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          __FUNCTION__,
                                                          __LINE__);
 
@@ -518,7 +518,7 @@ namespace MyEA
                                                                                                                             ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
                             {
                                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          __FUNCTION__,
                                                          __LINE__);
 
@@ -551,7 +551,7 @@ namespace MyEA
                                                                                                                             ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                             {
                                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          __FUNCTION__,
                                                          __LINE__);
 
@@ -565,7 +565,7 @@ namespace MyEA
                                                                                                                             ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
                             {
                                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          __FUNCTION__,
                                                          __LINE__);
 
@@ -596,7 +596,7 @@ namespace MyEA
                                                                                                                                 ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum()\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      __LINE__);
 
@@ -613,7 +613,7 @@ namespace MyEA
                                                                                                                                 ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum()\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      __LINE__);
 
@@ -639,7 +639,7 @@ namespace MyEA
                                                                                                                         ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      __LINE__);
 
@@ -653,7 +653,7 @@ namespace MyEA
                                                                                                                         ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      __LINE__);
 
@@ -684,7 +684,7 @@ namespace MyEA
                                                                                                                             ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                             {
                                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          __FUNCTION__,
                                                          __LINE__);
 
@@ -698,7 +698,7 @@ namespace MyEA
                                                                                                                             ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
                             {
                                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          __FUNCTION__,
                                                          __LINE__);
 
@@ -722,7 +722,7 @@ namespace MyEA
                                                                                                                                     ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                                 {
                                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Merge__MODWT()\" function. At line %d." NEW_LINE,
-                                                             MyEA::String::Get__Time().c_str(),
+                                                             MyEA::Time::Date_Time_Now().c_str(),
                                                              __FUNCTION__,
                                                              __LINE__);
 
@@ -734,7 +734,7 @@ namespace MyEA
                                                                                                                                     ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
                                 {
                                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Merge__MODWT()\" function. At line %d." NEW_LINE,
-                                                             MyEA::String::Get__Time().c_str(),
+                                                             MyEA::Time::Date_Time_Now().c_str(),
                                                              __FUNCTION__,
                                                              __LINE__);
 
@@ -748,7 +748,7 @@ namespace MyEA
                             if(ptr_Dataset_Manager_received->Reallocate_Internal_Storage() == false)
                             {
                                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Reallocate_Internal_Storage()\" function. At line %d." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          __FUNCTION__,
                                                          __LINE__);
 
@@ -786,9 +786,9 @@ namespace MyEA
             return(nullptr);
         }
 
-        DLL_API bool DLL_API API__Neural_Network__Is_Loaded(void) { return(true); }
+        DLL_API bool API__Neural_Network__Is_Loaded(void) { return(true); }
 
-        DLL_API bool DLL_API API__Neural_Network__Initialize(bool const is_type_position_long_received,
+        DLL_API bool API__Neural_Network__Initialize(bool const is_type_position_long_received,
                                                                                                      unsigned int const type_indicator_received,
                                                                                                      unsigned int const time_frames_received)
         {
@@ -814,7 +814,7 @@ namespace MyEA
             return(true);
         }
         
-        DLL_API bool DLL_API API__Neural_Network__Initialize_Dataset_Manager(bool const is_type_position_long_received, unsigned int const type_indicator_received)
+        DLL_API bool API__Neural_Network__Initialize_Dataset_Manager(bool const is_type_position_long_received, unsigned int const type_indicator_received)
         {
             class Threaded_Neural_Network_Manager *const tmp_ptr_Threaded_Neural_Network_Manager(Get__Threaded_Neural_Network_Manager(global_ptr_vector_ptr_Threaded_Neural_Network_Manager,
                                                                                                                                                                                                                     is_type_position_long_received,
@@ -879,7 +879,7 @@ namespace MyEA
             return(true);
         }
 
-        DLL_API int DLL_API API__Neural_Network__Set__Output_Mode(bool const is_type_position_long_received,
+        DLL_API int API__Neural_Network__Set__Output_Mode(bool const is_type_position_long_received,
                                                                                                                    unsigned int const type_indicator_received,
                                                                                                                    unsigned int const type_neural_network_use_received,
                                                                                                                    bool const use_last_layer_as_output_received)
@@ -898,7 +898,7 @@ namespace MyEA
             return(0);
         }
         
-        DLL_API int DLL_API API__Neural_Network__Set__Number_Inputs(bool const is_type_position_long_received,
+        DLL_API int API__Neural_Network__Set__Number_Inputs(bool const is_type_position_long_received,
                                                                                                                      unsigned int const type_indicator_received,
                                                                                                                      unsigned int const number_inputs_received)
         {
@@ -912,7 +912,7 @@ namespace MyEA
             return(0);
         }
 
-        DLL_API int DLL_API API__Neural_Network__Set__Number_Outputs(bool const is_type_position_long_received,
+        DLL_API int API__Neural_Network__Set__Number_Outputs(bool const is_type_position_long_received,
                                                                                                                         unsigned int const type_indicator_received,
                                                                                                                         unsigned int const number_outputs_received)
         {
@@ -926,7 +926,7 @@ namespace MyEA
             return(0);
         }
         
-        DLL_API int DLL_API API__Neural_Network__Set__Number_Time_Predictions(bool const is_type_position_long_received,
+        DLL_API int API__Neural_Network__Set__Number_Time_Predictions(bool const is_type_position_long_received,
                                                                                                                                      unsigned int const type_indicator_received,
                                                                                                                                      unsigned int const number_recurrent_depth_received)
         {
@@ -940,7 +940,7 @@ namespace MyEA
             return(0);
         }
         
-        DLL_API int DLL_API API__Neural_Network__Get__Is_Output_Symmetric(bool const is_type_position_long_received, unsigned int const type_indicator_received)
+        DLL_API int API__Neural_Network__Get__Is_Output_Symmetric(bool const is_type_position_long_received, unsigned int const type_indicator_received)
         {
             class Threaded_Neural_Network_Manager *const tmp_ptr_Threaded_Neural_Network_Manager(Get__Threaded_Neural_Network_Manager(global_ptr_vector_ptr_Threaded_Neural_Network_Manager,
                                                                                                                                                                                                                     is_type_position_long_received,
@@ -950,7 +950,7 @@ namespace MyEA
             else { return(-1); }
         }
 
-        DLL_API int DLL_API API__Neural_Network__Get__Path_Neural_Network_Exist(bool const is_type_position_long_received,
+        DLL_API int API__Neural_Network__Get__Path_Neural_Network_Exist(bool const is_type_position_long_received,
                                                                                                                                         unsigned int const type_indicator_received,
                                                                                                                                         unsigned int const type_neural_network_use_received)
         {
@@ -962,7 +962,7 @@ namespace MyEA
             else { return(-1); }
         }
 
-        DLL_API int DLL_API API__Neural_Network__Get__Number_Inputs(bool const is_type_position_long_received, unsigned int const type_indicator_received)
+        DLL_API int API__Neural_Network__Get__Number_Inputs(bool const is_type_position_long_received, unsigned int const type_indicator_received)
         {
             class Threaded_Neural_Network_Manager *const tmp_ptr_Threaded_Neural_Network_Manager(Get__Threaded_Neural_Network_Manager(global_ptr_vector_ptr_Threaded_Neural_Network_Manager,
                                                                                                                                                                                                                     is_type_position_long_received,
@@ -972,7 +972,7 @@ namespace MyEA
             else { return(-1); }
         }
 
-        DLL_API int DLL_API API__Neural_Network__Get__Number_Outputs(bool const is_type_position_long_received,
+        DLL_API int API__Neural_Network__Get__Number_Outputs(bool const is_type_position_long_received,
                                                                                                                         unsigned int const type_indicator_received,
                                                                                                                         unsigned int const type_neural_network_use_received)
         {
@@ -984,7 +984,7 @@ namespace MyEA
             else { return(-1); }
         }
         
-        DLL_API int DLL_API API__Neural_Network__Get__Number_Time_Predictions(bool const is_type_position_long_received, unsigned int const type_indicator_received)
+        DLL_API int API__Neural_Network__Get__Number_Time_Predictions(bool const is_type_position_long_received, unsigned int const type_indicator_received)
         {
             class Threaded_Neural_Network_Manager *const tmp_ptr_Threaded_Neural_Network_Manager(Get__Threaded_Neural_Network_Manager(global_ptr_vector_ptr_Threaded_Neural_Network_Manager,
                                                                                                                                                                                                                     is_type_position_long_received,
@@ -994,7 +994,7 @@ namespace MyEA
             else { return(-1); }
         }
         
-        DLL_API float DLL_API API__Neural_Network__Get__Loss(bool const is_type_position_long_received,
+        DLL_API float API__Neural_Network__Get__Loss(bool const is_type_position_long_received,
                                                                                                          unsigned int const type_indicator_received,
                                                                                                          unsigned int const type_neural_network_use_received,
                                                                                                          unsigned int const type_loss_received)
@@ -1007,7 +1007,7 @@ namespace MyEA
             else { return(1.0f); }
         }
         
-        DLL_API float DLL_API API__Neural_Network__Get__Accuracy(bool const is_type_position_long_received,
+        DLL_API float API__Neural_Network__Get__Accuracy(bool const is_type_position_long_received,
                                                                                                                 unsigned int const type_indicator_received,
                                                                                                                 unsigned int const type_neural_network_use_received,
                                                                                                                 unsigned int const type_accuracy_received)
@@ -1020,7 +1020,7 @@ namespace MyEA
             else { return(0.0f); }
         }
         
-        DLL_API T_ DLL_API API__Neural_Network__Get__Output(bool const is_type_position_long_received,
+        DLL_API T_ API__Neural_Network__Get__Output(bool const is_type_position_long_received,
                                                                                                           unsigned int const type_indicator_received,
                                                                                                           unsigned int const type_neural_network_use_received,
                                                                                                           unsigned int const output_index_received,
@@ -1187,7 +1187,7 @@ namespace MyEA
                             if((ptr_array_inputs_received = new T_[tmp_number_recurrent_depth * tmp_new_input_size]) == nullptr)
                             {
                                 PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                                            MyEA::String::Get__Time().c_str(),
+                                                            MyEA::Time::Date_Time_Now().c_str(),
                                                             __FUNCTION__,
                                                             tmp_number_recurrent_depth * tmp_new_input_size * sizeof(T_),
                                                             __LINE__);
@@ -1245,7 +1245,7 @@ namespace MyEA
                             if((ptr_array_inputs_received = new T_[tmp_number_recurrent_depth * tmp_old_input_size]) == nullptr)
                             {
                                 PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          __FUNCTION__,
                                                          tmp_number_recurrent_depth * tmp_old_input_size * sizeof(T_),
                                                          __LINE__);
@@ -1350,7 +1350,7 @@ namespace MyEA
             return(true);
         }
 
-        DLL_API bool DLL_API API__Neural_Network__Forward_Pass(bool const is_type_position_long_received,
+        DLL_API bool API__Neural_Network__Forward_Pass(bool const is_type_position_long_received,
                                                                                                               unsigned int const type_indicator_received,
                                                                                                               unsigned int const type_neural_network_use_received,
                                                                                                               T_ *const ptr_array_inputs_received)
@@ -1403,7 +1403,7 @@ namespace MyEA
             else { return(false); }
         }
 
-        DLL_API bool DLL_API API__Neural_Network__Append_To_Dataset_File(bool const is_type_position_long_received,
+        DLL_API bool API__Neural_Network__Append_To_Dataset_File(bool const is_type_position_long_received,
                                                                                                                               unsigned int const type_indicator_received,
                                                                                                                               T_ *ptr_array_inputs_received,
                                                                                                                               T_ *ptr_array_outputs_received)
@@ -1416,7 +1416,7 @@ namespace MyEA
             else { return(false); }
         }
 
-        DLL_API bool DLL_API API__Neural_Network__Append_To_Dataset(bool const is_type_position_long_received,
+        DLL_API bool API__Neural_Network__Append_To_Dataset(bool const is_type_position_long_received,
                                                                                                                       unsigned int const type_indicator_received,
                                                                                                                       T_ *const ptr_array_inputs_received,
                                                                                                                       T_ *const ptr_array_outputs_received)
@@ -1454,7 +1454,7 @@ namespace MyEA
             else { return(false); }
         }
         
-        DLL_API bool DLL_API API__Neural_Network__Join(bool const is_type_position_long_received, unsigned int const type_indicator_received)
+        DLL_API bool API__Neural_Network__Join(bool const is_type_position_long_received, unsigned int const type_indicator_received)
         {
             class Threaded_Neural_Network_Manager *const tmp_ptr_Threaded_Neural_Network_Manager(Get__Threaded_Neural_Network_Manager(global_ptr_vector_ptr_Threaded_Neural_Network_Manager,
                                                                                                                                                                                                                     is_type_position_long_received,
@@ -1477,7 +1477,7 @@ namespace MyEA
                                 if(API__Neural_Network__Join(is_type_position_long_received, MyEA::Common::ENUM_TYPE_INDICATORS::TYPE_iMA) == false)
                                 {
                                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"API__Neural_Network__Join(%s, %d)\" function. At line %d." NEW_LINE,
-                                                             MyEA::String::Get__Time().c_str(),
+                                                             MyEA::Time::Date_Time_Now().c_str(),
                                                              __FUNCTION__,
                                                              is_type_position_long_received ? "true" : "false",
                                                              MyEA::Common::ENUM_TYPE_INDICATORS::TYPE_iMA,
@@ -1494,7 +1494,7 @@ namespace MyEA
                                 if(tmp_ptr_Threaded_LSTM_Manager->neural_network_manager.Get__Dataset_Manager()->Replace_Entries(tmp_ptr_Threaded_Neural_Network_Manager->neural_network_manager.Get__Dataset_Manager(), tmp_ptr_Threaded_Neural_Network_Manager->neural_network_manager.Get__Neural_Network(MyEA::Common::ENUM_TYPE_NEURAL_NETWORK_USE::TYPE_NEURAL_NETWORK_TRAINED)) == false)
                                 {
                                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Replace_Entries(ptr, ptr)\" function. At line %d." NEW_LINE,
-                                                             MyEA::String::Get__Time().c_str(),
+                                                             MyEA::Time::Date_Time_Now().c_str(),
                                                              __FUNCTION__,
                                                              __LINE__);
 
@@ -1511,7 +1511,7 @@ namespace MyEA
             else { return(false); }
         }
         
-        DLL_API bool DLL_API API__Neural_Network__Optimization(bool const is_type_position_long_received, unsigned int const type_indicator_received)
+        DLL_API bool API__Neural_Network__Optimization(bool const is_type_position_long_received, unsigned int const type_indicator_received)
         {
             class Threaded_Neural_Network_Manager *const tmp_ptr_Threaded_Neural_Network_Manager(Get__Threaded_Neural_Network_Manager(global_ptr_vector_ptr_Threaded_Neural_Network_Manager,
                                                                                                                                                                                                                     is_type_position_long_received,
@@ -1560,7 +1560,7 @@ namespace MyEA
             else { return(false); }
         }
         
-        DLL_API bool DLL_API API__Neural_Network__Write_File(bool const is_type_position_long_received,
+        DLL_API bool API__Neural_Network__Write_File(bool const is_type_position_long_received,
                                                                                                         unsigned int const type_indicator_received,
                                                                                                         unsigned int const type_file_log_received,
                                                                                                         wchar_t const *const log_received)
@@ -1573,12 +1573,12 @@ namespace MyEA
             {
                 std::wstring const tmp_wchar_to_wstring(log_received);
 
-                return(tmp_ptr_Threaded_Neural_Network_Manager->neural_network_manager.Write_File(static_cast<enum MyEA::Common::ENUM_TYPE_FILE_LOG>(type_file_log_received), MyEA::String::Get__Time() + ": " + std::string(tmp_wchar_to_wstring.begin(), tmp_wchar_to_wstring.end())));
+                return(tmp_ptr_Threaded_Neural_Network_Manager->neural_network_manager.Write_File(static_cast<enum MyEA::Common::ENUM_TYPE_FILE_LOG>(type_file_log_received), MyEA::Time::Date_Time_Now() + ": " + std::string(tmp_wchar_to_wstring.begin(), tmp_wchar_to_wstring.end())));
             }
             else { return(false); }
         }
         
-        DLL_API bool DLL_API API__Neural_Network__Load_Neural_Network(bool const is_type_position_long_received,
+        DLL_API bool API__Neural_Network__Load_Neural_Network(bool const is_type_position_long_received,
                                                                                                                          unsigned int const type_indicator_received,
                                                                                                                          unsigned int const type_neural_network_use_received)
         {
@@ -1609,7 +1609,7 @@ namespace MyEA
             else { return(false); }
         }
 
-        DLL_API bool DLL_API API__Neural_Network__Save_Neural_Network(bool const is_type_position_long_received,
+        DLL_API bool API__Neural_Network__Save_Neural_Network(bool const is_type_position_long_received,
                                                                                                                          unsigned int const type_indicator_received,
                                                                                                                          unsigned int const type_neural_network_use_received)
         {
@@ -1621,7 +1621,7 @@ namespace MyEA
             else { return(false); }
         }
 
-        DLL_API bool DLL_API API__Neural_Network__Deinitialize(bool const is_type_position_long_received, unsigned int const type_indicator_received)
+        DLL_API bool API__Neural_Network__Deinitialize(bool const is_type_position_long_received, unsigned int const type_indicator_received)
         {
             if(global_ptr_vector_ptr_Threaded_Neural_Network_Manager == nullptr) { return(false); }
 
@@ -1648,7 +1648,7 @@ namespace MyEA
             return(true);
         }
         
-        DLL_API bool DLL_API API__Neural_Network__Allocate(void)
+        DLL_API bool API__Neural_Network__Allocate(void)
         {
             if(global_ptr_vector_ptr_Threaded_Neural_Network_Manager == nullptr)
             {

@@ -16,7 +16,7 @@
 
 #include <MODWT_SAEs_LSTM.hpp>
 
-#include <Tools/Shutdown_Block.hpp>
+#include <Capturing/Shutdown/Shutdown.hpp>
 
 #include <Neural_Network/Neural_Network_Manager.hpp>
 
@@ -46,7 +46,7 @@ bool Preprocessing__SAEs(class Dataset_Manager<T_> *const ptr_Dataset_Manager_re
                                                                                                 ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__MODWT()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -58,7 +58,7 @@ bool Preprocessing__SAEs(class Dataset_Manager<T_> *const ptr_Dataset_Manager_re
                                                                                                 ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__MODWT()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -94,7 +94,7 @@ bool Preprocessing__SAEs(class Dataset_Manager<T_> *const ptr_Dataset_Manager_re
                                                                                                                  ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -111,7 +111,7 @@ bool Preprocessing__SAEs(class Dataset_Manager<T_> *const ptr_Dataset_Manager_re
                                                                                                                  ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -131,7 +131,7 @@ bool Preprocessing__SAEs(class Dataset_Manager<T_> *const ptr_Dataset_Manager_re
                                                                                                              ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -148,7 +148,7 @@ bool Preprocessing__SAEs(class Dataset_Manager<T_> *const ptr_Dataset_Manager_re
                                                                                                              ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -177,7 +177,7 @@ bool Preprocessing__SAEs(class Dataset_Manager<T_> *const ptr_Dataset_Manager_re
                                                                                                              ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -194,7 +194,7 @@ bool Preprocessing__SAEs(class Dataset_Manager<T_> *const ptr_Dataset_Manager_re
                                                                                                              ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -223,7 +223,7 @@ bool Preprocessing__SAEs(class Dataset_Manager<T_> *const ptr_Dataset_Manager_re
                                                                                                              ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -240,7 +240,7 @@ bool Preprocessing__SAEs(class Dataset_Manager<T_> *const ptr_Dataset_Manager_re
                                                                                                              ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -251,21 +251,21 @@ bool Preprocessing__SAEs(class Dataset_Manager<T_> *const ptr_Dataset_Manager_re
     return(true);
 }
 
-bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
+bool MODWT_SAEs_LSTM(class MyEA::Capturing::Shutdown &shutdown_module)
 {
     std::string tmp_finance_name,
                    tmp_sae_name,
                    tmp_lstm_name;
     
-    std::cout << MyEA::String::Get__Time() << ": Financial dataset name: ";
+    std::cout << MyEA::Time::Date_Time_Now() << ": Financial dataset name: ";
 
     getline(std::cin, tmp_finance_name);
 
-    std::cout << MyEA::String::Get__Time() << ": SAEs name: ";
+    std::cout << MyEA::Time::Date_Time_Now() << ": SAEs name: ";
 
     getline(std::cin, tmp_sae_name);
 
-    std::cout << MyEA::String::Get__Time() << ": LSTM name: ";
+    std::cout << MyEA::Time::Date_Time_Now() << ": LSTM name: ";
 
     getline(std::cin, tmp_lstm_name);
     
@@ -274,14 +274,14 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
     SetConsoleTitle(std::string(tmp_finance_name + " - " + tmp_sae_name + " - " + tmp_lstm_name + " | MODWT-SAEs-LSTM").c_str());
 #endif
     
-    class MyEA::Neural_Network::Neural_Network_Manager tmp_Financial_Manager(true, MyEA::Common::ENUM_TYPE_INDICATORS::TYPE_iNONE),
-                                                                                       tmp_SAE_Manager(true, MyEA::Common::ENUM_TYPE_INDICATORS::TYPE_iNONE),
-                                                                                       tmp_LSTM_Manager(true, MyEA::Common::ENUM_TYPE_INDICATORS::TYPE_iNONE);
+    class MyEA::Neural_Network::Neural_Network_Manager tmp_Financial_Manager,
+                                                                                       tmp_SAE_Manager,
+                                                                                       tmp_LSTM_Manager;
     
     if(tmp_Financial_Manager.Initialize_Path(tmp_finance_name, tmp_finance_name) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize_Directory(%s, %s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_finance_name.c_str(),
                                  tmp_finance_name.c_str(),
@@ -292,7 +292,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
     else if(tmp_SAE_Manager.Initialize_Path(tmp_sae_name, tmp_sae_name) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize_Directory(%s, %s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_sae_name.c_str(),
                                  tmp_sae_name.c_str(),
@@ -303,7 +303,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
     else if(tmp_LSTM_Manager.Initialize_Path(tmp_lstm_name, tmp_lstm_name) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize_Directory(%s, %s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_lstm_name.c_str(),
                                  tmp_lstm_name.c_str(),
@@ -321,7 +321,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
     if(tmp_Financial_Manager.Initialize_Dataset_Manager(&tmp_Dataset_Manager_Parameters) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize_Dataset_Manager(ptr)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -341,7 +341,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
     if(tmp_SAE_Manager.Initialize_Dataset_Manager(&tmp_Dataset_Manager_Parameters) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize_Dataset_Manager(ptr)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -350,7 +350,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
     else if(tmp_LSTM_Manager.Initialize_Dataset_Manager(&tmp_Dataset_Manager_Parameters) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize_Dataset_Manager(ptr)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -361,25 +361,25 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
     // Memory allocate.
     size_t const tmp_remaining_available_system_memory(Get__Remaining_Available_System_Memory(10.0L, KILOBYTE * KILOBYTE * KILOBYTE));
 
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-    PRINT_FORMAT("%s: Maximum available memory allocatable:" NEW_LINE, MyEA::String::Get__Time().c_str());
-    PRINT_FORMAT("%s:\tRange[1, %zu] MBs." NEW_LINE, MyEA::String::Get__Time().c_str(), tmp_remaining_available_system_memory / KILOBYTE / KILOBYTE);
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    PRINT_FORMAT("%s: Maximum available memory allocatable:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    PRINT_FORMAT("%s:\tRange[1, %zu] MBs." NEW_LINE, MyEA::Time::Date_Time_Now().c_str(), tmp_remaining_available_system_memory / KILOBYTE / KILOBYTE);
 
     size_t const tmp_maximum_host_memory_allocate_bytes(MyEA::String::Cin_Number<size_t>(1_zu,
                                                                                                                                                tmp_remaining_available_system_memory / KILOBYTE / KILOBYTE,
-                                                                                                                                               MyEA::String::Get__Time() + ": Maximum memory allocation (MBs): ") * 1024u * 1024u);
+                                                                                                                                               MyEA::Time::Date_Time_Now() + ": Maximum memory allocation (MBs): ") * 1024u * 1024u);
     // |END| Memory allocate. |END|
     
     // CUDA.
 #if defined(COMPILE_CUDA)
     size_t tmp_maximum_device_memory_allocate_bytes(0_zu);
 
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-    if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to use CUDA?"))
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to use CUDA?"))
     {
         int tmp_index_device(-1);
 
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         tmp_SAE_Manager.Set__Use__CUDA(CUDA__Input__Use__CUDA(tmp_index_device, tmp_maximum_device_memory_allocate_bytes));
     }
 #endif
@@ -407,7 +407,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
         {
         #if defined(COMPILE_CUDA)
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Neural_Network(%s, %zu, %zu, false)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      MyEA::Common::ENUM_TYPE_NEURAL_NETWORK_USE_NAMES[MyEA::Common::ENUM_TYPE_NEURAL_NETWORK_USE::TYPE_NEURAL_NETWORK_TRAINER].c_str(),
                                      tmp_maximum_host_memory_allocate_bytes,
@@ -415,7 +415,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
                                      __LINE__);
         #else
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Neural_Network(%s, %zu, false)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      MyEA::Common::ENUM_TYPE_NEURAL_NETWORK_USE_NAMES[MyEA::Common::ENUM_TYPE_NEURAL_NETWORK_USE::TYPE_NEURAL_NETWORK_TRAINER].c_str(),
                                      tmp_maximum_host_memory_allocate_bytes,
@@ -437,7 +437,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
         {
         #if defined(COMPILE_CUDA)
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Neural_Network(%s, %zu, %zu, true)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      MyEA::Common::ENUM_TYPE_NEURAL_NETWORK_USE_NAMES[MyEA::Common::ENUM_TYPE_NEURAL_NETWORK_USE::TYPE_NEURAL_NETWORK_TRAINED].c_str(),
                                      tmp_maximum_host_memory_allocate_bytes,
@@ -445,7 +445,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
                                      __LINE__);
         #else
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Neural_Network(%s, %zu, true)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      MyEA::Common::ENUM_TYPE_NEURAL_NETWORK_USE_NAMES[MyEA::Common::ENUM_TYPE_NEURAL_NETWORK_USE::TYPE_NEURAL_NETWORK_TRAINED].c_str(),
                                      tmp_maximum_host_memory_allocate_bytes,
@@ -463,7 +463,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
     if(tmp_ptr_SAE->Set__Input_Mode(true) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Input_Mode(true)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -472,7 +472,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
     else if(tmp_ptr_SAE->Set__Output_Mode(false) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Output_Mode(false)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -494,7 +494,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
         {
         #if defined(COMPILE_CUDA)
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Neural_Network(%s, %zu, %zu, false)\" function. At line %d." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         MyEA::Common::ENUM_TYPE_NEURAL_NETWORK_USE_NAMES[MyEA::Common::ENUM_TYPE_NEURAL_NETWORK_USE::TYPE_NEURAL_NETWORK_TRAINER].c_str(),
                                         tmp_maximum_host_memory_allocate_bytes,
@@ -502,7 +502,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
                                         __LINE__);
         #else
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Neural_Network(%s, %zu, false)\" function. At line %d." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         MyEA::Common::ENUM_TYPE_NEURAL_NETWORK_USE_NAMES[MyEA::Common::ENUM_TYPE_NEURAL_NETWORK_USE::TYPE_NEURAL_NETWORK_TRAINER].c_str(),
                                         tmp_maximum_host_memory_allocate_bytes,
@@ -524,7 +524,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
         {
         #if defined(COMPILE_CUDA)
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Neural_Network(%s, %zu, %zu, true)\" function. At line %d." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         MyEA::Common::ENUM_TYPE_NEURAL_NETWORK_USE_NAMES[MyEA::Common::ENUM_TYPE_NEURAL_NETWORK_USE::TYPE_NEURAL_NETWORK_TRAINED].c_str(),
                                         tmp_maximum_host_memory_allocate_bytes,
@@ -532,7 +532,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
                                         __LINE__);
         #else
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load_Neural_Network(%s, %zu, true)\" function. At line %d." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         MyEA::Common::ENUM_TYPE_NEURAL_NETWORK_USE_NAMES[MyEA::Common::ENUM_TYPE_NEURAL_NETWORK_USE::TYPE_NEURAL_NETWORK_TRAINED].c_str(),
                                         tmp_maximum_host_memory_allocate_bytes,
@@ -554,7 +554,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
     if(tmp_ptr_LSTM_Dataset->Get__Number_Examples() == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -563,7 +563,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
     else if(tmp_ptr_LSTM_Dataset->Get__Number_Examples() != tmp_ptr_SAEs_Dataset->Get__Number_Examples())
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of data (%zu) differ from the number of data received as argument (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_ptr_LSTM_Dataset->Get__Number_Examples(),
                                  tmp_ptr_SAEs_Dataset->Get__Number_Examples(),
@@ -574,7 +574,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
     else if(tmp_ptr_LSTM_Dataset->Get__Number_Recurrent_Depth() != tmp_ptr_SAEs_Dataset->Get__Number_Recurrent_Depth())
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of recurrent depth (%zu) differ from the number of recurrent depth received as argument (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_ptr_LSTM_Dataset->Get__Number_Recurrent_Depth(),
                                  tmp_ptr_SAEs_Dataset->Get__Number_Recurrent_Depth(),
@@ -587,7 +587,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
                                                                             tmp_ptr_SAE->number_recurrent_depth) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Check_Topology(%zu, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_ptr_SAE->number_inputs,
                                  tmp_ptr_SAE->number_outputs,
@@ -599,7 +599,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
     else if(tmp_ptr_SAE->type_network != MyEA::Common::ENUM_TYPE_NETWORKS::TYPE_NETWORK_AUTOENCODER)
     {
         PRINT_FORMAT("%s: %s: ERROR: The neural network (%s) receive as argument need to be a %s. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  MyEA::Common::ENUM_TYPE_NETWORKS_NAMES[tmp_ptr_SAE->type_network].c_str(),
                                  MyEA::Common::ENUM_TYPE_NETWORKS_NAMES[MyEA::Common::ENUM_TYPE_NETWORKS::TYPE_NETWORK_AUTOENCODER].c_str(),
@@ -612,7 +612,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
                                                                             tmp_ptr_LSTM->number_recurrent_depth) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Check_Topology(%zu, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_ptr_LSTM->number_inputs,
                                  tmp_ptr_LSTM->number_outputs,
@@ -624,7 +624,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
     else if(tmp_ptr_LSTM_Dataset->Get__Number_Inputs() != tmp_ptr_SAE->Get__Output_Size())
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of input(s) (%zu) differ from the number of output(s) from the autoencoder (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_ptr_LSTM_Dataset->Get__Number_Inputs(),
                                  tmp_ptr_SAE->Get__Output_Size(),
@@ -635,8 +635,8 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
     // |END| Validate input(s)/output(s) size. |END|
     
     // Input for optimization.
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-    bool const tmp_optimization(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to optimize?"));
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    bool const tmp_optimization(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to optimize?"));
 
     size_t tmp_optimization_time_sae(1_zu),
               tmp_optimization_time_lstm(1_zu);
@@ -645,15 +645,15 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
 
     if(tmp_optimization)
     {
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s: SAEs optimization time." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\tdefault=120 (seconds)." NEW_LINE, MyEA::String::Get__Time().c_str());
-        tmp_optimization_time_sae = MyEA::String::Cin_Number<size_t>(1_zu, MyEA::String::Get__Time() + ": Time in seconds: ");
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s: SAEs optimization time." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\tdefault=120 (seconds)." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        tmp_optimization_time_sae = MyEA::String::Cin_Number<size_t>(1_zu, MyEA::Time::Date_Time_Now() + ": Time in seconds: ");
         
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s: LSTM optimization time." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\tdefault=120 (seconds)." NEW_LINE, MyEA::String::Get__Time().c_str());
-        tmp_optimization_time_lstm = MyEA::String::Cin_Number<size_t>(1_zu, MyEA::String::Get__Time() + ": Time in seconds: ");
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s: LSTM optimization time." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\tdefault=120 (seconds)." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        tmp_optimization_time_lstm = MyEA::String::Cin_Number<size_t>(1_zu, MyEA::Time::Date_Time_Now() + ": Time in seconds: ");
 
         tmp_while_condition.type_while_condition = MyEA::Common::ENUM_TYPE_WHILE_CONDITION::TYPE_WHILE_CONDITION_EXPIRATION;
     }
@@ -663,7 +663,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
     if(Preprocessing__SAEs(tmp_ptr_SAEs_Dataset) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__SAEs(ptr)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -696,18 +696,18 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
                     tmp_thread_LSTM;
 
     // EMA.
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-    PRINT_FORMAT("%s: Exponential moving average." NEW_LINE, MyEA::String::Get__Time().c_str());
-    PRINT_FORMAT("%s:\tRange[1 , - ]." NEW_LINE, MyEA::String::Get__Time().c_str());
-    PRINT_FORMAT("%s:\tdefault=24." NEW_LINE, MyEA::String::Get__Time().c_str());
-    tmp_time_average = MyEA::String::Cin_Number<size_t>(0_zu, MyEA::String::Get__Time() + ": Time average: ");
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    PRINT_FORMAT("%s: Exponential moving average." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    PRINT_FORMAT("%s:\tRange[1 , - ]." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    PRINT_FORMAT("%s:\tdefault=24." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    tmp_time_average = MyEA::String::Cin_Number<size_t>(0_zu, MyEA::Time::Date_Time_Now() + ": Time average: ");
     tmp_EMA = tmp_time_average == 0_zu ? 0_T : 1_T / static_cast<T_>(tmp_time_average);
     // |END| EMA. |END|
 
     if((tmp_ptr_matrix_inputs = new T_*[1u]) == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  sizeof(T_*),
                                  __LINE__);
@@ -718,7 +718,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
     if((tmp_ptr_matrix_outputs = new T_*[1u]) == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  sizeof(T_*),
                                  __LINE__);
@@ -729,7 +729,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
     if((tmp_ptr_array_sae_inputs = new T_[tmp_ptr_SAE->number_inputs * tmp_ptr_SAE->number_recurrent_depth]) == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_ptr_SAE->number_inputs * tmp_ptr_SAE->number_recurrent_depth * sizeof(T_),
                                  __LINE__);
@@ -740,7 +740,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
     if((tmp_ptr_array_lstm_inputs = new T_[tmp_ptr_LSTM->number_inputs * tmp_ptr_LSTM->number_recurrent_depth]) == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_ptr_LSTM->number_inputs * tmp_ptr_LSTM->number_recurrent_depth * sizeof(T_),
                                  __LINE__);
@@ -751,7 +751,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
     if((tmp_ptr_array_lstm_outputs = new T_[tmp_ptr_LSTM->number_outputs * tmp_ptr_LSTM->number_recurrent_depth]) == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_ptr_LSTM->number_outputs * tmp_ptr_LSTM->number_recurrent_depth * sizeof(T_),
                                  __LINE__);
@@ -760,35 +760,35 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
     }
     
 #if defined(COMPILE_UI)
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-    bool const tmp_print_chart(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to print the chart?"));
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    bool const tmp_print_chart(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to print the chart?"));
 
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-    PRINT_FORMAT("%s: FORM: Allocate." NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    PRINT_FORMAT("%s: FORM: Allocate." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     MyEA::Form::API__Form__Neural_Network__Allocate();
 
-    PRINT_FORMAT("%s: FORM: Initialize chart of type loss with 2 series." NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s: FORM: Initialize chart of type loss with 2 series." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     MyEA::Form::API__Form__Neural_Network__Chart_Initialize(MyEA::Common::ENUM_TYPE_CHART::TYPE_CHART_LOSS, 2u);
 
-    PRINT_FORMAT("%s: FORM: Initialize chart of type accuracy with 2 series." NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s: FORM: Initialize chart of type accuracy with 2 series." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     MyEA::Form::API__Form__Neural_Network__Chart_Initialize(MyEA::Common::ENUM_TYPE_CHART::TYPE_CHART_ACCURACY, 2u);
     
-    PRINT_FORMAT("%s: FORM: Initialize chart of type output with 2 series." NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s: FORM: Initialize chart of type output with 2 series." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     MyEA::Form::API__Form__Neural_Network__Chart_Initialize(MyEA::Common::ENUM_TYPE_CHART::TYPE_CHART_OUTPUT, 2u);
 
-    PRINT_FORMAT("%s: FORM: Enable training series." NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s: FORM: Enable training series." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     MyEA::Form::API__Form__Neural_Network__Chart_Use_Datapoint_Training(true);
 
-    PRINT_FORMAT("%s: FORM: Initialize chart means at 100 datapoint." NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s: FORM: Initialize chart means at 100 datapoint." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     MyEA::Form::API__Form__Neural_Network__Chart_Total_Means(100u);
 
     if(tmp_print_chart)
     {
-        PRINT_FORMAT("%s: FORM: Maximum ploted example(s)." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s: FORM: Maximum ploted example(s)." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         if(tmp_ptr_SAEs_Dataset->User_Controls__Set__Maximum_Ploted_Example() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls__Set__Maximum_Ploted_Example()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -797,11 +797,11 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
 
         tmp_ptr_LSTM_Dataset->Set__Maximum_Ploted_Examples(tmp_ptr_SAEs_Dataset->Get__Maximum_Ploted_Examples());
         
-        PRINT_FORMAT("%s: FORM: Time delay ploted." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s: FORM: Time delay ploted." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         if(tmp_ptr_SAEs_Dataset->User_Controls__Set__Time_Delay_Ploted() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls__Set__Time_Delay_Ploted()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -810,7 +810,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
         else if(tmp_ptr_LSTM_Dataset->Set__Time_Delay_Ploted(tmp_ptr_SAEs_Dataset->Get__Time_Delay_Ploted()) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Time_Delay_Ploted(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_ptr_SAEs_Dataset->Get__Time_Delay_Ploted(),
                                      __LINE__);
@@ -818,11 +818,11 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
             return(false);
         }
 
-        PRINT_FORMAT("%s: FORM: Plot dataset manager." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s: FORM: Plot dataset manager." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         if(tmp_ptr_SAEs_Dataset->Plot__Dataset_Manager() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Plot__Dataset_Manager()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -837,7 +837,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
     }
 #endif
     
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     for(tmp_example_index = 0_zu; tmp_example_index != tmp_number_examples; ++tmp_example_index)
     {
         // Get inputs (financial data).
@@ -860,7 +860,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
                                                                                                               ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -876,7 +876,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
                 if(tmp_ptr_SAEs_Dataset->Preprocessing__Minimum_Maximum_Inverse(tmp_index, ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum_Inverse()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -887,7 +887,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
                 if(tmp_ptr_SAEs_Dataset->Preprocessing__MODWT_Inverse(tmp_index, ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__MODWT_Inverse()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -901,7 +901,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
                                                                                               ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__MODWT()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -914,7 +914,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
                                                                                               ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__MODWT()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -932,7 +932,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
                                                                                                               ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -948,7 +948,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
                                                                                                           ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -962,7 +962,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
                                                                                                           ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -976,7 +976,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
                                                                                                           ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -1082,7 +1082,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
                 if(tmp_ptr_SAEs_Dataset->Preprocessing__Minimum_Maximum_Inverse(tmp_index, ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum_Inverse()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -1092,7 +1092,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
                 if(tmp_ptr_SAEs_Dataset->Preprocessing__Minimum_Maximum_Inverse(tmp_index, ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum_Inverse()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -1107,7 +1107,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
                 if(tmp_ptr_SAEs_Dataset->Preprocessing__MODWT_Inverse(tmp_index, ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__MODWT_Inverse()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -1117,7 +1117,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
                 if(tmp_ptr_SAEs_Dataset->Preprocessing__MODWT_Inverse(tmp_index, ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__MODWT_Inverse()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -1131,7 +1131,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
             if(tmp_ptr_SAEs_Dataset->Preprocessing__Minimum_Maximum_Inverse(9_zu, ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum_Inverse()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -1141,7 +1141,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
             if(tmp_ptr_SAEs_Dataset->Preprocessing__Minimum_Maximum_Inverse(9_zu, ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum_Inverse()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -1153,7 +1153,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
             if(tmp_ptr_SAEs_Dataset->Preprocessing__Minimum_Maximum_Inverse(10_zu, ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum_Inverse()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -1163,7 +1163,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
             if(tmp_ptr_SAEs_Dataset->Preprocessing__Minimum_Maximum_Inverse(10_zu, ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum_Inverse()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -1175,7 +1175,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
             if(tmp_ptr_SAEs_Dataset->Preprocessing__Minimum_Maximum_Inverse(11_zu, ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum_Inverse()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -1185,7 +1185,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
             if(tmp_ptr_SAEs_Dataset->Preprocessing__Minimum_Maximum_Inverse(11_zu, ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum_Inverse()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -1199,7 +1199,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
         if(tmp_append_to_dataset && tmp_SAE_Manager.Append_To_Dataset(tmp_ptr_array_financial_inputs, tmp_ptr_array_financial_inputs) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Append_To_Dataset()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -1210,7 +1210,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
         if(Preprocessing__SAEs(tmp_ptr_SAEs_Dataset) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__SAEs(ptr)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -1270,7 +1270,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
             if(tmp_ptr_SAEs_Dataset->Plot__Dataset_Manager() == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Plot__Dataset_Manager()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -1302,7 +1302,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
             if(tmp_append_to_dataset && tmp_LSTM_Manager.Append_To_Dataset(tmp_ptr_array_lstm_inputs, tmp_ptr_array_lstm_outputs) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Append_To_Dataset()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -1320,7 +1320,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
             if(tmp_print_chart && tmp_ptr_LSTM_Dataset->Plot__Dataset_Manager() == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Plot__Dataset_Manager()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -1333,7 +1333,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
             if(tmp_SAE_Manager.Set__While_Condition_Optimization(tmp_while_condition) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__While_Condition_Optimization()\" function. At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             __LINE__);
 
@@ -1344,7 +1344,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
             if(tmp_SAE_Manager.Testing_If_Require__Pre_Training() == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Testing_If_Require__Pre_Training()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -1359,7 +1359,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
             if(tmp_LSTM_Manager.Set__While_Condition_Optimization(tmp_while_condition) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__While_Condition_Optimization()\" function. At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             __LINE__);
 
@@ -1370,7 +1370,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
             if(tmp_LSTM_Manager.Testing_If_Require() == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Testing_If_Require()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -1405,7 +1405,7 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
                     if(tmp_ptr_LSTM_Dataset->Replace_Entries(tmp_ptr_SAEs_Dataset, tmp_ptr_SAE) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Replace_Entries(ptr, ptr)\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
 
@@ -1429,14 +1429,14 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
     delete[](tmp_ptr_matrix_inputs);
 
 #if defined(COMPILE_UI)
-    if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to print the SAEs chart?"))
+    if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to print the SAEs chart?"))
     {
         tmp_ptr_SAEs_Dataset->Set__Plot__Output(true);
 
         if(tmp_ptr_SAEs_Dataset->Plot__Dataset_Manager() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Plot__Dataset_Manager()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -1444,14 +1444,14 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
         }
     }
     
-    if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to print the LSTM chart?"))
+    if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to print the LSTM chart?"))
     {
         tmp_ptr_LSTM_Dataset->Set__Plot__Output(true);
 
         if(tmp_ptr_LSTM_Dataset->Plot__Dataset_Manager(ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Plot__Dataset_Manager()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -1461,8 +1461,8 @@ bool MODWT_SAEs_LSTM(class Shutdown_Block &ref_Shutdown_Block_received)
     
     PAUSE_TERMINAL();
     
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-    PRINT_FORMAT("%s: FORM: Deallocate." NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    PRINT_FORMAT("%s: FORM: Deallocate." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     MyEA::Form::API__Form__Neural_Network__Deallocate();
 #endif
 

@@ -1,6 +1,6 @@
 #include "stdafx.hpp"
 
-#include <Math/Mathematic.hpp>
+#include <Math/Math.hpp>
 
 #include <Neural_Network/Neural_Network.hpp>
 
@@ -16,7 +16,7 @@ void Neural_Network::RNN__Forward_Pass_Batch__Loop(size_t const batch_size_recei
     if(batch_size_received > this->batch_size)
     {
         PRINT_FORMAT("%s: %s: ERROR: Overflow of memory. Unable to process %zu examples out of %zu allocated examples. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  batch_size_received,
                                  this->batch_size,
@@ -103,7 +103,7 @@ void Neural_Network::RNN__Forward_Pass_Batch__Loop(size_t const batch_size_recei
             case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_RESIDUAL: this->Recurrent__Forward_Pass__Residual__Loop(batch_size_received, tmp_ptr_layer_it); break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_ptr_layer_it->type_layer,
                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str());
@@ -122,7 +122,7 @@ void Neural_Network::RNN__Forward_Pass_Batch__Pre_Training__Loop(size_t const ba
     if(batch_size_received > this->batch_size)
     {
         PRINT_FORMAT("%s: %s: ERROR: Overflow of memory. Unable to process %zu examples out of %zu allocated examples. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  batch_size_received,
                                  this->batch_size,
@@ -133,7 +133,7 @@ void Neural_Network::RNN__Forward_Pass_Batch__Pre_Training__Loop(size_t const ba
     else if(this->pre_training_level == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: The neural network use the pre-training function without the mode pre-training activate. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -205,7 +205,7 @@ void Neural_Network::RNN__Forward_Pass_Batch__Pre_Training__Loop(size_t const ba
                     break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_ptr_layer_it->type_layer,
                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str());
@@ -251,7 +251,7 @@ void Neural_Network::RNN__Forward_Pass_Batch__Pre_Training__Loop(size_t const ba
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_ptr_layer_it->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str());
@@ -296,7 +296,7 @@ void Neural_Network::RNN__Forward_Pass_Batch__Pre_Training__Loop(size_t const ba
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_ptr_layer_it->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str());
@@ -622,7 +622,7 @@ void Neural_Network::Recurrent__Forward_Pass__Residual__Loop(size_t const batch_
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer normalization (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              ptr_layer_it_received->type_normalization,
                                              MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[ptr_layer_it_received->type_normalization].c_str());
@@ -738,7 +738,7 @@ void Neural_Network::Recurrent__Forward_Pass__Residual__Layer__Loop(bool const i
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ptr_layer_it_received->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[ptr_layer_it_received->type_layer].c_str());
@@ -826,7 +826,7 @@ void Neural_Network::Forward_Pass__FC_Ind_RNN__Loop(size_t const time_step_index
     }
     else
     {
-    #if defined(COMPILE_ADEPT)
+    #if defined(COMPILE_AUTODIFF)
         // Identity.
         for(tmp_example_index = 0_zu; tmp_example_index != batch_size_received; ++tmp_example_index)
         {

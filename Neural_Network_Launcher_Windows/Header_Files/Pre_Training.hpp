@@ -1,3 +1,3 @@
 #pragma once
 
-bool Pre_Training(class Shutdown_Block &ref_Shutdown_Block_received);
+bool Pre_Training(class MyEA::Capturing::Shutdown &shutdown_module);

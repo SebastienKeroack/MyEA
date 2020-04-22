@@ -21,7 +21,7 @@ bool Neural_Network::Set__Dropout(size_t const index_layer_received,
     else if(this->ptr_array_layers == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_array_layers\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -42,7 +42,7 @@ bool Neural_Network::Set__Dropout(struct Layer *const ptr_layer_received,
     if(ptr_layer_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_layer_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -51,7 +51,7 @@ bool Neural_Network::Set__Dropout(struct Layer *const ptr_layer_received,
     else if(ptr_layer_received == this->ptr_last_layer - 1)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is the output layer. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -63,7 +63,7 @@ bool Neural_Network::Set__Dropout(struct Layer *const ptr_layer_received,
         if(ptr_layer_received == this->ptr_last_layer - (this->total_layers - 3_zu) / 2_zu + 2_zu)
         {
             PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is a coded layer. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -72,7 +72,7 @@ bool Neural_Network::Set__Dropout(struct Layer *const ptr_layer_received,
         else if(ptr_layer_received >= this->ptr_last_layer - (this->total_layers - 3_zu) / 2_zu + 1_zu)
         {
             PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is a decoded layer. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -117,7 +117,7 @@ bool Neural_Network::Set__Dropout_None(struct Layer *const ptr_layer_received)
                                                                 0_T));
         default:
             PRINT_FORMAT("%s: %s: ERROR: Dropout layer type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ptr_layer_received->type_dropout,
                                      MyEA::Common::ENUM_TYPE_LAYER_DROPOUT_NAMES[ptr_layer_received->type_dropout].c_str(),
@@ -131,7 +131,7 @@ bool Neural_Network::Set__Dropout_Alpha(struct Layer *const ptr_layer_received, 
     if(ptr_layer_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_layer_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -140,7 +140,7 @@ bool Neural_Network::Set__Dropout_Alpha(struct Layer *const ptr_layer_received, 
     else if(ptr_layer_received == this->ptr_last_layer - 1)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is the output layer. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -149,7 +149,7 @@ bool Neural_Network::Set__Dropout_Alpha(struct Layer *const ptr_layer_received, 
     else if(dropout_probability_received < 0_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: Probability of dropout (%f) less than zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(dropout_probability_received),
                                  __LINE__);
@@ -158,7 +158,7 @@ bool Neural_Network::Set__Dropout_Alpha(struct Layer *const ptr_layer_received, 
     else if(dropout_probability_received > 1_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: Probability of retention (%f) bigger than one. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(dropout_probability_received),
                                  __LINE__);
@@ -173,7 +173,7 @@ bool Neural_Network::Set__Dropout_Alpha(struct Layer *const ptr_layer_received, 
             if(this->Set__Dropout_None(ptr_layer_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Dropout_None(ptr)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -199,7 +199,7 @@ bool Neural_Network::Set__Dropout_Alpha(struct Layer *const ptr_layer_received, 
                 if(this->Allocate__Generator__Dropout_Bernoulli() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Generator__Dropout_Bernoulli()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
                     
@@ -212,7 +212,7 @@ bool Neural_Network::Set__Dropout_Alpha(struct Layer *const ptr_layer_received, 
                 else if(this->Allocate__Neuron__Mask_Dropout_Bernoulli() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Neuron__Mask_Dropout_Bernoulli()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
                     
@@ -258,7 +258,7 @@ bool Neural_Network::Set__Dropout_Bernoulli(struct Layer *const ptr_layer_receiv
     if(ptr_layer_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_layer_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -267,7 +267,7 @@ bool Neural_Network::Set__Dropout_Bernoulli(struct Layer *const ptr_layer_receiv
     else if(ptr_layer_received == this->ptr_last_layer - 1)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is the output layer. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -276,7 +276,7 @@ bool Neural_Network::Set__Dropout_Bernoulli(struct Layer *const ptr_layer_receiv
     else if(retention_probability_received < 0_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: Probability of retention (%f) less than zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(retention_probability_received),
                                  __LINE__);
@@ -286,7 +286,7 @@ bool Neural_Network::Set__Dropout_Bernoulli(struct Layer *const ptr_layer_receiv
     else if(retention_probability_received > 1_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: Probability of retention (%f) bigger than one. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(retention_probability_received),
                                  __LINE__);
@@ -301,7 +301,7 @@ bool Neural_Network::Set__Dropout_Bernoulli(struct Layer *const ptr_layer_receiv
             if(this->Set__Dropout_None(ptr_layer_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Dropout_None(ptr)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -326,7 +326,7 @@ bool Neural_Network::Set__Dropout_Bernoulli(struct Layer *const ptr_layer_receiv
                 if(this->Allocate__Generator__Dropout_Bernoulli() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Generator__Dropout_Bernoulli()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
                     
@@ -339,7 +339,7 @@ bool Neural_Network::Set__Dropout_Bernoulli(struct Layer *const ptr_layer_receiv
                 else if(this->Allocate__Neuron__Mask_Dropout_Bernoulli() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Neuron__Mask_Dropout_Bernoulli()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
                     
@@ -380,7 +380,7 @@ bool Neural_Network::Set__Dropout_Bernoulli_Inverted(struct Layer *const ptr_lay
     if(ptr_layer_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_layer_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -389,7 +389,7 @@ bool Neural_Network::Set__Dropout_Bernoulli_Inverted(struct Layer *const ptr_lay
     else if(ptr_layer_received == this->ptr_last_layer - 1)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is the output layer. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -398,7 +398,7 @@ bool Neural_Network::Set__Dropout_Bernoulli_Inverted(struct Layer *const ptr_lay
     else if(retention_probability_received < 0_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: Probability of retention (%f) less than zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(retention_probability_received),
                                  __LINE__);
@@ -408,7 +408,7 @@ bool Neural_Network::Set__Dropout_Bernoulli_Inverted(struct Layer *const ptr_lay
     else if(retention_probability_received > 1_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: Probability of retention (%f) bigger than one. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(retention_probability_received),
                                  __LINE__);
@@ -423,7 +423,7 @@ bool Neural_Network::Set__Dropout_Bernoulli_Inverted(struct Layer *const ptr_lay
             if(this->Set__Dropout_None(ptr_layer_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Dropout_None(ptr)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -442,7 +442,7 @@ bool Neural_Network::Set__Dropout_Bernoulli_Inverted(struct Layer *const ptr_lay
                 if(this->Allocate__Generator__Dropout_Bernoulli() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Generator__Dropout_Bernoulli()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
                     
@@ -455,7 +455,7 @@ bool Neural_Network::Set__Dropout_Bernoulli_Inverted(struct Layer *const ptr_lay
                 else if(this->Allocate__Neuron__Mask_Dropout_Bernoulli() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Neuron__Mask_Dropout_Bernoulli()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
                     
@@ -496,7 +496,7 @@ bool Neural_Network::Set__Dropout_Gaussian(struct Layer *const ptr_layer_receive
     if(ptr_layer_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_layer_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -505,7 +505,7 @@ bool Neural_Network::Set__Dropout_Gaussian(struct Layer *const ptr_layer_receive
     else if(ptr_layer_received == this->ptr_last_layer - 1)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is the output layer. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -514,7 +514,7 @@ bool Neural_Network::Set__Dropout_Gaussian(struct Layer *const ptr_layer_receive
     else if(dropout_probability_received < 0_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: Probability of dropout (%f) less than zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(dropout_probability_received),
                                  __LINE__);
@@ -523,7 +523,7 @@ bool Neural_Network::Set__Dropout_Gaussian(struct Layer *const ptr_layer_receive
     else if(dropout_probability_received > 1_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: Probability of retention (%f) bigger than one. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(dropout_probability_received),
                                  __LINE__);
@@ -538,7 +538,7 @@ bool Neural_Network::Set__Dropout_Gaussian(struct Layer *const ptr_layer_receive
             if(this->Set__Dropout_None(ptr_layer_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Dropout_None(ptr)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -558,7 +558,7 @@ bool Neural_Network::Set__Dropout_Gaussian(struct Layer *const ptr_layer_receive
                 if(this->Allocate__Generator__Dropout_Gaussian() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Generator__Dropout_Gaussian()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
                     
@@ -586,7 +586,7 @@ bool Neural_Network::Set__Dropout_ShakeDrop(struct Layer *const ptr_layer_receiv
     if(ptr_layer_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_layer_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -595,7 +595,7 @@ bool Neural_Network::Set__Dropout_ShakeDrop(struct Layer *const ptr_layer_receiv
     else if(ptr_layer_received->type_layer != MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_RESIDUAL)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is not a residual layer. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -604,7 +604,7 @@ bool Neural_Network::Set__Dropout_ShakeDrop(struct Layer *const ptr_layer_receiv
     else if(dropout_probability_received < 0_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: Probability of dropout (%f) less than zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(dropout_probability_received),
                                  __LINE__);
@@ -613,7 +613,7 @@ bool Neural_Network::Set__Dropout_ShakeDrop(struct Layer *const ptr_layer_receiv
     else if(dropout_probability_received > 1_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: Probability of retention (%f) bigger than one. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(dropout_probability_received),
                                  __LINE__);
@@ -628,7 +628,7 @@ bool Neural_Network::Set__Dropout_ShakeDrop(struct Layer *const ptr_layer_receiv
             if(this->Set__Dropout_None(ptr_layer_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Dropout_None(ptr)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -650,7 +650,7 @@ bool Neural_Network::Set__Dropout_ShakeDrop(struct Layer *const ptr_layer_receiv
                 if(this->Allocate__Generator__Dropout_ShakeDrop() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Generator__Dropout_ShakeDrop()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
                     
@@ -663,7 +663,7 @@ bool Neural_Network::Set__Dropout_ShakeDrop(struct Layer *const ptr_layer_receiv
                 else if(this->Allocate__Layer__Mask__Dropout__ShakeDrop() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Layer__Mask__Dropout__ShakeDrop()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
                     
@@ -696,7 +696,7 @@ bool Neural_Network::Set__Dropout_Uout(struct Layer *const ptr_layer_received, T
     if(ptr_layer_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_layer_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -705,7 +705,7 @@ bool Neural_Network::Set__Dropout_Uout(struct Layer *const ptr_layer_received, T
     else if(ptr_layer_received == this->ptr_last_layer - 1)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is the output layer. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -714,7 +714,7 @@ bool Neural_Network::Set__Dropout_Uout(struct Layer *const ptr_layer_received, T
     else if(dropout_probability_received < 0_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: Probability of dropout (%f) less than zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(dropout_probability_received),
                                  __LINE__);
@@ -723,7 +723,7 @@ bool Neural_Network::Set__Dropout_Uout(struct Layer *const ptr_layer_received, T
     else if(dropout_probability_received > 1_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: Probability of retention (%f) bigger than one. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(dropout_probability_received),
                                  __LINE__);
@@ -738,7 +738,7 @@ bool Neural_Network::Set__Dropout_Uout(struct Layer *const ptr_layer_received, T
             if(this->Set__Dropout_None(ptr_layer_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Dropout_None(ptr)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -757,7 +757,7 @@ bool Neural_Network::Set__Dropout_Uout(struct Layer *const ptr_layer_received, T
                 if(this->Allocate__Generator__Dropout_Uout() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Generator__Dropout_Uout()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
                     
@@ -787,7 +787,7 @@ bool Neural_Network::Set__Dropout_Zoneout(struct Layer *const ptr_layer_received
     if(ptr_layer_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_layer_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -796,7 +796,7 @@ bool Neural_Network::Set__Dropout_Zoneout(struct Layer *const ptr_layer_received
     else if(ptr_layer_received == this->ptr_array_layers)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is the input layer. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -805,7 +805,7 @@ bool Neural_Network::Set__Dropout_Zoneout(struct Layer *const ptr_layer_received
     else if(ptr_layer_received == this->ptr_last_layer - 1)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is the output layer. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -814,7 +814,7 @@ bool Neural_Network::Set__Dropout_Zoneout(struct Layer *const ptr_layer_received
     else if(zoneout_cell_received < 0_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: Probability of zoneout cell (%f) less than zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(zoneout_cell_received),
                                  __LINE__);
@@ -823,7 +823,7 @@ bool Neural_Network::Set__Dropout_Zoneout(struct Layer *const ptr_layer_received
     else if(zoneout_cell_received > 1_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: Probability of zoneout cell (%f) bigger than one. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(zoneout_cell_received),
                                  __LINE__);
@@ -833,7 +833,7 @@ bool Neural_Network::Set__Dropout_Zoneout(struct Layer *const ptr_layer_received
     else if(zoneout_hidden_received < 0_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: Probability of zoneout hidden (%f) less than zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(zoneout_hidden_received),
                                  __LINE__);
@@ -842,7 +842,7 @@ bool Neural_Network::Set__Dropout_Zoneout(struct Layer *const ptr_layer_received
     else if(zoneout_hidden_received > 1_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: Probability of zoneout hidden (%f) bigger than one. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(zoneout_hidden_received),
                                  __LINE__);
@@ -861,7 +861,7 @@ bool Neural_Network::Set__Dropout_Zoneout(struct Layer *const ptr_layer_received
             if(this->Set__Dropout_None(ptr_layer_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Dropout_None(ptr)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -885,7 +885,7 @@ bool Neural_Network::Set__Dropout_Zoneout(struct Layer *const ptr_layer_received
                 if(this->Allocate__Generator__Dropout_Zoneout() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Generator__Dropout_Zoneout()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
                     
@@ -898,7 +898,7 @@ bool Neural_Network::Set__Dropout_Zoneout(struct Layer *const ptr_layer_received
                 else if(this->Allocate__Block_Unit__Mask_Dropout_Zoneout() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Block_Unit__Mask_Dropout_Zoneout()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
                     
@@ -939,7 +939,7 @@ void Neural_Network::Scale_Weight__Dropout(T_ const scale_factor_received, struc
         case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_FULLY_CONNECTED: this->Scale_Weight__FC__Forward__Dropout(scale_factor_received, ptr_layer_it_received); break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Type layer (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ptr_layer_it_received->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[ptr_layer_it_received->type_layer].c_str(),

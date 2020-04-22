@@ -160,6 +160,9 @@
     <ClInclude Include="include\Configuration\DTypes.hpp">
       <Filter>include\Configuration</Filter>
     </ClInclude>
+    <ClInclude Include="include\Enums\Enum_Type_Chart.hpp">
+      <Filter>include\Enums</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Reallocate\CPU\Reallocate.cpp">

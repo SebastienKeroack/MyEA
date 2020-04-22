@@ -70,7 +70,7 @@ class Grid_Search
         bool Search(class MyEA::Neural_Network::Neural_Network_Manager &ref_Neural_Network_Manager_received);
         bool Feed_Hyper_Parameters(size_t const hyper_parameters_index_received, class Neural_Network *const ptr_Neural_Network_received);
         bool Allocate__Shutdown_Boolean(void);
-        bool Assign_Shutdown_Block(class Shutdown_Block &ref_Shutdown_Block_received);
+        bool Assign_Shutdown_Block(class MyEA::Capturing::Shutdown &shutdown_module);
         bool Get__On_Shutdown(void) const;
         
     private:
@@ -88,5 +88,5 @@ class Grid_Search
         
         std::vector<size_t> _vector_Tree;
 
-        class MyEA::Common::Class_Generator_Random_Int<size_t> _Generator_Random_Integer;
+        class MyEA::Random::Integer<size_t> _Generator_Random_Integer;
 };

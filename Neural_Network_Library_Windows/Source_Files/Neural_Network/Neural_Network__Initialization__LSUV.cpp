@@ -13,7 +13,7 @@ bool Neural_Network::Initialize__LSUV(size_t const maximum_number_trials_receive
     if(maximum_batch_size_received == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Maximum batch size can not be equal to zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -22,7 +22,7 @@ bool Neural_Network::Initialize__LSUV(size_t const maximum_number_trials_receive
     else if(variance_target_received < 0_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: Variance target (%f) can not be less than zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(variance_target_received),
                                  __LINE__);
@@ -32,7 +32,7 @@ bool Neural_Network::Initialize__LSUV(size_t const maximum_number_trials_receive
     else if(variance_tolerance_received < 0_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: Variance tolerance (%f) can not be less than zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(variance_tolerance_received),
                                  __LINE__);
@@ -58,7 +58,7 @@ bool Neural_Network::Initialization__LSUV(class Dataset<T_> const *const ptr_Dat
     if(ptr_Dataset_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_Dataset_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -74,7 +74,7 @@ bool Neural_Network::Initialization__LSUV(class Dataset<T_> const *const ptr_Dat
     if(this->Update__Batch_Size(tmp_number_examples) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update__Batch_Size(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_number_examples,
                                  __LINE__);
@@ -87,7 +87,7 @@ bool Neural_Network::Initialization__LSUV(class Dataset<T_> const *const ptr_Dat
         if(this->Update__Thread_Size(tmp_number_examples) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update__Thread_Size(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_number_examples,
                                      __LINE__);
@@ -100,7 +100,7 @@ bool Neural_Network::Initialization__LSUV(class Dataset<T_> const *const ptr_Dat
         if(this->Initialization__LSUV__OpenMP(ptr_Dataset_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialization__LSUV__OpenMP(ptr)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -110,7 +110,7 @@ bool Neural_Network::Initialization__LSUV(class Dataset<T_> const *const ptr_Dat
     else if(this->Initialization__LSUV__Loop(ptr_Dataset_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialization__LSUV__Loop(ptr)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -139,7 +139,7 @@ bool Neural_Network::Initialization__LSUV__Loop(class Dataset<T_> const *const p
     if(ptr_Dataset_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_Dataset_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -233,7 +233,7 @@ bool Neural_Network::Initialization__LSUV__OpenMP(class Dataset<T_> const *const
     if(ptr_Dataset_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_Dataset_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 

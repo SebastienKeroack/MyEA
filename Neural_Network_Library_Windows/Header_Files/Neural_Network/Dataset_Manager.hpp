@@ -1,12 +1,16 @@
 #pragma once
 
+#include <Capturing/Shutdown/Shutdown.hpp>
 #include <Enums/Enum_Type_Dataset.hpp>
 #include <Enums/Enum_Type_Dataset_File.hpp>
 #include <Enums/Enum_Type_Dataset_Process.hpp>
 #include <Enums/Enum_Type_Dataset_Manager_Storage.hpp>
-#include <Tools/Class_Generator_Random.hpp>
+#include <Random/Bernoulli.hpp>
+#include <Random/Floating.hpp>
+#include <Random/Gaussian.hpp>
+#include <Random/Integer.hpp>
 #include <Tools/While_Condition.hpp>
-#include <Math/Mathematic.hpp>
+#include <Math/Math.hpp>
 
 #include <Neural_Network/Neural_Network.hpp>
 
@@ -426,7 +430,7 @@ class Dataset_Mini_Batch : public Dataset<T>
         T const **ptr_array_inputs_array_stochastic = nullptr;
         T const **ptr_array_outputs_array_stochastic = nullptr;
 
-        class MyEA::Common::Class_Generator_Random_Int<size_t> Generator_Random;
+        class MyEA::Random::Integer<size_t> Generator_Random;
 };
 
 template<typename T>
@@ -494,7 +498,7 @@ class Dataset_Cross_Validation : public Dataset<T>
         T const **ptr_array_inputs_array_validation = nullptr;
         T const **ptr_array_outputs_array_validation = nullptr;
 
-        class MyEA::Common::Class_Generator_Random_Int<size_t> Generator_Random;
+        class MyEA::Random::Integer<size_t> Generator_Random;
 };
 
 template<typename T>
@@ -597,9 +601,9 @@ class Gaussian_Search
 
         class Neural_Network *p_ptr_array_individuals = nullptr;
 
-        MyEA::Common::Class_Generator_Random_Int<int> _Class_Generator_Random_Int; // Index generator.
-        MyEA::Common::Class_Generator_Random_Real<T> _Class_Generator_Random_Real;
-        MyEA::Common::Class_Generator_Random_Gaussian<T> _Class_Generator_Random_Gaussian;
+        MyEA::Random::Integer<int> _Class_Generator_Random_Int; // Index generator.
+        MyEA::Random::Floating<T> _Class_Generator_Random_Real;
+        MyEA::Random::Gaussian<T> _Class_Generator_Random_Gaussian;
 };
 
 enum ENUM_TYPE_HYPERPARAMETER_OPTIMIZATION : unsigned int
@@ -818,7 +822,7 @@ class Dataset_Manager : public Dataset<T>, public Hyperparameter_Optimization<T>
         bool User_Controls__Optimization_Processing_Parameters__Cross_Validation(void);
         bool User_Controls__Optimization_Processing_Parameters__Cross_Validation__Gaussian_Search(void);
         bool User_Controls__Optimization(class Neural_Network *&ptr_trainer_Neural_Network_received, class Neural_Network *&ptr_trained_Neural_Network_received);
-        bool Assign_Shutdown_Block(class Shutdown_Block &ref_Shutdown_Block_received);
+        bool Assign_Shutdown_Block(class MyEA::Capturing::Shutdown &shutdown_module);
         bool Get__On_Shutdown(void) const;
         bool Get__Dataset_In_Equal_Less_Holdout_Accepted(void) const;
         bool Use__Metric_Loss(void) const;

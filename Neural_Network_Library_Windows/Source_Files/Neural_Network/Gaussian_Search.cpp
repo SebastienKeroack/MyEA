@@ -25,7 +25,7 @@ bool Gaussian_Search<T>::Initialize__OpenMP(void)
         if(this->Update__Thread_Size(this->_population_size) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update__Thread_Size(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->_population_size,
                                      __LINE__);
@@ -49,7 +49,7 @@ bool Gaussian_Search<T>::Set__OpenMP(bool const use_openmp_received)
         if(this->Initialize__OpenMP() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize__OpenMP()\" function. At line %d." NEW_LINE,
-                MyEA::String::Get__Time().c_str(),
+                MyEA::Time::Date_Time_Now().c_str(),
                 __FUNCTION__,
                 __LINE__);
 
@@ -63,7 +63,7 @@ bool Gaussian_Search<T>::Set__OpenMP(bool const use_openmp_received)
         if(this->Deinitialize__OpenMP() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Deinitialize__OpenMP()\" function. At line %d." NEW_LINE,
-                MyEA::String::Get__Time().c_str(),
+                MyEA::Time::Date_Time_Now().c_str(),
                 __FUNCTION__,
                 __LINE__);
 
@@ -82,7 +82,7 @@ bool Gaussian_Search<T>::Set__Population_Size(size_t const population_size_recei
     if(population_size_received == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: The population size can not be equal to zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -96,7 +96,7 @@ bool Gaussian_Search<T>::Set__Population_Size(size_t const population_size_recei
             if(this->Allocate__Population(population_size_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Population(%zu)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          population_size_received,
                                          __LINE__);
@@ -109,7 +109,7 @@ bool Gaussian_Search<T>::Set__Population_Size(size_t const population_size_recei
             if(this->Reallocate__Population(population_size_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Reallocate__Population(%zu)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          population_size_received,
                                          __LINE__);
@@ -123,7 +123,7 @@ bool Gaussian_Search<T>::Set__Population_Size(size_t const population_size_recei
         if(this->Update__Thread_Size(population_size_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update__Thread_Size(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      population_size_received,
                                      __LINE__);
@@ -141,7 +141,7 @@ bool Gaussian_Search<T>::Set__Population_Gaussian(double const population_gaussi
     if(population_gaussian_percent_received <= 1.0)
     {
         PRINT_FORMAT("%s: %s: ERROR: The population gaussian in percent can not be equal or less than one percent. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -163,7 +163,7 @@ bool Gaussian_Search<T>::Set__Maximum_Thread_Usage(double const percentage_maxim
     if(this->Update__Thread_Size(this->_population_size) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update__Thread_Size(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->_population_size,
                                  __LINE__);
@@ -181,7 +181,7 @@ bool Gaussian_Search<T>::Allocate__Population(size_t const population_size_recei
     if(population_size_received == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: The population size can not be equal to zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -194,7 +194,7 @@ bool Gaussian_Search<T>::Allocate__Population(size_t const population_size_recei
         if((this->p_ptr_array_ptr_individuals = new class Neural_Network*[population_size_received]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      population_size_received * sizeof(class Neural_Network*),
                                      __LINE__);
@@ -207,7 +207,7 @@ bool Gaussian_Search<T>::Allocate__Population(size_t const population_size_recei
             if((this->p_ptr_array_individuals = new class Neural_Network[population_size_received - 1_zu]) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          (population_size_received - 1_zu) * sizeof(class Neural_Network),
                                          __LINE__);
@@ -230,7 +230,7 @@ bool Gaussian_Search<T>::Allocate__Thread(size_t const number_threads_received)
     if(number_threads_received == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: The population size can not be equal to zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -243,7 +243,7 @@ bool Gaussian_Search<T>::Allocate__Thread(size_t const number_threads_received)
         if((this->p_ptr_array_ptr_dataset_manager = new class Dataset_Manager<T>*[number_threads_received]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      number_threads_received * sizeof(class Dataset_Manager<T>*),
                                      __LINE__);
@@ -256,7 +256,7 @@ bool Gaussian_Search<T>::Allocate__Thread(size_t const number_threads_received)
             if((this->p_ptr_array_dataset_manager = new class Dataset_Manager<T>[number_threads_received - 1_zu]) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          (number_threads_received - 1_zu) * sizeof(class Dataset_Manager<T>),
                                          __LINE__);
@@ -279,7 +279,7 @@ bool Gaussian_Search<T>::Reallocate__Population(size_t const population_size_rec
     if(population_size_received == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: The population size can not be equal to zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -289,14 +289,16 @@ bool Gaussian_Search<T>::Reallocate__Population(size_t const population_size_rec
 
     if(this->p_ptr_array_ptr_individuals != nullptr && this->p_ptr_array_individuals != nullptr)
     {
-        this->p_ptr_array_ptr_individuals = Memory::reallocate_pointers_array_cpp<class Neural_Network*>(this->p_ptr_array_ptr_individuals,
-                                                                                                                                                         population_size_received,
-                                                                                                                                                         this->_population_size,
-                                                                                                                                                         false);
+        this->p_ptr_array_ptr_individuals = MyEA::Memory::Cpp::Reallocate_PtOfPt<class Neural_Network*, false>(
+            this->p_ptr_array_ptr_individuals,
+            population_size_received,
+            this->_population_size
+        );
+        
         if(this->p_ptr_array_ptr_individuals == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      population_size_received * sizeof(class Neural_Network*),
                                      __LINE__);
@@ -306,14 +308,13 @@ bool Gaussian_Search<T>::Reallocate__Population(size_t const population_size_rec
 
         if(population_size_received > 1_zu)
         {
-            this->p_ptr_array_individuals = Memory::reallocate_objects_cpp<class Neural_Network>(this->p_ptr_array_individuals,
+            this->p_ptr_array_individuals = MyEA::Memory::Cpp::Reallocate_Objects<class Neural_Network, false>(this->p_ptr_array_individuals,
                                                                                                                                             population_size_received - 1_zu,
-                                                                                                                                            this->_population_size - 1_zu,
-                                                                                                                                            false);
+                                                                                                                                            this->_population_size - 1_zu);
             if(this->p_ptr_array_individuals == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          (population_size_received - 1_zu) * sizeof(class Neural_Network),
                                          __LINE__);
@@ -336,7 +337,7 @@ bool Gaussian_Search<T>::Reallocate__Thread(size_t const number_threads_received
     if(number_threads_received == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: The population size can not be equal to zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -346,14 +347,13 @@ bool Gaussian_Search<T>::Reallocate__Thread(size_t const number_threads_received
 
     if(this->p_ptr_array_ptr_dataset_manager != nullptr && this->p_ptr_array_dataset_manager != nullptr)
     {
-        this->p_ptr_array_ptr_dataset_manager = Memory::reallocate_pointers_array_cpp<class Dataset_Manager<T>*>(this->p_ptr_array_ptr_dataset_manager,
+        this->p_ptr_array_ptr_dataset_manager = MyEA::Memory::Cpp::Reallocate_PtOfPt<class Dataset_Manager<T>*, false>(this->p_ptr_array_ptr_dataset_manager,
                                                                                                                                                                             number_threads_received,
-                                                                                                                                                                            this->_number_threads,
-                                                                                                                                                                            false);
+                                                                                                                                                                            this->_number_threads);
         if(this->p_ptr_array_ptr_dataset_manager == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      number_threads_received * sizeof(class Dataset_Manager<T>*),
                                      __LINE__);
@@ -363,17 +363,19 @@ bool Gaussian_Search<T>::Reallocate__Thread(size_t const number_threads_received
 
         if(number_threads_received > 1_zu)
         {
-            this->p_ptr_array_dataset_manager = Memory::reallocate_objects_cpp<class Dataset_Manager<T>>(this->p_ptr_array_dataset_manager,
-                                                                                                                                                               number_threads_received - 1_zu,
-                                                                                                                                                               this->_number_threads - 1_zu,
-                                                                                                                                                               false);
+            this->p_ptr_array_dataset_manager = MyEA::Memory::Cpp::Reallocate_Objects<class Dataset_Manager<T>, false>(
+                this->p_ptr_array_dataset_manager,
+                number_threads_received - 1_zu,
+                this->_number_threads - 1_zu
+            );
+
             if(this->p_ptr_array_dataset_manager == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
-                                         __FUNCTION__,
-                                         (number_threads_received - 1_zu) * sizeof(class Dataset_Manager<T>),
-                                         __LINE__);
+                             MyEA::Time::Date_Time_Now().c_str(),
+                             __FUNCTION__,
+                             (number_threads_received - 1_zu) * sizeof(class Dataset_Manager<T>),
+                             __LINE__);
 
                 return(false);
             }
@@ -409,7 +411,7 @@ bool Gaussian_Search<T>::Update__Thread_Size(size_t const desired_number_threads
     if(this->Allouable__Thread_Size(desired_number_threads_received, tmp_number_threads_allocate) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allouable__Thread_Size(%zu, %zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  desired_number_threads_received,
                                  tmp_number_threads_allocate,
@@ -426,7 +428,7 @@ bool Gaussian_Search<T>::Update__Thread_Size(size_t const desired_number_threads
             if(this->Allocate__Thread(tmp_number_threads_allocate) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Thread(%zu)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_number_threads_allocate,
                                          __LINE__);
@@ -439,7 +441,7 @@ bool Gaussian_Search<T>::Update__Thread_Size(size_t const desired_number_threads
             if(this->Reallocate__Thread(tmp_number_threads_allocate) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Reallocate__Thread(%zu)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_number_threads_allocate,
                                          __LINE__);
@@ -467,7 +469,7 @@ bool Gaussian_Search<T>::Update__Thread_Size__Population(size_t const desired_nu
     if(this->_population_size == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of neural networks is empty. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -476,7 +478,7 @@ bool Gaussian_Search<T>::Update__Thread_Size__Population(size_t const desired_nu
     else if(this->p_ptr_array_ptr_individuals == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of neural networks is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -496,7 +498,7 @@ bool Gaussian_Search<T>::Update__Thread_Size__Population(size_t const desired_nu
             if(tmp_ptr_Neural_Network == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Neural network #%zu is a nullptr. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_individual_index,
                                          __LINE__);
@@ -508,7 +510,7 @@ bool Gaussian_Search<T>::Update__Thread_Size__Population(size_t const desired_nu
             if(tmp_ptr_Neural_Network->Update__Thread_Size(desired_number_threads_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update__Thread_Size(%zu)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          desired_number_threads_received,
                                          __LINE__);
@@ -528,7 +530,7 @@ bool Gaussian_Search<T>::Update__Batch_Size__Population(size_t const desired_bat
     if(this->_population_size == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of neural networks is empty. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -537,7 +539,7 @@ bool Gaussian_Search<T>::Update__Batch_Size__Population(size_t const desired_bat
     else if(this->p_ptr_array_ptr_individuals == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of neural networks is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -555,7 +557,7 @@ bool Gaussian_Search<T>::Update__Batch_Size__Population(size_t const desired_bat
         if(tmp_ptr_Neural_Network == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Neural network #%zu is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_individual_index,
                                      __LINE__);
@@ -567,7 +569,7 @@ bool Gaussian_Search<T>::Update__Batch_Size__Population(size_t const desired_bat
         if(tmp_ptr_Neural_Network->Update__Batch_Size(desired_batch_size_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update__Batch_Size(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      desired_batch_size_received,
                                      __LINE__);
@@ -586,7 +588,7 @@ bool Gaussian_Search<T>::Update__Population(class Neural_Network *const ptr_sour
     if(this->_population_size == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of neural networks is empty. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -595,7 +597,7 @@ bool Gaussian_Search<T>::Update__Population(class Neural_Network *const ptr_sour
     else if(this->p_ptr_array_ptr_individuals == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of neural networks is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -615,7 +617,7 @@ bool Gaussian_Search<T>::Update__Population(class Neural_Network *const ptr_sour
         if(tmp_ptr_Neural_Network == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Neural network #%zu is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_individual_index,
                                      __LINE__);
@@ -649,7 +651,7 @@ bool Gaussian_Search<T>::Update__Population(class Neural_Network *const ptr_sour
                                                               true) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Copy(ptr, true, true)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -661,7 +663,7 @@ bool Gaussian_Search<T>::Update__Population(class Neural_Network *const ptr_sour
                                                                    true) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update(ptr, true, true)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -679,7 +681,7 @@ bool Gaussian_Search<T>::Update__Dataset_Manager(class Dataset_Manager<T> *const
     if(this->_number_threads == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of dataset manager is empty. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -688,7 +690,7 @@ bool Gaussian_Search<T>::Update__Dataset_Manager(class Dataset_Manager<T> *const
     else if(this->p_ptr_array_ptr_dataset_manager == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of dataset manager is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -708,7 +710,7 @@ bool Gaussian_Search<T>::Update__Dataset_Manager(class Dataset_Manager<T> *const
         if(tmp_ptr_Dataset_Manager == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Dataset manager #%zu is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_thread_index,
                                      __LINE__);
@@ -720,7 +722,7 @@ bool Gaussian_Search<T>::Update__Dataset_Manager(class Dataset_Manager<T> *const
         if(tmp_ptr_Dataset_Manager->Reference(ptr_source_Dataset_Manager_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Reference(ptr)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -738,7 +740,7 @@ bool Gaussian_Search<T>::Enable__OpenMP__Population(void)
     if(this->_population_size == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of neural networks is empty. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -747,7 +749,7 @@ bool Gaussian_Search<T>::Enable__OpenMP__Population(void)
     else if(this->p_ptr_array_ptr_individuals == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of neural networks is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -765,7 +767,7 @@ bool Gaussian_Search<T>::Enable__OpenMP__Population(void)
         if(tmp_ptr_Neural_Network == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Neural network #%zu is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_individual_index,
                                      __LINE__);
@@ -787,7 +789,7 @@ bool Gaussian_Search<T>::Disable__OpenMP__Population(void)
     if(this->_population_size == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of neural networks is empty. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -796,7 +798,7 @@ bool Gaussian_Search<T>::Disable__OpenMP__Population(void)
     else if(this->p_ptr_array_ptr_individuals == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of neural networks is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -814,7 +816,7 @@ bool Gaussian_Search<T>::Disable__OpenMP__Population(void)
         if(tmp_ptr_Neural_Network == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Neural network #%zu is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_individual_index,
                                      __LINE__);
@@ -838,7 +840,7 @@ bool Gaussian_Search<T>::Optimize(size_t const number_iterations_received,
     if(ptr_Dataset_Manager_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Dataset manager is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -847,7 +849,7 @@ bool Gaussian_Search<T>::Optimize(size_t const number_iterations_received,
     else if(ptr_Neural_Network_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Neural network is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -856,7 +858,7 @@ bool Gaussian_Search<T>::Optimize(size_t const number_iterations_received,
     else if(this->_population_size == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of neural networks is empty. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -865,7 +867,7 @@ bool Gaussian_Search<T>::Optimize(size_t const number_iterations_received,
     else if(this->p_ptr_array_ptr_individuals == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of neural networks is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -896,7 +898,7 @@ bool Gaussian_Search<T>::Optimize__Loop(size_t const number_iterations_received,
     if(ptr_Dataset_Manager_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Dataset manager is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -905,7 +907,7 @@ bool Gaussian_Search<T>::Optimize__Loop(size_t const number_iterations_received,
     else if(ptr_Neural_Network_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Neural network is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -914,7 +916,7 @@ bool Gaussian_Search<T>::Optimize__Loop(size_t const number_iterations_received,
     else if(this->_population_size == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of neural networks is empty. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -923,7 +925,7 @@ bool Gaussian_Search<T>::Optimize__Loop(size_t const number_iterations_received,
     else if(this->p_ptr_array_ptr_individuals == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of neural networks is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -939,7 +941,7 @@ bool Gaussian_Search<T>::Optimize__Loop(size_t const number_iterations_received,
     if(this->Update__Population(ptr_Neural_Network_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update__Population(ptr)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -948,7 +950,7 @@ bool Gaussian_Search<T>::Optimize__Loop(size_t const number_iterations_received,
     else if(this->Initialize__Hyper_Parameters(ptr_Neural_Network_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize__Hyper_Parameters(ptr)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -957,7 +959,7 @@ bool Gaussian_Search<T>::Optimize__Loop(size_t const number_iterations_received,
     else if(this->Shuffle__Hyper_Parameter() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Shuffle__Hyper_Parameter()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -966,7 +968,7 @@ bool Gaussian_Search<T>::Optimize__Loop(size_t const number_iterations_received,
     else if(this->Feed__Hyper_Parameter() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Feed__Hyper_Parameter()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -983,7 +985,7 @@ bool Gaussian_Search<T>::Optimize__Loop(size_t const number_iterations_received,
             if(tmp_ptr_Neural_Network == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Neural network #%zu is a nullptr. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_individual_index,
                                          __LINE__);
@@ -1009,7 +1011,7 @@ bool Gaussian_Search<T>::Optimize__Loop(size_t const number_iterations_received,
         if(tmp_ptr_Neural_Network == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Neural network #%zu is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_individual_index,
                                      __LINE__);
@@ -1038,7 +1040,7 @@ bool Gaussian_Search<T>::Optimize__OpenMP(size_t const number_iterations_receive
     if(ptr_Dataset_Manager_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Dataset manager is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1047,7 +1049,7 @@ bool Gaussian_Search<T>::Optimize__OpenMP(size_t const number_iterations_receive
     else if(ptr_Neural_Network_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Neural network is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1056,7 +1058,7 @@ bool Gaussian_Search<T>::Optimize__OpenMP(size_t const number_iterations_receive
     else if(this->_population_size == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of neural networks is empty. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1065,7 +1067,7 @@ bool Gaussian_Search<T>::Optimize__OpenMP(size_t const number_iterations_receive
     else if(this->_number_threads == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of dataset manager is empty. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1074,7 +1076,7 @@ bool Gaussian_Search<T>::Optimize__OpenMP(size_t const number_iterations_receive
     else if(this->p_ptr_array_ptr_individuals == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of neural networks is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1083,7 +1085,7 @@ bool Gaussian_Search<T>::Optimize__OpenMP(size_t const number_iterations_receive
     else if(this->p_ptr_array_ptr_dataset_manager == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of dataset manager is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1104,7 +1106,7 @@ bool Gaussian_Search<T>::Optimize__OpenMP(size_t const number_iterations_receive
     if(this->Update__Population(ptr_Neural_Network_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update__Population(ptr)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1113,7 +1115,7 @@ bool Gaussian_Search<T>::Optimize__OpenMP(size_t const number_iterations_receive
     else if(this->Update__Dataset_Manager(ptr_Dataset_Manager_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update__Dataset_Manager(ptr)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1122,7 +1124,7 @@ bool Gaussian_Search<T>::Optimize__OpenMP(size_t const number_iterations_receive
     else if(this->Initialize__Hyper_Parameters(ptr_Neural_Network_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize__Hyper_Parameters(ptr)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1131,7 +1133,7 @@ bool Gaussian_Search<T>::Optimize__OpenMP(size_t const number_iterations_receive
     else if(this->Shuffle__Hyper_Parameter() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Shuffle__Hyper_Parameter()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1140,7 +1142,7 @@ bool Gaussian_Search<T>::Optimize__OpenMP(size_t const number_iterations_receive
     else if(this->Feed__Hyper_Parameter() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Feed__Hyper_Parameter()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1151,7 +1153,7 @@ bool Gaussian_Search<T>::Optimize__OpenMP(size_t const number_iterations_receive
     if(this->p_ptr_array_ptr_individuals[0u]->is_OpenMP_initialized && this->Disable__OpenMP__Population() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Disable__OpenMP__Population()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1176,7 +1178,7 @@ bool Gaussian_Search<T>::Optimize__OpenMP(size_t const number_iterations_receive
                 if(tmp_ptr_Neural_Network == nullptr)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: Neural network #%d is a nullptr. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_individual_index__int,
                                              __LINE__);
@@ -1192,7 +1194,7 @@ bool Gaussian_Search<T>::Optimize__OpenMP(size_t const number_iterations_receive
                 if(tmp_ptr_Dataset_Manager == nullptr)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: Dataset manager #%d is a nullptr. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              omp_get_thread_num(),
                                              __LINE__);
@@ -1220,7 +1222,7 @@ bool Gaussian_Search<T>::Optimize__OpenMP(size_t const number_iterations_receive
             if(tmp_ptr_Neural_Network == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Neural network #%d is a nullptr. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_individual_index__int,
                                          __LINE__);
@@ -1236,7 +1238,7 @@ bool Gaussian_Search<T>::Optimize__OpenMP(size_t const number_iterations_receive
             if(tmp_ptr_Dataset_Manager == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Dataset manager #%d is a nullptr. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          omp_get_thread_num(),
                                          __LINE__);
@@ -1259,7 +1261,7 @@ bool Gaussian_Search<T>::Optimize__OpenMP(size_t const number_iterations_receive
     if(this->p_ptr_array_ptr_individuals[0u]->is_OpenMP_initialized && this->Enable__OpenMP__Population() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Disable__OpenMP__Population()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1269,7 +1271,7 @@ bool Gaussian_Search<T>::Optimize__OpenMP(size_t const number_iterations_receive
     if(tmp_error_count > 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered inside the parallel region. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -1286,7 +1288,7 @@ bool Gaussian_Search<T>::Evaluation(void)
     if(this->_population_size == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of neural networks is empty. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1295,7 +1297,7 @@ bool Gaussian_Search<T>::Evaluation(void)
     else if(this->p_ptr_array_ptr_individuals == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of neural networks is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1317,7 +1319,7 @@ bool Gaussian_Search<T>::Evaluation(void)
         if(tmp_ptr_Neural_Network == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Neural network #%zu is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_individual_index,
                                      __LINE__);
@@ -1339,7 +1341,7 @@ bool Gaussian_Search<T>::Evaluation(void)
                                                                                                                          true) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update(ptr[%zu], true, true)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_best_model.first,
                                  __LINE__);
@@ -1357,7 +1359,7 @@ bool Gaussian_Search<T>::Evaluation(class Dataset_Manager<T> *const ptr_Dataset_
     if(ptr_Dataset_Manager_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Dataset manager is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1366,7 +1368,7 @@ bool Gaussian_Search<T>::Evaluation(class Dataset_Manager<T> *const ptr_Dataset_
     else if(this->_population_size == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of neural networks is empty. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1375,7 +1377,7 @@ bool Gaussian_Search<T>::Evaluation(class Dataset_Manager<T> *const ptr_Dataset_
     else if(this->p_ptr_array_ptr_individuals == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of neural networks is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1396,7 +1398,7 @@ bool Gaussian_Search<T>::Evaluation__Loop(class Dataset_Manager<T> *const ptr_Da
     if(ptr_Dataset_Manager_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Dataset manager is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1405,7 +1407,7 @@ bool Gaussian_Search<T>::Evaluation__Loop(class Dataset_Manager<T> *const ptr_Da
     else if(this->_population_size == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of neural networks is empty. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1414,7 +1416,7 @@ bool Gaussian_Search<T>::Evaluation__Loop(class Dataset_Manager<T> *const ptr_Da
     else if(this->p_ptr_array_ptr_individuals == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of neural networks is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1431,7 +1433,7 @@ bool Gaussian_Search<T>::Evaluation__Loop(class Dataset_Manager<T> *const ptr_Da
     if(tmp_ptr_Neural_Network == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Neural network #0 is a nullptr. At line %d." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     __FUNCTION__,
                                     __LINE__);
 
@@ -1454,7 +1456,7 @@ bool Gaussian_Search<T>::Evaluation__Loop(class Dataset_Manager<T> *const ptr_Da
         if(tmp_ptr_Neural_Network == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Neural network #%zu is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_individual_index,
                                      __LINE__);
@@ -1483,7 +1485,7 @@ bool Gaussian_Search<T>::Evaluation__Loop(class Dataset_Manager<T> *const ptr_Da
                                                                                                                                  true) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update(ptr[%zu], true, true)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_best_individual_index,
                                  __LINE__);
@@ -1501,7 +1503,7 @@ bool Gaussian_Search<T>::Evaluation__OpenMP(class Dataset_Manager<T> *const ptr_
     if(ptr_Dataset_Manager_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Dataset manager is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1510,7 +1512,7 @@ bool Gaussian_Search<T>::Evaluation__OpenMP(class Dataset_Manager<T> *const ptr_
     else if(this->_population_size == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of neural networks is empty. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1519,7 +1521,7 @@ bool Gaussian_Search<T>::Evaluation__OpenMP(class Dataset_Manager<T> *const ptr_
     else if(this->_number_threads == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of dataset manager is empty. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1528,7 +1530,7 @@ bool Gaussian_Search<T>::Evaluation__OpenMP(class Dataset_Manager<T> *const ptr_
     else if(this->p_ptr_array_ptr_individuals == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of neural networks is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1537,7 +1539,7 @@ bool Gaussian_Search<T>::Evaluation__OpenMP(class Dataset_Manager<T> *const ptr_
     else if(this->p_ptr_array_ptr_dataset_manager == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of dataset manager is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1558,7 +1560,7 @@ bool Gaussian_Search<T>::Evaluation__OpenMP(class Dataset_Manager<T> *const ptr_
     if(this->Update__Dataset_Manager(ptr_Dataset_Manager_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update__Dataset_Manager(ptr)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1569,7 +1571,7 @@ bool Gaussian_Search<T>::Evaluation__OpenMP(class Dataset_Manager<T> *const ptr_
     if(this->p_ptr_array_ptr_individuals[0u]->is_OpenMP_initialized && this->Disable__OpenMP__Population() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Disable__OpenMP__Population()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1588,7 +1590,7 @@ bool Gaussian_Search<T>::Evaluation__OpenMP(class Dataset_Manager<T> *const ptr_
             if(tmp_ptr_Neural_Network == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Neural network #0 is a nullptr. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -1603,7 +1605,7 @@ bool Gaussian_Search<T>::Evaluation__OpenMP(class Dataset_Manager<T> *const ptr_
             if(tmp_ptr_Dataset_Manager == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Dataset manager #%d is a nullptr. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          omp_get_thread_num(),
                                          __LINE__);
@@ -1630,7 +1632,7 @@ bool Gaussian_Search<T>::Evaluation__OpenMP(class Dataset_Manager<T> *const ptr_
             if(tmp_ptr_Neural_Network == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Neural network #%d is a nullptr. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_individual_index__int,
                                          __LINE__);
@@ -1646,7 +1648,7 @@ bool Gaussian_Search<T>::Evaluation__OpenMP(class Dataset_Manager<T> *const ptr_
             if(tmp_ptr_Dataset_Manager == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Dataset manager #%d is a nullptr. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          omp_get_thread_num(),
                                          __LINE__);
@@ -1677,7 +1679,7 @@ bool Gaussian_Search<T>::Evaluation__OpenMP(class Dataset_Manager<T> *const ptr_
     if(this->p_ptr_array_ptr_individuals[0u]->is_OpenMP_initialized && this->Enable__OpenMP__Population() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Disable__OpenMP__Population()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1687,7 +1689,7 @@ bool Gaussian_Search<T>::Evaluation__OpenMP(class Dataset_Manager<T> *const ptr_
     if(tmp_error_count > 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered inside the parallel region. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -1699,7 +1701,7 @@ bool Gaussian_Search<T>::Evaluation__OpenMP(class Dataset_Manager<T> *const ptr_
                                                                                                                                    true) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update(ptr[%d], true, true)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_best_individual_index__int,
                                  __LINE__);
@@ -1716,32 +1718,32 @@ bool Gaussian_Search<T>::User_Controls(void)
 #if defined(COMPILE_UINPUT)
     while(true)
     {
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s: User controls:" NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s: User controls:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         PRINT_FORMAT("%s:\t[0]: Population size (%zu)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->_population_size);
         PRINT_FORMAT("%s:\t[1]: Population gaussian (%f)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->_population_gaussian_percent);
-        PRINT_FORMAT("%s:\t[2]: Add Hyperparameter." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[3]: Modify Hyperparameter." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[4]: OpenMP." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[5]: Quit." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s:\t[2]: Add Hyperparameter." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[3]: Modify Hyperparameter." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[4]: OpenMP." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[5]: Quit." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         
         switch(MyEA::String::Cin_Number<unsigned int>(0u,
                                                                                 5u,
-                                                                                MyEA::String::Get__Time() + ": Option: "))
+                                                                                MyEA::Time::Date_Time_Now() + ": Option: "))
         {
             case 0u:
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s: Population size:" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s:\tRange[1, 8]." NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s:\tdefault=60." NEW_LINE, MyEA::String::Get__Time().c_str());
-                if(this->Set__Population_Size(MyEA::String::Cin_Number<size_t>(0_zu, MyEA::String::Get__Time() + ": Population size: ")) == false)
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s: Population size:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s:\tRange[1, 8]." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s:\tdefault=60." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                if(this->Set__Population_Size(MyEA::String::Cin_Number<size_t>(0_zu, MyEA::Time::Date_Time_Now() + ": Population size: ")) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Population_Size()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -1749,16 +1751,16 @@ bool Gaussian_Search<T>::User_Controls(void)
                 }
                     break;
             case 1u:
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s: Population gaussian in percent:" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s:\tRange[2.0, 100.0]." NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s:\tdefault=75.0%%." NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s: Population gaussian in percent:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s:\tRange[2.0, 100.0]." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s:\tdefault=75.0%%." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 if(this->Set__Population_Gaussian(MyEA::String::Cin_Real_Number<double>(2.0,
                                                                                                                                  100.0,
-                                                                                                                                 MyEA::String::Get__Time() + ": Population gaussian (percent): ")) == false)
+                                                                                                                                 MyEA::Time::Date_Time_Now() + ": Population gaussian (percent): ")) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Population_Gaussian()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -1769,7 +1771,7 @@ bool Gaussian_Search<T>::User_Controls(void)
                 if(this->User_Controls__Push_Back() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls__Push_Back()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -1780,7 +1782,7 @@ bool Gaussian_Search<T>::User_Controls(void)
                 if(this->User_Controls__Hyperparameter_Manager() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls__Hyperparameter()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -1791,7 +1793,7 @@ bool Gaussian_Search<T>::User_Controls(void)
                 if(this->User_Controls__OpenMP() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls__OpenMP()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -1801,7 +1803,7 @@ bool Gaussian_Search<T>::User_Controls(void)
             case 5u: return(true);
             default:
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Cin_Number<unsigned int>(%u, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          0u,
                                          5u,
@@ -1828,55 +1830,55 @@ bool Gaussian_Search<T>::User_Controls__Push_Back(void)
 
     while(true)
     {
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s: User controls, Hyper parameter push back:" NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[0]: Regularization, weight decay." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[1]: Regularization, L1." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[2]: Regularization, L2." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[3]: Regularization, max-norm constraints." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[4]: Normalization, average momentum." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[5]: Dropout, alpha, dropout probability." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[6]: Dropout, alpha, a." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[7]: Dropout, alpha, b." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[8]: Dropout, bernoulli, keep probability." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[9]: Dropout, bernoulli-inverted, keep probability." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[10]: Dropout, gaussian, dropout probability." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[11]: Dropout, uout, dropout probability." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[12]: Dropout, zoneout, cell zoneout probability." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[13]: Dropout, zoneout, hidden zoneout probability." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[14]: Quit." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s: User controls, Hyper parameter push back:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[0]: Regularization, weight decay." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[1]: Regularization, L1." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[2]: Regularization, L2." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[3]: Regularization, max-norm constraints." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[4]: Normalization, average momentum." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[5]: Dropout, alpha, dropout probability." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[6]: Dropout, alpha, a." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[7]: Dropout, alpha, b." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[8]: Dropout, bernoulli, keep probability." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[9]: Dropout, bernoulli-inverted, keep probability." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[10]: Dropout, gaussian, dropout probability." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[11]: Dropout, uout, dropout probability." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[12]: Dropout, zoneout, cell zoneout probability." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[13]: Dropout, zoneout, hidden zoneout probability." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[14]: Quit." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         
         if((tmp_option = MyEA::String::Cin_Number<int>(0,
                                                                                14,
-                                                                               MyEA::String::Get__Time() + ": Option: ")) == 14) { return(true); }
+                                                                               MyEA::Time::Date_Time_Now() + ": Option: ")) == 14) { return(true); }
 
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s: Variance." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\tRange[1e-7, 8]." NEW_LINE, MyEA::String::Get__Time().c_str());
-        tmp_variance = MyEA::String::Cin_Real_Number<T>(T(1e-7), MyEA::String::Get__Time() + ": Variance: ");
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s: Variance." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\tRange[1e-7, 8]." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        tmp_variance = MyEA::String::Cin_Real_Number<T>(T(1e-7), MyEA::Time::Date_Time_Now() + ": Variance: ");
 
         switch(tmp_option)
         {
             case 0: // Regularization, Weight decay.
             case 1: // Regularization, L1.
             case 2: // Regularization, L2.
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s: Minimum value." NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s:\tRange[0, 1]." NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s:\tdefault=0." NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s: Minimum value." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s:\tRange[0, 1]." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s:\tdefault=0." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 tmp_minimum_value = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                         T(1),
-                                                                                                        MyEA::String::Get__Time() + ": Minimum value: ");
+                                                                                                        MyEA::Time::Date_Time_Now() + ": Minimum value: ");
 
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s: Maximum value." NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s: Maximum value." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 PRINT_FORMAT("%s:\tRange[%f, 1]." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          Cast_T(tmp_minimum_value));
-                PRINT_FORMAT("%s:\tdefault=1." NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s:\tdefault=1." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 tmp_maximum_value = MyEA::String::Cin_Real_Number<T>(tmp_minimum_value,
                                                                                                          T(1),
-                                                                                                         MyEA::String::Get__Time() + ": Maximum value: ");
+                                                                                                         MyEA::Time::Date_Time_Now() + ": Maximum value: ");
 
                 if(this->Push_Back(tmp_option,
                                             0_zu,
@@ -1886,7 +1888,7 @@ bool Gaussian_Search<T>::User_Controls__Push_Back(void)
                                             tmp_variance) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Push_Back()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -1894,19 +1896,19 @@ bool Gaussian_Search<T>::User_Controls__Push_Back(void)
                 }
                     break;
             case 3: // Regularization, Max-norm constraints.
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s: Minimum value." NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s:\tRange[0, 8]." NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s:\tdefault=0." NEW_LINE, MyEA::String::Get__Time().c_str());
-                tmp_minimum_value = MyEA::String::Cin_Real_Number<T>(T(0), MyEA::String::Get__Time() + ": Minimum value: ");
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s: Minimum value." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s:\tRange[0, 8]." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s:\tdefault=0." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                tmp_minimum_value = MyEA::String::Cin_Real_Number<T>(T(0), MyEA::Time::Date_Time_Now() + ": Minimum value: ");
                 
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s: Maximum value." NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s: Maximum value." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 PRINT_FORMAT("%s:\tRange[%f, 8]." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          Cast_T(tmp_minimum_value));
-                PRINT_FORMAT("%s:\tdefault=16." NEW_LINE, MyEA::String::Get__Time().c_str());
-                tmp_maximum_value = MyEA::String::Cin_Real_Number<T>(tmp_minimum_value, MyEA::String::Get__Time() + ": Maximum value: ");
+                PRINT_FORMAT("%s:\tdefault=16." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                tmp_maximum_value = MyEA::String::Cin_Real_Number<T>(tmp_minimum_value, MyEA::Time::Date_Time_Now() + ": Maximum value: ");
 
                 if(this->Push_Back(3,
                                             0_zu,
@@ -1916,7 +1918,7 @@ bool Gaussian_Search<T>::User_Controls__Push_Back(void)
                                             tmp_variance) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Push_Back()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -1924,26 +1926,26 @@ bool Gaussian_Search<T>::User_Controls__Push_Back(void)
                 }
                     break;
             case 4: // Normalization, average momentum.
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s: Minimum value." NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s: Minimum value." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 PRINT_FORMAT("%s:\tRange[0, %f]." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          Cast_T(T(1) - T(1e-7)));
-                PRINT_FORMAT("%s:\tdefault=0." NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s:\tdefault=0." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 tmp_minimum_value = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                         T(1) - T(1e-7),
-                                                                                                        MyEA::String::Get__Time() + ": Minimum value: ");
+                                                                                                        MyEA::Time::Date_Time_Now() + ": Minimum value: ");
                 
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s: Maximum value." NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s: Maximum value." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 PRINT_FORMAT("%s:\tRange[%f, %f]." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          Cast_T(tmp_minimum_value),
                                          Cast_T(T(1) - T(1e-7)));
-                PRINT_FORMAT("%s:\tdefault=0.999." NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s:\tdefault=0.999." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 tmp_maximum_value = MyEA::String::Cin_Real_Number<T>(tmp_minimum_value,
                                                                                                          T(1) - T(1e-7),
-                                                                                                         MyEA::String::Get__Time() + ": Maximum value: ");
+                                                                                                         MyEA::Time::Date_Time_Now() + ": Maximum value: ");
 
                 if(this->Push_Back(4,
                                             0_zu,
@@ -1953,7 +1955,7 @@ bool Gaussian_Search<T>::User_Controls__Push_Back(void)
                                             tmp_variance) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Push_Back()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -1969,26 +1971,26 @@ bool Gaussian_Search<T>::User_Controls__Push_Back(void)
             case 11: // Dropout, uout, dropout probability.
             case 12: // Dropout, zoneout, cell zoneout probability.
             case 13: // Dropout, zoneout, hidden zoneout probability.
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                tmp_layer_index = MyEA::String::Cin_Number<size_t>(0_zu, MyEA::String::Get__Time() + ": Layer index: ");
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                tmp_layer_index = MyEA::String::Cin_Number<size_t>(0_zu, MyEA::Time::Date_Time_Now() + ": Layer index: ");
 
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s: Minimum value." NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s:\tRange[0, 1]." NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s:\tdefault=0." NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s: Minimum value." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s:\tRange[0, 1]." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s:\tdefault=0." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 tmp_minimum_value = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                         T(1),
-                                                                                                        MyEA::String::Get__Time() + ": Minimum value: ");
+                                                                                                        MyEA::Time::Date_Time_Now() + ": Minimum value: ");
                 
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s: Maximum value." NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s: Maximum value." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 PRINT_FORMAT("%s:\tRange[%f, 1]." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          Cast_T(tmp_minimum_value));
-                PRINT_FORMAT("%s:\tdefault=1." NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s:\tdefault=1." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 tmp_maximum_value = MyEA::String::Cin_Real_Number<T>(tmp_minimum_value,
                                                                                                          T(1),
-                                                                                                         MyEA::String::Get__Time() + ": Maximum value: ");
+                                                                                                         MyEA::Time::Date_Time_Now() + ": Maximum value: ");
 
                 if(this->Push_Back(tmp_option,
                                             tmp_layer_index,
@@ -1998,7 +2000,7 @@ bool Gaussian_Search<T>::User_Controls__Push_Back(void)
                                             tmp_variance) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Push_Back()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -2007,7 +2009,7 @@ bool Gaussian_Search<T>::User_Controls__Push_Back(void)
                     break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Cin_Number<int>(%d, %d)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          0,
                                          14,
@@ -2041,7 +2043,7 @@ std::string Gaussian_Search<T>::Get__ID_To_String(int const hyperparameter_id_re
         case 13: return("Dropout, zoneout, hidden zoneout probability.");
         default:
             PRINT_FORMAT("%s: %s: ERROR: Hyper parameter id (%d) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      hyperparameter_id_received,
                                      __LINE__);
@@ -2062,12 +2064,12 @@ bool Gaussian_Search<T>::User_Controls__Hyperparameter_Manager(void)
 
     while(true)
     {
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s: User controls, hyperparameter manager." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s: User controls, hyperparameter manager." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         for(size_t tmp_hyperparameter_index(0); tmp_hyperparameter_index != this->_vector_hyperparameters.size(); ++tmp_hyperparameter_index)
         {
             PRINT_FORMAT("%s:\t[%zu]: %s (%d, %zu, %f, %f, %f, %f)." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      tmp_hyperparameter_index,
                                      this->Get__ID_To_String(std::get<0>(this->_vector_hyperparameters[tmp_hyperparameter_index])).c_str(),
                                      std::get<0>(this->_vector_hyperparameters[tmp_hyperparameter_index]),
@@ -2079,12 +2081,12 @@ bool Gaussian_Search<T>::User_Controls__Hyperparameter_Manager(void)
         }
 
         PRINT_FORMAT("%s:\t[%zu]: Quit." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->_vector_hyperparameters.size());
         
         if((tmp_option = MyEA::String::Cin_Number<size_t>(0_zu,
                                                                                      this->_vector_hyperparameters.size(),
-                                                                                     MyEA::String::Get__Time() + ": Option: ")) <= this->_vector_hyperparameters.size())
+                                                                                     MyEA::Time::Date_Time_Now() + ": Option: ")) <= this->_vector_hyperparameters.size())
         {
             if(tmp_option == this->_vector_hyperparameters.size()) { return(true); }
 
@@ -2093,70 +2095,70 @@ bool Gaussian_Search<T>::User_Controls__Hyperparameter_Manager(void)
             tmp_minimum_value = T(0);
             tmp_maximum_value = T(1);
 
-            PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-            PRINT_FORMAT("%s: Variance." NEW_LINE, MyEA::String::Get__Time().c_str());
-            PRINT_FORMAT("%s:\tRange[1e-7, 8]." NEW_LINE, MyEA::String::Get__Time().c_str());
-            tmp_variance = MyEA::String::Cin_Real_Number<T>(T(1e-7), MyEA::String::Get__Time() + ": Variance: ");
+            PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+            PRINT_FORMAT("%s: Variance." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+            PRINT_FORMAT("%s:\tRange[1e-7, 8]." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+            tmp_variance = MyEA::String::Cin_Real_Number<T>(T(1e-7), MyEA::Time::Date_Time_Now() + ": Variance: ");
 
             switch(std::get<0>(this->_vector_hyperparameters[tmp_option]))
             {
                 case 0: // Regularization, Weight decay.
                 case 1: // Regularization, L1.
                 case 2: // Regularization, L2.
-                    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                    PRINT_FORMAT("%s: Minimum value." NEW_LINE, MyEA::String::Get__Time().c_str());
-                    PRINT_FORMAT("%s:\tRange[0, 1]." NEW_LINE, MyEA::String::Get__Time().c_str());
-                    PRINT_FORMAT("%s:\tdefault=0." NEW_LINE, MyEA::String::Get__Time().c_str());
+                    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                    PRINT_FORMAT("%s: Minimum value." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                    PRINT_FORMAT("%s:\tRange[0, 1]." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                    PRINT_FORMAT("%s:\tdefault=0." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                     tmp_minimum_value = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                             T(1),
-                                                                                                            MyEA::String::Get__Time() + ": Minimum value: ");
+                                                                                                            MyEA::Time::Date_Time_Now() + ": Minimum value: ");
 
-                    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                    PRINT_FORMAT("%s: Maximum value." NEW_LINE, MyEA::String::Get__Time().c_str());
+                    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                    PRINT_FORMAT("%s: Maximum value." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                     PRINT_FORMAT("%s:\tRange[%f, 1]." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              Cast_T(tmp_minimum_value));
-                    PRINT_FORMAT("%s:\tdefault=1." NEW_LINE, MyEA::String::Get__Time().c_str());
+                    PRINT_FORMAT("%s:\tdefault=1." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                     tmp_maximum_value = MyEA::String::Cin_Real_Number<T>(tmp_minimum_value,
                                                                                                              T(1),
-                                                                                                             MyEA::String::Get__Time() + ": Maximum value: ");
+                                                                                                             MyEA::Time::Date_Time_Now() + ": Maximum value: ");
                         break;
                 case 3: // Regularization, Max-norm constraints.
-                    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                    PRINT_FORMAT("%s: Minimum value." NEW_LINE, MyEA::String::Get__Time().c_str());
-                    PRINT_FORMAT("%s:\tRange[0, 8]." NEW_LINE, MyEA::String::Get__Time().c_str());
-                    PRINT_FORMAT("%s:\tdefault=0." NEW_LINE, MyEA::String::Get__Time().c_str());
-                    tmp_minimum_value = MyEA::String::Cin_Real_Number<T>(T(0), MyEA::String::Get__Time() + ": Minimum value: ");
+                    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                    PRINT_FORMAT("%s: Minimum value." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                    PRINT_FORMAT("%s:\tRange[0, 8]." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                    PRINT_FORMAT("%s:\tdefault=0." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                    tmp_minimum_value = MyEA::String::Cin_Real_Number<T>(T(0), MyEA::Time::Date_Time_Now() + ": Minimum value: ");
                 
-                    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                    PRINT_FORMAT("%s: Maximum value." NEW_LINE, MyEA::String::Get__Time().c_str());
+                    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                    PRINT_FORMAT("%s: Maximum value." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                     PRINT_FORMAT("%s:\tRange[%f, 8]." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              Cast_T(tmp_minimum_value));
-                    PRINT_FORMAT("%s:\tdefault=16." NEW_LINE, MyEA::String::Get__Time().c_str());
-                    tmp_maximum_value = MyEA::String::Cin_Real_Number<T>(tmp_minimum_value, MyEA::String::Get__Time() + ": Maximum value: ");
+                    PRINT_FORMAT("%s:\tdefault=16." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                    tmp_maximum_value = MyEA::String::Cin_Real_Number<T>(tmp_minimum_value, MyEA::Time::Date_Time_Now() + ": Maximum value: ");
                         break;
                 case 4: // Normalization, average momentum.
-                    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                    PRINT_FORMAT("%s: Minimum value." NEW_LINE, MyEA::String::Get__Time().c_str());
+                    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                    PRINT_FORMAT("%s: Minimum value." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                     PRINT_FORMAT("%s:\tRange[0, %f]." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              Cast_T(T(1) - T(1e-7)));
-                    PRINT_FORMAT("%s:\tdefault=0." NEW_LINE, MyEA::String::Get__Time().c_str());
+                    PRINT_FORMAT("%s:\tdefault=0." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                     tmp_minimum_value = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                             T(1) - T(1e-7),
-                                                                                                            MyEA::String::Get__Time() + ": Minimum value: ");
+                                                                                                            MyEA::Time::Date_Time_Now() + ": Minimum value: ");
                 
-                    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                    PRINT_FORMAT("%s: Maximum value." NEW_LINE, MyEA::String::Get__Time().c_str());
+                    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                    PRINT_FORMAT("%s: Maximum value." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                     PRINT_FORMAT("%s:\tRange[%f, %f]." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              Cast_T(tmp_minimum_value),
                                              Cast_T(T(1) - T(1e-7)));
-                    PRINT_FORMAT("%s:\tdefault=0.999." NEW_LINE, MyEA::String::Get__Time().c_str());
+                    PRINT_FORMAT("%s:\tdefault=0.999." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                     tmp_maximum_value = MyEA::String::Cin_Real_Number<T>(tmp_minimum_value,
                                                                                                              T(1) - T(1e-7),
-                                                                                                             MyEA::String::Get__Time() + ": Maximum value: ");
+                                                                                                             MyEA::Time::Date_Time_Now() + ": Maximum value: ");
                         break;
                 case 5: // Dropout, alpha, dropout probability.
                 case 6: // Dropout, alpha, a.
@@ -2167,30 +2169,30 @@ bool Gaussian_Search<T>::User_Controls__Hyperparameter_Manager(void)
                 case 11: // Dropout, uout, dropout probability.
                 case 12: // Dropout, zoneout, cell zoneout probability.
                 case 13: // Dropout, zoneout, hidden zoneout probability.
-                    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                    tmp_layer_index = MyEA::String::Cin_Number<size_t>(0_zu, MyEA::String::Get__Time() + ": Layer index: ");
+                    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                    tmp_layer_index = MyEA::String::Cin_Number<size_t>(0_zu, MyEA::Time::Date_Time_Now() + ": Layer index: ");
 
-                    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                    PRINT_FORMAT("%s: Minimum value." NEW_LINE, MyEA::String::Get__Time().c_str());
-                    PRINT_FORMAT("%s:\tRange[0, 1]." NEW_LINE, MyEA::String::Get__Time().c_str());
-                    PRINT_FORMAT("%s:\tdefault=0." NEW_LINE, MyEA::String::Get__Time().c_str());
+                    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                    PRINT_FORMAT("%s: Minimum value." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                    PRINT_FORMAT("%s:\tRange[0, 1]." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                    PRINT_FORMAT("%s:\tdefault=0." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                     tmp_minimum_value = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                             T(1),
-                                                                                                            MyEA::String::Get__Time() + ": Minimum value: ");
+                                                                                                            MyEA::Time::Date_Time_Now() + ": Minimum value: ");
                 
-                    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                    PRINT_FORMAT("%s: Maximum value." NEW_LINE, MyEA::String::Get__Time().c_str());
+                    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                    PRINT_FORMAT("%s: Maximum value." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                     PRINT_FORMAT("%s:\tRange[%f, 1]." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              Cast_T(tmp_minimum_value));
-                    PRINT_FORMAT("%s:\tdefault=1." NEW_LINE, MyEA::String::Get__Time().c_str());
+                    PRINT_FORMAT("%s:\tdefault=1." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                     tmp_maximum_value = MyEA::String::Cin_Real_Number<T>(tmp_minimum_value,
                                                                                                              T(1),
-                                                                                                             MyEA::String::Get__Time() + ": Maximum value: ");
+                                                                                                             MyEA::Time::Date_Time_Now() + ": Maximum value: ");
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Cin_Number<int>(%d, %d)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              0,
                                              14,
@@ -2206,7 +2208,7 @@ bool Gaussian_Search<T>::User_Controls__Hyperparameter_Manager(void)
         else
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Cin_Number<size_t>(%zu, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      0_zu,
                                      this->_vector_hyperparameters.size(),
@@ -2223,27 +2225,27 @@ bool Gaussian_Search<T>::User_Controls__OpenMP(void)
 {
     while(true)
     {
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s: User controls, OpenMP:" NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s: User controls, OpenMP:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         PRINT_FORMAT("%s:\t[0]: Use OpenMP (%s | %s)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->_use_OpenMP ? "Yes" : "No",
                                  this->_is_OpenMP_initialized ? "Yes" : "No");
         PRINT_FORMAT("%s:\t[1]: Maximum threads (%.2f%%)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->_percentage_maximum_thread_usage);
-        PRINT_FORMAT("%s:\t[2]: Quit." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s:\t[2]: Quit." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         
         switch(MyEA::String::Cin_Number<unsigned int>(0u,
                                                                                 2u,
-                                                                                MyEA::String::Get__Time() + ": Option: "))
+                                                                                MyEA::Time::Date_Time_Now() + ": Option: "))
         {
             case 0u:
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                if(this->Set__OpenMP(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Use OpenMP: ")) == false)
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                if(this->Set__OpenMP(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Use OpenMP: ")) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__OpenMP()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -2251,15 +2253,15 @@ bool Gaussian_Search<T>::User_Controls__OpenMP(void)
                 }
                     break;
             case 1u:
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s: Maximum threads:" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s:\tRange[0.0%%, 100.0%%]." NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s: Maximum threads:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s:\tRange[0.0%%, 100.0%%]." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 if(this->Set__Maximum_Thread_Usage(MyEA::String::Cin_Real_Number<T_>(0_T,
                                                                                                                                  100_T,
-                                                                                                                                 MyEA::String::Get__Time() + ": Maximum threads (percent): ")) == false)
+                                                                                                                                 MyEA::Time::Date_Time_Now() + ": Maximum threads (percent): ")) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Maximum_Thread_Usage()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -2269,7 +2271,7 @@ bool Gaussian_Search<T>::User_Controls__OpenMP(void)
             case 2u: return(true);
             default:
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Cin_Number<unsigned int>(%u, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          0u,
                                          2u,
@@ -2292,7 +2294,7 @@ bool Gaussian_Search<T>::Push_Back(int const hyper_parameter_id_received,
     if(hyper_parameter_id_received >= 14)
     {
         PRINT_FORMAT("%s: %s: ERROR: Hyperparameter id (%d) undefined. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  hyper_parameter_id_received,
                                  __LINE__);
@@ -2302,7 +2304,7 @@ bool Gaussian_Search<T>::Push_Back(int const hyper_parameter_id_received,
     else if(minimum_value_received >= maximum_value_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Minimum value (%f) can not be greater or equal to maximum value (%f). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(minimum_value_received),
                                  Cast_T(maximum_value_received),
@@ -2313,7 +2315,7 @@ bool Gaussian_Search<T>::Push_Back(int const hyper_parameter_id_received,
     else if(variance_received <= T(0))
     {
         PRINT_FORMAT("%s: %s: ERROR: Variance can not be less or equal to zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -2322,7 +2324,7 @@ bool Gaussian_Search<T>::Push_Back(int const hyper_parameter_id_received,
     else if(variance_received > maximum_value_received - minimum_value_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Variance (%f) can not be greater to than %f. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(variance_received),
                                  Cast_T(maximum_value_received - minimum_value_received),
@@ -2349,7 +2351,7 @@ bool Gaussian_Search<T>::Initialize__Hyper_Parameters(class Neural_Network *cons
         if(this->Initialize__Hyper_Parameter(this->_vector_hyperparameters[tmp_hyper_parameter_index], ptr_Neural_Network_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize__Hyper_Parameter(hyper[%zu], ptr)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_hyper_parameter_index,
                                      __LINE__);
@@ -2368,7 +2370,7 @@ bool Gaussian_Search<T>::Initialize__Hyper_Parameter(std::tuple<int, size_t, T, 
     if(ptr_Neural_Network_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Neural networks is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -2418,7 +2420,7 @@ bool Gaussian_Search<T>::Initialize__Hyper_Parameter(std::tuple<int, size_t, T, 
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Hyper parameter id (%d) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      std::get<0>(ref_hyperparameter_tuple_received),
                                      __LINE__);
@@ -2440,7 +2442,7 @@ bool Gaussian_Search<T>::Shuffle__Hyper_Parameter(void)
     if(this->_vector_hyperparameters.size() == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No hyper parameter available for shuffling. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -2449,7 +2451,7 @@ bool Gaussian_Search<T>::Shuffle__Hyper_Parameter(void)
 
     this->_Class_Generator_Random_Int.Range(0, static_cast<int>(this->_vector_hyperparameters.size()) - 1);
 
-    this->_ptr_selected_hyperparameter = &this->_vector_hyperparameters.at(this->_Class_Generator_Random_Int.Generate_Integer());
+    this->_ptr_selected_hyperparameter = &this->_vector_hyperparameters.at(this->_Class_Generator_Random_Int());
 
     return(true);
 }
@@ -2461,7 +2463,7 @@ bool Gaussian_Search<T>::Feed__Hyper_Parameter(void)
     if(this->_population_size == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Population is empty. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -2470,7 +2472,7 @@ bool Gaussian_Search<T>::Feed__Hyper_Parameter(void)
     else if(this->p_ptr_array_ptr_individuals == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Array of neural networks is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -2479,7 +2481,7 @@ bool Gaussian_Search<T>::Feed__Hyper_Parameter(void)
     else if(this->_ptr_selected_hyperparameter == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Selected hyper parameter is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -2506,7 +2508,7 @@ bool Gaussian_Search<T>::Feed__Hyper_Parameter(void)
     // Exploration.
     for(tmp_individual_index = 1_zu; tmp_individual_index != tmp_population_random_size; ++tmp_individual_index)
     {
-        std::get<2>(tmp_hyperparameter_tuple) = this->_Class_Generator_Random_Real.Generate_Real();
+        std::get<2>(tmp_hyperparameter_tuple) = this->_Class_Generator_Random_Real();
 
         tmp_ptr_Neural_Network = this->p_ptr_array_ptr_individuals[tmp_individual_index];
         
@@ -2514,7 +2516,7 @@ bool Gaussian_Search<T>::Feed__Hyper_Parameter(void)
         if(tmp_ptr_Neural_Network == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Neural network #%zu is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_individual_index,
                                      __LINE__);
@@ -2526,7 +2528,7 @@ bool Gaussian_Search<T>::Feed__Hyper_Parameter(void)
         if(this->Feed__Hyper_Parameter(tmp_hyperparameter_tuple, tmp_ptr_Neural_Network) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Feed__Hyper_Parameter(ref, ptr)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -2540,7 +2542,7 @@ bool Gaussian_Search<T>::Feed__Hyper_Parameter(void)
     // Exploitation.
     for(; tmp_individual_index != this->_population_size; ++tmp_individual_index)
     {
-        do { tmp_generate_value = tmp_default_value + this->_Class_Generator_Random_Gaussian.Generate_Gaussian(); }
+        do { tmp_generate_value = tmp_default_value + this->_Class_Generator_Random_Gaussian(); }
         while(tmp_generate_value < tmp_minimum_value || tmp_generate_value > tmp_maximum_value);
 
         std::get<2>(tmp_hyperparameter_tuple) = tmp_generate_value;
@@ -2551,7 +2553,7 @@ bool Gaussian_Search<T>::Feed__Hyper_Parameter(void)
         if(tmp_ptr_Neural_Network == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Neural network #%zu is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_individual_index,
                                      __LINE__);
@@ -2563,7 +2565,7 @@ bool Gaussian_Search<T>::Feed__Hyper_Parameter(void)
         if(this->Feed__Hyper_Parameter(tmp_hyperparameter_tuple, tmp_ptr_Neural_Network) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Feed__Hyper_Parameter(ref, ptr)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -2585,7 +2587,7 @@ bool Gaussian_Search<T>::Feed__Hyper_Parameter(std::tuple<int, size_t, T, T, T, 
     if(ptr_Neural_Network_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Neural networks is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -2601,7 +2603,7 @@ bool Gaussian_Search<T>::Feed__Hyper_Parameter(std::tuple<int, size_t, T, T, T, 
             if(ptr_Neural_Network_received->Set__Regularization__Weight_Decay(std::get<2>(ref_hyperparameter_tuple_received)) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Regularization__Weight_Decay(%f)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          Cast_T(std::get<2>(ref_hyperparameter_tuple_received)),
                                          __LINE__);
@@ -2613,7 +2615,7 @@ bool Gaussian_Search<T>::Feed__Hyper_Parameter(std::tuple<int, size_t, T, T, T, 
             if(ptr_Neural_Network_received->Set__Regularization__L1(std::get<2>(ref_hyperparameter_tuple_received)) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Regularization__L1(%f)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          Cast_T(std::get<2>(ref_hyperparameter_tuple_received)),
                                          __LINE__);
@@ -2625,7 +2627,7 @@ bool Gaussian_Search<T>::Feed__Hyper_Parameter(std::tuple<int, size_t, T, T, T, 
             if(ptr_Neural_Network_received->Set__Regularization__L2(std::get<2>(ref_hyperparameter_tuple_received)) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Regularization__L2(%f)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          Cast_T(std::get<2>(ref_hyperparameter_tuple_received)),
                                          __LINE__);
@@ -2637,7 +2639,7 @@ bool Gaussian_Search<T>::Feed__Hyper_Parameter(std::tuple<int, size_t, T, T, T, 
             if(ptr_Neural_Network_received->Set__Regularization__Max_Norm_Constraints(std::get<2>(ref_hyperparameter_tuple_received)) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Regularization__Max_Norm_Constraints(%f)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          Cast_T(std::get<2>(ref_hyperparameter_tuple_received)),
                                          __LINE__);
@@ -2649,7 +2651,7 @@ bool Gaussian_Search<T>::Feed__Hyper_Parameter(std::tuple<int, size_t, T, T, T, 
             if(ptr_Neural_Network_received->Set__Normalization_Momentum_Average(std::get<2>(ref_hyperparameter_tuple_received)) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Normalization_Momentum_Average(%f)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          Cast_T(std::get<2>(ref_hyperparameter_tuple_received)),
                                          __LINE__);
@@ -2665,7 +2667,7 @@ bool Gaussian_Search<T>::Feed__Hyper_Parameter(std::tuple<int, size_t, T, T, T, 
                                                                                 std::array<T, 3_zu>{std::get<2>(ref_hyperparameter_tuple_received), tmp_ptr_layer_it->dropout_values[1u], tmp_ptr_layer_it->dropout_values[2u]}.data()) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Dropout(%zu, %u, %f, %f, %f)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          std::get<1>(ref_hyperparameter_tuple_received),
                                          MyEA::Common::ENUM_TYPE_LAYER_DROPOUT::TYPE_LAYER_DROPOUT_ALPHA,
@@ -2685,7 +2687,7 @@ bool Gaussian_Search<T>::Feed__Hyper_Parameter(std::tuple<int, size_t, T, T, T, 
                                                                                 std::array<T, 3_zu>{tmp_ptr_layer_it->dropout_values[0u], std::get<2>(ref_hyperparameter_tuple_received), tmp_ptr_layer_it->dropout_values[2u]}.data()) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Dropout(%zu, %u, %f, %f, %f)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          std::get<1>(ref_hyperparameter_tuple_received),
                                          MyEA::Common::ENUM_TYPE_LAYER_DROPOUT::TYPE_LAYER_DROPOUT_ALPHA,
@@ -2705,7 +2707,7 @@ bool Gaussian_Search<T>::Feed__Hyper_Parameter(std::tuple<int, size_t, T, T, T, 
                                                                                 std::array<T, 3_zu>{tmp_ptr_layer_it->dropout_values[0u], tmp_ptr_layer_it->dropout_values[1u], std::get<2>(ref_hyperparameter_tuple_received)}.data()) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Dropout(%zu, %u, %f, %f, %f)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          std::get<1>(ref_hyperparameter_tuple_received),
                                          MyEA::Common::ENUM_TYPE_LAYER_DROPOUT::TYPE_LAYER_DROPOUT_ALPHA,
@@ -2723,7 +2725,7 @@ bool Gaussian_Search<T>::Feed__Hyper_Parameter(std::tuple<int, size_t, T, T, T, 
                                                                                 std::array<T, 1_zu>{std::get<2>(ref_hyperparameter_tuple_received)}.data()) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Dropout(%zu, %u, %f)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          std::get<1>(ref_hyperparameter_tuple_received),
                                          MyEA::Common::ENUM_TYPE_LAYER_DROPOUT::TYPE_LAYER_DROPOUT_BERNOULLI,
@@ -2739,7 +2741,7 @@ bool Gaussian_Search<T>::Feed__Hyper_Parameter(std::tuple<int, size_t, T, T, T, 
                                                                                 std::array<T, 1_zu>{std::get<2>(ref_hyperparameter_tuple_received)}.data()) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Dropout(%zu, %u, %f)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          std::get<1>(ref_hyperparameter_tuple_received),
                                          MyEA::Common::ENUM_TYPE_LAYER_DROPOUT::TYPE_LAYER_DROPOUT_BERNOULLI_INVERTED,
@@ -2755,7 +2757,7 @@ bool Gaussian_Search<T>::Feed__Hyper_Parameter(std::tuple<int, size_t, T, T, T, 
                                                                                 std::array<T, 1_zu>{std::get<2>(ref_hyperparameter_tuple_received)}.data()) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Dropout(%zu, %u, %f)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          std::get<1>(ref_hyperparameter_tuple_received),
                                          MyEA::Common::ENUM_TYPE_LAYER_DROPOUT::TYPE_LAYER_DROPOUT_GAUSSIAN,
@@ -2771,7 +2773,7 @@ bool Gaussian_Search<T>::Feed__Hyper_Parameter(std::tuple<int, size_t, T, T, T, 
                                                                                 std::array<T, 1_zu>{std::get<2>(ref_hyperparameter_tuple_received)}.data()) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Dropout(%zu, %u, %f)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          std::get<1>(ref_hyperparameter_tuple_received),
                                          MyEA::Common::ENUM_TYPE_LAYER_DROPOUT::TYPE_LAYER_DROPOUT_UOUT,
@@ -2789,7 +2791,7 @@ bool Gaussian_Search<T>::Feed__Hyper_Parameter(std::tuple<int, size_t, T, T, T, 
                                                                                 std::array<T, 2_zu>{std::get<2>(ref_hyperparameter_tuple_received), tmp_ptr_layer_it->dropout_values[1u]}.data()) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Dropout(%zu, %u, %f, %f)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          std::get<1>(ref_hyperparameter_tuple_received),
                                          MyEA::Common::ENUM_TYPE_LAYER_DROPOUT::TYPE_LAYER_DROPOUT_ZONEOUT,
@@ -2808,7 +2810,7 @@ bool Gaussian_Search<T>::Feed__Hyper_Parameter(std::tuple<int, size_t, T, T, T, 
                                                                                 std::array<T, 2_zu>{tmp_ptr_layer_it->dropout_values[0u], std::get<2>(ref_hyperparameter_tuple_received)}.data()) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Dropout(%zu, %u, %f, %f)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          std::get<1>(ref_hyperparameter_tuple_received),
                                          MyEA::Common::ENUM_TYPE_LAYER_DROPOUT::TYPE_LAYER_DROPOUT_ZONEOUT,
@@ -2821,7 +2823,7 @@ bool Gaussian_Search<T>::Feed__Hyper_Parameter(std::tuple<int, size_t, T, T, T, 
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Hyper parameter id (%d) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      std::get<0>(ref_hyperparameter_tuple_received),
                                      __LINE__);

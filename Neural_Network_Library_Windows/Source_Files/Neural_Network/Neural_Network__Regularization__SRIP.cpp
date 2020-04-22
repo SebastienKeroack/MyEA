@@ -11,7 +11,7 @@ bool Neural_Network::Set__Regularization__SRIP(T_ const regularization__srip_rec
     if(regularization__srip_received < 0_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: L2 regularization (%f) less than zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(regularization__srip_received),
                                  __LINE__);
@@ -21,7 +21,7 @@ bool Neural_Network::Set__Regularization__SRIP(T_ const regularization__srip_rec
     else if(regularization__srip_received > 1_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: L2 regularization (%f) bigger than one. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(regularization__srip_received),
                                  __LINE__);
@@ -40,7 +40,7 @@ bool Neural_Network::Set__Regularization__SRIP(T_ const regularization__srip_rec
             if(this->Allocate__Parameter__Regularization() == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Parameter__Regularization()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 

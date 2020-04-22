@@ -1,6 +1,6 @@
 #include "stdafx.hpp"
 
-#include <Math/Mathematic.hpp>
+#include <Math/Math.hpp>
 
 #include <Neural_Network/Neural_Network.hpp>
 
@@ -57,7 +57,7 @@ void Neural_Network::Update_Derivative_Weight__Pre_Training(size_t const batch_s
     if(this->pre_training_level == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: The neural network use the pre-training function without the mode pre-training activate. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -108,7 +108,7 @@ void Neural_Network::FF__Update_Derivative_Weight_Batch__Loop(size_t const batch
                     break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          ptr_layer_it_received->type_layer,
                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[ptr_layer_it_received->type_layer].c_str());
@@ -137,7 +137,7 @@ void Neural_Network::FF__Update_Derivative_Weight_Batch__Pre_Training__Loop(size
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_ptr_layer_it->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str());
@@ -160,7 +160,7 @@ void Neural_Network::FF__Update_Derivative_Weight_Batch__Pre_Training__Loop(size
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_ptr_layer_it->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str());

@@ -147,7 +147,7 @@ void Neural_Network::Deallocate(void)
     if(this->Deinitialize__CUDA() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Deinitialize__CUDA()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
     }
@@ -201,7 +201,7 @@ void Neural_Network::Deallocate__Parameter__Optimizer(void)
         case MyEA::Common::ENUM_TYPE_OPTIMIZER_FUNCTIONS::TYPE_OPTIMIZER_AMSGrad: this->Deallocate__Parameter__AMSGrad(); break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Optimizer function type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->type_optimizer_function,
                                      MyEA::Common::ENUM_TYPE_OPTIMIZER_FUNCTIONS_NAMES[this->type_optimizer_function].c_str());
@@ -264,7 +264,7 @@ void Neural_Network::Deallocate__Parameter__Batch_Normalization(void)
         if(this->Reallocate__Parameter(tmp_new_dimension_parameters) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Reallocate__Parameter(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_new_dimension_parameters,
                                      __LINE__);

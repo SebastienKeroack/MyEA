@@ -11,7 +11,7 @@ bool Neural_Network::Set__Regularization__L2(T_ const regularization__l2_receive
     if(regularization__l2_received < 0_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: L2 regularization (%f) less than zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(regularization__l2_received),
                                  __LINE__);
@@ -21,7 +21,7 @@ bool Neural_Network::Set__Regularization__L2(T_ const regularization__l2_receive
     else if(regularization__l2_received > 1_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: L2 regularization (%f) bigger than one. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(regularization__l2_received),
                                  __LINE__);
@@ -40,7 +40,7 @@ bool Neural_Network::Set__Regularization__L2(T_ const regularization__l2_receive
             if(this->Allocate__Parameter__Regularization() == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Parameter__Regularization()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 

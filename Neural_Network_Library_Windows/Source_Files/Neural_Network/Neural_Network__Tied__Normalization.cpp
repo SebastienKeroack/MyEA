@@ -16,7 +16,7 @@ void Neural_Network::Tied__Transpose__Normalization(struct Layer *const ptr_laye
             case MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION::TYPE_LAYER_NORMALIZATION_BATCH_RENORMALIZATION: this->Tied__Transpose__Normalization__Batch_Normalization(ptr_layer_received, tmp_ptr_mirror_layer_it); break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer normalization (%u | %s) is not managed in the switch." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             ptr_layer_received->type_normalization,
                                             MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[ptr_layer_received->type_normalization].c_str());

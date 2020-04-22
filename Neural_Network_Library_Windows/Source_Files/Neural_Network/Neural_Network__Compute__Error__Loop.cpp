@@ -50,7 +50,7 @@ void Neural_Network::Update_Error(struct AF_unit *const ptr_AF_received,
                 return;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Loss type (%u) is not managed in the switch." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         this->type_loss_function);
                 return;
@@ -173,7 +173,7 @@ void Neural_Network::FF__Compute__Error__Loop(size_t const batch_size_received, 
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Accuracy type (%u) is not managed in the switch." NEW_LINE,
-                                                MyEA::String::Get__Time().c_str(),
+                                                MyEA::Time::Date_Time_Now().c_str(),
                                                 __FUNCTION__,
                                                 this->type_accuracy_function);
                         break;

@@ -1,4 +1,4 @@
-#include <Tools/Configuration.hpp>
+#include <Configuration/Configuration.hpp>
 
 #include <vector>
 #include <thread>
@@ -40,15 +40,15 @@ namespace MyEA::Neural_Network
         
     extern class Client *g_Client;
 
-    DLL_API bool DLL_API API__Neural_Network__Is_Loaded(void);
+    DLL_API bool API__Neural_Network__Is_Loaded(void);
         
-    DLL_API bool DLL_API API__Neural_Network__Allocate(void);
+    DLL_API bool API__Neural_Network__Allocate(void);
 
-    DLL_API bool DLL_API API__Neural_Network__Initialize(void);
+    DLL_API bool API__Neural_Network__Initialize(void);
         
-    DLL_API bool DLL_API API__Neural_Network__Deinitialize(void);
+    DLL_API bool API__Neural_Network__Deinitialize(void);
     
-    DLL_API float DLL_API API__Neural_Network__Get__Loss(unsigned int const type_neural_network_use_received, unsigned int const type_loss_received);
+    DLL_API float API__Neural_Network__Get__Loss(unsigned int const type_neural_network_use_received, unsigned int const type_loss_received);
     
-    DLL_API T_ DLL_API API__Neural_Network__Forward_Pass(T_ *const ptr_array_inputs_received);
+    DLL_API T_ API__Neural_Network__Forward_Pass(T_ *const ptr_array_inputs_received);
 }

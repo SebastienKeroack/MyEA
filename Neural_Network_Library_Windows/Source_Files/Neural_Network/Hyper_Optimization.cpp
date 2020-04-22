@@ -26,7 +26,7 @@ bool Hyperparameter_Optimization<T>::Optimize(class Dataset_Manager<T> *const pt
                                                                          ptr_Neural_Network_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Optimize(%zu, ptr, ptr)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          this->p_number_hyper_optimization_iterations,
                                          __LINE__);
@@ -36,7 +36,7 @@ bool Hyperparameter_Optimization<T>::Optimize(class Dataset_Manager<T> *const pt
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Hyperparameter optimization type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->_type_hyperparameter_optimization,
                                      ENUM_TYPE_HYPERPARAMETER_OPTIMIZATION_NAMES[this->_type_hyperparameter_optimization].c_str(),
@@ -59,7 +59,7 @@ bool Hyperparameter_Optimization<T>::Evaluation(void)
             if(this->_ptr_Gaussian_Search->Evaluation() == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Evaluation()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -68,7 +68,7 @@ bool Hyperparameter_Optimization<T>::Evaluation(void)
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Hyperparameter optimization type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->_type_hyperparameter_optimization,
                                      ENUM_TYPE_HYPERPARAMETER_OPTIMIZATION_NAMES[this->_type_hyperparameter_optimization].c_str(),
@@ -91,7 +91,7 @@ bool Hyperparameter_Optimization<T>::Evaluation(class Dataset_Manager<T> *const 
             if(this->_ptr_Gaussian_Search->Evaluation(ptr_Dataset_Manager_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Evaluation(ptr)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -100,7 +100,7 @@ bool Hyperparameter_Optimization<T>::Evaluation(class Dataset_Manager<T> *const 
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Hyperparameter optimization type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->_type_hyperparameter_optimization,
                                      ENUM_TYPE_HYPERPARAMETER_OPTIMIZATION_NAMES[this->_type_hyperparameter_optimization].c_str(),
@@ -123,7 +123,7 @@ bool Hyperparameter_Optimization<T>::Set__Hyperparameter_Optimization(enum ENUM_
         case ENUM_TYPE_HYPERPARAMETER_OPTIMIZATION::TYPE_HYPERPARAMETER_OPTIMIZATION_GAUSSIAN_SEARCH: this->Deallocate__Gaussian_Search(); break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Hyperparameter optimization type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->_type_hyperparameter_optimization,
                                      ENUM_TYPE_HYPERPARAMETER_OPTIMIZATION_NAMES[this->_type_hyperparameter_optimization].c_str(),
@@ -139,7 +139,7 @@ bool Hyperparameter_Optimization<T>::Set__Hyperparameter_Optimization(enum ENUM_
             if(this->Allocate__Gaussian_Search() == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Gaussian_Search()\" function. At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             __LINE__);
 
@@ -148,7 +148,7 @@ bool Hyperparameter_Optimization<T>::Set__Hyperparameter_Optimization(enum ENUM_
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Hyperparameter optimization type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      type_hyper_optimization_received,
                                      ENUM_TYPE_HYPERPARAMETER_OPTIMIZATION_NAMES[type_hyper_optimization_received].c_str(),
@@ -167,7 +167,7 @@ bool Hyperparameter_Optimization<T>::Set__Number_Hyperparameter_Optimization_Ite
     if(number_hyper_optimization_iterations_received == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of hyperparameter optimization iterations can not be zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -185,7 +185,7 @@ bool Hyperparameter_Optimization<T>::Set__Number_Hyperparameter_Optimization_Ite
     if(number_hyper_optimization_iterations_delay_received == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of hyperparameter optimization iterations delay can not be zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -204,25 +204,25 @@ template<typename T>
 bool Hyperparameter_Optimization<T>::User_Controls__Change__Hyperparameter_Optimization(void)
 {
 #if defined(COMPILE_UINPUT)
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-    PRINT_FORMAT("%s: User controls, hyperparameter optimization type." NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    PRINT_FORMAT("%s: User controls, hyperparameter optimization type." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     for(unsigned int tmp_hyperparameter_optimization_index(0u); tmp_hyperparameter_optimization_index != ENUM_TYPE_HYPERPARAMETER_OPTIMIZATION::TYPE_HYPERPARAMETER_OPTIMIZATION_LENGTH; ++tmp_hyperparameter_optimization_index)
     {
         PRINT_FORMAT("%s:\t[%u]: %s." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  tmp_hyperparameter_optimization_index,
                                  ENUM_TYPE_HYPERPARAMETER_OPTIMIZATION_NAMES[static_cast<enum ENUM_TYPE_HYPERPARAMETER_OPTIMIZATION>(tmp_hyperparameter_optimization_index)].c_str());
     }
     PRINT_FORMAT("%s:\tdefault=%s." NEW_LINE,
-                             MyEA::String::Get__Time().c_str(),
+                             MyEA::Time::Date_Time_Now().c_str(),
                              ENUM_TYPE_HYPERPARAMETER_OPTIMIZATION_NAMES[ENUM_TYPE_HYPERPARAMETER_OPTIMIZATION::TYPE_HYPERPARAMETER_OPTIMIZATION_GAUSSIAN_SEARCH].c_str());
     
     if(this->Set__Hyperparameter_Optimization(static_cast<enum ENUM_TYPE_HYPERPARAMETER_OPTIMIZATION>(MyEA::String::Cin_Number<unsigned int>(0u,
                                                                                                                                                                                                                        ENUM_TYPE_HYPERPARAMETER_OPTIMIZATION::TYPE_HYPERPARAMETER_OPTIMIZATION_LENGTH - 1u,
-                                                                                                                                                                                                                       MyEA::String::Get__Time() + ": Type: "))) == false)
+                                                                                                                                                                                                                       MyEA::Time::Date_Time_Now() + ": Type: "))) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Hyperparameter_Optimization()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -239,33 +239,33 @@ bool Hyperparameter_Optimization<T>::User_Controls(void)
 #if defined(COMPILE_UINPUT)
     while(true)
     {
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s: User controls:" NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s: User controls:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         PRINT_FORMAT("%s:\t[0]: Number hyperparameter optimization iteration(s) (%zu)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->p_number_hyper_optimization_iterations);
         PRINT_FORMAT("%s:\t[1]: Number hyperparameter optimization iteration(s) delay (%zu)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->p_number_hyper_optimization_iterations_delay);
-        PRINT_FORMAT("%s:\t[2]: Change hyperparameter optimization." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s:\t[2]: Change hyperparameter optimization." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         PRINT_FORMAT("%s:\t[3]: Hyperparameter optimization (%s)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  ENUM_TYPE_HYPERPARAMETER_OPTIMIZATION_NAMES[this->_type_hyperparameter_optimization].c_str());
-        PRINT_FORMAT("%s:\t[4]: Quit." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s:\t[4]: Quit." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         
         switch(MyEA::String::Cin_Number<unsigned int>(0u,
                                                                                 4u,
-                                                                                MyEA::String::Get__Time() + ": Option: "))
+                                                                                MyEA::Time::Date_Time_Now() + ": Option: "))
         {
             case 0u:
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s: Number hyperparameter optimization iteration(s):" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s:\tRange[1, 8]." NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s:\tdefault=10." NEW_LINE, MyEA::String::Get__Time().c_str());
-                if(this->Set__Number_Hyperparameter_Optimization_Iterations(MyEA::String::Cin_Number<size_t>(0_zu, MyEA::String::Get__Time() + ": Iteration(s): ")) == false)
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s: Number hyperparameter optimization iteration(s):" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s:\tRange[1, 8]." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s:\tdefault=10." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                if(this->Set__Number_Hyperparameter_Optimization_Iterations(MyEA::String::Cin_Number<size_t>(0_zu, MyEA::Time::Date_Time_Now() + ": Iteration(s): ")) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Number_Hyperparameter_Optimization_Iterations()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -273,14 +273,14 @@ bool Hyperparameter_Optimization<T>::User_Controls(void)
                 }
                     break;
             case 1u:
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s: Number hyperparameter optimization iteration(s) delay:" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s:\tRange[1, 8]." NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s:\tdefault=25." NEW_LINE, MyEA::String::Get__Time().c_str());
-                if(this->Set__Number_Hyperparameter_Optimization_Iterations_Delay(MyEA::String::Cin_Number<size_t>(0_zu, MyEA::String::Get__Time() + ": Iteration(s) delay: ")) == false)
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s: Number hyperparameter optimization iteration(s) delay:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s:\tRange[1, 8]." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s:\tdefault=25." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                if(this->Set__Number_Hyperparameter_Optimization_Iterations_Delay(MyEA::String::Cin_Number<size_t>(0_zu, MyEA::Time::Date_Time_Now() + ": Iteration(s) delay: ")) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Number_Hyperparameter_Optimization_Iterations_Delay()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -291,7 +291,7 @@ bool Hyperparameter_Optimization<T>::User_Controls(void)
                 if(this->User_Controls__Change__Hyperparameter_Optimization() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls__Change__Hyperparameter_Optimization()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -306,7 +306,7 @@ bool Hyperparameter_Optimization<T>::User_Controls(void)
                         if(this->_ptr_Gaussian_Search->User_Controls() == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls()\" function. At line %d." NEW_LINE,
-                                                        MyEA::String::Get__Time().c_str(),
+                                                        MyEA::Time::Date_Time_Now().c_str(),
                                                         __FUNCTION__,
                                                         __LINE__);
 
@@ -315,7 +315,7 @@ bool Hyperparameter_Optimization<T>::User_Controls(void)
                             break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Hyperparameter optimization type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  this->_type_hyperparameter_optimization,
                                                  ENUM_TYPE_HYPERPARAMETER_OPTIMIZATION_NAMES[this->_type_hyperparameter_optimization].c_str(),
@@ -326,7 +326,7 @@ bool Hyperparameter_Optimization<T>::User_Controls(void)
             case 4u: return(true);
             default:
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Cin_Number<unsigned int>(%u, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          0u,
                                          4u,
@@ -347,7 +347,7 @@ bool Hyperparameter_Optimization<T>::Allocate__Gaussian_Search(void)
         if((this->_ptr_Gaussian_Search = new class Gaussian_Search<T>) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      sizeof(class Gaussian_Search<T>),
                                      __LINE__);
@@ -369,7 +369,7 @@ T Hyperparameter_Optimization<T>::Optimization(class Dataset_Manager<T> *const p
         if(this->Optimize(ptr_Dataset_Manager_received, ptr_Neural_Network_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Optimize(ptr, ptr)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 

@@ -34,7 +34,7 @@ void Dataset_Mini_Batch<T>::Shuffle(void)
     {
         this->Generator_Random.Range(this->p_start_index, i);
 
-        tmp_randomize_index = this->Generator_Random.Generate_Integer();
+        tmp_randomize_index = this->Generator_Random();
 
         // Store the index to swap from the remaining index at "tmp_randomize_index"
         tmp_swap = this->ptr_array_stochastic_index[tmp_randomize_index];
@@ -86,7 +86,7 @@ bool Dataset_Mini_Batch<T>::Initialize(bool const use_shuffle_received,
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -95,7 +95,7 @@ bool Dataset_Mini_Batch<T>::Initialize(bool const use_shuffle_received,
     else if(desired_number_examples_per_mini_batch_received == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Desired number data per mini-batch equal zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -104,7 +104,7 @@ bool Dataset_Mini_Batch<T>::Initialize(bool const use_shuffle_received,
     else if(desired_number_examples_per_mini_batch_received > this->p_number_examples)
     {
         PRINT_FORMAT("%s: %s: ERROR: Desired number data per mini-batch (%zu) greater than total number of data (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  desired_number_examples_per_mini_batch_received,
                                  this->p_number_examples,
@@ -116,7 +116,7 @@ bool Dataset_Mini_Batch<T>::Initialize(bool const use_shuffle_received,
     if(this->Set__Desired_Data_Per_Batch(desired_number_examples_per_mini_batch_received, number_mini_batch_maximum_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Desired_Data_Per_Batch(%zu, %zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  desired_number_examples_per_mini_batch_received,
                                  number_mini_batch_maximum_received,
@@ -129,7 +129,7 @@ bool Dataset_Mini_Batch<T>::Initialize(bool const use_shuffle_received,
     if(this->ptr_array_stochastic_index == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->p_number_examples * sizeof(size_t),
                                  __LINE__);
@@ -158,7 +158,7 @@ bool Dataset_Mini_Batch<T>::Set__Desired_Data_Per_Batch(size_t const desired_num
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -167,7 +167,7 @@ bool Dataset_Mini_Batch<T>::Set__Desired_Data_Per_Batch(size_t const desired_num
     else if(desired_number_examples_per_mini_batch_received == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Desired number data per mini-batch equal zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -176,7 +176,7 @@ bool Dataset_Mini_Batch<T>::Set__Desired_Data_Per_Batch(size_t const desired_num
     else if(desired_number_examples_per_mini_batch_received > this->Dataset<T>::Get__Number_Examples())
     {
         PRINT_FORMAT("%s: %s: ERROR: Desired number data per mini-batch (%zu) greater than total number of data (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  desired_number_examples_per_mini_batch_received,
                                  this->Dataset<T>::Get__Number_Examples(),
@@ -193,7 +193,7 @@ bool Dataset_Mini_Batch<T>::Set__Desired_Data_Per_Batch(size_t const desired_num
     if(tmp_number_mini_batch <= 1_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Invalid number of mini-batch. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -211,7 +211,7 @@ bool Dataset_Mini_Batch<T>::Set__Desired_Data_Per_Batch(size_t const desired_num
         if((this->ptr_array_inputs_array_stochastic = new T const *[this->number_examples]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->number_examples * sizeof(T const *),
                                      __LINE__);
@@ -221,14 +221,13 @@ bool Dataset_Mini_Batch<T>::Set__Desired_Data_Per_Batch(size_t const desired_num
     }
     else
     {
-        this->ptr_array_inputs_array_stochastic = Memory::reallocate_pointers_array_cpp<T const *>(this->ptr_array_inputs_array_stochastic,
+        this->ptr_array_inputs_array_stochastic = MyEA::Memory::Cpp::Reallocate_PtOfPt<T const *, false>(this->ptr_array_inputs_array_stochastic,
                                                                                                                                                 this->number_examples,
-                                                                                                                                                this->number_examples_last_iteration,
-                                                                                                                                                false);
+                                                                                                                                                this->number_examples_last_iteration);
         if(this->ptr_array_inputs_array_stochastic == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->number_examples * sizeof(T const *),
                                      __LINE__);
@@ -242,7 +241,7 @@ bool Dataset_Mini_Batch<T>::Set__Desired_Data_Per_Batch(size_t const desired_num
         if((this->ptr_array_outputs_array_stochastic = new T const *[this->number_examples]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->number_examples * sizeof(T const *),
                                      __LINE__);
@@ -252,14 +251,13 @@ bool Dataset_Mini_Batch<T>::Set__Desired_Data_Per_Batch(size_t const desired_num
     }
     else
     {
-        this->ptr_array_outputs_array_stochastic = Memory::reallocate_pointers_array_cpp<T const *>(this->ptr_array_outputs_array_stochastic,
+        this->ptr_array_outputs_array_stochastic = MyEA::Memory::Cpp::Reallocate_PtOfPt<T const *, false>(this->ptr_array_outputs_array_stochastic,
                                                                                                                                                   this->number_examples,
-                                                                                                                                                  this->number_examples_last_iteration,
-                                                                                                                                                  false);
+                                                                                                                                                  this->number_examples_last_iteration);
         if(this->ptr_array_outputs_array_stochastic == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->number_examples * sizeof(T const *),
                                      __LINE__);
@@ -314,7 +312,7 @@ bool Dataset_Mini_Batch<T>::Deallocate(void)
     if(this->Dataset<T>::Deallocate() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Deallocate()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 

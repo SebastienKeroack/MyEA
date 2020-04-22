@@ -279,7 +279,7 @@ namespace MyEA::Memory
             }
         }
 
-        Memory::Memory_Initialize_Index_Offset<T>(size_received,
+        MyEA::Memory::Memory_Initialize_Index_Offset<T>(size_received,
                                                                           tmp_width * tmp_width,
                                                                           ptr_array_outputs_received,
                                                                           ptr_dimension_grid_received + 1,

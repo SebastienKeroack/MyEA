@@ -2,7 +2,7 @@
 
 #include <device_launch_parameters.h>
 
-#include <Tools/Configuration.hpp>
+#include <Configuration/Configuration.hpp>
 #include <Enums/Enum_Type_Dataset.hpp>
 #include <Enums/Enum_Type_Dataset_File.hpp>
 #include <Enums/Enum_Type_Dataset_Process.hpp>

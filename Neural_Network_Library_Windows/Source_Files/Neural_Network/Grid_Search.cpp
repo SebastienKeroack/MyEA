@@ -1,7 +1,7 @@
 #include "stdafx.hpp"
 
 #if defined(COMPILE_UINPUT)
-    #include <Tools/Key_Logger.hpp>
+    #include <Capturing/Keyboard/Keyboard.hpp>
 #endif
 
 #if defined(COMPILE_UI)
@@ -10,7 +10,7 @@
     #include <Form.hpp>
 #endif
 
-#include <Tools/Shutdown_Block.hpp>
+#include <Capturing/Shutdown/Shutdown.hpp>
 
 #include <Neural_Network/Grid_Search.hpp>
 
@@ -48,7 +48,7 @@ void Grid_Search<T>::Shuffle(void)
     {
         this->_Generator_Random_Integer.Range(0, i);
 
-        tmp_randomize_index = this->_Generator_Random_Integer.Generate_Integer();
+        tmp_randomize_index = this->_Generator_Random_Integer();
 
         // Store the index to swap from the remaining index at "tmp_randomize_index"
         tmp_swap = this->_ptr_array_stochastic_index[tmp_randomize_index];
@@ -237,52 +237,52 @@ bool Grid_Search<T>::Input(class MyEA::Neural_Network::Neural_Network_Manager &r
     
     class Neural_Network *const tmp_ptr_Neural_Network(ref_Neural_Network_Manager.Get__Neural_Network(MyEA::Common::ENUM_TYPE_NEURAL_NETWORK_USE::TYPE_NEURAL_NETWORK_COMPETITOR));
     
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
-    if(this->Set__Maximum_Iterations(MyEA::String::Cin_Number<size_t>(1_zu, MyEA::String::Get__Time() + ": Maximum iterations: ")) == false)
+    if(this->Set__Maximum_Iterations(MyEA::String::Cin_Number<size_t>(1_zu, MyEA::Time::Date_Time_Now() + ": Maximum iterations: ")) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Maximum_Iterations()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
         return(false);
     }
     
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
-    if(this->Set__Use__Shuffle(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Use shuffle: ")) == false)
+    if(this->Set__Use__Shuffle(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Use shuffle: ")) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Use__Shuffle()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
         return(false);
     }
 
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
-    if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to use weight decay: "))
+    if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to use weight decay: "))
     {
         tmp_minimum = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                          T(1),
-                                                                                         MyEA::String::Get__Time() + ": Minimum: ");
+                                                                                         MyEA::Time::Date_Time_Now() + ": Minimum: ");
         
         tmp_maximum = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                          T(1),
-                                                                                         MyEA::String::Get__Time() + ": Maximum: ");
+                                                                                         MyEA::Time::Date_Time_Now() + ": Maximum: ");
 
         tmp_step_size = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                          T(1),
-                                                                                         MyEA::String::Get__Time() + ": Step size: ");
+                                                                                         MyEA::Time::Date_Time_Now() + ": Step size: ");
 
         if(this->Push_Back__Weight_Decay(tmp_minimum,
                                                              tmp_maximum,
                                                              tmp_step_size) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Push_Back__Weight_Decay(%f, %f, %f)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      Cast_T(tmp_minimum),
                                      Cast_T(tmp_maximum),
@@ -293,22 +293,22 @@ bool Grid_Search<T>::Input(class MyEA::Neural_Network::Neural_Network_Manager &r
         }
     }
     
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
-    if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to use max-norm constraints: "))
+    if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to use max-norm constraints: "))
     {
-        tmp_minimum = MyEA::String::Cin_Real_Number<T>(T(0), MyEA::String::Get__Time() + ": Minimum: ");
+        tmp_minimum = MyEA::String::Cin_Real_Number<T>(T(0), MyEA::Time::Date_Time_Now() + ": Minimum: ");
         
-        tmp_maximum = MyEA::String::Cin_Real_Number<T>(T(0), MyEA::String::Get__Time() + ": Maximum: ");
+        tmp_maximum = MyEA::String::Cin_Real_Number<T>(T(0), MyEA::Time::Date_Time_Now() + ": Maximum: ");
 
-        tmp_step_size = MyEA::String::Cin_Real_Number<T>(T(0), MyEA::String::Get__Time() + ": Step size: ");
+        tmp_step_size = MyEA::String::Cin_Real_Number<T>(T(0), MyEA::Time::Date_Time_Now() + ": Step size: ");
 
         if(this->Push_Back__Max_Norm_Constraints(tmp_minimum,
                                                                           tmp_maximum,
                                                                           tmp_step_size) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Push_Back__Max_Norm_Constraints(%f, %f, %f)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      Cast_T(tmp_minimum),
                                      Cast_T(tmp_maximum),
@@ -319,28 +319,28 @@ bool Grid_Search<T>::Input(class MyEA::Neural_Network::Neural_Network_Manager &r
         }
     }
     
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
-    if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to use batch-normalization momentum: "))
+    if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to use batch-normalization momentum: "))
     {
         tmp_minimum = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                        T(1),
-                                                                                       MyEA::String::Get__Time() + ": Minimum: ");
+                                                                                       MyEA::Time::Date_Time_Now() + ": Minimum: ");
         
         tmp_maximum = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                        T(1),
-                                                                                       MyEA::String::Get__Time() + ": Maximum: ");
+                                                                                       MyEA::Time::Date_Time_Now() + ": Maximum: ");
 
         tmp_step_size = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                         T(1),
-                                                                                        MyEA::String::Get__Time() + ": Step size: ");
+                                                                                        MyEA::Time::Date_Time_Now() + ": Step size: ");
 
         if(this->Push_Back__Normalization_Momentum_Average(tmp_minimum,
                                                                                            tmp_maximum,
                                                                                            tmp_step_size) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Push_Back__Normalization_Momentum_Average(%f, %f, %f)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      Cast_T(tmp_minimum),
                                      Cast_T(tmp_maximum),
@@ -356,7 +356,7 @@ bool Grid_Search<T>::Input(class MyEA::Neural_Network::Neural_Network_Manager &r
                                                                                            false) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Push_Back__Normalization_Momentum_Average(%f, %f, 1.0, false)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      Cast_T(T(1) / static_cast<T>(ref_Neural_Network_Manager.Get__Dataset_Manager()->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)->Get__Number_Batch())),
                                      Cast_T(T(1) / static_cast<T>(ref_Neural_Network_Manager.Get__Dataset_Manager()->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)->Get__Number_Batch())),
@@ -366,15 +366,15 @@ bool Grid_Search<T>::Input(class MyEA::Neural_Network::Neural_Network_Manager &r
         }
     }
     
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
-    if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to use dropout: "))
+    if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to use dropout: "))
     {
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
-        if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to use dropout, bernoulli: "))
+        if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to use dropout, bernoulli: "))
         {
-            if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to use dropout at the input layer: "))
+            if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to use dropout at the input layer: "))
             {
                 struct Dropout_Initializer__Arguments<T> tmp_Dropout_Initializer__Arguments;
 
@@ -384,20 +384,20 @@ bool Grid_Search<T>::Input(class MyEA::Neural_Network::Neural_Network_Manager &r
 
                 tmp_Dropout_Initializer__Arguments.minimum_value[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                          T(1),
-                                                                                                                                                         MyEA::String::Get__Time() + ": Minimum: ");
+                                                                                                                                                         MyEA::Time::Date_Time_Now() + ": Minimum: ");
                 
                 tmp_Dropout_Initializer__Arguments.maximum_value[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                           T(1),
-                                                                                                                                                          MyEA::String::Get__Time() + ": Maximum: ");
+                                                                                                                                                          MyEA::Time::Date_Time_Now() + ": Maximum: ");
 
                 tmp_Dropout_Initializer__Arguments.step_size[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                  T(1),
-                                                                                                                                                 MyEA::String::Get__Time() + ": Step size: ");
+                                                                                                                                                 MyEA::Time::Date_Time_Now() + ": Step size: ");
                 
                 if(this->Push_Back__Dropout(tmp_Dropout_Initializer__Arguments) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Push_Back__Dropout(%zu, %s, %f, %f, %f)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_Dropout_Initializer__Arguments.layer_index,
                                              MyEA::Common::ENUM_TYPE_LAYER_DROPOUT_NAMES[tmp_Dropout_Initializer__Arguments.type_layer_dropout].c_str(),
@@ -412,7 +412,7 @@ bool Grid_Search<T>::Input(class MyEA::Neural_Network::Neural_Network_Manager &r
 
             for(tmp_layer_index = 1_zu; tmp_layer_index != tmp_ptr_Neural_Network->Get__Total_Layers() - 1_zu; ++tmp_layer_index)
             {
-                if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to use dropout at the hidden layer " + std::to_string(tmp_layer_index) + ": "))
+                if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to use dropout at the hidden layer " + std::to_string(tmp_layer_index) + ": "))
                 {
                     struct Dropout_Initializer__Arguments<T> tmp_Dropout_Initializer__Arguments;
 
@@ -422,20 +422,20 @@ bool Grid_Search<T>::Input(class MyEA::Neural_Network::Neural_Network_Manager &r
 
                     tmp_Dropout_Initializer__Arguments.minimum_value[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                              T(1),
-                                                                                                                                                             MyEA::String::Get__Time() + ": Minimum: ");
+                                                                                                                                                             MyEA::Time::Date_Time_Now() + ": Minimum: ");
                     
                     tmp_Dropout_Initializer__Arguments.maximum_value[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                               T(1),
-                                                                                                                                                              MyEA::String::Get__Time() + ": Maximum: ");
+                                                                                                                                                              MyEA::Time::Date_Time_Now() + ": Maximum: ");
 
                     tmp_Dropout_Initializer__Arguments.step_size[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                      T(1),
-                                                                                                                                                     MyEA::String::Get__Time() + ": Step size: ");
+                                                                                                                                                     MyEA::Time::Date_Time_Now() + ": Step size: ");
                     
                     if(this->Push_Back__Dropout(tmp_Dropout_Initializer__Arguments) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Push_Back__Dropout(%zu, %s, %f, %f, %f)\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_Dropout_Initializer__Arguments.layer_index,
                                                  MyEA::Common::ENUM_TYPE_LAYER_DROPOUT_NAMES[tmp_Dropout_Initializer__Arguments.type_layer_dropout].c_str(),
@@ -450,11 +450,11 @@ bool Grid_Search<T>::Input(class MyEA::Neural_Network::Neural_Network_Manager &r
             }
         }
         
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
-        if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to use dropout, bernoulli inverted: "))
+        if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to use dropout, bernoulli inverted: "))
         {
-            if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to use dropout at the input layer: "))
+            if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to use dropout at the input layer: "))
             {
                 struct Dropout_Initializer__Arguments<T> tmp_Dropout_Initializer__Arguments;
 
@@ -464,20 +464,20 @@ bool Grid_Search<T>::Input(class MyEA::Neural_Network::Neural_Network_Manager &r
 
                 tmp_Dropout_Initializer__Arguments.minimum_value[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                          T(1),
-                                                                                                                                                         MyEA::String::Get__Time() + ": Minimum: ");
+                                                                                                                                                         MyEA::Time::Date_Time_Now() + ": Minimum: ");
                 
                 tmp_Dropout_Initializer__Arguments.maximum_value[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                           T(1),
-                                                                                                                                                          MyEA::String::Get__Time() + ": Maximum: ");
+                                                                                                                                                          MyEA::Time::Date_Time_Now() + ": Maximum: ");
 
                 tmp_Dropout_Initializer__Arguments.step_size[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                  T(1),
-                                                                                                                                                 MyEA::String::Get__Time() + ": Step size: ");
+                                                                                                                                                 MyEA::Time::Date_Time_Now() + ": Step size: ");
                 
                 if(this->Push_Back__Dropout(tmp_Dropout_Initializer__Arguments) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Push_Back__Dropout(%zu, %s, %f, %f, %f)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_Dropout_Initializer__Arguments.layer_index,
                                              MyEA::Common::ENUM_TYPE_LAYER_DROPOUT_NAMES[tmp_Dropout_Initializer__Arguments.type_layer_dropout].c_str(),
@@ -492,7 +492,7 @@ bool Grid_Search<T>::Input(class MyEA::Neural_Network::Neural_Network_Manager &r
 
             for(tmp_layer_index = 1_zu; tmp_layer_index != tmp_ptr_Neural_Network->Get__Total_Layers() - 1_zu; ++tmp_layer_index)
             {
-                if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to use dropout at the hidden layer " + std::to_string(tmp_layer_index) + ": "))
+                if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to use dropout at the hidden layer " + std::to_string(tmp_layer_index) + ": "))
                 {
                     struct Dropout_Initializer__Arguments<T> tmp_Dropout_Initializer__Arguments;
 
@@ -502,20 +502,20 @@ bool Grid_Search<T>::Input(class MyEA::Neural_Network::Neural_Network_Manager &r
 
                     tmp_Dropout_Initializer__Arguments.minimum_value[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                              T(1),
-                                                                                                                                                             MyEA::String::Get__Time() + ": Minimum: ");
+                                                                                                                                                             MyEA::Time::Date_Time_Now() + ": Minimum: ");
                     
                     tmp_Dropout_Initializer__Arguments.maximum_value[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                               T(1),
-                                                                                                                                                              MyEA::String::Get__Time() + ": Maximum: ");
+                                                                                                                                                              MyEA::Time::Date_Time_Now() + ": Maximum: ");
 
                     tmp_Dropout_Initializer__Arguments.step_size[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                      T(1),
-                                                                                                                                                     MyEA::String::Get__Time() + ": Step size: ");
+                                                                                                                                                     MyEA::Time::Date_Time_Now() + ": Step size: ");
                     
                     if(this->Push_Back__Dropout(tmp_Dropout_Initializer__Arguments) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Push_Back__Dropout(%zu, %s, %f, %f, %f)\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_Dropout_Initializer__Arguments.layer_index,
                                                  MyEA::Common::ENUM_TYPE_LAYER_DROPOUT_NAMES[tmp_Dropout_Initializer__Arguments.type_layer_dropout].c_str(),
@@ -530,11 +530,11 @@ bool Grid_Search<T>::Input(class MyEA::Neural_Network::Neural_Network_Manager &r
             }
         }
         
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
-        if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to use dropout, gaussian: "))
+        if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to use dropout, gaussian: "))
         {
-            if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to use dropout at the input layer: "))
+            if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to use dropout at the input layer: "))
             {
                 struct Dropout_Initializer__Arguments<T> tmp_Dropout_Initializer__Arguments;
 
@@ -544,20 +544,20 @@ bool Grid_Search<T>::Input(class MyEA::Neural_Network::Neural_Network_Manager &r
 
                 tmp_Dropout_Initializer__Arguments.minimum_value[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                          T(1),
-                                                                                                                                                         MyEA::String::Get__Time() + ": Minimum: ");
+                                                                                                                                                         MyEA::Time::Date_Time_Now() + ": Minimum: ");
                 
                 tmp_Dropout_Initializer__Arguments.maximum_value[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                           T(1),
-                                                                                                                                                          MyEA::String::Get__Time() + ": Maximum: ");
+                                                                                                                                                          MyEA::Time::Date_Time_Now() + ": Maximum: ");
 
                 tmp_Dropout_Initializer__Arguments.step_size[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                  T(1),
-                                                                                                                                                 MyEA::String::Get__Time() + ": Step size: ");
+                                                                                                                                                 MyEA::Time::Date_Time_Now() + ": Step size: ");
                 
                 if(this->Push_Back__Dropout(tmp_Dropout_Initializer__Arguments) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Push_Back__Dropout(%zu, %s, %f, %f, %f)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_Dropout_Initializer__Arguments.layer_index,
                                              MyEA::Common::ENUM_TYPE_LAYER_DROPOUT_NAMES[tmp_Dropout_Initializer__Arguments.type_layer_dropout].c_str(),
@@ -572,7 +572,7 @@ bool Grid_Search<T>::Input(class MyEA::Neural_Network::Neural_Network_Manager &r
 
             for(tmp_layer_index = 1_zu; tmp_layer_index != tmp_ptr_Neural_Network->Get__Total_Layers() - 1_zu; ++tmp_layer_index)
             {
-                if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to use dropout at the hidden layer " + std::to_string(tmp_layer_index) + ": "))
+                if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to use dropout at the hidden layer " + std::to_string(tmp_layer_index) + ": "))
                 {
                     struct Dropout_Initializer__Arguments<T> tmp_Dropout_Initializer__Arguments;
 
@@ -582,20 +582,20 @@ bool Grid_Search<T>::Input(class MyEA::Neural_Network::Neural_Network_Manager &r
 
                     tmp_Dropout_Initializer__Arguments.minimum_value[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                              T(1),
-                                                                                                                                                             MyEA::String::Get__Time() + ": Minimum: ");
+                                                                                                                                                             MyEA::Time::Date_Time_Now() + ": Minimum: ");
                     
                     tmp_Dropout_Initializer__Arguments.maximum_value[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                               T(1),
-                                                                                                                                                              MyEA::String::Get__Time() + ": Maximum: ");
+                                                                                                                                                              MyEA::Time::Date_Time_Now() + ": Maximum: ");
 
                     tmp_Dropout_Initializer__Arguments.step_size[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                      T(1),
-                                                                                                                                                     MyEA::String::Get__Time() + ": Step size: ");
+                                                                                                                                                     MyEA::Time::Date_Time_Now() + ": Step size: ");
                     
                     if(this->Push_Back__Dropout(tmp_Dropout_Initializer__Arguments) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Push_Back__Dropout(%zu, %s, %f, %f, %f)\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_Dropout_Initializer__Arguments.layer_index,
                                                  MyEA::Common::ENUM_TYPE_LAYER_DROPOUT_NAMES[tmp_Dropout_Initializer__Arguments.type_layer_dropout].c_str(),
@@ -610,11 +610,11 @@ bool Grid_Search<T>::Input(class MyEA::Neural_Network::Neural_Network_Manager &r
             }
         }
         
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
-        if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to use dropout, Uout: "))
+        if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to use dropout, Uout: "))
         {
-            if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to use dropout at the input layer: "))
+            if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to use dropout at the input layer: "))
             {
                 struct Dropout_Initializer__Arguments<T> tmp_Dropout_Initializer__Arguments;
 
@@ -624,20 +624,20 @@ bool Grid_Search<T>::Input(class MyEA::Neural_Network::Neural_Network_Manager &r
 
                 tmp_Dropout_Initializer__Arguments.minimum_value[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                          T(1),
-                                                                                                                                                         MyEA::String::Get__Time() + ": Minimum: ");
+                                                                                                                                                         MyEA::Time::Date_Time_Now() + ": Minimum: ");
                 
                 tmp_Dropout_Initializer__Arguments.maximum_value[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                           T(1),
-                                                                                                                                                          MyEA::String::Get__Time() + ": Maximum: ");
+                                                                                                                                                          MyEA::Time::Date_Time_Now() + ": Maximum: ");
 
                 tmp_Dropout_Initializer__Arguments.step_size[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                  T(1),
-                                                                                                                                                 MyEA::String::Get__Time() + ": Step size: ");
+                                                                                                                                                 MyEA::Time::Date_Time_Now() + ": Step size: ");
                 
                 if(this->Push_Back__Dropout(tmp_Dropout_Initializer__Arguments) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Push_Back__Dropout(%zu, %s, %f, %f, %f)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_Dropout_Initializer__Arguments.layer_index,
                                              MyEA::Common::ENUM_TYPE_LAYER_DROPOUT_NAMES[tmp_Dropout_Initializer__Arguments.type_layer_dropout].c_str(),
@@ -652,7 +652,7 @@ bool Grid_Search<T>::Input(class MyEA::Neural_Network::Neural_Network_Manager &r
 
             for(tmp_layer_index = 1_zu; tmp_layer_index != tmp_ptr_Neural_Network->Get__Total_Layers() - 1_zu; ++tmp_layer_index)
             {
-                if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to use dropout at the hidden layer " + std::to_string(tmp_layer_index) + ": "))
+                if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to use dropout at the hidden layer " + std::to_string(tmp_layer_index) + ": "))
                 {
                     struct Dropout_Initializer__Arguments<T> tmp_Dropout_Initializer__Arguments;
 
@@ -662,20 +662,20 @@ bool Grid_Search<T>::Input(class MyEA::Neural_Network::Neural_Network_Manager &r
 
                     tmp_Dropout_Initializer__Arguments.minimum_value[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                              T(1),
-                                                                                                                                                             MyEA::String::Get__Time() + ": Minimum: ");
+                                                                                                                                                             MyEA::Time::Date_Time_Now() + ": Minimum: ");
                     
                     tmp_Dropout_Initializer__Arguments.maximum_value[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                               T(1),
-                                                                                                                                                              MyEA::String::Get__Time() + ": Maximum: ");
+                                                                                                                                                              MyEA::Time::Date_Time_Now() + ": Maximum: ");
 
                     tmp_Dropout_Initializer__Arguments.step_size[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                      T(1),
-                                                                                                                                                     MyEA::String::Get__Time() + ": Step size: ");
+                                                                                                                                                     MyEA::Time::Date_Time_Now() + ": Step size: ");
                     
                     if(this->Push_Back__Dropout(tmp_Dropout_Initializer__Arguments) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Push_Back__Dropout(%zu, %s, %f, %f, %f)\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_Dropout_Initializer__Arguments.layer_index,
                                                  MyEA::Common::ENUM_TYPE_LAYER_DROPOUT_NAMES[tmp_Dropout_Initializer__Arguments.type_layer_dropout].c_str(),
@@ -690,11 +690,11 @@ bool Grid_Search<T>::Input(class MyEA::Neural_Network::Neural_Network_Manager &r
             }
         }
         
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
-        if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to use dropout, Zoneout: "))
+        if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to use dropout, Zoneout: "))
         {
-            if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to use dropout at the input layer: "))
+            if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to use dropout at the input layer: "))
             {
                 struct Dropout_Initializer__Arguments<T> tmp_Dropout_Initializer__Arguments;
 
@@ -704,32 +704,32 @@ bool Grid_Search<T>::Input(class MyEA::Neural_Network::Neural_Network_Manager &r
 
                 tmp_Dropout_Initializer__Arguments.minimum_value[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                            T(1),
-                                                                                                                                                           MyEA::String::Get__Time() + ": Minimum_0: ");
+                                                                                                                                                           MyEA::Time::Date_Time_Now() + ": Minimum_0: ");
                 
                 tmp_Dropout_Initializer__Arguments.maximum_value[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                             T(1),
-                                                                                                                                                            MyEA::String::Get__Time() + ": Maximum_0: ");
+                                                                                                                                                            MyEA::Time::Date_Time_Now() + ": Maximum_0: ");
 
                 tmp_Dropout_Initializer__Arguments.step_size[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                    T(1),
-                                                                                                                                                   MyEA::String::Get__Time() + ": Step size_0: ");
+                                                                                                                                                   MyEA::Time::Date_Time_Now() + ": Step size_0: ");
                 
                 tmp_Dropout_Initializer__Arguments.minimum_value[1u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                            T(1),
-                                                                                                                                                           MyEA::String::Get__Time() + ": Minimum_1: ");
+                                                                                                                                                           MyEA::Time::Date_Time_Now() + ": Minimum_1: ");
                 
                 tmp_Dropout_Initializer__Arguments.maximum_value[1u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                             T(1),
-                                                                                                                                                            MyEA::String::Get__Time() + ": Maximum_1: ");
+                                                                                                                                                            MyEA::Time::Date_Time_Now() + ": Maximum_1: ");
 
                 tmp_Dropout_Initializer__Arguments.step_size[1u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                    T(1),
-                                                                                                                                                   MyEA::String::Get__Time() + ": Step size_1: ");
+                                                                                                                                                   MyEA::Time::Date_Time_Now() + ": Step size_1: ");
                 
                 if(this->Push_Back__Dropout(tmp_Dropout_Initializer__Arguments) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Push_Back__Dropout(%zu, %s, %f, %f, %f, %f, %f, %f)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_Dropout_Initializer__Arguments.layer_index,
                                              MyEA::Common::ENUM_TYPE_LAYER_DROPOUT_NAMES[tmp_Dropout_Initializer__Arguments.type_layer_dropout].c_str(),
@@ -747,7 +747,7 @@ bool Grid_Search<T>::Input(class MyEA::Neural_Network::Neural_Network_Manager &r
 
             for(tmp_layer_index = 1_zu; tmp_layer_index != tmp_ptr_Neural_Network->Get__Total_Layers() - 1_zu; ++tmp_layer_index)
             {
-                if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to use dropout at the hidden layer " + std::to_string(tmp_layer_index) + ": "))
+                if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to use dropout at the hidden layer " + std::to_string(tmp_layer_index) + ": "))
                 {
                     struct Dropout_Initializer__Arguments<T> tmp_Dropout_Initializer__Arguments;
 
@@ -757,32 +757,32 @@ bool Grid_Search<T>::Input(class MyEA::Neural_Network::Neural_Network_Manager &r
 
                     tmp_Dropout_Initializer__Arguments.minimum_value[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                              T(1),
-                                                                                                                                                             MyEA::String::Get__Time() + ": Minimum_0: ");
+                                                                                                                                                             MyEA::Time::Date_Time_Now() + ": Minimum_0: ");
                     
                     tmp_Dropout_Initializer__Arguments.maximum_value[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                               T(1),
-                                                                                                                                                              MyEA::String::Get__Time() + ": Maximum_0: ");
+                                                                                                                                                              MyEA::Time::Date_Time_Now() + ": Maximum_0: ");
 
                     tmp_Dropout_Initializer__Arguments.step_size[0u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                      T(1),
-                                                                                                                                                     MyEA::String::Get__Time() + ": Step size_0: ");
+                                                                                                                                                     MyEA::Time::Date_Time_Now() + ": Step size_0: ");
                     
                     tmp_Dropout_Initializer__Arguments.minimum_value[1u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                              T(1),
-                                                                                                                                                             MyEA::String::Get__Time() + ": Minimum_1: ");
+                                                                                                                                                             MyEA::Time::Date_Time_Now() + ": Minimum_1: ");
                     
                     tmp_Dropout_Initializer__Arguments.maximum_value[1u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                               T(1),
-                                                                                                                                                              MyEA::String::Get__Time() + ": Maximum_1: ");
+                                                                                                                                                              MyEA::Time::Date_Time_Now() + ": Maximum_1: ");
 
                     tmp_Dropout_Initializer__Arguments.step_size[1u] = MyEA::String::Cin_Real_Number<T>(T(0),
                                                                                                                                                      T(1),
-                                                                                                                                                     MyEA::String::Get__Time() + ": Step size_1: ");
+                                                                                                                                                     MyEA::Time::Date_Time_Now() + ": Step size_1: ");
                     
                     if(this->Push_Back__Dropout(tmp_Dropout_Initializer__Arguments) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Push_Back__Dropout(%zu, %s, %f, %f, %f, %f, %f, %f)\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_Dropout_Initializer__Arguments.layer_index,
                                                  MyEA::Common::ENUM_TYPE_LAYER_DROPOUT_NAMES[tmp_Dropout_Initializer__Arguments.type_layer_dropout].c_str(),
@@ -810,7 +810,7 @@ bool Grid_Search<T>::Set__Maximum_Iterations(size_t const maximum_iterations_rec
     if(maximum_iterations_received == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Maximum iterations can not be zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -832,7 +832,7 @@ bool Grid_Search<T>::Set__Use__Shuffle(bool const use_shuffle_received)
         if(this->Allocate__Stochastic_Index() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Stochastic_Index()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -855,7 +855,7 @@ bool Grid_Search<T>::Push_Back__Weight_Decay(T const minimum_value_received,
     if(minimum_value_received > maxium_value_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Minimum value (%f) bigger than maximum value (%f). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(minimum_value_received),
                                  Cast_T(maxium_value_received),
@@ -866,7 +866,7 @@ bool Grid_Search<T>::Push_Back__Weight_Decay(T const minimum_value_received,
     else if(minimum_value_received < T(0))
     {
         PRINT_FORMAT("%s: %s: ERROR: Minimum value (%f) less than zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(minimum_value_received),
                                  __LINE__);
@@ -876,7 +876,7 @@ bool Grid_Search<T>::Push_Back__Weight_Decay(T const minimum_value_received,
     else if(maxium_value_received > T(1))
     {
         PRINT_FORMAT("%s: %s: ERROR: Maximum value (%f) bigger than one. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(maxium_value_received),
                                  __LINE__);
@@ -886,7 +886,7 @@ bool Grid_Search<T>::Push_Back__Weight_Decay(T const minimum_value_received,
     else if(step_size_received == T(0))
     {
         PRINT_FORMAT("%s: %s: ERROR: Step size can not be zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -950,7 +950,7 @@ bool Grid_Search<T>::Push_Back__Max_Norm_Constraints(T const minimum_value_recei
     if(minimum_value_received > maxium_value_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Minimum value (%f) bigger than maximum value (%f). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(minimum_value_received),
                                  Cast_T(maxium_value_received),
@@ -961,7 +961,7 @@ bool Grid_Search<T>::Push_Back__Max_Norm_Constraints(T const minimum_value_recei
     else if(minimum_value_received < T(0))
     {
         PRINT_FORMAT("%s: %s: ERROR: Minimum value (%f) less than zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(minimum_value_received),
                                  __LINE__);
@@ -971,7 +971,7 @@ bool Grid_Search<T>::Push_Back__Max_Norm_Constraints(T const minimum_value_recei
     else if(step_size_received == T(0))
     {
         PRINT_FORMAT("%s: %s: ERROR: Step size can not be zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1035,7 +1035,7 @@ bool Grid_Search<T>::Push_Back__Normalization_Momentum_Average(T const minimum_v
     if(minimum_value_received > maxium_value_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Minimum value (%f) bigger than maximum value (%f). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(minimum_value_received),
                                  Cast_T(maxium_value_received),
@@ -1046,7 +1046,7 @@ bool Grid_Search<T>::Push_Back__Normalization_Momentum_Average(T const minimum_v
     else if(minimum_value_received < T(0))
     {
         PRINT_FORMAT("%s: %s: ERROR: Minimum value (%f) less than zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(minimum_value_received),
                                  __LINE__);
@@ -1056,7 +1056,7 @@ bool Grid_Search<T>::Push_Back__Normalization_Momentum_Average(T const minimum_v
     else if(maxium_value_received > T(1))
     {
         PRINT_FORMAT("%s: %s: ERROR: Maximum value (%f) bigger than one. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(maxium_value_received),
                                  __LINE__);
@@ -1066,7 +1066,7 @@ bool Grid_Search<T>::Push_Back__Normalization_Momentum_Average(T const minimum_v
     else if(step_size_received == T(0))
     {
         PRINT_FORMAT("%s: %s: ERROR: Step size can not be zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1117,7 +1117,7 @@ bool Grid_Search<T>::Push_Back__Dropout(struct Dropout_Initializer__Arguments<T>
     if(Dropout_Initializer__Arguments_received.minimum_value[0u] > Dropout_Initializer__Arguments_received.maximum_value[0u])
     {
         PRINT_FORMAT("%s: %s: ERROR: Minimum value[0u] (%f) bigger than maximum value[0u] (%f). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(Dropout_Initializer__Arguments_received.minimum_value[0u]),
                                  Cast_T(Dropout_Initializer__Arguments_received.maximum_value[0u]),
@@ -1128,7 +1128,7 @@ bool Grid_Search<T>::Push_Back__Dropout(struct Dropout_Initializer__Arguments<T>
     else if(Dropout_Initializer__Arguments_received.minimum_value[0u] < T(0))
     {
         PRINT_FORMAT("%s: %s: ERROR: Minimum value[0u] (%f) less than zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(Dropout_Initializer__Arguments_received.minimum_value[0u]),
                                  __LINE__);
@@ -1138,7 +1138,7 @@ bool Grid_Search<T>::Push_Back__Dropout(struct Dropout_Initializer__Arguments<T>
     else if(Dropout_Initializer__Arguments_received.maximum_value[0u] > T(1))
     {
         PRINT_FORMAT("%s: %s: ERROR: Maximum value[0u] (%f) bigger than one. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(Dropout_Initializer__Arguments_received.maximum_value[0u]),
                                  __LINE__);
@@ -1148,7 +1148,7 @@ bool Grid_Search<T>::Push_Back__Dropout(struct Dropout_Initializer__Arguments<T>
     else if(Dropout_Initializer__Arguments_received.step_size[0u] == T(0))
     {
         PRINT_FORMAT("%s: %s: ERROR: Size_0 can not be zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1161,7 +1161,7 @@ bool Grid_Search<T>::Push_Back__Dropout(struct Dropout_Initializer__Arguments<T>
             if(Dropout_Initializer__Arguments_received.minimum_value[1u] > Dropout_Initializer__Arguments_received.maximum_value[1u])
             {
                 PRINT_FORMAT("%s: %s: ERROR: Minimum value[1u] (%f) bigger than maximum value[1u] (%f). At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          Cast_T(Dropout_Initializer__Arguments_received.minimum_value[1u]),
                                          Cast_T(Dropout_Initializer__Arguments_received.maximum_value[1u]),
@@ -1172,7 +1172,7 @@ bool Grid_Search<T>::Push_Back__Dropout(struct Dropout_Initializer__Arguments<T>
             else if(Dropout_Initializer__Arguments_received.minimum_value[1u] < T(0))
             {
                 PRINT_FORMAT("%s: %s: ERROR: Minimum value[1u] (%f) less than zero. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          Cast_T(Dropout_Initializer__Arguments_received.minimum_value[1u]),
                                          __LINE__);
@@ -1182,7 +1182,7 @@ bool Grid_Search<T>::Push_Back__Dropout(struct Dropout_Initializer__Arguments<T>
             else if(Dropout_Initializer__Arguments_received.maximum_value[1u] > T(1))
             {
                 PRINT_FORMAT("%s: %s: ERROR: Maximum value[1u] (%f) bigger than one. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          Cast_T(Dropout_Initializer__Arguments_received.maximum_value[1u]),
                                          __LINE__);
@@ -1192,7 +1192,7 @@ bool Grid_Search<T>::Push_Back__Dropout(struct Dropout_Initializer__Arguments<T>
             else if(Dropout_Initializer__Arguments_received.step_size[1u] == T(0))
             {
                 PRINT_FORMAT("%s: %s: ERROR: Size_1 can not be zero. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -1203,7 +1203,7 @@ bool Grid_Search<T>::Push_Back__Dropout(struct Dropout_Initializer__Arguments<T>
             if(Dropout_Initializer__Arguments_received.step_size[1u] >= T(1))
             {
                 PRINT_FORMAT("%s: %s: ERROR: Size_1 can not be greater or equal to one. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -1282,7 +1282,7 @@ bool Grid_Search<T>::Push_Back__Dropout(struct Dropout_Initializer__Arguments<T>
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type dropout (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         Dropout_Initializer__Arguments_received.type_layer_dropout,
                                         MyEA::Common::ENUM_TYPE_LAYER_DROPOUT_NAMES[Dropout_Initializer__Arguments_received.type_layer_dropout].c_str(),
@@ -1386,7 +1386,7 @@ bool Grid_Search<T>::Push_Back__Dropout(struct Dropout_Initializer__Arguments<T>
         case MyEA::Common::ENUM_TYPE_LAYER_DROPOUT::TYPE_LAYER_DROPOUT_ZONEOUT: break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type dropout (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         Dropout_Initializer__Arguments_received.type_layer_dropout,
                                         MyEA::Common::ENUM_TYPE_LAYER_DROPOUT_NAMES[Dropout_Initializer__Arguments_received.type_layer_dropout].c_str(),
@@ -1455,7 +1455,7 @@ bool Grid_Search<T>::Update_Tree(void)
     if(tmp_vector_depth_size == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Tree is empty. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1484,7 +1484,7 @@ bool Grid_Search<T>::Update_Tree(void)
         if(this->Reallocate__Stochastic_Index(tmp_trunc_size * this->_vector_Tree.at(0u)) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Reallocate__Stochastic_Index(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_trunc_size * this->_vector_Tree.at(0u),
                                      __LINE__);
@@ -1504,25 +1504,25 @@ bool Grid_Search<T>::User_Controls(void)
 #if defined(COMPILE_UINPUT)
     while(true)
     {
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s: User controls:" NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s: User controls:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         PRINT_FORMAT("%s:\t[0]: Maximum iterations (%zu)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->_maximum_iterations);
         PRINT_FORMAT("%s:\t[1]: Use shuffle (%s)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->_use_shuffle ? "true" : "false");
-        PRINT_FORMAT("%s:\t[2]: Quit." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s:\t[2]: Quit." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
         switch(MyEA::String::Cin_Number<unsigned int>(0u,
                                                                                 2u,
-                                                                                MyEA::String::Get__Time() + ": Option: "))
+                                                                                MyEA::Time::Date_Time_Now() + ": Option: "))
         {
             case 0u:
-                if(this->Set__Maximum_Iterations(MyEA::String::Cin_Number<size_t>(1_zu, MyEA::String::Get__Time() + ": Maximum iterations: ")) == false)
+                if(this->Set__Maximum_Iterations(MyEA::String::Cin_Number<size_t>(1_zu, MyEA::Time::Date_Time_Now() + ": Maximum iterations: ")) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Maximum_Iterations()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -1533,7 +1533,7 @@ bool Grid_Search<T>::User_Controls(void)
                 if(this->User_Controls__Shuffle() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls__Shuffle()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -1543,7 +1543,7 @@ bool Grid_Search<T>::User_Controls(void)
             case 2u: return(true);
             default:
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Cin_Number<unsigned int>(%u, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          0u,
                                          2u,
@@ -1561,10 +1561,10 @@ bool Grid_Search<T>::User_Controls__Shuffle(void)
 {
     bool const tmp_use_shuffle(this->_use_shuffle);
 
-    if(this->Set__Use__Shuffle(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Use shuffle: ")) == false)
+    if(this->Set__Use__Shuffle(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Use shuffle: ")) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Use__Shuffle()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1598,13 +1598,13 @@ bool Grid_Search<T>::Search(class MyEA::Neural_Network::Neural_Network_Manager &
     size_t tmp_hyper_parameters_iteration(0u);
     
 #if defined(COMPILE_UINPUT)
-    class Key_Logger tmp_Key_Logger;
+    class MyEA::Capturing::Keyboard keyboard;
 #endif
     
     if((tmp_ptr_Neural_Network_trainer_clone = new class Neural_Network) == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  sizeof(class Neural_Network),
                                  __LINE__);
@@ -1615,7 +1615,7 @@ bool Grid_Search<T>::Search(class MyEA::Neural_Network::Neural_Network_Manager &
     if(tmp_ptr_Neural_Network_trainer_clone->Copy(*tmp_ptr_Neural_Network_competitor, false) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Copy(*ptr)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -1628,18 +1628,18 @@ bool Grid_Search<T>::Search(class MyEA::Neural_Network::Neural_Network_Manager &
     {
     #if defined(COMPILE_UINPUT)
     #if defined(COMPILE_WINDOWS)
-        if(tmp_Key_Logger.Trigger_Key(0x45))
+        if(keyboard.Trigger_Key(0x45))
         {
-            PRINT_FORMAT("%s: A signal for stopping the training has been triggered from the user input." NEW_LINE, MyEA::String::Get__Time().c_str());
+            PRINT_FORMAT("%s: A signal for stopping the training has been triggered from the user input." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
             break;
         }
-        else if(tmp_Key_Logger.Trigger_Key(0x50))
+        else if(keyboard.Trigger_Key(0x50))
         {
             if(this->User_Controls() == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
             }
@@ -1651,31 +1651,31 @@ bool Grid_Search<T>::Search(class MyEA::Neural_Network::Neural_Network_Manager &
                 if(ref_Neural_Network_Manager_received.Set__While_Condition_Optimization(tmp_While_Condition) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__While_Condition_Optimization(ref)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
                 }
             }
         }
     #elif defined(COMPILE_LINUX)
-        tmp_Key_Logger.Collect_Keys_Pressed();
+        keyboard.Collect_Keys_Pressed();
 
-        if(tmp_Key_Logger.Trigger_Key('q'))
+        if(keyboard.Trigger_Key('q'))
         {
-            PRINT_FORMAT("%s: A signal for stopping the training has been triggered from the user input." NEW_LINE, MyEA::String::Get__Time().c_str());
+            PRINT_FORMAT("%s: A signal for stopping the training has been triggered from the user input." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
-            tmp_Key_Logger.Clear_Keys_Pressed();
+            keyboard.Clear_Keys_Pressed();
 
             break;
         }
-        else if(tmp_Key_Logger.Trigger_Key('m'))
+        else if(keyboard.Trigger_Key('m'))
         {
-            tmp_Key_Logger.Clear_Keys_Pressed();
+            keyboard.Clear_Keys_Pressed();
             
             if(this->User_Controls() == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
             }
@@ -1687,7 +1687,7 @@ bool Grid_Search<T>::Search(class MyEA::Neural_Network::Neural_Network_Manager &
                 if(ref_Neural_Network_Manager_received.Set__While_Condition_Optimization(tmp_While_Condition) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__While_Condition_Optimization(ref)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
                 }
@@ -1699,7 +1699,7 @@ bool Grid_Search<T>::Search(class MyEA::Neural_Network::Neural_Network_Manager &
         if(tmp_ptr_Neural_Network_trainer->Update(*tmp_ptr_Neural_Network_trainer_clone, true) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update(*ptr, true)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
             
@@ -1708,16 +1708,16 @@ bool Grid_Search<T>::Search(class MyEA::Neural_Network::Neural_Network_Manager &
             return(false);
         }
         
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         PRINT_FORMAT("%s: [%zu]: Feed hyper parameters." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  tmp_hyper_parameters_iteration);
         if(this->Feed_Hyper_Parameters(this->_use_shuffle ? this->_ptr_array_stochastic_index[tmp_hyper_parameters_iteration] : tmp_hyper_parameters_iteration, tmp_ptr_Neural_Network_trainer) == false) { break; }
         
         if(tmp_ptr_Neural_Network_trainer->ptr_array_derivatives_parameters != nullptr) { tmp_ptr_Neural_Network_trainer->Clear_Training_Arrays(); }
         
         PRINT_FORMAT("%s: Search grid, optimization [%.2f%%] %zu / %zu." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  100.0 * static_cast<double>(tmp_hyper_parameters_iteration) / static_cast<double>(this->_total_iterations),
                                  tmp_hyper_parameters_iteration,
                                  this->_total_iterations);
@@ -1759,9 +1759,9 @@ bool Grid_Search<T>::Search(class MyEA::Neural_Network::Neural_Network_Manager &
     
     delete(tmp_ptr_Neural_Network_trainer_clone);
 
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     PRINT_FORMAT("%s: Search grid, finish [%.2f%%] %zu / %zu." NEW_LINE,
-                             MyEA::String::Get__Time().c_str(),
+                             MyEA::Time::Date_Time_Now().c_str(),
                              100.0 * static_cast<double>(tmp_hyper_parameters_iteration) / static_cast<double>(this->_total_iterations),
                              tmp_hyper_parameters_iteration,
                              this->_total_iterations);
@@ -1798,14 +1798,14 @@ bool Grid_Search<T>::Feed_Hyper_Parameters(size_t const hyper_parameters_index_r
         if(tmp_vector_hyper_parameters_index >= this->p_vector_Weight_Decay.size()) { return(false); }
         
         PRINT_FORMAT("%s: [%zu]: Weight_Decay(%zu): %f" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  hyper_parameters_index_received,
                                  tmp_vector_hyper_parameters_index,
                                  Cast_T(this->p_vector_Weight_Decay.at(tmp_vector_hyper_parameters_index)));
         if(ptr_Neural_Network_received->Set__Regularization__Weight_Decay(this->p_vector_Weight_Decay.at(tmp_vector_hyper_parameters_index)) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Regularization__Weight_Decay(%f)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          Cast_T(this->p_vector_Weight_Decay.at(tmp_vector_hyper_parameters_index)),
                                          __LINE__);
@@ -1836,14 +1836,14 @@ bool Grid_Search<T>::Feed_Hyper_Parameters(size_t const hyper_parameters_index_r
         if(tmp_vector_hyper_parameters_index >= this->p_vector_Max_Norm_Constraints.size()) { return(false); }
         
         PRINT_FORMAT("%s: [%zu]: Max_Norm_Constraints(%zu): %f" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  hyper_parameters_index_received,
                                  tmp_vector_hyper_parameters_index,
                                  Cast_T(this->p_vector_Max_Norm_Constraints.at(tmp_vector_hyper_parameters_index)));
         if(ptr_Neural_Network_received->Set__Regularization__Max_Norm_Constraints(this->p_vector_Max_Norm_Constraints.at(tmp_vector_hyper_parameters_index)) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Regularization__Max_Norm_Constraints(%f)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      Cast_T(this->p_vector_Max_Norm_Constraints.at(tmp_vector_hyper_parameters_index)),
                                      __LINE__);
@@ -1874,14 +1874,14 @@ bool Grid_Search<T>::Feed_Hyper_Parameters(size_t const hyper_parameters_index_r
         if(tmp_vector_hyper_parameters_index >= this->p_vector_Normalization_Momentum_Average.size()) { return(false); }
         
         PRINT_FORMAT("%s: [%zu]: Normalization_Momentum_Average(%zu): %f" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  hyper_parameters_index_received,
                                  tmp_vector_hyper_parameters_index,
                                  Cast_T(this->p_vector_Normalization_Momentum_Average.at(tmp_vector_hyper_parameters_index)));
         if(ptr_Neural_Network_received->Set__Normalization_Momentum_Average(this->p_vector_Normalization_Momentum_Average.at(tmp_vector_hyper_parameters_index)) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Normalization_Momentum_Average(%f)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      Cast_T(this->p_vector_Normalization_Momentum_Average.at(tmp_vector_hyper_parameters_index)),
                                      __LINE__);
@@ -1918,7 +1918,7 @@ bool Grid_Search<T>::Feed_Hyper_Parameters(size_t const hyper_parameters_index_r
                 if(tmp_vector_hyper_parameters_index >= this->p_vector_layers_Dropout.at(tmp_vector_depth_index).size()) { return(false); }
             
                 PRINT_FORMAT("%s: [%zu]: Dropout(%zu): Layer(%zu), Type(%u | %s), Value[0](%f), Value[1](%f)" NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          hyper_parameters_index_received,
                                          tmp_vector_hyper_parameters_index,
                                          this->p_vector_layers_Dropout.at(tmp_vector_depth_index).at(tmp_vector_hyper_parameters_index).layer_index,
@@ -1932,7 +1932,7 @@ bool Grid_Search<T>::Feed_Hyper_Parameters(size_t const hyper_parameters_index_r
                                                                                     true) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Dropout(%zu, %u | %s, %f, %f, true)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              this->p_vector_layers_Dropout.at(tmp_vector_depth_index).at(tmp_vector_hyper_parameters_index).layer_index,
                                              this->p_vector_layers_Dropout.at(tmp_vector_depth_index).at(tmp_vector_hyper_parameters_index).type_layer_dropout,
@@ -1958,7 +1958,7 @@ bool Grid_Search<T>::Allocate__Shutdown_Boolean(void)
     if(tmp_ptr_shutdown_boolean == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  sizeof(std::atomic<bool>),
                                  __LINE__);
@@ -1974,21 +1974,21 @@ bool Grid_Search<T>::Allocate__Shutdown_Boolean(void)
 }
 
 template<typename T>
-bool Grid_Search<T>::Assign_Shutdown_Block(class Shutdown_Block &ref_Shutdown_Block_received)
+bool Grid_Search<T>::Assign_Shutdown_Block(class MyEA::Capturing::Shutdown &shutdown_module)
 {
     if(this->Allocate__Shutdown_Boolean() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Shutdown_Boolean()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
                 
         return(false);
     }
-    else if(ref_Shutdown_Block_received.Push_Back(this->_ptr_shutdown_boolean) == false)
+    else if(shutdown_module.Push_Back(this->_ptr_shutdown_boolean) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Push_Back(ptr)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -2025,7 +2025,7 @@ bool Grid_Search<T>::Allocate__Stochastic_Index(void)
     if(this->_ptr_array_stochastic_index == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_stochastic_index_size * sizeof(size_t),
                                  __LINE__);
@@ -2041,14 +2041,13 @@ bool Grid_Search<T>::Allocate__Stochastic_Index(void)
 template<typename T>
 bool Grid_Search<T>::Reallocate__Stochastic_Index(size_t const total_iterations_received)
 {
-    this->_ptr_array_stochastic_index = Memory::reallocate_cpp<size_t>(this->_ptr_array_stochastic_index,
+    this->_ptr_array_stochastic_index = MyEA::Memory::Cpp::Reallocate<size_t, false>(this->_ptr_array_stochastic_index,
                                                                                                           total_iterations_received,
-                                                                                                          this->_total_iterations,
-                                                                                                          false);
+                                                                                                          this->_total_iterations);
     if(this->_ptr_array_stochastic_index == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  total_iterations_received * sizeof(size_t),
                                  __LINE__);

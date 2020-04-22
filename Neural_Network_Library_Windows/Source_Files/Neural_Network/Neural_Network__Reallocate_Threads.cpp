@@ -9,7 +9,7 @@ bool Neural_Network::Reallocate__Thread(size_t const number_threads_received)
     if(this->Reallocate__Thread__Cost(number_threads_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Reallocate__Thread__Cost(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  number_threads_received,
                                  __LINE__);
@@ -19,7 +19,7 @@ bool Neural_Network::Reallocate__Thread(size_t const number_threads_received)
     else if(this->Reallocate__Thread__Normalized_Unit__Batch_Normalization(number_threads_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Reallocate__Thread__Normalized_Unit__Batch_Normalization(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  number_threads_received,
                                  __LINE__);
@@ -29,7 +29,7 @@ bool Neural_Network::Reallocate__Thread(size_t const number_threads_received)
     else if(this->Reallocate__Thread__Parameter(number_threads_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Reallocate__Thread__Parameter(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  number_threads_received,
                                  __LINE__);
@@ -39,7 +39,7 @@ bool Neural_Network::Reallocate__Thread(size_t const number_threads_received)
     else if(this->Use__K_Sparse() && this->Reallocate__Thread__Sparse_K_Filter(number_threads_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Reallocate__Thread__Sparse_K_Filter(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  number_threads_received,
                                  __LINE__);
@@ -49,7 +49,7 @@ bool Neural_Network::Reallocate__Thread(size_t const number_threads_received)
     else if((this->Use__Dropout__Bernoulli() || this->Use__Dropout__Bernoulli__Inverted()) && this->Reallocate__Thread__Generator__Dropout__Bernoulli(number_threads_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Reallocate__Thread__Generator__Dropout__Bernoulli(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  number_threads_received,
                                  __LINE__);
@@ -59,7 +59,7 @@ bool Neural_Network::Reallocate__Thread(size_t const number_threads_received)
     else if(this->Use__Dropout__Gaussian() && this->Reallocate__Thread__Generator__Dropout__Gaussian(number_threads_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Reallocate__Thread__Generator__Dropout__Gaussian(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  number_threads_received,
                                  __LINE__);
@@ -69,7 +69,7 @@ bool Neural_Network::Reallocate__Thread(size_t const number_threads_received)
     else if(this->Use__Dropout__ShakeDrop() && this->Reallocate__Thread__Generator__Dropout__ShakeDrop(number_threads_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Reallocate__Thread__Generator__Dropout__ShakeDrop(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  number_threads_received,
                                  __LINE__);
@@ -79,7 +79,7 @@ bool Neural_Network::Reallocate__Thread(size_t const number_threads_received)
     else if(this->Use__Dropout__Uout() && this->Reallocate__Thread__Generator__Dropout__Uout(number_threads_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Reallocate__Thread__Generator__Dropout__Uout(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  number_threads_received,
                                  __LINE__);
@@ -89,7 +89,7 @@ bool Neural_Network::Reallocate__Thread(size_t const number_threads_received)
     else if(this->Use__Dropout__Zoneout() && this->Reallocate__Thread__Generator__Dropout__Zoneout(number_threads_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Reallocate__Thread__Generator__Dropout__Zoneout(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  number_threads_received,
                                  __LINE__);
@@ -102,14 +102,13 @@ bool Neural_Network::Reallocate__Thread(size_t const number_threads_received)
 
 bool Neural_Network::Reallocate__Thread__Sparse_K_Filter(size_t const number_threads_received)
 {
-    this->ptr_array_k_sparse_activities = Memory::reallocate_objects_cpp<std::pair<size_t, T_>>(this->ptr_array_k_sparse_activities,
+    this->ptr_array_k_sparse_activities = MyEA::Memory::Cpp::Reallocate_Objects<std::pair<size_t, T_>, false>(this->ptr_array_k_sparse_activities,
                                                                                                                                             number_threads_received * (this->total_basic_units_allocated + this->total_basic_indice_units_allocated + this->total_AF_units_allocated + this->total_AF_Ind_recurrent_units_allocated + this->total_cell_units_allocated),
-                                                                                                                                            this->number_threads * (this->total_basic_units_allocated + this->total_basic_indice_units_allocated + this->total_AF_units_allocated + this->total_AF_Ind_recurrent_units_allocated + this->total_cell_units_allocated),
-                                                                                                                                            false);
+                                                                                                                                            this->number_threads * (this->total_basic_units_allocated + this->total_basic_indice_units_allocated + this->total_AF_units_allocated + this->total_AF_Ind_recurrent_units_allocated + this->total_cell_units_allocated));
     if(this->ptr_array_k_sparse_activities == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  sizeof(std::pair<size_t, T_>),
                                  number_threads_received * (this->total_basic_units_allocated + this->total_basic_indice_units_allocated + this->total_AF_units_allocated + this->total_AF_Ind_recurrent_units_allocated + this->total_cell_units_allocated),
@@ -127,14 +126,13 @@ bool Neural_Network::Reallocate__Thread__Sparse_K_Filter(size_t const number_thr
 bool Neural_Network::Reallocate__Thread__Cost(size_t const number_threads_received)
 {        
     // Reallocate number loss.
-    size_t *tmp_ptr_array_number_loss(Memory::reallocate_cpp<size_t>(this->ptr_array_number_loss,
+    size_t *tmp_ptr_array_number_loss(MyEA::Memory::Cpp::Reallocate<size_t, false>(this->ptr_array_number_loss,
                                                                                                          number_threads_received,
-                                                                                                         this->number_threads,
-                                                                                                         false));
+                                                                                                         this->number_threads));
     if(tmp_ptr_array_number_loss == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  sizeof(size_t),
                                  number_threads_received,
@@ -147,14 +145,13 @@ bool Neural_Network::Reallocate__Thread__Cost(size_t const number_threads_receiv
     // |END| Reallocate number loss. |END|
         
     // Reallocate number loss.
-    size_t *tmp_ptr_array_bit_fail_values(Memory::reallocate_cpp<size_t>(this->ptr_array_number_bit_fail,
+    size_t *tmp_ptr_array_bit_fail_values(MyEA::Memory::Cpp::Reallocate<size_t, false>(this->ptr_array_number_bit_fail,
                                                                                                           number_threads_received,
-                                                                                                          this->number_threads,
-                                                                                                          false));
+                                                                                                          this->number_threads));
     if(tmp_ptr_array_bit_fail_values == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  sizeof(size_t),
                                  number_threads_received,
@@ -167,14 +164,13 @@ bool Neural_Network::Reallocate__Thread__Cost(size_t const number_threads_receiv
     // |END| Reallocate number loss. |END|
     
     // Reallocate loss values.
-    T_ *tmp_ptr_array_loss_values(Memory::reallocate_cpp<T_>(this->ptr_array_loss_values,
+    T_ *tmp_ptr_array_loss_values(MyEA::Memory::Cpp::Reallocate<T_, false>(this->ptr_array_loss_values,
                                                                                              number_threads_received,
-                                                                                             this->number_threads,
-                                                                                             false));
+                                                                                             this->number_threads));
     if(tmp_ptr_array_loss_values == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu, false)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  sizeof(T_),
                                  number_threads_received,
@@ -187,14 +183,13 @@ bool Neural_Network::Reallocate__Thread__Cost(size_t const number_threads_receiv
     // |END| Reallocate loss values. |END|
 
     // Reallocate number accuracy value.
-    T_ *tmp_ptr_array_number_accuracy_value(Memory::reallocate_cpp<T_>(this->ptr_array_accuracy_values[0u],
+    T_ *tmp_ptr_array_number_accuracy_value(MyEA::Memory::Cpp::Reallocate<T_, false>(this->ptr_array_accuracy_values[0u],
                                                                                                                number_threads_received,
-                                                                                                               this->number_threads,
-                                                                                                               false));
+                                                                                                               this->number_threads));
     if(tmp_ptr_array_number_accuracy_value == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu, false)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  sizeof(T_),
                                  number_threads_received,
@@ -205,14 +200,13 @@ bool Neural_Network::Reallocate__Thread__Cost(size_t const number_threads_receiv
     }
     this->ptr_array_accuracy_values[0u] = tmp_ptr_array_number_accuracy_value;
 
-    tmp_ptr_array_number_accuracy_value = Memory::reallocate_cpp<T_>(this->ptr_array_accuracy_values[1u],
+    tmp_ptr_array_number_accuracy_value = MyEA::Memory::Cpp::Reallocate<T_, false>(this->ptr_array_accuracy_values[1u],
                                                                                                             number_threads_received,
-                                                                                                            this->number_threads,
-                                                                                                            false);
+                                                                                                            this->number_threads);
     if(tmp_ptr_array_number_accuracy_value == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu, false)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  sizeof(T_),
                                  number_threads_received,
@@ -223,14 +217,13 @@ bool Neural_Network::Reallocate__Thread__Cost(size_t const number_threads_receiv
     }
     this->ptr_array_accuracy_values[1u] = tmp_ptr_array_number_accuracy_value;
 
-    tmp_ptr_array_number_accuracy_value = Memory::reallocate_cpp<T_>(this->ptr_array_accuracy_values[2u],
+    tmp_ptr_array_number_accuracy_value = MyEA::Memory::Cpp::Reallocate<T_, false>(this->ptr_array_accuracy_values[2u],
                                                                                                             number_threads_received,
-                                                                                                            this->number_threads,
-                                                                                                            false);
+                                                                                                            this->number_threads);
     if(tmp_ptr_array_number_accuracy_value == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu, false)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  sizeof(T_),
                                  number_threads_received,
@@ -241,14 +234,13 @@ bool Neural_Network::Reallocate__Thread__Cost(size_t const number_threads_receiv
     }
     this->ptr_array_accuracy_values[2u] = tmp_ptr_array_number_accuracy_value;
 
-    tmp_ptr_array_number_accuracy_value = Memory::reallocate_cpp<T_>(this->ptr_array_accuracy_values[3u],
+    tmp_ptr_array_number_accuracy_value = MyEA::Memory::Cpp::Reallocate<T_, false>(this->ptr_array_accuracy_values[3u],
                                                                                                             number_threads_received,
-                                                                                                            this->number_threads,
-                                                                                                            false);
+                                                                                                            this->number_threads);
     if(tmp_ptr_array_number_accuracy_value == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu, false)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  sizeof(T_),
                                  number_threads_received,
@@ -259,14 +251,13 @@ bool Neural_Network::Reallocate__Thread__Cost(size_t const number_threads_receiv
     }
     this->ptr_array_accuracy_values[3u] = tmp_ptr_array_number_accuracy_value;
 
-    tmp_ptr_array_number_accuracy_value = Memory::reallocate_cpp<T_>(this->ptr_array_accuracy_values[4u],
+    tmp_ptr_array_number_accuracy_value = MyEA::Memory::Cpp::Reallocate<T_, false>(this->ptr_array_accuracy_values[4u],
                                                                                                             number_threads_received,
-                                                                                                            this->number_threads,
-                                                                                                            false);
+                                                                                                            this->number_threads);
     if(tmp_ptr_array_number_accuracy_value == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu, false)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  sizeof(T_),
                                  number_threads_received,
@@ -309,14 +300,13 @@ bool Neural_Network::Reallocate__Thread__Normalized_Unit__Batch_Normalization(si
         union Normalized_unit *tmp_ptr_normalized_unit_it;
         
         // Allocating normalized unit(s) mean.
-        T_ *tmp_ptr_array_normalized_units_mean_it(Memory::reallocate_cpp<T_>(this->ptr_array_normalized_batch_units_means,
+        T_ *tmp_ptr_array_normalized_units_mean_it(MyEA::Memory::Cpp::Reallocate<T_, false>(this->ptr_array_normalized_batch_units_means,
                                                                                                                      number_threads_received * this->number_recurrent_depth * this->total_normalized_units_allocated,
-                                                                                                                     this->number_threads * this->number_recurrent_depth * this->total_normalized_units_allocated,
-                                                                                                                     false));
+                                                                                                                     this->number_threads * this->number_recurrent_depth * this->total_normalized_units_allocated));
         if(tmp_ptr_array_normalized_units_mean_it == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      sizeof(T_),
                                      number_threads_received * this->number_recurrent_depth * this->total_normalized_units_allocated,
@@ -328,14 +318,13 @@ bool Neural_Network::Reallocate__Thread__Normalized_Unit__Batch_Normalization(si
         // |END| Allocating normalized unit(s) mean. |END|
         
         // Allocating normalized unit(s) variance.
-        T_ *tmp_ptr_array_normalized_units_variance_it(Memory::reallocate_cpp<T_>(this->ptr_array_normalized_batch_units_variances,
+        T_ *tmp_ptr_array_normalized_units_variance_it(MyEA::Memory::Cpp::Reallocate<T_, false>(this->ptr_array_normalized_batch_units_variances,
                                                                                                                          number_threads_received * this->number_recurrent_depth * this->total_normalized_units_allocated,
-                                                                                                                         this->number_threads * this->number_recurrent_depth * this->total_normalized_units_allocated,
-                                                                                                                         false));
+                                                                                                                         this->number_threads * this->number_recurrent_depth * this->total_normalized_units_allocated));
         if(tmp_ptr_array_normalized_units_variance_it == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      sizeof(T_),
                                      number_threads_received * this->number_recurrent_depth * this->total_normalized_units_allocated,
@@ -347,14 +336,13 @@ bool Neural_Network::Reallocate__Thread__Normalized_Unit__Batch_Normalization(si
         // |END| Allocating normalized unit(s) variance. |END|
         
         // Allocating normalized unit(s) derivative mean.
-        T_ *tmp_ptr_array_normalized_units_derivative_mean_it(Memory::reallocate_cpp<T_>(this->ptr_array_normalized_batch_units_derivatives_means,
+        T_ *tmp_ptr_array_normalized_units_derivative_mean_it(MyEA::Memory::Cpp::Reallocate<T_, false>(this->ptr_array_normalized_batch_units_derivatives_means,
                                                                                                                                     number_threads_received * this->number_recurrent_depth * this->total_normalized_units_allocated,
-                                                                                                                                    this->number_threads * this->number_recurrent_depth * this->total_normalized_units_allocated,
-                                                                                                                                    false));
+                                                                                                                                    this->number_threads * this->number_recurrent_depth * this->total_normalized_units_allocated));
         if(tmp_ptr_array_normalized_units_derivative_mean_it == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      sizeof(T_),
                                      number_threads_received * this->number_recurrent_depth * this->total_normalized_units_allocated,
@@ -366,14 +354,13 @@ bool Neural_Network::Reallocate__Thread__Normalized_Unit__Batch_Normalization(si
         // |END| Allocating normalized unit(s) derivative mean. |END|
         
         // Allocating normalized unit(s) derivative variance.
-        T_ *tmp_ptr_array_normalized_units_derivative_variance_it(Memory::reallocate_cpp<T_>(this->ptr_array_normalized_batch_units_derivatives_variances,
+        T_ *tmp_ptr_array_normalized_units_derivative_variance_it(MyEA::Memory::Cpp::Reallocate<T_, false>(this->ptr_array_normalized_batch_units_derivatives_variances,
                                                                                                                                         number_threads_received * this->number_recurrent_depth * this->total_normalized_units_allocated,
-                                                                                                                                        this->number_threads * this->number_recurrent_depth * this->total_normalized_units_allocated,
-                                                                                                                                        false));
+                                                                                                                                        this->number_threads * this->number_recurrent_depth * this->total_normalized_units_allocated));
         if(tmp_ptr_array_normalized_units_derivative_variance_it == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      sizeof(T_),
                                      number_threads_received * this->number_recurrent_depth * this->total_normalized_units_allocated,
@@ -480,7 +467,7 @@ bool Neural_Network::Reallocate__Thread__Normalized_Unit__Batch_Normalization(si
                             break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Type layer (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_ptr_layer_it->type_layer,
                                                  MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str(),
@@ -501,13 +488,13 @@ bool Neural_Network::Reallocate__Thread__Parameter(size_t const number_threads_r
         // Derivates parameters.
         if(this->ptr_array_derivatives_parameters != nullptr)
         {
-            T_ *tmp_ptr_array_derivatives_parameters(Memory::reallocate_cpp<T_>(this->ptr_array_derivatives_parameters,
+            T_ *tmp_ptr_array_derivatives_parameters(MyEA::Memory::Cpp::Reallocate<T_>(this->ptr_array_derivatives_parameters,
                                                                                                                     number_threads_received * this->total_parameters_allocated,
                                                                                                                     this->number_threads * this->total_parameters_allocated));
             if(tmp_ptr_array_derivatives_parameters == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          sizeof(T_),
                                          number_threads_received * this->total_parameters_allocated,
@@ -530,15 +517,15 @@ bool Neural_Network::Reallocate__Thread__Generator__Dropout__Bernoulli(size_t co
 {
     if(this->ptr_array_Class_Generator_Bernoulli != nullptr)
     {
-        class MyEA::Common::Class_Generator_Random_Bernoulli<T_> *tmp_ptr_array_Class_Generator_Random_Bernoulli(Memory::reallocate_objects_cpp<class MyEA::Common::Class_Generator_Random_Bernoulli<T_>>(this->ptr_array_Class_Generator_Bernoulli,
+        class MyEA::Random::Bernoulli<T_> *tmp_ptr_array_Class_Generator_Random_Bernoulli(MyEA::Memory::Cpp::Reallocate_Objects<class MyEA::Random::Bernoulli<T_>>(this->ptr_array_Class_Generator_Bernoulli,
                                                                                                                                                                                                                                                                                                                                       number_threads_received,
                                                                                                                                                                                                                                                                                                                                       this->number_threads));
         if(tmp_ptr_array_Class_Generator_Random_Bernoulli == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_objects_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
-                                     sizeof(class MyEA::Common::Class_Generator_Random_Bernoulli<T_>),
+                                     sizeof(class MyEA::Random::Bernoulli<T_>),
                                      number_threads_received,
                                      this->number_threads,
                                      __LINE__);
@@ -558,15 +545,15 @@ bool Neural_Network::Reallocate__Thread__Generator__Dropout__Zoneout(size_t cons
 {
     if(this->ptr_array_Class_Generator_Bernoulli_Zoneout_State != nullptr)
     {
-        class MyEA::Common::Class_Generator_Random_Bernoulli<T_> *tmp_ptr_array_Class_Generator_Random_Zoneout(Memory::reallocate_objects_cpp<class MyEA::Common::Class_Generator_Random_Bernoulli<T_>>(this->ptr_array_Class_Generator_Bernoulli_Zoneout_State,
+        class MyEA::Random::Bernoulli<T_> *tmp_ptr_array_Class_Generator_Random_Zoneout(MyEA::Memory::Cpp::Reallocate_Objects<class MyEA::Random::Bernoulli<T_>>(this->ptr_array_Class_Generator_Bernoulli_Zoneout_State,
                                                                                                                                                                                                                                                                                                                                      number_threads_received,
                                                                                                                                                                                                                                                                                                                                      this->number_threads));
         if(tmp_ptr_array_Class_Generator_Random_Zoneout == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_objects_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
-                                     sizeof(class MyEA::Common::Class_Generator_Random_Bernoulli<T_>),
+                                     sizeof(class MyEA::Random::Bernoulli<T_>),
                                      number_threads_received,
                                      this->number_threads,
                                      __LINE__);
@@ -581,15 +568,15 @@ bool Neural_Network::Reallocate__Thread__Generator__Dropout__Zoneout(size_t cons
     
     if(this->ptr_array_Class_Generator_Bernoulli_Zoneout_Hidden != nullptr)
     {
-        class MyEA::Common::Class_Generator_Random_Bernoulli<T_> *tmp_ptr_array_Class_Generator_Random_Hidden(Memory::reallocate_objects_cpp<class MyEA::Common::Class_Generator_Random_Bernoulli<T_>>(this->ptr_array_Class_Generator_Bernoulli_Zoneout_Hidden,
+        class MyEA::Random::Bernoulli<T_> *tmp_ptr_array_Class_Generator_Random_Hidden(MyEA::Memory::Cpp::Reallocate_Objects<class MyEA::Random::Bernoulli<T_>>(this->ptr_array_Class_Generator_Bernoulli_Zoneout_Hidden,
                                                                                                                                                                                                                                                                                                                                     number_threads_received,
                                                                                                                                                                                                                                                                                                                                     this->number_threads));
         if(tmp_ptr_array_Class_Generator_Random_Hidden == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_objects_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
-                                     sizeof(class MyEA::Common::Class_Generator_Random_Bernoulli<T_>),
+                                     sizeof(class MyEA::Random::Bernoulli<T_>),
                                      number_threads_received,
                                      this->number_threads,
                                      __LINE__);
@@ -609,15 +596,15 @@ bool Neural_Network::Reallocate__Thread__Generator__Dropout__Gaussian(size_t con
 {
     if(this->ptr_array_Class_Generator_Real_Gaussian != nullptr)
     {
-        class MyEA::Common::Class_Generator_Random_Gaussian<T_> *tmp_ptr_array_Class_Generator_Random_Gaussian(Memory::reallocate_objects_cpp<class MyEA::Common::Class_Generator_Random_Gaussian<T_>>(this->ptr_array_Class_Generator_Real_Gaussian,
+        class MyEA::Random::Gaussian<T_> *tmp_ptr_array_Class_Generator_Random_Gaussian(MyEA::Memory::Cpp::Reallocate_Objects<class MyEA::Random::Gaussian<T_>>(this->ptr_array_Class_Generator_Real_Gaussian,
                                                                                                                                                                                                                                                                                                                                           number_threads_received,
                                                                                                                                                                                                                                                                                                                                           this->number_threads));
         if(tmp_ptr_array_Class_Generator_Random_Gaussian == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_objects_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
-                                     sizeof(class MyEA::Common::Class_Generator_Random_Gaussian<T_>),
+                                     sizeof(class MyEA::Random::Gaussian<T_>),
                                      number_threads_received,
                                      this->number_threads,
                                      __LINE__);
@@ -640,15 +627,15 @@ bool Neural_Network::Reallocate__Thread__Generator__Dropout__ShakeDrop(size_t co
 {
     if(this->ptr_array_Class_Generator_Bernoulli_ShakeDrop != nullptr)
     {
-        class MyEA::Common::Class_Generator_Random_Bernoulli<T_> *tmp_ptr_array_Class_Generator_Random_Bernoulli_ShakeDrop(Memory::reallocate_objects_cpp<class MyEA::Common::Class_Generator_Random_Bernoulli<T_>>(this->ptr_array_Class_Generator_Bernoulli_ShakeDrop,
+        class MyEA::Random::Bernoulli<T_> *tmp_ptr_array_Class_Generator_Random_Bernoulli_ShakeDrop(MyEA::Memory::Cpp::Reallocate_Objects<class MyEA::Random::Bernoulli<T_>>(this->ptr_array_Class_Generator_Bernoulli_ShakeDrop,
                                                                                                                                                                                                                                                                                                                                                         number_threads_received,
                                                                                                                                                                                                                                                                                                                                                         this->number_threads));
         if(tmp_ptr_array_Class_Generator_Random_Bernoulli_ShakeDrop == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_objects_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
-                                     sizeof(class MyEA::Common::Class_Generator_Random_Bernoulli<T_>),
+                                     sizeof(class MyEA::Random::Bernoulli<T_>),
                                      number_threads_received,
                                      this->number_threads,
                                      __LINE__);
@@ -663,15 +650,15 @@ bool Neural_Network::Reallocate__Thread__Generator__Dropout__ShakeDrop(size_t co
 
     if(this->ptr_array_Class_Generator_Real_ShakeDrop != nullptr)
     {
-        class MyEA::Common::Class_Generator_Random_Real<T_> *tmp_ptr_array_Class_Generator_Random_ShakeDrop(Memory::reallocate_objects_cpp<class MyEA::Common::Class_Generator_Random_Real<T_>>(this->ptr_array_Class_Generator_Real_ShakeDrop,
+        class MyEA::Random::Floating<T_> *tmp_ptr_array_Class_Generator_Random_ShakeDrop(MyEA::Memory::Cpp::Reallocate_Objects<class MyEA::Random::Floating<T_>>(this->ptr_array_Class_Generator_Real_ShakeDrop,
                                                                                                                                                                                                                                                                                                                               number_threads_received,
                                                                                                                                                                                                                                                                                                                               this->number_threads));
         if(tmp_ptr_array_Class_Generator_Random_ShakeDrop == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_objects_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
-                                     sizeof(class MyEA::Common::Class_Generator_Random_Real<T_>),
+                                     sizeof(class MyEA::Random::Floating<T_>),
                                      number_threads_received,
                                      this->number_threads,
                                      __LINE__);
@@ -694,15 +681,15 @@ bool Neural_Network::Reallocate__Thread__Generator__Dropout__Uout(size_t const n
 {
     if(this->ptr_array_Class_Generator_Real_Uout != nullptr)
     {
-        class MyEA::Common::Class_Generator_Random_Real<T_> *tmp_ptr_array_Class_Generator_Random_Uout(Memory::reallocate_objects_cpp<class MyEA::Common::Class_Generator_Random_Real<T_>>(this->ptr_array_Class_Generator_Real_Uout,
+        class MyEA::Random::Floating<T_> *tmp_ptr_array_Class_Generator_Random_Uout(MyEA::Memory::Cpp::Reallocate_Objects<class MyEA::Random::Floating<T_>>(this->ptr_array_Class_Generator_Real_Uout,
                                                                                                                                                                                                                                                                                                                     number_threads_received,
                                                                                                                                                                                                                                                                                                                     this->number_threads));
         if(tmp_ptr_array_Class_Generator_Random_Uout == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_objects_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
-                                     sizeof(class MyEA::Common::Class_Generator_Random_Real<T_>),
+                                     sizeof(class MyEA::Random::Floating<T_>),
                                      number_threads_received,
                                      this->number_threads,
                                      __LINE__);

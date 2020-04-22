@@ -7,9 +7,11 @@
 
  #include "targetver.hpp"
 
-#include <Tools/Configuration.hpp>
+#include <Configuration/Configuration.hpp>
 
 #include <Strings/String.hpp>
+
+#include <Time/Time.hpp>
 
 #include <Neural_Network/Neural_Network.hpp>
 

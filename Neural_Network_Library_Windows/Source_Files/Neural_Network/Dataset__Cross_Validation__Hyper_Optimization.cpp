@@ -27,7 +27,7 @@ T Dataset_Cross_Validation_Hyperparameter_Optimization<T>::Training_OpenMP(class
     if(this->Update__Size__Population(this->Get__Number_Batch()) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update__Size__Population(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->Get__Number_Batch(),
                                  __LINE__);
@@ -37,7 +37,7 @@ T Dataset_Cross_Validation_Hyperparameter_Optimization<T>::Training_OpenMP(class
     else if(this->Update(ptr_Neural_Network_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update(ptr)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -46,7 +46,7 @@ T Dataset_Cross_Validation_Hyperparameter_Optimization<T>::Training_OpenMP(class
     else if(this->Update__Thread_Size(this->Get__Number_Examples()) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update__Thread_Size(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->Get__Number_Examples(),
                                  __LINE__);
@@ -56,7 +56,7 @@ T Dataset_Cross_Validation_Hyperparameter_Optimization<T>::Training_OpenMP(class
     else if(this->Update__Batch_Size(this->Get__Number_Examples()) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update__Batch_Size(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->Get__Number_Examples(),
                                  __LINE__);
@@ -66,7 +66,7 @@ T Dataset_Cross_Validation_Hyperparameter_Optimization<T>::Training_OpenMP(class
     else if(this->Initialize__Hyper_Parameters(ptr_Neural_Network_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize__Hyper_Parameters(ptr)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -75,7 +75,7 @@ T Dataset_Cross_Validation_Hyperparameter_Optimization<T>::Training_OpenMP(class
     else if(this->Shuffle__Hyper_Parameter() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Shuffle__Hyper_Parameter()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -84,7 +84,7 @@ T Dataset_Cross_Validation_Hyperparameter_Optimization<T>::Training_OpenMP(class
     else if(this->Feed__Hyper_Parameter() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Feed__Hyper_Parameter()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -99,7 +99,7 @@ T Dataset_Cross_Validation_Hyperparameter_Optimization<T>::Training_OpenMP(class
         if(tmp_ptr_Neural_Network == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Neural network #%zu is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_fold_index,
                                      __LINE__);
@@ -121,7 +121,7 @@ T Dataset_Cross_Validation_Hyperparameter_Optimization<T>::Training_OpenMP(class
                 else
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Increment_Sub_Fold(%zu)\" function. At line %d." NEW_LINE,
-                                                MyEA::String::Get__Time().c_str(),
+                                                MyEA::Time::Date_Time_Now().c_str(),
                                                 __FUNCTION__,
                                                 tmp_sub_fold_index,
                                                 __LINE__);
@@ -143,7 +143,7 @@ T Dataset_Cross_Validation_Hyperparameter_Optimization<T>::Training_OpenMP(class
         else
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Increment_Fold(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_fold_index,
                                      __LINE__);
@@ -158,7 +158,7 @@ T Dataset_Cross_Validation_Hyperparameter_Optimization<T>::Training_OpenMP(class
     if(this->Evaluation() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Evaluation()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -190,7 +190,7 @@ T Dataset_Cross_Validation_Hyperparameter_Optimization<T>::Training_Loop(class N
     if(this->Update__Size__Population(this->Get__Number_Batch()) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update__Size__Population(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->Get__Number_Batch(),
                                  __LINE__);
@@ -200,7 +200,7 @@ T Dataset_Cross_Validation_Hyperparameter_Optimization<T>::Training_Loop(class N
     else if(this->Update(ptr_Neural_Network_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update(ptr)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -209,7 +209,7 @@ T Dataset_Cross_Validation_Hyperparameter_Optimization<T>::Training_Loop(class N
     else if(this->Update__Batch_Size(this->Get__Number_Examples()) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update__Batch_Size(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->Get__Number_Examples(),
                                  __LINE__);
@@ -219,7 +219,7 @@ T Dataset_Cross_Validation_Hyperparameter_Optimization<T>::Training_Loop(class N
     else if(this->Initialize__Hyper_Parameters(ptr_Neural_Network_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize__Hyper_Parameters(ptr)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -228,7 +228,7 @@ T Dataset_Cross_Validation_Hyperparameter_Optimization<T>::Training_Loop(class N
     else if(this->Shuffle__Hyper_Parameter() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Shuffle__Hyper_Parameter()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -237,7 +237,7 @@ T Dataset_Cross_Validation_Hyperparameter_Optimization<T>::Training_Loop(class N
     else if(this->Feed__Hyper_Parameter() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Feed__Hyper_Parameter()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -252,7 +252,7 @@ T Dataset_Cross_Validation_Hyperparameter_Optimization<T>::Training_Loop(class N
         if(tmp_ptr_Neural_Network == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Neural network #%zu is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_fold_index,
                                      __LINE__);
@@ -274,7 +274,7 @@ T Dataset_Cross_Validation_Hyperparameter_Optimization<T>::Training_Loop(class N
                 else
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Increment_Sub_Fold(%zu)\" function. At line %d." NEW_LINE,
-                                                MyEA::String::Get__Time().c_str(),
+                                                MyEA::Time::Date_Time_Now().c_str(),
                                                 __FUNCTION__,
                                                 tmp_sub_fold_index,
                                                 __LINE__);
@@ -296,7 +296,7 @@ T Dataset_Cross_Validation_Hyperparameter_Optimization<T>::Training_Loop(class N
         else
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Increment_Fold(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_fold_index,
                                      __LINE__);
@@ -311,7 +311,7 @@ T Dataset_Cross_Validation_Hyperparameter_Optimization<T>::Training_Loop(class N
     if(this->Evaluation() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Evaluation()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -332,7 +332,7 @@ bool Dataset_Cross_Validation_Hyperparameter_Optimization<T>::Deallocate(void)
     if(this->Dataset_Cross_Validation<T>::Deallocate() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Dataset_Cross_Validation<T>::Deallocate()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -342,7 +342,7 @@ bool Dataset_Cross_Validation_Hyperparameter_Optimization<T>::Deallocate(void)
     if(this->Hyperparameter_Optimization<T>::Deallocate() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Hyperparameter_Optimization<T>::Deallocate()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 

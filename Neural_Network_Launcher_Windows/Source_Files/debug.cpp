@@ -116,7 +116,7 @@ void simple_debug(bool const nsight_received)
     if(tmp_widening_factor_alphas[0u] <= -static_cast<long long int>(tmp_number_units[0u]))
     {
         PRINT_FORMAT("%s: %s: ERROR: Widening factor, alpha[0] (%lld) can not be less or equal to -%zu. At line %d." NEW_LINE,
-                     MyEA::String::Get__Time().c_str(),
+                     MyEA::Time::Date_Time_Now().c_str(),
                      __FUNCTION__,
                      tmp_widening_factor_alphas[0u],
                      tmp_number_units[0u],
@@ -127,7 +127,7 @@ void simple_debug(bool const nsight_received)
     else if(tmp_widening_factor_alphas[1u] <= -static_cast<long long int>(tmp_number_units[1u]))
     {
         PRINT_FORMAT("%s: %s: ERROR: Widening factor, alpha[0] (%lld) can not be less or equal to -%zu. At line %d." NEW_LINE,
-                     MyEA::String::Get__Time().c_str(),
+                     MyEA::Time::Date_Time_Now().c_str(),
                      __FUNCTION__,
                      tmp_widening_factor_alphas[1u],
                      tmp_number_units[1u],
@@ -138,7 +138,7 @@ void simple_debug(bool const nsight_received)
     else if(tmp_residual_block_width < 2_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Residual block depth (%zu) can not be less than 2. At line %d." NEW_LINE,
-                     MyEA::String::Get__Time().c_str(),
+                     MyEA::Time::Date_Time_Now().c_str(),
                      __FUNCTION__,
                      tmp_residual_block_width,
                      __LINE__);
@@ -148,7 +148,7 @@ void simple_debug(bool const nsight_received)
     else if(tmp_use_bottleneck && tmp_residual_block_width == 2_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not use residual bottleneck with a block depth of 2. At line %d." NEW_LINE,
-                     MyEA::String::Get__Time().c_str(),
+                     MyEA::Time::Date_Time_Now().c_str(),
                      __FUNCTION__,
                      __LINE__);
 
@@ -162,7 +162,7 @@ void simple_debug(bool const nsight_received)
         case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_FULLY_CONNECTED_INDEPENDENTLY_RECURRENT: break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch. Need to be the fully connected layer or one of its variant. At line %d." NEW_LINE,
-                         MyEA::String::Get__Time().c_str(),
+                         MyEA::Time::Date_Time_Now().c_str(),
                          __FUNCTION__,
                          tmp_type_fully_connected,
                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_type_fully_connected].c_str(),
@@ -176,7 +176,7 @@ void simple_debug(bool const nsight_received)
         case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_MAX_POOLING: break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch. Need to be a pooling layer. At line %d." NEW_LINE,
-                         MyEA::String::Get__Time().c_str(),
+                         MyEA::Time::Date_Time_Now().c_str(),
                          __FUNCTION__,
                          tmp_type_pooling_layer,
                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_type_pooling_layer].c_str(),
@@ -185,18 +185,18 @@ void simple_debug(bool const nsight_received)
     }
     // |END| Validate inputs. |END|
 
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     PRINT_FORMAT("%s: Dataset name: %s." NEW_LINE,
-                 MyEA::String::Get__Time().c_str(),
+                 MyEA::Time::Date_Time_Now().c_str(),
                  tmp_path_dataset_file.c_str());
 
 #if defined(COMPILE_CUDA)
     PRINT_FORMAT("%s: CUDA: Use CUDA: %s." NEW_LINE,
-                 MyEA::String::Get__Time().c_str(),
+                 MyEA::Time::Date_Time_Now().c_str(),
                  tmp_use_CUDA ? "true" : "false");
 
     PRINT_FORMAT("%s: CUDA: device: %d." NEW_LINE,
-                 MyEA::String::Get__Time().c_str(),
+                 MyEA::Time::Date_Time_Now().c_str(),
                  tmp_cuda_device_index);
 
     if(tmp_use_CUDA)
@@ -220,233 +220,233 @@ void simple_debug(bool const nsight_received)
 #endif // COMPILE_CUDA
     
     PRINT_FORMAT("%s: OpenMP: Use OpenMP: %s." NEW_LINE,
-                 MyEA::String::Get__Time().c_str(),
+                 MyEA::Time::Date_Time_Now().c_str(),
                  tmp_use_OpenMP ? "true" : "false");
     
     PRINT_FORMAT("%s: OpenMP: Maximum thread usage: %f%%." NEW_LINE,
-                 MyEA::String::Get__Time().c_str(),
+                 MyEA::Time::Date_Time_Now().c_str(),
                  tmp_percentage_maximum_thread_usage);
     
     PRINT_FORMAT("%s: Warm restarts: Use warm restarts: %s." NEW_LINE,
-                 MyEA::String::Get__Time().c_str(),
+                 MyEA::Time::Date_Time_Now().c_str(),
                  tmp_use_warm_restarts ? "true" : "false");
     
     PRINT_FORMAT("%s: Warm restarts: minimum learning rate: %f." NEW_LINE,
-                 MyEA::String::Get__Time().c_str(),
+                 MyEA::Time::Date_Time_Now().c_str(),
                  Cast_T(tmp_warm_restarts_minimum_learning_rate));
 
     PRINT_FORMAT("%s: Warm restarts: maximum learning rate: %f." NEW_LINE,
-                 MyEA::String::Get__Time().c_str(),
+                 MyEA::Time::Date_Time_Now().c_str(),
                  Cast_T(tmp_warm_restarts_maximum_learning_rate));
 
     PRINT_FORMAT("%s: Warm restarts: Initial Ti: %f." NEW_LINE,
-                 MyEA::String::Get__Time().c_str(),
+                 MyEA::Time::Date_Time_Now().c_str(),
                  Cast_T(tmp_warm_restarts_initial_ti));
 
     PRINT_FORMAT("%s: Warm restarts: multiplier: %f." NEW_LINE,
-                 MyEA::String::Get__Time().c_str(),
+                 MyEA::Time::Date_Time_Now().c_str(),
                  Cast_T(tmp_warm_restarts_multiplier));
 
     PRINT_FORMAT("%s: Clip gradient: Use clip gradient: %s." NEW_LINE,
-                 MyEA::String::Get__Time().c_str(),
+                 MyEA::Time::Date_Time_Now().c_str(),
                  tmp_clip_gradient ? "true" : "false");
     
     PRINT_FORMAT("%s: Clip gradient: %f." NEW_LINE,
-                 MyEA::String::Get__Time().c_str(),
+                 MyEA::Time::Date_Time_Now().c_str(),
                  Cast_T(tmp_clip_gradient_value));
     
     PRINT_FORMAT("%s: Tied parameter: %s." NEW_LINE,
-                 MyEA::String::Get__Time().c_str(),
+                 MyEA::Time::Date_Time_Now().c_str(),
                  tmp_tied_parameter ? "true" : "false");
     
     PRINT_FORMAT("%s: Use bidirectional: %s." NEW_LINE,
-                 MyEA::String::Get__Time().c_str(),
+                 MyEA::Time::Date_Time_Now().c_str(),
                  tmp_use_bidirectional ? "true" : "false");
     
     PRINT_FORMAT("%s: Use residual: %s." NEW_LINE,
-                 MyEA::String::Get__Time().c_str(),
+                 MyEA::Time::Date_Time_Now().c_str(),
                  tmp_use_residual ? "true" : "false");
     
     PRINT_FORMAT("%s: Use pooling: %s." NEW_LINE,
-                 MyEA::String::Get__Time().c_str(),
+                 MyEA::Time::Date_Time_Now().c_str(),
                  tmp_use_pooling ? "true" : "false");
     
     PRINT_FORMAT("%s: Use bottleneck: %s." NEW_LINE,
-                 MyEA::String::Get__Time().c_str(),
+                 MyEA::Time::Date_Time_Now().c_str(),
                  tmp_use_bottleneck ? "true" : "false");
     
     PRINT_FORMAT("%s: Use simulate online training: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_simulate_online_training ? "true" : "false");
     
     PRINT_FORMAT("%s: Use load parameters: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_load_parameters ? "true" : "false");
     
     PRINT_FORMAT("%s: Use dropout: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_use_dropout ? "true" : "false");
     
     PRINT_FORMAT("%s: Normalization: Use normalization: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_use_normalization ? "true" : "false");
     
     PRINT_FORMAT("%s: Normalization: Use batch normalization before activation: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_use_layer_normalization_before_activation ? "true" : "false");
     
     PRINT_FORMAT("%s: Normalization: momentum average: %f." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             Cast_T(tmp_normalization_momentum_average));
     
     PRINT_FORMAT("%s: Normalization: epsilon: %f." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             Cast_T(tmp_normalization_epsilon));
     
     PRINT_FORMAT("%s: Use save: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_save ? "true" : "false");
     
     PRINT_FORMAT("%s: Use copy: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_copy ? "true" : "false");
     
     PRINT_FORMAT("%s: Use training: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_use_training ? "true" : "false");
     
     PRINT_FORMAT("%s: Use update BN: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_use_update_bn ? "true" : "false");
     
     PRINT_FORMAT("%s: Use validating: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_use_validating ? "true" : "false");
     
     PRINT_FORMAT("%s: Use testing: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_use_testing ? "true" : "false");
     
     PRINT_FORMAT("%s: Use testing print input: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_use_testing_print_input ? "true" : "false");
     
     PRINT_FORMAT("%s: Use testing print output: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_use_testing_print_output ? "true" : "false");
     
     PRINT_FORMAT("%s: Type network: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             MyEA::Common::ENUM_TYPE_NETWORKS_NAMES[type_neural_network].c_str());
     
     PRINT_FORMAT("%s: Number layer(s): %zu." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_number_layers);
     
     PRINT_FORMAT("%s: Number unit(s)[0]: %zu." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_number_units[0u]);
     
     PRINT_FORMAT("%s: Number unit(s)[1]: %zu." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_number_units[1u]);
     
     PRINT_FORMAT("%s: Residual block width: %zu." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_residual_block_width);
     
     PRINT_FORMAT("%s: Widening factor, alpha[0]: %lld." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_widening_factor_alphas[0u]);
     
     PRINT_FORMAT("%s: Widening factor, alpha[1]: %lld." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_widening_factor_alphas[1u]);
     
     PRINT_FORMAT("%s: Fully connected layer type: %u | %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_type_fully_connected,
                             MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_type_fully_connected].c_str());
     
     PRINT_FORMAT("%s: Pooling layer type: %u | %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_type_pooling_layer,
                             MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_type_pooling_layer].c_str());
     
     PRINT_FORMAT("%s: Type hidden activation function: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             MyEA::Common::ENUM_TYPE_ACTIVATION_FUNCTION_NAME[tmp_type_activation_function_hidden].c_str());
 
     PRINT_FORMAT("%s: Type output activation function: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             MyEA::Common::ENUM_TYPE_ACTIVATION_FUNCTION_NAME[tmp_type_activation_function_output].c_str());
 
     PRINT_FORMAT("%s: Type loss function: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             MyEA::Common::ENUM_TYPE_LOSS_FUNCTIONS_NAMES[tmp_type_loss_function].c_str());
 
     PRINT_FORMAT("%s: Type accuracy function: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             MyEA::Common::ENUM_TYPE_ACCURACY_FUNCTIONS_NAMES[tmp_type_accuracy_function].c_str());
     
     PRINT_FORMAT("%s: Type optimizer function: %s." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             MyEA::Common::ENUM_TYPE_OPTIMIZER_FUNCTIONS_NAMES[tmp_type_optimizer_function].c_str());
     
     PRINT_FORMAT("%s: Time delay(s): %zu." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_time_delays);
     
     PRINT_FORMAT("%s: Epoch(s): %zu." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_epochs);
     
     PRINT_FORMAT("%s: Sub-epoch(s): %zu." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_sub_epochs);
     
     PRINT_FORMAT("%s: Length run: %zu." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_length_run);
     
     PRINT_FORMAT("%s: Image size: %zu." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_image_size);
     
     PRINT_FORMAT("%s: Memory allocate: %zu byte(s)." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             tmp_memory_allocate);
     
     PRINT_FORMAT("%s: Regularization L1: %f." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             Cast_T(tmp_regularization_l1));
     
     PRINT_FORMAT("%s: Regularization L2: %f." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             Cast_T(tmp_regularization_l2));
     
     PRINT_FORMAT("%s: Regularization max-norm constraints: %f." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             Cast_T(tmp_regularization_max_norm_constraints));
     
     PRINT_FORMAT("%s: Regularization weight decay: %f." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             Cast_T(tmp_regularization_weight_decay));
     
     PRINT_FORMAT("%s: Accuracy variance: %f." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             Cast_T(tmp_accuracy_variance));
 
     PRINT_FORMAT("%s: Activation stepness: %f." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             Cast_T(tmp_activation_steepness));
     
     PRINT_FORMAT("%s: Learning rate: %f." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             Cast_T(tmp_learning_rate));
     
     PRINT_FORMAT("%s: Learning rate, final: %f." NEW_LINE,
-                            MyEA::String::Get__Time().c_str(),
+                            MyEA::Time::Date_Time_Now().c_str(),
                             Cast_T(tmp_learning_rate_final));
     
     size_t tmp_index_run,
@@ -481,12 +481,12 @@ void simple_debug(bool const nsight_received)
     std::string const tmp_path_dimension_parameters_neural_network(tmp_path_dataset_file + ".net"),
                             tmp_path_general_parameters_neural_network(tmp_path_dataset_file + ".nn");
 
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-    PRINT_FORMAT("%s: Dataset: Initialization." NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    PRINT_FORMAT("%s: Dataset: Initialization." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     if(Input_Dataset_File(tmp_type_dataset_file, tmp_path_dataset_file) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Input_Dataset_File()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -498,7 +498,7 @@ void simple_debug(bool const nsight_received)
     if(tmp_ptr_Dataset_Manager == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_Dataset_Manager\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -514,7 +514,7 @@ void simple_debug(bool const nsight_received)
     if(tmp_ptr_Dataset_Manager->Preparing_Dataset_Manager(&tmp_Dataset_Manager_Parameters) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preparing_Dataset_Manager(ptr)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -538,13 +538,13 @@ void simple_debug(bool const nsight_received)
         tmp_memory_total /= KILOBYTE * KILOBYTE;
 
         PRINT_FORMAT("%s: GPU: Memory available: %zuMB(s)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  tmp_memory_free);
         PRINT_FORMAT("%s: GPU: Memory used: %zuMB(s)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  tmp_memory_total - tmp_memory_free);
         PRINT_FORMAT("%s: GPU: Memory total: %zuMB(s)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(), 
+                                 MyEA::Time::Date_Time_Now().c_str(), 
                                  tmp_memory_total);
 
         if(tmp_memory_free < tmp_memory_allocate)
@@ -553,7 +553,7 @@ void simple_debug(bool const nsight_received)
         { tmp_memory_allocate_device = tmp_memory_allocate; }
 
         PRINT_FORMAT("%s: GPU: Memory allocate: %zuMB(s)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  tmp_memory_allocate_device);
 
         CUDA__Initialize__Device(tmp_cuda_device, tmp_memory_allocate_device * KILOBYTE * KILOBYTE);
@@ -562,7 +562,7 @@ void simple_debug(bool const nsight_received)
         if(tmp_use_OpenMP)
         {
             PRINT_FORMAT("%s: %s: WARNING: Cannot use OpenMP while using CUDA." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__);
 
             tmp_use_OpenMP = false;
@@ -571,7 +571,7 @@ void simple_debug(bool const nsight_received)
         if(tmp_ptr_Dataset_Manager->Initialize__CUDA() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize__CUDA()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -585,7 +585,7 @@ void simple_debug(bool const nsight_received)
     if(tmp_simulate_online_training && tmp_ptr_Dataset_Manager->Set__Maximum_Data(tmp_ptr_Dataset_Manager->Get__Number_Examples()) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Maximum_Data(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_ptr_Dataset_Manager->Get__Number_Examples(),
                                  __LINE__);
@@ -599,15 +599,15 @@ void simple_debug(bool const nsight_received)
     {
         tmp_vector_Layer_Parameters.clear();
 
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         PRINT_FORMAT("%s: Run #%zu" NEW_LINE,
-                                MyEA::String::Get__Time().c_str(),
+                                MyEA::Time::Date_Time_Now().c_str(),
                                 tmp_index_run);
         
         if((tmp_ptr_neural_network = new class Neural_Network) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      sizeof(class Neural_Network),
                                      __LINE__);
@@ -617,12 +617,12 @@ void simple_debug(bool const nsight_received)
 
         if(tmp_load_parameters)
         {
-            PRINT_FORMAT("%s: Neural network: Loading." NEW_LINE, MyEA::String::Get__Time().c_str());
+            PRINT_FORMAT("%s: Neural network: Loading." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
             if(MyEA::File::Path_Exist(tmp_path_dimension_parameters_neural_network) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Could not find the following path \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_path_dimension_parameters_neural_network.c_str(),
                                          __LINE__);
@@ -633,7 +633,7 @@ void simple_debug(bool const nsight_received)
             if(MyEA::File::Path_Exist(tmp_path_general_parameters_neural_network) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Could not find the following path \"%s\". At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_path_general_parameters_neural_network.c_str(),
                                          __LINE__);
@@ -642,7 +642,7 @@ void simple_debug(bool const nsight_received)
             }
             
             PRINT_FORMAT("%s: Neural network: Load from %s." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      tmp_path_dimension_parameters_neural_network.c_str());
 
             if(tmp_ptr_neural_network->Load(tmp_path_dimension_parameters_neural_network,
@@ -650,14 +650,14 @@ void simple_debug(bool const nsight_received)
                                                             tmp_memory_allocate) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Load(%s, %s, %zu)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_path_dimension_parameters_neural_network.c_str(),
                                          tmp_path_general_parameters_neural_network.c_str(),
                                          tmp_memory_allocate,
                                          __LINE__);
 
-                PRINT_FORMAT("%s: Dataset: Deallocate." NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s: Dataset: Deallocate." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 SAFE_DELETE(tmp_ptr_Dataset_Manager);
 
                 SAFE_DELETE(tmp_ptr_array_initial_weights);
@@ -671,7 +671,7 @@ void simple_debug(bool const nsight_received)
             tmp_Layer_Parameters.unit_parameters[0u]  = tmp_ptr_Dataset_Manager->Get__Number_Inputs();
             tmp_vector_Layer_Parameters.push_back(tmp_Layer_Parameters);
             
-            PRINT_FORMAT("%s: Neural network: Compile." NEW_LINE, MyEA::String::Get__Time().c_str());
+            PRINT_FORMAT("%s: Neural network: Compile." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
             switch(type_neural_network)
             {
                 case MyEA::Common::ENUM_TYPE_NETWORKS::TYPE_NETWORK_AUTOENCODER:
@@ -682,12 +682,12 @@ void simple_debug(bool const nsight_received)
                         tmp_vector_Layer_Parameters.push_back(tmp_Layer_Parameters);
                         
                         PRINT_FORMAT("%s: Layer[%zu]: Type: %s." NEW_LINE,
-                                                MyEA::String::Get__Time().c_str(),
+                                                MyEA::Time::Date_Time_Now().c_str(),
                                                 tmp_index,
                                                 MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_Layer_Parameters.type_layer].c_str());
 
                         PRINT_FORMAT("%s: Layer[%zu]: Number neuron unit(s): %zu." NEW_LINE,
-                                                MyEA::String::Get__Time().c_str(),
+                                                MyEA::Time::Date_Time_Now().c_str(),
                                                 tmp_index,
                                                 tmp_Layer_Parameters.unit_parameters[0u]);
                     }
@@ -699,7 +699,7 @@ void simple_debug(bool const nsight_received)
                         {
                             
                             PRINT_FORMAT("%s: %s: ERROR: The number of layer(s) (%zu) can not be less than 6. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_number_layers,
                                                      __LINE__);
@@ -723,10 +723,10 @@ void simple_debug(bool const nsight_received)
                         tmp_vector_Layer_Parameters.push_back(tmp_Layer_Parameters);
 
                         PRINT_FORMAT("%s: Layer[1]: Type: %s." NEW_LINE,
-                                                MyEA::String::Get__Time().c_str(),
+                                                MyEA::Time::Date_Time_Now().c_str(),
                                                 MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_Layer_Parameters.type_layer].c_str());
                         PRINT_FORMAT("%s: Layer[1]: Number neuron unit(s): %zu." NEW_LINE,
-                                                MyEA::String::Get__Time().c_str(),
+                                                MyEA::Time::Date_Time_Now().c_str(),
                                                 tmp_Layer_Parameters.unit_parameters[0u]);
                         // |END| First hidden layer. |END|
 
@@ -742,11 +742,11 @@ void simple_debug(bool const nsight_received)
                             tmp_vector_Layer_Parameters.push_back(tmp_Layer_Parameters);
 
                             PRINT_FORMAT("%s: Layer[%zu]: Type: %s." NEW_LINE,
-                                                    MyEA::String::Get__Time().c_str(),
+                                                    MyEA::Time::Date_Time_Now().c_str(),
                                                     tmp_vector_Layer_Parameters.size() - 1_zu,
                                                     MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_Layer_Parameters.type_layer].c_str());
                             PRINT_FORMAT("%s: Layer[%zu]: Block depth: %zu." NEW_LINE,
-                                                    MyEA::String::Get__Time().c_str(),
+                                                    MyEA::Time::Date_Time_Now().c_str(),
                                                     tmp_vector_Layer_Parameters.size() - 1_zu,
                                                     tmp_Layer_Parameters.unit_parameters[0u]);
                             // |END| Residual unit. |END|
@@ -763,11 +763,11 @@ void simple_debug(bool const nsight_received)
                                 tmp_vector_Layer_Parameters.push_back(tmp_Layer_Parameters);
 
                                 PRINT_FORMAT("%s: Layer[%zu]: Type: %s." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          tmp_vector_Layer_Parameters.size() - 1_zu,
                                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_Layer_Parameters.type_layer].c_str());
                                 PRINT_FORMAT("%s: Layer[%zu]: Number neuron unit(s): %zu." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          tmp_vector_Layer_Parameters.size() - 1_zu,
                                                          tmp_Layer_Parameters.unit_parameters[0u]);
 
@@ -780,11 +780,11 @@ void simple_debug(bool const nsight_received)
                                 tmp_vector_Layer_Parameters.push_back(tmp_Layer_Parameters);
 
                                 PRINT_FORMAT("%s: Layer[%zu]: Type: %s." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          tmp_vector_Layer_Parameters.size() - 1_zu,
                                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_Layer_Parameters.type_layer].c_str());
                                 PRINT_FORMAT("%s: Layer[%zu]: Number neuron unit(s): %zu." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          tmp_vector_Layer_Parameters.size() - 1_zu,
                                                          tmp_Layer_Parameters.unit_parameters[0u]);
 
@@ -800,11 +800,11 @@ void simple_debug(bool const nsight_received)
                                 tmp_vector_Layer_Parameters.push_back(tmp_Layer_Parameters);
 
                                 PRINT_FORMAT("%s: Layer[%zu]: Type: %s." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          tmp_vector_Layer_Parameters.size() - 1_zu,
                                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_Layer_Parameters.type_layer].c_str());
                                 PRINT_FORMAT("%s: Layer[%zu]: Number neuron unit(s): %zu." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          tmp_vector_Layer_Parameters.size() - 1_zu,
                                                          tmp_Layer_Parameters.unit_parameters[0u]);
                             }
@@ -825,27 +825,27 @@ void simple_debug(bool const nsight_received)
                             tmp_vector_Layer_Parameters.push_back(tmp_Layer_Parameters);
 
                             PRINT_FORMAT("%s: Layer[%zu]: Type: %s." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      tmp_vector_Layer_Parameters.size() - 1_zu,
                                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_Layer_Parameters.type_layer].c_str());
                             PRINT_FORMAT("%s: Layer[%zu]: Kernel size: %zu." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      tmp_vector_Layer_Parameters.size() - 1_zu,
                                                      tmp_Layer_Parameters.unit_parameters[0u]);
                             PRINT_FORMAT("%s: Layer[%zu]: Stride: %zu." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      tmp_vector_Layer_Parameters.size() - 1_zu,
                                                      tmp_Layer_Parameters.unit_parameters[1u]);
                             PRINT_FORMAT("%s: Layer[%zu]: Padding: %zu." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      tmp_vector_Layer_Parameters.size() - 1_zu,
                                                      tmp_Layer_Parameters.unit_parameters[2u]);
                             PRINT_FORMAT("%s: Layer[%zu]: Dilation: %zu." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      tmp_vector_Layer_Parameters.size() - 1_zu,
                                                      tmp_Layer_Parameters.unit_parameters[3u]);
                             PRINT_FORMAT("%s: Layer[%zu]: Ceil mode: %s." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      tmp_vector_Layer_Parameters.size() - 1_zu,
                                                      tmp_Layer_Parameters.unit_parameters[4u] != 0_zu ? "true" : "false");
                         }
@@ -860,11 +860,11 @@ void simple_debug(bool const nsight_received)
                             tmp_vector_Layer_Parameters.push_back(tmp_Layer_Parameters);
 
                             PRINT_FORMAT("%s: Layer[%zu]: Type: %s." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      tmp_vector_Layer_Parameters.size() - 1_zu,
                                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_Layer_Parameters.type_layer].c_str());
                             PRINT_FORMAT("%s: Layer[%zu]: Block depth: %zu." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      tmp_vector_Layer_Parameters.size() - 1_zu,
                                                      tmp_Layer_Parameters.unit_parameters[0u]);
                             // |END| Residual unit. |END|
@@ -881,11 +881,11 @@ void simple_debug(bool const nsight_received)
                                 tmp_vector_Layer_Parameters.push_back(tmp_Layer_Parameters);
 
                                 PRINT_FORMAT("%s: Layer[%zu]: Type: %s." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          tmp_vector_Layer_Parameters.size() - 1_zu,
                                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_Layer_Parameters.type_layer].c_str());
                                 PRINT_FORMAT("%s: Layer[%zu]: Number neuron unit(s): %zu." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          tmp_vector_Layer_Parameters.size() - 1_zu,
                                                          tmp_Layer_Parameters.unit_parameters[0u]);
 
@@ -898,11 +898,11 @@ void simple_debug(bool const nsight_received)
                                 tmp_vector_Layer_Parameters.push_back(tmp_Layer_Parameters);
 
                                 PRINT_FORMAT("%s: Layer[%zu]: Type: %s." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          tmp_vector_Layer_Parameters.size() - 1_zu,
                                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_Layer_Parameters.type_layer].c_str());
                                 PRINT_FORMAT("%s: Layer[%zu]: Number neuron unit(s): %zu." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          tmp_vector_Layer_Parameters.size() - 1_zu,
                                                          tmp_Layer_Parameters.unit_parameters[0u]);
 
@@ -918,11 +918,11 @@ void simple_debug(bool const nsight_received)
                                 tmp_vector_Layer_Parameters.push_back(tmp_Layer_Parameters);
 
                                 PRINT_FORMAT("%s: Layer[%zu]: Type: %s." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          tmp_vector_Layer_Parameters.size() - 1_zu,
                                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_Layer_Parameters.type_layer].c_str());
                                 PRINT_FORMAT("%s: Layer[%zu]: Number neuron unit(s): %zu." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          tmp_vector_Layer_Parameters.size() - 1_zu,
                                                          tmp_Layer_Parameters.unit_parameters[0u]);
                             }
@@ -943,27 +943,27 @@ void simple_debug(bool const nsight_received)
                             tmp_vector_Layer_Parameters.push_back(tmp_Layer_Parameters);
 
                             PRINT_FORMAT("%s: Layer[%zu]: Type: %s." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      tmp_vector_Layer_Parameters.size() - 1_zu,
                                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_Layer_Parameters.type_layer].c_str());
                             PRINT_FORMAT("%s: Layer[%zu]: Kernel size: %zu." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      tmp_vector_Layer_Parameters.size() - 1_zu,
                                                      tmp_Layer_Parameters.unit_parameters[0u]);
                             PRINT_FORMAT("%s: Layer[%zu]: Stride: %zu." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      tmp_vector_Layer_Parameters.size() - 1_zu,
                                                      tmp_Layer_Parameters.unit_parameters[1u]);
                             PRINT_FORMAT("%s: Layer[%zu]: Padding: %zu." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      tmp_vector_Layer_Parameters.size() - 1_zu,
                                                      tmp_Layer_Parameters.unit_parameters[2u]);
                             PRINT_FORMAT("%s: Layer[%zu]: Dilation: %zu." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      tmp_vector_Layer_Parameters.size() - 1_zu,
                                                      tmp_Layer_Parameters.unit_parameters[3u]);
                             PRINT_FORMAT("%s: Layer[%zu]: Ceil mode: %s." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      tmp_vector_Layer_Parameters.size() - 1_zu,
                                                      tmp_Layer_Parameters.unit_parameters[4u] != 0_zu ? "true" : "false");
                         }
@@ -978,11 +978,11 @@ void simple_debug(bool const nsight_received)
                             tmp_vector_Layer_Parameters.push_back(tmp_Layer_Parameters);
 
                             PRINT_FORMAT("%s: Layer[%zu]: Type: %s." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      tmp_vector_Layer_Parameters.size() - 1_zu,
                                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_Layer_Parameters.type_layer].c_str());
                             PRINT_FORMAT("%s: Layer[%zu]: Block depth: %zu." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      tmp_vector_Layer_Parameters.size() - 1_zu,
                                                      tmp_Layer_Parameters.unit_parameters[0u]);
                             // |END| Residual unit. |END|
@@ -999,11 +999,11 @@ void simple_debug(bool const nsight_received)
                                 tmp_vector_Layer_Parameters.push_back(tmp_Layer_Parameters);
 
                                 PRINT_FORMAT("%s: Layer[%zu]: Type: %s." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          tmp_vector_Layer_Parameters.size() - 1_zu,
                                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_Layer_Parameters.type_layer].c_str());
                                 PRINT_FORMAT("%s: Layer[%zu]: Number neuron unit(s): %zu." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          tmp_vector_Layer_Parameters.size() - 1_zu,
                                                          tmp_Layer_Parameters.unit_parameters[0u]);
 
@@ -1016,11 +1016,11 @@ void simple_debug(bool const nsight_received)
                                 tmp_vector_Layer_Parameters.push_back(tmp_Layer_Parameters);
 
                                 PRINT_FORMAT("%s: Layer[%zu]: Type: %s." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          tmp_vector_Layer_Parameters.size() - 1_zu,
                                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_Layer_Parameters.type_layer].c_str());
                                 PRINT_FORMAT("%s: Layer[%zu]: Number neuron unit(s): %zu." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          tmp_vector_Layer_Parameters.size() - 1_zu,
                                                          tmp_Layer_Parameters.unit_parameters[0u]);
 
@@ -1036,11 +1036,11 @@ void simple_debug(bool const nsight_received)
                                 tmp_vector_Layer_Parameters.push_back(tmp_Layer_Parameters);
 
                                 PRINT_FORMAT("%s: Layer[%zu]: Type: %s." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          tmp_vector_Layer_Parameters.size() - 1_zu,
                                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_Layer_Parameters.type_layer].c_str());
                                 PRINT_FORMAT("%s: Layer[%zu]: Number neuron unit(s): %zu." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          tmp_vector_Layer_Parameters.size() - 1_zu,
                                                          tmp_Layer_Parameters.unit_parameters[0u]);
                             }
@@ -1054,11 +1054,11 @@ void simple_debug(bool const nsight_received)
                         tmp_vector_Layer_Parameters.push_back(tmp_Layer_Parameters);
 
                         PRINT_FORMAT("%s: Layer[%zu]: Type: %s." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  tmp_vector_Layer_Parameters.size() - 1_zu,
                                                  MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_Layer_Parameters.type_layer].c_str());
                         PRINT_FORMAT("%s: Layer[%zu]: Number neuron unit(s): %zu." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  tmp_vector_Layer_Parameters.size() - 1_zu,
                                                  tmp_Layer_Parameters.unit_parameters[0u]);
                         // |END| Last hidden layer. |END|
@@ -1072,11 +1072,11 @@ void simple_debug(bool const nsight_received)
                             tmp_vector_Layer_Parameters.push_back(tmp_Layer_Parameters);
                             
                             PRINT_FORMAT("%s: Layer[%zu]: Type: %s." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      tmp_index,
                                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_Layer_Parameters.type_layer].c_str());
                             PRINT_FORMAT("%s: Layer[%zu]: Number neuron unit(s): %zu." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      tmp_index,
                                                      tmp_Layer_Parameters.unit_parameters[0u]);
                         }
@@ -1092,24 +1092,24 @@ void simple_debug(bool const nsight_received)
                         tmp_vector_Layer_Parameters.push_back(tmp_Layer_Parameters);
                         
                         PRINT_FORMAT("%s: Layer[%zu]: Type: %s." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  tmp_index,
                                                  MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_Layer_Parameters.type_layer].c_str());
 
                         PRINT_FORMAT("%s: Layer[%zu]: Number block unit(s): %zu." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  tmp_index,
                                                  tmp_Layer_Parameters.unit_parameters[0u]);
 
                         PRINT_FORMAT("%s: Layer[%zu]: Number cell unit(s) per block: %zu." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  tmp_index,
                                                  tmp_Layer_Parameters.unit_parameters[1u]);
                     }
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Neural network type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              type_neural_network,
                                              MyEA::Common::ENUM_TYPE_NETWORKS_NAMES[type_neural_network].c_str(),
@@ -1124,7 +1124,7 @@ void simple_debug(bool const nsight_received)
             tmp_vector_Layer_Parameters.push_back(tmp_Layer_Parameters);
             
             PRINT_FORMAT("%s: Number output(s): %zu." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      tmp_ptr_Dataset_Manager->Get__Number_Outputs());
 
             if(tmp_ptr_neural_network->Compile(tmp_vector_Layer_Parameters.size(),
@@ -1134,7 +1134,7 @@ void simple_debug(bool const nsight_received)
                                                                  tmp_memory_allocate) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Compile()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -1145,7 +1145,7 @@ void simple_debug(bool const nsight_received)
             else if(tmp_ptr_neural_network->Set__Number_Time_Delays(tmp_time_delays) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Number_Time_Delays(%zu)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_time_delays,
                                          __LINE__);
@@ -1162,7 +1162,7 @@ void simple_debug(bool const nsight_received)
                     if(tmp_ptr_neural_network->Set__Tied_Parameter(tmp_index, true) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Tied_Parameter(%zu, true)\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_index,
                                                  __LINE__);
@@ -1179,7 +1179,7 @@ void simple_debug(bool const nsight_received)
                 if(tmp_ptr_neural_network->Set__Layer_Activation_Steepness(tmp_index, tmp_activation_steepness) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Layer_Activation_Steepness(%zu, %f)\" function. At line %d." NEW_LINE,
-                                                MyEA::String::Get__Time().c_str(),
+                                                MyEA::Time::Date_Time_Now().c_str(),
                                                 __FUNCTION__,
                                                 tmp_index,
                                                 Cast_T(tmp_activation_steepness),
@@ -1196,7 +1196,7 @@ void simple_debug(bool const nsight_received)
                 if(tmp_ptr_neural_network->Set__Layer_Activation_Function(tmp_index, tmp_type_activation_function_hidden) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Layer_Activation_Function(%zu, %u)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_index,
                                              tmp_type_activation_function_hidden,
@@ -1211,7 +1211,7 @@ void simple_debug(bool const nsight_received)
             if(tmp_ptr_neural_network->Set__Layer_Activation_Function(tmp_vector_Layer_Parameters.size() - 1_zu, tmp_type_activation_function_output) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Layer_Activation_Function(%zu, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_vector_Layer_Parameters.size() - 1_zu,
                                          tmp_type_activation_function_output,
@@ -1255,7 +1255,7 @@ void simple_debug(bool const nsight_received)
             if(tmp_ptr_neural_network->Set__Clip_Gradient(tmp_clip_gradient_value) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Clip_Gradient(%f)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          Cast_T(tmp_clip_gradient_value),
                                          __LINE__);
@@ -1270,7 +1270,7 @@ void simple_debug(bool const nsight_received)
             if(tmp_ptr_neural_network->Set__Regularization__L1(tmp_regularization_l1) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Regularization__L1(%f)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          Cast_T(tmp_regularization_l1),
                                          __LINE__);
@@ -1286,7 +1286,7 @@ void simple_debug(bool const nsight_received)
             if(tmp_ptr_neural_network->Set__Regularization__L2(tmp_regularization_l2) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Regularization__L1(%f)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          Cast_T(tmp_regularization_l2),
                                          __LINE__);
@@ -1302,7 +1302,7 @@ void simple_debug(bool const nsight_received)
             if(tmp_ptr_neural_network->Set__Regularization__Max_Norm_Constraints(tmp_regularization_max_norm_constraints) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Regularization__Max_Norm_Constraints(%f)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          Cast_T(tmp_regularization_max_norm_constraints),
                                          __LINE__);
@@ -1318,7 +1318,7 @@ void simple_debug(bool const nsight_received)
             if(tmp_ptr_neural_network->Set__Regularization__Weight_Decay(tmp_regularization_weight_decay) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Regularization__Weight_Decay(%f)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          Cast_T(tmp_regularization_weight_decay),
                                          __LINE__);
@@ -1336,13 +1336,13 @@ void simple_debug(bool const nsight_received)
             // Initialize the weights just at the first run, because sometimes the second initialization differ from the first run.
             if(tmp_index_run == 0_zu)
             {
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 PRINT_FORMAT("%s: Weight(s) intialization: %s." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          MyEA::Common::ENUM_TYPE_WEIGHTS_INITIALIZERS_NAMES[tmp_type_weights_initializer].c_str());
                
                 PRINT_FORMAT("%s: Seed: %u." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          tmp_weights_seed);
                 tmp_ptr_neural_network->Class_Generator_Real.Reset();
                 tmp_ptr_neural_network->Class_Generator_Gaussian.Reset();
@@ -1358,7 +1358,7 @@ void simple_debug(bool const nsight_received)
                     case MyEA::Common::ENUM_TYPE_WEIGHTS_INITIALIZERS::TYPE_WEIGHTS_INITIALIZER_ORTHOGONAL: tmp_ptr_neural_network->Initialization__Orthogonal(); break;
                     case MyEA::Common::ENUM_TYPE_WEIGHTS_INITIALIZERS::TYPE_WEIGHTS_INITIALIZER_UNIFORM:
                         PRINT_FORMAT("%s: Range: [%f, %f]." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  Cast_T(tmp_weights_minimum),
                                                  Cast_T(tmp_weights_maximum));
                         tmp_ptr_neural_network->Class_Generator_Real.Range(tmp_weights_minimum, tmp_weights_maximum);
@@ -1367,7 +1367,7 @@ void simple_debug(bool const nsight_received)
                             break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Weights initializer (%u | %s) is not managed in the switch." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_type_weights_initializer,
                                                  MyEA::Common::ENUM_TYPE_WEIGHTS_INITIALIZERS_NAMES[tmp_type_weights_initializer].c_str());
@@ -1377,7 +1377,7 @@ void simple_debug(bool const nsight_received)
                 if((tmp_ptr_array_initial_weights = new T_[tmp_ptr_neural_network->total_parameters]) == nullptr)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_ptr_neural_network->total_parameters * sizeof(T_),
                                              __LINE__);
@@ -1415,7 +1415,7 @@ void simple_debug(bool const nsight_received)
                     case MyEA::Common::ENUM_TYPE_LAYER_DROPOUT::TYPE_LAYER_DROPOUT_BERNOULLI_INVERTED:
                     case MyEA::Common::ENUM_TYPE_LAYER_DROPOUT::TYPE_LAYER_DROPOUT_GAUSSIAN:
                     case MyEA::Common::ENUM_TYPE_LAYER_DROPOUT::TYPE_LAYER_DROPOUT_UOUT:
-                        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+                        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                         for(tmp_index = 0_zu; tmp_index != tmp_vector_Layer_Parameters.size() - 1_zu; ++tmp_index)
                         {
                             if(tmp_ptr_neural_network->ptr_array_layers[tmp_index].type_layer == MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_FULLY_CONNECTED
@@ -1425,7 +1425,7 @@ void simple_debug(bool const nsight_received)
                                tmp_ptr_neural_network->ptr_array_layers[tmp_index].type_layer == MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_FULLY_CONNECTED_RECURRENT)
                             {
                                 PRINT_FORMAT("%s: Layer[%zu], Dropout: %s(%f)." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          tmp_index,
                                                          MyEA::Common::ENUM_TYPE_LAYER_DROPOUT_NAMES[tmp_type_dropout].c_str(),
                                                          Cast_T(tmp_dropout_values[0u]));
@@ -1436,13 +1436,13 @@ void simple_debug(bool const nsight_received)
                         }
                             break;
                     case MyEA::Common::ENUM_TYPE_LAYER_DROPOUT::TYPE_LAYER_DROPOUT_SHAKEDROP:
-                        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+                        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                         for(tmp_index = 1_zu; tmp_index != tmp_vector_Layer_Parameters.size() - 1_zu; ++tmp_index)
                         {
                             if(tmp_ptr_neural_network->ptr_array_layers[tmp_index].type_layer == MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_RESIDUAL)
                             {
                                 PRINT_FORMAT("%s: Layer[%zu], Dropout: %s(%f)." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          tmp_index,
                                                          MyEA::Common::ENUM_TYPE_LAYER_DROPOUT_NAMES[tmp_type_dropout].c_str(),
                                                          Cast_T(tmp_dropout_values[0u]));
@@ -1453,7 +1453,7 @@ void simple_debug(bool const nsight_received)
                         }
                             break;
                     case MyEA::Common::ENUM_TYPE_LAYER_DROPOUT::TYPE_LAYER_DROPOUT_ZONEOUT:
-                        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+                        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                         for(tmp_index = 1_zu; tmp_index != tmp_vector_Layer_Parameters.size() - 1_zu; ++tmp_index)
                         {
                             if(tmp_ptr_neural_network->ptr_array_layers[tmp_index].type_layer == MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_LSTM
@@ -1461,7 +1461,7 @@ void simple_debug(bool const nsight_received)
                                tmp_ptr_neural_network->ptr_array_layers[tmp_index].type_layer == MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_GRU)
                             {
                                 PRINT_FORMAT("%s: Layer[%zu], Dropout: %s(%f, %f)." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          tmp_index,
                                                          MyEA::Common::ENUM_TYPE_LAYER_DROPOUT_NAMES[tmp_type_dropout].c_str(),
                                                          Cast_T(tmp_dropout_values[0u]),
@@ -1474,7 +1474,7 @@ void simple_debug(bool const nsight_received)
                             break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Dropout type (%u | %s) is not managed in the switch. Need to be the fully connected layer or one of its variant. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_type_dropout,
                                                  MyEA::Common::ENUM_TYPE_LAYER_DROPOUT_NAMES[tmp_type_dropout].c_str(),
@@ -1487,11 +1487,11 @@ void simple_debug(bool const nsight_received)
             // Normalization.
             if(tmp_use_normalization)
             {
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 for(tmp_index = 1_zu; tmp_index != tmp_vector_Layer_Parameters.size() - 1u; ++tmp_index)
                 {
                     PRINT_FORMAT("%s: Layer[%zu], Normalization: %s." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             tmp_index,
                                             MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[tmp_type_normalization].c_str());
                     
@@ -1511,7 +1511,7 @@ void simple_debug(bool const nsight_received)
             if(tmp_ptr_neural_network->Set__OpenMP(tmp_use_OpenMP) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__OpenMP(%s)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_use_OpenMP ? "true" : "false",
                                          __LINE__);
@@ -1526,7 +1526,7 @@ void simple_debug(bool const nsight_received)
         if(tmp_ptr_neural_network->Set__CUDA(tmp_use_CUDA, tmp_memory_allocate_device) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__CUDA(%s, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_use_CUDA ? "true" : "false",
                                      tmp_memory_allocate_device,
@@ -1540,7 +1540,7 @@ void simple_debug(bool const nsight_received)
         if(tmp_use_CUDA && tmp_ptr_neural_network->Initialize__CUDA__Thread(tmp_ptr_Dataset_Manager) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize__CUDA__Thread(ptr)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
             
@@ -1550,56 +1550,56 @@ void simple_debug(bool const nsight_received)
         }
     #endif // COMPILE_CUDA
         
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         PRINT_FORMAT("%s: Total layer(s): %zu" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  tmp_ptr_neural_network->total_layers);
         
         PRINT_FORMAT("%s: Total basic unit(s): %zu" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  tmp_ptr_neural_network->total_basic_units);
         
         PRINT_FORMAT("%s: Total neuron unit(s): %zu" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  tmp_ptr_neural_network->total_neuron_units);
         
         PRINT_FORMAT("%s: Total AF unit(s): %zu" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  tmp_ptr_neural_network->total_AF_units);
         
         PRINT_FORMAT("%s: Total AF Ind recurrent unit(s): %zu" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  tmp_ptr_neural_network->total_AF_Ind_recurrent_units);
         
         PRINT_FORMAT("%s: Total normalized unit(s): %zu" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  tmp_ptr_neural_network->total_normalized_units);
         
         PRINT_FORMAT("%s: Total block unit(s): %zu" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  tmp_ptr_neural_network->total_block_units);
         
         PRINT_FORMAT("%s: Total cell unit(s): %zu" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  tmp_ptr_neural_network->total_cell_units);
         
         PRINT_FORMAT("%s: Total weight(s): %zu" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  tmp_ptr_neural_network->total_weights);
         
         PRINT_FORMAT("%s: Total parameter(s): %zu" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  tmp_ptr_neural_network->total_parameters);
         
         // Adept
         if(tmp_use_adept)
         {
-            PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+            PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
             PRINT_FORMAT("%s: Adept: Neural network: Testing on %zu example(s) from the testing set." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      tmp_ptr_Dataset_Manager->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)->Dataset<T_>::Get__Number_Examples());
 
-        #if defined(COMPILE_ADEPT)
+        #if defined(COMPILE_AUTODIFF)
             T_ tmp_X(3),
                  tmp_FX,
                  tmp_dX,
@@ -1679,7 +1679,7 @@ void simple_debug(bool const nsight_received)
             std::cout << "y:" << tmp_Y.value() << std::endl;
             std::cout << "d:" << tmp_D.value() << std::endl;
             std::cout << "z:" << tmp_Z.value() << std::endl;
-        #endif // COMPILE_ADEPT
+        #endif // COMPILE_AUTODIFF
 
             tmp_time_start = std::chrono::high_resolution_clock::now();
             
@@ -1688,23 +1688,23 @@ void simple_debug(bool const nsight_received)
             tmp_time_end = std::chrono::high_resolution_clock::now();
             
             PRINT_FORMAT("%s: Adept: Neural network: Testing loss: %.9f." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     Cast_T(tmp_ptr_neural_network->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)));
 
             PRINT_FORMAT("%s: Adept: Neural network: Testing accurancy: %.5f." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     Cast_T(tmp_ptr_neural_network->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)));
 
             tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1e9;
 
             PRINT_FORMAT("%s: Adept: Time elapse: %s" NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
-                                     MyEA::String::Get__Time_Elapse(tmp_compute_time).c_str());
+                                     MyEA::Time::Date_Time_Now().c_str(),
+                                     MyEA::Time::Time_Elapsed_Format(tmp_compute_time).c_str());
 
         }
         // |END| Adept. |END|
         
-    #if defined(COMPILE_ADEPT)
+    #if defined(COMPILE_AUTODIFF)
         adept::active_stack()->new_recording();
         adept::active_stack()->pause_recording();
     #endif
@@ -1712,9 +1712,9 @@ void simple_debug(bool const nsight_received)
         // Testing.
         if(tmp_use_testing)
         {
-            PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+            PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
             PRINT_FORMAT("%s: Neural network: Testing on %zu example(s) from the testing set." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      tmp_ptr_Dataset_Manager->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)->Dataset<T_>::Get__Number_Examples());
 
             tmp_time_start = std::chrono::high_resolution_clock::now();
@@ -1724,18 +1724,18 @@ void simple_debug(bool const nsight_received)
             tmp_time_end = std::chrono::high_resolution_clock::now();
 
             PRINT_FORMAT("%s: Neural network: Testing loss: %.9f." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     Cast_T(tmp_ptr_neural_network->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)));
 
             PRINT_FORMAT("%s: Neural network: Testing accurancy: %.5f." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     Cast_T(tmp_ptr_neural_network->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)));
 
             tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1e9;
 
             PRINT_FORMAT("%s: Time elapse: %s" NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
-                                     MyEA::String::Get__Time_Elapse(tmp_compute_time).c_str());
+                                     MyEA::Time::Date_Time_Now().c_str(),
+                                     MyEA::Time::Time_Elapsed_Format(tmp_compute_time).c_str());
             
             if(tmp_use_testing_print_input || tmp_use_testing_print_output)
             {
@@ -1808,9 +1808,9 @@ void simple_debug(bool const nsight_received)
         // Validating.
         if(tmp_use_validating)
         {
-            PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+            PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
             PRINT_FORMAT("%s: Neural network: Validating on %zu example(s) from the validating set." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      tmp_ptr_Dataset_Manager->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)->Dataset<T_>::Get__Number_Examples());
 
             tmp_time_start = std::chrono::high_resolution_clock::now();
@@ -1820,26 +1820,26 @@ void simple_debug(bool const nsight_received)
             tmp_time_end = std::chrono::high_resolution_clock::now();
 
             PRINT_FORMAT("%s: Neural network: Validation loss: %.9f." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     Cast_T(tmp_ptr_neural_network->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)));
 
             PRINT_FORMAT("%s: Neural network: Validation accurancy: %.5f." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     Cast_T(tmp_ptr_neural_network->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)));
 
             tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1e9;
 
             PRINT_FORMAT("%s: Time elapse: %s" NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
-                                     MyEA::String::Get__Time_Elapse(tmp_compute_time).c_str());
+                                     MyEA::Time::Date_Time_Now().c_str(),
+                                     MyEA::Time::Time_Elapsed_Format(tmp_compute_time).c_str());
             
             if(MyEA::Math::Is_NaN<T_>(tmp_ptr_neural_network->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION))) { PAUSE_TERMINAL(); }
         }
         // |END| Validating. |END|
 
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         PRINT_FORMAT("%s: Neural network: Train on %zu example(s) from the training set for %zu epoch(s)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  tmp_ptr_Dataset_Manager->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)->Dataset<T_>::Get__Number_Examples(),
                                  tmp_epochs);
 
@@ -1848,8 +1848,8 @@ void simple_debug(bool const nsight_received)
             // Simulate online training.
             if(tmp_simulate_online_training)
             {
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s: Simulate online training" NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s: Simulate online training" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
                 T_ *tmp_ptr_array_inputs,
                      *tmp_ptr_array_outputs;
@@ -1857,7 +1857,7 @@ void simple_debug(bool const nsight_received)
                 if((tmp_ptr_array_inputs = new T_[tmp_ptr_Dataset_Manager->Get__Number_Inputs()]) == nullptr)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_ptr_Dataset_Manager->Get__Number_Inputs() * sizeof(T_),
                                              __LINE__);
@@ -1867,7 +1867,7 @@ void simple_debug(bool const nsight_received)
                 else if((tmp_ptr_array_outputs = new T_[tmp_ptr_Dataset_Manager->Get__Number_Outputs()]) == nullptr)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_ptr_Dataset_Manager->Get__Number_Outputs() * sizeof(T_),
                                              __LINE__);
@@ -1901,9 +1901,9 @@ void simple_debug(bool const nsight_received)
 
             tmp_time_start = std::chrono::high_resolution_clock::now();
             
-            PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+            PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
             PRINT_FORMAT("%s: Neural network: Train for %zu sub-epoch(s)." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      tmp_sub_epochs);
 
             if(tmp_use_training)
@@ -1917,36 +1917,36 @@ void simple_debug(bool const nsight_received)
             tmp_time_end = std::chrono::high_resolution_clock::now();
 
             PRINT_FORMAT("%s: Neural network: Training loss: %.9f." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      Cast_T(tmp_ptr_neural_network->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)));
 
             PRINT_FORMAT("%s: Neural network: Training accuracy: %.5f." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      Cast_T(tmp_ptr_neural_network->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)));
             
             tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1e9;
 
             PRINT_FORMAT("%s: [%zu] Time elapse: %s" NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      tmp_index,
-                                     MyEA::String::Get__Time_Elapse(tmp_compute_time).c_str());
+                                     MyEA::Time::Time_Elapsed_Format(tmp_compute_time).c_str());
 
             tmp_time_total += tmp_compute_time;
 
             if(MyEA::Math::Is_NaN<T_>(tmp_ptr_neural_network->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING))) { PAUSE_TERMINAL(); }
         }
 
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         PRINT_FORMAT("%s: Time elapse total: %s" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
-                                 MyEA::String::Get__Time_Elapse(tmp_time_total).c_str());
+                                 MyEA::Time::Date_Time_Now().c_str(),
+                                 MyEA::Time::Time_Elapsed_Format(tmp_time_total).c_str());
         
         // Update BN moving average.
         if(tmp_use_update_bn)
         {
-            PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+            PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
             PRINT_FORMAT("%s: Neural network: Update batch normalization on %zu example(s) from the training set." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      tmp_ptr_Dataset_Manager->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)->Dataset<T_>::Get__Number_Examples());
 
             tmp_time_start = std::chrono::high_resolution_clock::now();
@@ -1956,26 +1956,26 @@ void simple_debug(bool const nsight_received)
             tmp_time_end = std::chrono::high_resolution_clock::now();
 
             PRINT_FORMAT("%s: Neural network: Testing loss: %.9f." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      Cast_T(std::get<0>(tmp_pair)));
 
             PRINT_FORMAT("%s: Neural network: Testing accurancy: %.5f." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      Cast_T(std::get<1>(tmp_pair)));
 
             tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1e9;
 
             PRINT_FORMAT("%s: Time elapse: %s" NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
-                                     MyEA::String::Get__Time_Elapse(tmp_compute_time).c_str());
+                                     MyEA::Time::Date_Time_Now().c_str(),
+                                     MyEA::Time::Time_Elapsed_Format(tmp_compute_time).c_str());
         }
 
         // Testing
         if(tmp_use_testing)
         {
-            PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+            PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
             PRINT_FORMAT("%s: Neural network: Testing on %zu example(s) from the testing set." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      tmp_ptr_Dataset_Manager->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)->Dataset<T_>::Get__Number_Examples());
 
             tmp_time_start = std::chrono::high_resolution_clock::now();
@@ -1985,18 +1985,18 @@ void simple_debug(bool const nsight_received)
             tmp_time_end = std::chrono::high_resolution_clock::now();
 
             PRINT_FORMAT("%s: Neural network: Testing loss: %.9f." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      Cast_T(tmp_ptr_neural_network->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)));
 
             PRINT_FORMAT("%s: Neural network: Testing accurancy: %.5f." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      Cast_T(tmp_ptr_neural_network->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)));
 
             tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1e9;
 
             PRINT_FORMAT("%s: Time elapse: %s" NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
-                                     MyEA::String::Get__Time_Elapse(tmp_compute_time).c_str());
+                                     MyEA::Time::Date_Time_Now().c_str(),
+                                     MyEA::Time::Time_Elapsed_Format(tmp_compute_time).c_str());
             
             if(MyEA::Math::Is_NaN<T_>(tmp_ptr_neural_network->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING))) { PAUSE_TERMINAL(); }
 
@@ -2069,9 +2069,9 @@ void simple_debug(bool const nsight_received)
         // Validating
         if(tmp_use_validating)
         {
-            PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+            PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
             PRINT_FORMAT("%s: Neural network: Validating on %zu example(s) from the validating set." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      tmp_ptr_Dataset_Manager->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)->Dataset<T_>::Get__Number_Examples());
 
             tmp_time_start = std::chrono::high_resolution_clock::now();
@@ -2081,18 +2081,18 @@ void simple_debug(bool const nsight_received)
             tmp_time_end = std::chrono::high_resolution_clock::now();
 
             PRINT_FORMAT("%s: Neural network: Validation loss: %.9f." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      Cast_T(tmp_ptr_neural_network->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)));
 
             PRINT_FORMAT("%s: Neural network: Validation accurancy: %.5f." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      Cast_T(tmp_ptr_neural_network->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)));
 
             tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1e9;
 
             PRINT_FORMAT("%s: Time elapse: %s" NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
-                                     MyEA::String::Get__Time_Elapse(tmp_compute_time).c_str());
+                                     MyEA::Time::Date_Time_Now().c_str(),
+                                     MyEA::Time::Time_Elapsed_Format(tmp_compute_time).c_str());
             
             if(MyEA::Math::Is_NaN<T_>(tmp_ptr_neural_network->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION))) { PAUSE_TERMINAL(); }
         }
@@ -2100,15 +2100,15 @@ void simple_debug(bool const nsight_received)
         
         if(tmp_copy)
         {
-            PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-            PRINT_FORMAT("%s: Neural network: Copy." NEW_LINE, MyEA::String::Get__Time().c_str());
+            PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+            PRINT_FORMAT("%s: Neural network: Copy." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
             
             class Neural_Network *tmp_ptr_trained_neural_network;
             
             if((tmp_ptr_trained_neural_network = new class Neural_Network) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             sizeof(class Neural_Network),
                                             __LINE__);
@@ -2119,7 +2119,7 @@ void simple_debug(bool const nsight_received)
             if(tmp_ptr_trained_neural_network->Copy(*tmp_ptr_neural_network) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Copy(ptr)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
             }
@@ -2127,9 +2127,9 @@ void simple_debug(bool const nsight_received)
             // Testing
             if(tmp_use_testing)
             {
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 PRINT_FORMAT("%s: Neural network: Testing on %zu example(s) from the testing set." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          tmp_ptr_Dataset_Manager->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)->Dataset<T_>::Get__Number_Examples());
 
                 tmp_time_start = std::chrono::high_resolution_clock::now();
@@ -2139,18 +2139,18 @@ void simple_debug(bool const nsight_received)
                 tmp_time_end = std::chrono::high_resolution_clock::now();
 
                 PRINT_FORMAT("%s: Neural network: Testing loss: %.9f." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          Cast_T(tmp_ptr_trained_neural_network->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)));
 
                 PRINT_FORMAT("%s: Neural network: Testing accurancy: %.5f." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          Cast_T(tmp_ptr_trained_neural_network->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)));
 
                 tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1e9;
 
                 PRINT_FORMAT("%s: Time elapse: %s" NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
-                                         MyEA::String::Get__Time_Elapse(tmp_compute_time).c_str());
+                                         MyEA::Time::Date_Time_Now().c_str(),
+                                         MyEA::Time::Time_Elapsed_Format(tmp_compute_time).c_str());
 
                 if(MyEA::Math::Is_NaN<T_>(tmp_ptr_trained_neural_network->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING))) { PAUSE_TERMINAL(); }
             }
@@ -2159,9 +2159,9 @@ void simple_debug(bool const nsight_received)
             // Validating
             if(tmp_use_validating)
             {
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 PRINT_FORMAT("%s: Neural network: Validating on %zu example(s) from the validating set." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          tmp_ptr_Dataset_Manager->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)->Dataset<T_>::Get__Number_Examples());
 
                 tmp_time_start = std::chrono::high_resolution_clock::now();
@@ -2171,18 +2171,18 @@ void simple_debug(bool const nsight_received)
                 tmp_time_end = std::chrono::high_resolution_clock::now();
 
                 PRINT_FORMAT("%s: Neural network: Validation loss: %.9f." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          Cast_T(tmp_ptr_trained_neural_network->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)));
 
                 PRINT_FORMAT("%s: Neural network: Validation accurancy: %.5f." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          Cast_T(tmp_ptr_trained_neural_network->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)));
 
                 tmp_compute_time = static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count()) / 1e9;
 
                 PRINT_FORMAT("%s: Time elapse: %s" NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
-                                         MyEA::String::Get__Time_Elapse(tmp_compute_time).c_str());
+                                         MyEA::Time::Date_Time_Now().c_str(),
+                                         MyEA::Time::Time_Elapsed_Format(tmp_compute_time).c_str());
 
                 if(MyEA::Math::Is_NaN<T_>(tmp_ptr_trained_neural_network->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION))) { PAUSE_TERMINAL(); }
             }
@@ -2190,22 +2190,22 @@ void simple_debug(bool const nsight_received)
 
             if(tmp_save)
             {
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s: Saving neural network dimension parameters to %s." NEW_LINE, MyEA::String::Get__Time().c_str(), tmp_path_dimension_parameters_neural_network.c_str());
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s: Saving neural network dimension parameters to %s." NEW_LINE, MyEA::Time::Date_Time_Now().c_str(), tmp_path_dimension_parameters_neural_network.c_str());
         
                 if(tmp_ptr_neural_network->Save_Dimension_Parameters(tmp_path_dimension_parameters_neural_network) == false)
                 {
                     PRINT_FORMAT("%s: ERROR: A error has been return while saving dimension parameters to %s." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              tmp_path_dimension_parameters_neural_network.c_str());
                 }
         
-                PRINT_FORMAT("%s: Saving neural network general parameters to %s." NEW_LINE, MyEA::String::Get__Time().c_str(), tmp_path_general_parameters_neural_network.c_str());
+                PRINT_FORMAT("%s: Saving neural network general parameters to %s." NEW_LINE, MyEA::Time::Date_Time_Now().c_str(), tmp_path_general_parameters_neural_network.c_str());
 
                 if(tmp_ptr_neural_network->Save_General_Parameters(tmp_path_general_parameters_neural_network) == false)
                 {
                     PRINT_FORMAT("%s: ERROR: A error has been return while saving general parameters to %s." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              tmp_path_general_parameters_neural_network.c_str());
                 }
 
@@ -2216,36 +2216,36 @@ void simple_debug(bool const nsight_received)
         }
         else if(tmp_save)
         {
-            PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-            PRINT_FORMAT("%s: Saving neural network dimension parameters to %s." NEW_LINE, MyEA::String::Get__Time().c_str(), tmp_path_dimension_parameters_neural_network.c_str());
+            PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+            PRINT_FORMAT("%s: Saving neural network dimension parameters to %s." NEW_LINE, MyEA::Time::Date_Time_Now().c_str(), tmp_path_dimension_parameters_neural_network.c_str());
         
             if(tmp_ptr_neural_network->Save_Dimension_Parameters(tmp_path_dimension_parameters_neural_network) == false)
             {
                 PRINT_FORMAT("%s: ERROR: A error has been return while saving dimension parameters to %s." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          tmp_path_dimension_parameters_neural_network.c_str());
             }
         
-            PRINT_FORMAT("%s: Saving neural network general parameters to %s." NEW_LINE, MyEA::String::Get__Time().c_str(), tmp_path_general_parameters_neural_network.c_str());
+            PRINT_FORMAT("%s: Saving neural network general parameters to %s." NEW_LINE, MyEA::Time::Date_Time_Now().c_str(), tmp_path_general_parameters_neural_network.c_str());
 
             if(tmp_ptr_neural_network->Save_General_Parameters(tmp_path_general_parameters_neural_network) == false)
             {
                 PRINT_FORMAT("%s: ERROR: A error has been return while saving general parameters to %s." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          tmp_path_general_parameters_neural_network.c_str());
             }
 
             PRINT_FORMAT("%s" NEW_LINE, tmp_ptr_neural_network->Get__Parameters().c_str());
         }
 
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s: Neural network: Deallocate and delete." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s: Neural network: Deallocate and delete." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         
         if(tmp_index_run == 0_zu) { tmp_past_error = tmp_ptr_neural_network->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING); }
         else if(tmp_ptr_neural_network->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING) != tmp_past_error)
         {
             PRINT_FORMAT("%s: ERROR: %.9f != %.9f" NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      Cast_T(tmp_ptr_neural_network->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)),
                                      Cast_T(tmp_past_error));
             
@@ -2254,12 +2254,12 @@ void simple_debug(bool const nsight_received)
             break;
         }
 
-        PRINT_FORMAT("%s: Neural network: Deallocate." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s: Neural network: Deallocate." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         SAFE_DELETE(tmp_ptr_neural_network);
     }
     
     delete[](tmp_ptr_array_initial_weights);
 
-    PRINT_FORMAT("%s: Dataset: Deallocate." NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s: Dataset: Deallocate." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     SAFE_DELETE(tmp_ptr_Dataset_Manager);
 }

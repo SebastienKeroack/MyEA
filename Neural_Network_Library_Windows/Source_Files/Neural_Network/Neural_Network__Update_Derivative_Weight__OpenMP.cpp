@@ -1,6 +1,6 @@
 #include "stdafx.hpp"
 
-#include <Math/Mathematic.hpp>
+#include <Math/Math.hpp>
 
 #include <Neural_Network/Neural_Network.hpp>
 
@@ -34,7 +34,7 @@ void Neural_Network::FF__Update_Derivative_Weight_Batch__OpenMP(size_t const bat
                     break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          ptr_layer_it_received->type_layer,
                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[ptr_layer_it_received->type_layer].c_str());
@@ -63,7 +63,7 @@ void Neural_Network::FF__Update_Derivative_Weight_Batch__Pre_Training__OpenMP(si
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_ptr_layer_it->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str());
@@ -86,7 +86,7 @@ void Neural_Network::FF__Update_Derivative_Weight_Batch__Pre_Training__OpenMP(si
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_ptr_layer_it->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str());

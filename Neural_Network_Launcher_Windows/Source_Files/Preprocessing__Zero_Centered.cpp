@@ -5,7 +5,7 @@
     #include <windows.h>
 #endif
 
-#include <Tools/Animation_Waiting.hpp>
+#include <Strings/Animation_Waiting.hpp>
 
 #include <Preprocessing__Zero_Centered.hpp>
 
@@ -17,7 +17,7 @@ bool Preprocessing__Zero_Centered(void)
 {
     std::string tmp_dataset_name;
     
-    std::cout << MyEA::String::Get__Time() << ": Dataset name: ";
+    std::cout << MyEA::Time::Date_Time_Now() << ": Dataset name: ";
 
     getline(std::cin, tmp_dataset_name);
     
@@ -26,12 +26,12 @@ bool Preprocessing__Zero_Centered(void)
     SetConsoleTitle(std::string(tmp_dataset_name + " - Preprocessing, Scaler - Zero centered").c_str());
 #endif
     
-    class MyEA::Neural_Network::Neural_Network_Manager tmp_Neural_Network_Manager(true, MyEA::Common::ENUM_TYPE_INDICATORS::TYPE_iNONE);
+    class MyEA::Neural_Network::Neural_Network_Manager tmp_Neural_Network_Manager;
     
     if(tmp_Neural_Network_Manager.Initialize_Path(tmp_dataset_name, tmp_dataset_name) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize_Directory(%s, %s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_dataset_name.c_str(),
                                  tmp_dataset_name.c_str(),
@@ -49,7 +49,7 @@ bool Preprocessing__Zero_Centered(void)
     if(tmp_Neural_Network_Manager.Initialize_Dataset_Manager(&tmp_Dataset_Manager_Parameters) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize_Dataset_Manager()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -67,37 +67,37 @@ bool Preprocessing__Zero_Centered(void)
          tmp_minimum_value,
          tmp_maximum_value;
 
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-    PRINT_FORMAT("%s: Start index." NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    PRINT_FORMAT("%s: Start index." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     PRINT_FORMAT("%s:\tRange[0, %zu]." NEW_LINE,
-                             MyEA::String::Get__Time().c_str(),
+                             MyEA::Time::Date_Time_Now().c_str(),
                              tmp_number_examples);
-    PRINT_FORMAT("%s:\tdefault=0." NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s:\tdefault=0." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     tmp_data_start_index = MyEA::String::Cin_Number<size_t>(0_zu,
                                                                                             tmp_number_examples,
-                                                                                            MyEA::String::Get__Time() + ": Start index: ");
+                                                                                            MyEA::Time::Date_Time_Now() + ": Start index: ");
     
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-    PRINT_FORMAT("%s: End index." NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    PRINT_FORMAT("%s: End index." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     PRINT_FORMAT("%s:\tRange[%zu, %zu]." NEW_LINE,
-                             MyEA::String::Get__Time().c_str(),
+                             MyEA::Time::Date_Time_Now().c_str(),
                              tmp_data_start_index,
                              tmp_number_examples);
     PRINT_FORMAT("%s:\tdefault=%zu." NEW_LINE,
-                             MyEA::String::Get__Time().c_str(),
+                             MyEA::Time::Date_Time_Now().c_str(),
                              tmp_number_examples);
     tmp_data_end_index = MyEA::String::Cin_Number<size_t>(tmp_data_start_index,
                                                                                            tmp_number_examples,
-                                                                                           MyEA::String::Get__Time() + ": End index: ");
+                                                                                           MyEA::Time::Date_Time_Now() + ": End index: ");
     
     tmp_minimum_value = (std::numeric_limits<ST_>::max)();
 
     tmp_maximum_value = -(std::numeric_limits<ST_>::max)();
     
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-    if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to get min/max from input(s)?"))
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to get min/max from input(s)?"))
     {
-        if(tmp_Neural_Network_Manager.Get__Dataset_Manager()->Get__Number_Inputs() == 1_zu || MyEA::String::NoOrYes(MyEA::String::Get__Time() + NEW_LINE + MyEA::String::Get__Time() + ": Do you want to get min/max from all inputs?"))
+        if(tmp_Neural_Network_Manager.Get__Dataset_Manager()->Get__Number_Inputs() == 1_zu || MyEA::String::Accept(MyEA::Time::Date_Time_Now() + NEW_LINE + MyEA::Time::Date_Time_Now() + ": Do you want to get min/max from all inputs?"))
         {
             tmp_minimum = tmp_Neural_Network_Manager.Get__Dataset_Manager()->Get__Minimum_Input(tmp_data_start_index,
                                                                                                                                                          tmp_data_end_index,
@@ -113,10 +113,10 @@ bool Preprocessing__Zero_Centered(void)
         }
         else
         {
-            PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+            PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
             for(tmp_input_index = 0_zu; tmp_input_index != tmp_Neural_Network_Manager.Get__Dataset_Manager()->Get__Number_Inputs(); ++tmp_input_index)
             {
-                if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to get min/max from input " + std::to_string(tmp_input_index) + "?"))
+                if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to get min/max from input " + std::to_string(tmp_input_index) + "?"))
                 {
                     tmp_minimum = tmp_Neural_Network_Manager.Get__Dataset_Manager()->Get__Minimum_Input(tmp_data_start_index,
                                                                                                                                                                  tmp_data_end_index,
@@ -136,10 +136,10 @@ bool Preprocessing__Zero_Centered(void)
         }
     }
         
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-    if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to get min/max from output(s)?"))
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to get min/max from output(s)?"))
     {
-        if(tmp_Neural_Network_Manager.Get__Dataset_Manager()->Get__Number_Outputs() == 1_zu || MyEA::String::NoOrYes(MyEA::String::Get__Time() + NEW_LINE + MyEA::String::Get__Time() + ": Do you want to get min/max from all outputs?"))
+        if(tmp_Neural_Network_Manager.Get__Dataset_Manager()->Get__Number_Outputs() == 1_zu || MyEA::String::Accept(MyEA::Time::Date_Time_Now() + NEW_LINE + MyEA::Time::Date_Time_Now() + ": Do you want to get min/max from all outputs?"))
         {
             tmp_minimum = tmp_Neural_Network_Manager.Get__Dataset_Manager()->Get__Minimum_Input(tmp_data_start_index,
                                                                                                                                                          tmp_data_end_index,
@@ -155,10 +155,10 @@ bool Preprocessing__Zero_Centered(void)
         }
         else
         {
-            PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+            PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
             for(tmp_input_index = 0_zu; tmp_input_index != tmp_Neural_Network_Manager.Get__Dataset_Manager()->Get__Number_Outputs(); ++tmp_input_index)
             {
-                if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to get min/max from output " + std::to_string(tmp_input_index) + "?"))
+                if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to get min/max from output " + std::to_string(tmp_input_index) + "?"))
                 {
                     tmp_minimum = tmp_Neural_Network_Manager.Get__Dataset_Manager()->Get__Minimum_Input(tmp_data_start_index,
                                                                                                                                                                  tmp_data_end_index,
@@ -180,33 +180,33 @@ bool Preprocessing__Zero_Centered(void)
 
     if(tmp_minimum_value == (std::numeric_limits<ST_>::max)())
     {
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s: Minimum value." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\tRange[-inf , inf]." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s: Minimum value." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\tRange[-inf , inf]." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         tmp_minimum_value = MyEA::String::Cin_Real_Number<T_>(-(std::numeric_limits<ST_>::max)(),
                                                                                                   (std::numeric_limits<ST_>::max)(),
-                                                                                                  MyEA::String::Get__Time() + ": Minimum value: ");
+                                                                                                  MyEA::Time::Date_Time_Now() + ": Minimum value: ");
 
     }
     
     if(tmp_maximum_value == -(std::numeric_limits<ST_>::max)())
     {
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s: Maximum value." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s: Maximum value." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         PRINT_FORMAT("%s:\tRange[%f, inf]." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  Cast_T(tmp_minimum_value));
 
         tmp_maximum_value = MyEA::String::Cin_Real_Number<T_>(tmp_minimum_value,
                                                                                                   (std::numeric_limits<ST_>::max)(),
-                                                                                                  MyEA::String::Get__Time() + ": Maximum value: ");
+                                                                                                  MyEA::Time::Date_Time_Now() + ": Maximum value: ");
     }
 
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-    if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to preprocess input(s)?"))
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to preprocess input(s)?"))
     {
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-        if(tmp_Neural_Network_Manager.Get__Dataset_Manager()->Get__Number_Inputs() == 1_zu || MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to preprocess all inputs?"))
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        if(tmp_Neural_Network_Manager.Get__Dataset_Manager()->Get__Number_Inputs() == 1_zu || MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to preprocess all inputs?"))
         {
             if(tmp_Neural_Network_Manager.Get__Dataset_Manager()->Preprocessing__Zero_Centered(0_zu,
                                                                                                                                                  tmp_number_examples,
@@ -214,7 +214,7 @@ bool Preprocessing__Zero_Centered(void)
                                                                                                                                                  ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered(%zu, %zu, %f, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          0_zu,
                                          tmp_number_examples,
@@ -227,10 +227,10 @@ bool Preprocessing__Zero_Centered(void)
         }
         else
         {
-            PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+            PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
             for(tmp_input_index = 0_zu; tmp_input_index != tmp_Neural_Network_Manager.Get__Dataset_Manager()->Get__Number_Inputs(); ++tmp_input_index)
             {
-                if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to preprocess input " + std::to_string(tmp_input_index) + "?"))
+                if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to preprocess input " + std::to_string(tmp_input_index) + "?"))
                 {
                     if(tmp_Neural_Network_Manager.Get__Dataset_Manager()->Preprocessing__Zero_Centered(0_zu,
                                                                                                                                                          tmp_number_examples,
@@ -239,7 +239,7 @@ bool Preprocessing__Zero_Centered(void)
                                                                                                                                                          ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered(%zu, %zu, %zu, %f, %u)\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  0_zu,
                                                  tmp_number_examples,
@@ -255,11 +255,11 @@ bool Preprocessing__Zero_Centered(void)
         }
     }
             
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-    if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to preprocess output(s)?"))
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to preprocess output(s)?"))
     {
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-        if(tmp_Neural_Network_Manager.Get__Dataset_Manager()->Get__Number_Outputs() == 1_zu || MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to preprocess all outputs?"))
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        if(tmp_Neural_Network_Manager.Get__Dataset_Manager()->Get__Number_Outputs() == 1_zu || MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to preprocess all outputs?"))
         {
             if(tmp_Neural_Network_Manager.Get__Dataset_Manager()->Preprocessing__Zero_Centered(0_zu,
                                                                                                                                                  tmp_number_examples,
@@ -267,7 +267,7 @@ bool Preprocessing__Zero_Centered(void)
                                                                                                                                                  ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered(%zu, %zu, %f, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          0_zu,
                                          tmp_number_examples,
@@ -280,10 +280,10 @@ bool Preprocessing__Zero_Centered(void)
         }
         else
         {
-            PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+            PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
             for(tmp_input_index = 0_zu; tmp_input_index != tmp_Neural_Network_Manager.Get__Dataset_Manager()->Get__Number_Outputs(); ++tmp_input_index)
             {
-                if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to preprocess output " + std::to_string(tmp_input_index) + "?"))
+                if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to preprocess output " + std::to_string(tmp_input_index) + "?"))
                 {
                     if(tmp_Neural_Network_Manager.Get__Dataset_Manager()->Preprocessing__Zero_Centered(0_zu,
                                                                                                                                                          tmp_number_examples,
@@ -292,7 +292,7 @@ bool Preprocessing__Zero_Centered(void)
                                                                                                                                                          ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered(%zu, %zu, %zu, %f, %u)\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  0_zu,
                                                  tmp_number_examples,
@@ -311,7 +311,7 @@ bool Preprocessing__Zero_Centered(void)
     if(tmp_Neural_Network_Manager.Initialize_Path(tmp_dataset_name, tmp_dataset_name + "_ScalerZeroCentered") == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize_Directory(%s, %s_ScalerZeroCentered)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_dataset_name.c_str(),
                                  tmp_dataset_name.c_str(),
@@ -320,17 +320,17 @@ bool Preprocessing__Zero_Centered(void)
         return(false);
     }
     
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     PRINT_FORMAT("%s: Saving into %s... ",
-                             MyEA::String::Get__Time().c_str(),
+                             MyEA::Time::Date_Time_Now().c_str(),
                              tmp_Neural_Network_Manager.Get__Path_Dataset_Manager().c_str());
-    class MyEA::Animation::Animation_Waiting tmp_Animation_Waiting;
+    class MyEA::String::Animation_Waiting tmp_Animation_Waiting;
     tmp_Animation_Waiting.Print_While_Async();
 
     if(tmp_Neural_Network_Manager.Get__Dataset_Manager()->Save(tmp_Neural_Network_Manager.Get__Path_Dataset_Manager()) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Save(%s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_Neural_Network_Manager.Get__Path_Dataset_Manager().c_str(),
                                  __LINE__);
@@ -339,7 +339,7 @@ bool Preprocessing__Zero_Centered(void)
     }
     
     tmp_Animation_Waiting.Join();
-    PRINT_FORMAT(NEW_LINE "%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT(NEW_LINE "%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
     return(true);
 }

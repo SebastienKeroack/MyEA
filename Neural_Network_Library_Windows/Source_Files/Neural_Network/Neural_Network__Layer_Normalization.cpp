@@ -14,7 +14,7 @@ bool Neural_Network::Prepare__Normalized__Layers(void)
         if(this->Prepare__Normalized__Layer(tmp_ptr_layer_it) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Prepare__Normalized__Layer()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -60,7 +60,7 @@ bool Neural_Network::Prepare__Normalized__Layer(struct Layer *&ptr_layer_it_rece
             if(this->Prepare__Normalized__Residual_Block(ptr_layer_it_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Prepare__Normalized__Residual_Block()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -69,7 +69,7 @@ bool Neural_Network::Prepare__Normalized__Layer(struct Layer *&ptr_layer_it_rece
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ptr_layer_it_received->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[ptr_layer_it_received->type_layer].c_str());
@@ -84,7 +84,7 @@ bool Neural_Network::Prepare__Normalized__Residual_Block(struct Layer *&ptr_laye
     if(ptr_layer_it_received->type_layer != MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_RESIDUAL)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is not a residual unit. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -98,7 +98,7 @@ bool Neural_Network::Prepare__Normalized__Residual_Block(struct Layer *&ptr_laye
         if(this->Prepare__Normalized__Residual_Layer(ptr_layer_it_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Prepare__Normalized__Residual_Layer()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -148,7 +148,7 @@ bool Neural_Network::Prepare__Normalized__Residual_Layer(struct Layer *&ptr_laye
             if(this->Prepare__Normalized__Residual_Block(ptr_layer_it_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Prepare__Normalized__Residual_Block()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -157,7 +157,7 @@ bool Neural_Network::Prepare__Normalized__Residual_Layer(struct Layer *&ptr_laye
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ptr_layer_it_received->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[ptr_layer_it_received->type_layer].c_str());
@@ -175,7 +175,7 @@ bool Neural_Network::Set__Layer_Normalization(size_t const index_layer_received,
     if(index_layer_received >= this->total_layers)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received (%zu) as argument overflow the number of layers (%zu) in the neural network. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  index_layer_received,
                                  this->total_layers,
@@ -186,7 +186,7 @@ bool Neural_Network::Set__Layer_Normalization(size_t const index_layer_received,
     else if(this->ptr_array_layers == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -207,7 +207,7 @@ bool Neural_Network::Set__Layer_Normalization(struct Layer *const ptr_layer_rece
     if(ptr_layer_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -216,7 +216,7 @@ bool Neural_Network::Set__Layer_Normalization(struct Layer *const ptr_layer_rece
     else if(ptr_layer_received == this->ptr_array_layers)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is the input layer. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -225,7 +225,7 @@ bool Neural_Network::Set__Layer_Normalization(struct Layer *const ptr_layer_rece
     else if(ptr_layer_received == this->ptr_last_layer - 1)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is the output layer. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -236,7 +236,7 @@ bool Neural_Network::Set__Layer_Normalization(struct Layer *const ptr_layer_rece
              ptr_layer_received >= this->ptr_last_layer - (this->total_layers - 3_zu) / 2_zu + 1_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is a decoded layer. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -263,7 +263,7 @@ bool Neural_Network::Set__Layer_Normalization(struct Layer *const ptr_layer_rece
                                                                                organize_pointers_received));
         default:
             PRINT_FORMAT("%s: %s: ERROR: Type normalization layer (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ptr_layer_received->type_normalization,
                                      MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[ptr_layer_received->type_normalization].c_str(),
@@ -296,7 +296,7 @@ bool Neural_Network::Set__Normalization_None(struct Layer *const ptr_layer_recei
                                                                                 false));
         default:
             PRINT_FORMAT("%s: %s: ERROR: Type normalization layer (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ptr_layer_received->type_normalization,
                                      MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[ptr_layer_received->type_normalization].c_str(),
@@ -313,7 +313,7 @@ bool Neural_Network::Set__Batch_Normalization(struct Layer *const ptr_layer_rece
     if(ptr_layer_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -322,7 +322,7 @@ bool Neural_Network::Set__Batch_Normalization(struct Layer *const ptr_layer_rece
     else if(ptr_layer_received == this->ptr_array_layers)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is the input layer. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -331,7 +331,7 @@ bool Neural_Network::Set__Batch_Normalization(struct Layer *const ptr_layer_rece
     else if(ptr_layer_received == this->ptr_last_layer - 1)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is the output layer. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -343,7 +343,7 @@ bool Neural_Network::Set__Batch_Normalization(struct Layer *const ptr_layer_rece
         if(this->Set__Normalization_None(ptr_layer_received, organize_pointers_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Normalization_None(%s)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      organize_pointers_received ? "true" : "false",
                                      __LINE__);
@@ -363,7 +363,7 @@ bool Neural_Network::Set__Batch_Normalization(struct Layer *const ptr_layer_rece
             if(this->Allocate__Normalized_Unit(organize_pointers_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Normalized_Unit(%s)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          organize_pointers_received ? "true" : "false",
                                          __LINE__);
@@ -381,7 +381,7 @@ bool Neural_Network::Set__Batch_Normalization(struct Layer *const ptr_layer_rece
                      this->Allocate__Parameter__Normalization() == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Parameter__Normalization()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
                 
@@ -394,7 +394,7 @@ bool Neural_Network::Set__Batch_Normalization(struct Layer *const ptr_layer_rece
             else if(this->Allocate__Normalized_Unit__Batch_Normalization() == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Normalized_Unit__Batch_Normalization()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
                 
@@ -437,7 +437,7 @@ bool Neural_Network::Set__Batch_Normalization(struct Layer *const ptr_layer_rece
                                                       organize_pointers_received))
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Batch_Normalization(ptr, %s, %s, %s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  use_batch_normalization_received ? "true" : "false",
                                  reallocate_dimension_parameters_received ? "true" : "false",
@@ -459,7 +459,7 @@ bool Neural_Network::Set__Batch_Renormalization(struct Layer *const ptr_layer_re
     if(ptr_layer_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -468,7 +468,7 @@ bool Neural_Network::Set__Batch_Renormalization(struct Layer *const ptr_layer_re
     else if(ptr_layer_received == this->ptr_array_layers)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is the input layer. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -477,7 +477,7 @@ bool Neural_Network::Set__Batch_Renormalization(struct Layer *const ptr_layer_re
     else if(ptr_layer_received == this->ptr_last_layer - 1)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is the output layer. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -489,7 +489,7 @@ bool Neural_Network::Set__Batch_Renormalization(struct Layer *const ptr_layer_re
         if(this->Set__Normalization_None(ptr_layer_received, organize_pointers_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Normalization_None(%s)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      organize_pointers_received ? "true" : "false",
                                      __LINE__);
@@ -509,7 +509,7 @@ bool Neural_Network::Set__Batch_Renormalization(struct Layer *const ptr_layer_re
             if(this->Allocate__Normalized_Unit(organize_pointers_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Normalized_Unit(%s)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          organize_pointers_received ? "true" : "false",
                                          __LINE__);
@@ -527,7 +527,7 @@ bool Neural_Network::Set__Batch_Renormalization(struct Layer *const ptr_layer_re
                      this->Allocate__Parameter__Normalization() == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Parameter__Normalization()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
                 
@@ -540,7 +540,7 @@ bool Neural_Network::Set__Batch_Renormalization(struct Layer *const ptr_layer_re
             else if(this->Allocate__Normalized_Unit__Batch_Normalization() == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Normalized_Unit__Batch_Normalization()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
                 
@@ -553,7 +553,7 @@ bool Neural_Network::Set__Batch_Renormalization(struct Layer *const ptr_layer_re
             else if(this->Allocate__Normalized_Unit__Batch_Renormalization() == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Normalized_Unit__Batch_Renormalization()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
                 
@@ -597,7 +597,7 @@ bool Neural_Network::Set__Batch_Renormalization(struct Layer *const ptr_layer_re
                                                          organize_pointers_received))
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Batch_Renormalization(ptr, %s, %s, %s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  use_batch_renormalization_received ? "true" : "false",
                                  reallocate_dimension_parameters_received ? "true" : "false",
@@ -619,7 +619,7 @@ bool Neural_Network::Set__Ghost_Batch_Normalization(struct Layer *const ptr_laye
     if(ptr_layer_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -628,7 +628,7 @@ bool Neural_Network::Set__Ghost_Batch_Normalization(struct Layer *const ptr_laye
     else if(ptr_layer_received == this->ptr_array_layers)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is the input layer. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -637,7 +637,7 @@ bool Neural_Network::Set__Ghost_Batch_Normalization(struct Layer *const ptr_laye
     else if(ptr_layer_received == this->ptr_last_layer - 1)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is the output layer. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -649,7 +649,7 @@ bool Neural_Network::Set__Ghost_Batch_Normalization(struct Layer *const ptr_laye
         if(this->Set__Normalization_None(ptr_layer_received, organize_pointers_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Normalization_None(%s)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      organize_pointers_received ? "true" : "false",
                                      __LINE__);
@@ -669,7 +669,7 @@ bool Neural_Network::Set__Ghost_Batch_Normalization(struct Layer *const ptr_laye
             if(this->Allocate__Normalized_Unit(organize_pointers_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Normalized_Unit(%s)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          organize_pointers_received ? "true" : "false",
                                          __LINE__);
@@ -687,7 +687,7 @@ bool Neural_Network::Set__Ghost_Batch_Normalization(struct Layer *const ptr_laye
                      this->Allocate__Parameter__Normalization() == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Parameter__Normalization()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
                 
@@ -700,7 +700,7 @@ bool Neural_Network::Set__Ghost_Batch_Normalization(struct Layer *const ptr_laye
             else if(this->Allocate__Normalized_Unit__Batch_Normalization() == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Normalized_Unit__Batch_Normalization()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
                 
@@ -743,7 +743,7 @@ bool Neural_Network::Set__Ghost_Batch_Normalization(struct Layer *const ptr_laye
                                                                 organize_pointers_received))
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Ghost_Batch_Normalization(ptr, %s, %s, %s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  use_ghost_batch_normalization_received ? "true" : "false",
                                  reallocate_dimension_parameters_received ? "true" : "false",

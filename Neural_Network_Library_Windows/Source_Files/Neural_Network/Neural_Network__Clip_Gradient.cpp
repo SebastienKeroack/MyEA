@@ -14,7 +14,7 @@ bool Neural_Network::Set__Clip_Gradient(T_ const clip_gradient_received)
     if(tmp_ptr_array_layers_use_default == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  (this->total_layers - 2_zu) * sizeof(bool),
                                  __LINE__);
@@ -52,7 +52,7 @@ bool Neural_Network::Set__Clip_Gradient(T_ const clip_gradient_received)
           this->Set__Regularization__Constraint_Recurrent_Weight__Default(tmp_ptr_layer_it) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Regularization__Constraint_Recurrent_Weight__Default(ptr)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
         

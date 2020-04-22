@@ -8,7 +8,7 @@ bool Neural_Network::Set__Pre_Training_Level(size_t const pre_training_level_rec
     else if(pre_training_level_received > (this->total_layers - 3_zu) / 2_zu + 1_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Pre training level (%zu) overflow (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  pre_training_level_received,
                                  (this->total_layers - 3_zu) / 2_zu + 1_zu,
@@ -50,7 +50,7 @@ void Neural_Network::Indexing_Regularization_Parameters(void)
             case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_LSTM: this->Indexing_Regularization__Weights__LSTM(1_T, tmp_ptr_layer_it); break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_ptr_layer_it->type_layer,
                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str());
@@ -66,7 +66,7 @@ void Neural_Network::Indexing_Regularization_Parameters__Pre_training(void)
     if(this->pre_training_level == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: The neural network use the pre-training function without the mode pre-training activate. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -89,7 +89,7 @@ void Neural_Network::Indexing_Regularization_Parameters__Pre_training(void)
             case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_LSTM: this->Indexing_Regularization__Weights__LSTM(0_T, tmp_ptr_layer_it); break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_ptr_layer_it->type_layer,
                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str());
@@ -108,7 +108,7 @@ void Neural_Network::Indexing_Regularization_Parameters__Pre_training(void)
         case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_LSTM: this->Indexing_Regularization__Weights__LSTM(1_T, tmp_ptr_layer_it); break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         tmp_ptr_layer_it->type_layer,
                                         MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str());
@@ -129,7 +129,7 @@ void Neural_Network::Indexing_Regularization_Parameters__Pre_training(void)
             case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_LSTM: this->Indexing_Regularization__Weights__LSTM(0_T, tmp_ptr_layer_it); break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_ptr_layer_it->type_layer,
                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str());
@@ -148,7 +148,7 @@ void Neural_Network::Indexing_Regularization_Parameters__Pre_training(void)
         case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_LSTM: this->Indexing_Regularization__Weights__LSTM(1_T, tmp_ptr_layer_it); break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         tmp_ptr_layer_it->type_layer,
                                         MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str());
@@ -169,7 +169,7 @@ void Neural_Network::Indexing_Regularization_Parameters__Pre_training(void)
             case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_LSTM: this->Indexing_Regularization__Weights__LSTM(0_T, tmp_ptr_layer_it); break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_ptr_layer_it->type_layer,
                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str());

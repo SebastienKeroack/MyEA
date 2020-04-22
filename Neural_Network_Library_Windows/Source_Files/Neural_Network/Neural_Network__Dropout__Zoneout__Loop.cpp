@@ -29,7 +29,7 @@ void Neural_Network::Dropout_Zoneout__Loop(void)
                 case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_LSTM: this->Dropout_Zoneout__Block_Units__Loop(tmp_ptr_layer_it); break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_ptr_layer_it->type_layer,
                                              MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str());
@@ -58,12 +58,12 @@ void Neural_Network::Dropout_Zoneout__Block_Units__Loop(struct Layer *const ptr_
         for(tmp_ptr_last_cell_unit = ptr_layer_it_received->ptr_last_cell_unit,
             tmp_ptr_cell_unit_it = ptr_layer_it_received->ptr_array_cell_units; tmp_ptr_cell_unit_it != tmp_ptr_last_cell_unit; ++tmp_ptr_cell_unit_it)
         {
-            if(this->ptr_array_Class_Generator_Bernoulli_Zoneout_State->Generate_Bernoulli()) // Zoneout cell state.
+            if((*this->ptr_array_Class_Generator_Bernoulli_Zoneout_State)()) // Zoneout cell state.
             { tmp_ptr_cell_unit_it->ptr_mask_dropout_zoneout_state[tmp_timed_mask_index] = false; }
             else // Keep cell state.
             { tmp_ptr_cell_unit_it->ptr_mask_dropout_zoneout_state[tmp_timed_mask_index] = true; }
 
-            if(this->ptr_array_Class_Generator_Bernoulli_Zoneout_Hidden->Generate_Bernoulli()) // Zoneout cell output.
+            if((*this->ptr_array_Class_Generator_Bernoulli_Zoneout_Hidden)()) // Zoneout cell output.
             { tmp_ptr_cell_unit_it->ptr_mask_dropout_zoneout_output[tmp_timed_mask_index] = false; }
             else // Keep cell output.
             { tmp_ptr_cell_unit_it->ptr_mask_dropout_zoneout_output[tmp_timed_mask_index] = true; }

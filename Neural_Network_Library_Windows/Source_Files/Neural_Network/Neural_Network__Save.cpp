@@ -7,10 +7,10 @@
 
 bool Neural_Network::Save_General_Parameters(std::string const &ref_path_received)
 {
-    if(MyEA::File::Write_Tempory_File(ref_path_received) == false)
+    if(MyEA::File::Write_Temporary_File(ref_path_received) == false)
     {
-        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Write_Tempory_File(%s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Write_Temporary_File(%s)\" function. At line %d." NEW_LINE,
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -25,53 +25,53 @@ bool Neural_Network::Save_General_Parameters(std::string const &ref_path_receive
         std::string tmp_value_to_write;
 
         tmp_value_to_write += "|===| GRADIENT DESCENT PARAMETERS |===|" NEW_LINE;
-        tmp_value_to_write += "learning_rate " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->learning_rate) + NEW_LINE;
-        tmp_value_to_write += "learning_rate_final " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->learning_rate_final) + NEW_LINE;
-        tmp_value_to_write += "learning_momentum " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->learning_momentum) + NEW_LINE;
-        tmp_value_to_write += "learning_gamma " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->learning_gamma) + NEW_LINE;
+        tmp_value_to_write += "learning_rate " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->learning_rate) + NEW_LINE;
+        tmp_value_to_write += "learning_rate_final " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->learning_rate_final) + NEW_LINE;
+        tmp_value_to_write += "learning_momentum " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->learning_momentum) + NEW_LINE;
+        tmp_value_to_write += "learning_gamma " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->learning_gamma) + NEW_LINE;
         tmp_value_to_write += "use_Nesterov " + std::to_string(this->use_Nesterov) + NEW_LINE;
         tmp_value_to_write += "|END| GRADIENT DESCENT PARAMETERS |END|" NEW_LINE;
         tmp_value_to_write += NEW_LINE;
 
         tmp_value_to_write += "|===| QUICKPROP PARAMETERS |===|" NEW_LINE;
-        tmp_value_to_write += "quickprop_decay " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->quickprop_decay) + NEW_LINE;
-        tmp_value_to_write += "quickprop_mu " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->quickprop_mu) + NEW_LINE;
+        tmp_value_to_write += "quickprop_decay " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->quickprop_decay) + NEW_LINE;
+        tmp_value_to_write += "quickprop_mu " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->quickprop_mu) + NEW_LINE;
         tmp_value_to_write += "|END| QUICKPROP PARAMETERS |END|" NEW_LINE;
         tmp_value_to_write += NEW_LINE;
 
         tmp_value_to_write += "|===| RESILLENT PROPAGATION PARAMETERS |===|" NEW_LINE;
-        tmp_value_to_write += "rprop_increase_factor " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->rprop_increase_factor) + NEW_LINE;
-        tmp_value_to_write += "rprop_decrease_factor " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->rprop_decrease_factor) + NEW_LINE;
-        tmp_value_to_write += "rprop_delta_min " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->rprop_delta_min) + NEW_LINE;
-        tmp_value_to_write += "rprop_delta_max " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->rprop_delta_max) + NEW_LINE;
-        tmp_value_to_write += "rprop_delta_zero " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->rprop_delta_zero) + NEW_LINE;
+        tmp_value_to_write += "rprop_increase_factor " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->rprop_increase_factor) + NEW_LINE;
+        tmp_value_to_write += "rprop_decrease_factor " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->rprop_decrease_factor) + NEW_LINE;
+        tmp_value_to_write += "rprop_delta_min " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->rprop_delta_min) + NEW_LINE;
+        tmp_value_to_write += "rprop_delta_max " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->rprop_delta_max) + NEW_LINE;
+        tmp_value_to_write += "rprop_delta_zero " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->rprop_delta_zero) + NEW_LINE;
         tmp_value_to_write += "|END| RESILLENT PROPAGATION PARAMETERS |END|" NEW_LINE;
         tmp_value_to_write += NEW_LINE;
 
         tmp_value_to_write += "|===| SARPROP PARAMETERS |===|" NEW_LINE;
-        tmp_value_to_write += "sarprop_weight_decay_shift " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->sarprop_weight_decay_shift) + NEW_LINE;
-        tmp_value_to_write += "sarprop_step_error_threshold_factor " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->sarprop_step_error_threshold_factor) + NEW_LINE;
-        tmp_value_to_write += "sarprop_step_error_shift " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->sarprop_step_error_shift) + NEW_LINE;
-        tmp_value_to_write += "sarprop_temperature " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->sarprop_temperature) + NEW_LINE;
+        tmp_value_to_write += "sarprop_weight_decay_shift " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->sarprop_weight_decay_shift) + NEW_LINE;
+        tmp_value_to_write += "sarprop_step_error_threshold_factor " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->sarprop_step_error_threshold_factor) + NEW_LINE;
+        tmp_value_to_write += "sarprop_step_error_shift " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->sarprop_step_error_shift) + NEW_LINE;
+        tmp_value_to_write += "sarprop_temperature " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->sarprop_temperature) + NEW_LINE;
         tmp_value_to_write += "sarprop_epoch " + std::to_string(this->sarprop_epoch) + NEW_LINE;
         tmp_value_to_write += "|END| SARPROP PARAMETERS |END|" NEW_LINE;
         tmp_value_to_write += NEW_LINE;
 
         tmp_value_to_write += "|===| ADAM PARAMETERS |===|" NEW_LINE;
-        tmp_value_to_write += "adam_learning_rate " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->adam_learning_rate) + NEW_LINE;
-        tmp_value_to_write += "adam_beta1 " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->adam_beta1) + NEW_LINE;
-        tmp_value_to_write += "adam_beta2 " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->adam_beta2) + NEW_LINE;
-        tmp_value_to_write += "adam_epsilon " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->adam_epsilon) + NEW_LINE;
+        tmp_value_to_write += "adam_learning_rate " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->adam_learning_rate) + NEW_LINE;
+        tmp_value_to_write += "adam_beta1 " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->adam_beta1) + NEW_LINE;
+        tmp_value_to_write += "adam_beta2 " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->adam_beta2) + NEW_LINE;
+        tmp_value_to_write += "adam_epsilon " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->adam_epsilon) + NEW_LINE;
         tmp_value_to_write += "adam_bias_correction " + std::to_string(this->use_adam_bias_correction) + NEW_LINE;
-        tmp_value_to_write += "adam_gamma " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->adam_gamma) + NEW_LINE;
+        tmp_value_to_write += "adam_gamma " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->adam_gamma) + NEW_LINE;
         tmp_value_to_write += "|END| ADAM PARAMETERS |END|" NEW_LINE;
         tmp_value_to_write += NEW_LINE;
 
         tmp_value_to_write += "|===| WARM RESTARTS PARAMETERS |===|" NEW_LINE;
         tmp_value_to_write += "use_Warm_Restarts " + std::to_string(this->use_Warm_Restarts) + NEW_LINE;
-        tmp_value_to_write += "warm_restarts_decay_learning_rate " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->warm_restarts_decay_learning_rate) + NEW_LINE;
-        tmp_value_to_write += "warm_restarts_maximum_learning_rate " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->warm_restarts_initial_maximum_learning_rate) + NEW_LINE;
-        tmp_value_to_write += "warm_restarts_minimum_learning_rate " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->warm_restarts_minimum_learning_rate) + NEW_LINE;
+        tmp_value_to_write += "warm_restarts_decay_learning_rate " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->warm_restarts_decay_learning_rate) + NEW_LINE;
+        tmp_value_to_write += "warm_restarts_maximum_learning_rate " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->warm_restarts_initial_maximum_learning_rate) + NEW_LINE;
+        tmp_value_to_write += "warm_restarts_minimum_learning_rate " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->warm_restarts_minimum_learning_rate) + NEW_LINE;
         tmp_value_to_write += "warm_restarts_initial_T_i " + std::to_string(static_cast<size_t>(this->warm_restarts_initial_T_i)) + NEW_LINE;
         tmp_value_to_write += "warm_restarts_multiplier " + std::to_string(static_cast<size_t>(this->warm_restarts_multiplier)) + NEW_LINE;
         tmp_value_to_write += "|END| WARM RESTARTS PARAMETERS |END|" NEW_LINE;
@@ -81,43 +81,43 @@ bool Neural_Network::Save_General_Parameters(std::string const &ref_path_receive
         tmp_value_to_write += "type_optimizer_function " + std::to_string(this->type_optimizer_function) + NEW_LINE;
         tmp_value_to_write += "type_loss_function " + std::to_string(this->type_loss_function) + NEW_LINE;
         tmp_value_to_write += "type_accuracy_function " + std::to_string(this->type_accuracy_function) + NEW_LINE;
-        tmp_value_to_write += "bit_fail_limit " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->bit_fail_limit) + NEW_LINE;
+        tmp_value_to_write += "bit_fail_limit " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->bit_fail_limit) + NEW_LINE;
         tmp_value_to_write += "pre_training_level " + std::to_string(this->pre_training_level) + NEW_LINE;
         tmp_value_to_write += "use_clip_gradient " + std::to_string(this->use_clip_gradient) + NEW_LINE;
-        tmp_value_to_write += "clip_gradient " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->clip_gradient) + NEW_LINE;
+        tmp_value_to_write += "clip_gradient " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->clip_gradient) + NEW_LINE;
         tmp_value_to_write += "|END| TRAINING PARAMETERS |END|" NEW_LINE;
         tmp_value_to_write += NEW_LINE;
 
         tmp_value_to_write += "|===| REGULARIZATION PARAMETERS |===|" NEW_LINE;
-        tmp_value_to_write += "regularization__max_norm_constraints " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->regularization__max_norm_constraints) + NEW_LINE;
-        tmp_value_to_write += "regularization__l1 " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->regularization__l1) + NEW_LINE;
-        tmp_value_to_write += "regularization__l2 " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->regularization__l2) + NEW_LINE;
-        tmp_value_to_write += "regularization__srip " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->regularization__srip) + NEW_LINE;
-        tmp_value_to_write += "regularization__weight_decay " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->regularization__weight_decay) + NEW_LINE;
+        tmp_value_to_write += "regularization__max_norm_constraints " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->regularization__max_norm_constraints) + NEW_LINE;
+        tmp_value_to_write += "regularization__l1 " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->regularization__l1) + NEW_LINE;
+        tmp_value_to_write += "regularization__l2 " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->regularization__l2) + NEW_LINE;
+        tmp_value_to_write += "regularization__srip " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->regularization__srip) + NEW_LINE;
+        tmp_value_to_write += "regularization__weight_decay " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->regularization__weight_decay) + NEW_LINE;
         tmp_value_to_write += "use_normalized_weight_decay " + std::to_string(this->use_normalized_weight_decay) + NEW_LINE;
         tmp_value_to_write += "|END| REGULARIZATION PARAMETERS |END|" NEW_LINE;
         tmp_value_to_write += NEW_LINE;
         
         tmp_value_to_write += "|===| NORMALIZATION PARAMETERS |===|" NEW_LINE;
-        tmp_value_to_write += "normalization_momentum_average " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->normalization_momentum_average) + NEW_LINE;
-        tmp_value_to_write += "normalization_epsilon " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->normalization_epsilon) + NEW_LINE;
-        tmp_value_to_write += "batch_renormalization_r_correction_maximum " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->batch_renormalization_r_correction_maximum) + NEW_LINE;
-        tmp_value_to_write += "batch_renormalization_d_correction_maximum " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->batch_renormalization_d_correction_maximum) + NEW_LINE;
+        tmp_value_to_write += "normalization_momentum_average " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->normalization_momentum_average) + NEW_LINE;
+        tmp_value_to_write += "normalization_epsilon " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->normalization_epsilon) + NEW_LINE;
+        tmp_value_to_write += "batch_renormalization_r_correction_maximum " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->batch_renormalization_r_correction_maximum) + NEW_LINE;
+        tmp_value_to_write += "batch_renormalization_d_correction_maximum " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->batch_renormalization_d_correction_maximum) + NEW_LINE;
         tmp_value_to_write += "|END| NORMALIZATION PARAMETERS |END|" NEW_LINE;
         tmp_value_to_write += NEW_LINE;
 
         tmp_value_to_write += "|===| LOSS PARAMETERS |===|" NEW_LINE;
-        tmp_value_to_write += "loss_training " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->loss_training) + NEW_LINE;
-        tmp_value_to_write += "loss_validating " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->loss_validating) + NEW_LINE;
-        tmp_value_to_write += "loss_testing " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->loss_testing) + NEW_LINE;
+        tmp_value_to_write += "loss_training " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->loss_training) + NEW_LINE;
+        tmp_value_to_write += "loss_validating " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->loss_validating) + NEW_LINE;
+        tmp_value_to_write += "loss_testing " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->loss_testing) + NEW_LINE;
         tmp_value_to_write += "|END| LOSS PARAMETERS |END|" NEW_LINE;
         tmp_value_to_write += NEW_LINE;
 
         tmp_value_to_write += "|===| ACCURANCY PARAMETERS |===|" NEW_LINE;
-        tmp_value_to_write += "accuracy_variance " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->accuracy_variance) + NEW_LINE;
-        tmp_value_to_write += "accuracy_training " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->accuracy_training) + NEW_LINE;
-        tmp_value_to_write += "accuracy_validating " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->accuracy_validating) + NEW_LINE;
-        tmp_value_to_write += "accuracy_testing " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->accuracy_testing) + NEW_LINE;
+        tmp_value_to_write += "accuracy_variance " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->accuracy_variance) + NEW_LINE;
+        tmp_value_to_write += "accuracy_training " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->accuracy_training) + NEW_LINE;
+        tmp_value_to_write += "accuracy_validating " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->accuracy_validating) + NEW_LINE;
+        tmp_value_to_write += "accuracy_testing " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->accuracy_testing) + NEW_LINE;
         tmp_value_to_write += "|END| ACCURANCY PARAMETERS |END|" NEW_LINE;
         tmp_value_to_write += NEW_LINE;
 
@@ -129,7 +129,7 @@ bool Neural_Network::Save_General_Parameters(std::string const &ref_path_receive
     #endif
         { tmp_value_to_write += "use_CUDA 0" NEW_LINE; }
         tmp_value_to_write += "use_OpenMP " + std::to_string(this->use_OpenMP) + NEW_LINE;
-        tmp_value_to_write += "percentage_maximum_thread_usage " + MyEA::String::To_string<double, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->percentage_maximum_thread_usage, 9u) + NEW_LINE;
+        tmp_value_to_write += "percentage_maximum_thread_usage " + MyEA::String::To_string<double, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->percentage_maximum_thread_usage, 9u) + NEW_LINE;
         tmp_value_to_write += "maximum_batch_size " + std::to_string(this->maximum_batch_size) + NEW_LINE;
         tmp_value_to_write += "|END| COMPUTATION PARAMETERS |END|" NEW_LINE;
 
@@ -138,7 +138,7 @@ bool Neural_Network::Save_General_Parameters(std::string const &ref_path_receive
         if(tmp_ofstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"write(string, %zu)\" function. Logical error on i/o operation \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_value_to_write.size(),
                                      ref_path_received.c_str(),
@@ -152,7 +152,7 @@ bool Neural_Network::Save_General_Parameters(std::string const &ref_path_receive
         if(tmp_ofstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"flush()\" function. Logical error on i/o operation \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ref_path_received.c_str(),
                                      __LINE__);
@@ -165,7 +165,7 @@ bool Neural_Network::Save_General_Parameters(std::string const &ref_path_receive
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: The file %s can not be opened. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -173,10 +173,10 @@ bool Neural_Network::Save_General_Parameters(std::string const &ref_path_receive
         return(false);
     }
 
-    if(MyEA::File::Delete_Tempory_File(ref_path_received) == false)
+    if(MyEA::File::Delete_Temporary_File(ref_path_received) == false)
     {
-        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Delete_Tempory_File(%s)\" function." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Delete_Temporary_File(%s)\" function." NEW_LINE,
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str());
 
@@ -188,10 +188,10 @@ bool Neural_Network::Save_General_Parameters(std::string const &ref_path_receive
 
 bool Neural_Network::Save_Dimension_Parameters(std::string const &ref_path_received)
 {
-    if(MyEA::File::Write_Tempory_File(ref_path_received) == false)
+    if(MyEA::File::Write_Temporary_File(ref_path_received) == false)
     {
-        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Write_Tempory_File(%s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Write_Temporary_File(%s)\" function. At line %d." NEW_LINE,
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -251,19 +251,19 @@ bool Neural_Network::Save_Dimension_Parameters(std::string const &ref_path_recei
             switch(ptr_layer_it_received->type_dropout)
             {
                 case MyEA::Common::ENUM_TYPE_LAYER_DROPOUT::TYPE_LAYER_DROPOUT_ALPHA:
-                    tmp_string += "      dropout_values[0] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(1_T - ptr_layer_it_received->dropout_values[0u]) + NEW_LINE;
-                    tmp_string += "      dropout_values[1] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(ptr_layer_it_received->dropout_values[1u]) + NEW_LINE;
-                    tmp_string += "      dropout_values[2] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(ptr_layer_it_received->dropout_values[2u]) + NEW_LINE;
+                    tmp_string += "      dropout_values[0] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(1_T - ptr_layer_it_received->dropout_values[0u]) + NEW_LINE;
+                    tmp_string += "      dropout_values[1] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(ptr_layer_it_received->dropout_values[1u]) + NEW_LINE;
+                    tmp_string += "      dropout_values[2] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(ptr_layer_it_received->dropout_values[2u]) + NEW_LINE;
                         break;
                 case MyEA::Common::ENUM_TYPE_LAYER_DROPOUT::TYPE_LAYER_DROPOUT_GAUSSIAN:
-                    tmp_string += "      dropout_values[0] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(ptr_layer_it_received->dropout_values[0u] / (ptr_layer_it_received->dropout_values[0u] + 1_T)) + NEW_LINE;
-                    tmp_string += "      dropout_values[1] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(ptr_layer_it_received->dropout_values[1u]) + NEW_LINE;
-                    tmp_string += "      dropout_values[2] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(ptr_layer_it_received->dropout_values[2u]) + NEW_LINE;
+                    tmp_string += "      dropout_values[0] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(ptr_layer_it_received->dropout_values[0u] / (ptr_layer_it_received->dropout_values[0u] + 1_T)) + NEW_LINE;
+                    tmp_string += "      dropout_values[1] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(ptr_layer_it_received->dropout_values[1u]) + NEW_LINE;
+                    tmp_string += "      dropout_values[2] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(ptr_layer_it_received->dropout_values[2u]) + NEW_LINE;
                         break;
                 default:
-                    tmp_string += "      dropout_values[0] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(ptr_layer_it_received->dropout_values[0u]) + NEW_LINE;
-                    tmp_string += "      dropout_values[1] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(ptr_layer_it_received->dropout_values[1u]) + NEW_LINE;
-                    tmp_string += "      dropout_values[2] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(ptr_layer_it_received->dropout_values[2u]) + NEW_LINE;
+                    tmp_string += "      dropout_values[0] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(ptr_layer_it_received->dropout_values[0u]) + NEW_LINE;
+                    tmp_string += "      dropout_values[1] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(ptr_layer_it_received->dropout_values[1u]) + NEW_LINE;
+                    tmp_string += "      dropout_values[2] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(ptr_layer_it_received->dropout_values[2u]) + NEW_LINE;
                         break;
             }
 
@@ -305,7 +305,7 @@ bool Neural_Network::Save_Dimension_Parameters(std::string const &ref_path_recei
                     if(this->Information__Layer__Normalization(tmp_value_to_write, tmp_ptr_layer_it) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Information__Layer__Normalization()\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
 
@@ -315,9 +315,9 @@ bool Neural_Network::Save_Dimension_Parameters(std::string const &ref_path_recei
 
                     tmp_value_to_write += "    use_tied_parameter " + std::to_string(tmp_ptr_layer_it->use_tied_parameter) + NEW_LINE;
                     tmp_value_to_write += "    k_sparsity " + std::to_string(tmp_ptr_layer_it->k_sparsity) + NEW_LINE;
-                    tmp_value_to_write += "    alpha_sparsity " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_layer_it->alpha_sparsity) + NEW_LINE;
-                    tmp_value_to_write += "    constraint_recurrent_weight_lower_bound " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_layer_it->constraint_recurrent_weight_lower_bound) + NEW_LINE;
-                    tmp_value_to_write += "    constraint_recurrent_weight_upper_bound " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_layer_it->constraint_recurrent_weight_upper_bound) + NEW_LINE;
+                    tmp_value_to_write += "    alpha_sparsity " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_layer_it->alpha_sparsity) + NEW_LINE;
+                    tmp_value_to_write += "    constraint_recurrent_weight_lower_bound " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_layer_it->constraint_recurrent_weight_lower_bound) + NEW_LINE;
+                    tmp_value_to_write += "    constraint_recurrent_weight_upper_bound " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_layer_it->constraint_recurrent_weight_upper_bound) + NEW_LINE;
                     
                     // Neuron unit(s).
                     if(this->Information__Layer__FC(tmp_value_to_write,
@@ -325,7 +325,7 @@ bool Neural_Network::Save_Dimension_Parameters(std::string const &ref_path_recei
                                                                    tmp_ptr_previous_layer) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Information__Layer__FC()\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
 
@@ -337,7 +337,7 @@ bool Neural_Network::Save_Dimension_Parameters(std::string const &ref_path_recei
                     if(this->Information__Layer__AF(tmp_value_to_write, tmp_ptr_layer_it) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Information__Layer__AF()\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
 
@@ -349,7 +349,7 @@ bool Neural_Network::Save_Dimension_Parameters(std::string const &ref_path_recei
                     if(this->Information__Layer__Bias(tmp_value_to_write, tmp_ptr_layer_it) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Information__Layer__Bias()\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
 
@@ -367,7 +367,7 @@ bool Neural_Network::Save_Dimension_Parameters(std::string const &ref_path_recei
                     if(this->Information__Layer__Normalization(tmp_value_to_write, tmp_ptr_layer_it) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Information__Layer__Normalization()\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
 
@@ -377,9 +377,9 @@ bool Neural_Network::Save_Dimension_Parameters(std::string const &ref_path_recei
 
                     tmp_value_to_write += "    use_tied_parameter " + std::to_string(tmp_ptr_layer_it->use_tied_parameter) + NEW_LINE;
                     tmp_value_to_write += "    k_sparsity " + std::to_string(tmp_ptr_layer_it->k_sparsity) + NEW_LINE;
-                    tmp_value_to_write += "    alpha_sparsity " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_layer_it->alpha_sparsity) + NEW_LINE;
-                    tmp_value_to_write += "    constraint_recurrent_weight_lower_bound " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_layer_it->constraint_recurrent_weight_lower_bound) + NEW_LINE;
-                    tmp_value_to_write += "    constraint_recurrent_weight_upper_bound " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_layer_it->constraint_recurrent_weight_upper_bound) + NEW_LINE;
+                    tmp_value_to_write += "    alpha_sparsity " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_layer_it->alpha_sparsity) + NEW_LINE;
+                    tmp_value_to_write += "    constraint_recurrent_weight_lower_bound " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_layer_it->constraint_recurrent_weight_lower_bound) + NEW_LINE;
+                    tmp_value_to_write += "    constraint_recurrent_weight_upper_bound " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_layer_it->constraint_recurrent_weight_upper_bound) + NEW_LINE;
                     
                     // Neuron unit(s).
                     if(this->Information__Layer__FC(tmp_value_to_write,
@@ -387,7 +387,7 @@ bool Neural_Network::Save_Dimension_Parameters(std::string const &ref_path_recei
                                                                    tmp_ptr_previous_layer) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Information__Layer__FC()\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
 
@@ -399,7 +399,7 @@ bool Neural_Network::Save_Dimension_Parameters(std::string const &ref_path_recei
                     if(this->Information__Layer__AF_Ind_Recurrent(tmp_value_to_write, tmp_ptr_layer_it) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Information__Layer__AF_Ind_Recurrent()\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
 
@@ -411,7 +411,7 @@ bool Neural_Network::Save_Dimension_Parameters(std::string const &ref_path_recei
                     if(this->Information__Layer__Bias(tmp_value_to_write, tmp_ptr_layer_it) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Information__Layer__Bias()\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
 
@@ -429,7 +429,7 @@ bool Neural_Network::Save_Dimension_Parameters(std::string const &ref_path_recei
                     if(this->Information__Layer__Normalization(tmp_value_to_write, tmp_ptr_layer_it) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Information__Layer__Normalization()\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
 
@@ -439,9 +439,9 @@ bool Neural_Network::Save_Dimension_Parameters(std::string const &ref_path_recei
 
                     tmp_value_to_write += "    use_tied_parameter " + std::to_string(tmp_ptr_layer_it->use_tied_parameter) + NEW_LINE;
                     tmp_value_to_write += "    k_sparsity " + std::to_string(tmp_ptr_layer_it->k_sparsity) + NEW_LINE;
-                    tmp_value_to_write += "    alpha_sparsity " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_layer_it->alpha_sparsity) + NEW_LINE;
-                    tmp_value_to_write += "    constraint_recurrent_weight_lower_bound " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_layer_it->constraint_recurrent_weight_lower_bound) + NEW_LINE;
-                    tmp_value_to_write += "    constraint_recurrent_weight_upper_bound " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_layer_it->constraint_recurrent_weight_upper_bound) + NEW_LINE;
+                    tmp_value_to_write += "    alpha_sparsity " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_layer_it->alpha_sparsity) + NEW_LINE;
+                    tmp_value_to_write += "    constraint_recurrent_weight_lower_bound " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_layer_it->constraint_recurrent_weight_lower_bound) + NEW_LINE;
+                    tmp_value_to_write += "    constraint_recurrent_weight_upper_bound " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_layer_it->constraint_recurrent_weight_upper_bound) + NEW_LINE;
                     
                     // Blocks unit(s).
                     if(this->Information__Layer__LSTM(tmp_value_to_write,
@@ -449,7 +449,7 @@ bool Neural_Network::Save_Dimension_Parameters(std::string const &ref_path_recei
                                                                         tmp_ptr_previous_layer) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Information__Layer__LSTM()\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
 
@@ -461,7 +461,7 @@ bool Neural_Network::Save_Dimension_Parameters(std::string const &ref_path_recei
                     if(this->Information__Layer__Bias(tmp_value_to_write, tmp_ptr_layer_it) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Information__Layer__Bias()\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
 
@@ -485,7 +485,7 @@ bool Neural_Network::Save_Dimension_Parameters(std::string const &ref_path_recei
                     if(this->Information__Layer__Normalization(tmp_value_to_write, tmp_ptr_layer_it) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Information__Layer__Normalization()\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
 
@@ -497,7 +497,7 @@ bool Neural_Network::Save_Dimension_Parameters(std::string const &ref_path_recei
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_ptr_layer_it->type_layer,
                                              MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str());
@@ -519,7 +519,7 @@ bool Neural_Network::Save_Dimension_Parameters(std::string const &ref_path_recei
                                                           tmp_ptr_previous_layer) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Information__Output_Layer()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -531,7 +531,7 @@ bool Neural_Network::Save_Dimension_Parameters(std::string const &ref_path_recei
         if(this->Information__Layer__AF(tmp_value_to_write, tmp_ptr_layer_it) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Information__Layer__AF()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -543,7 +543,7 @@ bool Neural_Network::Save_Dimension_Parameters(std::string const &ref_path_recei
         if(this->Information__Layer__Bias(tmp_value_to_write, tmp_ptr_layer_it) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Information__Layer__Bias()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -559,7 +559,7 @@ bool Neural_Network::Save_Dimension_Parameters(std::string const &ref_path_recei
         if(tmp_ofstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"write(string, %zu)\" function. Logical error on i/o operation \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_value_to_write.size(),
                                      ref_path_received.c_str(),
@@ -573,7 +573,7 @@ bool Neural_Network::Save_Dimension_Parameters(std::string const &ref_path_recei
         if(tmp_ofstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"flush()\" function. Logical error on i/o operation \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ref_path_received.c_str(),
                                      __LINE__);
@@ -586,7 +586,7 @@ bool Neural_Network::Save_Dimension_Parameters(std::string const &ref_path_recei
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: The file %s can not be opened. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -594,10 +594,10 @@ bool Neural_Network::Save_Dimension_Parameters(std::string const &ref_path_recei
         return(false);
     }
 
-    if(MyEA::File::Delete_Tempory_File(ref_path_received) == false)
+    if(MyEA::File::Delete_Temporary_File(ref_path_received) == false)
     {
-        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Delete_Tempory_File(%s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Delete_Temporary_File(%s)\" function. At line %d." NEW_LINE,
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -629,7 +629,7 @@ bool Neural_Network::Information__Layer__Normalization(std::string &ref_output_r
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ptr_layer_it_received->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[ptr_layer_it_received->type_layer].c_str());
@@ -650,7 +650,7 @@ bool Neural_Network::Information__Layer__Normalization(std::string &ref_output_r
                                                                ref_output_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Information__Normalized_Unit(%zu, ref, ref)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_number_normalized_units,
                                      __LINE__);
@@ -673,20 +673,20 @@ bool Neural_Network::Information__Normalized_Unit(size_t const number_units_rece
         case MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION::TYPE_LAYER_NORMALIZATION_BATCH_NORMALIZATION:
         case MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION::TYPE_LAYER_NORMALIZATION_BATCH_RENORMALIZATION:
         case MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION::TYPE_LAYER_NORMALIZATION_GHOST_BATCH_NORMALIZATION:
-            ref_output_received += "          scale " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(*ptr_normalized_unit_received->normalized_batch_units.ptr_scale) + NEW_LINE;
-            ref_output_received += "          shift " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(*ptr_normalized_unit_received->normalized_batch_units.ptr_shift) + NEW_LINE;
+            ref_output_received += "          scale " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(*ptr_normalized_unit_received->normalized_batch_units.ptr_scale) + NEW_LINE;
+            ref_output_received += "          shift " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(*ptr_normalized_unit_received->normalized_batch_units.ptr_shift) + NEW_LINE;
             
             for(tmp_time_step_index = 0_zu; tmp_time_step_index != this->number_recurrent_depth; ++tmp_time_step_index)
             {
                 tmp_unit_timed_index = number_units_received * tmp_time_step_index;
 
-                ref_output_received += "          mean_average[" + std::to_string(tmp_time_step_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(ptr_normalized_unit_received->normalized_batch_units.ptr_mean_average[tmp_unit_timed_index]) + NEW_LINE;
-                ref_output_received += "          variance_average[" + std::to_string(tmp_time_step_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(ptr_normalized_unit_received->normalized_batch_units.ptr_variance_average[tmp_unit_timed_index]) + NEW_LINE;
+                ref_output_received += "          mean_average[" + std::to_string(tmp_time_step_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(ptr_normalized_unit_received->normalized_batch_units.ptr_mean_average[tmp_unit_timed_index]) + NEW_LINE;
+                ref_output_received += "          variance_average[" + std::to_string(tmp_time_step_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(ptr_normalized_unit_received->normalized_batch_units.ptr_variance_average[tmp_unit_timed_index]) + NEW_LINE;
             }
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer normalization type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      type_normalization_received,
                                      MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[type_normalization_received].c_str());
@@ -740,7 +740,7 @@ bool Neural_Network::Information__Layer__FC(std::string &ref_output_received,
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              ptr_previous_layer_received->type_layer,
                                              MyEA::Common::ENUM_TYPE_LAYER_NAME[ptr_previous_layer_received->type_layer].c_str());
@@ -796,7 +796,7 @@ bool Neural_Network::Information__Output_Layer(std::string &ref_output_received,
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              ptr_previous_layer_received->type_layer,
                                              MyEA::Common::ENUM_TYPE_LAYER_NAME[ptr_previous_layer_received->type_layer].c_str());
@@ -819,7 +819,7 @@ bool Neural_Network::Information__Layer__AF(std::string &ref_output_received, st
     for(tmp_ptr_array_AF_it = tmp_ptr_layer_first_af; tmp_ptr_array_AF_it != tmp_ptr_last_AF_unit; ++tmp_ptr_array_AF_it)
     {
         ref_output_received += "      AF[" + std::to_string(static_cast<size_t>(tmp_ptr_array_AF_it - tmp_ptr_layer_first_af)) + "]" NEW_LINE;
-        ref_output_received += "        activation_steepness " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(*tmp_ptr_array_AF_it->ptr_activation_steepness) + NEW_LINE;
+        ref_output_received += "        activation_steepness " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(*tmp_ptr_array_AF_it->ptr_activation_steepness) + NEW_LINE;
         ref_output_received += "        activation_function " + std::to_string(static_cast<size_t>(*tmp_ptr_array_AF_it->ptr_type_activation_function)) + NEW_LINE;
     }
 
@@ -838,10 +838,10 @@ bool Neural_Network::Information__Layer__AF_Ind_Recurrent(std::string &ref_outpu
     for(tmp_ptr_array_AF_Ind_recurrent_it = tmp_ptr_layer_ptr_first_AF_Ind_recurrent_unit; tmp_ptr_array_AF_Ind_recurrent_it != tmp_ptr_layer_ptr_last_AF_Ind_recurrent_unit; ++tmp_ptr_array_AF_Ind_recurrent_it)
     {
         ref_output_received += "      AF_Ind_R[" + std::to_string(static_cast<size_t>(tmp_ptr_array_AF_Ind_recurrent_it - tmp_ptr_layer_ptr_first_AF_Ind_recurrent_unit)) + "]" NEW_LINE;
-        ref_output_received += "        activation_steepness " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(*tmp_ptr_array_AF_Ind_recurrent_it->ptr_activation_steepness) + NEW_LINE;
+        ref_output_received += "        activation_steepness " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(*tmp_ptr_array_AF_Ind_recurrent_it->ptr_activation_steepness) + NEW_LINE;
         ref_output_received += "        activation_function " + std::to_string(static_cast<size_t>(*tmp_ptr_array_AF_Ind_recurrent_it->ptr_type_activation_function)) + NEW_LINE;
         ref_output_received += "        connected_to_AF_Ind_R " + std::to_string(tmp_ptr_array_ptr_connections_layer_AF_Ind_recurrent_units[*tmp_ptr_array_AF_Ind_recurrent_it->ptr_recurrent_connection_index] - this->ptr_array_AF_Ind_recurrent_units) + NEW_LINE;
-        ref_output_received += "        weight[" + std::to_string(*tmp_ptr_array_AF_Ind_recurrent_it->ptr_recurrent_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->ptr_array_parameters[*tmp_ptr_array_AF_Ind_recurrent_it->ptr_recurrent_connection_index]) + NEW_LINE;
+        ref_output_received += "        weight[" + std::to_string(*tmp_ptr_array_AF_Ind_recurrent_it->ptr_recurrent_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->ptr_array_parameters[*tmp_ptr_array_AF_Ind_recurrent_it->ptr_recurrent_connection_index]) + NEW_LINE;
     }
 
     return(true);
@@ -857,7 +857,7 @@ bool Neural_Network::Information__Layer__Bias(std::string &ref_output_received, 
 
     for(size_t tmp_connection_index(0_zu); tmp_connection_index != tmp_number_connections; ++tmp_connection_index)
     {
-        ref_output_received += "      weight[" + std::to_string(ptr_layer_it_received->first_bias_connection_index + tmp_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_array_parameters[tmp_connection_index]) + NEW_LINE;
+        ref_output_received += "      weight[" + std::to_string(ptr_layer_it_received->first_bias_connection_index + tmp_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_array_parameters[tmp_connection_index]) + NEW_LINE;
     }
 
     return(true);
@@ -877,7 +877,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> void Neural_Net
     for(tmp_connection_index = 0_zu; tmp_connection_index != tmp_number_connections; ++tmp_connection_index)
     {
         ref_output_received += "          " + MyEA::Common::ENUM_TYPE_LAYER_CONNECTION_NAME[E] + " " + std::to_string(tmp_ptr_array_ptr_connections[tmp_connection_index] - ptr_first_U_unit_received) + NEW_LINE;
-        ref_output_received += "          weight[" + std::to_string(*ptr_neuron_it_received->ptr_first_connection_index + tmp_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_array_parameters[tmp_connection_index]) + NEW_LINE;
+        ref_output_received += "          weight[" + std::to_string(*ptr_neuron_it_received->ptr_first_connection_index + tmp_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_array_parameters[tmp_connection_index]) + NEW_LINE;
     }
 }
 
@@ -929,7 +929,7 @@ bool Neural_Network::Information__Layer__LSTM(std::string &ref_output_received,
                     break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             ptr_previous_layer_received->type_layer,
                                             MyEA::Common::ENUM_TYPE_LAYER_NAME[ptr_previous_layer_received->type_layer].c_str());
@@ -967,7 +967,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> void Neural_Net
         for(tmp_connection_index = 0_zu; tmp_connection_index != tmp_number_inputs_connections; ++tmp_connection_index)
         {
             ref_output_received += "          " + MyEA::Common::ENUM_TYPE_LAYER_CONNECTION_NAME[E] + " " + std::to_string(tmp_ptr_array_ptr_connections[tmp_connection_index] - ptr_first_U_unit_received) + NEW_LINE;
-            ref_output_received += "          weight[" + std::to_string(tmp_ptr_block_ptr_cell_unit_it->first_index_feedforward_connection_cell_input + tmp_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_array_parameters[tmp_connection_index]) + NEW_LINE;
+            ref_output_received += "          weight[" + std::to_string(tmp_ptr_block_ptr_cell_unit_it->first_index_feedforward_connection_cell_input + tmp_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_array_parameters[tmp_connection_index]) + NEW_LINE;
         }
         //    [1] |END| Input, cell. |END|
 
@@ -977,7 +977,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> void Neural_Net
         for(tmp_connection_index = 0_zu; tmp_connection_index != tmp_number_recurrents_connection; ++tmp_connection_index)
         {
             ref_output_received += "          connected_to_cell " + std::to_string(tmp_ptr_array_ptr_connections_layer_cell_units[tmp_connection_index] - this->ptr_array_cell_units) + NEW_LINE;
-            ref_output_received += "          weight[" + std::to_string(tmp_ptr_block_ptr_cell_unit_it->first_index_recurrent_connection_cell_input + tmp_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_array_parameters[tmp_connection_index]) + NEW_LINE;
+            ref_output_received += "          weight[" + std::to_string(tmp_ptr_block_ptr_cell_unit_it->first_index_recurrent_connection_cell_input + tmp_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_array_parameters[tmp_connection_index]) + NEW_LINE;
         }
         //    [1] |END| Recurrent, cell. |END|
     }
@@ -990,7 +990,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> void Neural_Net
     for(tmp_connection_index = 0_zu; tmp_connection_index != tmp_number_inputs_connections; ++tmp_connection_index)
     {
         ref_output_received += "          " + MyEA::Common::ENUM_TYPE_LAYER_CONNECTION_NAME[E] + " " + std::to_string(tmp_ptr_array_ptr_connections[tmp_connection_index] - ptr_first_U_unit_received) + NEW_LINE;
-        ref_output_received += "          weight[" + std::to_string(ptr_block_unit_it_received->first_index_feedforward_connection_input_gate + tmp_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_array_parameters[tmp_connection_index]) + NEW_LINE;
+        ref_output_received += "          weight[" + std::to_string(ptr_block_unit_it_received->first_index_feedforward_connection_input_gate + tmp_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_array_parameters[tmp_connection_index]) + NEW_LINE;
     }
     //    [1] |END| Input gate. |END|
     
@@ -1000,7 +1000,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> void Neural_Net
     for(tmp_connection_index = 0_zu; tmp_connection_index != tmp_number_inputs_connections; ++tmp_connection_index)
     {
         ref_output_received += "          " + MyEA::Common::ENUM_TYPE_LAYER_CONNECTION_NAME[E] + " " + std::to_string(tmp_ptr_array_ptr_connections[tmp_connection_index] - ptr_first_U_unit_received) + NEW_LINE;
-        ref_output_received += "          weight[" + std::to_string(ptr_block_unit_it_received->first_index_feedforward_connection_forget_gate + tmp_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_array_parameters[tmp_connection_index]) + NEW_LINE;
+        ref_output_received += "          weight[" + std::to_string(ptr_block_unit_it_received->first_index_feedforward_connection_forget_gate + tmp_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_array_parameters[tmp_connection_index]) + NEW_LINE;
     }
     //    [1] |END| Forget gate. |END|
 
@@ -1010,7 +1010,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> void Neural_Net
     for(tmp_connection_index = 0_zu; tmp_connection_index != tmp_number_inputs_connections; ++tmp_connection_index)
     {
         ref_output_received += "          " + MyEA::Common::ENUM_TYPE_LAYER_CONNECTION_NAME[E] + " " + std::to_string(tmp_ptr_array_ptr_connections[tmp_connection_index] - ptr_first_U_unit_received) + NEW_LINE;
-        ref_output_received += "          weight[" + std::to_string(ptr_block_unit_it_received->first_index_feedforward_connection_output_gate + tmp_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_array_parameters[tmp_connection_index]) + NEW_LINE;
+        ref_output_received += "          weight[" + std::to_string(ptr_block_unit_it_received->first_index_feedforward_connection_output_gate + tmp_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_array_parameters[tmp_connection_index]) + NEW_LINE;
     }
     //    [1] |END| Output gate. |END|
     // [0] |END| Input, gates. |END|
@@ -1022,7 +1022,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> void Neural_Net
     for(tmp_connection_index = 0_zu; tmp_connection_index != tmp_number_recurrents_connection; ++tmp_connection_index)
     {
         ref_output_received += "          connected_to_cell " + std::to_string(tmp_ptr_array_ptr_connections_layer_cell_units[tmp_connection_index] - this->ptr_array_cell_units) + NEW_LINE;
-        ref_output_received += "          weight[" + std::to_string(ptr_block_unit_it_received->first_index_recurrent_connection_input_gate + tmp_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_array_parameters[tmp_connection_index]) + NEW_LINE;
+        ref_output_received += "          weight[" + std::to_string(ptr_block_unit_it_received->first_index_recurrent_connection_input_gate + tmp_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_array_parameters[tmp_connection_index]) + NEW_LINE;
     }
     //    [1] |END| Input gate. |END|
 
@@ -1032,7 +1032,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> void Neural_Net
     for(tmp_connection_index = 0_zu; tmp_connection_index != tmp_number_recurrents_connection; ++tmp_connection_index)
     {
         ref_output_received += "          connected_to_cell " + std::to_string(tmp_ptr_array_ptr_connections_layer_cell_units[tmp_connection_index] - this->ptr_array_cell_units) + NEW_LINE;
-        ref_output_received += "          weight[" + std::to_string(ptr_block_unit_it_received->first_index_recurrent_connection_forget_gate + tmp_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_array_parameters[tmp_connection_index]) + NEW_LINE;
+        ref_output_received += "          weight[" + std::to_string(ptr_block_unit_it_received->first_index_recurrent_connection_forget_gate + tmp_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_array_parameters[tmp_connection_index]) + NEW_LINE;
     }
     //    [1] |END| Forget gate. |END|
 
@@ -1042,7 +1042,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> void Neural_Net
     for(tmp_connection_index = 0_zu; tmp_connection_index != tmp_number_recurrents_connection; ++tmp_connection_index)
     {
         ref_output_received += "          connected_to_cell " + std::to_string(tmp_ptr_array_ptr_connections_layer_cell_units[tmp_connection_index] - this->ptr_array_cell_units) + NEW_LINE;
-        ref_output_received += "          weight[" + std::to_string(ptr_block_unit_it_received->first_index_recurrent_connection_output_gate + tmp_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_array_parameters[tmp_connection_index]) + NEW_LINE;
+        ref_output_received += "          weight[" + std::to_string(ptr_block_unit_it_received->first_index_recurrent_connection_output_gate + tmp_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_array_parameters[tmp_connection_index]) + NEW_LINE;
     }
     //    [1] |END| Output gate. |END|
     // [0] |END| Recurrent, gates. |END|
@@ -1055,7 +1055,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> void Neural_Net
     for(tmp_connection_index = 0_zu; tmp_connection_index != tmp_number_peephole_connections; ++tmp_connection_index)
     {
         ref_output_received += "          connected_to_cell " + std::to_string(tmp_ptr_array_ptr_connections_block_cell_units[tmp_connection_index] - this->ptr_array_cell_units) + NEW_LINE;
-        ref_output_received += "          weight[" + std::to_string(ptr_block_unit_it_received->first_index_peephole_input_gate + tmp_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_array_parameters[tmp_connection_index]) + NEW_LINE;
+        ref_output_received += "          weight[" + std::to_string(ptr_block_unit_it_received->first_index_peephole_input_gate + tmp_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_array_parameters[tmp_connection_index]) + NEW_LINE;
     }
     //    [1] |END| Input gate. |END|
 
@@ -1065,7 +1065,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> void Neural_Net
     for(tmp_connection_index = 0_zu; tmp_connection_index != tmp_number_peephole_connections; ++tmp_connection_index)
     {
         ref_output_received += "          connected_to_cell " + std::to_string(tmp_ptr_array_ptr_connections_block_cell_units[tmp_connection_index] - this->ptr_array_cell_units) + NEW_LINE;
-        ref_output_received += "          weight[" + std::to_string(ptr_block_unit_it_received->first_index_peephole_forget_gate + tmp_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_array_parameters[tmp_connection_index]) + NEW_LINE;
+        ref_output_received += "          weight[" + std::to_string(ptr_block_unit_it_received->first_index_peephole_forget_gate + tmp_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_array_parameters[tmp_connection_index]) + NEW_LINE;
     }
     //    [1] |END| Forget gate. |END|
 
@@ -1075,7 +1075,7 @@ template<typename U, enum MyEA::Common::ENUM_TYPE_LAYER const E> void Neural_Net
     for(tmp_connection_index = 0_zu; tmp_connection_index != tmp_number_peephole_connections; ++tmp_connection_index)
     {
         ref_output_received += "          connected_to_cell " + std::to_string(tmp_ptr_array_ptr_connections_block_cell_units[tmp_connection_index] - this->ptr_array_cell_units) + NEW_LINE;
-        ref_output_received += "          weight[" + std::to_string(ptr_block_unit_it_received->first_index_peephole_output_gate + tmp_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_array_parameters[tmp_connection_index]) + NEW_LINE;
+        ref_output_received += "          weight[" + std::to_string(ptr_block_unit_it_received->first_index_peephole_output_gate + tmp_connection_index) + "] " + MyEA::String::To_string<T_, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_array_parameters[tmp_connection_index]) + NEW_LINE;
     }
     //    [1] |END| Output gate. |END|
     // [0] |END| Peepholes. |END|

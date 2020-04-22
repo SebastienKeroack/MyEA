@@ -40,7 +40,7 @@ void Neural_Network::Initialization__Orthogonal(bool const pre_initialize_receiv
             case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_LSTM:
                 // TODO: Intialize orthogonal LSTM.
                 PRINT_FORMAT("%s: %s: ERROR: TODO: Intialize orthogonal LSTM." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__);
                 //this->Initialize__Orthogonal__LSTM(tmp_ptr_layer_it);
 
@@ -48,7 +48,7 @@ void Neural_Network::Initialization__Orthogonal(bool const pre_initialize_receiv
                     break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Can not initialize weights in the layer %zu with (%u | %s) as the type layer. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          static_cast<size_t>(tmp_ptr_layer_it - this->ptr_array_layers),
                                          tmp_ptr_layer_it->type_layer,
@@ -104,7 +104,7 @@ void Neural_Network::Initialize__Orthogonal(size_t const rows_received,
     size_t const tmp_minimum_size(MyEA::Math::Minimum<size_t>(rows_received, columns_received)),
                        tmp_maximum_size(MyEA::Math::Maximum<size_t>(rows_received, columns_received));
 
-#if defined(COMPILE_ADEPT)
+#if defined(COMPILE_AUTODIFF)
     ST_ *tmp_ptr_array_parameters(new ST_[rows_received * columns_received]);
     for(size_t i(0_zu); i != rows_received * columns_received; ++i) { tmp_ptr_array_parameters[i] = ptr_array_weights_received[i].value(); }
     MatrixXT tmp_Matrix_Weights(Eigen::Map<MatrixXT>(tmp_ptr_array_parameters, tmp_maximum_size, tmp_minimum_size));
@@ -122,7 +122,7 @@ void Neural_Network::Initialize__Orthogonal(size_t const rows_received,
 
     if(scale_received != 1_T) { tmp_Wt *= scale_received; }
     
-#if defined(COMPILE_ADEPT)
+#if defined(COMPILE_AUTODIFF)
     tmp_ptr_array_parameters = tmp_Wt.data();
     for(size_t i(0_zu); i != rows_received * columns_received; ++i) { ptr_array_weights_received[i] = tmp_ptr_array_parameters[i]; }
 #else

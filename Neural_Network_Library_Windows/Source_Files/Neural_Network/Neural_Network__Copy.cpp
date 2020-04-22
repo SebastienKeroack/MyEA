@@ -23,7 +23,7 @@ bool Neural_Network::Copy(class Neural_Network const &ref_source_Neural_Network_
         if(ref_source_Neural_Network_received.Copy__Parameters__Device_To_Host() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Copy__Parameters__Device_To_Host()\" function. At line %d." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         __LINE__);
 
@@ -32,7 +32,7 @@ bool Neural_Network::Copy(class Neural_Network const &ref_source_Neural_Network_
         else if(ref_source_Neural_Network_received.Use__Normalization() && ref_source_Neural_Network_received.Copy__Batch_Normalization_Neurons__Device_To_Host() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Copy__Batch_Normalization_Neurons__Device_To_Host()\" function. At line %d." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         __LINE__);
 
@@ -47,7 +47,7 @@ bool Neural_Network::Copy(class Neural_Network const &ref_source_Neural_Network_
     if(this->Allocate__Structure(ref_source_Neural_Network_received.total_layers, maximum_allowable_memory_received != 0_zu ? maximum_allowable_memory_received : ref_source_Neural_Network_received.maximum_allowable_memory_bytes) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Structure(%zu, %zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_source_Neural_Network_received.total_layers,
                                  maximum_allowable_memory_received != 0_zu ? maximum_allowable_memory_received : ref_source_Neural_Network_received.maximum_allowable_memory_bytes,
@@ -98,7 +98,7 @@ bool Neural_Network::Copy(class Neural_Network const &ref_source_Neural_Network_
     if(this->Set__Input_Mode(ref_source_Neural_Network_received.use_first_layer_as_input) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Input_Mode(%s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_source_Neural_Network_received.use_first_layer_as_input ? "true" : "false",
                                  __LINE__);
@@ -108,7 +108,7 @@ bool Neural_Network::Copy(class Neural_Network const &ref_source_Neural_Network_
     else if(this->Set__Output_Mode(ref_source_Neural_Network_received.use_last_layer_as_output) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Output_Mode(%s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_source_Neural_Network_received.use_last_layer_as_output ? "true" : "false",
                                  __LINE__);
@@ -183,7 +183,7 @@ bool Neural_Network::Copy(class Neural_Network const &ref_source_Neural_Network_
     if(this->Allocate__Basic_Units() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Basic_Units()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -192,7 +192,7 @@ bool Neural_Network::Copy(class Neural_Network const &ref_source_Neural_Network_
     else if(this->Allocate__Basic_Indice_Units() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Basic_Indice_Units()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -201,7 +201,7 @@ bool Neural_Network::Copy(class Neural_Network const &ref_source_Neural_Network_
     else if(this->Allocate__Neuron_Units() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Neuron_Units()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -210,7 +210,7 @@ bool Neural_Network::Copy(class Neural_Network const &ref_source_Neural_Network_
     else if(this->Allocate__AF_Units() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__AF_Units()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -219,7 +219,7 @@ bool Neural_Network::Copy(class Neural_Network const &ref_source_Neural_Network_
     else if(this->Allocate__AF_Ind_Recurrent_Units() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__AF_Ind_Recurrent_Units()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -228,7 +228,7 @@ bool Neural_Network::Copy(class Neural_Network const &ref_source_Neural_Network_
     else if(this->Allocate__LSTM_Layers() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__LSTM_Layers()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -237,7 +237,7 @@ bool Neural_Network::Copy(class Neural_Network const &ref_source_Neural_Network_
     else if(this->Allocate__Bidirectional__Layers() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Bidirectional__Layers()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -246,7 +246,7 @@ bool Neural_Network::Copy(class Neural_Network const &ref_source_Neural_Network_
     else if(this->Allocate__Parameter() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Parameter()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -317,7 +317,7 @@ bool Neural_Network::Copy(class Neural_Network const &ref_source_Neural_Network_
                             break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_ptr_destination_layer_it->type_layer,
                                                  MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_destination_layer_it->type_layer].c_str());
@@ -350,7 +350,7 @@ bool Neural_Network::Copy(class Neural_Network const &ref_source_Neural_Network_
                             break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_ptr_destination_layer_it->type_layer,
                                                  MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_destination_layer_it->type_layer].c_str());
@@ -381,7 +381,7 @@ bool Neural_Network::Copy(class Neural_Network const &ref_source_Neural_Network_
                             break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_ptr_destination_layer_it->type_layer,
                                                  MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_destination_layer_it->type_layer].c_str());
@@ -412,7 +412,7 @@ bool Neural_Network::Copy(class Neural_Network const &ref_source_Neural_Network_
                             break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_ptr_destination_layer_it->type_layer,
                                                  MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_destination_layer_it->type_layer].c_str());
@@ -421,7 +421,7 @@ bool Neural_Network::Copy(class Neural_Network const &ref_source_Neural_Network_
                     break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_ptr_destination_previous_layer_it->type_layer,
                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_destination_previous_layer_it->type_layer].c_str());
@@ -466,7 +466,7 @@ bool Neural_Network::Copy(class Neural_Network const &ref_source_Neural_Network_
     if(this->Copy__Optimizer_Parameters(&ref_source_Neural_Network_received, copy_delta_optimizer_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Copy__Optimizer_Parameters(ref, %s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  copy_delta_optimizer_received ? "true" : "false",
                                  __LINE__);
@@ -536,7 +536,7 @@ bool Neural_Network::Update(class Neural_Network const &ref_source_Neural_Networ
                            tmp_update_delta_optimizer) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Copy(ref, %s, %s)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_initialize_parallel_computation ? "true" : "false",
                                      tmp_update_delta_optimizer ? "true" : "false",
@@ -574,7 +574,7 @@ bool Neural_Network::Update(class Neural_Network const &ref_source_Neural_Networ
         if(ref_source_Neural_Network_received.Copy__Parameters__Device_To_Host() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Copy__Parameters__Device_To_Host()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -583,7 +583,7 @@ bool Neural_Network::Update(class Neural_Network const &ref_source_Neural_Networ
         else if(ref_source_Neural_Network_received.Use__Normalization() && ref_source_Neural_Network_received.Copy__Batch_Normalization_Neurons__Device_To_Host() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Copy__Batch_Normalization_Neurons__Device_To_Host()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -640,7 +640,7 @@ bool Neural_Network::Update(class Neural_Network const &ref_source_Neural_Networ
     if(this->Copy__Optimizer_Parameters(&ref_source_Neural_Network_received, update_delta_optimizer_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Copy__Optimizer_Parameters(ref, %s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  update_delta_optimizer_received ? "true" : "false",
                                  __LINE__);
@@ -674,7 +674,7 @@ bool Neural_Network::Update(class Neural_Network const &ref_source_Neural_Networ
     if(this->Set__Maximum_Thread_Usage(ref_source_Neural_Network_received.percentage_maximum_thread_usage) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Maximum_Thread_Usage(%f)\" function. At line %d." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     __FUNCTION__,
                                     ref_source_Neural_Network_received.percentage_maximum_thread_usage,
                                     __LINE__);
@@ -684,7 +684,7 @@ bool Neural_Network::Update(class Neural_Network const &ref_source_Neural_Networ
     else if(this->Set__Maximum__Batch_Size(ref_source_Neural_Network_received.maximum_batch_size) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Maximum__Batch_Size(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_source_Neural_Network_received.maximum_batch_size,
                                  __LINE__);
@@ -756,7 +756,7 @@ bool Neural_Network::Copy__Optimizer_Parameters(class Neural_Network const *cons
                 if(this->Copy__Delta__Gradient_Descent(ptr_Neural_Network_received) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Copy__Delta__Gradient_Descent(ptr)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -767,7 +767,7 @@ bool Neural_Network::Copy__Optimizer_Parameters(class Neural_Network const *cons
                 if(this->Copy__Delta__iRPROP_minus(ptr_Neural_Network_received) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Copy__Delta__iRPROP_minus(ptr)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -778,7 +778,7 @@ bool Neural_Network::Copy__Optimizer_Parameters(class Neural_Network const *cons
                 if(this->Copy__Delta__iRPROP_plus(ptr_Neural_Network_received) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Copy__Delta__iRPROP_plus(ptr)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -792,7 +792,7 @@ bool Neural_Network::Copy__Optimizer_Parameters(class Neural_Network const *cons
                 if(this->Copy__Delta__Adam(ptr_Neural_Network_received) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Copy__Delta__Adam(ptr)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -804,7 +804,7 @@ bool Neural_Network::Copy__Optimizer_Parameters(class Neural_Network const *cons
                 if(this->Copy__Delta__AMSGrad(ptr_Neural_Network_received) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Copy__Delta__AMSGrad(ptr)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -926,7 +926,7 @@ bool Neural_Network::Copy__Delta__Gradient_Descent(class Neural_Network const *c
     else if(ptr_Neural_Network_received->ptr_array_previous_delta_parameters == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Source array \"ptr_array_previous_delta_parameters\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -935,7 +935,7 @@ bool Neural_Network::Copy__Delta__Gradient_Descent(class Neural_Network const *c
     else if(this->ptr_array_previous_delta_parameters == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Destination array \"ptr_array_previous_delta_parameters\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -954,7 +954,7 @@ bool Neural_Network::Copy__Delta__iRPROP_minus(class Neural_Network const *const
     if(ptr_Neural_Network_received->ptr_array_previous_steps == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Source array \"ptr_array_previous_steps\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -963,7 +963,7 @@ bool Neural_Network::Copy__Delta__iRPROP_minus(class Neural_Network const *const
     else if(this->ptr_array_previous_steps == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Destination array \"ptr_array_previous_steps\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -979,7 +979,7 @@ bool Neural_Network::Copy__Delta__iRPROP_minus(class Neural_Network const *const
     if(ptr_Neural_Network_received->ptr_array_previous_derivatives_parameters == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Source array \"ptr_array_previous_derivatives_parameters\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -988,7 +988,7 @@ bool Neural_Network::Copy__Delta__iRPROP_minus(class Neural_Network const *const
     else if(this->ptr_array_previous_derivatives_parameters == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Destination array \"ptr_array_previous_derivatives_parameters\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1009,7 +1009,7 @@ bool Neural_Network::Copy__Delta__iRPROP_plus(class Neural_Network const *const 
     if(this->Copy__Delta__iRPROP_minus(ptr_Neural_Network_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Copy__Delta__iRPROP_minus()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1019,7 +1019,7 @@ bool Neural_Network::Copy__Delta__iRPROP_plus(class Neural_Network const *const 
     if(ptr_Neural_Network_received->ptr_array_previous_delta_parameters == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Source array \"ptr_array_previous_delta_parameters\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1028,7 +1028,7 @@ bool Neural_Network::Copy__Delta__iRPROP_plus(class Neural_Network const *const 
     else if(this->ptr_array_previous_delta_parameters == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Destination array \"ptr_array_previous_delta_parameters\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1049,7 +1049,7 @@ bool Neural_Network::Copy__Delta__Adam(class Neural_Network const *const ptr_Neu
     if(ptr_Neural_Network_received->ptr_array_previous_biased_first_moment == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Source array \"ptr_array_previous_biased_first_moment\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1058,7 +1058,7 @@ bool Neural_Network::Copy__Delta__Adam(class Neural_Network const *const ptr_Neu
     else if(this->ptr_array_previous_biased_first_moment == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Destination array \"ptr_array_previous_biased_first_moment\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1074,7 +1074,7 @@ bool Neural_Network::Copy__Delta__Adam(class Neural_Network const *const ptr_Neu
     if(ptr_Neural_Network_received->ptr_array_previous_biased_second_moment == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Source array \"ptr_array_previous_biased_second_moment\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1083,7 +1083,7 @@ bool Neural_Network::Copy__Delta__Adam(class Neural_Network const *const ptr_Neu
     else if(this->ptr_array_previous_biased_second_moment == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Destination array \"ptr_array_previous_biased_second_moment\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1104,7 +1104,7 @@ bool Neural_Network::Copy__Delta__AMSGrad(class Neural_Network const *const ptr_
     if(this->Copy__Delta__Adam(ptr_Neural_Network_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Copy__Delta__Adam()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1114,7 +1114,7 @@ bool Neural_Network::Copy__Delta__AMSGrad(class Neural_Network const *const ptr_
     if(ptr_Neural_Network_received->ptr_array_previous_biased_second_moment_hat == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Source array \"ptr_array_previous_biased_second_moment_hat\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1123,7 +1123,7 @@ bool Neural_Network::Copy__Delta__AMSGrad(class Neural_Network const *const ptr_
     else if(this->ptr_array_previous_biased_second_moment_hat == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Destination array \"ptr_array_previous_biased_second_moment_hat\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1149,7 +1149,7 @@ void Neural_Network::Copy__Training_Parameters(class Neural_Network const *const
     if(this->Set__Clip_Gradient(ptr_Neural_Network_received->clip_gradient) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Clip_Gradient(%f)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(ptr_Neural_Network_received->clip_gradient),
                                  __LINE__);
@@ -1157,7 +1157,7 @@ void Neural_Network::Copy__Training_Parameters(class Neural_Network const *const
     else if(this->Set__Pre_Training_Level(ptr_Neural_Network_received->pre_training_level) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Pre_Training_Level(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ptr_Neural_Network_received->pre_training_level,
                                  __LINE__);
@@ -1165,7 +1165,7 @@ void Neural_Network::Copy__Training_Parameters(class Neural_Network const *const
     else if(this->Set__Number_Time_Delays(ptr_Neural_Network_received->number_time_delays) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Number_Time_Delays(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ptr_Neural_Network_received->number_time_delays,
                                  __LINE__);
@@ -1187,7 +1187,7 @@ void Neural_Network::Copy__Regularization(class Neural_Network const *const ptr_
     if(this->Set__Regularization__Max_Norm_Constraints(ptr_Neural_Network_received->regularization__max_norm_constraints) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Regularization__Max_Norm_Constraints(%f)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(ptr_Neural_Network_received->regularization__max_norm_constraints),
                                  __LINE__);
@@ -1197,7 +1197,7 @@ void Neural_Network::Copy__Regularization(class Neural_Network const *const ptr_
     else if(this->Set__Regularization__L1(ptr_Neural_Network_received->regularization__l1) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Regularization__L1(%f)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(ptr_Neural_Network_received->regularization__l1),
                                  __LINE__);
@@ -1207,7 +1207,7 @@ void Neural_Network::Copy__Regularization(class Neural_Network const *const ptr_
     else if(this->Set__Regularization__L2(ptr_Neural_Network_received->regularization__l2) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Regularization__L2(%f)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(ptr_Neural_Network_received->regularization__l2),
                                  __LINE__);
@@ -1217,7 +1217,7 @@ void Neural_Network::Copy__Regularization(class Neural_Network const *const ptr_
     else if(this->Set__Regularization__SRIP(ptr_Neural_Network_received->regularization__srip) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Regularization__SRIP(%f)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(ptr_Neural_Network_received->regularization__srip),
                                  __LINE__);
@@ -1227,7 +1227,7 @@ void Neural_Network::Copy__Regularization(class Neural_Network const *const ptr_
     else if(this->Set__Regularization__Weight_Decay(ptr_Neural_Network_received->regularization__weight_decay) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Regularization__Weight_Decay(%f)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(ptr_Neural_Network_received->regularization__weight_decay),
                                  __LINE__);
@@ -1247,7 +1247,7 @@ void Neural_Network::Copy__Tied_Weight(struct Layer const *ptr_array_source_laye
         if(this->Set__Tied_Parameter(ptr_array_destination_layers_received, ptr_array_source_layers_received->use_tied_parameter) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Tied_Parameter(ptr, %s)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ptr_array_source_layers_received->use_tied_parameter ? "true" : "false",
                                      __LINE__);
@@ -1265,7 +1265,7 @@ void Neural_Network::Copy__Sparse_K_Filters(struct Layer const *ptr_array_source
         if(this->Set__K_Sparsity(ptr_array_destination_layers_received, ptr_array_source_layers_received->k_sparsity) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__K_Sparsity(ptr, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ptr_array_source_layers_received->k_sparsity,
                                      __LINE__);
@@ -1275,7 +1275,7 @@ void Neural_Network::Copy__Sparse_K_Filters(struct Layer const *ptr_array_source
         else if(this->Set__Alpha_Sparsity(ptr_array_destination_layers_received, ptr_array_source_layers_received->alpha_sparsity) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Alpha_Sparsity(%f)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      Cast_T(ptr_array_source_layers_received->alpha_sparsity),
                                      __LINE__);
@@ -1297,7 +1297,7 @@ void Neural_Network::Copy__Constraint_Recurrent_Weight(struct Layer const *ptr_a
                                                                                                ptr_array_source_layers_received->constraint_recurrent_weight_upper_bound) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Regularization__Constraint_Recurrent_Weight(ptr, %f, %f)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      Cast_T(ptr_array_source_layers_received->constraint_recurrent_weight_lower_bound),
                                      Cast_T(ptr_array_source_layers_received->constraint_recurrent_weight_upper_bound),
@@ -1351,7 +1351,7 @@ void Neural_Network::Copy__Dropout(struct Layer const *ptr_array_source_layers_r
                                         false) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Layer_Normalization(ptr, %s, %f, %f, %f, false)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      MyEA::Common::ENUM_TYPE_LAYER_DROPOUT_NAMES[ptr_array_source_layers_received->type_dropout].c_str(),
                                      Cast_T(ptr_array_source_layers_received->dropout_values[0u]),
@@ -1374,7 +1374,7 @@ void Neural_Network::Copy__Normalization(class Neural_Network const *const ptr_s
     if(this->Set__Normalization_Momentum_Average(ptr_source_Neural_Network_received->normalization_momentum_average) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Normalization_Momentum_Average(%f)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(ptr_source_Neural_Network_received->normalization_momentum_average),
                                  __LINE__);
@@ -1384,7 +1384,7 @@ void Neural_Network::Copy__Normalization(class Neural_Network const *const ptr_s
     else if(this->Set__Normalization_Epsilon(ptr_source_Neural_Network_received->normalization_epsilon) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Normalization_Epsilon(%f)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(ptr_source_Neural_Network_received->normalization_epsilon),
                                  __LINE__);
@@ -1394,7 +1394,7 @@ void Neural_Network::Copy__Normalization(class Neural_Network const *const ptr_s
     else if(this->Set__Batch_Renormalization_r_Correction_Maximum(ptr_source_Neural_Network_received->batch_renormalization_r_correction_maximum) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Batch_Renormalization_r_Correction_Maximum(%f)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(ptr_source_Neural_Network_received->batch_renormalization_r_correction_maximum),
                                  __LINE__);
@@ -1404,7 +1404,7 @@ void Neural_Network::Copy__Normalization(class Neural_Network const *const ptr_s
     else if(this->Set__Batch_Renormalization_d_Correction_Maximum(ptr_source_Neural_Network_received->batch_renormalization_d_correction_maximum) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Batch_Renormalization_d_Correction_Maximum(%f)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(ptr_source_Neural_Network_received->batch_renormalization_d_correction_maximum),
                                  __LINE__);
@@ -1432,7 +1432,7 @@ void Neural_Network::Copy__Normalization(struct Layer const *ptr_array_source_la
         if(this->Set__Layer_Normalization(ptr_array_destination_layers_received, ptr_array_source_layers_received->type_normalization) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Layer_Normalization(ptr, %s)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[ptr_array_source_layers_received->type_normalization].c_str(),
                                      __LINE__);
@@ -1513,7 +1513,7 @@ void Neural_Network::Copy__Blocks(size_t const start_index_received,
     else if(start_index_received > end_index_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Start index (%zu) can not be greater than end index (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  start_index_received,
                                  end_index_received,
@@ -1569,7 +1569,7 @@ void Neural_Network::Copy__Blocks__AF(size_t const start_index_received,
     else if(start_index_received > end_index_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Start index (%zu) can not be greater than end index (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  start_index_received,
                                  end_index_received,
@@ -1607,7 +1607,7 @@ void Neural_Network::Copy__Neuron_Units(size_t const start_index_received,
     else if(start_index_received > end_index_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Start index (%zu) can not be greater than end index (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  start_index_received,
                                  end_index_received,
@@ -1652,7 +1652,7 @@ void Neural_Network::Copy__AF_Units(size_t const start_index_received,
     else if(start_index_received > end_index_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Start index (%zu) can not be greater than end index (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  start_index_received,
                                  end_index_received,
@@ -1698,7 +1698,7 @@ void Neural_Network::Copy__AF_Ind_Recurrent_Units(size_t const start_index_recei
     else if(start_index_received > end_index_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Start index (%zu) can not be greater than end index (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  start_index_received,
                                  end_index_received,
@@ -1755,7 +1755,7 @@ void Neural_Network::Copy__Normalized_Units(size_t const start_index_received,
     else if(start_index_received > end_index_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Start index (%zu) can not be greater than end index (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  start_index_received,
                                  end_index_received,
@@ -1857,7 +1857,7 @@ void Neural_Network::Copy__Normalized_Units(size_t const start_index_received,
                             break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_ptr_layer_it->type_layer,
                                                  MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str());

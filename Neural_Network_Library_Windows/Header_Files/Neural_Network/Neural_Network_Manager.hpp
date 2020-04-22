@@ -1,9 +1,8 @@
 #pragma once
 
-#include <Tools/Configuration.hpp>
+#include <Configuration/Configuration.hpp>
 #include <Tools/While_Condition.hpp>
 #include <Enums/Enum_Type_File_Log.hpp>
-#include <Enums/Enum_Type_Indicator.hpp>
 #include <Enums/Enum_Type_Neural_Network_Use.hpp>
 #include <Neural_Network/Data.hpp>
 
@@ -17,13 +16,8 @@ namespace MyEA
     {
         class Neural_Network_Manager
         {
-            protected:
-                bool p_is_type_position_long = true;
-
-                enum MyEA::Common::ENUM_TYPE_INDICATORS p_type_indicator;
-
             public:
-                Neural_Network_Manager(bool const is_type_position_long_received, enum MyEA::Common::ENUM_TYPE_INDICATORS const type_indicator_received);
+                Neural_Network_Manager(void);
                 ~Neural_Network_Manager(void);
                 
                 void Set__Auto_Save_Dataset(bool const auto_save_received);
@@ -45,7 +39,6 @@ namespace MyEA
                 // [     GET      ]
                 bool Get__On_Shutdown(void) const;
                 bool Get__Require_Testing(void) const;
-                bool Get__Is_Type_Position_Long(void) const;
                 bool Get__Is_Output_Symmetric(void) const;
                 bool Get__Path_Neural_Network_Exist(enum MyEA::Common::ENUM_TYPE_NEURAL_NETWORK_USE const type_neural_network_use_received) const;
 
@@ -61,8 +54,6 @@ namespace MyEA
                 std::string Get__Path_Neural_Network(enum MyEA::Common::ENUM_TYPE_NEURAL_NETWORK_USE const type_neural_network_use_received, std::string const path_postfix_received = "net") const;
                 std::string Get__Path_Dataset_Manager(void) const;
                 std::string Get__Path_Dataset_Manager_History(void) const;
-
-                enum MyEA::Common::ENUM_TYPE_INDICATORS Get__Type_Indicator(void) const;
 
                 class Dataset_Manager<T_> *Get__Dataset_Manager(void);
 
@@ -89,7 +80,7 @@ namespace MyEA
                                                         bool const copy_to_competitor_received);
             #endif
                 bool Save_Neural_Network(enum MyEA::Common::ENUM_TYPE_NEURAL_NETWORK_USE const type_neural_network_use_received);
-                bool Assign_Shutdown_Block(class Shutdown_Block &ref_Shutdown_Block_received);
+                bool Assign_Shutdown_Block(class MyEA::Capturing::Shutdown &shutdown_module);
                 bool Testing_If_Require(void);
                 bool Testing_If_Require__Pre_Training(void);
                 bool Compare_Trained(void);

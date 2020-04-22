@@ -202,7 +202,7 @@ void Neural_Network::Set__Loss(enum MyEA::Common::ENUM_TYPE_DATASET const type_d
         case MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING: this->loss_testing = loss_received; break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Loss type (%u) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      type_dataset_received);
                 break;

@@ -5,7 +5,7 @@
     #include <windows.h>
 #endif
 
-#include <Tools/Animation_Waiting.hpp>
+#include <Strings/Animation_Waiting.hpp>
 
 #include <Preprocessing__MODWT.hpp>
 
@@ -17,7 +17,7 @@ bool Preprocessing__MODWT(void)
 {
     std::string tmp_dataset_name;
     
-    std::cout << MyEA::String::Get__Time() << ": Dataset name: ";
+    std::cout << MyEA::Time::Date_Time_Now() << ": Dataset name: ";
 
     getline(std::cin, tmp_dataset_name);
     
@@ -26,12 +26,12 @@ bool Preprocessing__MODWT(void)
     SetConsoleTitle(std::string(tmp_dataset_name + " - Preprocessing, MODWT").c_str());
 #endif
     
-    class MyEA::Neural_Network::Neural_Network_Manager tmp_Neural_Network_Manager(true, MyEA::Common::ENUM_TYPE_INDICATORS::TYPE_iNONE);
+    class MyEA::Neural_Network::Neural_Network_Manager tmp_Neural_Network_Manager;
     
     if(tmp_Neural_Network_Manager.Initialize_Path(tmp_dataset_name, tmp_dataset_name) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize_Directory(%s, %s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_dataset_name.c_str(),
                                  tmp_dataset_name.c_str(),
@@ -49,7 +49,7 @@ bool Preprocessing__MODWT(void)
     if(tmp_Neural_Network_Manager.Initialize_Dataset_Manager(&tmp_Dataset_Manager_Parameters) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize_Dataset_Manager()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -65,40 +65,40 @@ bool Preprocessing__MODWT(void)
     if(tmp_J_level_maximum == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not preprocess the dataset. No enough data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
         return(false);
     }
 
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-    bool const tmp_merge_modwt(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to merge MODWT?"));
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    bool const tmp_merge_modwt(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to merge MODWT?"));
 
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-    PRINT_FORMAT("%s: J level." NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    PRINT_FORMAT("%s: J level." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     PRINT_FORMAT("%s:\tRange[1, %zu]." NEW_LINE,
-                             MyEA::String::Get__Time().c_str(),
+                             MyEA::Time::Date_Time_Now().c_str(),
                              tmp_J_level_maximum);
     PRINT_FORMAT("%s:\tdefault=%zu." NEW_LINE,
-                             MyEA::String::Get__Time().c_str(),
+                             MyEA::Time::Date_Time_Now().c_str(),
                              MyEA::Math::Minimum<size_t>(tmp_J_level_maximum, 3_zu));
     tmp_J_level = MyEA::String::Cin_Number<size_t>(1_zu,
                                                                               tmp_J_level_maximum,
-                                                                              MyEA::String::Get__Time() + ": J level: ");
+                                                                              MyEA::Time::Date_Time_Now() + ": J level: ");
 
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-    if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to preprocess input(s)?"))
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to preprocess input(s)?"))
     {
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-        if(tmp_Neural_Network_Manager.Get__Dataset_Manager()->Get__Number_Inputs() == 1_zu || MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to preprocess all inputs?"))
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        if(tmp_Neural_Network_Manager.Get__Dataset_Manager()->Get__Number_Inputs() == 1_zu || MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to preprocess all inputs?"))
         {
             if(tmp_merge_modwt)
             {
                 if(tmp_Neural_Network_Manager.Get__Dataset_Manager()->Preprocessing__Merge__MODWT(tmp_J_level, ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Merge__MODWT(%zu, %u)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_J_level,
                                              ENUM_TYPE_INPUT::TYPE_INPUT_INPUT,
@@ -112,7 +112,7 @@ bool Preprocessing__MODWT(void)
                 if(tmp_Neural_Network_Manager.Get__Dataset_Manager()->Preprocessing__MODWT(tmp_J_level, ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__MODWT(%zu, %u)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_J_level,
                                              ENUM_TYPE_INPUT::TYPE_INPUT_INPUT,
@@ -126,10 +126,10 @@ bool Preprocessing__MODWT(void)
         {
             if(tmp_merge_modwt) { tmp_shift_index = 0_zu; }
 
-            PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+            PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
             for(tmp_input_index = 0_zu; tmp_input_index != tmp_Neural_Network_Manager.Get__Dataset_Manager()->Get__Number_Inputs(); ++tmp_input_index)
             {
-                if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to preprocess input " + std::to_string(tmp_input_index) + "?"))
+                if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to preprocess input " + std::to_string(tmp_input_index) + "?"))
                 {
                     if(tmp_merge_modwt)
                     {
@@ -138,7 +138,7 @@ bool Preprocessing__MODWT(void)
                                                                                                                                                                  ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Merge__MODWT(%zu, %zu, %u)\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_index + tmp_shift_index,
                                                      tmp_J_level,
@@ -157,7 +157,7 @@ bool Preprocessing__MODWT(void)
                                                                                                                                                      ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__MODWT(%zu, %zu, %u)\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_index,
                                                      tmp_J_level,
@@ -172,18 +172,18 @@ bool Preprocessing__MODWT(void)
         }
     }
 
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-    if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to preprocess output(s)?"))
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to preprocess output(s)?"))
     {
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-        if(tmp_Neural_Network_Manager.Get__Dataset_Manager()->Get__Number_Outputs() == 1_zu || MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to preprocess all outputs?"))
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        if(tmp_Neural_Network_Manager.Get__Dataset_Manager()->Get__Number_Outputs() == 1_zu || MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to preprocess all outputs?"))
         {
             if(tmp_merge_modwt)
             {
                 if(tmp_Neural_Network_Manager.Get__Dataset_Manager()->Preprocessing__Merge__MODWT(tmp_J_level, ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Merge__MODWT(%zu, %u)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_J_level,
                                              ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT,
@@ -197,7 +197,7 @@ bool Preprocessing__MODWT(void)
                 if(tmp_Neural_Network_Manager.Get__Dataset_Manager()->Preprocessing__MODWT(tmp_J_level, ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__MODWT(%zu, %u)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_J_level,
                                              ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT,
@@ -211,10 +211,10 @@ bool Preprocessing__MODWT(void)
         {
             if(tmp_merge_modwt) { tmp_shift_index = 0_zu; }
 
-            PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+            PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
             for(tmp_input_index = 0_zu; tmp_input_index != tmp_Neural_Network_Manager.Get__Dataset_Manager()->Get__Number_Outputs(); ++tmp_input_index)
             {
-                if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to preprocess output " + std::to_string(tmp_input_index) + "?"))
+                if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to preprocess output " + std::to_string(tmp_input_index) + "?"))
                 {
                     if(tmp_merge_modwt)
                     {
@@ -223,7 +223,7 @@ bool Preprocessing__MODWT(void)
                                                                                                                                                                  ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Merge__MODWT(%zu, %zu, %u)\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_index + tmp_shift_index,
                                                      tmp_J_level,
@@ -242,7 +242,7 @@ bool Preprocessing__MODWT(void)
                                                                                                                                                      ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__MODWT(%zu, %zu, %u)\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_input_index,
                                                      tmp_J_level,
@@ -254,23 +254,23 @@ bool Preprocessing__MODWT(void)
                     }
                 }
             }
-            PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+            PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         }
     }
 
     tmp_Neural_Network_Manager.Initialize_Path(tmp_dataset_name, tmp_dataset_name + "_MODWT");
     
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     PRINT_FORMAT("%s: Saving into %s... ",
-                             MyEA::String::Get__Time().c_str(),
+                             MyEA::Time::Date_Time_Now().c_str(),
                              tmp_Neural_Network_Manager.Get__Path_Dataset_Manager().c_str());
-    class MyEA::Animation::Animation_Waiting tmp_Animation_Waiting;
+    class MyEA::String::Animation_Waiting tmp_Animation_Waiting;
     tmp_Animation_Waiting.Print_While_Async();
 
     if(tmp_Neural_Network_Manager.Get__Dataset_Manager()->Save(tmp_Neural_Network_Manager.Get__Path_Dataset_Manager(), true) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Save(%s, true)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_Neural_Network_Manager.Get__Path_Dataset_Manager().c_str(),
                                  __LINE__);
@@ -279,7 +279,7 @@ bool Preprocessing__MODWT(void)
     }
     
     tmp_Animation_Waiting.Join();
-    PRINT_FORMAT(NEW_LINE "%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT(NEW_LINE "%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
     return(true);
 }

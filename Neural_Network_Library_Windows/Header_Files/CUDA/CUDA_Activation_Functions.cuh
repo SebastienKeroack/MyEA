@@ -2,7 +2,7 @@
 
 #include <device_launch_parameters.h>
 
-#include <Math/Mathematic.hpp>
+#include <Math/Math.hpp>
 
 // Linear
 template<typename T>

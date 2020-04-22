@@ -1,6 +1,6 @@
 #include "stdafx.hpp"
 
-#include <Math/Mathematic.hpp>
+#include <Math/Math.hpp>
 
 #include <Neural_Network/Neural_Network.hpp>
 
@@ -12,7 +12,7 @@ void Neural_Network::FF__Backward_Pass_Batch__OpenMP(size_t const batch_size_rec
     
     T_ *tmp_ptr_array_layer_gradients;
     
-#if defined(COMPILE_ADEPT)
+#if defined(COMPILE_AUTODIFF)
     struct Layer const *const tmp_ptr_second_layer(this->ptr_array_layers);
 #else
     struct Layer const *const tmp_ptr_second_layer(this->ptr_array_layers + 1);
@@ -27,7 +27,7 @@ void Neural_Network::FF__Backward_Pass_Batch__OpenMP(size_t const batch_size_rec
     if(this->type_state_propagation != MyEA::Common::ENUM_TYPE_STATE_PROPAGATION::TYPE_STATE_PROPAGATION_TRAINING)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not back propagate gradient in inference mode. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -103,7 +103,7 @@ void Neural_Network::FF__Backward_Pass_Batch__OpenMP(size_t const batch_size_rec
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_ptr_next_layer_it->type_layer,
                                              MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_next_layer_it->type_layer].c_str());
@@ -129,7 +129,7 @@ void Neural_Network::FF__Backward_Pass_Batch__OpenMP(size_t const batch_size_rec
                     break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_ptr_layer_it->type_layer,
                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str());
@@ -152,7 +152,7 @@ void Neural_Network::FF__Backward_Pass_Batch__Pre_Training__OpenMP(size_t const 
     if(this->type_state_propagation != MyEA::Common::ENUM_TYPE_STATE_PROPAGATION::TYPE_STATE_PROPAGATION_TRAINING)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not back propagate gradient in inference mode. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -199,7 +199,7 @@ void Neural_Network::FF__Backward_Pass_Batch__Pre_Training__OpenMP(size_t const 
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_ptr_decoded_layer->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_decoded_layer->type_layer].c_str());
@@ -217,7 +217,7 @@ void Neural_Network::FF__Backward_Pass_Batch__Pre_Training__OpenMP(size_t const 
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_ptr_coded_layer->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_coded_layer->type_layer].c_str());
@@ -416,7 +416,7 @@ void Neural_Network::Backward_Pass__Residual__Block__OpenMP(size_t const time_st
                     break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer normalization (%u | %s) is not managed in the switch." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          ptr_layer_it_received->type_normalization,
                                          MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[ptr_layer_it_received->type_normalization].c_str());
@@ -474,7 +474,7 @@ void Neural_Network::Backward_Pass__Residual__FC__OpenMP(size_t const time_step_
                     break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer normalization (%u | %s) is not managed in the switch." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          ptr_layer_it_received->type_normalization,
                                          MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[ptr_layer_it_received->type_normalization].c_str());
@@ -586,7 +586,7 @@ void Neural_Network::Backward_Pass__Gradient__FC__OpenMP(size_t const time_step_
                     break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer normalization (%u | %s) is not managed in the switch." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          ptr_layer_it_received->type_normalization,
                                          MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[ptr_layer_it_received->type_normalization].c_str());
@@ -674,7 +674,7 @@ void Neural_Network::Backward_Pass__Gradient__FC__OpenMP(size_t const time_step_
                     break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer normalization (%u | %s) is not managed in the switch." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          ptr_layer_it_received->type_normalization,
                                          MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[ptr_layer_it_received->type_normalization].c_str());
@@ -736,7 +736,7 @@ void Neural_Network::Backward_Pass__Gradient__Residual__Layer__OpenMP(bool const
     if(ptr_layer_it_received->next_connected_layers.size() > 1_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: In a residual block the layers can not have more than one forward connection. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
     }
@@ -774,7 +774,7 @@ void Neural_Network::Backward_Pass__Gradient__Residual__Layer__OpenMP(bool const
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_ptr_next_layer_it->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_next_layer_it->type_layer].c_str());
@@ -795,7 +795,7 @@ void Neural_Network::Backward_Pass__Gradient__Residual__Layer__OpenMP(bool const
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ptr_layer_it_received->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[ptr_layer_it_received->type_layer].c_str());
@@ -925,7 +925,7 @@ void Neural_Network::Backward_Pass__Gradient__Residual__FC__OpenMP(bool const is
                     break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer normalization (%u | %s) is not managed in the switch." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             ptr_layer_it_received->type_normalization,
                                             MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[ptr_layer_it_received->type_normalization].c_str());
@@ -1021,7 +1021,7 @@ void Neural_Network::Backward_Pass__Dropout__ShakeDrop__OpenMP(size_t const time
         {
             tmp_ptr_array_derivatives = ptr_array_derivatives_received + static_cast<size_t>(tmp_example_index__int) * derivative_size_received + tmp_derivative_timed_batched_index;
 
-            for(tmp_derivative_index = 0_zu; tmp_derivative_index != derivative_size_received; ++tmp_derivative_index) { tmp_ptr_array_derivatives[tmp_derivative_index] *= this->ptr_array_Class_Generator_Real_ShakeDrop[tmp_thread_index__int].Generate_Real(); }
+            for(tmp_derivative_index = 0_zu; tmp_derivative_index != derivative_size_received; ++tmp_derivative_index) { tmp_ptr_array_derivatives[tmp_derivative_index] *= this->ptr_array_Class_Generator_Real_ShakeDrop[tmp_thread_index__int](); }
         }
     }
 }

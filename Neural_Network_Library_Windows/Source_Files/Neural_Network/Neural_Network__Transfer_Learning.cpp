@@ -28,7 +28,7 @@ bool Neural_Network::Transfer_Learning(class Neural_Network *&ptr_destination_Ne
             if(tmp_ptr_source_layer_it->Compare__Dimensions(*tmp_ptr_destination_layer_it) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Layer dimensions unequal. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -114,7 +114,7 @@ bool Neural_Network::Transfer_Learning(class Neural_Network *&ptr_destination_Ne
             if(tmp_ptr_source_layer_it->Compare__Dimensions(*tmp_ptr_destination_layer_it) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Layer dimensions unequal. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -191,7 +191,7 @@ bool Neural_Network::Transfer_Learning(class Neural_Network *&ptr_destination_Ne
             if(tmp_ptr_source_layer_it->Compare__Dimensions(*tmp_ptr_destination_layer_it) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Layer dimensions unequal. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -297,7 +297,7 @@ bool Neural_Network::Transfer_Learning(class Neural_Network *&ptr_destination_Ne
     if(ptr_destination_Neural_Network_received->Copy__Optimizer_Parameters(this) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Copy__Optimizer_Parameters(ptr)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -315,7 +315,7 @@ bool Neural_Network::Transfer_Learning(class Neural_Network *&ptr_destination_Ne
     if(ptr_destination_Neural_Network_received->Set__Maximum_Thread_Usage(this->percentage_maximum_thread_usage) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Maximum_Thread_Usage(%f)\" function. At line %d." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     __FUNCTION__,
                                     this->percentage_maximum_thread_usage,
                                     __LINE__);
@@ -325,7 +325,7 @@ bool Neural_Network::Transfer_Learning(class Neural_Network *&ptr_destination_Ne
     else if(ptr_destination_Neural_Network_received->Set__Maximum__Batch_Size(this->maximum_batch_size) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Maximum__Batch_Size(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->maximum_batch_size,
                                  __LINE__);

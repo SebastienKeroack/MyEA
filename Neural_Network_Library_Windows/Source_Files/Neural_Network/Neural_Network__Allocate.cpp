@@ -15,7 +15,7 @@ bool Neural_Network::Allocate__Structure(size_t const number_layers_received, si
     if(tmp_ptr_layer_it == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  number_layers_received * sizeof(struct Layer),
                                  __LINE__);
@@ -32,7 +32,7 @@ bool Neural_Network::Allocate__Structure(size_t const number_layers_received, si
     if(tmp_ptr_array_layers_number_outputs_it == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  number_layers_received * sizeof(size_t),
                                  __LINE__);
@@ -48,7 +48,7 @@ bool Neural_Network::Allocate__Structure(size_t const number_layers_received, si
     if(tmp_ptr_array_layers_first_connection_index_it == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  number_layers_received * sizeof(size_t),
                                  __LINE__);
@@ -64,7 +64,7 @@ bool Neural_Network::Allocate__Structure(size_t const number_layers_received, si
     if(tmp_ptr_array_layers_last_connection_index_it == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  number_layers_received * sizeof(size_t),
                                  __LINE__);
@@ -92,7 +92,7 @@ bool Neural_Network::Allocate__Structure(size_t const number_layers_received, si
     if((this->ptr_array_number_loss = new size_t[1u]) == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  sizeof(size_t),
                                  __LINE__);
@@ -104,7 +104,7 @@ bool Neural_Network::Allocate__Structure(size_t const number_layers_received, si
     if((this->ptr_array_number_bit_fail = new size_t[1u]) == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  sizeof(size_t),
                                  __LINE__);
@@ -116,7 +116,7 @@ bool Neural_Network::Allocate__Structure(size_t const number_layers_received, si
     if((this->ptr_array_loss_values = new T_[1u]) == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  sizeof(size_t),
                                  __LINE__);
@@ -130,7 +130,7 @@ bool Neural_Network::Allocate__Structure(size_t const number_layers_received, si
     if((this->ptr_array_accuracy_values[0u] = new T_[1u]) == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  sizeof(T_),
                                  __LINE__);
@@ -142,7 +142,7 @@ bool Neural_Network::Allocate__Structure(size_t const number_layers_received, si
     if((this->ptr_array_accuracy_values[1u] = new T_[1u]) == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  sizeof(T_),
                                  __LINE__);
@@ -154,7 +154,7 @@ bool Neural_Network::Allocate__Structure(size_t const number_layers_received, si
     if((this->ptr_array_accuracy_values[2u] = new T_[1u]) == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  sizeof(T_),
                                  __LINE__);
@@ -166,7 +166,7 @@ bool Neural_Network::Allocate__Structure(size_t const number_layers_received, si
     if((this->ptr_array_accuracy_values[3u] = new T_[1u]) == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  sizeof(T_),
                                  __LINE__);
@@ -178,7 +178,7 @@ bool Neural_Network::Allocate__Structure(size_t const number_layers_received, si
     if((this->ptr_array_accuracy_values[4u] = new T_[1u]) == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  sizeof(T_),
                                  __LINE__);
@@ -202,7 +202,7 @@ bool Neural_Network::Allocate__Sparse_K_Filter(void)
     if((this->ptr_array_k_sparse_activities = new std::pair<size_t, T_>[this->number_threads * (this->total_AF_units + this->total_AF_Ind_recurrent_units + this->total_block_units)]) == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->number_threads * (this->total_AF_units + this->total_AF_Ind_recurrent_units + this->total_block_units) * sizeof(std::pair<size_t, T_>),
                                  __LINE__);
@@ -219,12 +219,12 @@ bool Neural_Network::Allocate__Generator__Dropout_Bernoulli(void)
 {
     if(this->ptr_array_Class_Generator_Bernoulli == nullptr)
     {
-        if((this->ptr_array_Class_Generator_Bernoulli = new class MyEA::Common::Class_Generator_Random_Bernoulli<T_>[this->number_threads]) == nullptr)
+        if((this->ptr_array_Class_Generator_Bernoulli = new class MyEA::Random::Bernoulli<T_>[this->number_threads]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
-                                     this->number_threads * sizeof(class MyEA::Common::Class_Generator_Random_Bernoulli<T_>),
+                                     this->number_threads * sizeof(class MyEA::Random::Bernoulli<T_>),
                                      __LINE__);
 
             return(false);
@@ -241,12 +241,12 @@ bool Neural_Network::Allocate__Generator__Dropout_Gaussian(void)
 {
     if(this->ptr_array_Class_Generator_Real_Gaussian == nullptr)
     {
-        if((this->ptr_array_Class_Generator_Real_Gaussian = new class MyEA::Common::Class_Generator_Random_Gaussian<T_>[this->number_threads]) == nullptr)
+        if((this->ptr_array_Class_Generator_Real_Gaussian = new class MyEA::Random::Gaussian<T_>[this->number_threads]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
-                                     this->number_threads * sizeof(class MyEA::Common::Class_Generator_Random_Gaussian<T_>),
+                                     this->number_threads * sizeof(class MyEA::Random::Gaussian<T_>),
                                      __LINE__);
 
             return(false);
@@ -266,12 +266,12 @@ bool Neural_Network::Allocate__Generator__Dropout_ShakeDrop(void)
 {
     if(this->ptr_array_Class_Generator_Bernoulli_ShakeDrop == nullptr)
     {
-        if((this->ptr_array_Class_Generator_Bernoulli_ShakeDrop = new class MyEA::Common::Class_Generator_Random_Bernoulli<T_>[this->number_threads]) == nullptr)
+        if((this->ptr_array_Class_Generator_Bernoulli_ShakeDrop = new class MyEA::Random::Bernoulli<T_>[this->number_threads]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
-                                     this->number_threads * sizeof(class MyEA::Common::Class_Generator_Random_Bernoulli<T_>),
+                                     this->number_threads * sizeof(class MyEA::Random::Bernoulli<T_>),
                                      __LINE__);
 
             return(false);
@@ -283,12 +283,12 @@ bool Neural_Network::Allocate__Generator__Dropout_ShakeDrop(void)
 
     if(this->ptr_array_Class_Generator_Real_ShakeDrop == nullptr)
     {
-        if((this->ptr_array_Class_Generator_Real_ShakeDrop = new class MyEA::Common::Class_Generator_Random_Real<T_>[this->number_threads]) == nullptr)
+        if((this->ptr_array_Class_Generator_Real_ShakeDrop = new class MyEA::Random::Floating<T_>[this->number_threads]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
-                                     this->number_threads * sizeof(class MyEA::Common::Class_Generator_Random_Real<T_>),
+                                     this->number_threads * sizeof(class MyEA::Random::Floating<T_>),
                                      __LINE__);
 
             return(false);
@@ -308,12 +308,12 @@ bool Neural_Network::Allocate__Generator__Dropout_Uout(void)
 {
     if(this->ptr_array_Class_Generator_Real_Uout == nullptr)
     {
-        if((this->ptr_array_Class_Generator_Real_Uout = new class MyEA::Common::Class_Generator_Random_Real<T_>[this->number_threads]) == nullptr)
+        if((this->ptr_array_Class_Generator_Real_Uout = new class MyEA::Random::Floating<T_>[this->number_threads]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
-                                     this->number_threads * sizeof(class MyEA::Common::Class_Generator_Random_Real<T_>),
+                                     this->number_threads * sizeof(class MyEA::Random::Floating<T_>),
                                      __LINE__);
 
             return(false);
@@ -333,12 +333,12 @@ bool Neural_Network::Allocate__Generator__Dropout_Zoneout(void)
 {
     if(this->ptr_array_Class_Generator_Bernoulli_Zoneout_State == nullptr)
     {
-        if((this->ptr_array_Class_Generator_Bernoulli_Zoneout_State = new class MyEA::Common::Class_Generator_Random_Bernoulli<T_>[this->number_threads]) == nullptr)
+        if((this->ptr_array_Class_Generator_Bernoulli_Zoneout_State = new class MyEA::Random::Bernoulli<T_>[this->number_threads]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
-                                     this->number_threads * sizeof(class MyEA::Common::Class_Generator_Random_Bernoulli<T_>),
+                                     this->number_threads * sizeof(class MyEA::Random::Bernoulli<T_>),
                                      __LINE__);
 
             return(false);
@@ -350,12 +350,12 @@ bool Neural_Network::Allocate__Generator__Dropout_Zoneout(void)
     
     if(this->ptr_array_Class_Generator_Bernoulli_Zoneout_Hidden == nullptr)
     {
-        if((this->ptr_array_Class_Generator_Bernoulli_Zoneout_Hidden = new class MyEA::Common::Class_Generator_Random_Bernoulli<T_>[this->number_threads]) == nullptr)
+        if((this->ptr_array_Class_Generator_Bernoulli_Zoneout_Hidden = new class MyEA::Random::Bernoulli<T_>[this->number_threads]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
-                                     this->number_threads * sizeof(class MyEA::Common::Class_Generator_Random_Bernoulli<T_>),
+                                     this->number_threads * sizeof(class MyEA::Random::Bernoulli<T_>),
                                      __LINE__);
 
             return(false);
@@ -377,7 +377,7 @@ bool Neural_Network::Allocate__Neuron__Mask_Dropout_Bernoulli(void)
         if(tmp_ptr_array_units_mask_dropout_bernoulli == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      (this->total_AF_units_allocated + this->total_AF_Ind_recurrent_units_allocated) * this->number_recurrent_depth * sizeof(bool),
                                      __LINE__);
@@ -385,7 +385,7 @@ bool Neural_Network::Allocate__Neuron__Mask_Dropout_Bernoulli(void)
             return(false);
         }
         
-        Memory::Fill<bool>(tmp_ptr_array_units_mask_dropout_bernoulli,
+        MyEA::Memory::Fill<bool>(tmp_ptr_array_units_mask_dropout_bernoulli,
                                      tmp_ptr_array_units_mask_dropout_bernoulli + (this->total_AF_units_allocated + this->total_AF_Ind_recurrent_units_allocated) * this->number_recurrent_depth,
                                      true);
         
@@ -403,7 +403,7 @@ bool Neural_Network::Allocate__Layer__Mask__Dropout__ShakeDrop(void)
         if(tmp_ptr_array_layers_mask_dropout_shakedrop == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_layers * this->number_recurrent_depth * this->batch_size * sizeof(bool),
                                      __LINE__);
@@ -411,7 +411,7 @@ bool Neural_Network::Allocate__Layer__Mask__Dropout__ShakeDrop(void)
             return(false);
         }
         this->ptr_array_layers_mask_dropout_shakedrop = tmp_ptr_array_layers_mask_dropout_shakedrop;
-        Memory::Fill<bool>(tmp_ptr_array_layers_mask_dropout_shakedrop,
+        MyEA::Memory::Fill<bool>(tmp_ptr_array_layers_mask_dropout_shakedrop,
                                      tmp_ptr_array_layers_mask_dropout_shakedrop + this->total_layers * this->number_recurrent_depth * this->batch_size,
                                      true);
         
@@ -440,7 +440,7 @@ bool Neural_Network::Allocate__Basic_Units(void)
         if(tmp_ptr_array_basic_units == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_basic_units * sizeof(struct Basic_unit),
                                      __LINE__);
@@ -454,7 +454,7 @@ bool Neural_Network::Allocate__Basic_Units(void)
         if(tmp_ptr_array_basic_units_values == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_basic_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -472,7 +472,7 @@ bool Neural_Network::Allocate__Basic_Units(void)
         if(tmp_ptr_array_basic_units_errors == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_basic_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -534,7 +534,7 @@ bool Neural_Network::Allocate__Basic_Indice_Units(void)
         if(tmp_ptr_array_basic_indice_units == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_basic_indice_units * sizeof(struct Basic_indice_unit),
                                      __LINE__);
@@ -548,7 +548,7 @@ bool Neural_Network::Allocate__Basic_Indice_Units(void)
         if(tmp_ptr_array_basic_indice_units_indices == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_basic_indice_units * this->number_recurrent_depth * sizeof(size_t),
                                      __LINE__);
@@ -566,7 +566,7 @@ bool Neural_Network::Allocate__Basic_Indice_Units(void)
         if(tmp_ptr_array_basic_indice_units_values == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_basic_indice_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -584,7 +584,7 @@ bool Neural_Network::Allocate__Basic_Indice_Units(void)
         if(tmp_ptr_array_basic_indice_units_errors == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_basic_indice_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -650,7 +650,7 @@ bool Neural_Network::Allocate__Neuron_Units(void)
         if(tmp_ptr_array_neuron_units == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_neuron_units * sizeof(struct Neuron_unit),
                                      __LINE__);
@@ -664,7 +664,7 @@ bool Neural_Network::Allocate__Neuron_Units(void)
         if(tmp_ptr_array_neuron_units_first_forward_connection_index == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_neuron_units * sizeof(size_t),
                                      __LINE__);
@@ -682,7 +682,7 @@ bool Neural_Network::Allocate__Neuron_Units(void)
         if(tmp_ptr_array_neuron_units_last_forward_connection_index == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_neuron_units * sizeof(size_t),
                                      __LINE__);
@@ -700,7 +700,7 @@ bool Neural_Network::Allocate__Neuron_Units(void)
         if(tmp_ptr_array_neuron_units_number_forward_connections == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_neuron_units * sizeof(size_t),
                                      __LINE__);
@@ -718,7 +718,7 @@ bool Neural_Network::Allocate__Neuron_Units(void)
         if(tmp_ptr_array_neuron_units_summations == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_neuron_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -736,7 +736,7 @@ bool Neural_Network::Allocate__Neuron_Units(void)
         if(tmp_ptr_array_neuron_units_errors == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_neuron_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -805,7 +805,7 @@ bool Neural_Network::Allocate__AF_Units(void)
         if(tmp_ptr_array_AF_units == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_AF_units * sizeof(struct AF_unit),
                                      __LINE__);
@@ -819,7 +819,7 @@ bool Neural_Network::Allocate__AF_Units(void)
         if(tmp_ptr_array_AF_units_activation_steepness == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_AF_units * sizeof(T_),
                                      __LINE__);
@@ -827,7 +827,7 @@ bool Neural_Network::Allocate__AF_Units(void)
             return(false);
         }
         this->ptr_array_AF_units_activation_steepness = tmp_ptr_array_AF_units_activation_steepness;
-        Memory::Fill<T_>(tmp_ptr_array_AF_units_activation_steepness,
+        MyEA::Memory::Fill<T_>(tmp_ptr_array_AF_units_activation_steepness,
                                    tmp_ptr_array_AF_units_activation_steepness + this->total_AF_units,
                                    1_T);
         // |END| Allocating AF unit(s) activation steepness. |END|
@@ -837,7 +837,7 @@ bool Neural_Network::Allocate__AF_Units(void)
         if(tmp_ptr_array_AF_units_values == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_AF_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -855,7 +855,7 @@ bool Neural_Network::Allocate__AF_Units(void)
         if(tmp_ptr_array_AF_units_errors == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_AF_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -873,7 +873,7 @@ bool Neural_Network::Allocate__AF_Units(void)
         if(tmp_ptr_array_AF_units_type_activations_functions == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_AF_units * sizeof(enum MyEA::Common::ENUM_TYPE_ACTIVATION_FUNCTION),
                                      __LINE__);
@@ -881,7 +881,7 @@ bool Neural_Network::Allocate__AF_Units(void)
             return(false);
         }
         this->ptr_array_AF_units_type_activation_function = tmp_ptr_array_AF_units_type_activations_functions;
-        Memory::Fill<enum MyEA::Common::ENUM_TYPE_ACTIVATION_FUNCTION>(tmp_ptr_array_AF_units_type_activations_functions,
+        MyEA::Memory::Fill<enum MyEA::Common::ENUM_TYPE_ACTIVATION_FUNCTION>(tmp_ptr_array_AF_units_type_activations_functions,
                                                                                                                               tmp_ptr_array_AF_units_type_activations_functions + this->total_AF_units,
                                                                                                                               MyEA::Common::ENUM_TYPE_ACTIVATION_FUNCTION::TYPE_NN_A_F_NONE);
         // |END| Allocating AF unit(s) type activation function(s). |END|
@@ -940,7 +940,7 @@ bool Neural_Network::Allocate__AF_Ind_Recurrent_Units(void)
         if(tmp_ptr_array_AF_Ind_recurrent_units == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_AF_Ind_recurrent_units * sizeof(struct AF_Ind_recurrent_unit),
                                      __LINE__);
@@ -954,7 +954,7 @@ bool Neural_Network::Allocate__AF_Ind_Recurrent_Units(void)
         if(tmp_ptr_array_AF_Ind_recurrent_units_first_recurrent_connection_index == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_AF_Ind_recurrent_units * sizeof(size_t),
                                      __LINE__);
@@ -972,7 +972,7 @@ bool Neural_Network::Allocate__AF_Ind_Recurrent_Units(void)
         if(tmp_ptr_array_AF_Ind_recurrent_units_activation_steepness == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_AF_Ind_recurrent_units * sizeof(T_),
                                      __LINE__);
@@ -980,7 +980,7 @@ bool Neural_Network::Allocate__AF_Ind_Recurrent_Units(void)
             return(false);
         }
         this->ptr_array_AF_Ind_recurrent_units_activation_steepness = tmp_ptr_array_AF_Ind_recurrent_units_activation_steepness;
-        Memory::Fill<T_>(tmp_ptr_array_AF_Ind_recurrent_units_activation_steepness,
+        MyEA::Memory::Fill<T_>(tmp_ptr_array_AF_Ind_recurrent_units_activation_steepness,
                                    tmp_ptr_array_AF_Ind_recurrent_units_activation_steepness + this->total_AF_Ind_recurrent_units,
                                    1_T);
         // |END| Allocating AF Ind recurrent unit(s) activation steepness. |END|
@@ -990,7 +990,7 @@ bool Neural_Network::Allocate__AF_Ind_Recurrent_Units(void)
         if(tmp_ptr_array_AF_Ind_recurrent_units_pre_AFs == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_AF_Ind_recurrent_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1008,7 +1008,7 @@ bool Neural_Network::Allocate__AF_Ind_Recurrent_Units(void)
         if(tmp_ptr_array_AF_Ind_recurrent_units_AFs == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_AF_Ind_recurrent_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1026,7 +1026,7 @@ bool Neural_Network::Allocate__AF_Ind_Recurrent_Units(void)
         if(tmp_ptr_array_AF_Ind_recurrent_units_errors == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_AF_Ind_recurrent_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1044,7 +1044,7 @@ bool Neural_Network::Allocate__AF_Ind_Recurrent_Units(void)
         if(tmp_ptr_array_AF_Ind_recurrent_units_dAFs == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_AF_Ind_recurrent_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1062,7 +1062,7 @@ bool Neural_Network::Allocate__AF_Ind_Recurrent_Units(void)
         if(tmp_ptr_array_AF_Ind_recurrent_units_type_activations_functions == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_AF_Ind_recurrent_units * sizeof(enum MyEA::Common::ENUM_TYPE_ACTIVATION_FUNCTION),
                                      __LINE__);
@@ -1070,7 +1070,7 @@ bool Neural_Network::Allocate__AF_Ind_Recurrent_Units(void)
             return(false);
         }
         this->ptr_array_AF_Ind_recurrent_units_type_activation_function = tmp_ptr_array_AF_Ind_recurrent_units_type_activations_functions;
-        Memory::Fill<enum MyEA::Common::ENUM_TYPE_ACTIVATION_FUNCTION>(tmp_ptr_array_AF_Ind_recurrent_units_type_activations_functions,
+        MyEA::Memory::Fill<enum MyEA::Common::ENUM_TYPE_ACTIVATION_FUNCTION>(tmp_ptr_array_AF_Ind_recurrent_units_type_activations_functions,
                                                                                                                               tmp_ptr_array_AF_Ind_recurrent_units_type_activations_functions + this->total_AF_Ind_recurrent_units,
                                                                                                                               MyEA::Common::ENUM_TYPE_ACTIVATION_FUNCTION::TYPE_NN_A_F_NONE);
         // |END| Allocating AF Ind recurrent unit(s) type activation function(s). |END|
@@ -1141,7 +1141,7 @@ bool Neural_Network::Allocate__Normalized_Unit(bool const organize_pointers_rece
             if(tmp_ptr_array_normalized_units == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          this->total_normalized_units * sizeof(union Normalized_unit),
                                          __LINE__);
@@ -1183,7 +1183,7 @@ bool Neural_Network::Allocate__Block_Unit__Mask_Dropout_Zoneout(void)
         if(tmp_ptr_array_cell_units_mask_dropout_zoneout == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      2_zu * this->total_cell_units_allocated * this->number_recurrent_depth * sizeof(bool),
                                      __LINE__);
@@ -1191,7 +1191,7 @@ bool Neural_Network::Allocate__Block_Unit__Mask_Dropout_Zoneout(void)
             return(false);
         }
         
-        Memory::Fill<bool>(tmp_ptr_array_cell_units_mask_dropout_zoneout,
+        MyEA::Memory::Fill<bool>(tmp_ptr_array_cell_units_mask_dropout_zoneout,
                                      tmp_ptr_array_cell_units_mask_dropout_zoneout + 2_zu * this->total_cell_units_allocated * this->number_recurrent_depth,
                                      true);
         
@@ -1219,7 +1219,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_block_units == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_block_units * sizeof(struct Block_unit),
                                      __LINE__);
@@ -1233,7 +1233,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_cell_units == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_cell_units * sizeof(struct Cell_unit),
                                      __LINE__);
@@ -1247,7 +1247,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_summation_cells_inputs == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_cell_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1265,7 +1265,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_summation_input_cells_inputs == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_cell_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1283,7 +1283,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_summation_recurrent_cells_inputs == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_cell_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1301,7 +1301,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_summation_inputs_gates == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_block_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1319,7 +1319,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_summation_input_inputs_gates == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_block_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1337,7 +1337,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_summation_recurrent_inputs_gates == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_block_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1355,7 +1355,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_summation_forgets_gates == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_block_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1373,7 +1373,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_summation_input_forgets_gates == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_block_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1391,7 +1391,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_summation_recurrent_forgets_gates == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_block_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1409,7 +1409,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_summation_outputs_gates == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_block_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1427,7 +1427,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_summation_input_outputs_gates == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_block_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1445,7 +1445,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_summation_recurrent_outputs_gates == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_block_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1463,7 +1463,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_cells_inputs == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_cell_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1481,7 +1481,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_cells_states == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_cell_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1499,7 +1499,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_cells_states_activates == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_cell_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1517,7 +1517,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_cells_outputs == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_cell_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1535,7 +1535,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_inputs_gates == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_block_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1553,7 +1553,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_forgets_gates == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_block_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1571,7 +1571,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_outputs_gates == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_block_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1589,7 +1589,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_delta_cells_inputs == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_block_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1607,7 +1607,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_delta_cells_input_inputs == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_block_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1625,7 +1625,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_delta_cells_recurrent_inputs == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_block_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1643,7 +1643,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_delta_cells_states == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_cell_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1661,7 +1661,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_delta_cells_outputs == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_cell_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1679,7 +1679,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_delta_inputs_gates == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_block_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1697,7 +1697,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_delta_input_inputs_gates == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_block_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1715,7 +1715,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_delta_recurrent_inputs_gates == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_block_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1733,7 +1733,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_delta_forgets_gates == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_block_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1751,7 +1751,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_delta_input_forgets_gates == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_block_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1769,7 +1769,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_delta_recurrent_forgets_gates == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_block_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1787,7 +1787,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_delta_outputs_gates == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_block_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1805,7 +1805,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_delta_input_outputs_gates == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_block_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -1823,7 +1823,7 @@ bool Neural_Network::Allocate__LSTM_Layers(void)
         if(tmp_ptr_array_delta_recurrent_outputs_gates == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->total_block_units * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -2022,7 +2022,7 @@ bool Neural_Network::Allocate__Bidirectional__Layers(void)
         if(tmp_ptr_array_bidirectional_layers == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      static_cast<size_t>(tmp_number_bidirectional_layers) * sizeof(struct Bidirectional_Layer),
                                      __LINE__);
@@ -2110,7 +2110,7 @@ bool Neural_Network::Allocate__Bidirectional__Layers(void)
                             break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_ptr_layer_it->type_layer,
                                                  MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str(),
@@ -2134,7 +2134,7 @@ bool Neural_Network::Allocate__Parameter(void)
     if((this->ptr_array_parameters = new T_[this->total_parameters]) == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->total_parameters * sizeof(T_),
                                  __LINE__);
@@ -2150,7 +2150,7 @@ bool Neural_Network::Allocate__Parameter(void)
     if((this->ptr_array_ptr_connections = new void*[this->total_parameters]) == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->total_parameters * sizeof(void*),
                                  __LINE__);
@@ -2202,7 +2202,7 @@ bool Neural_Network::Allocate__Parameter__Gradient_Descent(void)
         if((this->ptr_array_previous_delta_parameters = new T_[this->total_parameters]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_parameters * sizeof(T_),
                                      __LINE__);
@@ -2224,7 +2224,7 @@ bool Neural_Network::Allocate__Parameter__iRPROP_minus(void)
         if((this->ptr_array_previous_steps = new T_[this->total_parameters]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_parameters * sizeof(T_),
                                      __LINE__);
@@ -2232,7 +2232,7 @@ bool Neural_Network::Allocate__Parameter__iRPROP_minus(void)
             return(false);
         }
         
-        Memory::Fill<T_>(this->ptr_array_previous_steps,
+        MyEA::Memory::Fill<T_>(this->ptr_array_previous_steps,
                                    this->ptr_array_previous_steps + this->total_parameters,
                                    this->rprop_delta_zero);
     }
@@ -2242,7 +2242,7 @@ bool Neural_Network::Allocate__Parameter__iRPROP_minus(void)
         if((this->ptr_array_previous_derivatives_parameters = new T_[this->total_parameters]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_parameters * sizeof(T_),
                                      __LINE__);
@@ -2262,7 +2262,7 @@ bool Neural_Network::Allocate__Parameter__iRPROP_plus(void)
     if(this->Allocate__Parameter__iRPROP_minus() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Parameter__iRPROP_minus()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -2274,7 +2274,7 @@ bool Neural_Network::Allocate__Parameter__iRPROP_plus(void)
         if((this->ptr_array_previous_delta_parameters = new T_[this->total_parameters]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_parameters * sizeof(T_),
                                      __LINE__);
@@ -2296,7 +2296,7 @@ bool Neural_Network::Allocate__Parameter__Adam(void)
         if((this->ptr_array_previous_biased_first_moment = new T_[this->total_parameters]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_parameters * sizeof(T_),
                                      __LINE__);
@@ -2313,7 +2313,7 @@ bool Neural_Network::Allocate__Parameter__Adam(void)
         if((this->ptr_array_previous_biased_second_moment = new T_[this->total_parameters]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_parameters * sizeof(T_),
                                      __LINE__);
@@ -2333,7 +2333,7 @@ bool Neural_Network::Allocate__Parameter__AMSGrad(void)
     if(this->Allocate__Parameter__Adam() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Parameter__Adam()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -2345,7 +2345,7 @@ bool Neural_Network::Allocate__Parameter__AMSGrad(void)
         if((this->ptr_array_previous_biased_second_moment_hat = new T_[this->total_parameters]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_parameters * sizeof(T_),
                                      __LINE__);
@@ -2371,7 +2371,7 @@ bool Neural_Network::Allocate__Parameter__Normalization(void)
         if(this->Reallocate__Parameter(tmp_new_dimension_parameters) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Reallocate__Parameter(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_new_dimension_parameters,
                                      __LINE__);
@@ -2396,7 +2396,7 @@ bool Neural_Network::Allocate__Parameter__Regularization(void)
         if((this->ptr_array_mask_regularized_parameters = new T_[this->total_parameters_allocated]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_parameters_allocated * sizeof(T_),
                                      __LINE__);
@@ -2463,7 +2463,7 @@ bool Neural_Network::Allocate__Normalized_Unit__Batch_Normalization(void)
         if(tmp_ptr_array_normalized_units_values_hat == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->number_recurrent_depth * this->total_normalized_units_allocated * sizeof(T_),
                                      __LINE__);
@@ -2481,7 +2481,7 @@ bool Neural_Network::Allocate__Normalized_Unit__Batch_Normalization(void)
         if(tmp_ptr_array_normalized_units_values_normalize == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->number_recurrent_depth * this->total_normalized_units_allocated * sizeof(T_),
                                      __LINE__);
@@ -2499,7 +2499,7 @@ bool Neural_Network::Allocate__Normalized_Unit__Batch_Normalization(void)
         if(tmp_ptr_array_normalized_units_mean_it == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->number_threads * this->total_normalized_units_allocated * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -2517,7 +2517,7 @@ bool Neural_Network::Allocate__Normalized_Unit__Batch_Normalization(void)
         if(tmp_ptr_array_normalized_units_variance_it == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->number_threads * this->total_normalized_units_allocated * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -2535,7 +2535,7 @@ bool Neural_Network::Allocate__Normalized_Unit__Batch_Normalization(void)
         if(tmp_ptr_array_normalized_units_derivative_mean_it == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->number_threads * this->total_normalized_units_allocated * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -2553,7 +2553,7 @@ bool Neural_Network::Allocate__Normalized_Unit__Batch_Normalization(void)
         if(tmp_ptr_array_normalized_units_derivative_variance_it == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->number_threads * this->total_normalized_units_allocated * this->number_recurrent_depth * sizeof(T_),
                                      __LINE__);
@@ -2571,7 +2571,7 @@ bool Neural_Network::Allocate__Normalized_Unit__Batch_Normalization(void)
         if(tmp_ptr_array_normalized_units_mean_average_it == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_normalized_units_allocated * sizeof(T_),
                                      __LINE__);
@@ -2589,14 +2589,14 @@ bool Neural_Network::Allocate__Normalized_Unit__Batch_Normalization(void)
         if(tmp_ptr_array_normalized_units_variance_average_it == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->total_normalized_units_allocated * sizeof(T_),
                                      __LINE__);
 
             return(false);
         }
-        Memory::Fill<T_>(tmp_ptr_array_normalized_units_variance_average_it,
+        MyEA::Memory::Fill<T_>(tmp_ptr_array_normalized_units_variance_average_it,
                                    tmp_ptr_array_normalized_units_variance_average_it + this->total_normalized_units_allocated * this->number_recurrent_depth,
                                    1_T);
         this->ptr_array_normalized_batch_units_variances_averages = tmp_ptr_array_normalized_units_variance_average_it;
@@ -2607,7 +2607,7 @@ bool Neural_Network::Allocate__Normalized_Unit__Batch_Normalization(void)
         if(tmp_ptr_array_normalized_units_errors == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->batch_size * this->number_recurrent_depth * this->total_normalized_units_allocated * sizeof(T_),
                                      __LINE__);
@@ -2805,7 +2805,7 @@ bool Neural_Network::Allocate__Normalized_Unit__Batch_Normalization(void)
                             break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Type layer (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_ptr_layer_it->type_layer,
                                                  MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str(),
@@ -2819,25 +2819,25 @@ bool Neural_Network::Allocate__Normalized_Unit__Batch_Normalization(void)
                 switch(tmp_ptr_layer_it->type_layer)
                 {
                     case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_FULLY_CONNECTED:
-                        Memory::Fill<T_>(tmp_ptr_layer_it->ptr_array_normalized_units->normalized_batch_units.ptr_scale,
+                        MyEA::Memory::Fill<T_>(tmp_ptr_layer_it->ptr_array_normalized_units->normalized_batch_units.ptr_scale,
                                                   tmp_ptr_layer_it->ptr_array_normalized_units->normalized_batch_units.ptr_scale + tmp_number_units,
                                                   1_T);
                             break;
                     case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_FULLY_CONNECTED_INDEPENDENTLY_RECURRENT:
                     case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_FULLY_CONNECTED_RECURRENT:
                     case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_LSTM:
-                        Memory::Fill<T_>(tmp_ptr_layer_it->ptr_array_normalized_units->normalized_batch_units.ptr_scale,
+                        MyEA::Memory::Fill<T_>(tmp_ptr_layer_it->ptr_array_normalized_units->normalized_batch_units.ptr_scale,
                                                   tmp_ptr_layer_it->ptr_array_normalized_units->normalized_batch_units.ptr_scale + tmp_number_units,
                                                   0.1_T);
                             break;
                     case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_RESIDUAL:
-                        Memory::Fill<T_>(tmp_ptr_layer_it->ptr_array_normalized_units->normalized_batch_units.ptr_scale,
+                        MyEA::Memory::Fill<T_>(tmp_ptr_layer_it->ptr_array_normalized_units->normalized_batch_units.ptr_scale,
                                                   tmp_ptr_layer_it->ptr_array_normalized_units->normalized_batch_units.ptr_scale + tmp_number_units,
                                                   this->number_recurrent_depth == 1_zu ? 1_T : 0.1_T);
                             break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Type layer (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_ptr_layer_it->type_layer,
                                                  MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str(),
@@ -2876,7 +2876,7 @@ bool Neural_Network::Allocate__Normalized_Unit__Batch_Renormalization(void)
         if(tmp_ptr_array_normalized_units_r_correction_it == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->number_recurrent_depth * this->total_normalized_units_allocated * sizeof(T_),
                                      __LINE__);
@@ -2893,7 +2893,7 @@ bool Neural_Network::Allocate__Normalized_Unit__Batch_Renormalization(void)
         if(tmp_ptr_array_normalized_units_d_correction_it == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->number_recurrent_depth * this->total_normalized_units_allocated * sizeof(T_),
                                      __LINE__);
@@ -2979,7 +2979,7 @@ bool Neural_Network::Allocate__Normalized_Unit__Batch_Renormalization(void)
                             break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Type layer (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_ptr_layer_it->type_layer,
                                                  MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str(),

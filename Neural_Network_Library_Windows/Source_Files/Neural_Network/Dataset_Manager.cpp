@@ -1,6 +1,6 @@
 #include "stdafx.hpp"
 
-#include <Tools/Shutdown_Block.hpp>
+#include <Capturing/Shutdown/Shutdown.hpp>
 #include<Files/File.hpp>
 
 #include <Neural_Network/Dataset_Manager.hpp>
@@ -12,7 +12,7 @@
 #endif // COMPILE_UI
 
 #if defined(COMPILE_UINPUT)
-    #include <Tools/Key_Logger.hpp>
+    #include <Capturing/Keyboard/Keyboard.hpp>
 #endif // COMPILE_UINPUT
 
 #if defined(COMPILE_CUDA)
@@ -34,7 +34,7 @@ static bool Experimental_Static_Update_BN = false; // Experimental.
 
 template<typename T>
 Dataset_Manager<T>::Dataset_Manager(void) : Dataset<T>(),
-                                                                     Hyperparameter_Optimization<T>()
+                                            Hyperparameter_Optimization<T>()
 { }
 
 template<typename T>
@@ -57,9 +57,9 @@ void Dataset_Manager<T>::Testing_On_Storage(class Neural_Network *const ptr_Neur
     
     // Training set.
 #if defined(COMPILE_COUT)
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     PRINT_FORMAT("%s: Testing on %zu example(s) from the training set." NEW_LINE,
-                             MyEA::String::Get__Time().c_str(),
+                             MyEA::Time::Date_Time_Now().c_str(),
                              this->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)->Dataset<T>::Get__Number_Examples());
 
     tmp_time_start = std::chrono::high_resolution_clock::now();
@@ -76,13 +76,13 @@ void Dataset_Manager<T>::Testing_On_Storage(class Neural_Network *const ptr_Neur
     tmp_time_end = std::chrono::high_resolution_clock::now();
     
     PRINT_FORMAT("%s: %.1f example(s) per second." NEW_LINE,
-                             MyEA::String::Get__Time().c_str(),
+                             MyEA::Time::Date_Time_Now().c_str(),
                              std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count() == 0ll ? 0.0 : static_cast<double>(this->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)->Dataset<T>::Get__Number_Examples()) / (static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count())  / 1e+9));
     PRINT_FORMAT("%s: Loss at training: %.9f" NEW_LINE,
-                             MyEA::String::Get__Time().c_str(),
+                             MyEA::Time::Date_Time_Now().c_str(),
                              Cast_T(ptr_Neural_Network_received->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)));
     PRINT_FORMAT("%s: Accuracy at training: %.5f" NEW_LINE,
-                             MyEA::String::Get__Time().c_str(),
+                             MyEA::Time::Date_Time_Now().c_str(),
                              Cast_T(ptr_Neural_Network_received->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)));
 #endif
     // |END| Training set. |END|
@@ -91,9 +91,9 @@ void Dataset_Manager<T>::Testing_On_Storage(class Neural_Network *const ptr_Neur
     if(this->Get__Type_Storage() >= MyEA::Common::ENUM_TYPE_DATASET_MANAGER_STORAGE::TYPE_STORAGE_TRAINING_VALIDATION_TESTING)
     {
     #if defined(COMPILE_COUT)
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         PRINT_FORMAT("%s: Testing on %zu example(s) from the validation set." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)->Dataset<T>::Get__Number_Examples());
 
         tmp_time_start = std::chrono::high_resolution_clock::now();
@@ -110,13 +110,13 @@ void Dataset_Manager<T>::Testing_On_Storage(class Neural_Network *const ptr_Neur
         tmp_time_end = std::chrono::high_resolution_clock::now();
     
         PRINT_FORMAT("%s: %.1f example(s) per second." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count() == 0ll ? 0.0 : static_cast<double>(this->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)->Dataset<T>::Get__Number_Examples()) / (static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count())  / 1e+9));
         PRINT_FORMAT("%s: Loss at validating: %.9f" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  Cast_T(ptr_Neural_Network_received->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)));
         PRINT_FORMAT("%s: Accuracy at validating: %.5f" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  Cast_T(ptr_Neural_Network_received->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)));
     #endif
     }
@@ -131,9 +131,9 @@ void Dataset_Manager<T>::Testing_On_Storage(class Neural_Network *const ptr_Neur
     if(this->Get__Type_Storage() >= MyEA::Common::ENUM_TYPE_DATASET_MANAGER_STORAGE::TYPE_STORAGE_TRAINING_TESTING)
     {
     #if defined(COMPILE_COUT)
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         PRINT_FORMAT("%s: Testing on %zu example(s) from the testing set." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)->Dataset<T>::Get__Number_Examples());
 
         tmp_time_start = std::chrono::high_resolution_clock::now();
@@ -150,13 +150,13 @@ void Dataset_Manager<T>::Testing_On_Storage(class Neural_Network *const ptr_Neur
         tmp_time_end = std::chrono::high_resolution_clock::now();
         
         PRINT_FORMAT("%s: %.1f example(s) per second." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count() == 0ll ? 0.0 : static_cast<double>(this->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)->Dataset<T>::Get__Number_Examples()) / (static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count())  / 1e+9));
         PRINT_FORMAT("%s: Loss at testing: %.9f" NEW_LINE,
-                                MyEA::String::Get__Time().c_str(),
+                                MyEA::Time::Date_Time_Now().c_str(),
                                 Cast_T(ptr_Neural_Network_received->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)));
         PRINT_FORMAT("%s: Accuracy at testing: %.5f" NEW_LINE,
-                                MyEA::String::Get__Time().c_str(),
+                                MyEA::Time::Date_Time_Now().c_str(),
                                 Cast_T(ptr_Neural_Network_received->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)));
     #endif
     }
@@ -196,7 +196,7 @@ bool Dataset_Manager<T>::Set__Time_Delay_Ploted(size_t const time_delay_received
     if(time_delay_received >= this->Get__Number_Recurrent_Depth())
     {
         PRINT_FORMAT("%s: %s: ERROR: Time delay (%zu) cannot be equal or greater than recurrent depth (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  time_delay_received,
                                  this->Get__Number_Recurrent_Depth(),
@@ -217,7 +217,7 @@ bool Dataset_Manager<T>::Plot__Dataset_Manager(int const input_index_received, e
     else if(type_input_received >= ENUM_TYPE_INPUT::TYPE_INPUT_LENGTH)
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -235,7 +235,7 @@ bool Dataset_Manager<T>::Plot__Dataset_Manager(int const input_index_received, e
     if(static_cast<size_t>(input_index_received) >= tmp_input_size)
     {
         PRINT_FORMAT("%s: %s: ERROR: Input index (%d) overflow (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  input_index_received,
                                  tmp_input_size,
@@ -327,7 +327,7 @@ bool Dataset_Manager<T>::Plot__Dataset_Manager(enum ENUM_TYPE_INPUT const type_i
     if(type_input_received >= ENUM_TYPE_INPUT::TYPE_INPUT_LENGTH)
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -739,15 +739,15 @@ bool Dataset_Manager<T>::Get__Plot__Output(void) const { return(this->_use_plot_
 template<typename T>
 bool Dataset_Manager<T>::User_Controls__Set__Maximum_Ploted_Example(void)
 {
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-    PRINT_FORMAT("%s: Maximum ploted example(s)." NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    PRINT_FORMAT("%s: Maximum ploted example(s)." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     PRINT_FORMAT("%s:\tRange[1, %zu]." NEW_LINE,
-                             MyEA::String::Get__Time().c_str(),
+                             MyEA::Time::Date_Time_Now().c_str(),
                              this->Get__Number_Examples());
     
     this->Set__Maximum_Ploted_Examples(MyEA::String::Cin_Number<size_t>(1_zu,
                                                                                                                     this->Get__Number_Examples(),
-                                                                                                                    MyEA::String::Get__Time() + ": Maximum example(s): "));
+                                                                                                                    MyEA::Time::Date_Time_Now() + ": Maximum example(s): "));
     
     return(true);
 }
@@ -757,18 +757,18 @@ bool Dataset_Manager<T>::User_Controls__Set__Time_Delay_Ploted(void)
 {
     if(this->Get__Number_Recurrent_Depth() > 1_zu)
     {
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s: Time delay ploted." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s: Time delay ploted." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         PRINT_FORMAT("%s:\tRange[0, %zu]." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->Get__Number_Recurrent_Depth() - 1_zu);
         
         if(this->Set__Time_Delay_Ploted(MyEA::String::Cin_Number<size_t>(0_zu,
                                                                                                              this->Get__Number_Recurrent_Depth() - 1_zu,
-                                                                                                             MyEA::String::Get__Time() + ": Time delay: ")) == false)
+                                                                                                             MyEA::Time::Date_Time_Now() + ": Time delay: ")) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Time_Delay_Ploted()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
         
@@ -786,51 +786,51 @@ bool Dataset_Manager<T>::User_Controls(void)
 #if defined(COMPILE_UI) && defined(COMPILE_UINPUT)
     while(true)
     {
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s: User controls:" NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[0]: Optimization, processing parameters." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s: User controls:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[0]: Optimization, processing parameters." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         PRINT_FORMAT("%s:\t[1]: Change evaluation type (%s)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  MyEA::Common::ENUM_TYPE_DATASET_NAMES[this->_type_evaluation].c_str());
         PRINT_FORMAT("%s:\t[2]: Change metric comparison (%s)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->_use_metric_loss ? "Loss" : "Accuracy");
         PRINT_FORMAT("%s:\t[3]: Maximum example(s) (%zu)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->_maximum_examples);
         PRINT_FORMAT("%s:\t[4]: Desired optimization time between reports (%f seconds)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->_desired_optimization_time_between_reports);
         PRINT_FORMAT("%s:\t[5]: Minimum dataset out loss accepted (%f)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->_minimum_loss_holdout_accepted);
         PRINT_FORMAT("%s:\t[6]: Dataset in equal or less dataset out accepted (%s)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->_dataset_in_equal_less_holdout_accepted ? "true" : "false");
-        PRINT_FORMAT("%s:\t[7]: Hyperparameter optimization." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[8]: Use chart datapoint training." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s:\t[7]: Hyperparameter optimization." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[8]: Use chart datapoint training." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         PRINT_FORMAT("%s:\t[9]: Use dataset plot (%s)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->_use_plot_output ? "true" : "false");
         PRINT_FORMAT("%s:\t[10]: Time delay ploted (%zu)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->_time_delay_ploted);
         PRINT_FORMAT("%s:\t[11]: Maximum ploted example(s) (%zu)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->_maximum_ploted_examples);
-        PRINT_FORMAT("%s:\t[12]: Change chart total means." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[13]: Plot dataset." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[14]: Quit." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s:\t[12]: Change chart total means." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[13]: Plot dataset." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[14]: Quit." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
         switch(MyEA::String::Cin_Number<unsigned int>(0u,
                                                                                 14u,
-                                                                                MyEA::String::Get__Time() + ": Option: "))
+                                                                                MyEA::Time::Date_Time_Now() + ": Option: "))
         {
             case 0u:
                 if(this->User_Controls__Optimization_Processing_Parameters() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls__Optimization_Processing_Parameters()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -841,27 +841,27 @@ bool Dataset_Manager<T>::User_Controls(void)
                 if(this->User_Controls__Type_Evaluation() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls__Type_Evaluation()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
                     return(false);
                 }
 
-                if((Experimental_Static_Reset = MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Experimental reset (" + (Experimental_Static_Reset ? "true" : "false") + "): ")))
+                if((Experimental_Static_Reset = MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Experimental reset (" + (Experimental_Static_Reset ? "true" : "false") + "): ")))
                 {
-                    Experimental_Static_Minutes = MyEA::String::Cin_Number<size_t>(1_zu, MyEA::String::Get__Time() + ": Experimental minutes (" + std::to_string(Experimental_Static_Minutes) + "): "); // Experimental.
+                    Experimental_Static_Minutes = MyEA::String::Cin_Number<size_t>(1_zu, MyEA::Time::Date_Time_Now() + ": Experimental minutes (" + std::to_string(Experimental_Static_Minutes) + "): "); // Experimental.
 
                     Experimental_Static_Time_Point = std::chrono::system_clock::now(); // Experimental.
                 }
 
-                Experimental_Static_Update_BN = MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Experimental update BN (" + (Experimental_Static_Update_BN ? "true" : "false") + "): "); // Experimental.
+                Experimental_Static_Update_BN = MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Experimental update BN (" + (Experimental_Static_Update_BN ? "true" : "false") + "): "); // Experimental.
                     break;
             case 2u:
                 if(this->User_Controls__Type_Metric() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls__Type_Metric()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -872,34 +872,34 @@ bool Dataset_Manager<T>::User_Controls(void)
                 if(this->User_Controls__Set__Maximum_Data() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls__Set__Maximum_Data()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
                     return(false);
                 }
                     break;
-            case 4u: this->_desired_optimization_time_between_reports = MyEA::String::Cin_Real_Number<double>(0.0, MyEA::String::Get__Time() + ": Desired optimization time between reports (seconds): "); break;
-            case 5u: this->_minimum_loss_holdout_accepted = MyEA::String::Cin_Real_Number<T>(T(0), MyEA::String::Get__Time() + ": Minimum dataset out loss accepted: "); break;
-            case 6u: this->_dataset_in_equal_less_holdout_accepted = MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Dataset in equal or less dataset out accepted?"); break;
+            case 4u: this->_desired_optimization_time_between_reports = MyEA::String::Cin_Real_Number<double>(0.0, MyEA::Time::Date_Time_Now() + ": Desired optimization time between reports (seconds): "); break;
+            case 5u: this->_minimum_loss_holdout_accepted = MyEA::String::Cin_Real_Number<T>(T(0), MyEA::Time::Date_Time_Now() + ": Minimum dataset out loss accepted: "); break;
+            case 6u: this->_dataset_in_equal_less_holdout_accepted = MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Dataset in equal or less dataset out accepted?"); break;
             case 7u:
                 if(this->Hyperparameter_Optimization<T>::User_Controls() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Hyperparameter_Optimization<T>::User_Controls()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
                     return(false);
                 }
                     break;
-            case 8u: MyEA::Form::API__Form__Neural_Network__Chart_Use_Datapoint_Training(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Use chart datapoint training?")); break;
-            case 9u: this->Set__Plot__Output(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Do you want to plot the dataset?")); break;
+            case 8u: MyEA::Form::API__Form__Neural_Network__Chart_Use_Datapoint_Training(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Use chart datapoint training?")); break;
+            case 9u: this->Set__Plot__Output(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Do you want to plot the dataset?")); break;
            case 10u:
                 if(this->User_Controls__Set__Time_Delay_Ploted() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls__Set__Time_Delay_Ploted()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -910,7 +910,7 @@ bool Dataset_Manager<T>::User_Controls(void)
                 if(this->User_Controls__Set__Maximum_Ploted_Example() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls__Set__Maximum_Ploted_Example()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -920,13 +920,13 @@ bool Dataset_Manager<T>::User_Controls(void)
             case 12u:
                 MyEA::Form::API__Form__Neural_Network__Chart_Total_Means(MyEA::String::Cin_Number<unsigned int>(1u,
                                                                                                                                                                              100'000u,
-                                                                                                                                                                             MyEA::String::Get__Time() + ": Chart total means: "));
+                                                                                                                                                                             MyEA::Time::Date_Time_Now() + ": Chart total means: "));
                     break;
             case 13u:
                 if(this->Plot__Dataset_Manager() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Plot__Dataset_Manager()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -936,7 +936,7 @@ bool Dataset_Manager<T>::User_Controls(void)
             case 14u: return(true);
             default:
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Cin_Number<unsigned int>(%u, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          0u,
                                          14u,
@@ -947,39 +947,39 @@ bool Dataset_Manager<T>::User_Controls(void)
 #elif defined(COMPILE_UINPUT)
     while(true)
     {
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s: User controls:" NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[0]: Optimization, processing parameters." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s: User controls:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[0]: Optimization, processing parameters." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         PRINT_FORMAT("%s:\t[1]: Change evaluation type (%s)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  MyEA::Common::ENUM_TYPE_DATASET_NAMES[this->_type_evaluation].c_str());
         PRINT_FORMAT("%s:\t[2]: Change metric comparison (%s)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->_use_metric_loss ? "Loss" : "Accuracy");
         PRINT_FORMAT("%s:\t[3]: Maximum example(s) (%zu)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->_maximum_examples);
         PRINT_FORMAT("%s:\t[4]: Desired optimization time between reports (%f seconds)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->_desired_optimization_time_between_reports);
         PRINT_FORMAT("%s:\t[5]: Minimum dataset out loss accepted (%f)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  Cast_T(this->_minimum_loss_holdout_accepted));
         PRINT_FORMAT("%s:\t[6]: Dataset in equal or less dataset out accepted (%s)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  this->_dataset_in_equal_less_holdout_accepted ? "true" : "false");
-        PRINT_FORMAT("%s:\t[7]: Hyperparameter optimization." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[8]: Quit." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s:\t[7]: Hyperparameter optimization." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[8]: Quit." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
         switch(MyEA::String::Cin_Number<unsigned int>(0u,
                                                                                 8u,
-                                                                                MyEA::String::Get__Time() + ": Option: "))
+                                                                                MyEA::Time::Date_Time_Now() + ": Option: "))
         {
             case 0u:
                 if(this->User_Controls__Optimization_Processing_Parameters() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls__Optimization_Processing_Parameters()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -990,7 +990,7 @@ bool Dataset_Manager<T>::User_Controls(void)
                 if(this->User_Controls__Type_Evaluation() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls__Type_Evaluation()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -1001,7 +1001,7 @@ bool Dataset_Manager<T>::User_Controls(void)
                 if(this->User_Controls__Type_Metric() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls__Type_Metric()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -1012,21 +1012,21 @@ bool Dataset_Manager<T>::User_Controls(void)
                 if(this->User_Controls__Set__Maximum_Data() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls__Set__Maximum_Data()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
                     return(false);
                 }
                     break;
-            case 4u: this->Set__Desired_Optimization_Time_Between_Reports(MyEA::String::Cin_Real_Number<double>(0.0, MyEA::String::Get__Time() + ": Desired optimization time between reports (seconds): ")); break;
-            case 5u: this->_minimum_loss_holdout_accepted = MyEA::String::Cin_Real_Number<T>(T(0), MyEA::String::Get__Time() + ": Minimum dataset out loss accepted: "); break;
-            case 6u: this->_dataset_in_equal_less_holdout_accepted = MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Dataset in equal or less dataset out accepted?"); break;
+            case 4u: this->Set__Desired_Optimization_Time_Between_Reports(MyEA::String::Cin_Real_Number<double>(0.0, MyEA::Time::Date_Time_Now() + ": Desired optimization time between reports (seconds): ")); break;
+            case 5u: this->_minimum_loss_holdout_accepted = MyEA::String::Cin_Real_Number<T>(T(0), MyEA::Time::Date_Time_Now() + ": Minimum dataset out loss accepted: "); break;
+            case 6u: this->_dataset_in_equal_less_holdout_accepted = MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Dataset in equal or less dataset out accepted?"); break;
             case 7u:
                 if(this->Hyperparameter_Optimization<T>::User_Controls() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Hyperparameter_Optimization<T>::User_Controls()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -1036,7 +1036,7 @@ bool Dataset_Manager<T>::User_Controls(void)
             case 8u: return(true);
             default:
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Cin_Number<unsigned int>(%u, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          0u,
                                          8u,
@@ -1052,18 +1052,18 @@ bool Dataset_Manager<T>::User_Controls(void)
 template<typename T>
 bool Dataset_Manager<T>::User_Controls__Set__Maximum_Data(void)
 {
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-    PRINT_FORMAT("%s: Maximum example(s)." NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    PRINT_FORMAT("%s: Maximum example(s)." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     PRINT_FORMAT("%s:\tdefault=%zu || 0." NEW_LINE,
-                             MyEA::String::Get__Time().c_str(),
+                             MyEA::Time::Date_Time_Now().c_str(),
                              this->p_number_examples);
     
     if(this->Set__Maximum_Data(MyEA::String::Cin_Number<size_t>(1_zu,
                                                                                                     this->p_number_examples,
-                                                                                                    MyEA::String::Get__Time() + ": Maximum example(s): ")) == false)
+                                                                                                    MyEA::Time::Date_Time_Now() + ": Maximum example(s): ")) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Maximum_Data()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1076,22 +1076,22 @@ bool Dataset_Manager<T>::User_Controls__Set__Maximum_Data(void)
 template<typename T>
 bool Dataset_Manager<T>::User_Controls__Type_Evaluation(void)
 {
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-    PRINT_FORMAT("%s: Type evaluation." NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    PRINT_FORMAT("%s: Type evaluation." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     for(unsigned int tmp_type_dataset_index(1u); tmp_type_dataset_index != MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_LENGTH; ++tmp_type_dataset_index)
     {
         PRINT_FORMAT("%s:\t[%u]: %s." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  tmp_type_dataset_index,
                                  MyEA::Common::ENUM_TYPE_DATASET_NAMES[static_cast<enum MyEA::Common::ENUM_TYPE_DATASET>(tmp_type_dataset_index)].c_str());
     }
     PRINT_FORMAT("%s:\tdefault=%s." NEW_LINE,
-                             MyEA::String::Get__Time().c_str(),
+                             MyEA::Time::Date_Time_Now().c_str(),
                              MyEA::Common::ENUM_TYPE_DATASET_NAMES[MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING].c_str());
     
     this->Set__Evaluation(static_cast<enum MyEA::Common::ENUM_TYPE_DATASET>(MyEA::String::Cin_Number<unsigned int>(1u,
                                                                                                                                                                                               MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_LENGTH - 1u,
-                                                                                                                                                                                              MyEA::String::Get__Time() + ": Type: ")));
+                                                                                                                                                                                              MyEA::Time::Date_Time_Now() + ": Type: ")));
     
     return(true);
 }
@@ -1099,11 +1099,11 @@ bool Dataset_Manager<T>::User_Controls__Type_Evaluation(void)
 template<typename T>
 bool Dataset_Manager<T>::User_Controls__Type_Metric(void)
 {
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-    PRINT_FORMAT("%s: Type metric." NEW_LINE, MyEA::String::Get__Time().c_str());
-    PRINT_FORMAT("%s:\tdefault=Loss." NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    PRINT_FORMAT("%s: Type metric." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    PRINT_FORMAT("%s:\tdefault=Loss." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     
-    this->_use_metric_loss = MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": (Yes=Loss, No=Accuracy): ");
+    this->_use_metric_loss = MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": (Yes=Loss, No=Accuracy): ");
     
     return(true);
 }
@@ -1118,7 +1118,7 @@ bool Dataset_Manager<T>::User_Controls__Optimization_Processing_Parameters(void)
             if(this->User_Controls__Optimization_Processing_Parameters__Batch() == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls__Optimization_Processing_Parameters__Batch()\" function. At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             __LINE__);
 
@@ -1129,7 +1129,7 @@ bool Dataset_Manager<T>::User_Controls__Optimization_Processing_Parameters(void)
             if(this->User_Controls__Optimization_Processing_Parameters__Mini_Batch() == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls__Optimization_Processing_Parameters__Mini_Batch()\" function. At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             __LINE__);
 
@@ -1140,7 +1140,7 @@ bool Dataset_Manager<T>::User_Controls__Optimization_Processing_Parameters(void)
             if(this->User_Controls__Optimization_Processing_Parameters__Cross_Validation() == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls__Optimization_Processing_Parameters__Cross_Validation()\" function. At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             __LINE__);
 
@@ -1151,7 +1151,7 @@ bool Dataset_Manager<T>::User_Controls__Optimization_Processing_Parameters(void)
             if(this->User_Controls__Optimization_Processing_Parameters__Cross_Validation__Gaussian_Search() == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls__Optimization_Processing_Parameters__Cross_Validation__Gaussian_Search()\" function. At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             __LINE__);
 
@@ -1160,7 +1160,7 @@ bool Dataset_Manager<T>::User_Controls__Optimization_Processing_Parameters(void)
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Dataset process type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)->Get__Type_Dataset_Process(),
                                      MyEA::Common::ENUM_TYPE_DATASET_PROCESS_NAMES[this->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)->Get__Type_Dataset_Process()].c_str(),
@@ -1178,20 +1178,20 @@ bool Dataset_Manager<T>::User_Controls__Optimization_Processing_Parameters__Batc
 #if defined(COMPILE_UINPUT)
     while(true)
     {
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         PRINT_FORMAT("%s: User controls, %s:" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  MyEA::Common::ENUM_TYPE_DATASET_PROCESS_NAMES[MyEA::Common::ENUM_TYPE_DATASET_PROCESS::TYPE_DATASET_PROCESS_BATCH].c_str());
-        PRINT_FORMAT("%s:\t[0]: Quit." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s:\t[0]: Quit." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
         switch(MyEA::String::Cin_Number<unsigned int>(0u,
                                                                                 0u,
-                                                                                MyEA::String::Get__Time() + ": Option: "))
+                                                                                MyEA::Time::Date_Time_Now() + ": Option: "))
         {
             case 0u: return(true);
             default:
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Cin_Number<unsigned int>(%u, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          0u,
                                          0u,
@@ -1212,31 +1212,31 @@ bool Dataset_Manager<T>::User_Controls__Optimization_Processing_Parameters__Mini
 
     while(true)
     {
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         PRINT_FORMAT("%s: User controls, %s:" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  MyEA::Common::ENUM_TYPE_DATASET_PROCESS_NAMES[MyEA::Common::ENUM_TYPE_DATASET_PROCESS::TYPE_DATASET_PROCESS_MINI_BATCH].c_str());
         PRINT_FORMAT("%s:\t[0]: Modify number of mini-batch (%zu)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  tmp_ptr_Dataset_Mini_Batch->Get__Number_Batch());
         PRINT_FORMAT("%s:\t[1]: Use shuffle (%s)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  tmp_ptr_Dataset_Mini_Batch->Get__Use__Shuffle() ? "true" : "false");
-        PRINT_FORMAT("%s:\t[2]: Quit." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s:\t[2]: Quit." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         
         switch(MyEA::String::Cin_Number<unsigned int>(0u,
                                                                                 2u,
-                                                                                MyEA::String::Get__Time() + ": Option: "))
+                                                                                MyEA::Time::Date_Time_Now() + ": Option: "))
         {
             case 0u:
-                PRINT_FORMAT("%s: Desired-examples per batch:" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s:\tRange[1, %zu]." NEW_LINE, MyEA::String::Get__Time().c_str(), tmp_ptr_Dataset_Mini_Batch->Dataset<T>::Get__Number_Examples());
+                PRINT_FORMAT("%s: Desired-examples per batch:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s:\tRange[1, %zu]." NEW_LINE, MyEA::Time::Date_Time_Now().c_str(), tmp_ptr_Dataset_Mini_Batch->Dataset<T>::Get__Number_Examples());
                 if(tmp_ptr_Dataset_Mini_Batch->Set__Desired_Data_Per_Batch(MyEA::String::Cin_Number<size_t>(1_zu,
                                                                                                                                                                    tmp_ptr_Dataset_Mini_Batch->Dataset<T>::Get__Number_Examples(),
-                                                                                                                                                                   MyEA::String::Get__Time() + ": Desired-examples per batch: ")) == false)
+                                                                                                                                                                   MyEA::Time::Date_Time_Now() + ": Desired-examples per batch: ")) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Desired_Data_Per_Batch()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -1244,14 +1244,14 @@ bool Dataset_Manager<T>::User_Controls__Optimization_Processing_Parameters__Mini
                 }
                     break;
             case 1u:
-                PRINT_FORMAT("%s: Shuffle:" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s:\tdefault=Yes." NEW_LINE, MyEA::String::Get__Time().c_str());
-                tmp_ptr_Dataset_Mini_Batch->Set__Use__Shuffle(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Use shuffle: "));
+                PRINT_FORMAT("%s: Shuffle:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s:\tdefault=Yes." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                tmp_ptr_Dataset_Mini_Batch->Set__Use__Shuffle(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Use shuffle: "));
                     break;
             case 2u: return(true);
             default:
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Cin_Number<unsigned int>(%u, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          0u,
                                          2u,
@@ -1276,51 +1276,51 @@ bool Dataset_Manager<T>::User_Controls__Optimization_Processing_Parameters__Cros
 
     while(true)
     {
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         PRINT_FORMAT("%s: User controls, %s:" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  MyEA::Common::ENUM_TYPE_DATASET_PROCESS_NAMES[MyEA::Common::ENUM_TYPE_DATASET_PROCESS::TYPE_DATASET_PROCESS_CROSS_VALIDATION].c_str());
         PRINT_FORMAT("%s:\t[0]: Modify number of K-Fold (%zu, %zu)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  tmp_ptr_Dataset_Cross_Validation->Get__Number_Batch(),
                                  tmp_ptr_Dataset_Cross_Validation->Get__Number_Sub_Batch());
         PRINT_FORMAT("%s:\t[1]: Use shuffle (%s)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  tmp_ptr_Dataset_Cross_Validation->Get__Use__Shuffle() ? "true" : "false");
-        PRINT_FORMAT("%s:\t[2]: Quit." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s:\t[2]: Quit." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         
         switch(MyEA::String::Cin_Number<unsigned int>(0u,
                                                                                 2u,
-                                                                                MyEA::String::Get__Time() + ": Option: "))
+                                                                                MyEA::Time::Date_Time_Now() + ": Option: "))
         {
             case 0u:
                 // K-fold.
-                PRINT_FORMAT("%s: K-fold:" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s:\tRange[2, %zu]." NEW_LINE, MyEA::String::Get__Time().c_str(), tmp_ptr_Dataset_Cross_Validation->Dataset<T>::Get__Number_Examples());
+                PRINT_FORMAT("%s: K-fold:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s:\tRange[2, %zu]." NEW_LINE, MyEA::Time::Date_Time_Now().c_str(), tmp_ptr_Dataset_Cross_Validation->Dataset<T>::Get__Number_Examples());
                 tmp_number_k_folds = MyEA::String::Cin_Number<size_t>(2_zu,
                                                                                                        tmp_ptr_Dataset_Cross_Validation->Dataset<T>::Get__Number_Examples(),
-                                                                                                       MyEA::String::Get__Time() + ": K-fold: ");
+                                                                                                       MyEA::Time::Date_Time_Now() + ": K-fold: ");
                 // |END| K-fold. |END|
                 
                 // K-sub-fold.
                 tmp_number_examples_training = (tmp_number_k_folds - 1_zu) * (tmp_ptr_Dataset_Cross_Validation->Dataset<T>::Get__Number_Examples() / tmp_number_k_folds);
 
-                PRINT_FORMAT("%s: K-sub-fold:" NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s: K-sub-fold:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 PRINT_FORMAT("%s:\tRange[0, %zu]." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          tmp_number_examples_training);
                 PRINT_FORMAT("%s:\tdefault=%zu." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          tmp_number_k_folds - 1_zu);
                 tmp_number_k_sub_folds = MyEA::String::Cin_Number<size_t>(0_zu,
                                                                                                               tmp_number_examples_training,
-                                                                                                              MyEA::String::Get__Time() + ": K-sub-fold: ");
+                                                                                                              MyEA::Time::Date_Time_Now() + ": K-sub-fold: ");
                 // |END| K-sub-fold. |END|
 
                 if(tmp_ptr_Dataset_Cross_Validation->Set__Desired_K_Fold(tmp_number_k_folds, tmp_number_k_sub_folds) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Desired_Data_Per_Batch(%zu, %zu)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_number_k_folds,
                                              tmp_number_k_sub_folds,
@@ -1330,14 +1330,14 @@ bool Dataset_Manager<T>::User_Controls__Optimization_Processing_Parameters__Cros
                 }
                     break;
             case 1u:
-                PRINT_FORMAT("%s: Shuffle:" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s:\tdefault=Yes." NEW_LINE, MyEA::String::Get__Time().c_str());
-                tmp_ptr_Dataset_Cross_Validation->Set__Use__Shuffle(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Use shuffle: "));
+                PRINT_FORMAT("%s: Shuffle:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s:\tdefault=Yes." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                tmp_ptr_Dataset_Cross_Validation->Set__Use__Shuffle(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Use shuffle: "));
                     break;
             case 2u: return(true);
             default:
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Cin_Number<unsigned int>(%u, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          0u,
                                          2u,
@@ -1362,52 +1362,52 @@ bool Dataset_Manager<T>::User_Controls__Optimization_Processing_Parameters__Cros
 
     while(true)
     {
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         PRINT_FORMAT("%s: User controls, %s:" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  MyEA::Common::ENUM_TYPE_DATASET_PROCESS_NAMES[MyEA::Common::ENUM_TYPE_DATASET_PROCESS::TYPE_DATASET_PROCESS_CROSS_VALIDATION].c_str());
         PRINT_FORMAT("%s:\t[0]: Modify number of K-Fold (%zu, %zu)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  tmp_ptr_Dataset_Cross_Validation_Hyperparameter_Optimization->Get__Number_Batch(),
                                  tmp_ptr_Dataset_Cross_Validation_Hyperparameter_Optimization->Get__Number_Sub_Batch());
         PRINT_FORMAT("%s:\t[1]: Use shuffle (%s)." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  tmp_ptr_Dataset_Cross_Validation_Hyperparameter_Optimization->Get__Use__Shuffle() ? "true" : "false");
-        PRINT_FORMAT("%s:\t[2]: Hyperparameter optimization." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[3]: Quit." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s:\t[2]: Hyperparameter optimization." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[3]: Quit." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         
         switch(MyEA::String::Cin_Number<unsigned int>(0u,
                                                                                 3u,
-                                                                                MyEA::String::Get__Time() + ": Option: "))
+                                                                                MyEA::Time::Date_Time_Now() + ": Option: "))
         {
             case 0u:
                 // K-fold.
-                PRINT_FORMAT("%s: K-fold:" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s:\tRange[2, %zu]." NEW_LINE, MyEA::String::Get__Time().c_str(), tmp_ptr_Dataset_Cross_Validation_Hyperparameter_Optimization->Dataset<T>::Get__Number_Examples());
+                PRINT_FORMAT("%s: K-fold:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s:\tRange[2, %zu]." NEW_LINE, MyEA::Time::Date_Time_Now().c_str(), tmp_ptr_Dataset_Cross_Validation_Hyperparameter_Optimization->Dataset<T>::Get__Number_Examples());
                 tmp_number_k_folds = MyEA::String::Cin_Number<size_t>(2_zu,
                                                                                                        tmp_ptr_Dataset_Cross_Validation_Hyperparameter_Optimization->Dataset<T>::Get__Number_Examples(),
-                                                                                                       MyEA::String::Get__Time() + ": K-fold: ");
+                                                                                                       MyEA::Time::Date_Time_Now() + ": K-fold: ");
                 // |END| K-fold. |END|
                 
                 // K-sub-fold.
                 tmp_number_examples_training = (tmp_number_k_folds - 1_zu) * (tmp_ptr_Dataset_Cross_Validation_Hyperparameter_Optimization->Dataset<T>::Get__Number_Examples() / tmp_number_k_folds);
 
-                PRINT_FORMAT("%s: K-sub-fold:" NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s: K-sub-fold:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 PRINT_FORMAT("%s:\tRange[0, %zu]." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          tmp_number_examples_training);
                 PRINT_FORMAT("%s:\tdefault=%zu." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          tmp_number_k_folds - 1_zu);
                 tmp_number_k_sub_folds = MyEA::String::Cin_Number<size_t>(0_zu,
                                                                                                               tmp_number_examples_training,
-                                                                                                              MyEA::String::Get__Time() + ": K-sub-fold: ");
+                                                                                                              MyEA::Time::Date_Time_Now() + ": K-sub-fold: ");
                 // |END| K-sub-fold. |END|
 
                 if(tmp_ptr_Dataset_Cross_Validation_Hyperparameter_Optimization->Set__Desired_K_Fold(tmp_number_k_folds, tmp_number_k_sub_folds) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Desired_Data_Per_Batch(%zu, %zu)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_number_k_folds,
                                              tmp_number_k_sub_folds,
@@ -1417,15 +1417,15 @@ bool Dataset_Manager<T>::User_Controls__Optimization_Processing_Parameters__Cros
                 }
                     break;
             case 1u:
-                PRINT_FORMAT("%s: Shuffle:" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s:\tdefault=Yes." NEW_LINE, MyEA::String::Get__Time().c_str());
-                tmp_ptr_Dataset_Cross_Validation_Hyperparameter_Optimization->Set__Use__Shuffle(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Use shuffle: "));
+                PRINT_FORMAT("%s: Shuffle:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s:\tdefault=Yes." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                tmp_ptr_Dataset_Cross_Validation_Hyperparameter_Optimization->Set__Use__Shuffle(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Use shuffle: "));
                     break;
             case 2u:
                 if(tmp_ptr_Dataset_Cross_Validation_Hyperparameter_Optimization->User_Controls() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls__Push_Back()\" function. At line %d." NEW_LINE,
-                                                MyEA::String::Get__Time().c_str(),
+                                                MyEA::Time::Date_Time_Now().c_str(),
                                                 __FUNCTION__,
                                                 __LINE__);
 
@@ -1435,7 +1435,7 @@ bool Dataset_Manager<T>::User_Controls__Optimization_Processing_Parameters__Cros
             case 3u: return(true);
             default:
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Cin_Number<unsigned int>(%u, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          0u,
                                          3u,
@@ -1459,23 +1459,23 @@ bool Dataset_Manager<T>::User_Controls__Optimization(class Neural_Network *&ptr_
 
     while(true)
     {
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s: User controls, optimization:" NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[0]: Trainer controls." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[1]: Trained controls." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[2]: Transfer learning." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[3]: Dataset controls." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[4]: Quit." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s: User controls, optimization:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[0]: Trainer controls." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[1]: Trained controls." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[2]: Transfer learning." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[3]: Dataset controls." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[4]: Quit." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
         switch(MyEA::String::Cin_Number<unsigned int>(0u,
                                                                                 4u,
-                                                                                MyEA::String::Get__Time() + ": Option: "))
+                                                                                MyEA::Time::Date_Time_Now() + ": Option: "))
         {
             case 0u:
                 if(ptr_trainer_Neural_Network_received->User_Controls() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -1486,7 +1486,7 @@ bool Dataset_Manager<T>::User_Controls__Optimization(class Neural_Network *&ptr_
                 if(ptr_trained_Neural_Network_received->User_Controls() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -1494,24 +1494,24 @@ bool Dataset_Manager<T>::User_Controls__Optimization(class Neural_Network *&ptr_
                 }
                     break;
             case 2u:
-                if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Transfer to trained: "))
+                if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Transfer to trained: "))
                 {
                     if(ptr_trained_Neural_Network_received->Update(*ptr_trainer_Neural_Network_received, true) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update(ptr, true)\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
 
                         return(false);
                     }
                 }
-                else if(MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Transfer to trainer: "))
+                else if(MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Transfer to trainer: "))
                 {
                     if(ptr_trainer_Neural_Network_received->Update(*ptr_trained_Neural_Network_received, true) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update(ptr, true)\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
 
@@ -1523,7 +1523,7 @@ bool Dataset_Manager<T>::User_Controls__Optimization(class Neural_Network *&ptr_
                 if(this->User_Controls() == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -1540,7 +1540,7 @@ bool Dataset_Manager<T>::User_Controls__Optimization(class Neural_Network *&ptr_
                   this->Plot__Neural_Network(ptr_trained_Neural_Network_received) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Plot__Neural_Network(ptr)\" function. At line %d." NEW_LINE,
-                                                MyEA::String::Get__Time().c_str(),
+                                                MyEA::Time::Date_Time_Now().c_str(),
                                                 __FUNCTION__,
                                                 __LINE__);
 
@@ -1550,7 +1550,7 @@ bool Dataset_Manager<T>::User_Controls__Optimization(class Neural_Network *&ptr_
                     return(true);
             default:
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Cin_Number<unsigned int>(%u, %u)\" function. At line %d." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             0u,
                                             4u,
@@ -1564,21 +1564,21 @@ bool Dataset_Manager<T>::User_Controls__Optimization(class Neural_Network *&ptr_
 }
 
 template<typename T>
-bool Dataset_Manager<T>::Assign_Shutdown_Block(class Shutdown_Block &ref_Shutdown_Block_received)
+bool Dataset_Manager<T>::Assign_Shutdown_Block(class MyEA::Capturing::Shutdown &shutdown_module)
 {
     if(this->Allocate__Shutdown_Boolean() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Shutdown_Boolean()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
                 
         return(false);
     }
-    else if(ref_Shutdown_Block_received.Push_Back(this->_ptr_shutdown_boolean) == false)
+    else if(shutdown_module.Push_Back(this->_ptr_shutdown_boolean) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Push_Back(ptr)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1645,13 +1645,13 @@ void Dataset_Manager<T>::Optimization(struct MyEA::Common::While_Condition const
 #endif
 
 #if defined(COMPILE_UINPUT)
-    class Key_Logger tmp_Key_Logger;
+    class MyEA::Capturing::Keyboard keyboard;
 #endif
 
     // Check if we reach the desired error.
     if(ptr_trained_Neural_Network_received->Get__Loss(this->_type_evaluation) > desired_loss_received)
     {
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
         tmp_time_start_report = std::chrono::high_resolution_clock::now();
 
@@ -1667,7 +1667,7 @@ void Dataset_Manager<T>::Optimization(struct MyEA::Common::While_Condition const
                 if(this->Plot__Neural_Network(ptr_trained_Neural_Network_received) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Plot__Neural_Network(ptr)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
                 }
@@ -1678,7 +1678,7 @@ void Dataset_Manager<T>::Optimization(struct MyEA::Common::While_Condition const
                     if(ref_path_net_trained_neural_network_received.empty() == false && ptr_trained_Neural_Network_received->Save_Dimension_Parameters(ref_path_net_trained_neural_network_received) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Save_Dimension_Parameters(%s)\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  ref_path_net_trained_neural_network_received.c_str(),
                                                  __LINE__);
@@ -1687,7 +1687,7 @@ void Dataset_Manager<T>::Optimization(struct MyEA::Common::While_Condition const
                     if(ref_path_nn_trained_neural_network_received.empty() == false && ptr_trained_Neural_Network_received->Save_General_Parameters(ref_path_nn_trained_neural_network_received) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Save_General_Parameters(%s)\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  ref_path_nn_trained_neural_network_received.c_str(),
                                                  __LINE__);
@@ -1700,7 +1700,7 @@ void Dataset_Manager<T>::Optimization(struct MyEA::Common::While_Condition const
         #if defined(COMPILE_UI)
             if(MyEA::Form::API__Form__Neural_Network__Get_Signal_Training_Stop())
             {
-                PRINT_FORMAT("%s: A signal for stopping the training has been triggered from the user interface." NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s: A signal for stopping the training has been triggered from the user interface." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 
                 std::this_thread::sleep_for(std::chrono::seconds(1));
 
@@ -1712,7 +1712,7 @@ void Dataset_Manager<T>::Optimization(struct MyEA::Common::While_Condition const
                 if(this->User_Controls__Optimization(ptr_trainer_Neural_Network_received, ptr_trained_Neural_Network_received) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls__Optimization(ptr, ptr)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
                 }
@@ -1723,22 +1723,22 @@ void Dataset_Manager<T>::Optimization(struct MyEA::Common::While_Condition const
 
         #if defined(COMPILE_UINPUT)
             #if defined(COMPILE_WINDOWS)
-                if(tmp_Key_Logger.Trigger_Key(0x51))
+                if(keyboard.Trigger_Key(0x51))
                 {
-                    PRINT_FORMAT("%s: A signal for stopping the training has been triggered from the user input." NEW_LINE, MyEA::String::Get__Time().c_str());
+                    PRINT_FORMAT("%s: A signal for stopping the training has been triggered from the user input." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                     
                     std::this_thread::sleep_for(std::chrono::seconds(1));
 
                     break;
                 }
             #elif defined(COMPILE_LINUX)
-                tmp_Key_Logger.Collect_Keys_Pressed();
+                keyboard.Collect_Keys_Pressed();
 
-                if(tmp_Key_Logger.Trigger_Key('q'))
+                if(keyboard.Trigger_Key('q'))
                 {
-                    PRINT_FORMAT("%s: A signal for stopping the training has been triggered from the user input." NEW_LINE, MyEA::String::Get__Time().c_str());
+                    PRINT_FORMAT("%s: A signal for stopping the training has been triggered from the user input." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
-                    tmp_Key_Logger.Clear_Keys_Pressed();
+                    keyboard.Clear_Keys_Pressed();
                     
                     std::this_thread::sleep_for(std::chrono::seconds(1));
 
@@ -1749,25 +1749,25 @@ void Dataset_Manager<T>::Optimization(struct MyEA::Common::While_Condition const
             if(tmp_report)
             {
             #if defined(COMPILE_WINDOWS)
-                if(tmp_Key_Logger.Trigger_Key(0x4D))
+                if(keyboard.Trigger_Key(0x4D))
                 {
                     if(this->User_Controls__Optimization(ptr_trainer_Neural_Network_received, ptr_trained_Neural_Network_received) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls__Optimization(ptr, ptr)\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
                     }
                 }
             #elif defined(COMPILE_LINUX)
-                if(tmp_Key_Logger.Trigger_Key('m'))
+                if(keyboard.Trigger_Key('m'))
                 {
-                    tmp_Key_Logger.Clear_Keys_Pressed();
+                    keyboard.Clear_Keys_Pressed();
 
                     if(this->User_Controls__Optimization(ptr_trainer_Neural_Network_received, ptr_trained_Neural_Network_received) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls__Optimization(ptr, ptr)\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  __LINE__);
                     }
@@ -1780,14 +1780,14 @@ void Dataset_Manager<T>::Optimization(struct MyEA::Common::While_Condition const
         #if defined(COMPILE_COUT)
             if(tmp_report)
             {
-                PRINT_FORMAT("%s: #=========================================================#" NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s: #=========================================================#" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 PRINT_FORMAT("%s: Number of epochs between reports: %llu" NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          tmp_number_epochs_between_report);
 
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 PRINT_FORMAT("%s: [TRAINER]: Train on %zu example(s) from the training set." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          this->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)->Dataset<T>::Get__Number_Examples());
                 
                 tmp_time_start = std::chrono::high_resolution_clock::now();
@@ -1807,11 +1807,11 @@ void Dataset_Manager<T>::Optimization(struct MyEA::Common::While_Condition const
                 tmp_time_end = std::chrono::high_resolution_clock::now();
 
                 PRINT_FORMAT("%s: [TRAINER]: %.1f example(s) per second." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count() == 0ll ? 0.0 : static_cast<double>(this->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)->Dataset<T>::Get__Number_Examples()) / (static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count())  / 1e9));
     
                 PRINT_FORMAT("%s: [TRAINER]: Validate on %zu example(s) from the validation set." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          this->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)->Dataset<T>::Get__Number_Examples());
                 
                 tmp_time_start = std::chrono::high_resolution_clock::now();
@@ -1826,7 +1826,7 @@ void Dataset_Manager<T>::Optimization(struct MyEA::Common::While_Condition const
                 tmp_time_end = std::chrono::high_resolution_clock::now();
 
                 PRINT_FORMAT("%s: [TRAINER]: %.1f example(s) per second." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count() == 0ll ? 0.0 : static_cast<double>(this->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)->Dataset<T>::Get__Number_Examples()) / (static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end - tmp_time_start).count())  / 1e9));
             }
         #endif
@@ -1844,7 +1844,7 @@ void Dataset_Manager<T>::Optimization(struct MyEA::Common::While_Condition const
                     if(ref_path_net_trainer_neural_network_received.empty() == false && ptr_trainer_Neural_Network_received->Save_Dimension_Parameters(ref_path_net_trainer_neural_network_received) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Save_Dimension_Parameters(%s)\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  ref_path_net_trainer_neural_network_received.c_str(),
                                                  __LINE__);
@@ -1853,7 +1853,7 @@ void Dataset_Manager<T>::Optimization(struct MyEA::Common::While_Condition const
                     if(ref_path_nn_trainer_neural_network_received.empty() == false && ptr_trainer_Neural_Network_received->Save_General_Parameters(ref_path_nn_trainer_neural_network_received) == false)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Save_General_Parameters(%s)\" function. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  ref_path_nn_trainer_neural_network_received.c_str(),
                                                  __LINE__);
@@ -1900,7 +1900,7 @@ void Dataset_Manager<T>::Optimization(struct MyEA::Common::While_Condition const
                 if(ptr_trained_Neural_Network_received->Update(*ptr_trainer_Neural_Network_received, true) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update(ptr, true)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
                 }
@@ -1911,53 +1911,53 @@ void Dataset_Manager<T>::Optimization(struct MyEA::Common::While_Condition const
             if(tmp_report)
             {
             #if defined(COMPILE_COUT)
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 PRINT_FORMAT("%s: Epochs %llu end." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          tmp_total_epoch);
-                PRINT_FORMAT("%s: Loss at:" NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s: Loss at:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 PRINT_FORMAT("%s: [TRAINER]: Training:   %.9f" NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          Cast_T(ptr_trainer_Neural_Network_received->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)));
                 PRINT_FORMAT("%s: [TRAINED]: Training:   %.9f" NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          Cast_T(ptr_trained_Neural_Network_received->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)));
                 PRINT_FORMAT("%s: [TRAINER]: Validating: %.9f" NEW_LINE, 
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          Cast_T(ptr_trainer_Neural_Network_received->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)));
                 PRINT_FORMAT("%s: [TRAINED]: Validating: %.9f" NEW_LINE, 
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          Cast_T(ptr_trained_Neural_Network_received->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)));
                 PRINT_FORMAT("%s: [TRAINER]: Testing:    %.9f" NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          Cast_T(ptr_trainer_Neural_Network_received->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)));
                 PRINT_FORMAT("%s: [TRAINED]: Testing:    %.9f" NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          Cast_T(ptr_trained_Neural_Network_received->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)));
                 PRINT_FORMAT("%s: Desired loss:          %.9f" NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          Cast_T(desired_loss_received));
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s: Accuracy at:" NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s: Accuracy at:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 PRINT_FORMAT("%s: [TRAINER]: Training:   %.5f" NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          Cast_T(ptr_trainer_Neural_Network_received->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)));
                 PRINT_FORMAT("%s: [TRAINED]: Training:   %.5f" NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          Cast_T(ptr_trained_Neural_Network_received->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)));
                 PRINT_FORMAT("%s: [TRAINER]: Validating: %.5f" NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          Cast_T(ptr_trainer_Neural_Network_received->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)));
                 PRINT_FORMAT("%s: [TRAINED]: Validating: %.5f" NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          Cast_T(ptr_trained_Neural_Network_received->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)));
                 PRINT_FORMAT("%s: [TRAINER]: Testing:    %.5f" NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          Cast_T(ptr_trainer_Neural_Network_received->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)));
                 PRINT_FORMAT("%s: [TRAINED]: Testing:    %.5f" NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          Cast_T(ptr_trained_Neural_Network_received->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)));
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
             #endif
 
             #if defined(COMPILE_UI)
@@ -2073,8 +2073,8 @@ void Dataset_Manager<T>::Optimization(struct MyEA::Common::While_Condition const
             // Check if we reach the desired error.
             if(ptr_trained_Neural_Network_received->Get__Loss(this->_type_evaluation) <= desired_loss_received)
             {
-                PRINT_FORMAT("%s: Desired error reach." NEW_LINE, MyEA::String::Get__Time().c_str());
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s: Desired error reach." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
                 break;
             }
@@ -2091,9 +2091,9 @@ void Dataset_Manager<T>::Optimization(struct MyEA::Common::While_Condition const
                 tmp_time_end_report = std::chrono::high_resolution_clock::now();
 
                 PRINT_FORMAT("%s: Total time performance: %s" NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
-                                         MyEA::String::Get__Time_Elapse(static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end_report - tmp_time_start_report).count()) / 1e+9).c_str());
-                PRINT_FORMAT("%s:" NEW_LINE, MyEA::String::Get__Time().c_str());
+                                         MyEA::Time::Date_Time_Now().c_str(),
+                                         MyEA::Time::Time_Elapsed_Format(static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(tmp_time_end_report - tmp_time_start_report).count()) / 1e+9).c_str());
+                PRINT_FORMAT("%s:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 
                 switch(ref_while_condition_received.type_while_condition)
                 {
@@ -2131,7 +2131,7 @@ void Dataset_Manager<T>::Optimization(struct MyEA::Common::While_Condition const
                 case MyEA::Common::ENUM_TYPE_WHILE_CONDITION::TYPE_WHILE_CONDITION_ITERATION: tmp_while = tmp_total_epoch < ref_while_condition_received.maximum_iterations; break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: While condition type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              ref_while_condition_received.type_while_condition,
                                              MyEA::Common::ENUM_TYPE_WHILE_CONDITION_NAMES[ref_while_condition_received.type_while_condition].c_str(),
@@ -2151,7 +2151,7 @@ void Dataset_Manager<T>::Optimization(struct MyEA::Common::While_Condition const
             if(this->Plot__Neural_Network(ptr_trained_Neural_Network_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Plot__Neural_Network(ptr)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
             }
@@ -2162,7 +2162,7 @@ void Dataset_Manager<T>::Optimization(struct MyEA::Common::While_Condition const
                 if(ref_path_net_trained_neural_network_received.empty() == false && ptr_trained_Neural_Network_received->Save_Dimension_Parameters(ref_path_net_trained_neural_network_received) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Save_Dimension_Parameters(%s)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              ref_path_net_trained_neural_network_received.c_str(),
                                              __LINE__);
@@ -2171,7 +2171,7 @@ void Dataset_Manager<T>::Optimization(struct MyEA::Common::While_Condition const
                 if(ref_path_nn_trained_neural_network_received.empty() == false && ptr_trained_Neural_Network_received->Save_General_Parameters(ref_path_nn_trained_neural_network_received) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Save_General_Parameters(%s)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              ref_path_nn_trained_neural_network_received.c_str(),
                                              __LINE__);
@@ -2180,51 +2180,51 @@ void Dataset_Manager<T>::Optimization(struct MyEA::Common::While_Condition const
         }
 
     #if defined(COMPILE_COUT)
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s: Epochs %llu end." NEW_LINE, MyEA::String::Get__Time().c_str(), tmp_total_epoch);
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s: Epochs %llu end." NEW_LINE, MyEA::Time::Date_Time_Now().c_str(), tmp_total_epoch);
         PRINT_FORMAT("%s: [TRAINER]: Training:   %.9f" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  Cast_T(ptr_trainer_Neural_Network_received->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)));
         PRINT_FORMAT("%s: [TRAINED]: Training:   %.9f" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  Cast_T(ptr_trained_Neural_Network_received->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)));
         PRINT_FORMAT("%s: [TRAINER]: Validating: %.9f" NEW_LINE, 
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  Cast_T(ptr_trainer_Neural_Network_received->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)));
         PRINT_FORMAT("%s: [TRAINED]: Validating: %.9f" NEW_LINE, 
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  Cast_T(ptr_trained_Neural_Network_received->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)));
         PRINT_FORMAT("%s: [TRAINER]: Testing:    %.9f" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  Cast_T(ptr_trainer_Neural_Network_received->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)));
         PRINT_FORMAT("%s: [TRAINED]: Testing:    %.9f" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  Cast_T(ptr_trained_Neural_Network_received->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)));
         PRINT_FORMAT("%s: Desired loss:          %.9f" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  Cast_T(desired_loss_received));
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s: Accuracy at:" NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s: Accuracy at:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         PRINT_FORMAT("%s: [TRAINER]: Training:   %.5f" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  Cast_T(ptr_trainer_Neural_Network_received->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)));
         PRINT_FORMAT("%s: [TRAINED]: Training:   %.5f" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  Cast_T(ptr_trained_Neural_Network_received->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)));
         PRINT_FORMAT("%s: [TRAINER]: Validating: %.5f" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  Cast_T(ptr_trainer_Neural_Network_received->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)));
         PRINT_FORMAT("%s: [TRAINED]: Validating: %.5f" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  Cast_T(ptr_trained_Neural_Network_received->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)));
         PRINT_FORMAT("%s: [TRAINER]: Testing:    %.5f" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  Cast_T(ptr_trainer_Neural_Network_received->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)));
         PRINT_FORMAT("%s: [TRAINED]: Testing:    %.5f" NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  Cast_T(ptr_trained_Neural_Network_received->Get__Accuracy(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)));
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s: #=========================================================#" NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s: #=========================================================#" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     #endif
 
     #if defined(COMPILE_UI)
@@ -2362,7 +2362,7 @@ void Dataset_Manager<T>::Optimization__Testing(bool const report_received, class
     if(report_received)
     {
         PRINT_FORMAT("%s: [TRAINER]: Testing on %zu example(s) from the testing set." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     this->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)->Dataset<T>::Get__Number_Examples());
         
         ref_time_start_received = std::chrono::high_resolution_clock::now();
@@ -2381,7 +2381,7 @@ void Dataset_Manager<T>::Optimization__Testing(bool const report_received, class
         ref_time_end_received = std::chrono::high_resolution_clock::now();
 
         PRINT_FORMAT("%s: [TRAINER]: %.1f example(s) per second." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     std::chrono::duration_cast<std::chrono::nanoseconds>(ref_time_end_received - ref_time_start_received).count() == 0ll ? 0.0 : static_cast<double>(this->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)->Dataset<T>::Get__Number_Examples()) / (static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(ref_time_end_received - ref_time_start_received).count())  / 1e9));
     }
 #endif
@@ -2408,7 +2408,7 @@ void Dataset_Manager<T>::Deallocate__Storage(void)
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Dataset storage type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              this->_type_storage_data,
                                              MyEA::Common::ENUM_TYPE_DATASET_MANAGER_STORAGE_NAMES[this->_type_storage_data].c_str(),
@@ -2449,7 +2449,7 @@ bool Dataset_Manager<T>::Initialize__CUDA(void)
         if(this->_ptr_CUDA_Dataset_Manager->Initialize() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -2464,7 +2464,7 @@ bool Dataset_Manager<T>::Initialize__CUDA(void)
                 if(this->Initialize_Dataset_CUDA(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize_Dataset_CUDA(%u)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING,
                                              __LINE__);
@@ -2476,7 +2476,7 @@ bool Dataset_Manager<T>::Initialize__CUDA(void)
                 if(this->Initialize_Dataset_CUDA(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize_Dataset_CUDA(%u)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING,
                                              __LINE__);
@@ -2487,7 +2487,7 @@ bool Dataset_Manager<T>::Initialize__CUDA(void)
                 if(this->Initialize_Dataset_CUDA(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize_Dataset_CUDA(%u)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING,
                                              __LINE__);
@@ -2499,7 +2499,7 @@ bool Dataset_Manager<T>::Initialize__CUDA(void)
                 if(this->Initialize_Dataset_CUDA(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize_Dataset_CUDA(%u)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING,
                                              __LINE__);
@@ -2510,7 +2510,7 @@ bool Dataset_Manager<T>::Initialize__CUDA(void)
                 if(this->Initialize_Dataset_CUDA(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize_Dataset_CUDA(%u)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION,
                                              __LINE__);
@@ -2521,7 +2521,7 @@ bool Dataset_Manager<T>::Initialize__CUDA(void)
                 if(this->Initialize_Dataset_CUDA(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize_Dataset_CUDA(%u)\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING,
                                              __LINE__);
@@ -2531,7 +2531,7 @@ bool Dataset_Manager<T>::Initialize__CUDA(void)
                     break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Dataset manager type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          this->_type_storage_data,
                                          MyEA::Common::ENUM_TYPE_DATASET_MANAGER_STORAGE_NAMES[this->_type_storage_data].c_str(),
@@ -2564,7 +2564,7 @@ bool Dataset_Manager<T>::Allocate__Shutdown_Boolean(void)
     if(tmp_ptr_shutdown_boolean == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  sizeof(std::atomic<bool>),
                                  __LINE__);
@@ -2595,7 +2595,7 @@ bool Dataset_Manager<T>::Reallocate_Internal_Storage(void)
             if((tmp_ptr_TrainingSet = this->Allocate__Dataset(tmp_type_dataset_process, MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Dataset(%u, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_type_dataset_process,
                                          MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING,
@@ -2608,7 +2608,7 @@ bool Dataset_Manager<T>::Reallocate_Internal_Storage(void)
             if((tmp_ptr_TrainingSet = this->Allocate__Dataset(tmp_type_dataset_process, MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Dataset(%u, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_type_dataset_process,
                                          MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING,
@@ -2620,7 +2620,7 @@ bool Dataset_Manager<T>::Reallocate_Internal_Storage(void)
             if((tmp_ptr_ValidatingSet = this->Allocate__Dataset(tmp_type_dataset_process, MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Dataset(%u, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_type_dataset_process,
                                          MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION,
@@ -2633,7 +2633,7 @@ bool Dataset_Manager<T>::Reallocate_Internal_Storage(void)
             if((tmp_ptr_TrainingSet = this->Allocate__Dataset(tmp_type_dataset_process, MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Dataset(%u, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_type_dataset_process,
                                          MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING,
@@ -2645,7 +2645,7 @@ bool Dataset_Manager<T>::Reallocate_Internal_Storage(void)
             if((tmp_ptr_ValidatingSet = this->Allocate__Dataset(tmp_type_dataset_process, MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Dataset(%u, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_type_dataset_process,
                                          MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION,
@@ -2657,7 +2657,7 @@ bool Dataset_Manager<T>::Reallocate_Internal_Storage(void)
             if((tmp_ptr_TestingSet = this->Allocate__Dataset(tmp_type_dataset_process, MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Dataset(%u, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_type_dataset_process,
                                          MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING,
@@ -2668,7 +2668,7 @@ bool Dataset_Manager<T>::Reallocate_Internal_Storage(void)
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Dataset storage type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->_type_storage_data,
                                      MyEA::Common::ENUM_TYPE_DATASET_MANAGER_STORAGE_NAMES[this->_type_storage_data].c_str(),
@@ -2702,7 +2702,7 @@ bool Dataset_Manager<T>::Reallocate_Internal_Storage(void)
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Dataset process type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         tmp_type_dataset_process,
                                         MyEA::Common::ENUM_TYPE_DATASET_PROCESS_NAMES[tmp_type_dataset_process].c_str(),
@@ -2716,7 +2716,7 @@ bool Dataset_Manager<T>::Reallocate_Internal_Storage(void)
             if(this->Prepare_Storage(tmp_ptr_TrainingSet) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Prepare_Storage()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -2730,7 +2730,7 @@ bool Dataset_Manager<T>::Reallocate_Internal_Storage(void)
                                                 tmp_ptr_ValidatingSet) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Prepare_Storage()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -2746,7 +2746,7 @@ bool Dataset_Manager<T>::Reallocate_Internal_Storage(void)
                                                 tmp_ptr_TestingSet) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Prepare_Storage()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -2755,7 +2755,7 @@ bool Dataset_Manager<T>::Reallocate_Internal_Storage(void)
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Dataset storage type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->_type_storage_data,
                                      MyEA::Common::ENUM_TYPE_DATASET_MANAGER_STORAGE_NAMES[this->_type_storage_data].c_str(),
@@ -2768,7 +2768,7 @@ bool Dataset_Manager<T>::Reallocate_Internal_Storage(void)
                                         &tmp_Dataset_Manager_Parameters.training_parameters) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize_Dataset(%u, %u, ptr)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING,
                                  this->_ptr_array_ptr_Dataset[0u]->Get__Type_Dataset_Process(),
@@ -2852,14 +2852,13 @@ bool Dataset_Manager<T>::Push_Back(T const *const ptr_array_inputs_received, T c
 
         // Reallocate.
         //  Inputs.
-        tmp_ptr_array_inputs = Memory::reallocate_cpp<T>(this->p_ptr_array_inputs,
+        tmp_ptr_array_inputs = MyEA::Memory::Cpp::Reallocate<T, true>(this->p_ptr_array_inputs,
                                                                                     tmp_number_examples_plus_one * this->p_number_inputs * this->p_number_recurrent_depth,
-                                                                                    this->p_number_examples * this->p_number_inputs * this->p_number_recurrent_depth,
-                                                                                    true);
+                                                                                    this->p_number_examples * this->p_number_inputs * this->p_number_recurrent_depth);
         if(tmp_ptr_array_inputs == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_number_examples_plus_one * this->p_number_inputs * this->p_number_recurrent_depth,
                                      this->p_number_examples * this->p_number_inputs * this->p_number_recurrent_depth,
@@ -2870,14 +2869,13 @@ bool Dataset_Manager<T>::Push_Back(T const *const ptr_array_inputs_received, T c
 
         this->p_ptr_array_inputs = tmp_ptr_array_inputs;
 
-        tmp_ptr_matrix_inputs = Memory::reallocate_pointers_array_cpp<T const *>(this->p_ptr_array_inputs_array,
+        tmp_ptr_matrix_inputs = MyEA::Memory::Cpp::Reallocate_PtOfPt<T const *, false>(this->p_ptr_array_inputs_array,
                                                                                                                        tmp_number_examples_plus_one,
-                                                                                                                       this->p_number_examples,
-                                                                                                                       false);
+                                                                                                                       this->p_number_examples);
         if(tmp_ptr_matrix_inputs == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp(ptr, %zu, %zu, false)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_number_examples_plus_one,
                                      this->p_number_examples,
@@ -2890,14 +2888,13 @@ bool Dataset_Manager<T>::Push_Back(T const *const ptr_array_inputs_received, T c
         //  |END| Inputs. |END|
         
         //  Outputs.
-        tmp_ptr_array_outputs = Memory::reallocate_cpp<T>(this->p_ptr_array_outputs,
+        tmp_ptr_array_outputs = MyEA::Memory::Cpp::Reallocate<T, true>(this->p_ptr_array_outputs,
                                                                                       tmp_number_examples_plus_one * this->p_number_outputs * this->p_number_recurrent_depth,
-                                                                                      this->p_number_examples * this->p_number_outputs * this->p_number_recurrent_depth,
-                                                                                      true);
+                                                                                      this->p_number_examples * this->p_number_outputs * this->p_number_recurrent_depth);
         if(tmp_ptr_array_outputs == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_number_examples_plus_one * this->p_number_outputs * this->p_number_recurrent_depth,
                                      this->p_number_examples * this->p_number_outputs * this->p_number_recurrent_depth,
@@ -2908,14 +2905,13 @@ bool Dataset_Manager<T>::Push_Back(T const *const ptr_array_inputs_received, T c
 
         this->p_ptr_array_outputs = tmp_ptr_array_outputs;
 
-        tmp_ptr_matrix_outputs = Memory::reallocate_pointers_array_cpp<T const *>(this->p_ptr_array_outputs_array,
+        tmp_ptr_matrix_outputs = MyEA::Memory::Cpp::Reallocate_PtOfPt<T const *, false>(this->p_ptr_array_outputs_array,
                                                                                                                          tmp_number_examples_plus_one,
-                                                                                                                         this->p_number_examples,
-                                                                                                                         false);
+                                                                                                                         this->p_number_examples);
         if(tmp_ptr_matrix_outputs == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp(ptr, %zu, %zu, false)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_number_examples_plus_one,
                                      this->p_number_examples,
@@ -2967,7 +2963,7 @@ bool Dataset_Manager<T>::Prepare_Storage(class Dataset<T> *const ptr_TrainingSet
     if(this->Get__Number_Examples() == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: The number example(s) can not be equal to zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -2976,7 +2972,7 @@ bool Dataset_Manager<T>::Prepare_Storage(class Dataset<T> *const ptr_TrainingSet
     else if(ptr_TrainingSet_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_TrainingSet_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -2989,7 +2985,7 @@ bool Dataset_Manager<T>::Prepare_Storage(class Dataset<T> *const ptr_TrainingSet
     if(this->_ptr_array_ptr_Dataset == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     __FUNCTION__,
                                     sizeof(class Dataset<T>*),
                                     __LINE__);
@@ -3021,7 +3017,7 @@ bool Dataset_Manager<T>::Prepare_Storage(size_t const number_examples_training_r
     if(number_examples_training_received + number_examples_testing_received != this->Get__Number_Examples())
     {
         PRINT_FORMAT("%s: %s: ERROR: training(%zu) + testing(%zu) != total(%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  number_examples_training_received,
                                  number_examples_testing_received,
@@ -3033,7 +3029,7 @@ bool Dataset_Manager<T>::Prepare_Storage(size_t const number_examples_training_r
     else if(number_examples_training_received == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of example(s) from the training set can not be equal to zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3042,7 +3038,7 @@ bool Dataset_Manager<T>::Prepare_Storage(size_t const number_examples_training_r
     else if(number_examples_testing_received == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of example(s) from the testing set can not be equal to zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3051,7 +3047,7 @@ bool Dataset_Manager<T>::Prepare_Storage(size_t const number_examples_training_r
     else if(this->Get__Number_Examples() < 2_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of example(s) (%zu) is less than 2. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->Get__Number_Examples(),
                                  __LINE__);
@@ -3061,7 +3057,7 @@ bool Dataset_Manager<T>::Prepare_Storage(size_t const number_examples_training_r
     else if(ptr_TrainingSet_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_TrainingSet_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3070,7 +3066,7 @@ bool Dataset_Manager<T>::Prepare_Storage(size_t const number_examples_training_r
     else if(ptr_TestingSet_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_TestingSet_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3086,7 +3082,7 @@ bool Dataset_Manager<T>::Prepare_Storage(size_t const number_examples_training_r
     if(this->_ptr_array_ptr_Dataset == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     __FUNCTION__,
                                     2_zu * sizeof(class Dataset<T>*),
                                     __LINE__);
@@ -3129,7 +3125,7 @@ bool Dataset_Manager<T>::Prepare_Storage(size_t const number_examples_training_r
     if(number_examples_training_received + number_examples_validation_received + number_examples_testing_received != this->Get__Number_Examples())
     {
         PRINT_FORMAT("%s: %s: ERROR: training(%zu) + validating(%zu) + testing(%zu) != total(%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  number_examples_training_received,
                                  number_examples_validation_received,
@@ -3142,7 +3138,7 @@ bool Dataset_Manager<T>::Prepare_Storage(size_t const number_examples_training_r
     else if(number_examples_training_received == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of example(s) from the training set can not be equal to zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3151,7 +3147,7 @@ bool Dataset_Manager<T>::Prepare_Storage(size_t const number_examples_training_r
     else if(number_examples_validation_received == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of example(s) from the validation set can not be equal to zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3160,7 +3156,7 @@ bool Dataset_Manager<T>::Prepare_Storage(size_t const number_examples_training_r
     else if(number_examples_testing_received == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of example(s) from the testing set can not be equal to zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3169,7 +3165,7 @@ bool Dataset_Manager<T>::Prepare_Storage(size_t const number_examples_training_r
     else if(this->Get__Number_Examples() < 3_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of example(s) (%zu) is less than 3. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->Get__Number_Examples(),
                                  __LINE__);
@@ -3179,7 +3175,7 @@ bool Dataset_Manager<T>::Prepare_Storage(size_t const number_examples_training_r
     else if(ptr_TrainingSet_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_TrainingSet_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3188,7 +3184,7 @@ bool Dataset_Manager<T>::Prepare_Storage(size_t const number_examples_training_r
     else if(ptr_ValidatingSet_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_ValidatingSet_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3197,7 +3193,7 @@ bool Dataset_Manager<T>::Prepare_Storage(size_t const number_examples_training_r
     else if(ptr_TestingSet_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_TestingSet_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3213,7 +3209,7 @@ bool Dataset_Manager<T>::Prepare_Storage(size_t const number_examples_training_r
     if(this->_ptr_array_ptr_Dataset == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     __FUNCTION__,
                                     3_zu * sizeof(class Dataset<T>*),
                                     __LINE__);
@@ -3263,7 +3259,7 @@ bool Dataset_Manager<T>::Prepare_Storage(double const number_examples_percent_tr
     if(number_examples_percent_training_received + number_examples_percent_testing_received != 100.0)
     {
         PRINT_FORMAT("%s: %s: ERROR: training(%f%%) + testing(%f%%) != 100.0%%. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  number_examples_percent_training_received,
                                  number_examples_percent_testing_received,
@@ -3274,7 +3270,7 @@ bool Dataset_Manager<T>::Prepare_Storage(double const number_examples_percent_tr
     else if(number_examples_percent_training_received == 0.0)
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of example(s) from the training set can not be equal to zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3283,7 +3279,7 @@ bool Dataset_Manager<T>::Prepare_Storage(double const number_examples_percent_tr
     else if(number_examples_percent_testing_received == 0.0)
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of example(s) from the testing set can not be equal to zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3292,7 +3288,7 @@ bool Dataset_Manager<T>::Prepare_Storage(double const number_examples_percent_tr
     else if(this->Get__Number_Examples() < 2_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of example(s) (%zu) is less than 2. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->Get__Number_Examples(),
                                  __LINE__);
@@ -3302,7 +3298,7 @@ bool Dataset_Manager<T>::Prepare_Storage(double const number_examples_percent_tr
     else if(ptr_TrainingSet_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_TrainingSet_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3311,7 +3307,7 @@ bool Dataset_Manager<T>::Prepare_Storage(double const number_examples_percent_tr
     else if(ptr_TestingSet_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_TestingSet_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3330,7 +3326,7 @@ bool Dataset_Manager<T>::Prepare_Storage(double const number_examples_percent_tr
     if(this->_ptr_array_ptr_Dataset == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     __FUNCTION__,
                                     2_zu * sizeof(class Dataset<T>*),
                                     __LINE__);
@@ -3373,7 +3369,7 @@ bool Dataset_Manager<T>::Prepare_Storage(double const number_examples_percent_tr
     if(number_examples_percent_training_received + number_examples_percent_validation_received + number_examples_percent_testing_received != 100.0)
     {
         PRINT_FORMAT("%s: %s: ERROR: training(%f%%) + validation(%f%%) + testing(%f%%) != 100.0%%. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  number_examples_percent_training_received,
                                  number_examples_percent_validation_received,
@@ -3385,7 +3381,7 @@ bool Dataset_Manager<T>::Prepare_Storage(double const number_examples_percent_tr
     else if(number_examples_percent_training_received == 0.0)
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of example(s) from the training set can not be equal to zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3394,7 +3390,7 @@ bool Dataset_Manager<T>::Prepare_Storage(double const number_examples_percent_tr
     else if(number_examples_percent_validation_received == 0.0)
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of example(s) from the validation set can not be equal to zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3403,7 +3399,7 @@ bool Dataset_Manager<T>::Prepare_Storage(double const number_examples_percent_tr
     else if(number_examples_percent_testing_received == 0.0)
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of example(s) from the testing set can not be equal to zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3412,7 +3408,7 @@ bool Dataset_Manager<T>::Prepare_Storage(double const number_examples_percent_tr
     else if(this->Get__Number_Examples() < 3_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of example(s) (%zu) is less than 3. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->Get__Number_Examples(),
                                  __LINE__);
@@ -3422,7 +3418,7 @@ bool Dataset_Manager<T>::Prepare_Storage(double const number_examples_percent_tr
     else if(ptr_TrainingSet_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_TrainingSet_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3431,7 +3427,7 @@ bool Dataset_Manager<T>::Prepare_Storage(double const number_examples_percent_tr
     else if(ptr_ValidatingSet_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_ValidatingSet_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3440,7 +3436,7 @@ bool Dataset_Manager<T>::Prepare_Storage(double const number_examples_percent_tr
     else if(ptr_TestingSet_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_TestingSet_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3464,7 +3460,7 @@ bool Dataset_Manager<T>::Prepare_Storage(double const number_examples_percent_tr
     if(this->_ptr_array_ptr_Dataset == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     __FUNCTION__,
                                     3_zu * sizeof(class Dataset<T>*),
                                     __LINE__);
@@ -3547,7 +3543,7 @@ bool Dataset_Manager<T>::Prepare_Storage(double const number_examples_percent_tr
                                                                                                                                                                  tmp_ptr_Dataset_Mini_Batch->Get__Number_Batch()) == false)
                             {
                                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize_Mini_Batch_Stochastic_Gradient_Descent(%s, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          __FUNCTION__,
                                                          tmp_ptr_Dataset_Mini_Batch->Get__Use__Shuffle() ? "true" : "false",
                                                          tmp_ptr_Dataset_Mini_Batch->Get__Number_Examples_Per_Batch(),
@@ -3567,7 +3563,7 @@ bool Dataset_Manager<T>::Prepare_Storage(double const number_examples_percent_tr
                                                                                                                               tmp_ptr_Dataset_Cross_Validation->Get__Number_Sub_Batch()) == false)
                             {
                                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize__Cross_Validation(%s, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                                         MyEA::String::Get__Time().c_str(),
+                                                         MyEA::Time::Date_Time_Now().c_str(),
                                                          __FUNCTION__,
                                                          tmp_ptr_Dataset_Cross_Validation->Get__Use__Shuffle() ? " true" : "false",
                                                          tmp_ptr_Dataset_Cross_Validation->Get__Number_Batch(),
@@ -3580,7 +3576,7 @@ bool Dataset_Manager<T>::Prepare_Storage(double const number_examples_percent_tr
                             break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Dataset process type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                                    MyEA::String::Get__Time().c_str(),
+                                                    MyEA::Time::Date_Time_Now().c_str(),
                                                     __FUNCTION__,
                                                     tmp_ptr_Dataset->Get__Type_Dataset_Process(),
                                                     MyEA::Common::ENUM_TYPE_DATASET_PROCESS_NAMES[tmp_ptr_Dataset->Get__Type_Dataset_Process()].c_str(),
@@ -3592,7 +3588,7 @@ bool Dataset_Manager<T>::Prepare_Storage(double const number_examples_percent_tr
             case MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING: break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Dataset type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          type_dataset_received,
                                          MyEA::Common::ENUM_TYPE_DATASET_NAMES[type_dataset_received].c_str(),
@@ -3618,7 +3614,7 @@ class Dataset<T> *Dataset_Manager<T>::Allocate__Dataset(enum MyEA::Common::ENUM_
                     if((tmp_ptr_Dataset = new class Dataset<T>) == nullptr)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  sizeof(class Dataset<T>),
                                                  __LINE__);
@@ -3630,7 +3626,7 @@ class Dataset<T> *Dataset_Manager<T>::Allocate__Dataset(enum MyEA::Common::ENUM_
                     if((tmp_ptr_Dataset = new class Dataset_Mini_Batch<T>) == nullptr)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  sizeof(class Dataset_Mini_Batch<T>),
                                                  __LINE__);
@@ -3642,7 +3638,7 @@ class Dataset<T> *Dataset_Manager<T>::Allocate__Dataset(enum MyEA::Common::ENUM_
                     if((tmp_ptr_Dataset = new class Dataset_Cross_Validation<T>) == nullptr)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  sizeof(class Dataset_Cross_Validation<T>),
                                                  __LINE__);
@@ -3654,7 +3650,7 @@ class Dataset<T> *Dataset_Manager<T>::Allocate__Dataset(enum MyEA::Common::ENUM_
                     if((tmp_ptr_Dataset = new class Dataset_Cross_Validation_Hyperparameter_Optimization<T>) == nullptr)
                     {
                         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  sizeof(class Dataset_Cross_Validation_Hyperparameter_Optimization<T>),
                                                  __LINE__);
@@ -3664,7 +3660,7 @@ class Dataset<T> *Dataset_Manager<T>::Allocate__Dataset(enum MyEA::Common::ENUM_
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Dataset process type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                                MyEA::String::Get__Time().c_str(),
+                                                MyEA::Time::Date_Time_Now().c_str(),
                                                 __FUNCTION__,
                                                 type_dataset_process_received,
                                                 MyEA::Common::ENUM_TYPE_DATASET_PROCESS_NAMES[type_dataset_process_received].c_str(),
@@ -3677,7 +3673,7 @@ class Dataset<T> *Dataset_Manager<T>::Allocate__Dataset(enum MyEA::Common::ENUM_
             if((tmp_ptr_Dataset = new class Dataset<T>) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          sizeof(class Dataset<T>),
                                          __LINE__);
@@ -3687,7 +3683,7 @@ class Dataset<T> *Dataset_Manager<T>::Allocate__Dataset(enum MyEA::Common::ENUM_
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Dataset type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         type_data_received,
                                         MyEA::Common::ENUM_TYPE_DATASET_NAMES[type_data_received].c_str(),
@@ -3737,10 +3733,10 @@ bool Dataset_Manager<T>::Initialize_Dataset(enum MyEA::Common::ENUM_TYPE_DATASET
                         {
                         #if defined(COMPILE_COUT)
                             // Shuffle.
-                            PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                            PRINT_FORMAT("%s: Shuffle:" NEW_LINE, MyEA::String::Get__Time().c_str());
-                            PRINT_FORMAT("%s:\tdefault=Yes." NEW_LINE, MyEA::String::Get__Time().c_str());
-                            tmp_use_shuffle = MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Use shuffle: ");
+                            PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                            PRINT_FORMAT("%s: Shuffle:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                            PRINT_FORMAT("%s:\tdefault=Yes." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                            tmp_use_shuffle = MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Use shuffle: ");
                             // |END| Shuffle. |END|
                         #else
                             tmp_use_shuffle = true;
@@ -3754,12 +3750,12 @@ bool Dataset_Manager<T>::Initialize_Dataset(enum MyEA::Common::ENUM_TYPE_DATASET
                         {
                         #if defined(COMPILE_COUT)
                             // Desired-examples per batch.
-                            PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                            PRINT_FORMAT("%s: Desired-examples per batch:" NEW_LINE, MyEA::String::Get__Time().c_str());
-                            PRINT_FORMAT("%s:\tRange[1, %zu]." NEW_LINE, MyEA::String::Get__Time().c_str(), tmp_number_examples);
+                            PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                            PRINT_FORMAT("%s: Desired-examples per batch:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                            PRINT_FORMAT("%s:\tRange[1, %zu]." NEW_LINE, MyEA::Time::Date_Time_Now().c_str(), tmp_number_examples);
                             tmp_number_desired_data_per_batch = MyEA::String::Cin_Number<size_t>(1_zu,
                                                                                                                                            tmp_number_examples,
-                                                                                                                                           MyEA::String::Get__Time() + ": Desired-examples per batch: ");
+                                                                                                                                           MyEA::Time::Date_Time_Now() + ": Desired-examples per batch: ");
                             // |END| Desired-examples per batch. |END|
                         #else
                             if(tmp_number_examples > 1u)
@@ -3778,12 +3774,12 @@ bool Dataset_Manager<T>::Initialize_Dataset(enum MyEA::Common::ENUM_TYPE_DATASET
                         {
                         #if defined(COMPILE_COUT)
                             // Maximum sub-sample.
-                            PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                            PRINT_FORMAT("%s: Maximum sub-sample:" NEW_LINE, MyEA::String::Get__Time().c_str());
-                            PRINT_FORMAT("%s:\tRange[0, %zu]. Off = 0." NEW_LINE, MyEA::String::Get__Time().c_str(), tmp_number_examples);
+                            PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                            PRINT_FORMAT("%s: Maximum sub-sample:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                            PRINT_FORMAT("%s:\tRange[0, %zu]. Off = 0." NEW_LINE, MyEA::Time::Date_Time_Now().c_str(), tmp_number_examples);
                             tmp_number_maximum_batch = MyEA::String::Cin_Number<size_t>(0_zu,
                                                                                                                                  tmp_number_examples,
-                                                                                                                                 MyEA::String::Get__Time() + ": Maximum sub-sample: ");
+                                                                                                                                 MyEA::Time::Date_Time_Now() + ": Maximum sub-sample: ");
                             // |END| Maximum sub-sample. |END|
                         #else
                             tmp_number_maximum_batch = 0u;
@@ -3796,7 +3792,7 @@ bool Dataset_Manager<T>::Initialize_Dataset(enum MyEA::Common::ENUM_TYPE_DATASET
                                                                                                       tmp_number_maximum_batch) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize(%s, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_use_shuffle ? "true" : "false",
                                                      tmp_number_desired_data_per_batch,
@@ -3806,9 +3802,9 @@ bool Dataset_Manager<T>::Initialize_Dataset(enum MyEA::Common::ENUM_TYPE_DATASET
                             return(false);
                         }
 
-                        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+                        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                         PRINT_FORMAT("%s: The number of mini-batch is set to %zu." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  tmp_ptr_Dataset_Mini_Batch_Stochastic->Get__Number_Batch());
                     }
                         break;
@@ -3826,7 +3822,7 @@ bool Dataset_Manager<T>::Initialize_Dataset(enum MyEA::Common::ENUM_TYPE_DATASET
                         if(tmp_number_examples < 2_zu)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: The number of example(s) (%zu) is less than 3. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_number_examples,
                                                      __LINE__);
@@ -3840,10 +3836,10 @@ bool Dataset_Manager<T>::Initialize_Dataset(enum MyEA::Common::ENUM_TYPE_DATASET
                         {
                         #if defined(COMPILE_COUT)
                             // Shuffle.
-                            PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                            PRINT_FORMAT("%s: Shuffle:" NEW_LINE, MyEA::String::Get__Time().c_str());
-                            PRINT_FORMAT("%s:\tdefault=Yes." NEW_LINE, MyEA::String::Get__Time().c_str());
-                            tmp_use_shuffle = MyEA::String::NoOrYes(MyEA::String::Get__Time() + ": Use shuffle: ");
+                            PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                            PRINT_FORMAT("%s: Shuffle:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                            PRINT_FORMAT("%s:\tdefault=Yes." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                            tmp_use_shuffle = MyEA::String::Accept(MyEA::Time::Date_Time_Now() + ": Use shuffle: ");
                             // |END| Shuffle. |END|
                         #else
                             tmp_use_shuffle = true;
@@ -3857,12 +3853,12 @@ bool Dataset_Manager<T>::Initialize_Dataset(enum MyEA::Common::ENUM_TYPE_DATASET
                         {
                         #if defined(COMPILE_COUT)
                             // K-fold.
-                            PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                            PRINT_FORMAT("%s: K-fold:" NEW_LINE, MyEA::String::Get__Time().c_str());
-                            PRINT_FORMAT("%s:\tRange[2, %zu]." NEW_LINE, MyEA::String::Get__Time().c_str(), tmp_number_examples);
+                            PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                            PRINT_FORMAT("%s: K-fold:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                            PRINT_FORMAT("%s:\tRange[2, %zu]." NEW_LINE, MyEA::Time::Date_Time_Now().c_str(), tmp_number_examples);
                             tmp_number_k_folds = MyEA::String::Cin_Number<size_t>(2_zu,
                                                                                                                    tmp_number_examples,
-                                                                                                                   MyEA::String::Get__Time() + ": K-fold: ");
+                                                                                                                   MyEA::Time::Date_Time_Now() + ": K-fold: ");
                             // |END| K-fold. |END|
                         #else
                             tmp_number_k_folds = tmp_number_examples / 5_zu;
@@ -3880,17 +3876,17 @@ bool Dataset_Manager<T>::Initialize_Dataset(enum MyEA::Common::ENUM_TYPE_DATASET
                             // K-sub-fold.
                             size_t const tmp_number_examples_training((tmp_number_k_folds - 1_zu) * (tmp_number_examples / tmp_number_k_folds));
 
-                            PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                            PRINT_FORMAT("%s: K-sub-fold:" NEW_LINE, MyEA::String::Get__Time().c_str());
+                            PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                            PRINT_FORMAT("%s: K-sub-fold:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                             PRINT_FORMAT("%s:\tRange[0, %zu]." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      tmp_number_examples_training);
                             PRINT_FORMAT("%s:\tdefault=%zu." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      tmp_number_k_folds - 1_zu);
                             tmp_number_k_sub_folds = MyEA::String::Cin_Number<size_t>(0_zu,
                                                                                                                           tmp_number_examples_training,
-                                                                                                                          MyEA::String::Get__Time() + ": K-sub-fold: ");
+                                                                                                                          MyEA::Time::Date_Time_Now() + ": K-sub-fold: ");
                             // |END| K-sub-fold. |END|
                         #else
                             tmp_number_k_sub_folds = 0_zu;
@@ -3903,7 +3899,7 @@ bool Dataset_Manager<T>::Initialize_Dataset(enum MyEA::Common::ENUM_TYPE_DATASET
                                                                                                       tmp_number_k_sub_folds) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize__Fold(%s, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_use_shuffle ? "true" : "false",
                                                      tmp_number_k_folds,
@@ -3926,11 +3922,11 @@ bool Dataset_Manager<T>::Initialize_Dataset(enum MyEA::Common::ENUM_TYPE_DATASET
                           (ptr_Dataset_Parameters_received != nullptr && ptr_Dataset_Parameters_received->value_3 == -1))
                         {
                         #if defined(COMPILE_COUT)
-                            PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                            PRINT_FORMAT("%s: Number hyperparameter optimization iteration(s):" NEW_LINE, MyEA::String::Get__Time().c_str());
-                            PRINT_FORMAT("%s:\tRange[1, 8]." NEW_LINE, MyEA::String::Get__Time().c_str());
-                            PRINT_FORMAT("%s:\tdefault=10." NEW_LINE, MyEA::String::Get__Time().c_str());
-                            tmp_number_hyper_optimization_iterations = MyEA::String::Cin_Number<size_t>(0_zu, MyEA::String::Get__Time() + ": Iteration(s): ");
+                            PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                            PRINT_FORMAT("%s: Number hyperparameter optimization iteration(s):" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                            PRINT_FORMAT("%s:\tRange[1, 8]." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                            PRINT_FORMAT("%s:\tdefault=10." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                            tmp_number_hyper_optimization_iterations = MyEA::String::Cin_Number<size_t>(0_zu, MyEA::Time::Date_Time_Now() + ": Iteration(s): ");
                         #else
                             tmp_number_hyper_optimization_iterations = 10_zu;
                         #endif
@@ -3940,7 +3936,7 @@ bool Dataset_Manager<T>::Initialize_Dataset(enum MyEA::Common::ENUM_TYPE_DATASET
                         if(tmp_ptr_Dataset_Cross_Validation_Hyperparameter_Optimization->Set__Number_Hyperparameter_Optimization_Iterations(tmp_number_hyper_optimization_iterations) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Number_Hyperparameter_Optimization_Iterations(%zu)\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_number_hyper_optimization_iterations,
                                                      __LINE__);
@@ -3953,11 +3949,11 @@ bool Dataset_Manager<T>::Initialize_Dataset(enum MyEA::Common::ENUM_TYPE_DATASET
                           (ptr_Dataset_Parameters_received != nullptr && ptr_Dataset_Parameters_received->value_4 == -1))
                         {
                         #if defined(COMPILE_COUT)
-                            PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-                            PRINT_FORMAT("%s: Number hyperparameter optimization iteration(s) delay:" NEW_LINE, MyEA::String::Get__Time().c_str());
-                            PRINT_FORMAT("%s:\tRange[1, 8]." NEW_LINE, MyEA::String::Get__Time().c_str());
-                            PRINT_FORMAT("%s:\tdefault=25." NEW_LINE, MyEA::String::Get__Time().c_str());
-                            tmp_number_hyper_optimization_iterations_delay = MyEA::String::Cin_Number<size_t>(0_zu, MyEA::String::Get__Time() + ": Iteration(s) delay: ");
+                            PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                            PRINT_FORMAT("%s: Number hyperparameter optimization iteration(s) delay:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                            PRINT_FORMAT("%s:\tRange[1, 8]." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                            PRINT_FORMAT("%s:\tdefault=25." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+                            tmp_number_hyper_optimization_iterations_delay = MyEA::String::Cin_Number<size_t>(0_zu, MyEA::Time::Date_Time_Now() + ": Iteration(s) delay: ");
                         #else
                             tmp_number_hyper_optimization_iterations_delay = 25_zu;
                         #endif
@@ -3967,7 +3963,7 @@ bool Dataset_Manager<T>::Initialize_Dataset(enum MyEA::Common::ENUM_TYPE_DATASET
                         if(tmp_ptr_Dataset_Cross_Validation_Hyperparameter_Optimization->Set__Number_Hyperparameter_Optimization_Iterations_Delay(tmp_number_hyper_optimization_iterations_delay) == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Number_Hyperparameter_Optimization_Iterations_Delay(%zu)\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      tmp_number_hyper_optimization_iterations_delay,
                                                      __LINE__);
@@ -3977,7 +3973,7 @@ bool Dataset_Manager<T>::Initialize_Dataset(enum MyEA::Common::ENUM_TYPE_DATASET
                         else if(tmp_ptr_Dataset_Cross_Validation_Hyperparameter_Optimization->User_Controls() == false)
                         {
                             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"User_Controls()\" function. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      __LINE__);
 
@@ -3987,7 +3983,7 @@ bool Dataset_Manager<T>::Initialize_Dataset(enum MyEA::Common::ENUM_TYPE_DATASET
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Dataset process type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                                MyEA::String::Get__Time().c_str(),
+                                                MyEA::Time::Date_Time_Now().c_str(),
                                                 __FUNCTION__,
                                                 type_dataset_process_received,
                                                 MyEA::Common::ENUM_TYPE_DATASET_PROCESS_NAMES[type_dataset_process_received].c_str(),
@@ -3997,7 +3993,7 @@ bool Dataset_Manager<T>::Initialize_Dataset(enum MyEA::Common::ENUM_TYPE_DATASET
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Dataset type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      type_dataset_received,
                                      MyEA::Common::ENUM_TYPE_DATASET_NAMES[type_dataset_received].c_str(),
@@ -4027,15 +4023,15 @@ bool Dataset_Manager<T>::Preparing_Dataset_Manager(struct Dataset_Manager_Parame
       (ptr_Dataset_Manager_Parameters_received != nullptr && ptr_Dataset_Manager_Parameters_received->type_storage == -1))
     {
     #if defined(COMPILE_COUT)
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s: Type storage: " NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[0]: Training." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[1]: Training and testing." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[2]: Training, validation and testing." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s: Type storage: " NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[0]: Training." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[1]: Training and testing." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[2]: Training, validation and testing." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
         tmp_type_storage_choose = MyEA::String::Cin_Number<unsigned int>(0u,
                                                                                                                 2u,
-                                                                                                                MyEA::String::Get__Time() + ": Choose: ");
+                                                                                                                MyEA::Time::Date_Time_Now() + ": Choose: ");
     #else
         tmp_type_storage_choose = 0u;
     #endif
@@ -4050,16 +4046,16 @@ bool Dataset_Manager<T>::Preparing_Dataset_Manager(struct Dataset_Manager_Parame
       (ptr_Dataset_Manager_Parameters_received != nullptr && ptr_Dataset_Manager_Parameters_received->type_training == -1))
     {
     #if defined(COMPILE_COUT)
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s: Type training: " NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[0]: Batch." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[1]: Mini-batch." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[2]: Cross-validation." NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s:\t[3]: Cross-validation, random search." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s: Type training: " NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[0]: Batch." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[1]: Mini-batch." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[2]: Cross-validation." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s:\t[3]: Cross-validation, random search." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
         tmp_type_training_choose = MyEA::String::Cin_Number<unsigned int>(0u,
                                                                                                                 3u,
-                                                                                                                MyEA::String::Get__Time() + ": Choose: ");
+                                                                                                                MyEA::Time::Date_Time_Now() + ": Choose: ");
     #else
         tmp_type_training_choose = 0u;
     #endif
@@ -4072,7 +4068,7 @@ bool Dataset_Manager<T>::Preparing_Dataset_Manager(struct Dataset_Manager_Parame
             if((tmp_ptr_TrainingSet = this->Allocate__Dataset(static_cast<enum MyEA::Common::ENUM_TYPE_DATASET_PROCESS>(tmp_type_training_choose + 1u), MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Dataset(%u, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          static_cast<enum MyEA::Common::ENUM_TYPE_DATASET_PROCESS>(tmp_type_training_choose + 1u),
                                          MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING,
@@ -4084,7 +4080,7 @@ bool Dataset_Manager<T>::Preparing_Dataset_Manager(struct Dataset_Manager_Parame
             if(this->Prepare_Storage(tmp_ptr_TrainingSet) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Prepare_Storage(ptr)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -4096,7 +4092,7 @@ bool Dataset_Manager<T>::Preparing_Dataset_Manager(struct Dataset_Manager_Parame
                                                 ptr_Dataset_Manager_Parameters_received == nullptr ? nullptr : &ptr_Dataset_Manager_Parameters_received->training_parameters) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize_Dataset(%u, %u, ptr)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING,
                                          static_cast<enum MyEA::Common::ENUM_TYPE_DATASET_PROCESS>(tmp_type_training_choose + 1u),
@@ -4111,10 +4107,10 @@ bool Dataset_Manager<T>::Preparing_Dataset_Manager(struct Dataset_Manager_Parame
               (ptr_Dataset_Manager_Parameters_received != nullptr && ptr_Dataset_Manager_Parameters_received->percent_training_size == 0.0))
             {
             #if defined(COMPILE_COUT)
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 tmp_percent_training_size = MyEA::String::Cin_Real_Number<double>(100.0 - 99.9999,
                                                                                                                         99.9999,
-                                                                                                                        MyEA::String::Get__Time() + ": Training size [" + std::to_string(100.0 - 99.9999) + "%, 99.9999%]: ");
+                                                                                                                        MyEA::Time::Date_Time_Now() + ": Training size [" + std::to_string(100.0 - 99.9999) + "%, 99.9999%]: ");
             #else
                 tmp_percent_training_size = 80.0;
             #endif
@@ -4126,7 +4122,7 @@ bool Dataset_Manager<T>::Preparing_Dataset_Manager(struct Dataset_Manager_Parame
             if((tmp_ptr_TrainingSet = this->Allocate__Dataset(static_cast<enum MyEA::Common::ENUM_TYPE_DATASET_PROCESS>(tmp_type_training_choose + 1u), MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Dataset(%u, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          static_cast<enum MyEA::Common::ENUM_TYPE_DATASET_PROCESS>(tmp_type_training_choose + 1u),
                                          MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING,
@@ -4138,7 +4134,7 @@ bool Dataset_Manager<T>::Preparing_Dataset_Manager(struct Dataset_Manager_Parame
             if((tmp_ptr_TestingSet = this->Allocate__Dataset(static_cast<enum MyEA::Common::ENUM_TYPE_DATASET_PROCESS>(tmp_type_training_choose + 1u), MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Dataset(%u, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          static_cast<enum MyEA::Common::ENUM_TYPE_DATASET_PROCESS>(tmp_type_training_choose + 1u),
                                          MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION,
@@ -4153,7 +4149,7 @@ bool Dataset_Manager<T>::Preparing_Dataset_Manager(struct Dataset_Manager_Parame
                                                 tmp_ptr_TestingSet) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Prepare_Storage(%f, %f, ptr, ptr)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_percent_training_size,
                                          tmp_percent_testing_size,
@@ -4167,7 +4163,7 @@ bool Dataset_Manager<T>::Preparing_Dataset_Manager(struct Dataset_Manager_Parame
                                                 ptr_Dataset_Manager_Parameters_received == nullptr ? nullptr : &ptr_Dataset_Manager_Parameters_received->training_parameters) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize_Dataset(%u, %u, ptr)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING,
                                          static_cast<enum MyEA::Common::ENUM_TYPE_DATASET_PROCESS>(tmp_type_training_choose + 1u),
@@ -4182,10 +4178,10 @@ bool Dataset_Manager<T>::Preparing_Dataset_Manager(struct Dataset_Manager_Parame
               (ptr_Dataset_Manager_Parameters_received != nullptr && ptr_Dataset_Manager_Parameters_received->percent_training_size == 0.0))
             {
             #if defined(COMPILE_COUT)
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 tmp_percent_training_size = MyEA::String::Cin_Real_Number<double>(1e-4,
                                                                                                                         100.0 - 1e-4,
-                                                                                                                        MyEA::String::Get__Time() + ": Training size [1e-4%, 99.9999%]: ");
+                                                                                                                        MyEA::Time::Date_Time_Now() + ": Training size [1e-4%, 99.9999%]: ");
             #else
                 tmp_percent_training_size = 60.0;
             #endif
@@ -4197,10 +4193,10 @@ bool Dataset_Manager<T>::Preparing_Dataset_Manager(struct Dataset_Manager_Parame
               (ptr_Dataset_Manager_Parameters_received != nullptr && ptr_Dataset_Manager_Parameters_received->percent_validation_size == 0.0))
             {
             #if defined(COMPILE_COUT)
-                PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+                PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
                 tmp_percent_validation_size = MyEA::String::Cin_Real_Number<double>(1e-5,
                                                                                                                            100.0 - 1e-5 - tmp_percent_training_size,
-                                                                                                                           MyEA::String::Get__Time() + ": Validation size [1e-5%, " + MyEA::String::To_string<double, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(100.0 - 1e-5 - tmp_percent_training_size) + "%]: ");
+                                                                                                                           MyEA::Time::Date_Time_Now() + ": Validation size [1e-5%, " + MyEA::String::To_string<double, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(100.0 - 1e-5 - tmp_percent_training_size) + "%]: ");
             #else
                 tmp_percent_validation_size = 20.0;
             #endif
@@ -4212,7 +4208,7 @@ bool Dataset_Manager<T>::Preparing_Dataset_Manager(struct Dataset_Manager_Parame
             if((tmp_ptr_TrainingSet = this->Allocate__Dataset(static_cast<enum MyEA::Common::ENUM_TYPE_DATASET_PROCESS>(tmp_type_training_choose + 1u), MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING)) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Dataset(%u, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          static_cast<enum MyEA::Common::ENUM_TYPE_DATASET_PROCESS>(tmp_type_training_choose + 1u),
                                          MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING,
@@ -4224,7 +4220,7 @@ bool Dataset_Manager<T>::Preparing_Dataset_Manager(struct Dataset_Manager_Parame
             if((tmp_ptr_ValidatingSet = this->Allocate__Dataset(static_cast<enum MyEA::Common::ENUM_TYPE_DATASET_PROCESS>(tmp_type_training_choose + 1u), MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION)) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Dataset(%u, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          static_cast<enum MyEA::Common::ENUM_TYPE_DATASET_PROCESS>(tmp_type_training_choose + 1u),
                                          MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_VALIDATION,
@@ -4236,7 +4232,7 @@ bool Dataset_Manager<T>::Preparing_Dataset_Manager(struct Dataset_Manager_Parame
             if((tmp_ptr_TestingSet = this->Allocate__Dataset(static_cast<enum MyEA::Common::ENUM_TYPE_DATASET_PROCESS>(tmp_type_training_choose + 1u), MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING)) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Dataset(%u, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          static_cast<enum MyEA::Common::ENUM_TYPE_DATASET_PROCESS>(tmp_type_training_choose + 1u),
                                          MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING,
@@ -4253,7 +4249,7 @@ bool Dataset_Manager<T>::Preparing_Dataset_Manager(struct Dataset_Manager_Parame
                                                 tmp_ptr_TestingSet) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Prepare_Storage(%f, %f, %f, ptr, ptr, ptr)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_percent_training_size,
                                          tmp_percent_validation_size,
@@ -4268,7 +4264,7 @@ bool Dataset_Manager<T>::Preparing_Dataset_Manager(struct Dataset_Manager_Parame
                                                 ptr_Dataset_Manager_Parameters_received == nullptr ? nullptr : &ptr_Dataset_Manager_Parameters_received->training_parameters) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize_Dataset(%u, %u, ptr)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING,
                                          static_cast<enum MyEA::Common::ENUM_TYPE_DATASET_PROCESS>(tmp_type_training_choose + 1u),
@@ -4279,7 +4275,7 @@ bool Dataset_Manager<T>::Preparing_Dataset_Manager(struct Dataset_Manager_Parame
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Dataset storage type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_type_storage_choose + 1u,
                                      MyEA::Common::ENUM_TYPE_DATASET_MANAGER_STORAGE_NAMES[static_cast<enum MyEA::Common::ENUM_TYPE_DATASET_MANAGER_STORAGE>(tmp_type_storage_choose + 1u)].c_str(),
@@ -4297,7 +4293,7 @@ bool Dataset_Manager<T>::Copy__Storage(class Dataset_Manager<T> const *const ptr
     if(ptr_source_Dataset_Manager_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_source_Dataset_Manager_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -4308,7 +4304,7 @@ bool Dataset_Manager<T>::Copy__Storage(class Dataset_Manager<T> const *const ptr
     if(ptr_source_Dataset_Manager_received->_type_storage_data == MyEA::Common::ENUM_TYPE_DATASET_MANAGER_STORAGE::TYPE_STORAGE_NONE)
     {
         PRINT_FORMAT("%s: %s: ERROR: Undefined dataset storage type. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -4320,7 +4316,7 @@ bool Dataset_Manager<T>::Copy__Storage(class Dataset_Manager<T> const *const ptr
     if(tmp_ptr_TrainingSet == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"tmp_ptr_TrainingSet\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -4329,7 +4325,7 @@ bool Dataset_Manager<T>::Copy__Storage(class Dataset_Manager<T> const *const ptr
     else if(tmp_ptr_TrainingSet->Get__Type_Dataset_Process() == MyEA::Common::ENUM_TYPE_DATASET_PROCESS::TYPE_DATASET_PROCESS_NONE)
     {
         PRINT_FORMAT("%s: %s: ERROR: Undefined dataset process type. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -4367,7 +4363,7 @@ bool Dataset_Manager<T>::Copy__Storage(class Dataset_Manager<T> const *const ptr
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Dataset process type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         tmp_ptr_TrainingSet->Get__Type_Dataset_Process(),
                                         MyEA::Common::ENUM_TYPE_DATASET_PROCESS_NAMES[tmp_ptr_TrainingSet->Get__Type_Dataset_Process()].c_str(),
@@ -4378,7 +4374,7 @@ bool Dataset_Manager<T>::Copy__Storage(class Dataset_Manager<T> const *const ptr
     if(this->Preparing_Dataset_Manager(&tmp_Dataset_Manager_Parameters) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preparing_Dataset_Manager(ptr)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -4412,7 +4408,7 @@ bool Dataset_Manager<T>::Reference(class Dataset_Manager<T> *const ptr_source_Da
     if(this->Copy__Storage(ptr_source_Dataset_Manager_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Copy__Storage(ptr)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -4474,7 +4470,7 @@ bool Dataset_Manager<T>::Deallocate(void)
         if(this->Dataset<T>::Deallocate() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Dataset<T>::Deallocate()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -4484,7 +4480,7 @@ bool Dataset_Manager<T>::Deallocate(void)
         if(this->Hyperparameter_Optimization<T>::Deallocate() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Hyperparameter_Optimization<T>::Deallocate()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -4505,7 +4501,7 @@ T Dataset_Manager<T>::Training(class Neural_Network *const ptr_Neural_Network_re
     if(tmp_ptr_Dataset == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Get__Dataset_At(%s)\" function. Pointer return is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  MyEA::Common::ENUM_TYPE_DATASET_NAMES[MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING].c_str(),
                                  __LINE__);
@@ -4528,7 +4524,7 @@ T Dataset_Manager<T>::Optimize(class Neural_Network *const ptr_Neural_Network_re
         if(this->Hyperparameter_Optimization<T>::Optimize(this, ptr_Neural_Network_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Optimize(ptr, ptr)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
             
@@ -4556,7 +4552,7 @@ T Dataset_Manager<T>::Type_Testing(enum MyEA::Common::ENUM_TYPE_DATASET const ty
     if(tmp_ptr_Dataset == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Get__Dataset_At(%s)\" function. Pointer return is a nullptr." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  MyEA::Common::ENUM_TYPE_DATASET_NAMES[type_dataset_received].c_str());
 
@@ -4580,7 +4576,7 @@ T Dataset_Manager<T>::Type_Testing(enum MyEA::Common::ENUM_TYPE_DATASET const ty
         case MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING: break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Dataset type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         type_dataset_received,
                                         MyEA::Common::ENUM_TYPE_DATASET_NAMES[type_dataset_received].c_str(),
@@ -4630,7 +4626,7 @@ T Dataset_Manager<T>::Evaluate(class Neural_Network *const ptr_Neural_Network_re
         if(this->Evaluation(this) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Evaluate(ptr)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
             
@@ -4660,7 +4656,7 @@ Dataset<T>* Dataset_Manager<T>::Get__Dataset_At(enum MyEA::Common::ENUM_TYPE_DAT
     if(this->_ptr_array_ptr_Dataset == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"_ptr_array_ptr_Dataset\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -4679,7 +4675,7 @@ Dataset<T>* Dataset_Manager<T>::Get__Dataset_At(enum MyEA::Common::ENUM_TYPE_DAT
                 case MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING: return(this->_ptr_array_ptr_Dataset[1u]);
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Dataset type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                                MyEA::String::Get__Time().c_str(),
+                                                MyEA::Time::Date_Time_Now().c_str(),
                                                 __FUNCTION__,
                                                 type_dataset_received,
                                                 MyEA::Common::ENUM_TYPE_DATASET_NAMES[type_dataset_received].c_str(),
@@ -4694,7 +4690,7 @@ Dataset<T>* Dataset_Manager<T>::Get__Dataset_At(enum MyEA::Common::ENUM_TYPE_DAT
                 case MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING: return(this->_ptr_array_ptr_Dataset[2u]);
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Dataset type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                                MyEA::String::Get__Time().c_str(),
+                                                MyEA::Time::Date_Time_Now().c_str(),
                                                 __FUNCTION__,
                                                 type_dataset_received,
                                                 MyEA::Common::ENUM_TYPE_DATASET_NAMES[type_dataset_received].c_str(),
@@ -4703,7 +4699,7 @@ Dataset<T>* Dataset_Manager<T>::Get__Dataset_At(enum MyEA::Common::ENUM_TYPE_DAT
             }
         default:
             PRINT_FORMAT("%s: %s: ERROR: Dataset storage type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         this->_type_storage_data,
                                         MyEA::Common::ENUM_TYPE_DATASET_MANAGER_STORAGE_NAMES[this->_type_storage_data].c_str(),

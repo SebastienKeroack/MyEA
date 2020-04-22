@@ -1,15 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>EXE</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>EXE</Filter>
-    </ClCompile>
-    <ClCompile Include="debug.cpp">
-      <Filter>EXE</Filter>
-    </ClCompile>
     <ClCompile Include="Source_Files\Start_Neural_Network.cpp">
       <Filter>Source_Files</Filter>
     </ClCompile>
@@ -26,9 +17,6 @@
       <Filter>Source_Files</Filter>
     </ClCompile>
     <ClCompile Include="Source_Files\Transfer_Learning.cpp">
-      <Filter>Source_Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source_Files\Framework.cpp">
       <Filter>Source_Files</Filter>
     </ClCompile>
     <ClCompile Include="Source_Files\User_Controls__Preprocessing.cpp">
@@ -88,30 +76,27 @@
     <ClCompile Include="Source_Files\Preprocessing__Remove_IO.cpp">
       <Filter>Source_Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source_Files\debug.cpp">
+      <Filter>Source_Files\EXE</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\main.cpp">
+      <Filter>Source_Files\EXE</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\stdafx.cpp">
+      <Filter>Source_Files\EXE</Filter>
+    </ClCompile>
+    <ClCompile Include="Source_Files\Frame_work.cpp">
+      <Filter>Source_Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource_Files\resource.h">
       <Filter>Resource_Files</Filter>
     </ClInclude>
-    <ClInclude Include="debug.hpp">
-      <Filter>EXE</Filter>
-    </ClInclude>
-    <ClInclude Include="main.hpp">
-      <Filter>EXE</Filter>
-    </ClInclude>
-    <ClInclude Include="stdafx.hpp">
-      <Filter>EXE</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.hpp">
-      <Filter>EXE</Filter>
-    </ClInclude>
     <ClInclude Include="Header_Files\Count_Identical_Outputs_Entries.hpp">
       <Filter>Header_Files</Filter>
     </ClInclude>
     <ClInclude Include="Header_Files\Dataset__Datapoint.hpp">
-      <Filter>Header_Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Header_Files\Framework.hpp">
       <Filter>Header_Files</Filter>
     </ClInclude>
     <ClInclude Include="Header_Files\Grid_Search_Optimizer.hpp">
@@ -183,6 +168,21 @@
     <ClInclude Include="Header_Files\Preprocessing__Remove_IO.hpp">
       <Filter>Header_Files</Filter>
     </ClInclude>
+    <ClInclude Include="Header_Files\debug.hpp">
+      <Filter>Header_Files\EXE</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\main.hpp">
+      <Filter>Header_Files\EXE</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\stdafx.hpp">
+      <Filter>Header_Files\EXE</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\targetver.hpp">
+      <Filter>Header_Files\EXE</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\Frame_work.hpp">
+      <Filter>Header_Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source_Files">
@@ -194,8 +194,11 @@
     <Filter Include="Header_Files">
       <UniqueIdentifier>{fdc82ef2-0423-4ba8-91c6-9fe7db67c327}</UniqueIdentifier>
     </Filter>
-    <Filter Include="EXE">
-      <UniqueIdentifier>{39f7d5f1-41bb-4293-85c0-4650454f07c1}</UniqueIdentifier>
+    <Filter Include="Header_Files\EXE">
+      <UniqueIdentifier>{9a9edb46-e1cf-40a3-88b0-0337bc7578b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source_Files\EXE">
+      <UniqueIdentifier>{7a4c1b79-262d-451a-b946-b6bc0412f962}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

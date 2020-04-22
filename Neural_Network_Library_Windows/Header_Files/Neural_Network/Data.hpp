@@ -20,8 +20,11 @@
     //#include <CUDA/CUDA_Dataset_Manager.cuh>
 #endif // COMPILE_CUDA
 
-#include <Tools/Configuration.hpp>
-#include <Tools/Class_Generator_Random.hpp>
+#include <Configuration/Configuration.hpp>
+#include <Random/Bernoulli.hpp>
+#include <Random/Floating.hpp>
+#include <Random/Gaussian.hpp>
+#include <Random/Integer.hpp>
 #include <Neural_Network/Activation_Functions.hpp>
 
 // Forward declaration.
@@ -3030,15 +3033,15 @@ class Neural_Network
         enum MyEA::Common::ENUM_TYPE_STATE_PROPAGATION type_state_propagation = MyEA::Common::ENUM_TYPE_STATE_PROPAGATION::TYPE_STATE_PROPAGATION_INFERENCE; // Dropout && Batch normalization variable
         enum MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION Activation_Function__To__Class_Activation_Function(enum MyEA::Common::ENUM_TYPE_ACTIVATION_FUNCTION const type_activation_function_received) const;
         
-        class MyEA::Common::Class_Generator_Random_Bernoulli<T_> *ptr_array_Class_Generator_Bernoulli = nullptr;
-        class MyEA::Common::Class_Generator_Random_Bernoulli<T_> *ptr_array_Class_Generator_Bernoulli_ShakeDrop = nullptr;
-        class MyEA::Common::Class_Generator_Random_Bernoulli<T_> *ptr_array_Class_Generator_Bernoulli_Zoneout_State = nullptr;
-        class MyEA::Common::Class_Generator_Random_Bernoulli<T_> *ptr_array_Class_Generator_Bernoulli_Zoneout_Hidden = nullptr;
-        class MyEA::Common::Class_Generator_Random_Real<T_> *ptr_array_Class_Generator_Real_ShakeDrop = nullptr;
-        class MyEA::Common::Class_Generator_Random_Real<T_> *ptr_array_Class_Generator_Real_Uout = nullptr;
-        class MyEA::Common::Class_Generator_Random_Real<T_> Class_Generator_Real;
-        class MyEA::Common::Class_Generator_Random_Gaussian<T_> *ptr_array_Class_Generator_Real_Gaussian = nullptr;
-        class MyEA::Common::Class_Generator_Random_Gaussian<T_> Class_Generator_Gaussian;
+        class MyEA::Random::Bernoulli<T_> *ptr_array_Class_Generator_Bernoulli = nullptr;
+        class MyEA::Random::Bernoulli<T_> *ptr_array_Class_Generator_Bernoulli_ShakeDrop = nullptr;
+        class MyEA::Random::Bernoulli<T_> *ptr_array_Class_Generator_Bernoulli_Zoneout_State = nullptr;
+        class MyEA::Random::Bernoulli<T_> *ptr_array_Class_Generator_Bernoulli_Zoneout_Hidden = nullptr;
+        class MyEA::Random::Floating<T_> *ptr_array_Class_Generator_Real_ShakeDrop = nullptr;
+        class MyEA::Random::Floating<T_> *ptr_array_Class_Generator_Real_Uout = nullptr;
+        class MyEA::Random::Floating<T_> Class_Generator_Real;
+        class MyEA::Random::Gaussian<T_> *ptr_array_Class_Generator_Real_Gaussian = nullptr;
+        class MyEA::Random::Gaussian<T_> Class_Generator_Gaussian;
         
         bool Initialize__LSUV(size_t const maximum_number_trials_received = 10_zu,
                                         size_t const maximum_batch_size_received = 32_zu,

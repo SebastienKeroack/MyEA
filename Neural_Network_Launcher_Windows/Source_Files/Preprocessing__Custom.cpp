@@ -5,7 +5,7 @@
     #include <windows.h>
 #endif
 
-#include <Tools/Animation_Waiting.hpp>
+#include <Strings/Animation_Waiting.hpp>
 
 #include <Preprocessing__Custom.hpp>
 
@@ -17,7 +17,7 @@ bool Preprocessing__Custom(void)
 {
     std::string tmp_dataset_name;
     
-    std::cout << MyEA::String::Get__Time() << ": Dataset name: ";
+    std::cout << MyEA::Time::Date_Time_Now() << ": Dataset name: ";
 
     getline(std::cin, tmp_dataset_name);
     
@@ -26,12 +26,12 @@ bool Preprocessing__Custom(void)
     SetConsoleTitle(std::string(tmp_dataset_name + " - Preprocessing, Custom").c_str());
 #endif
     
-    class MyEA::Neural_Network::Neural_Network_Manager tmp_Neural_Network_Manager(true, MyEA::Common::ENUM_TYPE_INDICATORS::TYPE_iNONE);
+    class MyEA::Neural_Network::Neural_Network_Manager tmp_Neural_Network_Manager;
     
     if(tmp_Neural_Network_Manager.Initialize_Path(tmp_dataset_name, tmp_dataset_name) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize_Directory(%s, %s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_dataset_name.c_str(),
                                  tmp_dataset_name.c_str(),
@@ -49,7 +49,7 @@ bool Preprocessing__Custom(void)
     if(tmp_Neural_Network_Manager.Initialize_Dataset_Manager(&tmp_Dataset_Manager_Parameters) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize_Dataset_Manager()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -66,16 +66,16 @@ bool Preprocessing__Custom(void)
     if(tmp_ptr_Dataset_Manager->Get__Number_Inputs() == 6_zu)
     {
         size_t const tmp_J_level_maximum(tmp_ptr_Dataset_Manager->MODWT__J_Level_Maximum());
-        PRINT_FORMAT("%s: J level inverse." NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s: J level inverse." NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
         PRINT_FORMAT("%s:\tRange[0, %zu]." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  tmp_J_level_maximum);
         PRINT_FORMAT("%s:\tdefault=%zu." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  MyEA::Math::Minimum<size_t>(tmp_J_level_maximum, 3_zu));
         tmp_J_level = MyEA::String::Cin_Number<size_t>(0_zu,
                                                                                   tmp_J_level_maximum,
-                                                                                  MyEA::String::Get__Time() + ": J level inverse: ");
+                                                                                  MyEA::Time::Date_Time_Now() + ": J level inverse: ");
 
     }
     // |END| Validate input(s)/output(s) size. |END|
@@ -83,7 +83,7 @@ bool Preprocessing__Custom(void)
     if(tmp_Neural_Network_Manager.Initialize_Path(tmp_dataset_name, tmp_dataset_name + "_C") == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize_Directory(%s, %s_C)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_dataset_name.c_str(),
                                  tmp_dataset_name.c_str(),
@@ -99,9 +99,9 @@ bool Preprocessing__Custom(void)
     
     class Dataset<T_> *tmp_ptr_TrainingSet(tmp_ptr_Dataset_Manager->Get__Dataset_At(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TRAINING));
     
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-    PRINT_FORMAT("%s: Preprocessing... ", MyEA::String::Get__Time().c_str());
-    class MyEA::Animation::Animation_Waiting tmp_Animation_Waiting;
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+    PRINT_FORMAT("%s: Preprocessing... ", MyEA::Time::Date_Time_Now().c_str());
+    class MyEA::String::Animation_Waiting tmp_Animation_Waiting;
     tmp_Animation_Waiting.Print_While_Async();
 
     if(tmp_ptr_Dataset_Manager->Get__Number_Inputs() == 6_zu)
@@ -127,7 +127,7 @@ bool Preprocessing__Custom(void)
                                                                                                       ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -160,7 +160,7 @@ bool Preprocessing__Custom(void)
                                                                                                           ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum()\" function. At line %d." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         __LINE__);
 
@@ -186,7 +186,7 @@ bool Preprocessing__Custom(void)
                                                                                                         ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered()\" function. At line %d." NEW_LINE,
-                                        MyEA::String::Get__Time().c_str(),
+                                        MyEA::Time::Date_Time_Now().c_str(),
                                         __FUNCTION__,
                                         __LINE__);
 
@@ -207,7 +207,7 @@ bool Preprocessing__Custom(void)
                                                                                                               ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Merge__MODWT()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -226,7 +226,7 @@ bool Preprocessing__Custom(void)
                                                                                                               ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Merge__MODWT()\" function. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              __LINE__);
 
@@ -242,16 +242,16 @@ bool Preprocessing__Custom(void)
     // |END| Preprocessing. |END|
     
     tmp_Animation_Waiting.Join();
-    PRINT_FORMAT(NEW_LINE "%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT(NEW_LINE "%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     PRINT_FORMAT("%s: Saving into %s... ",
-                             MyEA::String::Get__Time().c_str(),
+                             MyEA::Time::Date_Time_Now().c_str(),
                              tmp_Neural_Network_Manager.Get__Path_Dataset_Manager().c_str());
     tmp_Animation_Waiting.Print_While_Async();
 
     if(tmp_Neural_Network_Manager.Get__Dataset_Manager()->Save(tmp_Neural_Network_Manager.Get__Path_Dataset_Manager(), true) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Save(%s, true)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_Neural_Network_Manager.Get__Path_Dataset_Manager().c_str(),
                                  __LINE__);
@@ -260,7 +260,7 @@ bool Preprocessing__Custom(void)
     }
     
     tmp_Animation_Waiting.Join();
-    PRINT_FORMAT(NEW_LINE "%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT(NEW_LINE "%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
     return(true);
 }

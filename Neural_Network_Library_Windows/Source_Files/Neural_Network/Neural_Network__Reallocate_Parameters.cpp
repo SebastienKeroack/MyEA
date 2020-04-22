@@ -9,14 +9,13 @@ bool Neural_Network::Reallocate__Parameter(size_t const number_parameters_receiv
         // Connection index.
         if(this->ptr_array_ptr_connections != nullptr)
         {
-            void **tmp_ptr_array_ptr_connections(Memory::reallocate_pointers_array_cpp<void*>(this->ptr_array_ptr_connections,
+            void **tmp_ptr_array_ptr_connections(MyEA::Memory::Cpp::Reallocate_PtOfPt<void*, true>(this->ptr_array_ptr_connections,
                                                                                                                                        number_parameters_received,
-                                                                                                                                       this->total_parameters_allocated,
-                                                                                                                                       true));
+                                                                                                                                       this->total_parameters_allocated));
             if(tmp_ptr_array_ptr_connections == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_pointers_array_cpp<%zu>(ptr, %zu, %zu, true)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          sizeof(void*),
                                          number_parameters_received,
@@ -32,13 +31,13 @@ bool Neural_Network::Reallocate__Parameter(size_t const number_parameters_receiv
         // Parameters.
         if(this->ptr_array_parameters != nullptr)
         {
-            T_ *tmp_ptr_array_parameters(Memory::reallocate_cpp<T_>(this->ptr_array_parameters,
+            T_ *tmp_ptr_array_parameters(MyEA::Memory::Cpp::Reallocate<T_>(this->ptr_array_parameters,
                                                                                                     number_parameters_received,
                                                                                                     this->total_parameters_allocated));
             if(tmp_ptr_array_parameters == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          sizeof(T_),
                                          number_parameters_received,
@@ -52,7 +51,7 @@ bool Neural_Network::Reallocate__Parameter(size_t const number_parameters_receiv
             if(this->Reallocate__Parameter__Optimizer(number_parameters_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Reallocate__Parameter__Optimizer(%zu)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          number_parameters_received,
                                          __LINE__);
@@ -62,7 +61,7 @@ bool Neural_Network::Reallocate__Parameter(size_t const number_parameters_receiv
             else if(this->Use__Regularization_Parameter() && this->Reallocate__Parameter__Regularization(number_parameters_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Reallocate__Parameter__Regularization(%zu)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          number_parameters_received,
                                          __LINE__);
@@ -77,13 +76,13 @@ bool Neural_Network::Reallocate__Parameter(size_t const number_parameters_receiv
         // Derivates parameters.
         if(this->ptr_array_derivatives_parameters != nullptr)
         {
-            T_ *tmp_ptr_array_derivatives_parameters(Memory::reallocate_cpp<T_>(this->ptr_array_derivatives_parameters,
+            T_ *tmp_ptr_array_derivatives_parameters(MyEA::Memory::Cpp::Reallocate<T_>(this->ptr_array_derivatives_parameters,
                                                                                                                     this->number_threads * number_parameters_received,
                                                                                                                     this->number_threads * this->total_parameters_allocated));
             if(tmp_ptr_array_derivatives_parameters == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          sizeof(T_),
                                          number_parameters_received,
@@ -110,13 +109,13 @@ bool Neural_Network::Reallocate__Parameter__Regularization(size_t const number_p
     if(this->ptr_array_mask_regularized_parameters != nullptr)
     {
         // Mask regularization parameters.
-        T_ *tmp_ptr_array_mask_rergularization_parameters(Memory::reallocate_cpp<T_>(this->ptr_array_mask_regularized_parameters,
+        T_ *tmp_ptr_array_mask_rergularization_parameters(MyEA::Memory::Cpp::Reallocate<T_>(this->ptr_array_mask_regularized_parameters,
                                                                                                                                 number_parameters_received,
                                                                                                                                 this->total_parameters_allocated));
         if(tmp_ptr_array_mask_rergularization_parameters == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      sizeof(T_),
                                      number_parameters_received,
@@ -160,13 +159,13 @@ bool Neural_Network::Reallocate__Parameter__Gradient_Descent(size_t const number
       this->ptr_array_previous_delta_parameters != nullptr)
     {
         // Previous delta parameters.
-        T_ *tmp_ptr_array_previous_delta_parameters(Memory::reallocate_cpp<T_>(this->ptr_array_previous_delta_parameters,
+        T_ *tmp_ptr_array_previous_delta_parameters(MyEA::Memory::Cpp::Reallocate<T_>(this->ptr_array_previous_delta_parameters,
                                                                                                                       number_parameters_received,
                                                                                                                       this->total_parameters_allocated));
         if(tmp_ptr_array_previous_delta_parameters == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      sizeof(T_),
                                      number_parameters_received,
@@ -186,13 +185,13 @@ bool Neural_Network::Reallocate__Parameter__iRPROP_minus(size_t const number_par
 {
     if(this->ptr_array_previous_steps != nullptr)
     {
-        T_ *tmp_ptr_array_previous_steps(Memory::reallocate_cpp<T_>(this->ptr_array_previous_steps,
+        T_ *tmp_ptr_array_previous_steps(MyEA::Memory::Cpp::Reallocate<T_>(this->ptr_array_previous_steps,
                                                                                                      number_parameters_received,
                                                                                                      this->total_parameters_allocated));
         if(tmp_ptr_array_previous_steps == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      sizeof(T_),
                                      number_parameters_received,
@@ -203,20 +202,20 @@ bool Neural_Network::Reallocate__Parameter__iRPROP_minus(size_t const number_par
         }
         this->ptr_array_previous_steps = tmp_ptr_array_previous_steps;
         
-        Memory::Fill<T_>(this->ptr_array_previous_steps + this->total_weights_allocated,
+        MyEA::Memory::Fill<T_>(this->ptr_array_previous_steps + this->total_weights_allocated,
                                   this->ptr_array_previous_steps + number_parameters_received,
                                   this->rprop_delta_zero);
     }
     
     if(this->ptr_array_previous_derivatives_parameters != nullptr)
     {
-        T_ *tmp_ptr_array_previous_derivatives_parameters(Memory::reallocate_cpp<T_>(this->ptr_array_previous_derivatives_parameters,
+        T_ *tmp_ptr_array_previous_derivatives_parameters(MyEA::Memory::Cpp::Reallocate<T_>(this->ptr_array_previous_derivatives_parameters,
                                                                                                                               number_parameters_received,
                                                                                                                               this->total_parameters_allocated));
         if(tmp_ptr_array_previous_derivatives_parameters == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      sizeof(T_),
                                      number_parameters_received,
@@ -236,7 +235,7 @@ bool Neural_Network::Reallocate__Parameter__iRPROP_plus(size_t const number_para
     if(this->Reallocate__Parameter__iRPROP_minus(number_parameters_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Reallocate__Parameter__iRPROP_minus()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -245,13 +244,13 @@ bool Neural_Network::Reallocate__Parameter__iRPROP_plus(size_t const number_para
 
     if(this->ptr_array_previous_delta_parameters != nullptr)
     {
-        T_ *tmp_ptr_array_previous_delta_parameters(Memory::reallocate_cpp<T_>(this->ptr_array_previous_delta_parameters,
+        T_ *tmp_ptr_array_previous_delta_parameters(MyEA::Memory::Cpp::Reallocate<T_>(this->ptr_array_previous_delta_parameters,
                                                                                                                       number_parameters_received,
                                                                                                                       this->total_parameters_allocated));
         if(tmp_ptr_array_previous_delta_parameters == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      sizeof(T_),
                                      number_parameters_received,
@@ -270,13 +269,13 @@ bool Neural_Network::Reallocate__Parameter__Adam(size_t const number_parameters_
 {
     if(this->ptr_array_previous_biased_first_moment != nullptr)
     {
-        T_ *tmp_ptr_array_previous_biased_first_moment(Memory::reallocate_cpp<T_>(this->ptr_array_previous_biased_first_moment,
+        T_ *tmp_ptr_array_previous_biased_first_moment(MyEA::Memory::Cpp::Reallocate<T_>(this->ptr_array_previous_biased_first_moment,
                                                                                                                            number_parameters_received,
                                                                                                                            this->total_parameters_allocated));
         if(tmp_ptr_array_previous_biased_first_moment == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      sizeof(T_),
                                      number_parameters_received,
@@ -290,13 +289,13 @@ bool Neural_Network::Reallocate__Parameter__Adam(size_t const number_parameters_
     
     if(this->ptr_array_previous_biased_second_moment != nullptr)
     {
-        T_ *tmp_ptr_array_previous_biased_second_moment(Memory::reallocate_cpp<T_>(this->ptr_array_previous_biased_second_moment,
+        T_ *tmp_ptr_array_previous_biased_second_moment(MyEA::Memory::Cpp::Reallocate<T_>(this->ptr_array_previous_biased_second_moment,
                                                                                                                                 number_parameters_received,
                                                                                                                                 this->total_parameters_allocated));
         if(tmp_ptr_array_previous_biased_second_moment == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      sizeof(T_),
                                      number_parameters_received,
@@ -316,7 +315,7 @@ bool Neural_Network::Reallocate__Parameter__AMSGrad(size_t const number_paramete
     if(this->Reallocate__Parameter__Adam(number_parameters_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Reallocate__Parameter__Adam()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -325,13 +324,13 @@ bool Neural_Network::Reallocate__Parameter__AMSGrad(size_t const number_paramete
 
     if(this->ptr_array_previous_biased_second_moment_hat != nullptr)
     {
-        T_ *tmp_ptr_array_previous_biased_second_moment_hat(Memory::reallocate_cpp<T_>(this->ptr_array_previous_biased_second_moment_hat,
+        T_ *tmp_ptr_array_previous_biased_second_moment_hat(MyEA::Memory::Cpp::Reallocate<T_>(this->ptr_array_previous_biased_second_moment_hat,
                                                                                                                                       number_parameters_received,
                                                                                                                                       this->total_parameters_allocated));
         if(tmp_ptr_array_previous_biased_second_moment_hat == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      sizeof(T_),
                                      number_parameters_received,

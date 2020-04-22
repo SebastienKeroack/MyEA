@@ -51,6 +51,7 @@
 	# Windows:
 		# Open "PowerShell":
             $BOOST_DIRECTORY  = "D:\\Boost\\boost_1_72_0"
+            $EIGEN_DIRECTORY  = "D:\\Eigen\\eigen-3.3.7"
             $PYTHON_DIRECTORY = "C:\\Users\\Sebastien\\AppData\\Local\\Programs\\Python"
 
             # Extract file to $BOOST_DIRECTORY
@@ -94,6 +95,7 @@ using python : 3.8
 		# Open "PowerShell":
             # Create a symbolic link to the include path.
             New-Item -ItemType Junction -Target "boost" -Path "D:\\include\\boost"
+            New-Item -ItemType Junction -Target $EIGEN_DIRECTORY -Path "D:\\include\\eigen"
             New-Item -ItemType Junction -Target "$PYTHON_DIRECTORY\\Python38\\include" -Path "D:\\include\\python_x64"
             New-Item -ItemType Junction -Target "$PYTHON_DIRECTORY\\Python38-32\\include" -Path "D:\\include\\python_x86"
             

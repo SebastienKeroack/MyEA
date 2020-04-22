@@ -11,5 +11,5 @@
 // Windows Header Files:
 #include <windows.h>
 
-#include <Tools/Configuration.hpp>
+#include <Configuration/Configuration.hpp>
 // TODO: reference additional headers your program requires here

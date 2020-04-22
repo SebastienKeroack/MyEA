@@ -24,7 +24,7 @@ bool Neural_Network::Set__K_Sparsity(size_t const index_layer_received, size_t c
     else if(this->ptr_array_layers == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_array_layers\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -39,7 +39,7 @@ bool Neural_Network::Set__K_Sparsity(struct Layer *const ptr_layer_received, siz
     if(ptr_layer_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_layer_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -48,7 +48,7 @@ bool Neural_Network::Set__K_Sparsity(struct Layer *const ptr_layer_received, siz
     else if(ptr_layer_received == this->ptr_array_layers)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is the input layer. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -57,7 +57,7 @@ bool Neural_Network::Set__K_Sparsity(struct Layer *const ptr_layer_received, siz
     else if(ptr_layer_received == this->ptr_last_layer - 1)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is the output layer. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -67,7 +67,7 @@ bool Neural_Network::Set__K_Sparsity(struct Layer *const ptr_layer_received, siz
     else if(static_cast<size_t>(static_cast<T_>(k_sparsity_received) * ptr_layer_received->alpha_sparsity) > *ptr_layer_received->ptr_number_outputs)
     {
         PRINT_FORMAT("%s: %s: ERROR: k-sparse cannot be %zu because an overflow (%zu * %f = %zu) occur (limit=%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  k_sparsity_received,
                                  k_sparsity_received,
@@ -85,7 +85,7 @@ bool Neural_Network::Set__K_Sparsity(struct Layer *const ptr_layer_received, siz
         if(++this->total_k_sparse_layers == 1_zu && this->Allocate__Sparse_K_Filter() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Sparse_K_Filter()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
         
@@ -121,7 +121,7 @@ bool Neural_Network::Set__Alpha_Sparsity(size_t const index_layer_received, T_ c
     else if(this->ptr_array_layers == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_array_layers\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -136,7 +136,7 @@ bool Neural_Network::Set__Alpha_Sparsity(struct Layer *const ptr_layer_received,
     if(ptr_layer_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_layer_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -145,7 +145,7 @@ bool Neural_Network::Set__Alpha_Sparsity(struct Layer *const ptr_layer_received,
     else if(ptr_layer_received == this->ptr_array_layers)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is the input layer. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -154,7 +154,7 @@ bool Neural_Network::Set__Alpha_Sparsity(struct Layer *const ptr_layer_received,
     else if(ptr_layer_received == this->ptr_last_layer - 1)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer received as argument is the output layer. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -163,7 +163,7 @@ bool Neural_Network::Set__Alpha_Sparsity(struct Layer *const ptr_layer_received,
     else if(alpha_sparsity_received < 0_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: alpha k-sparse (%f) cannot be less than zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(alpha_sparsity_received),
                                  __LINE__);
@@ -173,7 +173,7 @@ bool Neural_Network::Set__Alpha_Sparsity(struct Layer *const ptr_layer_received,
     else if(static_cast<size_t>(static_cast<T_>(ptr_layer_received->k_sparsity) * alpha_sparsity_received) > *ptr_layer_received->ptr_number_outputs)
     {
         PRINT_FORMAT("%s: %s: ERROR: alpha k-sparse cannot be %f because an overflow (%zu * %f = %zu) occur (limit=%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(alpha_sparsity_received),
                                  ptr_layer_received->k_sparsity,
@@ -213,7 +213,7 @@ void Neural_Network::Assign__Sparsity_Activities(size_t const number_threads_rec
             case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_FULLY_CONNECTED_INDEPENDENTLY_RECURRENT: tmp_ptr_array_k_sparses += number_threads_received * static_cast<size_t>(tmp_ptr_layer_it->ptr_last_AF_Ind_recurrent_unit - tmp_ptr_layer_it->ptr_array_AF_Ind_recurrent_units); break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Type layer (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_ptr_layer_it->type_layer,
                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str(),
@@ -261,7 +261,7 @@ void Neural_Network::Sparse_K_Filter__Loop(size_t const time_step_index_received
     if(input_unit_size_received < k_sparsity_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Number of input(s) (%zu) cannot be less than the number of k-sparse filters (%zu).  At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  input_unit_size_received,
                                  k_sparsity_received,
@@ -335,7 +335,7 @@ void Neural_Network::Sparse_K_Filter__OpenMP(size_t const time_step_index_receiv
     if(input_unit_size_received < k_sparsity_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Number of input(s) (%zu) cannot be less than the number of k-sparse filters (%zu).  At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  input_unit_size_received,
                                  k_sparsity_received,

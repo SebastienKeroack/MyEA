@@ -59,7 +59,7 @@
         if(this->Allocate__Parameter__Optimizer() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate connections for optimizer function." NEW_LINE,
-                         MyEA::String::Get__Time().c_str(),
+                         MyEA::Time::Date_Time_Now().c_str(),
                          __FUNCTION__);
 
             return;
@@ -88,7 +88,7 @@
                 if((this->ptr_array_derivatives_parameters = new T_[this->number_threads * this->total_parameters_allocated]) == nullptr)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              this->number_threads * this->total_parameters_allocated * sizeof(T_),
                                              __LINE__);
@@ -404,7 +404,7 @@ bool Neural_Network::Set__Layer_Activation_Function(size_t const index_layer_rec
       type_activation_function_received == MyEA::Common::ENUM_TYPE_ACTIVATION_FUNCTION::TYPE_NN_A_F_LENGTH)
     {
         PRINT_FORMAT("%s: %s: ERROR: Type activation function can not be set to (%u | %s). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_activation_function_received,
                                  MyEA::Common::ENUM_TYPE_ACTIVATION_FUNCTION_NAME[type_activation_function_received].c_str(),
@@ -415,7 +415,7 @@ bool Neural_Network::Set__Layer_Activation_Function(size_t const index_layer_rec
     else if(this->ptr_array_layers == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_array_layers\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -424,7 +424,7 @@ bool Neural_Network::Set__Layer_Activation_Function(size_t const index_layer_rec
     else if(index_layer_received >= this->total_layers)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer index (%zu) overflow the number of layers in the network (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  index_layer_received,
                                  this->total_layers,
@@ -470,7 +470,7 @@ enum MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION Neural_Network::Activation_Functio
         case MyEA::Common::ENUM_TYPE_ACTIVATION_FUNCTION::TYPE_NN_A_F_SOFTMAX: tmp_class_activation_function = MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION::TYPE_ACTIVATION_SOFTMAX; break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Activation function type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      type_activation_function_received,
                                      MyEA::Common::ENUM_TYPE_ACTIVATION_FUNCTION_NAME[type_activation_function_received].c_str(),
@@ -488,7 +488,7 @@ bool Neural_Network::Set__Layer_Activation_Function(struct Layer *const ptr_laye
       type_activation_function_received >= MyEA::Common::ENUM_TYPE_ACTIVATION_FUNCTION::TYPE_NN_A_F_LENGTH)
     {
         PRINT_FORMAT("%s: %s: ERROR: Type activation function can not be set to (%u | %s). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_activation_function_received,
                                  MyEA::Common::ENUM_TYPE_ACTIVATION_FUNCTION_NAME[type_activation_function_received].c_str(),
@@ -499,7 +499,7 @@ bool Neural_Network::Set__Layer_Activation_Function(struct Layer *const ptr_laye
     else if(ptr_layer_it_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_layer_it_received\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -512,7 +512,7 @@ bool Neural_Network::Set__Layer_Activation_Function(struct Layer *const ptr_laye
              ptr_layer_it_received->type_layer == MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_RESIDUAL)
     {
         PRINT_FORMAT("%s: %s: WARNING: Type layer (%u | %s) is useless in this function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ptr_layer_it_received->type_layer,
                                  MyEA::Common::ENUM_TYPE_LAYER_NAME[ptr_layer_it_received->type_layer].c_str(),
@@ -536,7 +536,7 @@ bool Neural_Network::Set__Layer_Activation_Function(struct Layer *const ptr_laye
             if(ptr_layer_it_received != this->ptr_last_layer - 1) // If is not the output layer
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not use a softmax layer in a hidden layer. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -545,7 +545,7 @@ bool Neural_Network::Set__Layer_Activation_Function(struct Layer *const ptr_laye
             else if(*ptr_layer_it_received->ptr_number_outputs == 1u)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Softmax activation functions is only for multi class. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -554,7 +554,7 @@ bool Neural_Network::Set__Layer_Activation_Function(struct Layer *const ptr_laye
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer activation type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ptr_layer_it_received->type_activation,
                                      MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION_NAME[ptr_layer_it_received->type_activation].c_str(),
@@ -570,7 +570,7 @@ bool Neural_Network::Set__Layer_Activation_Function(struct Layer *const ptr_laye
             if(this->Set__Layer_Activation_Function__AF(ptr_layer_it_received, type_activation_function_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Layer_Activation_Function__AF(ptr, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          type_activation_function_received,
                                          __LINE__);
@@ -582,7 +582,7 @@ bool Neural_Network::Set__Layer_Activation_Function(struct Layer *const ptr_laye
             if(this->Set__Layer_Activation_Function__AF_Ind_Recurrent(ptr_layer_it_received, type_activation_function_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Layer_Activation_Function__AF_Ind_Recurrent(ptr, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          type_activation_function_received,
                                          __LINE__);
@@ -594,7 +594,7 @@ bool Neural_Network::Set__Layer_Activation_Function(struct Layer *const ptr_laye
             if(this->Set__Layer_Activation_Function__LSTM(ptr_layer_it_received, type_activation_function_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Layer_Activation_Function__LSTM(ptr, %u)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          type_activation_function_received,
                                          __LINE__);
@@ -604,7 +604,7 @@ bool Neural_Network::Set__Layer_Activation_Function(struct Layer *const ptr_laye
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Type layer (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ptr_layer_it_received->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[ptr_layer_it_received->type_layer].c_str(),
@@ -618,7 +618,7 @@ bool Neural_Network::Set__Layer_Activation_Function(struct Layer *const ptr_laye
       this->Set__Regularization__Constraint_Recurrent_Weight__Default(ptr_layer_it_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Regularization__Constraint_Recurrent_Weight__Default(ptr)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -663,7 +663,7 @@ bool Neural_Network::Set__Layer_Activation_Steepness(size_t const index_layer_re
     if(activation_steepness_received < 0_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: Activation steepness (%f) can not be less than zero. At line %d." NEW_LINE,
-                                MyEA::String::Get__Time().c_str(),
+                                MyEA::Time::Date_Time_Now().c_str(),
                                 __FUNCTION__,
                                 Cast_T(activation_steepness_received),
                                 __LINE__);
@@ -673,7 +673,7 @@ bool Neural_Network::Set__Layer_Activation_Steepness(size_t const index_layer_re
     else if(activation_steepness_received > 1_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: Activation steepness (%f) can not be greater than one. At line %d." NEW_LINE,
-                                MyEA::String::Get__Time().c_str(),
+                                MyEA::Time::Date_Time_Now().c_str(),
                                 __FUNCTION__,
                                 Cast_T(activation_steepness_received),
                                 __LINE__);
@@ -683,7 +683,7 @@ bool Neural_Network::Set__Layer_Activation_Steepness(size_t const index_layer_re
     else if(this->ptr_array_layers == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_array_layers\" is a nullptr. At line %d." NEW_LINE,
-                                MyEA::String::Get__Time().c_str(),
+                                MyEA::Time::Date_Time_Now().c_str(),
                                 __FUNCTION__,
                                 __LINE__);
 
@@ -692,7 +692,7 @@ bool Neural_Network::Set__Layer_Activation_Steepness(size_t const index_layer_re
     else if(index_layer_received >= this->total_layers)
     {
         PRINT_FORMAT("%s: %s: ERROR: Layer index (%zu) overflow the number of layers in the network (%zu). At line %d." NEW_LINE,
-                                MyEA::String::Get__Time().c_str(),
+                                MyEA::Time::Date_Time_Now().c_str(),
                                 __FUNCTION__,
                                 index_layer_received,
                                 this->total_layers,
@@ -709,7 +709,7 @@ bool Neural_Network::Set__Layer_Activation_Steepness(struct Layer *const ptr_lay
     if(activation_steepness_received < 0_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: Activation steepness (%f) can not be less than zero. At line %d." NEW_LINE,
-                                MyEA::String::Get__Time().c_str(),
+                                MyEA::Time::Date_Time_Now().c_str(),
                                 __FUNCTION__,
                                 Cast_T(activation_steepness_received),
                                 __LINE__);
@@ -719,7 +719,7 @@ bool Neural_Network::Set__Layer_Activation_Steepness(struct Layer *const ptr_lay
     else if(activation_steepness_received > 1_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: Activation steepness (%f) can not be greater than one. At line %d." NEW_LINE,
-                                MyEA::String::Get__Time().c_str(),
+                                MyEA::Time::Date_Time_Now().c_str(),
                                 __FUNCTION__,
                                 Cast_T(activation_steepness_received),
                                 __LINE__);
@@ -729,7 +729,7 @@ bool Neural_Network::Set__Layer_Activation_Steepness(struct Layer *const ptr_lay
     else if(ptr_layer_it_received == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"ptr_layer_it_received\" is a nullptr. At line %d." NEW_LINE,
-                                MyEA::String::Get__Time().c_str(),
+                                MyEA::Time::Date_Time_Now().c_str(),
                                 __FUNCTION__,
                                 __LINE__);
 
@@ -744,7 +744,7 @@ bool Neural_Network::Set__Layer_Activation_Steepness(struct Layer *const ptr_lay
              ptr_layer_it_received->type_layer == MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_RESIDUAL)
     {
         PRINT_FORMAT("%s: %s: WARNING: Type layer (%u | %s) is useless in this function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ptr_layer_it_received->type_layer,
                                  MyEA::Common::ENUM_TYPE_LAYER_NAME[ptr_layer_it_received->type_layer].c_str(),
@@ -761,7 +761,7 @@ bool Neural_Network::Set__Layer_Activation_Steepness(struct Layer *const ptr_lay
             if(this->Set__Layer_Activation_Steepness__AF(ptr_layer_it_received, activation_steepness_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Layer_Activation_Steepness__AF(ptr, %f)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          Cast_T(activation_steepness_received),
                                          __LINE__);
@@ -773,7 +773,7 @@ bool Neural_Network::Set__Layer_Activation_Steepness(struct Layer *const ptr_lay
             if(this->Set__Layer_Activation_Steepness__AF_Ind_Recurrent(ptr_layer_it_received, activation_steepness_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Layer_Activation_Steepness__AF_Ind_Recurrent(ptr, %f)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          Cast_T(activation_steepness_received),
                                          __LINE__);
@@ -783,7 +783,7 @@ bool Neural_Network::Set__Layer_Activation_Steepness(struct Layer *const ptr_lay
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Type layer (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ptr_layer_it_received->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[ptr_layer_it_received->type_layer].c_str(),

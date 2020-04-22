@@ -27,7 +27,7 @@ bool Neural_Network::Set__OpenMP(bool const use_openmp_received)
         if(this->Deinitialize__OpenMP() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Deinitialize__OpenMP()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -49,7 +49,7 @@ bool Neural_Network::Set__Maximum_Thread_Usage(double const percentage_maximum_t
     if(this->Update__Thread_Size(this->cache_number_threads) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update__Thread_Size(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->cache_number_threads,
                                  __LINE__);
@@ -67,7 +67,7 @@ bool Neural_Network::Deinitialize__OpenMP(void)
         if(this->Reallocate__Thread(1_zu) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Reallocate__Thread(1)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 

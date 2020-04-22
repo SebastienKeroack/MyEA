@@ -1,7 +1,7 @@
 #include "stdafx.hpp"
 
 #include<Files/File.hpp>
-#include <Tools/MODWT.hpp>
+#include <Math/MODWT.hpp>
 
 #include <Neural_Network/Dataset_Manager.hpp>
 
@@ -24,7 +24,7 @@ bool Input_Dataset_File(enum MyEA::Common::ENUM_TYPE_DATASET_FILE &ref_type_date
     if(tmp_vector_Type_Dataset_File_Available.empty())
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available in the folder. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -38,21 +38,21 @@ bool Input_Dataset_File(enum MyEA::Common::ENUM_TYPE_DATASET_FILE &ref_type_date
     }
     else
     {
-        PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
-        PRINT_FORMAT("%s: Dataset file type available:" NEW_LINE, MyEA::String::Get__Time().c_str());
+        PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
+        PRINT_FORMAT("%s: Dataset file type available:" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
 
         for(size_t tmp_type_dataset_file_available_size(tmp_vector_Type_Dataset_File_Available.size()),
                       tmp_type_dataset_file_available_index(0_zu); tmp_type_dataset_file_available_index != tmp_type_dataset_file_available_size; ++tmp_type_dataset_file_available_index)
         {
             PRINT_FORMAT("%s:\t[%zu] Type: %s." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      tmp_type_dataset_file_available_index,
                                      MyEA::Common::ENUM_TYPE_DATASET_FILE_NAMES[tmp_vector_Type_Dataset_File_Available.at(tmp_type_dataset_file_available_index)].c_str());
         }
 
         tmp_type_choose = MyEA::String::Cin_Number<unsigned int>(0u,
                                                                                                     static_cast<unsigned int>(tmp_vector_Type_Dataset_File_Available.size()) - 1u,
-                                                                                                    MyEA::String::Get__Time() + ": Type data file: ");
+                                                                                                    MyEA::Time::Date_Time_Now() + ": Type data file: ");
 
         ref_type_dateset_file_received = tmp_vector_Type_Dataset_File_Available.at(tmp_type_choose);
 
@@ -70,10 +70,10 @@ bool Append_To_Dataset_File(size_t const size_inputs_received,
 {
     if(MyEA::File::Path_Exist(ref_path_received) == false) { MyEA::File::File_Create(ref_path_received); }
             
-    if(MyEA::File::Retrieve_Tempory_File(ref_path_received) == false)
+    if(MyEA::File::Retrieve_Temporary_File(ref_path_received) == false)
     {
-        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Retrieve_Tempory_File(%s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Retrieve_Temporary_File(%s)\" function. At line %d." NEW_LINE,
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -130,7 +130,7 @@ bool Append_To_Dataset_File(size_t const size_inputs_received,
             if(tmp_fstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"fail()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -139,7 +139,7 @@ bool Append_To_Dataset_File(size_t const size_inputs_received,
             else if(tmp_fstream.bad())
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"bad()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -151,7 +151,7 @@ bool Append_To_Dataset_File(size_t const size_inputs_received,
             if(tmp_fstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"fail()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -160,7 +160,7 @@ bool Append_To_Dataset_File(size_t const size_inputs_received,
             else if(tmp_fstream.bad())
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"bad()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -177,10 +177,10 @@ bool Append_To_Dataset_File(size_t const size_inputs_received,
         if(std::to_string(tmp_number_examples + 1_zu).length() != std::to_string(tmp_number_examples).length()) // Different length file.
         {
             // Create tempory file.
-            if(MyEA::File::Write_Tempory_File(ref_path_received) == false)
+            if(MyEA::File::Write_Temporary_File(ref_path_received) == false)
             {
-                PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Write_Tempory_File(%s)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Write_Temporary_File(%s)\" function. At line %d." NEW_LINE,
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          ref_path_received.c_str(),
                                          __LINE__);
@@ -207,7 +207,7 @@ bool Append_To_Dataset_File(size_t const size_inputs_received,
                 tmp_string_write += NEW_LINE;
                 for(tmp_index = 0_zu; tmp_index != size_inputs_received; ++tmp_index)
                 {
-                    tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(ptr_array_inputs_received[tmp_time_step_index * size_inputs_received + tmp_index], 9u);
+                    tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(ptr_array_inputs_received[tmp_time_step_index * size_inputs_received + tmp_index], 9u);
 
                     if(tmp_index + 1_zu != size_inputs_received) { tmp_string_write += " "; }
                 }
@@ -216,7 +216,7 @@ bool Append_To_Dataset_File(size_t const size_inputs_received,
                 tmp_string_write += NEW_LINE;
                 for(tmp_index = 0_zu; tmp_index != size_outputs_received; ++tmp_index)
                 {
-                    tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(ptr_array_outputs_received[tmp_time_step_index * size_outputs_received + tmp_index], 9u);
+                    tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(ptr_array_outputs_received[tmp_time_step_index * size_outputs_received + tmp_index], 9u);
 
                     if(tmp_index + 1_zu != size_outputs_received) { tmp_string_write += " "; }
                 }
@@ -227,7 +227,7 @@ bool Append_To_Dataset_File(size_t const size_inputs_received,
             if(tmp_ofstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"fail()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -236,7 +236,7 @@ bool Append_To_Dataset_File(size_t const size_inputs_received,
             else if(tmp_ofstream.bad())
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"bad()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -248,7 +248,7 @@ bool Append_To_Dataset_File(size_t const size_inputs_received,
             if(tmp_ofstream.fail())
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"fail()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -257,7 +257,7 @@ bool Append_To_Dataset_File(size_t const size_inputs_received,
             else if(tmp_ofstream.bad())
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"bad()\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          __LINE__);
 
@@ -269,7 +269,7 @@ bool Append_To_Dataset_File(size_t const size_inputs_received,
         else
         {
             PRINT_FORMAT("%s: %s: ERROR: The file %s can not be opened. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ref_path_received.c_str(),
                                      __LINE__);
@@ -280,7 +280,7 @@ bool Append_To_Dataset_File(size_t const size_inputs_received,
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: The file %s can not be opened. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -288,10 +288,10 @@ bool Append_To_Dataset_File(size_t const size_inputs_received,
         return(false);
     }
             
-    if(MyEA::File::Delete_Tempory_File(ref_path_received) == false)
+    if(MyEA::File::Delete_Temporary_File(ref_path_received) == false)
     {
-        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Delete_Tempory_File(%s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Delete_Temporary_File(%s)\" function. At line %d." NEW_LINE,
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -319,7 +319,7 @@ bool Time_Direction(size_t const number_outputs_received,
     if(minimum_range_received > maximum_range_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Minimum range (%f) can not be greater than maximum range (%f). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(minimum_range_received),
                                  Cast_T(maximum_range_received),
@@ -330,7 +330,7 @@ bool Time_Direction(size_t const number_outputs_received,
     else if(number_recurrent_depth_received <= 1_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Recurrent depth can not be less or equal to one. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -357,7 +357,7 @@ bool Time_Direction(size_t const number_outputs_received,
                 case 0: break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Direction (%f) is not managed in the switch. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              Cast_T(tmp_direction),
                                              __LINE__);
@@ -377,7 +377,7 @@ bool Time_Direction(size_t const number_outputs_received,
             case 0: break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Direction (%f) is not managed in the switch. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          Cast_T(tmp_direction),
                                          __LINE__);
@@ -400,7 +400,7 @@ bool Time_Direction(size_t const number_outputs_received,
             case 0: break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Direction (%f) is not managed in the switch. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          Cast_T(tmp_direction),
                                          __LINE__);
@@ -565,7 +565,7 @@ void Dataset<T>::Train_Epoch_OpenMP(class Neural_Network *const ptr_Neural_Netwo
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Optimizer type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ptr_Neural_Network_received->type_optimizer_function,
                                      MyEA::Common::ENUM_TYPE_OPTIMIZER_FUNCTIONS_NAMES[ptr_Neural_Network_received->type_optimizer_function].c_str(),
@@ -609,7 +609,7 @@ void Dataset<T>::Train_Epoch_Loop(class Neural_Network *const ptr_Neural_Network
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Optimizer type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ptr_Neural_Network_received->type_optimizer_function,
                                      MyEA::Common::ENUM_TYPE_OPTIMIZER_FUNCTIONS_NAMES[ptr_Neural_Network_received->type_optimizer_function].c_str(),
@@ -708,7 +708,7 @@ bool Dataset<T>::Save(std::string const &ref_path_received, bool const normalize
         case MyEA::Common::ENUM_TYPE_DATASET_FILE::TYPE_DATASET_FILE_DATASET_SPLIT: return(this->Save__Dataset_Split(ref_path_received)); break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Dataset file type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->p_type_data_file,
                                      MyEA::Common::ENUM_TYPE_DATASET_FILE_NAMES[this->p_type_data_file].c_str(),
@@ -722,10 +722,10 @@ bool Dataset<T>::Save(std::string const &ref_path_received, bool const normalize
 template<typename T>
 bool Dataset<T>::Save__Dataset(std::string const &ref_path_received, bool const normalize_received)
 {
-    if(MyEA::File::Write_Tempory_File(ref_path_received) == false)
+    if(MyEA::File::Write_Temporary_File(ref_path_received) == false)
     {
-        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Write_Tempory_File(%s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Write_Temporary_File(%s)\" function. At line %d." NEW_LINE,
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -762,19 +762,19 @@ bool Dataset<T>::Save__Dataset(std::string const &ref_path_received, bool const 
                 tmp_string_write += NEW_LINE;
 
                 // Inputs [0...(N-1)]
-                for(tmp_index = 0_zu; tmp_index != this->p_number_inputs - 1_zu; ++tmp_index) { tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_array_inputs_array[tmp_example_index][tmp_time_step_index * this->p_number_inputs + tmp_index], 9u) + " "; }
+                for(tmp_index = 0_zu; tmp_index != this->p_number_inputs - 1_zu; ++tmp_index) { tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_array_inputs_array[tmp_example_index][tmp_time_step_index * this->p_number_inputs + tmp_index], 9u) + " "; }
 
                 // Last input
-                tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_array_inputs_array[tmp_example_index][tmp_time_step_index * this->p_number_inputs + tmp_index], 9u);
+                tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_array_inputs_array[tmp_example_index][tmp_time_step_index * this->p_number_inputs + tmp_index], 9u);
 
                 // Next line.
                 tmp_string_write += NEW_LINE;
 
                 // Output [0...(N-1)]
-                for(tmp_index = 0_zu; tmp_index != this->p_number_outputs - 1_zu; ++tmp_index) { tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_array_outputs_array[tmp_example_index][tmp_time_step_index * this->p_number_outputs + tmp_index], 9u) + " "; }
+                for(tmp_index = 0_zu; tmp_index != this->p_number_outputs - 1_zu; ++tmp_index) { tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_array_outputs_array[tmp_example_index][tmp_time_step_index * this->p_number_outputs + tmp_index], 9u) + " "; }
 
                 // Last Output
-                tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_array_outputs_array[tmp_example_index][tmp_time_step_index * this->p_number_outputs + tmp_index], 9u);
+                tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_array_outputs_array[tmp_example_index][tmp_time_step_index * this->p_number_outputs + tmp_index], 9u);
             }
 
             if(tmp_string_write.size() >= this->p_file_buffer_size)
@@ -793,7 +793,7 @@ bool Dataset<T>::Save__Dataset(std::string const &ref_path_received, bool const 
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: The file %s can not be opened. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -801,10 +801,10 @@ bool Dataset<T>::Save__Dataset(std::string const &ref_path_received, bool const 
         return(false);
     }
 
-    if(MyEA::File::Delete_Tempory_File(ref_path_received) == false)
+    if(MyEA::File::Delete_Temporary_File(ref_path_received) == false)
     {
-        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Delete_Tempory_File(%s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Delete_Temporary_File(%s)\" function. At line %d." NEW_LINE,
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -818,10 +818,10 @@ bool Dataset<T>::Save__Dataset(std::string const &ref_path_received, bool const 
 template<typename T>
 bool Dataset<T>::Save__Dataset_Custom(std::string const &ref_path_received) // WARNING
 {
-    if(MyEA::File::Write_Tempory_File(ref_path_received) == false)
+    if(MyEA::File::Write_Temporary_File(ref_path_received) == false)
     {
-        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Write_Tempory_File(%s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Write_Temporary_File(%s)\" function. At line %d." NEW_LINE,
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -858,10 +858,10 @@ bool Dataset<T>::Save__Dataset_Custom(std::string const &ref_path_received) // W
                 tmp_string_write += NEW_LINE;
 
                 // Inputs [0...(N-1)]
-                for(tmp_index = 0_zu; tmp_index != this->p_number_inputs - 1_zu; ++tmp_index) { tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_array_inputs_array[tmp_example_index][tmp_time_step_index * this->p_number_inputs + tmp_index], 9u) + " "; }
+                for(tmp_index = 0_zu; tmp_index != this->p_number_inputs - 1_zu; ++tmp_index) { tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_array_inputs_array[tmp_example_index][tmp_time_step_index * this->p_number_inputs + tmp_index], 9u) + " "; }
 
                 // Last input
-                tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_array_inputs_array[tmp_example_index][tmp_time_step_index * this->p_number_inputs + tmp_index], 9u);
+                tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_array_inputs_array[tmp_example_index][tmp_time_step_index * this->p_number_inputs + tmp_index], 9u);
 
                 // Next line.
                 tmp_string_write += NEW_LINE;
@@ -871,7 +871,7 @@ bool Dataset<T>::Save__Dataset_Custom(std::string const &ref_path_received) // W
                 {
                     if(tmp_index == 2_zu)
                     {
-                        tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_array_outputs_array[tmp_example_index][tmp_time_step_index * this->p_number_outputs + 0_zu]
+                        tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_array_outputs_array[tmp_example_index][tmp_time_step_index * this->p_number_outputs + 0_zu]
                                                                                                                                                                                                                                                           +
                                                                                                                                                                                                                                                           tmp_ptr_array_outputs_array[tmp_example_index][tmp_time_step_index * this->p_number_outputs + 1_zu]
                                                                                                                                                                                                                                                           +
@@ -879,12 +879,12 @@ bool Dataset<T>::Save__Dataset_Custom(std::string const &ref_path_received) // W
                     }
                     else
                     {
-                        tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_array_outputs_array[tmp_example_index][tmp_time_step_index * this->p_number_outputs + tmp_index], 9u) + " ";
+                        tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_array_outputs_array[tmp_example_index][tmp_time_step_index * this->p_number_outputs + tmp_index], 9u) + " ";
                     }
                 }
 
                 // Last Output
-                tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_array_outputs_array[tmp_example_index][tmp_time_step_index * this->p_number_outputs + tmp_index], 9u);
+                tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_array_outputs_array[tmp_example_index][tmp_time_step_index * this->p_number_outputs + tmp_index], 9u);
             }
 
             if(tmp_string_write.size() >= this->p_file_buffer_size)
@@ -903,7 +903,7 @@ bool Dataset<T>::Save__Dataset_Custom(std::string const &ref_path_received) // W
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: The file %s can not be opened. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -911,10 +911,10 @@ bool Dataset<T>::Save__Dataset_Custom(std::string const &ref_path_received) // W
         return(false);
     }
 
-    if(MyEA::File::Delete_Tempory_File(ref_path_received) == false)
+    if(MyEA::File::Delete_Temporary_File(ref_path_received) == false)
     {
-        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Delete_Tempory_File(%s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Delete_Temporary_File(%s)\" function. At line %d." NEW_LINE,
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -931,7 +931,7 @@ bool Dataset<T>::Save__Dataset_Split(std::string const &ref_path_received)
     if(this->Save__Dataset_Split__Input(ref_path_received + ".dataset-input") == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Save__Dataset_Split__Input(%s.dataset-input)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -941,7 +941,7 @@ bool Dataset<T>::Save__Dataset_Split(std::string const &ref_path_received)
     else if(this->Save__Dataset_Split__Output(ref_path_received + ".dataset-output") == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Save__Dataset_Split__Output(%s.dataset-output)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -955,10 +955,10 @@ bool Dataset<T>::Save__Dataset_Split(std::string const &ref_path_received)
 template<typename T>
 bool Dataset<T>::Save__Dataset_Split__Input(std::string const &ref_path_received)
 {
-    if(MyEA::File::Write_Tempory_File(ref_path_received) == false)
+    if(MyEA::File::Write_Temporary_File(ref_path_received) == false)
     {
-        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Write_Tempory_File(%s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Write_Temporary_File(%s)\" function. At line %d." NEW_LINE,
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -990,10 +990,10 @@ bool Dataset<T>::Save__Dataset_Split__Input(std::string const &ref_path_received
 
                 // Inputs [0...(N-1)]
                 for(tmp_index = 0_zu; tmp_index != this->p_number_inputs - 1_zu; ++tmp_index)
-                { tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->p_ptr_array_inputs_array[tmp_example_index][tmp_time_step_index * this->p_number_inputs + tmp_index], 9u) + " "; }
+                { tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->p_ptr_array_inputs_array[tmp_example_index][tmp_time_step_index * this->p_number_inputs + tmp_index], 9u) + " "; }
 
                 // Last input
-                tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->p_ptr_array_inputs_array[tmp_example_index][tmp_time_step_index * this->p_number_inputs + tmp_index], 9u);
+                tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->p_ptr_array_inputs_array[tmp_example_index][tmp_time_step_index * this->p_number_inputs + tmp_index], 9u);
             }
 
             if(tmp_string_write.size() >= this->p_file_buffer_size)
@@ -1012,7 +1012,7 @@ bool Dataset<T>::Save__Dataset_Split__Input(std::string const &ref_path_received
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: The file %s can not be opened. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -1020,10 +1020,10 @@ bool Dataset<T>::Save__Dataset_Split__Input(std::string const &ref_path_received
         return(false);
     }
     
-    if(MyEA::File::Delete_Tempory_File(ref_path_received) == false)
+    if(MyEA::File::Delete_Temporary_File(ref_path_received) == false)
     {
-        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Delete_Tempory_File(%s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Delete_Temporary_File(%s)\" function. At line %d." NEW_LINE,
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -1037,10 +1037,10 @@ bool Dataset<T>::Save__Dataset_Split__Input(std::string const &ref_path_received
 template<typename T>
 bool Dataset<T>::Save__Dataset_Split__Output(std::string const &ref_path_received)
 {
-    if(MyEA::File::Write_Tempory_File(ref_path_received) == false)
+    if(MyEA::File::Write_Temporary_File(ref_path_received) == false)
     {
-        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Write_Tempory_File(%s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Write_Temporary_File(%s)\" function. At line %d." NEW_LINE,
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -1072,10 +1072,10 @@ bool Dataset<T>::Save__Dataset_Split__Output(std::string const &ref_path_receive
 
                 // Output [0...(N-1)]
                 for(tmp_index = 0_zu; tmp_index != this->p_number_outputs - 1_zu; ++tmp_index)
-                { tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->p_ptr_array_outputs_array[tmp_example_index][tmp_time_step_index * this->p_number_outputs + tmp_index], 9u) + " "; }
+                { tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->p_ptr_array_outputs_array[tmp_example_index][tmp_time_step_index * this->p_number_outputs + tmp_index], 9u) + " "; }
 
                 // Last Output
-                tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->p_ptr_array_outputs_array[tmp_example_index][tmp_time_step_index * this->p_number_outputs + tmp_index], 9u);
+                tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->p_ptr_array_outputs_array[tmp_example_index][tmp_time_step_index * this->p_number_outputs + tmp_index], 9u);
             }
 
             if(tmp_string_write.size() >= this->p_file_buffer_size)
@@ -1094,7 +1094,7 @@ bool Dataset<T>::Save__Dataset_Split__Output(std::string const &ref_path_receive
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: The file %s can not be opened. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -1102,10 +1102,10 @@ bool Dataset<T>::Save__Dataset_Split__Output(std::string const &ref_path_receive
         return(false);
     }
 
-    if(MyEA::File::Delete_Tempory_File(ref_path_received) == false)
+    if(MyEA::File::Delete_Temporary_File(ref_path_received) == false)
     {
-        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Delete_Tempory_File(%s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Delete_Temporary_File(%s)\" function. At line %d." NEW_LINE,
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -1122,7 +1122,7 @@ bool Dataset<T>::Save(class Neural_Network *const ptr_Autoencoder_received, std:
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1133,7 +1133,7 @@ bool Dataset<T>::Save(class Neural_Network *const ptr_Autoencoder_received, std:
                                                ptr_Autoencoder_received->number_recurrent_depth) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Check_Topology(%zu, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ptr_Autoencoder_received->number_inputs,
                                  ptr_Autoencoder_received->number_outputs,
@@ -1145,7 +1145,7 @@ bool Dataset<T>::Save(class Neural_Network *const ptr_Autoencoder_received, std:
     else if(ptr_Autoencoder_received->type_network != MyEA::Common::ENUM_TYPE_NETWORKS::TYPE_NETWORK_AUTOENCODER)
     {
         PRINT_FORMAT("%s: %s: ERROR: The neural network (%s) receive as argument need to be a %s. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  MyEA::Common::ENUM_TYPE_NETWORKS_NAMES[ptr_Autoencoder_received->type_network].c_str(),
                                  MyEA::Common::ENUM_TYPE_NETWORKS_NAMES[MyEA::Common::ENUM_TYPE_NETWORKS::TYPE_NETWORK_AUTOENCODER].c_str(),
@@ -1163,7 +1163,7 @@ bool Dataset<T>::Save(class Neural_Network *const ptr_Autoencoder_received, std:
         if(ptr_Autoencoder_received->Set__Input_Mode(tmp_use_first_layer_as_input) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Input_Mode(%s)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_use_first_layer_as_input ? "true" : "false",
                                      __LINE__);
@@ -1174,7 +1174,7 @@ bool Dataset<T>::Save(class Neural_Network *const ptr_Autoencoder_received, std:
         if(ptr_Autoencoder_received->Set__Output_Mode(tmp_use_last_layer_as_output) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Output_Mode(%s)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_use_last_layer_as_output ? "true" : "false",
                                      __LINE__);
@@ -1188,7 +1188,7 @@ bool Dataset<T>::Save(class Neural_Network *const ptr_Autoencoder_received, std:
     if(ptr_Autoencoder_received->Set__Input_Mode(true) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Input_Mode(true)\" function. At line %d." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     __FUNCTION__,
                                     __LINE__);
         
@@ -1197,14 +1197,14 @@ bool Dataset<T>::Save(class Neural_Network *const ptr_Autoencoder_received, std:
     else if(ptr_Autoencoder_received->Set__Output_Mode(false) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Output_Mode(false)\" function. At line %d." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     __FUNCTION__,
                                     __LINE__);
         
         if(tmp_Reset_IO_Mode() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"tmp_Reset_IO_Mode()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -1216,7 +1216,7 @@ bool Dataset<T>::Save(class Neural_Network *const ptr_Autoencoder_received, std:
     else if(ptr_Autoencoder_received->Update__Batch_Size(this->p_number_examples) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update__Batch_Size(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->p_number_examples,
                                  __LINE__);
@@ -1227,10 +1227,10 @@ bool Dataset<T>::Save(class Neural_Network *const ptr_Autoencoder_received, std:
     // By default save the dataset into .dataset extension.
     path_received += ".dataset";
     
-    if(MyEA::File::Write_Tempory_File(path_received) == false)
+    if(MyEA::File::Write_Temporary_File(path_received) == false)
     {
-        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Write_Tempory_File(%s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Write_Temporary_File(%s)\" function. At line %d." NEW_LINE,
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  path_received.c_str(),
                                  __LINE__);
@@ -1238,7 +1238,7 @@ bool Dataset<T>::Save(class Neural_Network *const ptr_Autoencoder_received, std:
         if(tmp_Reset_IO_Mode() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"tmp_Reset_IO_Mode()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -1289,7 +1289,7 @@ bool Dataset<T>::Save(class Neural_Network *const ptr_Autoencoder_received, std:
                     tmp_string_write += NEW_LINE;
                     for(tmp_index = 0_zu; tmp_index != tmp_number_outputs; ++tmp_index)
                     {
-                        tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_array_outputs[tmp_index], 9u);
+                        tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_array_outputs[tmp_index], 9u);
 
                         if(tmp_index + 1_zu != tmp_number_outputs) { tmp_string_write += " "; }
                     }
@@ -1298,7 +1298,7 @@ bool Dataset<T>::Save(class Neural_Network *const ptr_Autoencoder_received, std:
                     tmp_string_write += NEW_LINE;
                     for(tmp_index = 0_zu; tmp_index != tmp_number_outputs; ++tmp_index)
                     {
-                        tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_array_outputs[tmp_index], 9u);
+                        tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_array_outputs[tmp_index], 9u);
 
                         if(tmp_index + 1_zu != tmp_number_outputs) { tmp_string_write += " "; }
                     }
@@ -1314,7 +1314,7 @@ bool Dataset<T>::Save(class Neural_Network *const ptr_Autoencoder_received, std:
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: The file %s can not be opened. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  path_received.c_str(),
                                  __LINE__);
@@ -1322,7 +1322,7 @@ bool Dataset<T>::Save(class Neural_Network *const ptr_Autoencoder_received, std:
         if(tmp_Reset_IO_Mode() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"tmp_Reset_IO_Mode()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -1332,10 +1332,10 @@ bool Dataset<T>::Save(class Neural_Network *const ptr_Autoencoder_received, std:
         return(false);
     }
     
-    if(MyEA::File::Delete_Tempory_File(path_received) == false)
+    if(MyEA::File::Delete_Temporary_File(path_received) == false)
     {
-        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Delete_Tempory_File(%s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Delete_Temporary_File(%s)\" function. At line %d." NEW_LINE,
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  path_received.c_str(),
                                  __LINE__);
@@ -1343,7 +1343,7 @@ bool Dataset<T>::Save(class Neural_Network *const ptr_Autoencoder_received, std:
         if(tmp_Reset_IO_Mode() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"tmp_Reset_IO_Mode()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -1355,7 +1355,7 @@ bool Dataset<T>::Save(class Neural_Network *const ptr_Autoencoder_received, std:
     else if(tmp_Reset_IO_Mode() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"tmp_Reset_IO_Mode()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1372,7 +1372,7 @@ bool Dataset<T>::Shift_Entries(size_t const shift_received, enum ENUM_TYPE_INPUT
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1381,7 +1381,7 @@ bool Dataset<T>::Shift_Entries(size_t const shift_received, enum ENUM_TYPE_INPUT
     else if(shift_received == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Shift can not be zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1390,7 +1390,7 @@ bool Dataset<T>::Shift_Entries(size_t const shift_received, enum ENUM_TYPE_INPUT
     else if(shift_received >= this->p_number_examples)
     {
         PRINT_FORMAT("%s: %s: ERROR: Shift (%zu) can not be greater or equal to the number of data (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  shift_received,
                                  this->p_number_examples,
@@ -1401,7 +1401,7 @@ bool Dataset<T>::Shift_Entries(size_t const shift_received, enum ENUM_TYPE_INPUT
     else if(this->_reference)
     {
         PRINT_FORMAT("%s: %s: ERROR: The dataset is allocate as refence. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -1436,7 +1436,7 @@ bool Dataset<T>::Shift_Entries(size_t const shift_received, enum ENUM_TYPE_INPUT
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -1445,14 +1445,14 @@ bool Dataset<T>::Shift_Entries(size_t const shift_received, enum ENUM_TYPE_INPUT
     }
 
     // Inputs.
-    T *tmp_ptr_array_inputs(Memory::reallocate_cpp<T>(this->p_ptr_array_inputs,
+    T *tmp_ptr_array_inputs(MyEA::Memory::Cpp::Reallocate<T>(this->p_ptr_array_inputs,
                                                                                  tmp_input_size * tmp_number_examples_shifted * tmp_number_recurrent_depth,
                                                                                  tmp_input_size * tmp_number_examples * tmp_number_recurrent_depth));
 
     if(tmp_ptr_array_inputs == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  sizeof(T),
                                  tmp_input_size * tmp_number_examples_shifted * tmp_number_recurrent_depth,
@@ -1466,14 +1466,14 @@ bool Dataset<T>::Shift_Entries(size_t const shift_received, enum ENUM_TYPE_INPUT
     // |END| Inputs. |END|
 
     // Outputs.
-    T *tmp_ptr_array_outputs(Memory::reallocate_cpp<T>(this->p_ptr_array_outputs,
+    T *tmp_ptr_array_outputs(MyEA::Memory::Cpp::Reallocate<T>(this->p_ptr_array_outputs,
                                                                                    tmp_number_outputs * tmp_number_examples_shifted * tmp_number_recurrent_depth,
                                                                                    tmp_number_outputs * tmp_number_examples * tmp_number_recurrent_depth));
 
     if(tmp_ptr_array_outputs == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  sizeof(T),
                                  tmp_number_outputs * tmp_number_examples_shifted * tmp_number_recurrent_depth,
@@ -1505,7 +1505,7 @@ bool Dataset<T>::Time_Direction(T const minimum_range_received,
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1514,7 +1514,7 @@ bool Dataset<T>::Time_Direction(T const minimum_range_received,
     else if(minimum_range_received > maximum_range_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Minimum range (%f) can not be greater than maximum range (%f). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(minimum_range_received),
                                  Cast_T(maximum_range_received),
@@ -1525,7 +1525,7 @@ bool Dataset<T>::Time_Direction(T const minimum_range_received,
     else if(this->p_number_recurrent_depth <= 1_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Recurrent depth can not be less or equal to one. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1534,7 +1534,7 @@ bool Dataset<T>::Time_Direction(T const minimum_range_received,
     else if(this->_reference)
     {
         PRINT_FORMAT("%s: %s: ERROR: The dataset is allocate as refence. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -1570,7 +1570,7 @@ bool Dataset<T>::Time_Direction(T const minimum_range_received,
                         case 0: break;
                         default:
                             PRINT_FORMAT("%s: %s: ERROR: Direction (%f) is not managed in the switch. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      Cast_T(tmp_direction),
                                                      __LINE__);
@@ -1590,7 +1590,7 @@ bool Dataset<T>::Time_Direction(T const minimum_range_received,
                     case 0: break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Direction (%f) is not managed in the switch. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  Cast_T(tmp_direction),
                                                  __LINE__);
@@ -1613,7 +1613,7 @@ bool Dataset<T>::Time_Direction(T const minimum_range_received,
                     case 0: break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Direction (%f) is not managed in the switch. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  Cast_T(tmp_direction),
                                                  __LINE__);
@@ -1647,7 +1647,7 @@ bool Dataset<T>::Time_Direction(T const minimum_range_received,
                         case 0: break;
                         default:
                             PRINT_FORMAT("%s: %s: ERROR: Direction (%f) is not managed in the switch. At line %d." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      Cast_T(tmp_direction),
                                                      __LINE__);
@@ -1667,7 +1667,7 @@ bool Dataset<T>::Time_Direction(T const minimum_range_received,
                     case 0: break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Direction (%f) is not managed in the switch. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  Cast_T(tmp_direction),
                                                  __LINE__);
@@ -1690,7 +1690,7 @@ bool Dataset<T>::Time_Direction(T const minimum_range_received,
                     case 0: break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Direction (%f) is not managed in the switch. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  Cast_T(tmp_direction),
                                                  __LINE__);
@@ -1708,7 +1708,7 @@ bool Dataset<T>::Time_Direction(T const minimum_range_received,
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -1725,7 +1725,7 @@ bool Dataset<T>::Input_To_Output(enum ENUM_TYPE_INPUT const type_input_received)
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1734,7 +1734,7 @@ bool Dataset<T>::Input_To_Output(enum ENUM_TYPE_INPUT const type_input_received)
     else if(this->_reference)
     {
         PRINT_FORMAT("%s: %s: ERROR: The dataset is allocate as refence. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -1748,15 +1748,16 @@ bool Dataset<T>::Input_To_Output(enum ENUM_TYPE_INPUT const type_input_received)
                   tmp_example_index,
                   tmp_index;
 
-        T *tmp_ptr_array_outputs(Memory::reallocate_cpp<T>(this->p_ptr_array_inputs,
-                                                                                       tmp_input_size * this->p_number_examples * this->p_number_recurrent_depth,
-                                                                                       this->p_number_inputs * this->p_number_examples * this->p_number_recurrent_depth,
-                                                                                       false));
+        T *tmp_ptr_array_outputs(MyEA::Memory::Cpp::Reallocate<T, false>(
+            this->p_ptr_array_inputs,
+            tmp_input_size * this->p_number_examples * this->p_number_recurrent_depth,
+            this->p_number_inputs * this->p_number_examples * this->p_number_recurrent_depth
+        ));
 
         if(tmp_ptr_array_outputs == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu, false)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      sizeof(T),
                                      tmp_input_size * this->p_number_examples * this->p_number_recurrent_depth,
@@ -1791,15 +1792,16 @@ bool Dataset<T>::Input_To_Output(enum ENUM_TYPE_INPUT const type_input_received)
                   tmp_example_index,
                   tmp_index;
 
-        T *tmp_ptr_array_outputs(Memory::reallocate_cpp<T>(this->p_ptr_array_outputs,
-                                                                                       tmp_input_size * this->p_number_examples * this->p_number_recurrent_depth,
-                                                                                       this->p_number_outputs * this->p_number_examples * this->p_number_recurrent_depth,
-                                                                                       false));
+        T *tmp_ptr_array_outputs(MyEA::Memory::Cpp::Reallocate<T, false>(
+            this->p_ptr_array_outputs,
+            tmp_input_size * this->p_number_examples * this->p_number_recurrent_depth,
+            this->p_number_outputs * this->p_number_examples * this->p_number_recurrent_depth
+        ));
 
         if(tmp_ptr_array_outputs == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu, false)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      sizeof(T),
                                      tmp_input_size * this->p_number_examples * this->p_number_recurrent_depth,
@@ -1830,7 +1832,7 @@ bool Dataset<T>::Input_To_Output(enum ENUM_TYPE_INPUT const type_input_received)
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -1847,7 +1849,7 @@ bool Dataset<T>::Unrecurrent(void)
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1856,7 +1858,7 @@ bool Dataset<T>::Unrecurrent(void)
     else if(this->_reference)
     {
         PRINT_FORMAT("%s: %s: ERROR: The dataset is allocate as refence. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -1874,7 +1876,7 @@ bool Dataset<T>::Unrecurrent(void)
     if((tmp_ptr_array_inputs = new T[this->p_number_examples * this->p_number_inputs]) == nullptr)
     {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->p_number_examples * this->p_number_inputs * sizeof(T),
                                      __LINE__);
@@ -1884,7 +1886,7 @@ bool Dataset<T>::Unrecurrent(void)
     else if((tmp_ptr_array_outputs = new T[this->p_number_examples * this->p_number_outputs]) == nullptr)
     {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->p_number_examples * this->p_number_outputs * sizeof(T),
                                      __LINE__);
@@ -1929,7 +1931,7 @@ bool Dataset<T>::Remove(size_t const input_index_received, enum ENUM_TYPE_INPUT 
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -1938,7 +1940,7 @@ bool Dataset<T>::Remove(size_t const input_index_received, enum ENUM_TYPE_INPUT 
     else if(this->_reference)
     {
         PRINT_FORMAT("%s: %s: ERROR: The dataset is allocate as refence. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -1950,7 +1952,7 @@ bool Dataset<T>::Remove(size_t const input_index_received, enum ENUM_TYPE_INPUT 
         if(input_index_received >= this->p_number_inputs)
         {
             PRINT_FORMAT("%s: %s: ERROR: Input index (%zu) overflow (%zu). At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      input_index_received,
                                      this->p_number_inputs,
@@ -1970,7 +1972,7 @@ bool Dataset<T>::Remove(size_t const input_index_received, enum ENUM_TYPE_INPUT 
         if((tmp_ptr_array_inputs = new T[this->p_number_examples * this->p_number_recurrent_depth * tmp_new_input_size]) == nullptr)
         {
                 PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          this->p_number_examples * this->p_number_recurrent_depth * tmp_new_input_size * sizeof(T),
                                          __LINE__);
@@ -2012,7 +2014,7 @@ bool Dataset<T>::Remove(size_t const input_index_received, enum ENUM_TYPE_INPUT 
         if(input_index_received >= this->p_number_outputs)
         {
             PRINT_FORMAT("%s: %s: ERROR: Input index (%zu) overflow (%zu). At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      input_index_received,
                                      this->p_number_outputs,
@@ -2032,7 +2034,7 @@ bool Dataset<T>::Remove(size_t const input_index_received, enum ENUM_TYPE_INPUT 
         if((tmp_ptr_array_outputs = new T[this->p_number_examples * this->p_number_recurrent_depth * tmp_new_input_size]) == nullptr)
         {
                 PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          this->p_number_examples * this->p_number_recurrent_depth * tmp_new_input_size * sizeof(T),
                                          __LINE__);
@@ -2072,7 +2074,7 @@ bool Dataset<T>::Remove(size_t const input_index_received, enum ENUM_TYPE_INPUT 
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -2092,7 +2094,7 @@ bool Dataset<T>::Allocate(enum MyEA::Common::ENUM_TYPE_DATASET_FILE const type_d
             if(this->Allocate__Dataset(ref_path_received + ".dataset") == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Dataset(%s + \".dataset\")\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          ref_path_received.c_str(),
                                          __LINE__);
@@ -2104,7 +2106,7 @@ bool Dataset<T>::Allocate(enum MyEA::Common::ENUM_TYPE_DATASET_FILE const type_d
             if(this->Allocate__Dataset_Split(ref_path_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Dataset_Split(%s)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          ref_path_received.c_str(),
                                          __LINE__);
@@ -2116,7 +2118,7 @@ bool Dataset<T>::Allocate(enum MyEA::Common::ENUM_TYPE_DATASET_FILE const type_d
             if(this->Allocate__MNIST(ref_path_received) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__MNIST(%s)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          ref_path_received.c_str(),
                                          __LINE__);
@@ -2126,7 +2128,7 @@ bool Dataset<T>::Allocate(enum MyEA::Common::ENUM_TYPE_DATASET_FILE const type_d
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Dataset file type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      type_data_file_read_received,
                                      MyEA::Common::ENUM_TYPE_DATASET_FILE_NAMES[type_data_file_read_received].c_str(),
@@ -2222,7 +2224,7 @@ bool Dataset<T>::Set__Type_Data_File(enum MyEA::Common::ENUM_TYPE_DATASET_FILE c
     if(type_dataset_file_received >= MyEA::Common::ENUM_TYPE_DATASET_FILE::TYPE_DATASET_FILE_LENGTH)
     {
         PRINT_FORMAT("%s: %s: ERROR: Dataset file type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_dataset_file_received,
                                  MyEA::Common::ENUM_TYPE_DATASET_FILE_NAMES[type_dataset_file_received].c_str(),
@@ -2267,7 +2269,7 @@ bool Dataset<T>::Allocate__Dataset(std::string const &ref_path_received)
         if(tmp_ifstream.eof())
         {
             PRINT_FORMAT("%s: %s: ERROR: File \"%s\" is empty. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ref_path_received.c_str(),
                                      __LINE__);
@@ -2286,7 +2288,7 @@ bool Dataset<T>::Allocate__Dataset(std::string const &ref_path_received)
                                                                                                           '\n') == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Read_Stream_Block_And_Parse_Number(ptr, ptr, %zu, %zu, %zu, ptr, vector, ifstream, '\\n')\" function, while reading the number of examples. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_block_size,
                                      this->p_file_buffer_size,
@@ -2306,7 +2308,7 @@ bool Dataset<T>::Allocate__Dataset(std::string const &ref_path_received)
                                                                                                                  '\n') == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Read_Stream_Block_And_Parse_Number(ptr, ptr, %zu, %zu, %zu, ptr, vector, ifstream, '\\n')\" function, while reading the number of inputs. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_block_size,
                                      this->p_file_buffer_size,
@@ -2326,7 +2328,7 @@ bool Dataset<T>::Allocate__Dataset(std::string const &ref_path_received)
                                                                                                                  '\n') == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Read_Stream_Block_And_Parse_Number(ptr, ptr, %zu, %zu, %zu, ptr, vector, ifstream, '\\n')\" function, while reading the number of outputs. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_block_size,
                                      this->p_file_buffer_size,
@@ -2346,7 +2348,7 @@ bool Dataset<T>::Allocate__Dataset(std::string const &ref_path_received)
                                                                                                                  '\n') == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Read_Stream_Block_And_Parse_Number(ptr, ptr, %zu, %zu, %zu, ptr, vector, ifstream, '\\n')\" function, while reading the number of recurrent depth. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_block_size,
                                      this->p_file_buffer_size,
@@ -2359,7 +2361,7 @@ bool Dataset<T>::Allocate__Dataset(std::string const &ref_path_received)
         if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not read topology. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -2370,7 +2372,7 @@ bool Dataset<T>::Allocate__Dataset(std::string const &ref_path_received)
         if(tmp_ptr_array_inputs_array == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_number_examples * sizeof(T const *),
                                      __LINE__);
@@ -2382,7 +2384,7 @@ bool Dataset<T>::Allocate__Dataset(std::string const &ref_path_received)
         if(tmp_ptr_array_outputs_array == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_number_examples * sizeof(T const *),
                                      __LINE__);
@@ -2396,7 +2398,7 @@ bool Dataset<T>::Allocate__Dataset(std::string const &ref_path_received)
         if(tmp_ptr_array_inputs == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_input_size * tmp_number_examples * sizeof(T),
                                      __LINE__);
@@ -2411,7 +2413,7 @@ bool Dataset<T>::Allocate__Dataset(std::string const &ref_path_received)
         if(tmp_ptr_array_outputs == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_number_outputs * tmp_number_examples * sizeof(T),
                                      __LINE__);
@@ -2437,7 +2439,7 @@ bool Dataset<T>::Allocate__Dataset(std::string const &ref_path_received)
                 for(tmp_index = 0_zu; tmp_index != tmp_input_size; ++tmp_index,
                                                                                                    ++tmp_ptr_array_inputs)
                 {
-                    if(MyEA::String::Read_Stream_Block_And_Parse_Real_Number<double>(tmp_ptr_array_buffers,
+                    if(MyEA::String::Read_Stream_Block_And_Parse_Number<double>(tmp_ptr_array_buffers,
                                                                                                                                tmp_ptr_last_buffer,
                                                                                                                                tmp_block_size,
                                                                                                                                this->p_file_buffer_size,
@@ -2447,8 +2449,8 @@ bool Dataset<T>::Allocate__Dataset(std::string const &ref_path_received)
                                                                                                                                tmp_ifstream,
                                                                                                                                '\n') == false)
                     {
-                        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Read_Stream_Block_And_Parse_Real_Number(ptr, ptr, %zu, %zu, %zu, ptr, vector, ifstream, '\\n')\" function, while reading data %zu at %zu input. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Read_Stream_Block_And_Parse_Number(ptr, ptr, %zu, %zu, %zu, ptr, vector, ifstream, '\\n')\" function, while reading data %zu at %zu input. At line %d." NEW_LINE,
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_block_size,
                                                  this->p_file_buffer_size,
@@ -2471,7 +2473,7 @@ bool Dataset<T>::Allocate__Dataset(std::string const &ref_path_received)
                 for(tmp_index = 0_zu; tmp_index != tmp_number_outputs; ++tmp_index,
                                                                                                      ++tmp_ptr_array_outputs)
                 {
-                    if(MyEA::String::Read_Stream_Block_And_Parse_Real_Number<double>(tmp_ptr_array_buffers,
+                    if(MyEA::String::Read_Stream_Block_And_Parse_Number<double>(tmp_ptr_array_buffers,
                                                                                                                                tmp_ptr_last_buffer,
                                                                                                                                tmp_block_size,
                                                                                                                                this->p_file_buffer_size,
@@ -2481,8 +2483,8 @@ bool Dataset<T>::Allocate__Dataset(std::string const &ref_path_received)
                                                                                                                                tmp_ifstream,
                                                                                                                                '\n') == false)
                     {
-                        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Read_Stream_Block_And_Parse_Real_Number(ptr, ptr, %zu, %zu, %zu, ptr, vector, ifstream, '\\n')\" function, while reading data %zu at %zu output. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Read_Stream_Block_And_Parse_Number(ptr, ptr, %zu, %zu, %zu, ptr, vector, ifstream, '\\n')\" function, while reading data %zu at %zu output. At line %d." NEW_LINE,
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_block_size,
                                                  this->p_file_buffer_size,
@@ -2507,7 +2509,7 @@ bool Dataset<T>::Allocate__Dataset(std::string const &ref_path_received)
         if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Logical error on i/o operation \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ref_path_received.c_str(),
                                      __LINE__);
@@ -2520,7 +2522,7 @@ bool Dataset<T>::Allocate__Dataset(std::string const &ref_path_received)
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: The file %s can not be opened. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -2547,7 +2549,7 @@ bool Dataset<T>::Allocate__Dataset_Split(std::string const &ref_path_received)
     if(this->Allocate__Dataset_Split__Input(ref_path_received + ".dataset-input") == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Dataset_Split__Input(%s.dataset-input)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -2557,7 +2559,7 @@ bool Dataset<T>::Allocate__Dataset_Split(std::string const &ref_path_received)
     else if(this->Allocate__Dataset_Split__Output(ref_path_received + ".dataset-output") == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allocate__Dataset_Split__Output(%s.dataset-output)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -2596,7 +2598,7 @@ bool Dataset<T>::Allocate__Dataset_Split__Input(std::string const &ref_path_rece
         if(tmp_ifstream.eof())
         {
             PRINT_FORMAT("%s: %s: ERROR: File \"%s\" is empty. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ref_path_received.c_str(),
                                      __LINE__);
@@ -2615,7 +2617,7 @@ bool Dataset<T>::Allocate__Dataset_Split__Input(std::string const &ref_path_rece
                                                                                                           '\n') == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Read_Stream_Block_And_Parse_Number(ptr, ptr, %zu, %zu, %zu, ptr, vector, ifstream, '\\n')\" function, while reading the number of examples. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_block_size,
                                      this->p_file_buffer_size,
@@ -2635,7 +2637,7 @@ bool Dataset<T>::Allocate__Dataset_Split__Input(std::string const &ref_path_rece
                                                                                                                  '\n') == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Read_Stream_Block_And_Parse_Number(ptr, ptr, %zu, %zu, %zu, ptr, vector, ifstream, '\\n')\" function, while reading the number of inputs. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_block_size,
                                      this->p_file_buffer_size,
@@ -2655,7 +2657,7 @@ bool Dataset<T>::Allocate__Dataset_Split__Input(std::string const &ref_path_rece
                                                                                                                  '\n') == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Read_Stream_Block_And_Parse_Number(ptr, ptr, %zu, %zu, %zu, ptr, vector, ifstream, '\\n')\" function, while reading the number of recurrent depth. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_block_size,
                                      this->p_file_buffer_size,
@@ -2669,7 +2671,7 @@ bool Dataset<T>::Allocate__Dataset_Split__Input(std::string const &ref_path_rece
         if(tmp_ptr_array_inputs_array == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_number_examples * sizeof(T const *),
                                      __LINE__);
@@ -2681,7 +2683,7 @@ bool Dataset<T>::Allocate__Dataset_Split__Input(std::string const &ref_path_rece
         if(tmp_ptr_array_inputs == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_input_size * tmp_number_examples * sizeof(T),
                                      __LINE__);
@@ -2701,7 +2703,7 @@ bool Dataset<T>::Allocate__Dataset_Split__Input(std::string const &ref_path_rece
                 for(tmp_index = 0_zu; tmp_index != tmp_input_size; ++tmp_index,
                                                                                                    ++tmp_ptr_array_inputs)
                 {
-                    if(MyEA::String::Read_Stream_Block_And_Parse_Real_Number<double>(tmp_ptr_array_buffers,
+                    if(MyEA::String::Read_Stream_Block_And_Parse_Number<double>(tmp_ptr_array_buffers,
                                                                                                                                tmp_ptr_last_buffer,
                                                                                                                                tmp_block_size,
                                                                                                                                this->p_file_buffer_size,
@@ -2711,8 +2713,8 @@ bool Dataset<T>::Allocate__Dataset_Split__Input(std::string const &ref_path_rece
                                                                                                                                tmp_ifstream,
                                                                                                                                '\n') == false)
                     {
-                        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Read_Stream_Block_And_Parse_Real_Number(ptr, ptr, %zu, %zu, %zu, ptr, vector, ifstream, '\\n')\" function, while reading data %zu at %zu input. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Read_Stream_Block_And_Parse_Number(ptr, ptr, %zu, %zu, %zu, ptr, vector, ifstream, '\\n')\" function, while reading data %zu at %zu input. At line %d." NEW_LINE,
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_block_size,
                                                  this->p_file_buffer_size,
@@ -2735,7 +2737,7 @@ bool Dataset<T>::Allocate__Dataset_Split__Input(std::string const &ref_path_rece
         if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Logical error on i/o operation \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ref_path_received.c_str(),
                                      __LINE__);
@@ -2748,7 +2750,7 @@ bool Dataset<T>::Allocate__Dataset_Split__Input(std::string const &ref_path_rece
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: The file %s can not be opened. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -2794,7 +2796,7 @@ bool Dataset<T>::Allocate__Dataset_Split__Output(std::string const &ref_path_rec
         if(tmp_ifstream.eof())
         {
             PRINT_FORMAT("%s: %s: ERROR: File \"%s\" is empty. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ref_path_received.c_str(),
                                      __LINE__);
@@ -2813,7 +2815,7 @@ bool Dataset<T>::Allocate__Dataset_Split__Output(std::string const &ref_path_rec
                                                                                                           '\n') == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Read_Stream_Block_And_Parse_Number(ptr, ptr, %zu, %zu, %zu, ptr, vector, ifstream, '\\n')\" function, while reading the number of examples. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_block_size,
                                      this->p_file_buffer_size,
@@ -2833,7 +2835,7 @@ bool Dataset<T>::Allocate__Dataset_Split__Output(std::string const &ref_path_rec
                                                                                                                  '\n') == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Read_Stream_Block_And_Parse_Number(ptr, ptr, %zu, %zu, %zu, ptr, vector, ifstream, '\\n')\" function, while reading the number of outputs. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_block_size,
                                      this->p_file_buffer_size,
@@ -2853,7 +2855,7 @@ bool Dataset<T>::Allocate__Dataset_Split__Output(std::string const &ref_path_rec
                                                                                                                  '\n') == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Read_Stream_Block_And_Parse_Number(ptr, ptr, %zu, %zu, %zu, ptr, vector, ifstream, '\\n')\" function, while reading the number of recurrent depth. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_block_size,
                                      this->p_file_buffer_size,
@@ -2867,7 +2869,7 @@ bool Dataset<T>::Allocate__Dataset_Split__Output(std::string const &ref_path_rec
         if(tmp_ptr_array_outputs_array == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_number_examples * sizeof(T const *),
                                      __LINE__);
@@ -2879,7 +2881,7 @@ bool Dataset<T>::Allocate__Dataset_Split__Output(std::string const &ref_path_rec
         if(tmp_ptr_array_outputs == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_number_outputs * tmp_number_examples * sizeof(T),
                                      __LINE__);
@@ -2899,7 +2901,7 @@ bool Dataset<T>::Allocate__Dataset_Split__Output(std::string const &ref_path_rec
                 for(tmp_index = 0_zu; tmp_index != tmp_number_outputs; ++tmp_index,
                                                                                                      ++tmp_ptr_array_outputs)
                 {
-                    if(MyEA::String::Read_Stream_Block_And_Parse_Real_Number<double>(tmp_ptr_array_buffers,
+                    if(MyEA::String::Read_Stream_Block_And_Parse_Number<double>(tmp_ptr_array_buffers,
                                                                                                                                tmp_ptr_last_buffer,
                                                                                                                                tmp_block_size,
                                                                                                                                this->p_file_buffer_size,
@@ -2909,8 +2911,8 @@ bool Dataset<T>::Allocate__Dataset_Split__Output(std::string const &ref_path_rec
                                                                                                                                tmp_ifstream,
                                                                                                                                '\n') == false)
                     {
-                        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Read_Stream_Block_And_Parse_Real_Number(ptr, ptr, %zu, %zu, %zu, ptr, vector, ifstream, '\\n')\" function, while reading data %zu at %zu output. At line %d." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Read_Stream_Block_And_Parse_Number(ptr, ptr, %zu, %zu, %zu, ptr, vector, ifstream, '\\n')\" function, while reading data %zu at %zu output. At line %d." NEW_LINE,
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  tmp_block_size,
                                                  this->p_file_buffer_size,
@@ -2933,7 +2935,7 @@ bool Dataset<T>::Allocate__Dataset_Split__Output(std::string const &ref_path_rec
         if(tmp_ifstream.fail())
         {
             PRINT_FORMAT("%s: %s: ERROR: Logical error on i/o operation \"%s\". At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ref_path_received.c_str(),
                                      __LINE__);
@@ -2946,7 +2948,7 @@ bool Dataset<T>::Allocate__Dataset_Split__Output(std::string const &ref_path_rec
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: The file %s can not be opened. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -2990,7 +2992,7 @@ bool Dataset<T>::Allocate__MNIST(std::string const &ref_path_received)
     if(MyEA::File::Path_Exist(tmp_path_images) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: Could not find the following path \"%s\". At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_path_images.c_str(),
                                  __LINE__);
@@ -3000,7 +3002,7 @@ bool Dataset<T>::Allocate__MNIST(std::string const &ref_path_received)
     else if(MyEA::File::Path_Exist(tmp_path_label) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: Could not find the following path \"%s\". At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_path_label.c_str(),
                                  __LINE__);
@@ -3014,7 +3016,7 @@ bool Dataset<T>::Allocate__MNIST(std::string const &ref_path_received)
     if(tmp_ifstream_images.is_open() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: The file %s can not be opened. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_path_images.c_str(),
                                  __LINE__);
@@ -3024,7 +3026,7 @@ bool Dataset<T>::Allocate__MNIST(std::string const &ref_path_received)
     else if(tmp_ifstream_images.eof())
     {
         PRINT_FORMAT("%s: %s: ERROR: File \"%s\" is empty. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_path_images.c_str(),
                                  __LINE__);
@@ -3035,7 +3037,7 @@ bool Dataset<T>::Allocate__MNIST(std::string const &ref_path_received)
     if(tmp_ifstream_labels.is_open() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: The file %s can not be opened. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_path_label.c_str(),
                                  __LINE__);
@@ -3045,7 +3047,7 @@ bool Dataset<T>::Allocate__MNIST(std::string const &ref_path_received)
     else if(tmp_ifstream_labels.eof())
     {
         PRINT_FORMAT("%s: %s: ERROR: File \"%s\" is empty. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_path_label.c_str(),
                                  __LINE__);
@@ -3060,7 +3062,7 @@ bool Dataset<T>::Allocate__MNIST(std::string const &ref_path_received)
     if(tmp_magic_number != 2051)
     {
         PRINT_FORMAT("%s: %s: ERROR: Invalid MNIST image file! Magic number equal %d. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_magic_number,
                                  __LINE__);
@@ -3083,7 +3085,7 @@ bool Dataset<T>::Allocate__MNIST(std::string const &ref_path_received)
     if(tmp_ptr_array_inputs_array == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  static_cast<size_t>(tmp_number_images) * sizeof(T const *),
                                  __LINE__);
@@ -3095,7 +3097,7 @@ bool Dataset<T>::Allocate__MNIST(std::string const &ref_path_received)
     if(tmp_ptr_array_inputs == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  static_cast<size_t>(tmp_number_images * tmp_input_size) * sizeof(T),
                                  __LINE__);
@@ -3128,7 +3130,7 @@ bool Dataset<T>::Allocate__MNIST(std::string const &ref_path_received)
     if(tmp_magic_number != 2049)
     {
         PRINT_FORMAT("%s: %s: ERROR: Invalid MNIST image file! Magic number equal %d. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_magic_number,
                                  __LINE__);
@@ -3145,7 +3147,7 @@ bool Dataset<T>::Allocate__MNIST(std::string const &ref_path_received)
     if(tmp_number_images != tmp_number_labels)
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of images (%d) differs with the number of labels (%d). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_number_images,
                                  tmp_number_labels,
@@ -3163,7 +3165,7 @@ bool Dataset<T>::Allocate__MNIST(std::string const &ref_path_received)
     if(tmp_ptr_array_outputs_array == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  static_cast<size_t>(tmp_number_labels) * sizeof(T const *),
                                  __LINE__);
@@ -3178,7 +3180,7 @@ bool Dataset<T>::Allocate__MNIST(std::string const &ref_path_received)
     if(tmp_ptr_array_outputs == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  static_cast<size_t>(tmp_number_labels * tmp_number_outputs) * sizeof(T),
                                  __LINE__);
@@ -3227,7 +3229,7 @@ bool Dataset<T>::Remove_Duplicate(void)
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3247,7 +3249,7 @@ bool Dataset<T>::Remove_Duplicate(void)
     if(tmp_ptr_array_inputs == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     __FUNCTION__,
                                     this->p_number_examples * this->p_number_inputs * this->p_number_recurrent_depth * sizeof(T),
                                     __LINE__);
@@ -3259,7 +3261,7 @@ bool Dataset<T>::Remove_Duplicate(void)
     if(tmp_ptr_array_outputs == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     __FUNCTION__,
                                     this->p_number_examples * this->p_number_outputs * this->p_number_recurrent_depth * sizeof(T),
                                     __LINE__);
@@ -3333,7 +3335,7 @@ bool Dataset<T>::Remove_Duplicate(void)
         if(this->p_ptr_array_inputs_array == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_new_number_examples * sizeof(T const *),
                                      __LINE__);
@@ -3346,7 +3348,7 @@ bool Dataset<T>::Remove_Duplicate(void)
         if(this->p_ptr_array_outputs_array == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_new_number_examples * sizeof(T const *),
                                      __LINE__);
@@ -3384,7 +3386,7 @@ bool Dataset<T>::Spliting_Dataset(size_t const desired_data_per_file_received, s
     if(tmp_number_files_to_create == 1_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not generate only one file. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3393,7 +3395,7 @@ bool Dataset<T>::Spliting_Dataset(size_t const desired_data_per_file_received, s
     else if(ref_path_file_received.find(".dataset") == std::string::npos)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not find \".dataset\" in the path \"%s\". At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_file_received.c_str(),
                                  __LINE__);
@@ -3447,7 +3449,7 @@ bool Dataset<T>::Spliting_Dataset(size_t const desired_data_per_file_received, s
                     tmp_string_write += NEW_LINE;
                     for(tmp_index = 0_zu; tmp_index != this->p_number_inputs; ++tmp_index)
                     {
-                        tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_array_inputs[tmp_example_index][tmp_time_step_index * this->p_number_inputs + tmp_index], 9u);
+                        tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_array_inputs[tmp_example_index][tmp_time_step_index * this->p_number_inputs + tmp_index], 9u);
 
                         if(tmp_index + 1_zu != this->p_number_inputs) { tmp_string_write += " "; }
                     }
@@ -3456,7 +3458,7 @@ bool Dataset<T>::Spliting_Dataset(size_t const desired_data_per_file_received, s
                     tmp_string_write += NEW_LINE;
                     for(tmp_index = 0_zu; tmp_index != this->p_number_outputs; ++tmp_index)
                     {
-                        tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(tmp_ptr_array_outputs[tmp_example_index][tmp_time_step_index * this->p_number_outputs + tmp_index], 9u);
+                        tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(tmp_ptr_array_outputs[tmp_example_index][tmp_time_step_index * this->p_number_outputs + tmp_index], 9u);
 
                         if(tmp_index + 1_zu != this->p_number_outputs) { tmp_string_write += " "; }
                     }
@@ -3471,7 +3473,7 @@ bool Dataset<T>::Spliting_Dataset(size_t const desired_data_per_file_received, s
         else
         {
             PRINT_FORMAT("%s: %s: ERROR: The file %s can not be opened. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_path.c_str(),
                                      __LINE__);
@@ -3492,7 +3494,7 @@ bool Dataset<T>::Simulate_Classification_Trading_Session(class Neural_Network *c
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3503,7 +3505,7 @@ bool Dataset<T>::Simulate_Classification_Trading_Session(class Neural_Network *c
                                                ptr_Neural_Network_received->number_recurrent_depth) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Check_Topology(%zu, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ptr_Neural_Network_received->number_inputs,
                                  ptr_Neural_Network_received->number_outputs,
@@ -3515,7 +3517,7 @@ bool Dataset<T>::Simulate_Classification_Trading_Session(class Neural_Network *c
     else if(ptr_Neural_Network_received->Update__Batch_Size(this->Get__Number_Examples()) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update__Batch_Size(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->Get__Number_Examples(),
                                  __LINE__);
@@ -3573,12 +3575,12 @@ bool Dataset<T>::Simulate_Classification_Trading_Session(class Neural_Network *c
         }
     }
 
-    PRINT_FORMAT("%s" NEW_LINE, MyEA::String::Get__Time().c_str());
+    PRINT_FORMAT("%s" NEW_LINE, MyEA::Time::Date_Time_Now().c_str());
     PRINT_FORMAT("%s: Report total trades: %zu" NEW_LINE,
-                             MyEA::String::Get__Time().c_str(),
+                             MyEA::Time::Date_Time_Now().c_str(),
                              tmp_number_examples);
     PRINT_FORMAT("%s: \tSucces: %f%%" NEW_LINE,
-                             MyEA::String::Get__Time().c_str(),
+                             MyEA::Time::Date_Time_Now().c_str(),
                              static_cast<double>(tmp_number_same_sign) / static_cast<double>(tmp_number_examples) * 100.0);
     
     return(true);
@@ -3590,7 +3592,7 @@ bool Dataset<T>::Replace_Entries(class Dataset<T> const *const ptr_source_Datase
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3599,7 +3601,7 @@ bool Dataset<T>::Replace_Entries(class Dataset<T> const *const ptr_source_Datase
     else if(ptr_source_Dataset_received->p_number_examples != this->p_number_examples)
     {
         PRINT_FORMAT("%s: %s: ERROR: Source number data (%zu) differ from destination number data (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ptr_source_Dataset_received->p_number_examples,
                                  this->p_number_examples,
@@ -3610,7 +3612,7 @@ bool Dataset<T>::Replace_Entries(class Dataset<T> const *const ptr_source_Datase
     else if(ptr_source_Dataset_received->Get__Number_Recurrent_Depth() != this->p_number_recurrent_depth)
     {
         PRINT_FORMAT("%s: %s: ERROR: Source recurrent depth (%zu) differ from destination recurrent depth (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ptr_source_Dataset_received->Get__Number_Recurrent_Depth(),
                                  this->p_number_recurrent_depth,
@@ -3621,7 +3623,7 @@ bool Dataset<T>::Replace_Entries(class Dataset<T> const *const ptr_source_Datase
     else if(type_input_received > ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT)
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -3631,7 +3633,7 @@ bool Dataset<T>::Replace_Entries(class Dataset<T> const *const ptr_source_Datase
     else if(this->_reference)
     {
         PRINT_FORMAT("%s: %s: ERROR: The dataset is allocate as refence. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -3645,7 +3647,7 @@ bool Dataset<T>::Replace_Entries(class Dataset<T> const *const ptr_source_Datase
     if(tmp_ptr_array_source_inputs == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"tmp_ptr_array_source_inputs\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3657,15 +3659,16 @@ bool Dataset<T>::Replace_Entries(class Dataset<T> const *const ptr_source_Datase
 
     if(type_input_received == ENUM_TYPE_INPUT::TYPE_INPUT_INPUT)
     {
-        tmp_ptr_array_inputs = Memory::reallocate_cpp<T>(this->p_ptr_array_inputs,
-                                                                                    this->p_number_examples * this->p_number_recurrent_depth * tmp_input_size,
-                                                                                    this->p_number_examples * this->p_number_recurrent_depth * this->p_number_inputs,
-                                                                                    false);
+        tmp_ptr_array_inputs = MyEA::Memory::Cpp::Reallocate<T, false>(
+            this->p_ptr_array_inputs,
+            this->p_number_examples * this->p_number_recurrent_depth * tmp_input_size,
+            this->p_number_examples * this->p_number_recurrent_depth * this->p_number_inputs
+        );
         
         if(tmp_ptr_array_inputs == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu, false)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      sizeof(T),
                                      this->p_number_examples * this->p_number_recurrent_depth * tmp_input_size,
@@ -3685,15 +3688,15 @@ bool Dataset<T>::Replace_Entries(class Dataset<T> const *const ptr_source_Datase
     }
     else
     {
-        tmp_ptr_array_inputs = Memory::reallocate_cpp<T>(this->p_ptr_array_outputs,
+        tmp_ptr_array_inputs = MyEA::Memory::Cpp::Reallocate<T, false>(this->p_ptr_array_outputs,
                                                                                     this->p_number_examples * this->p_number_recurrent_depth * tmp_input_size,
-                                                                                    this->p_number_examples * this->p_number_recurrent_depth * this->p_number_outputs,
-                                                                                    false);
+                                                                                    this->p_number_examples * this->p_number_recurrent_depth * this->p_number_outputs
+                                                                                    );
         
         if(tmp_ptr_array_inputs == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu, false)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      sizeof(T),
                                      this->p_number_examples * this->p_number_recurrent_depth * tmp_input_size,
@@ -3733,7 +3736,7 @@ bool Dataset<T>::Replace_Entries(class Dataset<T> const *const ptr_Autoencoder_D
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3742,7 +3745,7 @@ bool Dataset<T>::Replace_Entries(class Dataset<T> const *const ptr_Autoencoder_D
     else if(this->p_number_examples != ptr_Autoencoder_Dataset_received->p_number_examples)
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of data (%zu) differ from the number of data received as argument (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->p_number_examples,
                                  ptr_Autoencoder_Dataset_received->p_number_examples,
@@ -3753,7 +3756,7 @@ bool Dataset<T>::Replace_Entries(class Dataset<T> const *const ptr_Autoencoder_D
     else if(this->p_number_recurrent_depth != ptr_Autoencoder_Dataset_received->p_number_recurrent_depth)
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of recurrent depth (%zu) differ from the number of recurrent depth received as argument (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->p_number_recurrent_depth,
                                  ptr_Autoencoder_Dataset_received->p_number_recurrent_depth,
@@ -3766,7 +3769,7 @@ bool Dataset<T>::Replace_Entries(class Dataset<T> const *const ptr_Autoencoder_D
                                                                                             ptr_Autoencoder_received->number_recurrent_depth) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Check_Topology(%zu, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ptr_Autoencoder_received->number_inputs,
                                  ptr_Autoencoder_received->number_outputs,
@@ -3778,7 +3781,7 @@ bool Dataset<T>::Replace_Entries(class Dataset<T> const *const ptr_Autoencoder_D
     else if(ptr_Autoencoder_received->type_network != MyEA::Common::ENUM_TYPE_NETWORKS::TYPE_NETWORK_AUTOENCODER)
     {
         PRINT_FORMAT("%s: %s: ERROR: The neural network (%s) receive as argument need to be a %s. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  MyEA::Common::ENUM_TYPE_NETWORKS_NAMES[ptr_Autoencoder_received->type_network].c_str(),
                                  MyEA::Common::ENUM_TYPE_NETWORKS_NAMES[MyEA::Common::ENUM_TYPE_NETWORKS::TYPE_NETWORK_AUTOENCODER].c_str(),
@@ -3796,7 +3799,7 @@ bool Dataset<T>::Replace_Entries(class Dataset<T> const *const ptr_Autoencoder_D
         if(ptr_Autoencoder_received->Set__Input_Mode(tmp_use_first_layer_as_input) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Input_Mode(%s)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_use_first_layer_as_input ? "true" : "false",
                                      __LINE__);
@@ -3807,7 +3810,7 @@ bool Dataset<T>::Replace_Entries(class Dataset<T> const *const ptr_Autoencoder_D
         if(ptr_Autoencoder_received->Set__Output_Mode(tmp_use_last_layer_as_output) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Output_Mode(%s)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_use_last_layer_as_output ? "true" : "false",
                                      __LINE__);
@@ -3821,7 +3824,7 @@ bool Dataset<T>::Replace_Entries(class Dataset<T> const *const ptr_Autoencoder_D
     if(ptr_Autoencoder_received->Set__Input_Mode(true) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Input_Mode(true)\" function. At line %d." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     __FUNCTION__,
                                     __LINE__);
         
@@ -3830,14 +3833,14 @@ bool Dataset<T>::Replace_Entries(class Dataset<T> const *const ptr_Autoencoder_D
     else if(ptr_Autoencoder_received->Set__Output_Mode(false) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Output_Mode(false)\" function. At line %d." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     __FUNCTION__,
                                     __LINE__);
         
         if(tmp_Reset_IO_Mode() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"tmp_Reset_IO_Mode()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -3849,7 +3852,7 @@ bool Dataset<T>::Replace_Entries(class Dataset<T> const *const ptr_Autoencoder_D
     else if(this->p_number_inputs != ptr_Autoencoder_received->Get__Output_Size())
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of input(s) (%zu) differ from the number of output(s) from the autoencoder (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->p_number_inputs,
                                  ptr_Autoencoder_received->Get__Output_Size(),
@@ -3858,7 +3861,7 @@ bool Dataset<T>::Replace_Entries(class Dataset<T> const *const ptr_Autoencoder_D
         if(tmp_Reset_IO_Mode() == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"tmp_Reset_IO_Mode()\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -3902,7 +3905,7 @@ bool Dataset<T>::Replace_Entries(class Dataset<T> const *const ptr_Autoencoder_D
     if(tmp_Reset_IO_Mode() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"tmp_Reset_IO_Mode()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3918,7 +3921,7 @@ bool Dataset<T>::Concat(class Dataset<T> const *const ptr_source_Dataset_receive
     if(ptr_source_Dataset_received->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available from the source. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -3929,7 +3932,7 @@ bool Dataset<T>::Concat(class Dataset<T> const *const ptr_source_Dataset_receive
                                               ptr_source_Dataset_received->Get__Number_Recurrent_Depth()) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Check_Topology(%zu, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ptr_source_Dataset_received->Get__Number_Inputs(),
                                  ptr_source_Dataset_received->Get__Number_Outputs(),
@@ -3941,7 +3944,7 @@ bool Dataset<T>::Concat(class Dataset<T> const *const ptr_source_Dataset_receive
     else if(ptr_source_Dataset_received->Get__Number_Recurrent_Depth() != this->p_number_recurrent_depth)
     {
         PRINT_FORMAT("%s: %s: ERROR: Source recurrent depth (%zu) differ from destination recurrent depth (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ptr_source_Dataset_received->Get__Number_Recurrent_Depth(),
                                  this->p_number_recurrent_depth,
@@ -3952,7 +3955,7 @@ bool Dataset<T>::Concat(class Dataset<T> const *const ptr_source_Dataset_receive
     else if(this->_reference)
     {
         PRINT_FORMAT("%s: %s: ERROR: The dataset is allocate as refence. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -3962,14 +3965,14 @@ bool Dataset<T>::Concat(class Dataset<T> const *const ptr_source_Dataset_receive
     size_t const tmp_concat_number_examples(this->p_number_examples + ptr_source_Dataset_received->p_number_examples);
 
     // Array inputs.
-    T *tmp_ptr_array_inputs(Memory::reallocate_cpp<T>(this->p_ptr_array_inputs,
+    T *tmp_ptr_array_inputs(MyEA::Memory::Cpp::Reallocate<T>(this->p_ptr_array_inputs,
                                                                                  tmp_concat_number_examples * this->p_number_recurrent_depth * this->p_number_inputs,
                                                                                  this->p_number_examples * this->p_number_recurrent_depth * this->p_number_inputs));
 
     if(tmp_ptr_array_inputs == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     __FUNCTION__,
                                     sizeof(T),
                                     this->p_number_examples * this->p_number_recurrent_depth * this->p_number_inputs,
@@ -3983,15 +3986,14 @@ bool Dataset<T>::Concat(class Dataset<T> const *const ptr_source_Dataset_receive
 
     this->p_ptr_array_inputs = tmp_ptr_array_inputs;
     
-    T const **tmp_ptr_array_inputs_array(Memory::reallocate_cpp<T const *>(this->p_ptr_array_inputs_array,
+    T const **tmp_ptr_array_inputs_array(MyEA::Memory::Cpp::Reallocate_PtOfPt<T const *, false>(this->p_ptr_array_inputs_array,
                                                                                                                 tmp_concat_number_examples,
-                                                                                                                this->p_number_examples,
-                                                                                                                false));
+                                                                                                                this->p_number_examples));
 
     if(tmp_ptr_array_inputs_array == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu, false)\" function. At line %d." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     __FUNCTION__,
                                     sizeof(T),
                                     this->p_number_examples * this->p_number_recurrent_depth * this->p_number_inputs,
@@ -4011,14 +4013,14 @@ bool Dataset<T>::Concat(class Dataset<T> const *const ptr_source_Dataset_receive
     // |END| Array inputs. |END|
 
     // Array outputs.
-    T *tmp_ptr_array_outputs(Memory::reallocate_cpp<T>(this->p_ptr_array_outputs,
+    T *tmp_ptr_array_outputs(MyEA::Memory::Cpp::Reallocate<T>(this->p_ptr_array_outputs,
                                                                                    tmp_concat_number_examples * this->p_number_recurrent_depth * this->p_number_outputs,
                                                                                    this->p_number_examples * this->p_number_recurrent_depth * this->p_number_outputs));
         
     if(tmp_ptr_array_outputs == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     __FUNCTION__,
                                     sizeof(T),
                                     this->p_number_examples * this->p_number_recurrent_depth * this->p_number_outputs,
@@ -4032,15 +4034,14 @@ bool Dataset<T>::Concat(class Dataset<T> const *const ptr_source_Dataset_receive
 
     this->p_ptr_array_outputs = tmp_ptr_array_outputs;
     
-    T const **tmp_ptr_array_outputs_array(Memory::reallocate_cpp<T const *>(this->p_ptr_array_outputs_array,
+    T const **tmp_ptr_array_outputs_array(MyEA::Memory::Cpp::Reallocate_PtOfPt<T const *, false>(this->p_ptr_array_outputs_array,
                                                                                                                   tmp_concat_number_examples,
-                                                                                                                  this->p_number_examples,
-                                                                                                                  false));
+                                                                                                                  this->p_number_examples));
         
     if(tmp_ptr_array_outputs_array == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu, false)\" function. At line %d." NEW_LINE,
-                                    MyEA::String::Get__Time().c_str(),
+                                    MyEA::Time::Date_Time_Now().c_str(),
                                     __FUNCTION__,
                                     sizeof(T),
                                     this->p_number_examples * this->p_number_recurrent_depth * this->p_number_outputs,
@@ -4077,7 +4078,7 @@ bool Dataset<T>::Save__Sequential_Input(size_t const number_recurrent_depth_rece
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -4086,7 +4087,7 @@ bool Dataset<T>::Save__Sequential_Input(size_t const number_recurrent_depth_rece
     else if(number_recurrent_depth_received <= 1_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Recurrent depth (%zu) need to be greater or equal 2. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  number_recurrent_depth_received,
                                  __LINE__);
@@ -4096,7 +4097,7 @@ bool Dataset<T>::Save__Sequential_Input(size_t const number_recurrent_depth_rece
     else if(number_recurrent_depth_received > this->p_number_inputs)
     {
         PRINT_FORMAT("%s: %s: ERROR: Recurrent depth (%zu) greater than the number of inputs (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  number_recurrent_depth_received,
                                  this->p_number_inputs,
@@ -4105,10 +4106,10 @@ bool Dataset<T>::Save__Sequential_Input(size_t const number_recurrent_depth_rece
         return(false);
     }
     
-    if(MyEA::File::Write_Tempory_File(ref_path_received) == false)
+    if(MyEA::File::Write_Temporary_File(ref_path_received) == false)
     {
-        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Write_Tempory_File(%s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Write_Temporary_File(%s)\" function. At line %d." NEW_LINE,
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -4142,7 +4143,7 @@ bool Dataset<T>::Save__Sequential_Input(size_t const number_recurrent_depth_rece
                 tmp_string_write += NEW_LINE;
                 for(tmp_index = 0_zu; tmp_index != tmp_number_inputs_per_time_step; ++tmp_index)
                 {
-                    tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->p_ptr_array_inputs_array[tmp_example_index][tmp_time_step_index * tmp_number_inputs_per_time_step + tmp_index], 9u);
+                    tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->p_ptr_array_inputs_array[tmp_example_index][tmp_time_step_index * tmp_number_inputs_per_time_step + tmp_index], 9u);
                     
                     if(tmp_index + 1_zu != tmp_number_inputs_per_time_step) { tmp_string_write += " "; }
                 }
@@ -4151,7 +4152,7 @@ bool Dataset<T>::Save__Sequential_Input(size_t const number_recurrent_depth_rece
                 tmp_string_write += NEW_LINE;
                 for(tmp_index = 0_zu; tmp_index != this->p_number_outputs; ++tmp_index)
                 {
-                    tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_MANIPULATOR_STRING::TYPE_MANIPULATOR_STRING_DEFAULTFLOAT>(this->p_ptr_array_outputs_array[tmp_example_index][(tmp_time_step_index % this->p_number_recurrent_depth) * this->p_number_outputs + tmp_index], 9u);
+                    tmp_string_write += MyEA::String::To_string<T, MyEA::String::ENUM_TYPE_STRING_FORMAT::DEFAULTFLOAT>(this->p_ptr_array_outputs_array[tmp_example_index][(tmp_time_step_index % this->p_number_recurrent_depth) * this->p_number_outputs + tmp_index], 9u);
 
                     if(tmp_index + 1_zu != this->p_number_outputs) { tmp_string_write += " "; }
                 }
@@ -4166,7 +4167,7 @@ bool Dataset<T>::Save__Sequential_Input(size_t const number_recurrent_depth_rece
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: The file %s can not be opened. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -4174,10 +4175,10 @@ bool Dataset<T>::Save__Sequential_Input(size_t const number_recurrent_depth_rece
         return(false);
     }
     
-    if(MyEA::File::Delete_Tempory_File(ref_path_received) == false)
+    if(MyEA::File::Delete_Temporary_File(ref_path_received) == false)
     {
-        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Delete_Tempory_File(%s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+        PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Delete_Temporary_File(%s)\" function. At line %d." NEW_LINE,
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_path_received.c_str(),
                                  __LINE__);
@@ -4200,7 +4201,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(size_t const data_start_index_re
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -4209,7 +4210,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(size_t const data_start_index_re
     else if(data_start_index_received > data_end_index_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Start index (%zu) can not be greater than end index (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  data_start_index_received,
                                  data_end_index_received,
@@ -4220,7 +4221,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(size_t const data_start_index_re
     else if(minimum_value_received > maximum_value_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Minimum value (%f) can not be greater than maximum value (%f). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(minimum_value_received),
                                  Cast_T(maximum_value_received),
@@ -4231,7 +4232,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(size_t const data_start_index_re
     else if(minimum_range_received > maximum_range_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Minimum range (%f) can not be greater than maximum range (%f). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(minimum_range_received),
                                  Cast_T(maximum_range_received),
@@ -4242,7 +4243,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(size_t const data_start_index_re
     else if(this->_reference)
     {
         PRINT_FORMAT("%s: %s: ERROR: The dataset is allocate as refence. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -4257,7 +4258,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(size_t const data_start_index_re
         if(this->_ptr_input_array_scaler__minimum_maximum == nullptr && (this->_ptr_input_array_scaler__minimum_maximum = new struct Scaler__Minimum_Maximum<T>[this->p_number_inputs]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->p_number_inputs * sizeof(struct Scaler__Minimum_Maximum<T>),
                                      __LINE__);
@@ -4270,7 +4271,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(size_t const data_start_index_re
         if(this->_ptr_output_array_scaler__minimum_maximum == nullptr && (this->_ptr_output_array_scaler__minimum_maximum = new struct Scaler__Minimum_Maximum<T>[this->p_number_outputs]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->p_number_outputs * sizeof(struct Scaler__Minimum_Maximum<T>),
                                      __LINE__);
@@ -4281,7 +4282,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(size_t const data_start_index_re
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -4304,7 +4305,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(size_t const data_start_index_re
                                                                          type_input_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum(%zu, %zu, %zu, %f, %f, %f, %f, %u)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      data_start_index_received,
                                      data_end_index_received,
@@ -4336,7 +4337,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(size_t const data_start_index_re
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -4345,7 +4346,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(size_t const data_start_index_re
     else if(data_start_index_received > data_end_index_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Start index (%zu) can not be greater than end index (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  data_start_index_received,
                                  data_end_index_received,
@@ -4356,7 +4357,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(size_t const data_start_index_re
     else if(minimum_value_received > maximum_value_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Minimum value (%f) can not be greater than maximum value (%f). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(minimum_value_received),
                                  Cast_T(maximum_value_received),
@@ -4367,7 +4368,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(size_t const data_start_index_re
     else if(minimum_range_received > maximum_range_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Minimum range (%f) can not be greater than maximum range (%f). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(minimum_range_received),
                                  Cast_T(maximum_range_received),
@@ -4378,7 +4379,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(size_t const data_start_index_re
     else if(this->_reference)
     {
         PRINT_FORMAT("%s: %s: ERROR: The dataset is allocate as refence. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -4394,7 +4395,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(size_t const data_start_index_re
         if(this->_ptr_input_array_scaler__minimum_maximum == nullptr && (this->_ptr_input_array_scaler__minimum_maximum = new struct Scaler__Minimum_Maximum<T>[this->p_number_inputs]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->p_number_inputs * sizeof(struct Scaler__Minimum_Maximum<T>),
                                      __LINE__);
@@ -4407,7 +4408,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(size_t const data_start_index_re
         if(this->_ptr_output_array_scaler__minimum_maximum == nullptr && (this->_ptr_output_array_scaler__minimum_maximum = new struct Scaler__Minimum_Maximum<T>[this->p_number_outputs]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->p_number_outputs * sizeof(struct Scaler__Minimum_Maximum<T>),
                                      __LINE__);
@@ -4418,7 +4419,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(size_t const data_start_index_re
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -4433,7 +4434,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(size_t const data_start_index_re
     if(input_index_received >= tmp_input_size)
     {
         PRINT_FORMAT("%s: %s: ERROR: Input index (%zu) overflow (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  input_index_received,
                                  tmp_input_size,
@@ -4447,7 +4448,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(size_t const data_start_index_re
     if(tmp_ptr_scaler__minimum_maximum == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"tmp_ptr_scaler__minimum_maximum\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -4482,7 +4483,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(T *const ptr_array_inputs_receiv
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -4494,7 +4495,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(T *const ptr_array_inputs_receiv
         if(this->_ptr_input_array_scaler__minimum_maximum == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"_ptr_input_array_scaler__minimum_maximum\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -4506,7 +4507,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(T *const ptr_array_inputs_receiv
         if(this->_ptr_output_array_scaler__minimum_maximum == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"_ptr_output_array_scaler__minimum_maximum\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -4516,7 +4517,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(T *const ptr_array_inputs_receiv
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -4534,7 +4535,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(T *const ptr_array_inputs_receiv
                                                                          type_input_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum(%zu, ptr, %u)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_input_index,
                                      type_input_received,
@@ -4555,7 +4556,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(size_t const input_index_receive
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -4567,7 +4568,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(size_t const input_index_receive
         if(this->_ptr_input_array_scaler__minimum_maximum == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"_ptr_input_array_scaler__minimum_maximum\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -4579,7 +4580,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(size_t const input_index_receive
         if(this->_ptr_output_array_scaler__minimum_maximum == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"_ptr_output_array_scaler__minimum_maximum\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -4589,7 +4590,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(size_t const input_index_receive
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -4603,7 +4604,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(size_t const input_index_receive
     if(input_index_received >= tmp_input_size)
     {
         PRINT_FORMAT("%s: %s: ERROR: Input index (%zu) overflow (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  input_index_received,
                                  tmp_input_size,
@@ -4617,7 +4618,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum(size_t const input_index_receive
     if(tmp_ptr_scaler__minimum_maximum == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"tmp_ptr_scaler__minimum_maximum\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -4641,7 +4642,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum_Inverse(enum ENUM_TYPE_INPUT con
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -4650,7 +4651,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum_Inverse(enum ENUM_TYPE_INPUT con
     else if(this->_reference)
     {
         PRINT_FORMAT("%s: %s: ERROR: The dataset is allocate as refence. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -4662,7 +4663,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum_Inverse(enum ENUM_TYPE_INPUT con
         if(this->_ptr_input_array_scaler__minimum_maximum == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"_ptr_input_array_scaler__minimum_maximum\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -4674,7 +4675,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum_Inverse(enum ENUM_TYPE_INPUT con
         if(this->_ptr_output_array_scaler__minimum_maximum == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"_ptr_output_array_scaler__minimum_maximum\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -4684,7 +4685,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum_Inverse(enum ENUM_TYPE_INPUT con
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -4700,7 +4701,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum_Inverse(enum ENUM_TYPE_INPUT con
         if(this->Preprocessing__Minimum_Maximum_Inverse(tmp_input_index, type_input_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum_Inverse(%zu, %u)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_input_index,
                                      type_input_received,
@@ -4719,7 +4720,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum_Inverse(size_t const input_index
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -4728,7 +4729,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum_Inverse(size_t const input_index
     else if(this->_reference)
     {
         PRINT_FORMAT("%s: %s: ERROR: The dataset is allocate as refence. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -4740,7 +4741,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum_Inverse(size_t const input_index
         if(this->_ptr_input_array_scaler__minimum_maximum == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"_ptr_input_array_scaler__minimum_maximum\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -4752,7 +4753,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum_Inverse(size_t const input_index
         if(this->_ptr_output_array_scaler__minimum_maximum == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"_ptr_output_array_scaler__minimum_maximum\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -4762,7 +4763,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum_Inverse(size_t const input_index
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -4777,7 +4778,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum_Inverse(size_t const input_index
     if(input_index_received >= tmp_input_size)
     {
         PRINT_FORMAT("%s: %s: ERROR: Input index (%zu) overflow (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  input_index_received,
                                  tmp_input_size,
@@ -4791,7 +4792,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum_Inverse(size_t const input_index
     if(tmp_ptr_scaler__minimum_maximum == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"tmp_ptr_scaler__minimum_maximum\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -4838,7 +4839,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum_Inverse(T *const ptr_array_input
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -4850,7 +4851,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum_Inverse(T *const ptr_array_input
         if(this->_ptr_input_array_scaler__minimum_maximum == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"_ptr_input_array_scaler__minimum_maximum\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -4862,7 +4863,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum_Inverse(T *const ptr_array_input
         if(this->_ptr_output_array_scaler__minimum_maximum == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"_ptr_output_array_scaler__minimum_maximum\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -4872,7 +4873,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum_Inverse(T *const ptr_array_input
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -4890,7 +4891,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum_Inverse(T *const ptr_array_input
                                                                                      type_input_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum_Inverse(%zu, ptr, %u)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_input_index,
                                      type_input_received,
@@ -4911,7 +4912,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum_Inverse(size_t const input_index
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -4923,7 +4924,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum_Inverse(size_t const input_index
         if(this->_ptr_input_array_scaler__minimum_maximum == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"_ptr_input_array_scaler__minimum_maximum\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -4935,7 +4936,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum_Inverse(size_t const input_index
         if(this->_ptr_output_array_scaler__minimum_maximum == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"_ptr_output_array_scaler__minimum_maximum\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -4945,7 +4946,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum_Inverse(size_t const input_index
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -4959,7 +4960,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum_Inverse(size_t const input_index
     if(input_index_received >= tmp_input_size)
     {
         PRINT_FORMAT("%s: %s: ERROR: Input index (%zu) overflow (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  input_index_received,
                                  tmp_input_size,
@@ -4973,7 +4974,7 @@ bool Dataset<T>::Preprocessing__Minimum_Maximum_Inverse(size_t const input_index
     if(tmp_ptr_scaler__minimum_maximum == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"tmp_ptr_scaler__minimum_maximum\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -5004,7 +5005,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered(size_t const data_start_index_rece
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -5013,7 +5014,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered(size_t const data_start_index_rece
     else if(data_start_index_received > data_end_index_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Start index (%zu) can not be greater than end index (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  data_start_index_received,
                                  data_end_index_received,
@@ -5024,7 +5025,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered(size_t const data_start_index_rece
     else if(this->_reference)
     {
         PRINT_FORMAT("%s: %s: ERROR: The dataset is allocate as refence. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -5036,7 +5037,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered(size_t const data_start_index_rece
         if(this->_ptr_input_array_scaler__zero_centered == nullptr && (this->_ptr_input_array_scaler__zero_centered = new struct Scaler__Zero_Centered<T>[this->p_number_inputs]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->p_number_inputs * sizeof(struct Scaler__Zero_Centered<T>),
                                      __LINE__);
@@ -5049,7 +5050,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered(size_t const data_start_index_rece
         if(this->_ptr_output_array_scaler__zero_centered == nullptr && (this->_ptr_output_array_scaler__zero_centered = new struct Scaler__Zero_Centered<T>[this->p_number_outputs]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->p_number_outputs * sizeof(struct Scaler__Zero_Centered<T>),
                                      __LINE__);
@@ -5060,7 +5061,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered(size_t const data_start_index_rece
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -5080,7 +5081,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered(size_t const data_start_index_rece
                                                                  type_input_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered(%zu, %zu, %zu, %f, %u)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      data_start_index_received,
                                      data_end_index_received,
@@ -5106,7 +5107,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered(size_t const data_start_index_rece
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -5115,7 +5116,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered(size_t const data_start_index_rece
     else if(data_start_index_received > data_end_index_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Start index (%zu) can not be greater than end index (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  data_start_index_received,
                                  data_end_index_received,
@@ -5126,7 +5127,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered(size_t const data_start_index_rece
     else if(this->_reference)
     {
         PRINT_FORMAT("%s: %s: ERROR: The dataset is allocate as refence. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -5138,7 +5139,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered(size_t const data_start_index_rece
         if(this->_ptr_input_array_scaler__zero_centered == nullptr && (this->_ptr_input_array_scaler__zero_centered = new struct Scaler__Zero_Centered<T>[this->p_number_inputs]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->p_number_inputs * sizeof(struct Scaler__Zero_Centered<T>),
                                      __LINE__);
@@ -5151,7 +5152,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered(size_t const data_start_index_rece
         if(this->_ptr_output_array_scaler__zero_centered == nullptr && (this->_ptr_output_array_scaler__zero_centered = new struct Scaler__Zero_Centered<T>[this->p_number_outputs]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->p_number_outputs * sizeof(struct Scaler__Zero_Centered<T>),
                                      __LINE__);
@@ -5162,7 +5163,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered(size_t const data_start_index_rece
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -5177,7 +5178,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered(size_t const data_start_index_rece
     if(input_index_received >= tmp_input_size)
     {
         PRINT_FORMAT("%s: %s: ERROR: Input index (%zu) overflow (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  input_index_received,
                                  tmp_input_size,
@@ -5191,7 +5192,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered(size_t const data_start_index_rece
     if(tmp_ptr_scaler__zero_centered == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"tmp_ptr_scaler__zero_centered\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -5222,7 +5223,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered(T *const ptr_array_inputs_received
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -5234,7 +5235,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered(T *const ptr_array_inputs_received
         if(this->_ptr_input_array_scaler__zero_centered == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"_ptr_input_array_scaler__zero_centered\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -5246,7 +5247,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered(T *const ptr_array_inputs_received
         if(this->_ptr_output_array_scaler__zero_centered == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"_ptr_output_array_scaler__zero_centered\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -5256,7 +5257,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered(T *const ptr_array_inputs_received
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -5274,7 +5275,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered(T *const ptr_array_inputs_received
                                                                  type_input_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Zero_Centered(%zu, ptr, %u)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_input_index,
                                      type_input_received,
@@ -5295,7 +5296,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered(size_t const input_index_received,
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -5307,7 +5308,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered(size_t const input_index_received,
         if(this->_ptr_input_array_scaler__zero_centered == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"_ptr_input_array_scaler__zero_centered\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -5319,7 +5320,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered(size_t const input_index_received,
         if(this->_ptr_output_array_scaler__zero_centered == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"_ptr_output_array_scaler__zero_centered\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -5329,7 +5330,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered(size_t const input_index_received,
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -5343,7 +5344,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered(size_t const input_index_received,
     if(input_index_received >= tmp_input_size)
     {
         PRINT_FORMAT("%s: %s: ERROR: Input index (%zu) overflow (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  input_index_received,
                                  tmp_input_size,
@@ -5357,7 +5358,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered(size_t const input_index_received,
     if(tmp_ptr_scaler__zero_centered == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"tmp_ptr_scaler__zero_centered\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -5381,7 +5382,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered_Inverse(enum ENUM_TYPE_INPUT const
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -5390,7 +5391,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered_Inverse(enum ENUM_TYPE_INPUT const
     else if(this->_reference)
     {
         PRINT_FORMAT("%s: %s: ERROR: The dataset is allocate as refence. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -5402,7 +5403,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered_Inverse(enum ENUM_TYPE_INPUT const
         if(this->_ptr_input_array_scaler__zero_centered == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"_ptr_input_array_scaler__zero_centered\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -5414,7 +5415,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered_Inverse(enum ENUM_TYPE_INPUT const
         if(this->_ptr_output_array_scaler__zero_centered == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"_ptr_output_array_scaler__zero_centered\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -5424,7 +5425,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered_Inverse(enum ENUM_TYPE_INPUT const
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -5440,7 +5441,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered_Inverse(enum ENUM_TYPE_INPUT const
         if(this->Preprocessing__Zero_Centered_Inverse(tmp_input_index, type_input_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Minimum_Maximum_Inverse(%zu, %u)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_input_index,
                                      type_input_received,
@@ -5459,7 +5460,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered_Inverse(size_t const input_index_r
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -5468,7 +5469,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered_Inverse(size_t const input_index_r
     else if(this->_reference)
     {
         PRINT_FORMAT("%s: %s: ERROR: The dataset is allocate as refence. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -5480,7 +5481,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered_Inverse(size_t const input_index_r
         if(this->_ptr_input_array_scaler__zero_centered == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"_ptr_input_array_scaler__zero_centered\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -5492,7 +5493,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered_Inverse(size_t const input_index_r
         if(this->_ptr_output_array_scaler__zero_centered == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"_ptr_output_array_scaler__zero_centered\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -5502,7 +5503,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered_Inverse(size_t const input_index_r
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -5517,7 +5518,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered_Inverse(size_t const input_index_r
     if(input_index_received >= tmp_input_size)
     {
         PRINT_FORMAT("%s: %s: ERROR: Input index (%zu) overflow (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  input_index_received,
                                  tmp_input_size,
@@ -5531,7 +5532,7 @@ bool Dataset<T>::Preprocessing__Zero_Centered_Inverse(size_t const input_index_r
     if(tmp_ptr_scaler__zero_centered == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"tmp_ptr_scaler__zero_centered\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -5569,7 +5570,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const desired_J_level_received, enu
     if(this->p_number_examples <= 1_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No enought data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -5578,7 +5579,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const desired_J_level_received, enu
     else if(this->p_number_recurrent_depth == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Recurrent depth can not be equal to zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -5587,7 +5588,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const desired_J_level_received, enu
     else if(this->_reference)
     {
         PRINT_FORMAT("%s: %s: ERROR: The dataset is allocate as refence. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -5602,14 +5603,14 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const desired_J_level_received, enu
             if((this->p_ptr_input_coefficient_matrix = new T*[this->p_number_inputs * this->p_number_recurrent_depth]) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          this->p_number_inputs * sizeof(T*),
                                          __LINE__);
 
                 return(false);
             }
-            Memory::Fill_Nullptr<T*>(this->p_ptr_input_coefficient_matrix, this->p_ptr_input_coefficient_matrix + this->p_number_inputs * this->p_number_recurrent_depth);
+            MyEA::Memory::Cpp::Fill_Nullptr<T*>(this->p_ptr_input_coefficient_matrix, this->p_ptr_input_coefficient_matrix + this->p_number_inputs * this->p_number_recurrent_depth);
         }
         
         if(this->p_ptr_input_array_coefficient_matrix_size == nullptr)
@@ -5617,7 +5618,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const desired_J_level_received, enu
             if((this->p_ptr_input_array_coefficient_matrix_size = new size_t[this->p_number_inputs]) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          this->p_number_inputs * sizeof(size_t),
                                          __LINE__);
@@ -5636,14 +5637,14 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const desired_J_level_received, enu
             if((this->p_ptr_output_coefficient_matrix = new T*[this->p_number_outputs * this->p_number_recurrent_depth]) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          this->p_number_outputs * sizeof(T*),
                                          __LINE__);
 
                 return(false);
             }
-            Memory::Fill_Nullptr<T*>(this->p_ptr_output_coefficient_matrix, this->p_ptr_output_coefficient_matrix + this->p_number_outputs * this->p_number_recurrent_depth);
+            MyEA::Memory::Cpp::Fill_Nullptr<T*>(this->p_ptr_output_coefficient_matrix, this->p_ptr_output_coefficient_matrix + this->p_number_outputs * this->p_number_recurrent_depth);
         }
         
         if(this->p_ptr_output_array_coefficient_matrix_size == nullptr)
@@ -5651,7 +5652,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const desired_J_level_received, enu
             if((this->p_ptr_output_array_coefficient_matrix_size = new size_t[this->p_number_outputs]) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          this->p_number_outputs * sizeof(size_t),
                                          __LINE__);
@@ -5666,7 +5667,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const desired_J_level_received, enu
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -5684,7 +5685,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const desired_J_level_received, enu
                                                          type_input_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__MODWT(%zu, %zu, %u)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_input_index,
                                      desired_J_level_received,
@@ -5706,7 +5707,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const input_index_received,
     if(this->p_number_examples <= 1_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No enought data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -5715,7 +5716,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const input_index_received,
     else if(this->p_number_recurrent_depth == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Recurrent depth can not be equal to zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -5724,7 +5725,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const input_index_received,
     else if(this->_reference)
     {
         PRINT_FORMAT("%s: %s: ERROR: The dataset is allocate as refence. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -5739,14 +5740,14 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const input_index_received,
             if((this->p_ptr_input_coefficient_matrix = new T*[this->p_number_inputs * this->p_number_recurrent_depth]) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          this->p_number_inputs * sizeof(T*),
                                          __LINE__);
 
                 return(false);
             }
-            Memory::Fill_Nullptr<T*>(this->p_ptr_input_coefficient_matrix, this->p_ptr_input_coefficient_matrix + this->p_number_inputs * this->p_number_recurrent_depth);
+            MyEA::Memory::Cpp::Fill_Nullptr<T*>(this->p_ptr_input_coefficient_matrix, this->p_ptr_input_coefficient_matrix + this->p_number_inputs * this->p_number_recurrent_depth);
         }
 
         if(this->p_ptr_input_array_coefficient_matrix_size == nullptr)
@@ -5754,7 +5755,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const input_index_received,
             if((this->p_ptr_input_array_coefficient_matrix_size = new size_t[this->p_number_inputs]) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          this->p_number_inputs * sizeof(size_t),
                                          __LINE__);
@@ -5773,14 +5774,14 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const input_index_received,
             if((this->p_ptr_output_coefficient_matrix = new T*[this->p_number_outputs * this->p_number_recurrent_depth]) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          this->p_number_outputs * sizeof(T*),
                                          __LINE__);
 
                 return(false);
             }
-            Memory::Fill_Nullptr<T*>(this->p_ptr_output_coefficient_matrix, this->p_ptr_output_coefficient_matrix + this->p_number_outputs * this->p_number_recurrent_depth);
+            MyEA::Memory::Cpp::Fill_Nullptr<T*>(this->p_ptr_output_coefficient_matrix, this->p_ptr_output_coefficient_matrix + this->p_number_outputs * this->p_number_recurrent_depth);
         }
         
         if(this->p_ptr_output_array_coefficient_matrix_size == nullptr)
@@ -5788,7 +5789,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const input_index_received,
             if((this->p_ptr_output_array_coefficient_matrix_size = new size_t[this->p_number_outputs]) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          this->p_number_outputs * sizeof(size_t),
                                          __LINE__);
@@ -5803,7 +5804,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const input_index_received,
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -5816,7 +5817,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const input_index_received,
     if(input_index_received >= tmp_input_size)
     {
         PRINT_FORMAT("%s: %s: ERROR: Input index (%zu) overflow (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  input_index_received,
                                  tmp_input_size,
@@ -5837,7 +5838,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const input_index_received,
     if(tmp_ptr_array_inputs == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"tmp_ptr_array_inputs\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -5846,7 +5847,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const input_index_received,
     else if((tmp_ptr_array_inputs_preproced = new T[this->p_number_examples]) == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->p_number_examples * sizeof(T),
                                  __LINE__);
@@ -5873,7 +5874,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const input_index_received,
                               tmp_J_level) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"MODWT(%zu, %zu, ptr, ptr, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->p_number_examples,
                                      tmp_coefficient_matrix_size,
@@ -5908,7 +5909,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const input_index_received,
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -5917,7 +5918,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const input_index_received,
     else if(this->p_number_recurrent_depth == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Recurrent depth can not be equal to zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -5929,7 +5930,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const input_index_received,
         if(this->p_ptr_input_coefficient_matrix == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"p_ptr_input_coefficient_matrix\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -5939,7 +5940,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const input_index_received,
         if(this->p_ptr_input_array_coefficient_matrix_size == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"p_ptr_input_array_coefficient_matrix_size\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -5951,7 +5952,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const input_index_received,
         if(this->p_ptr_output_coefficient_matrix == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"p_ptr_output_coefficient_matrix\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -5961,7 +5962,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const input_index_received,
         if(this->p_ptr_output_array_coefficient_matrix_size == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"p_ptr_output_array_coefficient_matrix_size\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -5971,7 +5972,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const input_index_received,
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -5984,7 +5985,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const input_index_received,
     if(input_index_received >= tmp_input_size)
     {
         PRINT_FORMAT("%s: %s: ERROR: Input index (%zu) overflow (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  input_index_received,
                                  tmp_input_size,
@@ -6014,7 +6015,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const input_index_received,
     if((tmp_ptr_array_inputs_preproced = new T[tmp_batch_size]) == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_batch_size * sizeof(T),
                                  __LINE__);
@@ -6053,7 +6054,7 @@ bool Dataset<T>::Preprocessing__MODWT(size_t const input_index_received,
                               tmp_J_level) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"MODWT(%zu, %zu, ptr, ptr, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_batch_size,
                                      tmp_coefficient_matrix_size,
@@ -6085,7 +6086,7 @@ bool Dataset<T>::Preprocessing__MODWT_Inverse(enum ENUM_TYPE_INPUT const type_in
     if(this->p_number_examples <= 1_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No enought data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -6094,7 +6095,7 @@ bool Dataset<T>::Preprocessing__MODWT_Inverse(enum ENUM_TYPE_INPUT const type_in
     else if(this->p_number_recurrent_depth == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Recurrent depth can not be equal to zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -6103,7 +6104,7 @@ bool Dataset<T>::Preprocessing__MODWT_Inverse(enum ENUM_TYPE_INPUT const type_in
     else if(this->_reference)
     {
         PRINT_FORMAT("%s: %s: ERROR: The dataset is allocate as refence. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -6115,7 +6116,7 @@ bool Dataset<T>::Preprocessing__MODWT_Inverse(enum ENUM_TYPE_INPUT const type_in
         if(this->p_ptr_input_coefficient_matrix == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"p_ptr_input_coefficient_matrix\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -6125,7 +6126,7 @@ bool Dataset<T>::Preprocessing__MODWT_Inverse(enum ENUM_TYPE_INPUT const type_in
         if(this->p_ptr_input_array_coefficient_matrix_size == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"p_ptr_input_array_coefficient_matrix_size\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -6137,7 +6138,7 @@ bool Dataset<T>::Preprocessing__MODWT_Inverse(enum ENUM_TYPE_INPUT const type_in
         if(this->p_ptr_output_coefficient_matrix == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"p_ptr_output_coefficient_matrix\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -6147,7 +6148,7 @@ bool Dataset<T>::Preprocessing__MODWT_Inverse(enum ENUM_TYPE_INPUT const type_in
         if(this->p_ptr_output_array_coefficient_matrix_size == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"p_ptr_output_array_coefficient_matrix_size\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -6157,7 +6158,7 @@ bool Dataset<T>::Preprocessing__MODWT_Inverse(enum ENUM_TYPE_INPUT const type_in
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -6173,7 +6174,7 @@ bool Dataset<T>::Preprocessing__MODWT_Inverse(enum ENUM_TYPE_INPUT const type_in
         if(this->Preprocessing__MODWT_Inverse(tmp_input_index, type_input_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__MODWT_Inverse(%zu, %u)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_input_index,
                                      type_input_received,
@@ -6192,7 +6193,7 @@ bool Dataset<T>::Preprocessing__MODWT_Inverse(size_t const input_index_received,
     if(this->p_number_examples <= 1_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No enought data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -6201,7 +6202,7 @@ bool Dataset<T>::Preprocessing__MODWT_Inverse(size_t const input_index_received,
     else if(this->p_number_recurrent_depth == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Recurrent depth can not be equal to zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -6210,7 +6211,7 @@ bool Dataset<T>::Preprocessing__MODWT_Inverse(size_t const input_index_received,
     else if(this->_reference)
     {
         PRINT_FORMAT("%s: %s: ERROR: The dataset is allocate as refence. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -6222,7 +6223,7 @@ bool Dataset<T>::Preprocessing__MODWT_Inverse(size_t const input_index_received,
         if(this->p_ptr_input_coefficient_matrix == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"p_ptr_input_coefficient_matrix\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -6232,7 +6233,7 @@ bool Dataset<T>::Preprocessing__MODWT_Inverse(size_t const input_index_received,
         if(this->p_ptr_input_array_coefficient_matrix_size == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"p_ptr_input_array_coefficient_matrix_size\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -6244,7 +6245,7 @@ bool Dataset<T>::Preprocessing__MODWT_Inverse(size_t const input_index_received,
         if(this->p_ptr_output_coefficient_matrix == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"p_ptr_output_coefficient_matrix\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -6254,7 +6255,7 @@ bool Dataset<T>::Preprocessing__MODWT_Inverse(size_t const input_index_received,
         if(this->p_ptr_output_array_coefficient_matrix_size == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"p_ptr_output_array_coefficient_matrix_size\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -6264,7 +6265,7 @@ bool Dataset<T>::Preprocessing__MODWT_Inverse(size_t const input_index_received,
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -6277,7 +6278,7 @@ bool Dataset<T>::Preprocessing__MODWT_Inverse(size_t const input_index_received,
     if(input_index_received >= tmp_input_size)
     {
         PRINT_FORMAT("%s: %s: ERROR: Input index (%zu) overflow (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  input_index_received,
                                  tmp_input_size,
@@ -6296,7 +6297,7 @@ bool Dataset<T>::Preprocessing__MODWT_Inverse(size_t const input_index_received,
     if(tmp_ptr_array_inputs == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"tmp_ptr_array_inputs\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -6305,7 +6306,7 @@ bool Dataset<T>::Preprocessing__MODWT_Inverse(size_t const input_index_received,
     else if((tmp_ptr_array_inputs_inverse = new T[this->p_number_examples]) == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->p_number_examples * sizeof(T),
                                  __LINE__);
@@ -6323,7 +6324,7 @@ bool Dataset<T>::Preprocessing__MODWT_Inverse(size_t const input_index_received,
                                           tmp_ptr_array_inputs_inverse) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"MODWT_Inverse(%zu, %zu, ptr, ptr)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->p_number_examples,
                                      type_input_received == ENUM_TYPE_INPUT::TYPE_INPUT_INPUT ? this->p_ptr_input_array_coefficient_matrix_size[input_index_received] : this->p_ptr_output_array_coefficient_matrix_size[input_index_received],
@@ -6395,14 +6396,13 @@ bool Dataset<T>::Shift_Arrays(size_t const input_index_received,
     {
         if(this->p_ptr_input_coefficient_matrix != nullptr)
         {
-            this->p_ptr_input_coefficient_matrix = Memory::reallocate_pointers_array_cpp<T*>(this->p_ptr_input_coefficient_matrix,
+            this->p_ptr_input_coefficient_matrix = MyEA::Memory::Cpp::Reallocate_PtOfPt<T*, true>(this->p_ptr_input_coefficient_matrix,
                                                                                                                                     tmp_new_input_size * this->p_number_recurrent_depth,
-                                                                                                                                    this->p_number_inputs * this->p_number_recurrent_depth,
-                                                                                                                                    true);
+                                                                                                                                    this->p_number_inputs * this->p_number_recurrent_depth);
             if(this->p_ptr_input_coefficient_matrix == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_pointers_array_cpp<%zu>(ptr, %zu, %zu, true)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          sizeof(T*),
                                          tmp_new_input_size * this->p_number_recurrent_depth,
@@ -6418,7 +6418,7 @@ bool Dataset<T>::Shift_Arrays(size_t const input_index_received,
                                     this->p_ptr_input_coefficient_matrix) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Shift(%zu, %zu, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          this->p_number_inputs - 1_zu,
                                          input_index_received,
@@ -6428,20 +6428,19 @@ bool Dataset<T>::Shift_Arrays(size_t const input_index_received,
             
                 return(false);
             }
-            Memory::Fill_Nullptr<T*>(this->p_ptr_input_coefficient_matrix + (input_index_received + 1_zu) * this->p_number_recurrent_depth,
+            MyEA::Memory::Cpp::Fill_Nullptr<T*>(this->p_ptr_input_coefficient_matrix + (input_index_received + 1_zu) * this->p_number_recurrent_depth,
                                                  this->p_ptr_input_coefficient_matrix + (input_index_received + 1_zu + shift_size_received) * this->p_number_recurrent_depth);
         }
 
         if(this->p_ptr_input_array_coefficient_matrix_size != nullptr)
         {
-            this->p_ptr_input_array_coefficient_matrix_size = Memory::reallocate_cpp<size_t>(this->p_ptr_input_array_coefficient_matrix_size,
+            this->p_ptr_input_array_coefficient_matrix_size = MyEA::Memory::Cpp::Reallocate<size_t, true>(this->p_ptr_input_array_coefficient_matrix_size,
                                                                                                                                      tmp_new_input_size,
-                                                                                                                                     this->p_number_inputs,
-                                                                                                                                     true);
+                                                                                                                                     this->p_number_inputs);
             if(this->p_ptr_input_array_coefficient_matrix_size == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu, true)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          sizeof(size_t),
                                          tmp_new_input_size,
@@ -6456,7 +6455,7 @@ bool Dataset<T>::Shift_Arrays(size_t const input_index_received,
                                           this->p_ptr_input_array_coefficient_matrix_size) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Shift(%zu, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          this->p_number_inputs - 1_zu,
                                          input_index_received,
@@ -6475,7 +6474,7 @@ bool Dataset<T>::Shift_Arrays(size_t const input_index_received,
             if((tmp_ptr_array_inputs = new T[this->p_number_examples * this->p_number_recurrent_depth * tmp_new_input_size]) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          this->p_number_examples * this->p_number_recurrent_depth * tmp_new_input_size * sizeof(T),
                                          __LINE__);
@@ -6510,14 +6509,13 @@ bool Dataset<T>::Shift_Arrays(size_t const input_index_received,
         
         if(this->_ptr_input_array_scaler__zero_centered != nullptr)
         {
-            this->_ptr_input_array_scaler__zero_centered = Memory::reallocate_objects_cpp<struct Scaler__Zero_Centered<T>>(this->_ptr_input_array_scaler__zero_centered,
+            this->_ptr_input_array_scaler__zero_centered = MyEA::Memory::Cpp::Reallocate_Objects<struct Scaler__Zero_Centered<T>, true>(this->_ptr_input_array_scaler__zero_centered,
                                                                                                                                                                                        tmp_new_input_size,
-                                                                                                                                                                                       this->p_number_inputs,
-                                                                                                                                                                                       true);
+                                                                                                                                                                                       this->p_number_inputs);
             if(this->_ptr_input_array_scaler__zero_centered == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_objects_cpp<%zu>(ptr, %zu, %zu, true)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          sizeof(struct Scaler__Zero_Centered<T>),
                                          tmp_new_input_size,
@@ -6532,7 +6530,7 @@ bool Dataset<T>::Shift_Arrays(size_t const input_index_received,
                                                                                   this->_ptr_input_array_scaler__zero_centered) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Shift(%zu, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          this->p_number_inputs - 1_zu,
                                          input_index_received,
@@ -6541,21 +6539,20 @@ bool Dataset<T>::Shift_Arrays(size_t const input_index_received,
             
                 return(false);
             }
-            Memory::Fill<struct Scaler__Zero_Centered<T>>(this->_ptr_input_array_scaler__zero_centered + (input_index_received + 1_zu),
+            MyEA::Memory::Fill<struct Scaler__Zero_Centered<T>>(this->_ptr_input_array_scaler__zero_centered + (input_index_received + 1_zu),
                                                                                     this->_ptr_input_array_scaler__zero_centered + (input_index_received + 1_zu + shift_size_received),
                                                                                     Scaler__Zero_Centered<T>());
         }
         
         if(this->_ptr_input_array_scaler__minimum_maximum != nullptr)
         {
-            this->_ptr_input_array_scaler__minimum_maximum = Memory::reallocate_objects_cpp<struct Scaler__Minimum_Maximum<T>>(this->_ptr_input_array_scaler__minimum_maximum,
+            this->_ptr_input_array_scaler__minimum_maximum = MyEA::Memory::Cpp::Reallocate_Objects<struct Scaler__Minimum_Maximum<T>, true>(this->_ptr_input_array_scaler__minimum_maximum,
                                                                                                                                                                                                         tmp_new_input_size,
-                                                                                                                                                                                                        this->p_number_inputs,
-                                                                                                                                                                                                        true);
+                                                                                                                                                                                                        this->p_number_inputs);
             if(this->_ptr_input_array_scaler__minimum_maximum == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_objects_cpp<%zu>(ptr, %zu, %zu, true)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          sizeof(struct Scaler__Minimum_Maximum<T>),
                                          tmp_new_input_size,
@@ -6570,7 +6567,7 @@ bool Dataset<T>::Shift_Arrays(size_t const input_index_received,
                                                                                           this->_ptr_input_array_scaler__minimum_maximum) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Shift(%zu, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          this->p_number_inputs - 1_zu,
                                          input_index_received,
@@ -6579,7 +6576,7 @@ bool Dataset<T>::Shift_Arrays(size_t const input_index_received,
             
                 return(false);
             }
-            Memory::Fill<struct Scaler__Minimum_Maximum<T>>(this->_ptr_input_array_scaler__minimum_maximum + (input_index_received + 1_zu),
+            MyEA::Memory::Fill<struct Scaler__Minimum_Maximum<T>>(this->_ptr_input_array_scaler__minimum_maximum + (input_index_received + 1_zu),
                                                                                             this->_ptr_input_array_scaler__minimum_maximum + (input_index_received + 1_zu + shift_size_received),
                                                                                             Scaler__Minimum_Maximum<T>());
         }
@@ -6590,14 +6587,13 @@ bool Dataset<T>::Shift_Arrays(size_t const input_index_received,
     {
         if(this->p_ptr_output_coefficient_matrix != nullptr)
         {
-            this->p_ptr_output_coefficient_matrix = Memory::reallocate_pointers_array_cpp<T*>(this->p_ptr_output_coefficient_matrix,
+            this->p_ptr_output_coefficient_matrix = MyEA::Memory::Cpp::Reallocate_PtOfPt<T*, true>(this->p_ptr_output_coefficient_matrix,
                                                                                                                                       tmp_new_input_size * this->p_number_recurrent_depth,
-                                                                                                                                      this->p_number_outputs * this->p_number_recurrent_depth,
-                                                                                                                                      true);
+                                                                                                                                      this->p_number_outputs * this->p_number_recurrent_depth);
             if(this->p_ptr_output_coefficient_matrix == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_pointers_array_cpp<%zu>(ptr, %zu, %zu, true)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          sizeof(T*),
                                          tmp_new_input_size * this->p_number_recurrent_depth,
@@ -6613,7 +6609,7 @@ bool Dataset<T>::Shift_Arrays(size_t const input_index_received,
                                     this->p_ptr_output_coefficient_matrix) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Shift(%zu, %zu, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          this->p_number_outputs - 1_zu,
                                          input_index_received,
@@ -6623,20 +6619,19 @@ bool Dataset<T>::Shift_Arrays(size_t const input_index_received,
             
                 return(false);
             }
-            Memory::Fill_Nullptr<T*>(this->p_ptr_output_coefficient_matrix + (input_index_received + 1_zu) * this->p_number_recurrent_depth,
+            MyEA::Memory::Cpp::Fill_Nullptr<T*>(this->p_ptr_output_coefficient_matrix + (input_index_received + 1_zu) * this->p_number_recurrent_depth,
                                                  this->p_ptr_output_coefficient_matrix + (input_index_received + 1_zu + shift_size_received) * this->p_number_recurrent_depth);
         }
         
         if(this->p_ptr_output_array_coefficient_matrix_size != nullptr)
         {
-            this->p_ptr_output_array_coefficient_matrix_size = Memory::reallocate_cpp<size_t>(this->p_ptr_output_array_coefficient_matrix_size,
+            this->p_ptr_output_array_coefficient_matrix_size = MyEA::Memory::Cpp::Reallocate<size_t, true>(this->p_ptr_output_array_coefficient_matrix_size,
                                                                                                                                        tmp_new_input_size,
-                                                                                                                                       this->p_number_outputs,
-                                                                                                                                       true);
+                                                                                                                                       this->p_number_outputs);
             if(this->p_ptr_output_array_coefficient_matrix_size == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_cpp<%zu>(ptr, %zu, %zu, true)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          sizeof(size_t),
                                          tmp_new_input_size,
@@ -6651,7 +6646,7 @@ bool Dataset<T>::Shift_Arrays(size_t const input_index_received,
                                           this->p_ptr_output_array_coefficient_matrix_size) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Shift(%zu, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          this->p_number_outputs - 1_zu,
                                          input_index_received,
@@ -6670,7 +6665,7 @@ bool Dataset<T>::Shift_Arrays(size_t const input_index_received,
             if((tmp_ptr_array_inputs = new T[this->p_number_examples * this->p_number_recurrent_depth * tmp_new_input_size]) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          this->p_number_examples * this->p_number_recurrent_depth * tmp_new_input_size * sizeof(T),
                                          __LINE__);
@@ -6705,14 +6700,13 @@ bool Dataset<T>::Shift_Arrays(size_t const input_index_received,
         
         if(this->_ptr_output_array_scaler__zero_centered != nullptr)
         {
-            this->_ptr_output_array_scaler__zero_centered = Memory::reallocate_objects_cpp<struct Scaler__Zero_Centered<T>>(this->_ptr_output_array_scaler__zero_centered,
+            this->_ptr_output_array_scaler__zero_centered = MyEA::Memory::Cpp::Reallocate_Objects<struct Scaler__Zero_Centered<T>, true>(this->_ptr_output_array_scaler__zero_centered,
                                                                                                                                                                                          tmp_new_input_size,
-                                                                                                                                                                                         this->p_number_outputs,
-                                                                                                                                                                                         true);
+                                                                                                                                                                                         this->p_number_outputs);
             if(this->_ptr_output_array_scaler__zero_centered == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_objects_cpp<%zu>(ptr, %zu, %zu, true)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          sizeof(struct Scaler__Zero_Centered<T>),
                                          tmp_new_input_size,
@@ -6727,7 +6721,7 @@ bool Dataset<T>::Shift_Arrays(size_t const input_index_received,
                                                                                   this->_ptr_output_array_scaler__zero_centered) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Shift(%zu, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          this->p_number_outputs - 1_zu,
                                          input_index_received,
@@ -6736,21 +6730,20 @@ bool Dataset<T>::Shift_Arrays(size_t const input_index_received,
             
                 return(false);
             }
-            Memory::Fill<struct Scaler__Zero_Centered<T>>(this->_ptr_output_array_scaler__zero_centered + (input_index_received + 1_zu),
+            MyEA::Memory::Fill<struct Scaler__Zero_Centered<T>>(this->_ptr_output_array_scaler__zero_centered + (input_index_received + 1_zu),
                                                                                     this->_ptr_output_array_scaler__zero_centered + (input_index_received + 1_zu + shift_size_received),
                                                                                     Scaler__Zero_Centered<T>());
         }
         
         if(this->_ptr_output_array_scaler__minimum_maximum != nullptr)
         {
-            this->_ptr_output_array_scaler__minimum_maximum = Memory::reallocate_objects_cpp<struct Scaler__Minimum_Maximum<T>>(this->_ptr_output_array_scaler__minimum_maximum,
+            this->_ptr_output_array_scaler__minimum_maximum = MyEA::Memory::Cpp::Reallocate_Objects<struct Scaler__Minimum_Maximum<T>, true>(this->_ptr_output_array_scaler__minimum_maximum,
                                                                                                                                                                                                           tmp_new_input_size,
-                                                                                                                                                                                                          this->p_number_inputs,
-                                                                                                                                                                                                          true);
+                                                                                                                                                                                                          this->p_number_inputs);
             if(this->_ptr_output_array_scaler__minimum_maximum == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"reallocate_objects_cpp<%zu>(ptr, %zu, %zu, true)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          sizeof(struct Scaler__Minimum_Maximum<T>),
                                          tmp_new_input_size,
@@ -6765,7 +6758,7 @@ bool Dataset<T>::Shift_Arrays(size_t const input_index_received,
                                                                                           this->_ptr_output_array_scaler__minimum_maximum) == false)
             {
                 PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Shift(%zu, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          this->p_number_outputs - 1_zu,
                                          input_index_received,
@@ -6774,7 +6767,7 @@ bool Dataset<T>::Shift_Arrays(size_t const input_index_received,
             
                 return(false);
             }
-            Memory::Fill<struct Scaler__Minimum_Maximum<T>>(this->_ptr_output_array_scaler__minimum_maximum + (input_index_received + 1_zu),
+            MyEA::Memory::Fill<struct Scaler__Minimum_Maximum<T>>(this->_ptr_output_array_scaler__minimum_maximum + (input_index_received + 1_zu),
                                                                                             this->_ptr_output_array_scaler__minimum_maximum + (input_index_received + 1_zu + shift_size_received),
                                                                                             Scaler__Minimum_Maximum<T>());
         }
@@ -6784,7 +6777,7 @@ bool Dataset<T>::Shift_Arrays(size_t const input_index_received,
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -6801,7 +6794,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const desired_J_level_receiv
     if(this->p_number_examples <= 1_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No enought data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -6810,7 +6803,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const desired_J_level_receiv
     else if(this->p_number_recurrent_depth == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Recurrent depth can not be equal to zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -6819,7 +6812,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const desired_J_level_receiv
     else if(this->_reference)
     {
         PRINT_FORMAT("%s: %s: ERROR: The dataset is allocate as refence. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -6839,7 +6832,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const desired_J_level_receiv
                                                                      type_input_received) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Preprocessing__Merge__MODWT(%zu, %zu, %u)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_input_index + tmp_shift_index,
                                      desired_J_level_received,
@@ -6864,7 +6857,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
     if(this->p_number_examples <= 1_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No enought data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -6873,7 +6866,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
     else if(this->p_number_recurrent_depth == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Recurrent depth can not be equal to zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -6882,7 +6875,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
     else if(this->_reference)
     {
         PRINT_FORMAT("%s: %s: ERROR: The dataset is allocate as refence. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -6905,7 +6898,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
     if(input_index_received >= tmp_new_input_size - tmp_J_level)
     {
         PRINT_FORMAT("%s: %s: ERROR: Input index (%zu) overflow (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  input_index_received,
                                  tmp_new_input_size - tmp_J_level,
@@ -6923,7 +6916,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
                                       ENUM_TYPE_INPUT::TYPE_INPUT_INPUT) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Shift_Arrays(%zu, %zu, %u)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      input_index_received,
                                      tmp_J_level,
@@ -6939,14 +6932,14 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
             if((this->p_ptr_input_coefficient_matrix = new T*[tmp_new_input_size * this->p_number_recurrent_depth]) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_new_input_size * sizeof(T*),
                                          __LINE__);
 
                 return(false);
             }
-            Memory::Fill_Nullptr<T*>(this->p_ptr_input_coefficient_matrix, this->p_ptr_input_coefficient_matrix + tmp_new_input_size * this->p_number_recurrent_depth);
+            MyEA::Memory::Cpp::Fill_Nullptr<T*>(this->p_ptr_input_coefficient_matrix, this->p_ptr_input_coefficient_matrix + tmp_new_input_size * this->p_number_recurrent_depth);
         }
 
         // Allocate.
@@ -6955,7 +6948,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
             if((this->p_ptr_input_array_coefficient_matrix_size = new size_t[tmp_new_input_size]) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_new_input_size * sizeof(size_t),
                                          __LINE__);
@@ -6974,7 +6967,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
                                       ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Shift_Arrays(%zu, %zu, %u)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      input_index_received,
                                      tmp_J_level,
@@ -6990,14 +6983,14 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
             if((this->p_ptr_output_coefficient_matrix = new T*[tmp_new_input_size * this->p_number_recurrent_depth]) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_new_input_size * sizeof(T*),
                                          __LINE__);
 
                 return(false);
             }
-            Memory::Fill_Nullptr<T*>(this->p_ptr_output_coefficient_matrix, this->p_ptr_output_coefficient_matrix + tmp_new_input_size * this->p_number_recurrent_depth);
+            MyEA::Memory::Cpp::Fill_Nullptr<T*>(this->p_ptr_output_coefficient_matrix, this->p_ptr_output_coefficient_matrix + tmp_new_input_size * this->p_number_recurrent_depth);
         }
         
         // Allocate.
@@ -7006,7 +6999,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
             if((this->p_ptr_output_array_coefficient_matrix_size = new size_t[tmp_new_input_size]) == nullptr)
             {
                 PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_new_input_size * sizeof(size_t),
                                          __LINE__);
@@ -7021,7 +7014,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -7037,7 +7030,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
     if(tmp_ptr_array_inputs == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"tmp_ptr_array_inputs\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -7046,7 +7039,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
     if((tmp_ptr_array_inputs_preproced = new T[this->p_number_examples]) == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->p_number_examples * sizeof(T),
                                  __LINE__);
@@ -7074,7 +7067,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
                               tmp_J_level) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"MODWT(%zu, %zu, ptr, ptr, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->p_number_examples,
                                      tmp_coefficient_matrix_size,
@@ -7118,7 +7111,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
     if(this->p_number_examples <= 1_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No enought data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -7127,7 +7120,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
     else if(this->p_number_recurrent_depth == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: Recurrent depth can not be equal to zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -7136,7 +7129,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
     else if(this->_reference)
     {
         PRINT_FORMAT("%s: %s: ERROR: The dataset is allocate as refence. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -7148,7 +7141,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
         if(this->p_ptr_input_coefficient_matrix == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"p_ptr_input_coefficient_matrix\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -7158,7 +7151,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
         if(this->p_ptr_input_array_coefficient_matrix_size == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"p_ptr_input_array_coefficient_matrix_size\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -7170,7 +7163,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
         if(this->p_ptr_output_coefficient_matrix == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"p_ptr_output_coefficient_matrix\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -7180,7 +7173,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
         if(this->p_ptr_output_array_coefficient_matrix_size == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: \"p_ptr_output_array_coefficient_matrix_size\" is a nullptr. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      __LINE__);
 
@@ -7190,7 +7183,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
     else
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -7219,7 +7212,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
     if(input_index_received >= tmp_input_size)
     {
         PRINT_FORMAT("%s: %s: ERROR: Input index (%zu) overflow (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  input_index_received,
                                  tmp_input_size,
@@ -7230,7 +7223,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
     else if(input_index_received >= input_size_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Input index (%zu) overflow (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  input_index_received,
                                  input_size_received,
@@ -7247,7 +7240,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
     if((tmp_ptr_array_inputs = new T[this->p_number_recurrent_depth * tmp_new_input_size]) == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->p_number_recurrent_depth * tmp_new_input_size * sizeof(T),
                                  __LINE__);
@@ -7282,7 +7275,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
     if((tmp_ptr_array_inputs_preproced = new T[tmp_batch_size]) == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_batch_size * sizeof(T),
                                  __LINE__);
@@ -7322,7 +7315,7 @@ bool Dataset<T>::Preprocessing__Merge__MODWT(size_t const input_index_received,
                               tmp_J_level) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"MODWT(%zu, %zu, ptr, ptr, %zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_batch_size,
                                      tmp_coefficient_matrix_size,
@@ -7362,7 +7355,7 @@ bool Dataset<T>::Preprocessing__Sequence_Window(size_t const sequence_window_rec
     if((tmp_ptr_array_inputs = new T[sequence_window_received * this->p_number_inputs]) == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  sequence_window_received * this->p_number_inputs * sizeof(T),
                                  __LINE__);
@@ -7394,7 +7387,7 @@ bool Dataset<T>::Check_Topology(size_t const number_inputs_received,
     if(this->p_number_inputs != number_inputs_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of inputs (%zu) differ from the number of inputs received as argument (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->p_number_inputs,
                                  number_inputs_received,
@@ -7405,7 +7398,7 @@ bool Dataset<T>::Check_Topology(size_t const number_inputs_received,
     else if(this->p_number_outputs != number_outputs_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of outputs (%zu) differ from the number of outputs received as argument (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->p_number_outputs,
                                  number_outputs_received,
@@ -7416,7 +7409,7 @@ bool Dataset<T>::Check_Topology(size_t const number_inputs_received,
     else if(this->p_number_recurrent_depth != number_recurrent_depth_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of recurrent depth (%zu) differ from the number of recurrent depth received as argument (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->p_number_recurrent_depth,
                                  number_recurrent_depth_received,
@@ -7502,7 +7495,7 @@ size_t Dataset<T>::Get__Identical_Outputs(std::vector<T> const &ref_vector_ident
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -7511,7 +7504,7 @@ size_t Dataset<T>::Get__Identical_Outputs(std::vector<T> const &ref_vector_ident
     else if(ref_vector_identical_outputs_received.empty())
     {
         PRINT_FORMAT("%s: %s: ERROR: No entries to compare. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -7520,7 +7513,7 @@ size_t Dataset<T>::Get__Identical_Outputs(std::vector<T> const &ref_vector_ident
     else if(ref_vector_identical_outputs_received.size() != this->p_number_outputs)
     {
         PRINT_FORMAT("%s: %s: ERROR: The number of entries (%zu) differs from the number of dataset outputs (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ref_vector_identical_outputs_received.size(),
                                  this->p_number_outputs,
@@ -7570,7 +7563,7 @@ T Dataset<T>::Training(class Neural_Network *const ptr_Neural_Network_received)
                                         ptr_Neural_Network_received->number_recurrent_depth) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Check_Topology(%zu, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ptr_Neural_Network_received->number_inputs,
                                  ptr_Neural_Network_received->number_outputs,
@@ -7590,7 +7583,7 @@ T Dataset<T>::Training(class Neural_Network *const ptr_Neural_Network_received)
     if(ptr_Neural_Network_received->Set__Multi_Label(this->Use__Multi_Label()) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Multi_Label(%s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->Use__Multi_Label() ? "true" : "false",
                                  __LINE__);
@@ -7600,7 +7593,7 @@ T Dataset<T>::Training(class Neural_Network *const ptr_Neural_Network_received)
     else if(ptr_Neural_Network_received->Update__Batch_Size(this->Get__Number_Examples()) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update__Batch_Size(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->Get__Number_Examples(),
                                  __LINE__);
@@ -7610,7 +7603,7 @@ T Dataset<T>::Training(class Neural_Network *const ptr_Neural_Network_received)
     else if(ptr_Neural_Network_received->Initialized__Weight() == false && ptr_Neural_Network_received->Initialize__Weight(this) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize__Weight(self)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -7622,7 +7615,7 @@ T Dataset<T>::Training(class Neural_Network *const ptr_Neural_Network_received)
         if(ptr_Neural_Network_received->Update__Thread_Size(this->Get__Number_Examples()) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update__Thread_Size(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->Get__Number_Examples(),
                                      __LINE__);
@@ -7689,7 +7682,7 @@ T Dataset<T>::Measure_Accuracy(size_t const batch_size_received,
                                         ptr_Neural_Network_received->number_recurrent_depth) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Check_Topology(%zu, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ptr_Neural_Network_received->number_inputs,
                                  ptr_Neural_Network_received->number_outputs,
@@ -7754,7 +7747,7 @@ T Dataset<T>::Testing(class Neural_Network *const ptr_Neural_Network_received)
                                         ptr_Neural_Network_received->number_recurrent_depth) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Check_Topology(%zu, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  ptr_Neural_Network_received->number_inputs,
                                  ptr_Neural_Network_received->number_outputs,
@@ -7769,7 +7762,7 @@ T Dataset<T>::Testing(class Neural_Network *const ptr_Neural_Network_received)
     if(ptr_Neural_Network_received->Set__Multi_Label(this->Use__Multi_Label()) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Multi_Label(%s)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->Use__Multi_Label() ? "true" : "false",
                                  __LINE__);
@@ -7779,7 +7772,7 @@ T Dataset<T>::Testing(class Neural_Network *const ptr_Neural_Network_received)
     else if(ptr_Neural_Network_received->Update__Batch_Size(this->Dataset<T>::Get__Number_Examples()) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update__Batch_Size(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->Dataset<T>::Get__Number_Examples(),
                                  __LINE__);
@@ -7789,7 +7782,7 @@ T Dataset<T>::Testing(class Neural_Network *const ptr_Neural_Network_received)
     else if(ptr_Neural_Network_received->Initialized__Weight() == false && ptr_Neural_Network_received->Initialize__Weight(this) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize__Weight(self)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -7801,7 +7794,7 @@ T Dataset<T>::Testing(class Neural_Network *const ptr_Neural_Network_received)
         if(ptr_Neural_Network_received->Update__Thread_Size(this->Dataset<T>::Get__Number_Examples()) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update__Thread_Size(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->Dataset<T>::Get__Number_Examples(),
                                      __LINE__);
@@ -7849,7 +7842,7 @@ T Dataset<T>::Testing_OpenMP(class Neural_Network *const ptr_Neural_Network_rece
     return(ptr_Neural_Network_received->Get__Loss(MyEA::Common::ENUM_TYPE_DATASET::TYPE_DATASET_TESTING));
 }
 
-#if defined(COMPILE_ADEPT)
+#if defined(COMPILE_AUTODIFF)
 void Set__Output__Gradient(size_t const batch_size_received,
                                          size_t const total_batch_size_received,
                                          size_t const number_time_delay_received,
@@ -7898,7 +7891,7 @@ void Dataset<T>::Adept__Gradient(class Neural_Network *const ptr_Neural_Network_
     if(ptr_Neural_Network_received->Update__Batch_Size(tmp_batch_size) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update__Batch_Size(%zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_batch_size,
                                  __LINE__);
@@ -7908,7 +7901,7 @@ void Dataset<T>::Adept__Gradient(class Neural_Network *const ptr_Neural_Network_
     else if(ptr_Neural_Network_received->Initialized__Weight() == false && ptr_Neural_Network_received->Initialize__Weight(this) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Initialize__Weight(self)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -7917,7 +7910,7 @@ void Dataset<T>::Adept__Gradient(class Neural_Network *const ptr_Neural_Network_
     
     ptr_Neural_Network_received->type_state_propagation = MyEA::Common::ENUM_TYPE_STATE_PROPAGATION::TYPE_STATE_PROPAGATION_TRAINING;
     
-#if defined(COMPILE_ADEPT)
+#if defined(COMPILE_AUTODIFF)
     adept::active_stack()->new_recording();
 #endif
 
@@ -7926,7 +7919,7 @@ void Dataset<T>::Adept__Gradient(class Neural_Network *const ptr_Neural_Network_
         if(ptr_Neural_Network_received->Update__Thread_Size(tmp_batch_size) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update__Thread_Size(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_batch_size,
                                      __LINE__);
@@ -7944,7 +7937,7 @@ void Dataset<T>::Adept__Gradient(class Neural_Network *const ptr_Neural_Network_
         ptr_Neural_Network_received->Forward_Pass(tmp_batch_size, this->Dataset<T>::Get__Input_Array());
     }
 
-#if defined(COMPILE_ADEPT)
+#if defined(COMPILE_AUTODIFF)
     Set__Output__Gradient(tmp_batch_size,
                                       ptr_Neural_Network_received->batch_size,
                                       ptr_Neural_Network_received->number_time_delays,
@@ -7982,7 +7975,7 @@ void Dataset<T>::Adept__Gradient(class Neural_Network *const ptr_Neural_Network_
                                                                                            ptr_Neural_Network_received->ptr_last_layer);
     }
 
-#if defined(COMPILE_ADEPT)
+#if defined(COMPILE_AUTODIFF)
     PRINT_FORMAT("Autodiff dx/dw: " NEW_LINE);
     for(size_t w = 0_zu; w != ptr_Neural_Network_received->total_parameters; ++w)
     {
@@ -8052,7 +8045,7 @@ T Dataset<T>::Get__Minimum_Input(size_t const data_start_index_received,
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -8061,7 +8054,7 @@ T Dataset<T>::Get__Minimum_Input(size_t const data_start_index_received,
     else if(data_start_index_received > data_end_index_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Start index (%zu) can not be greater than end index (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  data_start_index_received,
                                  data_end_index_received,
@@ -8072,7 +8065,7 @@ T Dataset<T>::Get__Minimum_Input(size_t const data_start_index_received,
     else if(data_end_index_received > this->Dataset<T>::Get__Number_Examples())
     {
         PRINT_FORMAT("%s: %s: ERROR: End index (%zu) can not be greater than total examples (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  data_end_index_received,
                                  this->Dataset<T>::Get__Number_Examples(),
@@ -8083,7 +8076,7 @@ T Dataset<T>::Get__Minimum_Input(size_t const data_start_index_received,
     else if(type_input_received > ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT)
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -8098,7 +8091,7 @@ T Dataset<T>::Get__Minimum_Input(size_t const data_start_index_received,
     if(input_index_received >= tmp_input_size)
     {
         PRINT_FORMAT("%s: %s: ERROR: Input index (%zu) overflow (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  input_index_received,
                                  tmp_input_size,
@@ -8112,7 +8105,7 @@ T Dataset<T>::Get__Minimum_Input(size_t const data_start_index_received,
     if(tmp_ptr_array_inputs == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"tmp_ptr_array_inputs\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -8143,7 +8136,7 @@ T Dataset<T>::Get__Minimum_Input(size_t const data_start_index_received,
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -8152,7 +8145,7 @@ T Dataset<T>::Get__Minimum_Input(size_t const data_start_index_received,
     else if(data_start_index_received > data_end_index_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Start index (%zu) can not be greater than end index (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  data_start_index_received,
                                  data_end_index_received,
@@ -8163,7 +8156,7 @@ T Dataset<T>::Get__Minimum_Input(size_t const data_start_index_received,
     else if(data_end_index_received > this->Dataset<T>::Get__Number_Examples())
     {
         PRINT_FORMAT("%s: %s: ERROR: End index (%zu) can not be greater than total examples (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  data_end_index_received,
                                  this->Dataset<T>::Get__Number_Examples(),
@@ -8174,7 +8167,7 @@ T Dataset<T>::Get__Minimum_Input(size_t const data_start_index_received,
     else if(type_input_received > ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT)
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -8213,7 +8206,7 @@ T Dataset<T>::Get__Maximum_Input(size_t const data_start_index_received,
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -8222,7 +8215,7 @@ T Dataset<T>::Get__Maximum_Input(size_t const data_start_index_received,
     else if(data_start_index_received > data_end_index_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Start index (%zu) can not be greater than end index (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  data_start_index_received,
                                  data_end_index_received,
@@ -8233,7 +8226,7 @@ T Dataset<T>::Get__Maximum_Input(size_t const data_start_index_received,
     else if(data_end_index_received > this->Dataset<T>::Get__Number_Examples())
     {
         PRINT_FORMAT("%s: %s: ERROR: End index (%zu) can not be greater than total examples (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  data_end_index_received,
                                  this->Dataset<T>::Get__Number_Examples(),
@@ -8244,7 +8237,7 @@ T Dataset<T>::Get__Maximum_Input(size_t const data_start_index_received,
     else if(type_input_received > ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT)
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -8259,7 +8252,7 @@ T Dataset<T>::Get__Maximum_Input(size_t const data_start_index_received,
     if(input_index_received >= tmp_input_size)
     {
         PRINT_FORMAT("%s: %s: ERROR: Input index (%zu) overflow (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  input_index_received,
                                  tmp_input_size,
@@ -8273,7 +8266,7 @@ T Dataset<T>::Get__Maximum_Input(size_t const data_start_index_received,
     if(tmp_ptr_array_inputs == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: \"tmp_ptr_array_inputs\" is a nullptr. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
         
@@ -8304,7 +8297,7 @@ T Dataset<T>::Get__Maximum_Input(size_t const data_start_index_received,
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -8313,7 +8306,7 @@ T Dataset<T>::Get__Maximum_Input(size_t const data_start_index_received,
     else if(data_start_index_received > data_end_index_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Start index (%zu) can not be greater than end index (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  data_start_index_received,
                                  data_end_index_received,
@@ -8324,7 +8317,7 @@ T Dataset<T>::Get__Maximum_Input(size_t const data_start_index_received,
     else if(data_end_index_received > this->Dataset<T>::Get__Number_Examples())
     {
         PRINT_FORMAT("%s: %s: ERROR: End index (%zu) can not be greater than total examples (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  data_end_index_received,
                                  this->Dataset<T>::Get__Number_Examples(),
@@ -8335,7 +8328,7 @@ T Dataset<T>::Get__Maximum_Input(size_t const data_start_index_received,
     else if(type_input_received > ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT)
     {
         PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  type_input_received,
                                  __LINE__);
@@ -8445,7 +8438,7 @@ struct Scaler__Minimum_Maximum<T> *const Dataset<T>::Get__Scalar__Minimum_Maximu
         case ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT: return(this->_ptr_output_array_scaler__minimum_maximum);
         default:
             PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      type_input_received,
                                      __LINE__);
@@ -8462,7 +8455,7 @@ struct Scaler__Zero_Centered<T> *const Dataset<T>::Get__Scalar__Zero_Centered(en
         case ENUM_TYPE_INPUT::TYPE_INPUT_OUTPUT: return(this->_ptr_output_array_scaler__zero_centered);
         default:
             PRINT_FORMAT("%s: %s: ERROR: Type input (%u) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      type_input_received,
                                      __LINE__);

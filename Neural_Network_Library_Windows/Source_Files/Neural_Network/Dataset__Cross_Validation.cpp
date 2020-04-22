@@ -21,7 +21,7 @@ void Dataset_Cross_Validation<T>::Shuffle(void)
     {
         this->Generator_Random.Range(this->p_start_index, i);
 
-        tmp_randomize_index = this->Generator_Random.Generate_Integer();
+        tmp_randomize_index = this->Generator_Random();
 
         // Store the index to swap from the remaining index at "tmp_randomize_index"
         tmp_swap = this->ptr_array_stochastic_index[tmp_randomize_index];
@@ -77,7 +77,7 @@ bool Dataset_Cross_Validation<T>::Initialize__Fold(bool const use_shuffle_receiv
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -86,7 +86,7 @@ bool Dataset_Cross_Validation<T>::Initialize__Fold(bool const use_shuffle_receiv
     else if(number_k_fold_received < 2_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: K-fold must be at least 2. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -96,7 +96,7 @@ bool Dataset_Cross_Validation<T>::Initialize__Fold(bool const use_shuffle_receiv
     if(this->Set__Desired_K_Fold(number_k_fold_received, number_k_sub_fold_received) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Set__Desired_Data_Per_Batch(%zu, %zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  number_k_fold_received,
                                  number_k_sub_fold_received,
@@ -108,7 +108,7 @@ bool Dataset_Cross_Validation<T>::Initialize__Fold(bool const use_shuffle_receiv
     if((this->ptr_array_stochastic_index = new size_t[this->p_number_examples]) == nullptr)
     {
         PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->p_number_examples * sizeof(size_t),
                                  __LINE__);
@@ -137,7 +137,7 @@ bool Dataset_Cross_Validation<T>::Set__Desired_K_Fold(size_t const number_k_fold
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -146,7 +146,7 @@ bool Dataset_Cross_Validation<T>::Set__Desired_K_Fold(size_t const number_k_fold
     else if(number_k_fold_received < 2_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: K-fold must be at least 2. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -155,7 +155,7 @@ bool Dataset_Cross_Validation<T>::Set__Desired_K_Fold(size_t const number_k_fold
     else if(number_k_fold_received > this->Dataset<T>::Get__Number_Examples())
     {
         PRINT_FORMAT("%s: %s: ERROR: K-fold (%zu) must not be greater than total number of data (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  number_k_fold_received,
                                  this->Dataset<T>::Get__Number_Examples(),
@@ -172,7 +172,7 @@ bool Dataset_Cross_Validation<T>::Set__Desired_K_Fold(size_t const number_k_fold
         if((this->ptr_array_inputs_array_k_fold = new T const *[(number_k_fold_received - 1_zu) * this->number_examples_per_fold]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      (number_k_fold_received - 1_zu) * this->number_examples_per_fold * sizeof(T const *),
                                      __LINE__);
@@ -182,14 +182,13 @@ bool Dataset_Cross_Validation<T>::Set__Desired_K_Fold(size_t const number_k_fold
     }
     else
     {
-        this->ptr_array_inputs_array_k_fold = Memory::reallocate_pointers_array_cpp<T const *>(this->ptr_array_inputs_array_k_fold,
+        this->ptr_array_inputs_array_k_fold = MyEA::Memory::Cpp::Reallocate_PtOfPt<T const *, false>(this->ptr_array_inputs_array_k_fold,
                                                                                                                                          (number_k_fold_received - 1_zu) * this->number_examples_per_fold,
-                                                                                                                                         this->number_examples_training,
-                                                                                                                                         false);
+                                                                                                                                         this->number_examples_training);
         if(this->ptr_array_inputs_array_k_fold == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      (number_k_fold_received - 1_zu) * this->number_examples_per_fold * sizeof(T const *),
                                      __LINE__);
@@ -204,7 +203,7 @@ bool Dataset_Cross_Validation<T>::Set__Desired_K_Fold(size_t const number_k_fold
         if((this->ptr_array_outputs_array_k_fold = new T const *[(number_k_fold_received - 1_zu) * this->number_examples_per_fold]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      (number_k_fold_received - 1_zu) * this->number_examples_per_fold * sizeof(T const *),
                                      __LINE__);
@@ -214,14 +213,13 @@ bool Dataset_Cross_Validation<T>::Set__Desired_K_Fold(size_t const number_k_fold
     }
     else
     {
-        this->ptr_array_outputs_array_k_fold = Memory::reallocate_pointers_array_cpp<T const *>(this->ptr_array_outputs_array_k_fold,
+        this->ptr_array_outputs_array_k_fold = MyEA::Memory::Cpp::Reallocate_PtOfPt<T const *, false>(this->ptr_array_outputs_array_k_fold,
                                                                                                                                            (number_k_fold_received - 1_zu) * this->number_examples_per_fold,
-                                                                                                                                           this->number_examples_training,
-                                                                                                                                           false);
+                                                                                                                                           this->number_examples_training);
         if(this->ptr_array_outputs_array_k_fold == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      (number_k_fold_received - 1_zu) * this->number_examples_per_fold * sizeof(T const *),
                                      __LINE__);
@@ -238,7 +236,7 @@ bool Dataset_Cross_Validation<T>::Set__Desired_K_Fold(size_t const number_k_fold
         if((this->ptr_array_inputs_array_validation = new T const *[this->Dataset<T>::Get__Number_Examples() - this->number_examples_training]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->Dataset<T>::Get__Number_Examples() - this->number_examples_training * sizeof(T const *),
                                      __LINE__);
@@ -248,14 +246,13 @@ bool Dataset_Cross_Validation<T>::Set__Desired_K_Fold(size_t const number_k_fold
     }
     else
     {
-        this->ptr_array_inputs_array_validation = Memory::reallocate_pointers_array_cpp<T const *>(this->ptr_array_inputs_array_validation,
+        this->ptr_array_inputs_array_validation = MyEA::Memory::Cpp::Reallocate_PtOfPt<T const *, false>(this->ptr_array_inputs_array_validation,
                                                                                                                                               this->Dataset<T>::Get__Number_Examples() - this->number_examples_training,
-                                                                                                                                              this->number_examples_validating,
-                                                                                                                                              false);
+                                                                                                                                              this->number_examples_validating);
         if(this->ptr_array_inputs_array_validation == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->Dataset<T>::Get__Number_Examples() - this->number_examples_training * sizeof(T const *),
                                      __LINE__);
@@ -269,7 +266,7 @@ bool Dataset_Cross_Validation<T>::Set__Desired_K_Fold(size_t const number_k_fold
         if((this->ptr_array_outputs_array_validation = new T const *[this->Dataset<T>::Get__Number_Examples() - this->number_examples_training]) == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->Dataset<T>::Get__Number_Examples() - this->number_examples_training * sizeof(T const *),
                                      __LINE__);
@@ -279,14 +276,13 @@ bool Dataset_Cross_Validation<T>::Set__Desired_K_Fold(size_t const number_k_fold
     }
     else
     {
-        this->ptr_array_outputs_array_validation = Memory::reallocate_pointers_array_cpp<T const *>(this->ptr_array_outputs_array_validation,
+        this->ptr_array_outputs_array_validation = MyEA::Memory::Cpp::Reallocate_PtOfPt<T const *, false>(this->ptr_array_outputs_array_validation,
                                                                                                                                                 this->Dataset<T>::Get__Number_Examples() - this->number_examples_training,
-                                                                                                                                                this->number_examples_validating,
-                                                                                                                                                false);
+                                                                                                                                                this->number_examples_validating);
         if(this->ptr_array_outputs_array_validation == nullptr)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not allocate %zu bytes. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->Dataset<T>::Get__Number_Examples() - this->number_examples_training * sizeof(T const *),
                                      __LINE__);
@@ -330,7 +326,7 @@ bool Dataset_Cross_Validation<T>::Increment_Fold(size_t const fold_received)
     if(this->p_number_examples == 0_zu)
     {
         PRINT_FORMAT("%s: %s: ERROR: No data available. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -465,7 +461,7 @@ bool Dataset_Cross_Validation<T>::Deallocate(void)
     if(this->Dataset<T>::Deallocate() == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Deallocate()\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  __LINE__);
 
@@ -543,7 +539,7 @@ T Dataset_Cross_Validation<T>::Training_OpenMP(class Neural_Network *const ptr_N
                 else
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Increment_Sub_Fold(%zu)\" function. At line %d." NEW_LINE,
-                                                MyEA::String::Get__Time().c_str(),
+                                                MyEA::Time::Date_Time_Now().c_str(),
                                                 __FUNCTION__,
                                                 tmp_sub_fold_index,
                                                 __LINE__);
@@ -565,7 +561,7 @@ T Dataset_Cross_Validation<T>::Training_OpenMP(class Neural_Network *const ptr_N
         else
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Increment_Fold(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_fold_index,
                                      __LINE__);
@@ -613,7 +609,7 @@ T Dataset_Cross_Validation<T>::Training_Loop(class Neural_Network *const ptr_Neu
                 else
                 {
                     PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Increment_Sub_Fold(%zu)\" function. At line %d." NEW_LINE,
-                                                MyEA::String::Get__Time().c_str(),
+                                                MyEA::Time::Date_Time_Now().c_str(),
                                                 __FUNCTION__,
                                                 tmp_sub_fold_index,
                                                 __LINE__);
@@ -635,7 +631,7 @@ T Dataset_Cross_Validation<T>::Training_Loop(class Neural_Network *const ptr_Neu
         else
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Increment_Fold(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_fold_index,
                                      __LINE__);

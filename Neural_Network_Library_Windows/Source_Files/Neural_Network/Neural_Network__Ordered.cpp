@@ -116,7 +116,7 @@ void Neural_Network::Order__Layer__Output(bool const is_sequentiel_received, str
                                 break;
                         default:
                             PRINT_FORMAT("%s: %s: ERROR: Layer normalization type (%u | %s) is not managed in the switch." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      ptr_layer_received->type_normalization,
                                                      MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[ptr_layer_received->type_normalization].c_str());
@@ -184,7 +184,7 @@ void Neural_Network::Order__Layer__Output(bool const is_sequentiel_received, str
                                 break;
                         default:
                             PRINT_FORMAT("%s: %s: ERROR: Layer normalization type (%u | %s) is not managed in the switch." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      ptr_layer_received->type_normalization,
                                                      MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[ptr_layer_received->type_normalization].c_str());
@@ -241,7 +241,7 @@ void Neural_Network::Order__Layer__Output(bool const is_sequentiel_received, str
                                 break;
                         default:
                             PRINT_FORMAT("%s: %s: ERROR: Layer normalization type (%u | %s) is not managed in the switch." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      ptr_layer_received->type_normalization,
                                                      MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[ptr_layer_received->type_normalization].c_str());
@@ -309,7 +309,7 @@ void Neural_Network::Order__Layer__Output(bool const is_sequentiel_received, str
                                 break;
                         default:
                             PRINT_FORMAT("%s: %s: ERROR: Layer normalization type (%u | %s) is not managed in the switch." NEW_LINE,
-                                                     MyEA::String::Get__Time().c_str(),
+                                                     MyEA::Time::Date_Time_Now().c_str(),
                                                      __FUNCTION__,
                                                      ptr_layer_received->type_normalization,
                                                      MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[ptr_layer_received->type_normalization].c_str());
@@ -365,7 +365,7 @@ void Neural_Network::Order__Layer__Output(bool const is_sequentiel_received, str
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ptr_layer_received->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[ptr_layer_received->type_layer].c_str());
@@ -438,7 +438,7 @@ void Neural_Network::Order__Layer__Output__Pre_Training(bool const is_sequentiel
                             break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Layer normalization type (%u | %s) is not managed in the switch." NEW_LINE,
-                                                    MyEA::String::Get__Time().c_str(),
+                                                    MyEA::Time::Date_Time_Now().c_str(),
                                                     __FUNCTION__,
                                                     ptr_layer_received->type_normalization,
                                                     MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[ptr_layer_received->type_normalization].c_str());
@@ -496,7 +496,7 @@ void Neural_Network::Order__Layer__Output__Pre_Training(bool const is_sequentiel
                             break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Layer normalization type (%u | %s) is not managed in the switch." NEW_LINE,
-                                                    MyEA::String::Get__Time().c_str(),
+                                                    MyEA::Time::Date_Time_Now().c_str(),
                                                     __FUNCTION__,
                                                     ptr_layer_received->type_normalization,
                                                     MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[ptr_layer_received->type_normalization].c_str());
@@ -540,7 +540,7 @@ void Neural_Network::Order__Layer__Output__Pre_Training(bool const is_sequentiel
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ptr_layer_received->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[ptr_layer_received->type_layer].c_str());
@@ -953,7 +953,7 @@ void Neural_Network::Order__Layer__Normalization_Iterator(struct Layer *const pt
                     break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Type layer (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          ptr_layer_it_received->type_layer,
                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[ptr_layer_it_received->type_layer].c_str(),

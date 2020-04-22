@@ -202,9 +202,6 @@
     <ClCompile Include="Source_Files\Neural_Network\Neural_Network__User_Controls.cpp">
       <Filter>Source_Files\Neural_Network</Filter>
     </ClCompile>
-    <ClCompile Include="stdfax.cpp">
-      <Filter>LIB</Filter>
-    </ClCompile>
     <ClCompile Include="Source_Files\Neural_Network\Bayesian_Optimization.cpp">
       <Filter>Source_Files\Neural_Network</Filter>
     </ClCompile>
@@ -280,6 +277,9 @@
     <ClCompile Include="Source_Files\Neural_Network\Neural_Network__Plot__Gradient.cpp">
       <Filter>Source_Files\Neural_Network</Filter>
     </ClCompile>
+    <ClCompile Include="Source_Files\stdafx.cpp">
+      <Filter>LIB</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header_Files\CUDA\CUDA_Accumulate_1D.cuh">
@@ -315,12 +315,6 @@
     <ClInclude Include="Header_Files\CUDA\CUDA_Transpose.cuh">
       <Filter>Header_Files\CUDA</Filter>
     </ClInclude>
-    <ClInclude Include="stdafx.hpp">
-      <Filter>LIB</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.hpp">
-      <Filter>LIB</Filter>
-    </ClInclude>
     <ClInclude Include="Header_Files\Neural_Network\Data.hpp">
       <Filter>Header_Files\Neural_Network</Filter>
     </ClInclude>
@@ -344,6 +338,12 @@
     </ClInclude>
     <ClInclude Include="Header_Files\Neural_Network\Train.hpp">
       <Filter>Header_Files\Neural_Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\stdafx.hpp">
+      <Filter>LIB</Filter>
+    </ClInclude>
+    <ClInclude Include="Header_Files\targetver.hpp">
+      <Filter>LIB</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

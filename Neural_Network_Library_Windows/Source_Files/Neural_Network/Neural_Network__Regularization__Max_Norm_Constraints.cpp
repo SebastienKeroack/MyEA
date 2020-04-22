@@ -12,7 +12,7 @@ bool Neural_Network::Set__Regularization__Max_Norm_Constraints(T_ const regulari
     else if(regularization__max_norm_constraints_received < 0_T)
     {
         PRINT_FORMAT("%s: %s: ERROR: Max-norm constraints (%f) less than zero. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  Cast_T(regularization__max_norm_constraints_received),
                                  __LINE__);
@@ -39,7 +39,7 @@ void Neural_Network::Euclidean_Norm__Loop(size_t const start_index_received,
     if(start_index_received > end_index_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Start index (%zu) can not begin above end index (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  start_index_received,
                                  end_index_received,
@@ -80,7 +80,7 @@ void Neural_Network::Euclidean_Norm__OpenMP(size_t const start_index_received,
     if(start_index_received > end_index_received)
     {
         PRINT_FORMAT("%s: %s: ERROR: Start index (%zu) can not begin above end index (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  start_index_received,
                                  end_index_received,
@@ -98,7 +98,7 @@ void Neural_Network::Euclidean_Norm__OpenMP(size_t const start_index_received,
         tmp_desired_norm;
 
     // Euclidean Norm.
-#if defined(COMPILE_ADEPT)
+#if defined(COMPILE_AUTODIFF)
     for(tmp_index__int = tmp_start_index__int; tmp_index__int < tmp_end_index__int; ++tmp_index__int)
     { tmp_norms += ptr_array_vector_received[tmp_index__int] * ptr_array_vector_received[tmp_index__int]; }
 #else

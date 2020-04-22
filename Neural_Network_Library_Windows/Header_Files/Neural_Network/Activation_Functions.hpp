@@ -1,13 +1,13 @@
 #pragma once
 
 #include <Enums/Enum_Type_Activation_Functions.hpp>
-#include <Tools/Configuration.hpp>
+#include <Configuration/Configuration.hpp>
 
 /* stepwise linear functions used for some of the activation functions */
 /* defines used for the stepwise linear functions */
 #define AF_LINEAR_real(v1, r1, v2, r2, summation_received) (((((r2) - (r1)) * ((summation_received) - (v1))) / ((v2) - (v1))) + (r1))
 
-#if defined(COMPILE_ADEPT)
+#if defined(COMPILE_AUTODIFF)
     #define AF_STEPWISE_real(v1, v2, v3, v4, v5, v6, r1, r2, r3, r4, r5, r6, min_received, max_received, summation_received) (summation_received)
 #else
     #define AF_STEPWISE_real(v1, v2, v3, v4, v5, v6, r1, r2, r3, r4, r5, r6, min_received, max_received, summation_received) \

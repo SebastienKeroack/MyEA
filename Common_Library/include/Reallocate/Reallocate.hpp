@@ -10,14 +10,14 @@
     #include <Reallocate/CPU/Reallocate_Cpp.hpp>
 #endif
 
-#if defined(COMPILE_ADEPT)
+#if defined(COMPILE_AUTODIFF)
     #include <Configuration/Configuration.hpp>
     
     // Adept memset compatibility.
-    #define MEMSET(x, v, sz) Memory::Fill<T_>(x, x + (sz / sizeof(T_)), 0_T)
+    #define MEMSET(x, v, sz) MyEA::Memory::Fill<T_>(x, x + (sz / sizeof(T_)), 0_T)
     
     // Adept memcpy compatibility.
-    #define MEMCPY(d, s, sz) Memory::Copy<T_>(s, s + (sz / sizeof(T_)), d)
+    #define MEMCPY(d, s, sz) MyEA::Memory::Copy<T_>(s, s + (sz / sizeof(T_)), d)
 #else
     #define MEMSET(x, v, sz) memset(x, v, sz)
     

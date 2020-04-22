@@ -12,7 +12,7 @@
 #include <windows.h>
 #include <locale.h>
 
-#include <Tools/Configuration.hpp>
+#include <Configuration/Configuration.hpp>
 
 #include <Strings/String.hpp>
 

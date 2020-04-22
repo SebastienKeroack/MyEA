@@ -5,7 +5,7 @@
 #include <DLL/stdafx.hpp>
 
 // CommonLib
-#include <Tools/Message_Box.hpp>
+#include <UI/Dialog_Box.hpp>
 #include <Tools/Time.hpp>
 #include <Strings/String.hpp>
 

@@ -1,6 +1,6 @@
 #include "stdafx.hpp"
 
-#include <Math/Mathematic.hpp>
+#include <Math/Math.hpp>
 
 #include <Neural_Network/Neural_Network.hpp>
 
@@ -18,7 +18,7 @@ void Neural_Network::FF__Forward_Pass_Batch__OpenMP(size_t const batch_size_rece
     if(batch_size_received > this->batch_size)
     {
         PRINT_FORMAT("%s: %s: ERROR: Overflow of memory. Unable to process %zu examples out of %zu allocated examples. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  batch_size_received,
                                  this->batch_size,
@@ -84,7 +84,7 @@ void Neural_Network::FF__Forward_Pass_Batch__OpenMP(size_t const batch_size_rece
             case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_RESIDUAL: this->Forward_Pass__Residual__OpenMP(batch_size_received, tmp_ptr_layer_it); break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_ptr_layer_it->type_layer,
                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str());
@@ -103,7 +103,7 @@ void Neural_Network::FF__Forward_Pass_Batch__Pre_Training__OpenMP(size_t const b
     if(batch_size_received > this->batch_size)
     {
         PRINT_FORMAT("%s: %s: ERROR: Overflow of memory. Unable to process %zu examples out of %zu allocated examples. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  batch_size_received,
                                  this->batch_size,
@@ -154,7 +154,7 @@ void Neural_Network::FF__Forward_Pass_Batch__Pre_Training__OpenMP(size_t const b
                     break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_ptr_layer_it->type_layer,
                                          MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str());
@@ -176,7 +176,7 @@ void Neural_Network::FF__Forward_Pass_Batch__Pre_Training__OpenMP(size_t const b
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_ptr_layer_it->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str());
@@ -199,7 +199,7 @@ void Neural_Network::FF__Forward_Pass_Batch__Pre_Training__OpenMP(size_t const b
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_ptr_layer_it->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_layer_it->type_layer].c_str());
@@ -319,7 +319,7 @@ void Neural_Network::Forward_Pass__FC__OpenMP(size_t const time_step_index_recei
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer normalization (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              ptr_layer_it_received->type_normalization,
                                              MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[ptr_layer_it_received->type_normalization].c_str());
@@ -364,7 +364,7 @@ void Neural_Network::Forward_Pass__FC__OpenMP(size_t const time_step_index_recei
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer activation (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              ptr_layer_it_received->type_activation,
                                              MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION_NAME[ptr_layer_it_received->type_activation].c_str());
@@ -399,7 +399,7 @@ void Neural_Network::Forward_Pass__FC__OpenMP(size_t const time_step_index_recei
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer activation (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              ptr_layer_it_received->type_activation,
                                              MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION_NAME[ptr_layer_it_received->type_activation].c_str());
@@ -449,7 +449,7 @@ void Neural_Network::Forward_Pass__FC__OpenMP(size_t const time_step_index_recei
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer normalization (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              ptr_layer_it_received->type_normalization,
                                              MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[ptr_layer_it_received->type_normalization].c_str());
@@ -538,7 +538,7 @@ void Neural_Network::Forward_Pass__FC__OpenMP(size_t const time_step_index_recei
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer activation (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              ptr_layer_it_received->type_activation,
                                              MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION_NAME[ptr_layer_it_received->type_activation].c_str());
@@ -573,7 +573,7 @@ void Neural_Network::Forward_Pass__FC__OpenMP(size_t const time_step_index_recei
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer activation (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              ptr_layer_it_received->type_activation,
                                              MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION_NAME[ptr_layer_it_received->type_activation].c_str());
@@ -774,7 +774,7 @@ void Neural_Network::Forward_Pass__Encode__FC__OpenMP(size_t const time_step_ind
                     break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer activation (%u | %s) is not managed in the switch." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             ptr_layer_it_received->type_activation,
                                             MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION_NAME[ptr_layer_it_received->type_activation].c_str());
@@ -809,7 +809,7 @@ void Neural_Network::Forward_Pass__Encode__FC__OpenMP(size_t const time_step_ind
                     break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Layer activation (%u | %s) is not managed in the switch." NEW_LINE,
-                                            MyEA::String::Get__Time().c_str(),
+                                            MyEA::Time::Date_Time_Now().c_str(),
                                             __FUNCTION__,
                                             ptr_layer_it_received->type_activation,
                                             MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION_NAME[ptr_layer_it_received->type_activation].c_str());
@@ -989,7 +989,7 @@ void Neural_Network::Forward_Pass__Code__FC__OpenMP(size_t const time_step_index
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer normalization (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              ptr_layer_it_received->type_normalization,
                                              MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[ptr_layer_it_received->type_normalization].c_str());
@@ -1034,7 +1034,7 @@ void Neural_Network::Forward_Pass__Code__FC__OpenMP(size_t const time_step_index
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer activation (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              ptr_layer_it_received->type_activation,
                                              MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION_NAME[ptr_layer_it_received->type_activation].c_str());
@@ -1069,7 +1069,7 @@ void Neural_Network::Forward_Pass__Code__FC__OpenMP(size_t const time_step_index
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer activation (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              ptr_layer_it_received->type_activation,
                                              MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION_NAME[ptr_layer_it_received->type_activation].c_str());
@@ -1119,7 +1119,7 @@ void Neural_Network::Forward_Pass__Code__FC__OpenMP(size_t const time_step_index
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer normalization (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              ptr_layer_it_received->type_normalization,
                                              MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[ptr_layer_it_received->type_normalization].c_str());
@@ -1208,7 +1208,7 @@ void Neural_Network::Forward_Pass__Code__FC__OpenMP(size_t const time_step_index
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer activation (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              ptr_layer_it_received->type_activation,
                                              MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION_NAME[ptr_layer_it_received->type_activation].c_str());
@@ -1243,7 +1243,7 @@ void Neural_Network::Forward_Pass__Code__FC__OpenMP(size_t const time_step_index
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer activation (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              ptr_layer_it_received->type_activation,
                                              MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION_NAME[ptr_layer_it_received->type_activation].c_str());
@@ -1452,7 +1452,7 @@ void Neural_Network::Forward_Pass__Decode__FC__OpenMP(size_t const time_step_ind
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer normalization (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              ptr_layer_it_received->type_normalization,
                                              MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[ptr_layer_it_received->type_normalization].c_str());
@@ -1497,7 +1497,7 @@ void Neural_Network::Forward_Pass__Decode__FC__OpenMP(size_t const time_step_ind
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer activation (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              ptr_layer_it_received->type_activation,
                                              MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION_NAME[ptr_layer_it_received->type_activation].c_str());
@@ -1532,7 +1532,7 @@ void Neural_Network::Forward_Pass__Decode__FC__OpenMP(size_t const time_step_ind
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer activation (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              ptr_layer_it_received->type_activation,
                                              MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION_NAME[ptr_layer_it_received->type_activation].c_str());
@@ -1582,7 +1582,7 @@ void Neural_Network::Forward_Pass__Decode__FC__OpenMP(size_t const time_step_ind
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer normalization (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              ptr_layer_it_received->type_normalization,
                                              MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[ptr_layer_it_received->type_normalization].c_str());
@@ -1671,7 +1671,7 @@ void Neural_Network::Forward_Pass__Decode__FC__OpenMP(size_t const time_step_ind
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer activation (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              ptr_layer_it_received->type_activation,
                                              MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION_NAME[ptr_layer_it_received->type_activation].c_str());
@@ -1706,7 +1706,7 @@ void Neural_Network::Forward_Pass__Decode__FC__OpenMP(size_t const time_step_ind
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer activation (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              ptr_layer_it_received->type_activation,
                                              MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION_NAME[ptr_layer_it_received->type_activation].c_str());
@@ -3918,7 +3918,7 @@ void Neural_Network::Forward_Pass__Residual__OpenMP(size_t const batch_size_rece
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer normalization (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              ptr_layer_it_received->type_normalization,
                                              MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[ptr_layer_it_received->type_normalization].c_str());
@@ -4013,7 +4013,7 @@ void Neural_Network::Forward_Pass__Residual__Layer__OpenMP(bool const is_block_i
                 break;
         default:
             PRINT_FORMAT("%s: %s: ERROR: Layer type (%u | %s) is not managed in the switch." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      ptr_layer_it_received->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[ptr_layer_it_received->type_layer].c_str());
@@ -4079,7 +4079,7 @@ void Neural_Network::Forward_Pass__Residual__FC__OpenMP(bool const is_block_inpu
                         break;
                 default:
                     PRINT_FORMAT("%s: %s: ERROR: Layer normalization (%u | %s) is not managed in the switch." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              ptr_layer_it_received->type_normalization,
                                              MyEA::Common::ENUM_TYPE_LAYER_NORMALIZATION_NAMES[ptr_layer_it_received->type_normalization].c_str());
@@ -4126,7 +4126,7 @@ void Neural_Network::Forward_Pass__Residual__FC__OpenMP(bool const is_block_inpu
                             break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Layer activation (%u | %s) is not managed in the switch." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  ptr_layer_it_received->type_activation,
                                                  MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION_NAME[ptr_layer_it_received->type_activation].c_str());
@@ -4161,7 +4161,7 @@ void Neural_Network::Forward_Pass__Residual__FC__OpenMP(bool const is_block_inpu
                             break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Layer activation (%u | %s) is not managed in the switch." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  ptr_layer_it_received->type_activation,
                                                  MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION_NAME[ptr_layer_it_received->type_activation].c_str());
@@ -4325,7 +4325,7 @@ void Neural_Network::Forward_Pass__Residual__FC__OpenMP(bool const is_block_inpu
                             break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Layer activation (%u | %s) is not managed in the switch." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  ptr_layer_it_received->type_activation,
                                                  MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION_NAME[ptr_layer_it_received->type_activation].c_str());
@@ -4360,7 +4360,7 @@ void Neural_Network::Forward_Pass__Residual__FC__OpenMP(bool const is_block_inpu
                             break;
                     default:
                         PRINT_FORMAT("%s: %s: ERROR: Layer activation (%u | %s) is not managed in the switch." NEW_LINE,
-                                                 MyEA::String::Get__Time().c_str(),
+                                                 MyEA::Time::Date_Time_Now().c_str(),
                                                  __FUNCTION__,
                                                  ptr_layer_it_received->type_activation,
                                                  MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION_NAME[ptr_layer_it_received->type_activation].c_str());
@@ -4975,10 +4975,10 @@ void Neural_Network::Forward_Pass__Dropout__Bernoulli__Inference__OpenMP(size_t 
 }
 
 void Neural_Network::Forward_Pass__Dropout__Gaussian__OpenMP(size_t const time_step_index_received,
-                                                                                                     size_t const batch_size_received,
-                                                                                                     size_t const input_size_received,
-                                                                                                     T_ const variance_received,
-                                                                                                     T_ *const ptr_array_inputs_received)
+                                                             size_t const batch_size_received,
+                                                             size_t const input_size_received,
+                                                             T_ const variance_received,
+                                                             T_ *const ptr_array_inputs_received)
 {
     int const tmp_batch_size__int(static_cast<int>(batch_size_received));
     int tmp_example_index__int,
@@ -4999,18 +4999,18 @@ void Neural_Network::Forward_Pass__Dropout__Gaussian__OpenMP(size_t const time_s
         
         tmp_ptr_array_inputs = ptr_array_inputs_received + static_cast<size_t>(tmp_example_index__int) * input_size_received + tmp_input_timed_batched_index;
 
-        for(tmp_input_index = 0_zu; tmp_input_index != input_size_received; ++tmp_input_index) { tmp_ptr_array_inputs[tmp_input_index] *= this->ptr_array_Class_Generator_Real_Gaussian[tmp_thread_index__int].Generate_Gaussian(); }
+        for(tmp_input_index = 0_zu; tmp_input_index != input_size_received; ++tmp_input_index) { tmp_ptr_array_inputs[tmp_input_index] *= this->ptr_array_Class_Generator_Real_Gaussian[tmp_thread_index__int](); }
     }
 }
 
 void Neural_Network::Forward_Pass__Dropout__ShakeDrop__OpenMP(size_t const time_step_index_received,
-                                                                                                        size_t const batch_size_received,
-                                                                                                        size_t const input_size_received,
-                                                                                                        bool *const ptr_array_mask_dopout_shakedrop_received,
-                                                                                                        T_ const lower_bound_received,
-                                                                                                        T_ const upper_bound_received,
-                                                                                                        T_ const dropout_probability_received,
-                                                                                                        T_ *const ptr_array_inputs_received)
+                                                              size_t const batch_size_received,
+                                                              size_t const input_size_received,
+                                                              bool *const ptr_array_mask_dopout_shakedrop_received,
+                                                              T_ const lower_bound_received,
+                                                              T_ const upper_bound_received,
+                                                              T_ const dropout_probability_received,
+                                                              T_ *const ptr_array_inputs_received)
 {
     int const tmp_batch_size__int(static_cast<int>(batch_size_received));
     int tmp_example_index__int,
@@ -5031,11 +5031,11 @@ void Neural_Network::Forward_Pass__Dropout__ShakeDrop__OpenMP(size_t const time_
     {
         tmp_thread_index__int = omp_get_thread_num();
         
-        if((ptr_array_mask_dopout_shakedrop_received[tmp_layer_timed_batched_index + static_cast<size_t>(tmp_example_index__int)] = this->ptr_array_Class_Generator_Bernoulli_ShakeDrop[tmp_thread_index__int].Generate_Bernoulli()))
+        if((ptr_array_mask_dopout_shakedrop_received[tmp_layer_timed_batched_index + static_cast<size_t>(tmp_example_index__int)] = this->ptr_array_Class_Generator_Bernoulli_ShakeDrop[tmp_thread_index__int]()))
         {
             tmp_ptr_array_inputs = ptr_array_inputs_received + static_cast<size_t>(tmp_example_index__int) * input_size_received + tmp_input_timed_batched_index;
 
-            for(tmp_input_index = 0_zu; tmp_input_index != input_size_received; ++tmp_input_index) { tmp_ptr_array_inputs[tmp_input_index] *= this->ptr_array_Class_Generator_Real_ShakeDrop[tmp_thread_index__int].Generate_Real(); }
+            for(tmp_input_index = 0_zu; tmp_input_index != input_size_received; ++tmp_input_index) { tmp_ptr_array_inputs[tmp_input_index] *= this->ptr_array_Class_Generator_Real_ShakeDrop[tmp_thread_index__int](); }
         }
     }
 }
@@ -5065,7 +5065,7 @@ void Neural_Network::Forward_Pass__Dropout__Uout__OpenMP(size_t const time_step_
         
         tmp_ptr_array_inputs = ptr_array_inputs_received + static_cast<size_t>(tmp_example_index__int) * input_size_received + tmp_input_timed_batched_index;
 
-        for(tmp_input_index = 0_zu; tmp_input_index != input_size_received; ++tmp_input_index) { tmp_ptr_array_inputs[tmp_input_index] += tmp_ptr_array_inputs[tmp_input_index] * this->ptr_array_Class_Generator_Real_Uout[tmp_thread_index__int].Generate_Real(); }
+        for(tmp_input_index = 0_zu; tmp_input_index != input_size_received; ++tmp_input_index) { tmp_ptr_array_inputs[tmp_input_index] += tmp_ptr_array_inputs[tmp_input_index] * this->ptr_array_Class_Generator_Real_Uout[tmp_thread_index__int](); }
     }
 }
 

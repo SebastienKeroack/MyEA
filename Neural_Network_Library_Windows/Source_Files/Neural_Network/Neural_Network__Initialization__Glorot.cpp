@@ -36,7 +36,7 @@ T_ Neural_Network::Initialization__Gain__Scale(enum MyEA::Common::ENUM_TYPE_ACTI
         case MyEA::Common::ENUM_TYPE_ACTIVATION_FUNCTION::TYPE_NN_A_F_TANH_STEPWISE: return(5_T / 3_T);
         default:
             PRINT_FORMAT("%s: %s: ERROR: Activation function type (%u | %s) is not managed in the switch. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      type_activation_function_received,
                                      MyEA::Common::ENUM_TYPE_ACTIVATION_FUNCTION_NAME[type_activation_function_received].c_str(),
@@ -58,7 +58,7 @@ T_ Neural_Network::Initialization__Gaussian__Variance(size_t const fan_in_receiv
         case MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION::TYPE_ACTIVATION_SELF_NORMALIZATION: return(static_cast<T_>(sqrt(1.0 / static_cast<double>(fan_in_received)))); // Self-Normalizing Neural Networks.
         default:
             PRINT_FORMAT("%s: %s: ERROR: Can not get variance with (%u | %s) as the type activation layer. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      type_layer_activation_received,
                                      MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION_NAME[type_layer_activation_received].c_str(),
@@ -80,7 +80,7 @@ T_ Neural_Network::Initialization__Uniform__Variance(size_t const fan_in_receive
         case MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION::TYPE_ACTIVATION_SELF_NORMALIZATION: return(static_cast<T_>(sqrt(6.0 / static_cast<double>(fan_in_received)))); // Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun.
         default:
             PRINT_FORMAT("%s: %s: ERROR: Can not get variance with (%u | %s) as the type activation layer. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      type_layer_activation_received,
                                      MyEA::Common::ENUM_TYPE_LAYER_ACTIVATION_NAME[type_layer_activation_received].c_str(),
@@ -117,7 +117,7 @@ void Neural_Network::Initialization__Glorot__Gaussian(T_ const bias_received)
         if((tmp_fan_in = *tmp_ptr_previous_connected_layer->ptr_number_outputs) == 0_zu)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not get \"fan_in\" with (%u | %s) as the type layer. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_ptr_previous_connected_layer->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_previous_connected_layer->type_layer].c_str(),
@@ -137,7 +137,7 @@ void Neural_Network::Initialization__Glorot__Gaussian(T_ const bias_received)
                 if((tmp_fan_out += *tmp_ptr_next_layer_it->ptr_number_outputs) == 0_zu)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: Can not get \"fan_out\" with (%u | %s) as the type layer. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_ptr_next_layer_it->type_layer,
                                              MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_next_layer_it->type_layer].c_str(),
@@ -194,7 +194,7 @@ void Neural_Network::Initialization__Glorot__Gaussian(T_ const bias_received)
                     break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Can not initialize weights in the layer %zu with (%u | %s) as the type layer. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          static_cast<size_t>(tmp_ptr_layer_it - this->ptr_array_layers),
                                          tmp_ptr_layer_it->type_layer,
@@ -248,7 +248,7 @@ void Neural_Network::Initialization__Glorot__Uniform(T_ const bias_received)
         if((tmp_fan_in = *tmp_ptr_previous_connected_layer->ptr_number_outputs) == 0_zu)
         {
             PRINT_FORMAT("%s: %s: ERROR: Can not get \"fan_in\" with (%u | %s) as the type layer. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_ptr_previous_connected_layer->type_layer,
                                      MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_previous_connected_layer->type_layer].c_str(),
@@ -268,7 +268,7 @@ void Neural_Network::Initialization__Glorot__Uniform(T_ const bias_received)
                 if((tmp_fan_out += *tmp_ptr_next_layer_it->ptr_number_outputs) == 0_zu)
                 {
                     PRINT_FORMAT("%s: %s: ERROR: Can not get \"fan_out\" with (%u | %s) as the type layer. At line %d." NEW_LINE,
-                                             MyEA::String::Get__Time().c_str(),
+                                             MyEA::Time::Date_Time_Now().c_str(),
                                              __FUNCTION__,
                                              tmp_ptr_next_layer_it->type_layer,
                                              MyEA::Common::ENUM_TYPE_LAYER_NAME[tmp_ptr_next_layer_it->type_layer].c_str(),
@@ -338,7 +338,7 @@ void Neural_Network::Initialization__Glorot__Uniform(T_ const bias_received)
                     break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Can not initialize weights in the layer %zu with (%u | %s) as the type layer. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          static_cast<size_t>(tmp_ptr_layer_it - this->ptr_array_layers),
                                          tmp_ptr_layer_it->type_layer,

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Tools/Configuration.hpp>
+#include <Configuration/Configuration.hpp>
 
 #include <device_launch_parameters.h>
 

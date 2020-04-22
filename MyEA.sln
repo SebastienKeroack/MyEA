@@ -3,6 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28407.52
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Neural_Network_Launcher_Windows", "Neural_Network_Launcher_Windows\Neural_Network_Launcher_Windows.vcxproj", "{BA9BE69F-D59E-4642-AE51-BDAC6F52CB00}"
+	ProjectSection(ProjectDependencies) = postProject
+		{83554F24-7B67-4908-82FA-CC1CE433F291} = {83554F24-7B67-4908-82FA-CC1CE433F291}
+	EndProjectSection
+EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Network_DLL", "Network_DLL\Network_DLL.vcxproj", "{DFE4C2A4-C850-49FC-9662-3564BE884909}"
 	ProjectSection(ProjectDependencies) = postProject
 		{83554F24-7B67-4908-82FA-CC1CE433F291} = {83554F24-7B67-4908-82FA-CC1CE433F291}
@@ -33,11 +38,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Neural_Network_Library_Wind
 	ProjectSection(ProjectDependencies) = postProject
 		{83554F24-7B67-4908-82FA-CC1CE433F291} = {83554F24-7B67-4908-82FA-CC1CE433F291}
 		{393BEAFF-03C1-4FBE-A7B1-D2237ACBD157} = {393BEAFF-03C1-4FBE-A7B1-D2237ACBD157}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Neural_Network_Launcher_Windows", "Neural_Network_Launcher_Windows\Neural_Network_Launcher_Windows.vcxproj", "{BA9BE69F-D59E-4642-AE51-BDAC6F52CB00}"
-	ProjectSection(ProjectDependencies) = postProject
-		{83554F24-7B67-4908-82FA-CC1CE433F291} = {83554F24-7B67-4908-82FA-CC1CE433F291}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Common_Library_Windows", "Common_Library\Common_Library_Windows.vcxproj", "{83554F24-7B67-4908-82FA-CC1CE433F291}"

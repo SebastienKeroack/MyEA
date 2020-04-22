@@ -21,7 +21,7 @@ bool Neural_Network::Allouable__Batch_Size(size_t const desired_batch_size_recei
     if(this->maximum_allowable_memory_bytes < tmp_size_neural_network)
     {
         PRINT_FORMAT("%s: %s: ERROR: Maximum allowable memory (%zu) is less than the memory allocate (%zu). At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  this->maximum_allowable_memory_bytes,
                                  tmp_size_neural_network + tmp_size_thread + tmp_size_batch,
@@ -36,7 +36,7 @@ bool Neural_Network::Allouable__Batch_Size(size_t const desired_batch_size_recei
     else if(tmp_available_memory_mbs < tmp_size_thread)
     {
         PRINT_FORMAT("%s: %s: ERROR: No enought available memory (%zu) for allocating %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_available_memory_mbs,
                                  tmp_size_thread,
@@ -51,7 +51,7 @@ bool Neural_Network::Allouable__Batch_Size(size_t const desired_batch_size_recei
     else if(tmp_available_memory_mbs - tmp_size_thread < tmp_size_batch)
     {
         PRINT_FORMAT("%s: %s: ERROR: No enought available memory (%zu) for allocating %zu bytes. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_available_memory_mbs - tmp_size_thread,
                                  tmp_size_batch,
@@ -71,7 +71,7 @@ bool Neural_Network::Allouable__Batch_Size(size_t const desired_batch_size_recei
     if(tmp_batch_size_allocate > tmp_maximum_batch_size_allocatable)
     {
         PRINT_FORMAT("%s: %s: WARNING: Can not allocate the optimal batch size (%zu). The batch size allocated will be reduced to %zu." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  tmp_batch_size_allocate,
                                  tmp_maximum_batch_size_allocatable);
@@ -90,7 +90,7 @@ bool Neural_Network::Allouable__Batch_Size(size_t const desired_batch_size_recei
             if(tmp_batch_size_allocate > tmp_maximum_batch_size_allocatable)
             {
                 PRINT_FORMAT("%s: %s: WARNING: Can not allocate the optimal number of threads (%zu). The number of threads allocated will be reduced to %zu." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          tmp_threads_allocate,
                                          tmp_threads_allocate - 1_zu);
@@ -122,7 +122,7 @@ bool Neural_Network::Update__Thread_Size(size_t const desired_number_threads_rec
                                                  tmp_number_threads_allocate) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allouable__Thread_Size(%zu, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  desired_number_threads_received,
                                  tmp_batch_size_allocate,
@@ -138,7 +138,7 @@ bool Neural_Network::Update__Thread_Size(size_t const desired_number_threads_rec
         if(this->Reallocate__Thread(tmp_number_threads_allocate) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Reallocate__Thread(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_number_threads_allocate,
                                      __LINE__);
@@ -149,7 +149,7 @@ bool Neural_Network::Update__Thread_Size(size_t const desired_number_threads_rec
         if(this->Update__Batch_Size(this->cache_batch_size, true) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Update__Batch_Size(%zu, true)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      this->cache_batch_size,
                                      __LINE__);
@@ -181,7 +181,7 @@ bool Neural_Network::Update__Batch_Size(size_t const desired_batch_size_received
                                                  tmp_number_threads_allocate) == false)
     {
         PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Allouable__Thread_Size(%zu, %zu, %zu)\" function. At line %d." NEW_LINE,
-                                 MyEA::String::Get__Time().c_str(),
+                                 MyEA::Time::Date_Time_Now().c_str(),
                                  __FUNCTION__,
                                  desired_batch_size_received,
                                  tmp_batch_size_allocate,
@@ -198,7 +198,7 @@ bool Neural_Network::Update__Batch_Size(size_t const desired_batch_size_received
         if(this->Reallocate__Batch(tmp_batch_size_allocate) == false)
         {
             PRINT_FORMAT("%s: %s: ERROR: An error has been triggered from the \"Reallocate__Batch(%zu)\" function. At line %d." NEW_LINE,
-                                     MyEA::String::Get__Time().c_str(),
+                                     MyEA::Time::Date_Time_Now().c_str(),
                                      __FUNCTION__,
                                      tmp_batch_size_allocate,
                                      __LINE__);

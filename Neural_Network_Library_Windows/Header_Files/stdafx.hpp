@@ -13,9 +13,11 @@
     #define WIN32_LEAN_AND_MEAN // Exclude rarely-used stuff from Windows headers
 #endif
 
-#include <Tools/Configuration.hpp>
+#include <Configuration/Configuration.hpp>
 
 #include <Strings/String.hpp>
+
+#include <Time/Time.hpp>
 
 #include <Neural_Network/Neural_Network.hpp>
 

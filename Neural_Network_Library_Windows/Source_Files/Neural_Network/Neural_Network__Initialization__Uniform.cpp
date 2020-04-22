@@ -50,7 +50,7 @@ void Neural_Network::Initialization__Uniform(T_ const bias_received,
                     break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Can not initialize weights in the layer %zu with (%u | %s) as the type layer. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          static_cast<size_t>(tmp_ptr_layer_it - this->ptr_array_layers),
                                          tmp_ptr_layer_it->type_layer,

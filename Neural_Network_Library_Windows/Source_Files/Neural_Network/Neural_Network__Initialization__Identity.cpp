@@ -40,7 +40,7 @@ void Neural_Network::Initialization__Identity(T_ const bias_received)
             case MyEA::Common::ENUM_TYPE_LAYER::TYPE_LAYER_LSTM:
                 // TODO: Intialize orthogonal LSTM.
                 PRINT_FORMAT("%s: %s: ERROR: TODO: Intialize identity LSTM." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__);
                 //this->Initialize__Identity(tmp_ptr_layer_it);
 
@@ -48,7 +48,7 @@ void Neural_Network::Initialization__Identity(T_ const bias_received)
                     break;
             default:
                 PRINT_FORMAT("%s: %s: ERROR: Can not initialize weights in the layer %zu with (%u | %s) as the type layer. At line %d." NEW_LINE,
-                                         MyEA::String::Get__Time().c_str(),
+                                         MyEA::Time::Date_Time_Now().c_str(),
                                          __FUNCTION__,
                                          static_cast<size_t>(tmp_ptr_layer_it - this->ptr_array_layers),
                                          tmp_ptr_layer_it->type_layer,
