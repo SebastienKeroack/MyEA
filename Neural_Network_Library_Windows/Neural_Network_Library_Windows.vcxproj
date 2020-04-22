@@ -90,7 +90,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>COMPILE_x86;COMPILE_DOUBLE;COMPILE_COUT;COMPILE_WINDOWS;COMPILE_UINPUT;COMPILE_UI;COMPILE_BREAK_CODE;COMPILE_DEBUG;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>COMPILE_x86;COMPILE_DOUBLE;COMPILE_COUT;COMPILE_WINDOWS;COMPILE_UINPUT;COMPILE_UI;COMPILE_BREAK_CODE;COMPILE_DEBUG;EIGEN_MPL2_ONLY;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <OpenMPSupport>true</OpenMPSupport>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -113,7 +113,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>COMPILE_x64;COMPILE_DOUBLE;COMPILE_COUT;COMPILE_WINDOWS;COMPILE_UINPUT;COMPILE_BREAK_CODE;COMPILE_DEBUG;COMPILE_AUTODIFF;AUTODIFF_TRACK_NON_FINITE_GRADIENTS;AUTODIFF_RECORDING_PAUSABLE;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>COMPILE_x64;COMPILE_DOUBLE;COMPILE_COUT;COMPILE_WINDOWS;COMPILE_UINPUT;COMPILE_BREAK_CODE;COMPILE_DEBUG;COMPILE_AUTODIFF;AUTODIFF_TRACK_NON_FINITE_GRADIENTS;AUTODIFF_RECORDING_PAUSABLE;EIGEN_MPL2_ONLY;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <OpenMPSupport>true</OpenMPSupport>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -142,7 +142,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>COMPILE_x86;COMPILE_FLOAT;COMPILE_WINDOWS;COMPILE_BREAK_CODE;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>COMPILE_x86;COMPILE_FLOAT;COMPILE_WINDOWS;COMPILE_BREAK_CODE;EIGEN_MPL2_ONLY;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\include\;D:\include\eigen\;..\Common_Library\include\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;..\Form_DLL\Header_Files\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <SDLCheck>true</SDLCheck>
       <OpenMPSupport>true</OpenMPSupport>
@@ -169,7 +169,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>COMPILE_x64;COMPILE_FLOAT;COMPILE_COUT;COMPILE_WINDOWS;COMPILE_UINPUT;COMPILE_UI;COMPILE_BREAK_CODE;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>COMPILE_x64;COMPILE_FLOAT;COMPILE_COUT;COMPILE_WINDOWS;COMPILE_UINPUT;COMPILE_UI;COMPILE_BREAK_CODE;EIGEN_MPL2_ONLY;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\include\;D:\include\eigen\;..\Common_Library\include\;$(ProjectDir)Header_Files\;$(ProjectDir)Resource_Files\;$(ProjectDir)Source_Files\;..\Form_DLL\Header_Files\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <SDLCheck>true</SDLCheck>
       <OpenMPSupport>true</OpenMPSupport>
