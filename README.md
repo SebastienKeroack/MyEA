@@ -1,4 +1,2 @@
-# MyEA
-AI library in C++ and CUDA.
-
-# I no longer maintain this repository!
+# MyEA (I no longer maintain this repository!)
+AI library in C++ and CUDA. 
