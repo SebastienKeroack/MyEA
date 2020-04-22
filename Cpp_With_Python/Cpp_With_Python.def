@@ -1,0 +1,8 @@
+LIBRARY Cpp_With_Python.dll
+
+EXPORTS
+    API__Connect
+    API__Is_Connected
+    API__CppCurrentTime
+    API__Action
+    API__Disconnect

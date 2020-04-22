@@ -16,7 +16,7 @@ SET(CMAKE_CXX_STANDARD 17)
 INCLUDE_DIRECTORIES(include)
 
 SET(SOURCE_FILES
-    src/stdafx.cpp
+    src/pch.cpp
     src/Capturing/Keyboard/Linux/Keyboard.cpp
     src/Capturing/Shutdown/Linux/Shutdown.cpp
     src/Configuration/Configuration.cpp

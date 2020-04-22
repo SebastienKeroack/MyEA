@@ -28,23 +28,23 @@ namespace MyEA::Time
     {
         std::string tmp_string;
 
-        if(     time_elapse_received <= 0.000'000'999) { tmp_string = std::to_string(time_elapse_received * 1e+9) + "ns"; } // nanoseconds
-        else if(time_elapse_received <= 0.000'999    ) { tmp_string = MyEA::String::To_string<double, MyEA::String::ENUM_TYPE_STRING_FORMAT::FIXED>(time_elapse_received * 1e+6, 3u) + "us"; } // microseconds μs
-        else if(time_elapse_received <= 0.999        ) { tmp_string = MyEA::String::To_string<double, MyEA::String::ENUM_TYPE_STRING_FORMAT::FIXED>(time_elapse_received * 1e+3, 3u) + "ms"; } // milliseconds
-        else if(time_elapse_received <= 59.0         ) { tmp_string = MyEA::String::To_string<double, MyEA::String::ENUM_TYPE_STRING_FORMAT::FIXED>(time_elapse_received, 3u) + "s"; } // seconds
-        else if(time_elapse_received <= 3599.0       )
+        if(     time_elapse_received <=    0.000'000'999) { tmp_string = std::to_string(time_elapse_received * 1e+9) + "ns"; } // nanoseconds
+        else if(time_elapse_received <=    0.000'999    ) { tmp_string = MyEA::String::To_string<double, MyEA::String::ENUM_TYPE_STRING_FORMAT::FIXED>(time_elapse_received * 1e+6, 3u) + "us"; } // microseconds μs
+        else if(time_elapse_received <=    0.999        ) { tmp_string = MyEA::String::To_string<double, MyEA::String::ENUM_TYPE_STRING_FORMAT::FIXED>(time_elapse_received * 1e+3, 3u) + "ms"; } // milliseconds
+        else if(time_elapse_received <=   59.0          ) { tmp_string = MyEA::String::To_string<double, MyEA::String::ENUM_TYPE_STRING_FORMAT::FIXED>(time_elapse_received, 3u) + "s"; } // seconds
+        else if(time_elapse_received <= 3599.0          )
         {
-            tmp_string =  std::to_string(static_cast<unsigned int>(floor(time_elapse_received / 60.0))) + "m:"; // minute
-            tmp_string += std::to_string(static_cast<unsigned int>(time_elapse_received) % 60u) + "s:"; // second
+            tmp_string =  std::to_string(static_cast<size_t>(floor(time_elapse_received / 60.0))) + "m:"; // minute
+            tmp_string += std::to_string(static_cast<size_t>(time_elapse_received) % 60_zu) + "s:"; // second
             tmp_string += MyEA::String::To_string<double, MyEA::String::ENUM_TYPE_STRING_FORMAT::FIXED>(time_elapse_received - floor(time_elapse_received), 3u) + "ms"; // milliseconds
         }
         else if(time_elapse_received <= 86'399.0)
         {
-            double const tmp_minutes(static_cast<double>(static_cast<unsigned int>(time_elapse_received) % 3600u) / 60.0);
+            double const tmp_minutes(static_cast<double>(static_cast<size_t>(time_elapse_received) % 3600_zu) / 60.0);
 
-            tmp_string =  std::to_string(static_cast<unsigned int>(floor(time_elapse_received / 3600.0))) + "h:"; // hour
-            tmp_string += std::to_string(static_cast<unsigned int>(floor(tmp_minutes))) + "m:"; // minute
-            tmp_string += std::to_string(static_cast<unsigned int>(tmp_minutes) % 60u) + "s:"; // second
+            tmp_string =  std::to_string(static_cast<size_t>(floor(time_elapse_received / 3600.0))) + "h:"; // hour
+            tmp_string += std::to_string(static_cast<size_t>(floor(tmp_minutes))) + "m:"; // minute
+            tmp_string += std::to_string(static_cast<size_t>(tmp_minutes) % 60_zu) + "s:"; // second
             tmp_string += MyEA::String::To_string<double, MyEA::String::ENUM_TYPE_STRING_FORMAT::FIXED>(time_elapse_received - floor(time_elapse_received), 3u) + "ms"; // milliseconds
         }
         else { tmp_string = MyEA::String::To_string<double, MyEA::String::ENUM_TYPE_STRING_FORMAT::FIXED>(time_elapse_received, 3u) + "s"; } // second

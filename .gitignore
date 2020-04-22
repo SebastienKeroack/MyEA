@@ -1,7 +1,9 @@
 .vs
 .idea
-Intermediate
-Output
 bin
+cmake-build-*
+Intermediate
 obj
+out
+Output
 readme
