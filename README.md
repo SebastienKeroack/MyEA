@@ -1,5 +1,5 @@
 # MyEA (I no longer maintain this repository! (for the time being))
-AI library in C++ (with OpenMP) and CUDA.
+Deep learning library in C++ (with OpenMP) and CUDA.
 
 This library contains the following implementations : 
   1. Activation:
