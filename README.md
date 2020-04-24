@@ -60,7 +60,7 @@ This library contains the following implementations :
   - Adamax
   - AMSBound
   - AMSGrad
-  - GD (aka SGD, with momentum and nesterov)
+  - GD (aka SGD, w/ momentum and/or nesterov)
   - iRPROP-
   - iRPROP+
   - NosAdam
